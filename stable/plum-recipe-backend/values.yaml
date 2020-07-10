@@ -7,5 +7,6 @@ java:
     POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
     POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    DUMMY: "DummyVar2"
   # Don't modify below here
   image: 'https://hmctspublic.azurecr.io/plum/recipe-backend:latest'
