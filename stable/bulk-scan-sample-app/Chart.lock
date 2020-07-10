@@ -1,9 +1,0 @@
-dependencies:
-- name: java
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 3.0.2
-- name: bulk-scan
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 0.1.16
-digest: sha256:451073d78d10b2b502a83b9bb8993c95035ec4380a378f1f5cbe015b943acf8a
-generated: "2020-07-10T16:16:10.693669031Z"
