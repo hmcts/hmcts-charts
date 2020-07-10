@@ -1,0 +1,5 @@
+nodejs:
+  applicationPort: 1337
+  image: 'hmctspublic.azurecr.io/crumble/frontend:latest'
+  environment:
+    RECIPE_BACKEND_URL: http://plum-recipe-backend-java
