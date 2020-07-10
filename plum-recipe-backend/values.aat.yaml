@@ -1,0 +1,15 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/plum-recipe-backend:latest
+  ingressHost: 
+  environment:
+    POSTGRES_SSL_MODE: require
+  aadIdentityName: cnp
+  keyVaults:
+    "plumsi":
+      resourceGroup: plum-shared-infrastructure
+      secrets:
+        - recipe-backend-POSTGRES-DATABASE
+        - recipe-backend-POSTGRES-HOST
+        - recipe-backend-POSTGRES-USER
+        - recipe-backend-POSTGRES-PASS
