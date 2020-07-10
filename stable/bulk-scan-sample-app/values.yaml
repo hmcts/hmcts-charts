@@ -1,0 +1,14 @@
+java:
+  applicationPort: 8484
+  ingressHost: bulk-scan-sample-app-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: bsp
+  environment:
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  image: hmctspublic.azurecr.io/bulk-scan/sample-app:latest
+  keyVaults:
+    "bulk-scan":
+      resourceGroup: bulk-scan
+      secrets:
+        - app-insights-instrumentation-key-sample-app
+bulk-scan:
+  enabled: false
