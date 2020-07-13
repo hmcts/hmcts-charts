@@ -1,0 +1,5 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/sscs-tribunals-api:latest
+  ingressHost: 
+  environment:
+    CREATE_CCD_ENDPOINT: true
