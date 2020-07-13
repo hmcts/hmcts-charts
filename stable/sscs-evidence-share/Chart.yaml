@@ -1,0 +1,12 @@
+name: sscs-evidence-share
+description: SSCS Evidence Share
+home: https://github.com/hmcts/sscs-evidence-share
+apiVersion: v2
+appVersion: "1.0"
+version: 0.0.19
+maintainers:
+  - name: HMCTS SSCS Team
+dependencies:
+  - name: java
+    version: 3.1.0
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/

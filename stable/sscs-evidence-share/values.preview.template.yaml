@@ -1,0 +1,17 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    SEND_LETTER_SERVICE_ENABLED: "true"
+    SEND_LETTER_SERVICE_BASEURL: "http://rpe-send-letter-service-aat.service.core-compute-aat.internal"
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+    DOCUMENT_MANAGEMENT_URL: "http://dm-store-aat.service.core-compute-aat.internal"
+    CORE_CASE_DATA_API_URL: "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
+    SUBSCRIPTION_NAME: "sscs-evidenceshare-subscription-aat"
+    TOPIC_NAME: "sscs-evidenceshare-topic-aat"
+    AMQP_HOST: "sscs-servicebus-aat.servicebus.windows.net"
+    AMQP_USERNAME: "SendAndListenSharedAccessKey"
+    ROBOTICS_EMAIL_FROM: "sscs@hmcts.net"
+    ROBOTICS_EMAIL_TO: "fake"
+    ROBOTICS_EMAIL_SCOTTISH_TO: "fake2"
+    ROBOTICS_EMAIL_PIP_AE_TO: "fake3"

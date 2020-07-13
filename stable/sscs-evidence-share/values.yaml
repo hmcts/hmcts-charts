@@ -1,0 +1,60 @@
+java:
+  image: 'hmctspublic.azurecr.io/sscs/evidence-share:latest'
+  applicationPort: 8091
+  readinessPath: '/health/readiness'
+  aadIdentityName: sscs
+  ingressHost: sscs-evidence-share-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  keyVaults:
+    sscs:
+      resourceGroup: sscs
+      secrets:
+        - idam-oauth-user
+        - idam-redirect
+        - idam-sscs-systemupdate-user
+        - idam-sscs-systemupdate-password
+        - idam-sscs-oauth2-client-secret
+        - ccd-api
+        - ccd-jid
+        - ccd-tid
+        - sscs-s2s-secret
+        - s2s-micro
+        - sscs-asb-primary-send-and-listen-shared-access-key
+        - docmosis-endpoint
+        - docmosis-api-key
+        - robotics-email-to
+        - robotics-email-from
+        - robotics-email-scottish-to
+        - robotics-email-pip-ae-to
+        - AppInsightsInstrumentationKey
+  environment:
+    REFORM_TEAM: sscs
+    REFORM_SERVICE_NAME: sscs-evidence-share
+    REFORM_SERVICE_TYPE: java
+    REFORM_ENVIRONMENT: preview
+    ROOT_LOGGING_LEVEL: INFO
+    LOG_OUTPUT: single
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_API_JWK_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/jwks
+    IDAM_S2S_AUTH: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IDAM_OAUTH2_CLIENT_ID: "sscs"
+    IDAM_OAUTH2_REDIRECT_URL: "https://evidence-sharing-preprod.sscs.reform.hmcts.net"
+    CORE_CASE_DATA_API_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CORE_CASE_DATA_JURISDICTION_ID: SSCS
+    CORE_CASE_DATA_CASE_TYPE_ID: Benefit
+    SEND_LETTER_SERVICE_BASEURL: "http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    SEND_LETTER_SERVICE_ENABLED: "true"
+    DOCUMENT_MANAGEMENT_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TRUST_ALL_CERTS: "true"
+    SUBSCRIPTION_NAME: "sscs-evidenceshare-subscription-{{ .Values.global.environment }}"
+    TOPIC_NAME: "sscs-evidenceshare-topic-{{ .Values.global.environment }}"
+    AMQP_HOST: "sscs-servicebus-{{ .Values.global.environment }}.servicebus.windows.net"
+    AMQP_USERNAME: "SendAndListenSharedAccessKey"
+    MAX_RETRY_ATTEMPTS: 3
+    PDF_SERVICE_BASE_URL: https://docmosis-development.platform.hmcts.net/rs/render
+    PDF_SERVICE_HEALTH_URL: https://docmosis-development.platform.hmcts.net/rs/status
+    ROBOTICS_EMAIL_MESSAGE: "Please find attached the robotics json file \nPlease do not respond to this email"
+    EMAIL_SERVER_HOST: "mta.reform.hmcts.net"
+    EMAIL_SERVER_PORT: "25"
+    EMAIL_SMTP_TLS_ENABLED: "true"
+    EMAIL_SMTP_SSL_TRUST: "*"
+    BULK_SCAN_MIGRATED: true

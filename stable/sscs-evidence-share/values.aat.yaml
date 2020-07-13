@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/sscs-evidence-share:latest
+  ingressHost: 
