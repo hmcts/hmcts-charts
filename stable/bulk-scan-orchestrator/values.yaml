@@ -1,0 +1,53 @@
+java:
+  applicationPort: 8582
+  ingressHost: bulk-scan-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: bsp
+  readinessPath: '/health/readiness'
+  environment:
+    S2S_NAME: "bulk_scan_orchestrator"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    IDAM_CLIENT_REDIRECT_URI: "https://bulk-scan-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
+    CORE_CASE_DATA_API_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    DOCUMENT_MANAGEMENT_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TRANSFORMATION_URL_BULKSCAN: "http://bulk-scan-sample-app-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TRANSFORMATION_URL_PROBATE: "http://probate-back-office-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TRANSFORMATION_URL_DIVORCE: "http://div-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TRANSFORMATION_URL_FINREM: "http://finrem-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TRANSFORMATION_URL_SSCS: "http://sscs-bulk-scan-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    UPDATE_URL_BULKSCAN: "http://bulk-scan-sample-app-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    UPDATE_URL_PROBATE: "http://probate-back-office-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    QUEUE_READ_INTERVAL: "30000"
+    DELETE_ENVELOPES_DLQ_MESSAGES_ENABLED: "true"
+    DELETE_ENVELOPES_DLQ_MESSAGES_CRON: "0 * * * * *"
+    DELETE_ENVELOPES_DLQ_MESSAGES_TTL: "10s"
+    ENVELOPES_QUEUE_NAME: "envelopes"
+    PROCESSED_ENVELOPES_QUEUE_NAME: "processed-envelopes"
+    PAYMENTS_QUEUE_NAME: "payments"
+  keyVaults:
+    bulk-scan:
+      resourceGroup: bulk-scan
+      secrets:
+        - idam-client-secret
+        - s2s-secret-bulk-scan-orchestrator
+        - idam-users-bulkscan-username
+        - idam-users-bulkscan-password
+        - idam-users-cmc-username
+        - idam-users-cmc-password
+        - idam-users-div-username
+        - idam-users-div-password
+        - idam-users-probate-username
+        - idam-users-probate-password
+        - idam-users-publiclaw-username
+        - idam-users-publiclaw-password
+        - idam-users-sscs-username
+        - idam-users-sscs-password
+        - envelopes-queue-listen-connection-string
+        - payments-queue-send-connection-string
+        - processed-envelopes-queue-send-connection-string
+        - envelopes-queue-max-delivery-count
+        - app-insights-instrumentation-key
+  image: hmctspublic.azurecr.io/bulk-scan/orchestrator:latest
+
+servicebus:
+  enabled: false

@@ -1,0 +1,9 @@
+dependencies:
+- name: java
+  repository: https://hmctspublic.azurecr.io/helm/v1/repo
+  version: 2.18.1
+- name: servicebus
+  repository: https://hmctspublic.azurecr.io/helm/v1/repo
+  version: 0.2.2
+digest: sha256:1c94ad60279446ac625b4efeb5ede382bdc496b5481d7565557634c07d6cffe1
+generated: "2020-07-13T08:42:34.707773944Z"
