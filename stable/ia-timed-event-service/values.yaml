@@ -1,0 +1,32 @@
+java:
+  applicationPort: 8095
+  image: 'hmctspublic.azurecr.io/ia/timed-event-service:latest'
+  ingressHost: ia-timed-event-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: ia
+  environment:
+    IDAM_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    POSTGRES_PORT: 5432
+    POSTGRES_HOST: ia-timed-event-service-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: ia_tes@ia-timed-event-service-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
+  postgresql:
+    postgresqlUsername: ia_tes
+    postgresqlPassword: ia_tes
+    postgresqlDatabase: ia_timed_event_service
+    service:
+      port: 5432
+  keyVaults:
+    ia:
+      resourceGroup: ia
+      secrets:
+        - idam-client-id
+        - idam-secret
+        - idam-redirect-uri
+        - system-username
+        - system-password
+        - s2s-secret
+        - s2s-microservice
+        - AppInsightsInstrumentationKey
+        - timed-event-service-POSTGRES-PASS
