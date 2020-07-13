@@ -1,0 +1,17 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    REDIS_URL: redis://${SERVICE_NAME}-redis-master
+    APPINSIGHTS_ROLE_NAME: ${SERVICE_NAME}
+
+  keyVaults:
+    sscs:
+      secrets:
+        - idam-sscs-oauth2-client-secret
+        - postcode-lookup-token
+        - AppInsightsInstrumentationKey
+        - launchdarkly-key
+
+redis:
+  enabled: true

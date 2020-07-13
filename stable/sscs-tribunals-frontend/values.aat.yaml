@@ -1,0 +1,3 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/sscs-tribunals-frontend:latest
+  ingressHost: 
