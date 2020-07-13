@@ -1,0 +1,39 @@
+java:
+  applicationPort: 8583
+  aadIdentityName: bsp
+  ingressHost: bulk-scan-payment-processor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  readinessPath: '/health/readiness'
+  environment:
+    PAYMENTS_QUEUE_MAX_DELIVERY_COUNT: "5"
+    S2S_NAME: "bulk_scan_payment_processor"
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    PAY_HUB_URL: http://ccpay-bulkscanning-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_CLIENT_REDIRECT_URI: https://bulk-scan-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
+    CORE_CASE_DATA_API_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    RESTART_ME: "Update due to vault change"
+  image: hmctspublic.azurecr.io/bulk-scan/payment-processor:latest
+  keyVaults:
+    "bulk-scan":
+      resourceGroup: bulk-scan
+      secrets:
+        - s2s-secret-payment-processor
+        - site-id-probate
+        - site-id-divorce
+        - site-id-finrem
+        - site-id-bulkscan
+        - payments-queue-listen-connection-string
+        - app-insights-instrumentation-key
+        - idam-client-secret
+        - idam-users-bulkscan-username
+        - idam-users-bulkscan-password
+        - idam-users-cmc-username
+        - idam-users-cmc-password
+        - idam-users-div-username
+        - idam-users-div-password
+        - idam-users-finrem-username
+        - idam-users-finrem-password
+        - idam-users-probate-username
+        - idam-users-probate-password
+servicebus:
+  enabled: false
