@@ -1,0 +1,5 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/finrem-ps:latest
+  ingressHost: 
+  environment:
+    GENERAL_APPLICATION_WITHOUT_NOTICE_FEE_KEYWORD: 'GeneralAppWithoutNotice'
