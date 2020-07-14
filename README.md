@@ -1,10 +1,10 @@
-# hmcts-charts
-Repository to hold all the hmcts Helm charts
-
-
 **Please do not create a Pull Request to this repository.**
 
 **Jenkins will automatically publish the application helm charts to this repository.**
+
+
+# hmcts-charts
+Repository to hold all the hmcts Helm charts
 
 ## Application config in flux
 
