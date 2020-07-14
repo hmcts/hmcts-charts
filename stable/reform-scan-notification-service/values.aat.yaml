@@ -1,0 +1,24 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/reform-scan-notification-service:latest
+  ingressHost: 
+  environment:
+    NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 1000
+    QUEUE_NOTIFICATIONS_READ: false
+    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
+    FLYWAY_SKIP_MIGRATIONS: false
+    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
+  keyVaults:
+    reform-scan:
+      resourceGroup: reform-scan
+      secrets:
+        - app-insights-instrumentation-key
+        - error-notifications-password
+        - error-notifications-url
+        - error-notifications-username
+        - notification-service-staging-postgres-pass
+        - notification-service-staging-postgres-user
+        - notification-service-staging-postgres-host
+        - notification-service-staging-postgres-port
+        - notification-service-staging-postgres-database
+        - notifications-staging-queue-listen-connection-string

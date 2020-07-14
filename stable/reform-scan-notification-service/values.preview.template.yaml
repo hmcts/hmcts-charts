@@ -1,0 +1,44 @@
+java:
+  secrets:
+    SB_CONN_STRING:
+      secretRef: servicebus-secret-namespace-{{ .Release.Name }}
+      key: connectionString
+  environment:
+    DB_HOST: "{{ .Release.Name }}-postgresql"
+    DB_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
+    DB_USER: "{{ .Values.postgresql.postgresqlUsername}}"
+    DB_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    DB_PORT: '5432'
+    DB_CONN_OPTIONS: ""
+
+    FLYWAY_SKIP_MIGRATIONS: false
+    QUEUE_NOTIFICATIONS_READ: "$(SB_CONN_STRING);EntityPath=notifications"
+    S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 1000
+    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
+    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
+  keyVaults:
+    reform-scan:
+      resourceGroup: reform-scan
+      secrets:
+        - error-notifications-password
+        - error-notifications-url
+        - error-notifications-username
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+
+  postgresql:
+    enabled: true
+    postgresqlUsername: db_user
+    postgresqlPassword: db_password
+    postgresqlDatabase: db_database
+servicebus:
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
+  location: uksouth
+  serviceplan: basic
+  setup:
+    queues:
+      - name: notifications
+  enabled: true

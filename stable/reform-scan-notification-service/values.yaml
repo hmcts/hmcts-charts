@@ -1,0 +1,33 @@
+java:
+  applicationPort: 8585
+  ingressHost: reform-scan-notification-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: reform-scan
+  readinessPath: '/health/readiness'
+  keyVaults:
+    reform-scan:
+      resourceGroup: reform-scan
+      secrets:
+        - app-insights-instrumentation-key
+        - error-notifications-password
+        - error-notifications-url
+        - error-notifications-username
+        - notification-service-POSTGRES-PASS
+        - notification-service-POSTGRES-USER
+        - notification-service-POSTGRES-HOST
+        - notification-service-POSTGRES-PORT
+        - notification-service-POSTGRES-DATABASE
+        - notifications-queue-listen-connection-string
+
+  environment:
+    DB_CONN_OPTIONS: ?sslmode=require
+    FLYWAY_SKIP_MIGRATIONS: true
+    QUEUE_NOTIFICATIONS_MAX_RETRY: 5
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 3000
+    NOTIFICATIONS_CONSUME_TASK_ENABLED: true
+    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 4000
+    PENDING_NOTIFICATIONS_TASK_ENABLED: true
+    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 120
+  image: 'hmctspublic.azurecr.io/reform-scan/notification-service:latest'
+servicebus:
+  enabled: false
