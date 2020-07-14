@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/sscs-bulk-scan:latest
+  ingressHost: 
