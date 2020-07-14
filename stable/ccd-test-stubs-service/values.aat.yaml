@@ -1,0 +1,5 @@
+java:
+  environment:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/ccd-test-stubs-service:latest
+  ingressHost: 
