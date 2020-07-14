@@ -1,0 +1,28 @@
+tags:
+  idam-pr: true
+  pr: true
+
+idam-pr:
+  redirect_uris:
+    divorce:
+      - https://${SERVICE_FQDN}/authenticated
+
+nodejs:
+    environment:
+        APPINSIGHTS_INSTRUMENTATIONKEY: "dummykey"
+        FEATURE_STRATEGIC_PAY: "false"
+        REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
+        PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
+    keyVaults:
+        div:
+            secrets:
+                - session-secret
+                - redis-secret
+                - idam-secret
+                - os-places-token
+                - frontend-secret
+                - launchdarkly-key
+
+    # Don't modify below here
+    image: ${IMAGE_NAME}
+    ingressHost: ${SERVICE_FQDN}
