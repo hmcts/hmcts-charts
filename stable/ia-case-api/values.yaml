@@ -1,0 +1,46 @@
+java:
+  image: 'https://hmctspublic.azurecr.io/ia/case-api:latest'
+  applicationPort: 8090
+  aadIdentityName: ia
+  environment:
+    POSTGRES_PORT: 5432
+    POSTGRES_HOST: ia-case-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: ia_case_api@ia-case-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
+    PROF_REF_DATA_URL: "http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IA_CASE_DOCUMENTS_API_URL: "http://ia-case-documents-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
+    IA_CASE_NOTIFICATIONS_API_URL: "http://ia-case-notifications-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
+    IA_TIMED_EVENT_SERVICE_URL: "http://ia-timed-event-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
+    IA_TIMED_EVENT_SERVICE_ENABLED: "false"
+    IA_CASE_PAYMENTS_API_URL: "http://ia-case-payments-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
+    IA_IDAM_REDIRECT_URI: "https://ia-case-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
+    CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_GW_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    DM_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IS_SAVE_AND_CONTINUE_ENABLED: "true"
+  postgresql:
+    postgresqlUsername: ia_case_api
+    postgresqlPassword: ia_case_api
+    postgresqlDatabase: ia_case_api
+    service:
+      port: 5432
+  keyVaults:
+    ia:
+      secrets:
+        - docmosis-enabled
+        - em-stitching-enabled
+        - submit-hearing-requirements-enabled
+        - system-username
+        - system-password
+        - idam-client-id
+        - idam-secret
+        - s2s-secret
+        - s2s-microservice
+        - prof-ref-data-url
+        - docmosis-enabled
+        - em-stitching-enabled
+        - launch-darkly-sdk-key
+        - case-api-POSTGRES-PASS
+        - AppInsightsInstrumentationKey
