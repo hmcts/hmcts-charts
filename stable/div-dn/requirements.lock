@@ -1,0 +1,12 @@
+dependencies:
+- name: nodejs
+  repository: https://hmctspublic.azurecr.io/helm/v1/repo
+  version: 2.0.1
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: 10.0.0
+- name: idam-pr
+  repository: https://hmctspublic.azurecr.io/helm/v1/repo
+  version: 2.2.6
+digest: sha256:8cc9e77f801f05e11173548e632f675f0c6847cce47571ae76f39c7fcbff5e0a
+generated: "2020-07-14T13:20:08.775961852Z"
