@@ -1,0 +1,60 @@
+java:
+  applicationPort: 8485
+  ingressHost: rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: send-letter
+  readinessPath: '/health/readiness'
+  keyVaults:
+    rpe-send-letter:
+      secrets:
+        - ftp-user
+        - ftp-private-key
+        - ftp-public-key
+        - upload-summary-report-recipients
+        - send-letter-service-POSTGRES-PASS
+        - send-letter-service-POSTGRES-USER
+        - send-letter-service-POSTGRES-DATABASE
+        - send-letter-service-POSTGRES-PORT
+        - send-letter-service-POSTGRES-HOST
+        - encryption-public-key
+        - app-insights-instrumentation-key
+        - reports-email-password
+        - reports-email-username
+
+  environment:
+    # db
+    LETTER_TRACKING_DB_CONN_OPTIONS: "?sslmode=require"
+
+    # db - migration
+    FLYWAY_URL: "jdbc:postgresql://rpe-send-letter-service-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/send_letter?sslmode=require"
+
+    # encryption
+    ENCRYPTION_ENABLED: "true"
+
+    # schedules
+    SCHEDULING_ENABLED: "true"
+    SCHEDULING_LOCK_AT_MOST_FOR: "PT10M"
+
+    # inherited
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+
+    FILE_CLEANUP_ENABLED: "false"
+
+    FTP_HOSTNAME: "cmseft.services.xerox.com"
+    FTP_PORT: "22"
+    FTP_FINGERPRINT: "SHA256:3tX3DIkqd1Loz2alHfnt+qjHocfxk0YUOZHlnf9Zgdk"
+    FTP_TARGET_FOLDER: "TO_XEROX"
+    FTP_REPORTS_FOLDER: "FROM_XEROX"
+    FTP_SMOKE_TEST_TARGET_FOLDER: "SMOKE_TEST"
+    FTP_REPORTS_CRON: "0 30 * * * *"
+    #For prod overwrite these 2 values in flux
+    FTP_DOWNTIME_FROM: "23:58"
+    FTP_DOWNTIME_TO: "23:59"
+
+    #smtp - For prod turn it on and assign values to vault reports-email-username and password
+    SMTP_HOST:  "false"
+
+    #reports. depends on smtp - For prod overwrite
+    UPLOAD_SUMMARY_REPORT_ENABLED: "false"
+
+  # Don't modify below here
+  image: 'hmctspublic.azurecr.io/rpe/send-letter-service:latest'
