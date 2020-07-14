@@ -1,0 +1,56 @@
+java:
+  applicationPort: 8584
+  ingressHost: reform-scan-blob-router-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: reform-scan
+  readinessPath: '/health/readiness'
+  keyVaults:
+    reform-scan:
+      resourceGroup: reform-scan
+      secrets:
+        - app-insights-instrumentation-key
+        - reports-email-username
+        - reports-email-password
+        - reports-recipients
+        - storage-account-name
+        - storage-account-primary-key
+        - storage-account-secondary-key
+        - crime-storage-connection-string
+        - blob-router-POSTGRES-PASS
+        - blob-router-POSTGRES-USER
+        - blob-router-POSTGRES-HOST
+        - blob-router-POSTGRES-PORT
+        - blob-router-POSTGRES-DATABASE
+        - notifications-queue-send-connection-string
+
+  environment:
+    DB_CONN_OPTIONS: ?sslmode=require
+    FLYWAY_SKIP_MIGRATIONS: true
+
+    DELETE_DISPATCHED_FILES_CRON: "0 0/10 * * * *"
+    HANDLE_REJECTED_FILES_CRON: "0/30 * * * * *"
+    REJECT_DUPLICATES_CRON: "0/30 * * * * *"
+    CHECK_NEW_ENVELOPES_CRON: "0 0 * * * *"
+    TASK_SCAN_DELAY: "4000" # in millis
+    SEND_DAILY_REPORT_CRON: "0 0 18 ? * MON-FRI"
+    SEND_NOTIFICATIONS_CRON: "0 0/10 * * * *"
+
+    STORAGE_URL: https://reformscan.{{ .Values.global.environment }}.platform.hmcts.net
+    STORAGE_BULKSCAN_URL: https://bulkscan.{{ .Values.global.environment }}.platform.hmcts.net
+    STORAGE_BLOB_PROCESSING_DELAY_IN_MINUTES: 30
+    STORAGE_BLOB_PUBLIC_KEY: "nonprod_public_key.der"
+    CRIME_DESTINATION_CONTAINER: bs-sit-scans-received
+
+    BULK_SCAN_PROCESSOR_URL: http://bulk-scan-processor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+
+    SMTP_HOST: "false"
+    SEND_DAILY_REPORT_ENABLED: "false"
+  image: 'hmctspublic.azurecr.io/reform-scan/blob-router:latest'
+reformblobstorage:
+  enabled: false
+cftblobstorage:
+  enabled: false
+crimeblobstorage:
+  enabled: false
+
+servicebus:
+  enabled: false

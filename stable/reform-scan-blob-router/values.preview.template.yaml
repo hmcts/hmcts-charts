@@ -1,0 +1,101 @@
+java:
+  secrets:
+    STORAGE_ACCOUNT_NAME:
+      secretRef: storage-secret-{{ .Release.Name }}
+      key: storageAccountName
+    STORAGE_ACCOUNT_KEY:
+      secretRef: storage-secret-{{ .Release.Name }}
+      key: accessKey
+    STORAGE_ACCOUNT_SECONDARY_KEY:
+      secretRef: storage-secret-{{ .Release.Name }}
+      key: accessKey
+    STORAGE_CRIME_ACCOUNT_NAME:
+      secretRef: storage-secret-crime-{{ .Release.Name }}
+      key: storageAccountName
+    STORAGE_CRIME_ACCOUNT_KEY:
+      secretRef: storage-secret-crime-{{ .Release.Name }}
+      key: accessKey
+    SB_CONN_STRING:
+      secretRef: servicebus-secret-namespace-{{ .Release.Name }}
+      key: connectionString
+  keyVaults:
+    reform-scan:
+      resourceGroup: reform-scan
+      secrets:
+        - reports-email-username
+        - reports-email-password
+        - reports-recipients
+  environment:
+    DB_HOST: "{{ .Release.Name }}-postgresql"
+    DB_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
+    DB_USER: "{{ .Values.postgresql.postgresqlUsername}}"
+    DB_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    DB_PORT: '5432'
+    DB_CONN_OPTIONS: ""
+
+    DELETE_DISPATCHED_FILES_CRON: "0/10 * * * * *"
+    TASK_SCAN_DELAY: "1000" # in millis
+    SEND_NOTIFICATIONS_CRON: "0/10 * * * * *"
+
+    FLYWAY_SKIP_MIGRATIONS: false
+
+    STORAGE_BLOB_PROCESSING_DELAY_IN_MINUTES: 0
+
+    STORAGE_BULKSCAN_URL: https://bulkscan.aat.platform.hmcts.net
+
+    STORAGE_URL: "https://$(STORAGE_ACCOUNT_NAME).blob.core.windows.net"
+    STORAGE_CRIME_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(STORAGE_CRIME_ACCOUNT_NAME);AccountKey=$(STORAGE_CRIME_ACCOUNT_KEY);EndpointSuffix=core.windows.net"
+
+    BULK_SCAN_PROCESSOR_URL: http://bulk-scan-processor-aat.service.core-compute-aat.internal
+    CRIME_DESTINATION_CONTAINER: bs-sit-scans-received
+    CRIME_ENABLED: true
+
+    NOTIFICATIONS_QUEUE_CONNECTION_STRING: "$(SB_CONN_STRING);EntityPath=notifications"
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+
+  postgresql:
+    enabled: true
+    postgresqlUsername: db_user
+    postgresqlPassword: db_pass
+    postgresqlDatabase: db
+
+reformblobstorage:
+  enabled: true
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
+  location: ukwest
+  setup:
+    containers:
+      - bulkscan
+      - bulkscan-rejected
+      - crime
+      - crime-rejected
+      - cmc
+      - sscs
+      - finrem
+      - divorce
+      - probate
+      - publiclaw
+
+crimeblobstorage:
+  enabled: true
+  resourceGroup: reform-scan-aks
+  releaseNameOverride: crime-{{ .Release.Name }}
+  teamName: "BSP"
+  location: ukwest
+  setup:
+    containers:
+      - bs-sit-scans-received
+
+servicebus:
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
+  location: uksouth
+  serviceplan: basic
+  setup:
+    queues:
+      - name: notifications
+  enabled: true
+
