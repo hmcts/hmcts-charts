@@ -1,6 +1,0 @@
-java:
-  environment:
-    S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-  # Don't modify below here
-  image: ${IMAGE_NAME}
-  ingressHost: ${SERVICE_FQDN}

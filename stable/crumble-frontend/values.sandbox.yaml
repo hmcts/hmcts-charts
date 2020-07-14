@@ -1,3 +1,0 @@
-nodejs:
-  image: https://hmcts.azurecr.io/hmcts/crumble-frontend:latest
-  ingressHost: 
