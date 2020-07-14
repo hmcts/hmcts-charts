@@ -1,0 +1,8 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/cmc-claim-store:latest
+  ingressHost: 
+  environment:
+    MILO_CSV_SCHEDULE: "0 0 8 * * ?"
+    CLAIM_STAYED_SCHEDULE: "0 0 16 ? * MON-FRI *"
+    SCHEDULE_TRANSFER_CLAIMS: '0 0 12 1 * ?'
