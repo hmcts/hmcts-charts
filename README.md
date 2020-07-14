@@ -2,6 +2,7 @@
 
 **Jenkins will automatically publish the application helm charts to this repository.**
 
+------------------------------------------------------------------------------------------
 
 # hmcts-charts
 Repository to hold all the hmcts Helm charts
@@ -31,11 +32,11 @@ chart:
     path: stable/plum-recipe-backend
 ```
 
-In case of github as a chart source, developers dont need to declare the version twice. This makes the process less error prone. The process of updating the chart would then be a single step as below
+In case of github as a chart source, developers dont need to declare the version twice. This makes the process less error prone and require a single step to update charts to the application only as below.
 
 1. [Application chart](https://github.com/hmcts/cnp-plum-recipes-service/blob/0e14064e6bbdc6cf2d8955452e699c93e580b84a/charts/plum-recipe-backend/Chart.yaml#L4)
 
-and the syntax in the cnp-flux-config would become:
+The syntax in the cnp-flux-config would be:
 
 ``` 
 chart:
@@ -55,9 +56,9 @@ The diagram below illustrates the flow:
 
 ![Helm-operator](https://docs.fluxcd.io/projects/helm-operator/en/latest/_files/fluxcd-helm-operator-diagram.png)
 
-At present the application charts are published in Azure container registry by Jenkins.
+At present the application charts are published to Azure container registry by Jenkins.
 
-A developer in order to publish the new version of the chart, needs to update the version at 2 places. e.g.
+A developer in order to publish the new version of the chart, needs to update the chart version at 2 places. e.g.
 1. [Application chart](https://github.com/hmcts/cnp-plum-recipes-service/blob/0e14064e6bbdc6cf2d8955452e699c93e580b84a/charts/plum-recipe-backend/Chart.yaml#L4)
 2. [Flux Config](https://github.com/hmcts/cnp-flux-config/blob/991054ac8a9b225ae70c1674274cb43cf4373d9f/k8s/aat/common/cnp/plum-recipe-backend.yaml#L24-L27)
 
