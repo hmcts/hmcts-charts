@@ -1,0 +1,6 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/ia-case-documents-api:latest
+  ingressHost: 
+  environment:
+    IA_AIP_FRONTEND_URL: "https://immigration-appeal.{{ .Values.global.environment }}.platform.hmcts.net/"

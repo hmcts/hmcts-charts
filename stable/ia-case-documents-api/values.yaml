@@ -1,0 +1,32 @@
+java:
+  image: 'https://hmctspublic.azurecr.io/ia/case-documents-api:latest'
+  applicationPort: 8092
+  aadIdentityName: ia
+  environment:
+    DOCMOSIS_ENDPOINT: "https://docmosis-development.platform.hmcts.net"
+    IA_IDAM_REDIRECT_URI: "https://ia-case-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
+    DM_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_GW_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    EM_BUNDLER_URL: "http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    EM_BUNDLER_STITCH_URI: /api/stitch-ccd-bundles
+    IA_AIP_FRONTEND_URL: https://immigration-appeal.platform.hmcts.net/
+
+  keyVaults:
+    ia:
+      resourceGroup: ia
+      secrets:
+        - system-username
+        - system-password
+        - idam-client-id
+        - idam-secret
+        - s2s-secret
+        - s2s-microservice
+        - em-stitching-enabled
+        - docmosis-access-key
+        - launch-darkly-sdk-key
+        - AppInsightsInstrumentationKey
+        - customer-services-telephone
+        - customer-services-email
