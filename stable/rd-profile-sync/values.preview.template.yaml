@@ -1,0 +1,18 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+    POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    POSTGRES_CONNECTION_OPTIONS:
+  postgresql:
+    enabled: true
+    postgresqlUsername: dbsyncdata
+    postgresqlPassword: dbsyncdata
+    postgresqlDatabase: dbsyncdata
+  keyVaults:
+    rd:
+      secrets:
+        - s2s-secret

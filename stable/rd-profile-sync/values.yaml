@@ -1,0 +1,27 @@
+java:
+  applicationPort: 8093
+  ingressHost: rd-profile-sync-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: rd
+  environment:
+    POSTGRES_HOST: rd-profile-sync-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_NAME: dbsyncdata
+    POSTGRES_USERNAME: dbsyncdata@rd-profile-sync-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_PORT: 5432
+    POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    USER_PROFILE_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    OAUTH2_REDIRECT_URI: https://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
+
+  image: 'hmctspublic.azurecr.io/rd/profile-sync:latest'
+  keyVaults:
+    rd:
+      secrets:
+        - s2s-secret
+        - profile-sync-POSTGRES-PASS
+        - AppInsightsInstrumentationKey
+        - OAUTH2-CLIENT-SECRET
+        - OAUTH2-AUTH
+        - OAUTH2-CLIENT-AUTH
+        - SEARCH-QUERY-FROM
+        - CRON-SCHEDULE
