@@ -1,0 +1,63 @@
+nodejs:
+  image: hmctspublic.azurecr.io/probate/frontend:latest
+  ingressHost: probate.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: probate
+  additionalPathBasedRoutes:
+    "/caveats": "probate-caveats-fe-nodejs"
+  memoryRequests: "512Mi"
+  cpuRequests: "100m"
+  memoryLimits: "1024Mi"
+  cpuLimits: "500m"
+  applicationPort: 3000
+  environment:
+    PUBLIC_PROTOCOL: https
+    REFORM_TEAM: probate
+    REFORM_SERVICE_NAME: probate-frontend
+    IDAM_CLIENT_NAME: probate
+    IDAM_LOGIN_URL: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    PAYMENT_API_URL: http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    VALIDATION_SERVICE_URL: http://probate-business-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/validate
+    ORCHESTRATOR_SERVICE_URL : http://probate-orchestrator-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    FEES_REGISTRY_URL: http://fees-register-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/fees-register
+    REFORM_ENVIRONMENT : '{{ .Values.global.environment }}'
+    REDIS_HOST: probate-frontend-redis-cache-{{ .Values.global.environment }}.redis.cache.windows.net
+    REDIS_PORT: 6380
+    USE_REDIS: true
+    REDIS_USE_TLS: true
+    USE_IDAM: true
+    REQUIRE_CCD_CASE_ID : true
+  keyVaults:
+    probate:
+      secrets:
+        - idam-s2s-secret
+        - ccidam-idam-api-secrets-probate
+        - postcode-service-url
+        - postcode-service-token2
+        - probate-survey
+        - probate-survey-end
+        - probate-application-fee-code
+        - probate-uk-application-fee-code
+        - probate-overseas-application-fee-code
+        - probate-service-id
+        - probate-site-id
+        - probate-webchat-id
+        - probate-webchat-tenant
+        - probate-webchat-button-no-agents
+        - probate-webchat-button-busy
+        - probate-webchat-button-service-closed
+        - payCaseWorkerUser
+        - payCaseWorkerPass
+        - frontend-redis-access-key
+        - AppInsightsInstrumentationKey
+        - launchdarkly-key
+        - pcq-token-key
+redis:
+  enabled: false
+  cluster:
+    enabled: false
+    slaveCount: 0
+  usePassword: false
+idam-pr:
+  enabled: false
