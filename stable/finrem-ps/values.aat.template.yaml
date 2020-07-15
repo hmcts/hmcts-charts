@@ -1,5 +1,3 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  environment:
-    GENERAL_APPLICATION_WITHOUT_NOTICE_FEE_KEYWORD: 'GeneralAppWithoutNotice'
