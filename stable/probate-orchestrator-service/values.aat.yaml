@@ -1,0 +1,4 @@
+
+java:
+  image: https://hmcts.azurecr.io/hmcts/probate-orchestrator-service:latest
+  ingressHost: 
