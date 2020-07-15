@@ -1,0 +1,52 @@
+java:
+  image: 'https://hmctspublic.azurecr.io/ia/case-notifications-api:latest'
+  applicationPort: 8093
+  aadIdentityName: ia
+  environment:
+    IA_EXUI_FRONTEND_URL: https://manage-case.platform.hmcts.net/
+    IA_AIP_FRONTEND_URL: https://immigration-appeal.platform.hmcts.net/
+    IA_IDAM_REDIRECT_URI: "https://ia-case-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
+    DM_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  keyVaults:
+    ia:
+      resourceGroup: ia
+      secrets:
+        - ia-ccd-frontend-url
+        - ia-gov-notify-key
+        - hearing-centre-bradford-email
+        - hearing-centre-manchester-email
+        - hearing-centre-newport-email
+        - hearing-centre-taylor-house-email
+        - hearing-centre-north-shields-email
+        - hearing-centre-birmingham-email
+        - hearing-centre-hatton-cross-email
+        - hearing-centre-glasgow-email
+        - home-office-bradford-email
+        - home-office-manchester-email
+        - home-office-newport-email
+        - home-office-taylor-house-email
+        - home-office-north-shields-email
+        - home-office-birmingham-email
+        - home-office-hatton-cross-email
+        - home-office-glasgow-email
+        - respondent-evidence-direction-email
+        - respondent-review-direction-email
+        - respondent-non-standard-direction-until-listing-email
+        - home-office-end-appeal-email
+        - home-office-allowed-appeal-email
+        - home-office-dismissed-appeal-email
+        - admin-officer-review-hearing-requirements-email
+        - ctsc-admin-ftpa-submitted-email
+        - respondent-ftpa-submitted-email
+        - customer-services-telephone
+        - customer-services-email
+        - system-username
+        - system-password
+        - idam-client-id
+        - idam-secret
+        - s2s-secret
+        - s2s-microservice
+        - AppInsightsInstrumentationKey
