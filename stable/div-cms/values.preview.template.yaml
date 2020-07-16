@@ -1,0 +1,7 @@
+java:
+    environment:
+        IDAM_API_BASEURL: "https://idam-api.aat.platform.hmcts.net"
+
+    # Don't modify below here
+    image: ${IMAGE_NAME}
+    ingressHost: ${SERVICE_FQDN}
