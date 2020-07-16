@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/ia-home-office-mock-api:latest
+  ingressHost: 
