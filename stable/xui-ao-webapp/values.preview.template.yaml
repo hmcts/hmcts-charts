@@ -1,0 +1,18 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    NODE_TLS_REJECT_UNAUTHORIZED: 0
+    PUI_ENV: preview
+    IDAM_API_SERVICE: https://idam-api.aat.platform.hmcts.net
+    IDAM_WEB_SERVICE: https://idam-web-public.aat.platform.hmcts.net
+    FEATURE_SECURE_COOKIE_ENABLED: false
+    FEATURE_OIDC_ENABLED: true
+    REDISCLOUD_URL: redis://ignore:fake-password@${SERVICE_NAME}-redis-master:6379
+  keyVaults:
+    rpx:
+      secrets:
+        - ao-s2s-client-secret
+        - ao-idam-client-secret
+redis:
+  enabled: true

@@ -1,0 +1,6 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    NODE_TLS_REJECT_UNAUTHORIZED: 1
+    PUI_ENV: aat

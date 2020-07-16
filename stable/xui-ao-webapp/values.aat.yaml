@@ -1,0 +1,6 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/xui-ao-webapp:latest
+  ingressHost: 
+  environment:
+    NODE_TLS_REJECT_UNAUTHORIZED: 1
+    PUI_ENV: aat
