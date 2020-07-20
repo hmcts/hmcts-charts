@@ -1,0 +1,6 @@
+nodejs:
+  applicationPort: 3000
+  aadIdentityName: ia
+  ingressHost: ia-expressjs-template-test.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/ia/expressjs-template-test:latest'
+  environment:

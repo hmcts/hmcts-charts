@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for ia-expressjs-template-test App
+name: ia-expressjs-template-test
+home: https://github.com/hmcts/ia-expressjs-template-test
+version: 0.0.1
+dependencies:
+  - name: nodejs
+    version: 2.0.1
+    repository: '@hmctspublic'
+
