@@ -1,0 +1,3 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/ccd-admin-web:latest
+  ingressHost: 
