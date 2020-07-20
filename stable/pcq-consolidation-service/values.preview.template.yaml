@@ -1,0 +1,16 @@
+job:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    IDAM_API_URL: "https://idam-api.aat.platform.hmcts.net"
+    IDAM_CLIENT_REDIRECT_URI: "https://pcq-consolidation-service-aat.service.core-compute-aat.internal/oauth2/callback"
+    CORE_CASE_DATA_API_URL: "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
+    IDAM_CLIENT_NAME: 'pcq'
+  kind: CronJob
+  schedule: "*/20 * * * *"
+  startingDeadlineSeconds: 180
+  concurrencyPolicy: Forbid
+global:
+  jobKind: CronJob
