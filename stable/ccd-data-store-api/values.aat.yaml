@@ -1,0 +1,4 @@
+# config used by staging aat pod
+java:
+  image: https://hmcts.azurecr.io/hmcts/ccd-data-store-api:latest
+  ingressHost: 
