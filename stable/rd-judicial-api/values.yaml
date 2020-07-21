@@ -1,0 +1,16 @@
+java:
+  applicationPort: 8093
+  ingressHost: rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: rd
+  environment:
+    POSTGRES_HOST: rd-judicial-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: dbjuddata@rd-judicial-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_PORT: 5432
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  image: 'hmctspublic.azurecr.io/rd/judicial-api:latest'
+  keyVaults:
+    rd:
+      secrets:
+        - judicial-api-POSTGRES-PASS
+        - s2s-secret
+        - AppInsightsInstrumentationKey

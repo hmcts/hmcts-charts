@@ -1,0 +1,17 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+    POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+  postgresql:
+    enabled: true
+    postgresqlUsername: dbjuddata
+    postgresqlPassword: dbjuddata
+    postgresqlDatabase: dbjuddata
+  keyVaults:
+    rd:
+      secrets:
+        - s2s-secret
