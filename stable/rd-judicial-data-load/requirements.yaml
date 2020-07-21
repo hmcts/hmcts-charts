@@ -1,0 +1,12 @@
+dependencies:
+  - name: job
+    version: ~0.6.0
+    repository: '@hmctspublic'
+  - name: blobstorage
+    version: ~0.2.1
+    repository: '@hmctspublic'
+    condition: blobstorage.enabled
+  - name: postgresql
+    version: ~6.3.5
+    repository: '@stable'
+    condition: postgresql.enabled
