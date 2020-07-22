@@ -1,0 +1,8 @@
+dependencies:
+  - name: nodejs
+    version: 1.10.0
+    repository: '@hmctspublic'
+  - name: redis
+    version: 10.5.7
+    repository: '@stable'
+    condition: redis.enabled

@@ -1,0 +1,8 @@
+apiVersion: v1
+description: A Helm chart for the HMCTS PCQ product
+name: pcq-frontend
+home: https://github.com/hmcts/pcq-frontend
+version: 1.2.1
+maintainers:
+  - name: HMCTS PCQ Team
+    email: pcq-action-group@HMCTS.NET

@@ -1,0 +1,40 @@
+nodejs:
+  applicationPort: 4000
+  memoryRequests: "1024Mi"
+  cpuRequests: "500m"
+  memoryLimits: "2048Mi"
+  cpuLimits: "1500m"
+  environment:
+    PUBLIC_PROTOCOL: https
+    REFORM_TEAM: pcq
+    REFORM_SERVICE_NAME: pcq-frontend
+    USE_REDIS: true
+    REDIS_USE_TLS: true
+    REDIS_PORT: 6380
+    REDIS_HOST: pcq-frontend-redis-cache-{{ .Values.global.environment }}.redis.cache.windows.net
+    PCQ_BACKEND_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
+  image: hmctspublic.azurecr.io/pcq/frontend:latest
+  ingressHost: pcq.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: pcq
+
+  keyVaults:
+    pcq:
+      resourceGroup: pcq
+      secrets:
+        - AppInsightsInstrumentationKey
+        - frontend-redis-access-key
+        - jwt-secret
+        - launchdarkly-key
+        - probate-token-key
+        - cmc-token-key
+
+redis:
+  cluster:
+    enabled: false
+    slaveCount: 0
+  usePassword: false
+  master:
+    persistence:
+      enabled: false
+  enabled: false
