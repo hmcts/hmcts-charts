@@ -1,0 +1,21 @@
+java:
+  environment:
+    PCQ_DB_NAME: "{{ .Values.postgresql.postgresqlDatabase }}"
+    PCQ_DB_USERNAME: "{{ .Values.postgresql.postgresqlUsername }}"
+    PCQ_DB_PASSWORD: "{{ .Values.postgresql.postgresqlPassword }}"
+    PCQ_DB_HOST: "{{ .Release.Name }}-postgresql"
+    PCQ_DB_PORT: "5432"
+    FLYWAY_URL: "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.postgresqlDatabase }}"
+    FLYWAY_USER: "{{ .Values.postgresql.postgresqlUsername }}"
+    FLYWAY_PASSWORD: "{{ .Values.postgresql.postgresqlPassword }}"
+    FLYWAY_NOOP_STRATEGY: "false"
+    DB_ENCRYPTION_ENABLED: "No"
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+
+  postgresql:
+    enabled: true
+    postgresqlUsername: pcquser
+    postgresqlPassword: pcqpass
+    postgresqlDatabase: pcq
