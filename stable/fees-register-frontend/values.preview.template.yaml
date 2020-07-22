@@ -1,0 +1,12 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    ccpay:
+      secrets:
+        - freg-idam-client-secret
+idam-pr:
+  enabled: true
+  redirect_uris:
+    fees-register-admin:
+      - https://${SERVICE_FQDN}/oauth2/callback

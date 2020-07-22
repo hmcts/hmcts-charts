@@ -1,0 +1,5 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/fees-register-frontend:latest
+  ingressHost: 
+
+
