@@ -1,0 +1,6 @@
+java:
+  environment:
+    CALLBACK_DOMAIN: 
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/em-ccdorc:latest
+  ingressHost: 
