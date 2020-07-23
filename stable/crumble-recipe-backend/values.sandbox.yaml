@@ -2,7 +2,7 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/crumble-recipe-backend:latest
   ingressHost: 
-  aadIdentityName: cnp
+  aadIdentityName: crumble
   environment:
     POSTGRES_SSL_MODE: require
   keyVaults:
