@@ -1,0 +1,25 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    ECM_CONSUMER_DB_CONN_OPTIONS: "?sslmode=require"
+  keyVaults:
+    ethos-shared:
+      resourceGroup: ethos
+      secrets:
+        - ecm-consumer-s2s-key
+        - caseworker-user-name
+        - caseworker-password
+        - gov-notify-api-key
+        - create-updates-queue-send-connection-string
+        - create-updates-queue-listen-connection-string
+        - update-case-queue-send-connection-string
+        - update-case-queue-listen-connection-string
+        - idam-client-secret
+        - ecm-consumer-postgres-password
+        - ecm-consumer-postgres-user
+        - ecm-consumer-postgres-host
+        - ecm-consumer-postgres-port
+        - ecm-consumer-postgres-database
+  postgresql:
+    enabled: true
