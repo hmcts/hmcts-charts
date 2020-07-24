@@ -1,0 +1,9 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    REFORM_ENVIRONMENT: aat
+    PACKAGES_ENVIRONMENT: aat
+    TASK_ENV: documentTaskLock-aat-staging
+    DOCUMENT_METADATA_UPDATE_MILLISECONDS: 5000
+    DOCUMENT_TASK_MILLISECONDS: 5000

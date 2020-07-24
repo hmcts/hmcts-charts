@@ -1,0 +1,66 @@
+java:
+  postgresql:
+    postgresqlUsername: evidence
+    postgresqlPassword: evidence
+    nameOverride: dm-store-db
+    service:
+      port: 5432
+  image: 'hmctspublic.azurecr.io/dm/store:latest'
+  readinessDelay: 40
+  readinessTimeout: 5
+  readinessPeriod: 15
+  readinessFailureThreshold: 10
+  livenessDelay: 40
+  livenessTimeout: 5
+  livenessPeriod: 15
+  livenessFailureThreshold: 10
+  applicationPort: '4603'
+  aadIdentityName: dm-store
+  keyVaults:
+    dm:
+      resourceGroup: dm-shared
+      secrets:
+        - AppInsightsInstrumentationKey
+        - dm-store-storage-account-primary-connection-string
+        - dm-store-storage-account-secondary-connection-string
+        - store-POSTGRES-PASS
+
+  environment:
+    # db
+    SPRING_DATASOURCE_URL: jdbc:postgresql://dm-store-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/evidence?ssl=disable
+#    SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Release.Name }}-{{ .Values.postgresql.nameOverride}}:5432/postgres?ssl=disable
+    SPRING_DATASOURCE_USERNAME: evidence@dm-store-postgres-db-{{ .Values.global.environment }}
+
+      # idam
+    IDAM_USER_BASE_URI: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
+    IDAM_S2S_BASE_URI: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+
+    ENABLE_DB_MIGRATE: 'false'
+
+    # Toggles
+    ENABLE_IDAM_HEALTH_CHECK: 'false'
+    ENABLE_METADATA_SEARCH: 'true'
+    ENABLE_DOCUMENT_AND_METADATA_UPLOAD: 'false'
+    ENABLE_FOLDER_API: 'true'
+    ENABLE_DELETE: 'true'
+    ENABLE_TTL: 'true'
+    ENABLE_THUMBNAIL: 'true'
+    ENABLE_METADATA_MIGRATION: 'false'
+
+
+    # Document Storage
+    #STORAGEACCOUNT_PRIMARY_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(STORAGE_ACCOUNT_NAME);AccountKey=$(STORAGE_ACCOUNT_KEY);EndpointSuffix=core.windows.net"
+    #STORAGEACCOUNT_SECONDARY_CONNECTION_STRING: ${data.azurerm_key_vault_secret.dm_store_storageaccount_secondary_connection_string.value}
+    STORAGE_CONTAINER_DOCUMENT_CONTAINER_NAME: dm-store-docstore-{{ .Values.global.environment }}
+
+    TASK_ENV: documentTaskLock-aat
+    DOCUMENT_METADATA_UPDATE_MILLISECONDS: 3600000
+
+blobstorage:
+  resourceGroup: dm-store-aks
+  teamName: "CCD"
+  location: uksouth
+  setup:
+    containers:
+      - dm-docstore
+  enabled: false
