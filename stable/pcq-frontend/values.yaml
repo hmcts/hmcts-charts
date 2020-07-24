@@ -28,6 +28,7 @@ nodejs:
         - launchdarkly-key
         - probate-token-key
         - cmc-token-key
+        - divorce-token-key
 
 redis:
   cluster:
