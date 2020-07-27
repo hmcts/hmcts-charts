@@ -1,0 +1,6 @@
+dependencies:
+- name: java
+  repository: https://hmctspublic.azurecr.io/helm/v1/repo
+  version: 2.17.3
+digest: sha256:acecfe80801c1e62164b9393cb27caef04ed9aa64b752a322097de2a77ed2a29
+generated: "2020-07-27T16:17:08.977726894Z"

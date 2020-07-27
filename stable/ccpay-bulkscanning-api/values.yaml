@@ -1,0 +1,30 @@
+java:
+  image: 'hmctspublic.azurecr.io/ccpay/bulkscanning-api:latest'
+  applicationPort: 8080
+  ingressHost: ccpay-bulkscanning-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: ccpay
+  environment:
+    POSTGRES_PORT: 5432
+    POSTGRES_HOST: ccpay-bulkscanning-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_NAME: bspayment
+    POSTGRES_USERNAME: bspayment@ccpay-bulkscanning-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_CONNECTION_OPTIONS: ?sslmode=require
+    SPRING_LIQUIBASE_ENABLED: false
+    AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    AUTH_IDAM_CLIENT_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    REFORM_SERVICE_NAME: ccpay-bulkscanning
+    REFORM_TEAM: ccpay
+    ISSUER_URI: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o"
+    OIDC_CLIENT_ID: "paybubble"
+    OIDC_ISSUER: "https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts"
+    OIDC_S2S_MICROSERVICE_NAME: ccpay_bubble
+    OIDC_AUDIENCE_LIST: paybubble,cmc_citizen,ccd_gateway
+    S2S_AUTHORISED_SERVICES: ccpay_bubble, cmc, bulk_scan_payment_processor, api_gw, probate_frontend, divorce_frontend, ccd_gw
+  keyVaults:
+    "ccpay":
+      resourceGroup: ccpay
+      secrets:
+        - bulkscanning-api-POSTGRES-PASS
+        - AppInsightsInstrumentationKey
+        - paybubble-s2s-secret
+        - paybubble-idam-client-secret
