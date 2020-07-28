@@ -1,0 +1,6 @@
+dependencies:
+- name: job
+  repository: https://hmctspublic.azurecr.io/helm/v1/repo
+  version: 0.6.0
+digest: sha256:973978b49a68e3c64039fd8fafa25fbe0637681183c65d4d99d0b027eb814750
+generated: "2020-07-28T12:18:52.324485411Z"

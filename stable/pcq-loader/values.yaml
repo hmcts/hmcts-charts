@@ -1,0 +1,22 @@
+job:
+  image: 'https://hmctspublic.azurecr.io/pcq/loader:latest'
+  kind: CronJob
+  schedule: "0 18 * * *"
+  startingDeadlineSeconds: 600
+  concurrencyPolicy: Forbid
+  labels:
+    app.kubernetes.io/instance: pcq-loader-001
+    app.kubernetes.io/name: pcq-loader
+  ingressHost: pcq-loader-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: pcq
+  environment:
+    PCQ_BACKEND_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  keyVaults:
+    pcq:
+      resourceGroup: pcq
+      secrets:
+        - jwt-secret
+        - AppInsightsInstrumentationKey
+global:
+  jobKind: CronJob
