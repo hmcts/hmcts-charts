@@ -9,4 +9,4 @@ dependencies:
   repository: https://hmctspublic.azurecr.io/helm/v1/repo
   version: 2.2.6
 digest: sha256:8cc9e77f801f05e11173548e632f675f0c6847cce47571ae76f39c7fcbff5e0a
-generated: "2020-07-16T21:39:56.936447834Z"
+generated: "2020-07-28T15:45:30.719422673Z"
