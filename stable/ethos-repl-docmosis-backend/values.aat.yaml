@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/ethos-repl-docmosis-backend:latest
+  ingressHost: 
