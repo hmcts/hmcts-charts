@@ -1,0 +1,5 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/ccd-api-gateway-web:latest
+  ingressHost: 
+  environment:
+    CORS_ORIGIN_WHITELIST: "*"
