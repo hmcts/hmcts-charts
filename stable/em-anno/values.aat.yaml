@@ -1,0 +1,6 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/em-anno:latest
+  ingressHost: 
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: 'false'
