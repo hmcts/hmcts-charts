@@ -1,0 +1,5 @@
+job:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/am-org-role-mapping-batch-service:latest
+  ingressHost: 
+
