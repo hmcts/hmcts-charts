@@ -1,0 +1,5 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/ccd-definition-store-api:latest
+  ingressHost: 
+
