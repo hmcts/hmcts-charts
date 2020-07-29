@@ -1,0 +1,11 @@
+job:
+  image: 'hmctspublic.azurecr.io/am/judicial-booking-batch-service:latest'
+  ingressHost: am-judicial-booking-batch-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  applicationPort: 4081
+  aadIdentityName: am
+  kind: CronJob
+  schedule: "*/10 * * * *"
+  global:
+    jobKind: CronJob
+postgres:
+  enabled: false
