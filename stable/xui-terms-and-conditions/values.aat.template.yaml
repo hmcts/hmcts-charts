@@ -1,0 +1,13 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  #
+  # We need to specify ${POSTGRES_PASSWORD} here
+  # as it won't be picked up if we specify it in the /config/*.json files.
+  #
+  environment:
+    NODE_TLS_REJECT_UNAUTHORIZED: '1'
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY}
+    NODE_CONFIG_ENV: aat
+

@@ -1,0 +1,23 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  #
+  # We need to specify {{ .Release.Name }}-postgresql here
+  # as the build does not work if we specify it within the /config/*.json files.
+  #
+  environment:
+       NODE_TLS_REJECT_UNAUTHORIZED: '0'
+       XUI_ENV: preview
+       NODE_CONFIG_ENV: preview
+       POSTGRES_SERVER_NAME: "{{ .Release.Name }}-postgresql"
+       POSTGRES_USERNAME: "xui_tc"
+       POSTGRES_PASSWORD: "xui_tc"
+       POSTGRES_DB_NAME: "xui_tc"
+       POSTGRES_SSL: false
+postgresql:
+  enabled: true
+  postgresqlUsername: xui_tc
+  postgresqlPassword: xui_tc
+  postgresqlDatabase: xui_tc
+  persistence:
+    enabled: false

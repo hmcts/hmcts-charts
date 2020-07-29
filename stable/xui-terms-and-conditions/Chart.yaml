@@ -1,0 +1,11 @@
+apiVersion: v1
+name: xui-terms-and-conditions
+home: https://github.com/hmcts/rpx-xui-terms-and-conditions
+version: 0.2.1
+description: Terms and Conditions
+maintainers:
+  - name: HMCTS RPX XUI
+keywords:
+- nodejs
+- postgres
+- postgresql

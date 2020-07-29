@@ -1,0 +1,13 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/xui-terms-and-conditions:latest
+  ingressHost: 
+  #
+  # We need to specify  here
+  # as it won't be picked up if we specify it in the /config/*.json files.
+  #
+  environment:
+    NODE_TLS_REJECT_UNAUTHORIZED: '1'
+    POSTGRES_PASSWORD: 
+    APPINSIGHTS_INSTRUMENTATIONKEY: 
+    NODE_CONFIG_ENV: aat
+

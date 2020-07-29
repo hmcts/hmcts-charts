@@ -1,0 +1,29 @@
+nodejs:
+  aadIdentityName: xui
+  applicationPort: 3000
+  environment:
+    S2S_TOKEN_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    REFORM_TEAM: rpx
+    REFORM_SERVICE_NAME: xui-terms-and-conditions
+    NODE_ENV: production
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    UV_THREADPOOL_SIZE: 64
+    XUI_ENV: production
+    IDAM_SERVICE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    POSTGRES_DB_NAME: xui_tc
+    POSTGRES_SERVER_NAME: "xui-terms-and-conditions-{{ .Values.global.environment }}.postgres.database.azure.com"
+    POSTGRES_USERNAME: "postgresql_admin@xui-terms-and-conditions-{{ .Values.global.environment }}"
+    CLIENT_WHITELIST: "xui_webapp"
+    POSTGRES_SSL: true
+    POSTGRES_SERVER_PORT: 5432
+    POSTGRES_PASSWORD: "xui_tc"
+  keyVaults:
+    rpx:
+      secrets:
+        - postgresql-admin-pw
+        - appinsights-instrumentationkey-tc
+  # Don't modify below here
+  image: 'hmctspublic.azurecr.io/xui/terms-and-conditions:latest'
+  ingressHost: xui-terms-and-conditions-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+postgresql:
+  enabled: false

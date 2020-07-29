@@ -1,0 +1,8 @@
+dependencies:
+  - name: nodejs
+    version: ~1.9.0
+    repository: '@hmctspublic'
+  - name: postgresql
+    version: ~8.7.0
+    repository: 'https://charts.bitnami.com/bitnami'
+    condition: postgresql.enabled
