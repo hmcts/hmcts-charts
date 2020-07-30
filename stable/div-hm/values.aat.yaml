@@ -1,0 +1,5 @@
+nodejs:
+    # Don't modify below here
+    aadIdentityName: divorce
+    image: https://hmcts.azurecr.io/hmcts/div-hm:latest
+    ingressHost: 
