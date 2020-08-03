@@ -1,0 +1,29 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    REDIS_USE_TLS: false
+    REDIS_HOST: ${SERVICE_NAME}-redis-master
+    REDIS_PORT: 6379
+  keyVaults:
+    probate:
+      secrets:
+        - idam-s2s-secret
+        - ccidam-idam-api-secrets-probate
+        - postcode-service-url
+        - postcode-service-token2
+        - probate-survey
+        - probate-survey-end
+        - probate-application-fee-code
+        - probate-service-id
+        - probate-site-id
+        - caveat-user-name
+        - caveat-user-password
+        - launchdarkly-key
+idam-pr:
+  enabled: true
+  redirect_uris:
+    Probate:
+      - https://${SERVICE_FQDN}/oauth2/callback
+redis:
+  enabled: true
