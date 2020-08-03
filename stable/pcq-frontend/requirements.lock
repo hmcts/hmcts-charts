@@ -1,9 +1,0 @@
-dependencies:
-- name: nodejs
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 1.10.0
-- name: redis
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 10.5.7
-digest: sha256:2d9e30a15e3784ff820475cac1ea0510bb3dd0681603ad35c4285b637a666646
-generated: "2020-07-22T11:51:12.857105888Z"
