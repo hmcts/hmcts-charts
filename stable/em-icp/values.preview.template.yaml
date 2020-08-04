@@ -1,0 +1,15 @@
+nodejs:
+  environment:
+    REDIS_HOST: ${SERVICE_NAME}-redis-master
+    REDIS_PORT: 6379
+    REDIS_USE_TLS: false
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+
+redis:
+  enabled: true
+  usePassword: false
+
+tags:
+  pr: true
