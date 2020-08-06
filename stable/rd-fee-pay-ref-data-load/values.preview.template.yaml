@@ -1,0 +1,7 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    rd:
+      secrets:
+        - rd-fee-pay-ref-data-load-s2s-secret

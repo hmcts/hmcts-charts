@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for RD Fee Pay Ref Data Load App
+name: rd-fee-pay-ref-data-load
+home: https://github.com/hmcts/rd-fee-pay-ref-data-load
+version: 0.0.1
+maintainers:
+  - name: Reference Data Team
+dependencies:
+  - name: java
+    version: 3.0.2
+    repository: '@hmctspublic'
