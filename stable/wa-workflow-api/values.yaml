@@ -3,6 +3,8 @@ java:
   image: 'hmctspublic.azurecr.io/wa/workflow-api:latest'
   ingressHost: wa-workflow-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: wa
+  environment:
+    RESTART_APP: 1
   keyVaults:
     wa:
       secrets:
