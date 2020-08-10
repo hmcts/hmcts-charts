@@ -9,3 +9,4 @@ java:
     wa:
       secrets:
         - testsecret
+        - AppInsightsInstrumentationKey
