@@ -5,6 +5,7 @@ java:
   aadIdentityName: wa
   environment:
     RESTART_APP: 1
+    ENABLE_SWAGGER: true
   keyVaults:
     wa:
       secrets:
