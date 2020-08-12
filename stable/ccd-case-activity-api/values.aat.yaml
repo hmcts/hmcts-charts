@@ -1,0 +1,3 @@
+nodejs:
+  ingressHost: 
+  image: https://hmcts.azurecr.io/hmcts/ccd-case-activity-api:latest
