@@ -1,9 +1,0 @@
-dependencies:
-- name: nodejs
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 1.10.1
-- name: ccd
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 4.3.3
-digest: sha256:2b7dd4939f2d7279be2c8f0c60362c2e14dc49b974d0ea1e5267b0fada350481
-generated: "2020-07-13T09:49:57.83713419Z"
