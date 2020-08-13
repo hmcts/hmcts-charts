@@ -1,0 +1,7 @@
+tags:
+  ccd-idam-pr: false
+
+nodejs:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/div-ccd-definitions:latest
+  ingressHost: 
