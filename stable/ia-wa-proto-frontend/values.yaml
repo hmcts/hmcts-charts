@@ -1,5 +1,5 @@
 nodejs:
-  applicationPort: 3000
+  applicationPort: 3001
   aadIdentityName: ia
   ingressHost: ia-wa-proto-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/ia/wa-proto-frontend:latest'
