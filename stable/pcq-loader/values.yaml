@@ -12,11 +12,17 @@ job:
   environment:
     PCQ_BACKEND_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    STORAGE_URL: "https://pcqshared{{ .Values.global.environment }}.blob.core.windows.net"
   keyVaults:
     pcq:
       resourceGroup: pcq
       secrets:
         - jwt-secret
         - AppInsightsInstrumentationKey
+        - pcq-storage-account-name
+        - pcq-storage-account-primary-access-key
+        - pcq-storage-account-primary-connection-string
+blobstorage:
+  enabled: false
 global:
   jobKind: CronJob
