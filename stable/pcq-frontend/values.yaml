@@ -29,6 +29,7 @@ nodejs:
         - probate-token-key
         - cmc-token-key
         - divorce-token-key
+        - sscs-token-key
 
 redis:
   cluster:
