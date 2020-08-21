@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3001
+  image: 'hmctspublic.azurecr.io/wa/proto-frontend:latest'
+  ingressHost: wa-proto-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: wa
+  environment:
+  keyVaults:
+    wa:
+      secrets:
+        - testsecret
+        - AppInsightsInstrumentationKey
