@@ -1,3 +1,5 @@
 nodejs:
   image: https://hmcts.azurecr.io/hmcts/sscs-tribunals-frontend:latest
   ingressHost: 
+  environment:
+    UV_THREADPOOL_SIZE: 4
