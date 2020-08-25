@@ -1,11 +1,15 @@
-java:
+job:
   applicationPort: 8099
   image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
   ingressHost: rd-location-ref-data-load-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
-  environment:
+  kind: CronJob
+  schedule: "*/10 * * * *"
+  global:
+    jobKind: CronJob
   keyVaults:
     rd:
       secrets:
         - AppInsightsInstrumentationKey
-        - rd-location-ref-data-load-s2s-secret
+postgresql:
+  enabled: false

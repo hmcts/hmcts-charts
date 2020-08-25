@@ -1,7 +1,5 @@
-java:
+job:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  keyVaults:
-    rd:
-      secrets:
-        - rd-location-ref-data-load-s2s-secret
+global:
+  jobKind: CronJob
