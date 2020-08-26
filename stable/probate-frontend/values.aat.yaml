@@ -1,4 +1,6 @@
 nodejs:
   image: https://hmcts.azurecr.io/hmcts/probate-frontend:latest
   ingressHost: 
+  environment:
+    LAUNCHDARKLY_ENABLED: false
 
