@@ -10,12 +10,12 @@ java:
     PCQ_DB_NAME: pcq
     PCQ_DB_HOST: pcq-backend-{{ .Values.global.environment }}.postgres.database.azure.com
     PCQ_DB_PORT: "5432"
-    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     STORAGE_URL: https://pcqshared{{ .Values.global.environment }}.blob.core.windows.net
     FLYWAY_URL: jdbc:postgresql://pcq-backend-{{ .Values.global.environment }}.postgres.database.azure.com:5432/pcq?sslmode=require
     FLYWAY_USER: pcquser@pcq-backend-{{ .Values.global.environment }}
     FLYWAY_NOOP_STRATEGY: "false"
     DB_ENCRYPTION_ENABLED: "Yes"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:
     pcq:
       resourceGroup: pcq
