@@ -4,6 +4,7 @@ nodejs:
   ingressHost: wa-proto-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: wa
   environment:
+    TEST: true
   keyVaults:
     wa:
       secrets:
