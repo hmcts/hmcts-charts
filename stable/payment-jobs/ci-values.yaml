@@ -1,0 +1,10 @@
+job:
+  image: hmctspublic.azurecr.io/payment/jobs:pr-14-b6068735
+  environment:
+    REPORT_NAME: bar-csv-report
+global:
+  environment: aat
+  tenantId: "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  enableKeyVaults: true
+  job:
+    kind: Job
