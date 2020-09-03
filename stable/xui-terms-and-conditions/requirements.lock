@@ -1,9 +1,0 @@
-dependencies:
-- name: nodejs
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 1.9.1
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: ~8.7.0
-digest: sha256:e27ba4a99695fc596817ade13d63000809268a6c06838e77e85f056bda6a8be1
-generated: "2020-07-29T11:05:09.620024306Z"
