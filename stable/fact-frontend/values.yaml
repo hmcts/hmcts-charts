@@ -1,0 +1,6 @@
+nodejs:
+  applicationPort: 3100
+  aadIdentityName: fact
+  ingressHost: fact-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/fact/frontend:latest'
+  environment:
