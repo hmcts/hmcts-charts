@@ -18,7 +18,7 @@ java:
         - CTSC-WA-SMTP-PASSWORD
         - CTSC-S2S-SECRET
   environment:
-    SPRING_DATASOURCE_URL: jdbc:postgresql://ctsc-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/workallocation
+    SPRING_DATASOURCE_URL: jdbc:postgresql://ctsc-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/workallocation?gssEncMode=disable
     SPRING_DATASOURCE_USERNAME: workallocation@ctsc-postgres-db-{{.Values.global.environment }}
     RUN_DB_MIGRATION_ON_STARTUP: false
 
