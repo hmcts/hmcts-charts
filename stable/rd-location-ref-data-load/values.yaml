@@ -3,13 +3,33 @@ job:
   image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
   ingressHost: rd-location-ref-data-load-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
-  kind: CronJob
-  schedule: "*/10 * * * *"
-  global:
-    jobKind: CronJob
-  keyVaults:
-    rd:
-      secrets:
-        - AppInsightsInstrumentationKey
-postgresql:
-  enabled: false
+  environment:
+    POSTGRES_HOST: rd-location-ref-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: locrefdata@rd-location-ref-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_PORT: 5432
+    LOGBACK_REQUIRE_ALERT_LEVEL: 'false'
+    LOGBACK_REQUIRE_ERROR_CODE: 'false'
+    FLYWAY_ENABLED: false
+    postgresql:
+      enabled: false
+    image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
+    kind: CronJob
+    schedule: "*/10 * * * *"
+    global:
+      jobKind: CronJob
+
+    keyVaults:
+      "rd":
+        resourceGroup: rd
+        secrets:
+          - rd-location-ref-api-POSTGRES-PASS
+          - AppInsightsInstrumentationKey
+          - ACCOUNT-NAME
+          - ACCOUNT-KEY
+          - CONTAINER-NAME
+          - BLOB-URL-SUFFIX
+  postgresql:
+    enabled: false
+
+  blobstorage:
+    enabled: false
