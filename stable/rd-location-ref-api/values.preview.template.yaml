@@ -9,9 +9,9 @@ java:
     POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
   postgresql:
     enabled: true
-    postgresqlUsername: dbrdlocationref
-    postgresqlPassword: dbrdlocationref
-    postgresqlDatabase: dbrdlocationref
+    postgresqlUsername: locrefdata
+    postgresqlPassword: locrefdata
+    postgresqlDatabase: locrefdata
     postgresqlPort: 5432
   keyVaults:
     rd:
