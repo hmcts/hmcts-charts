@@ -3,6 +3,12 @@ java:
     SB_CONN_STRING:
       secretRef: servicebus-secret-namespace-{{ .Release.Name }}
       key: connectionString
+    SB_ACCESS_KEY:
+      secretRef: servicebus-secret-namespace-{{ .Release.Name }}
+      key: primaryKey
+    SB_NAMESPACE:
+      secretRef: servicebus-secret-namespace-{{ .Release.Name }}
+      key: namespaceName
   environment:
     DB_HOST: "{{ .Release.Name }}-postgresql"
     DB_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
@@ -12,7 +18,10 @@ java:
     DB_CONN_OPTIONS: ""
 
     FLYWAY_SKIP_MIGRATIONS: false
+    QUEUE_ACCESS_KEY_LISTEN_NAME: "RootManageSharedAccessKey"
+    QUEUE_NAMESPACE: "$(SB_NAMESPACE)"
     QUEUE_NOTIFICATIONS_READ: "$(SB_CONN_STRING);EntityPath=notifications"
+    QUEUE_READ_ACCESS_KEY: "$(SB_ACCESS_KEY)"
     S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 1000
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500

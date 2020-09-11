@@ -17,10 +17,13 @@ java:
         - notification-service-POSTGRES-PORT
         - notification-service-POSTGRES-DATABASE
         - notifications-queue-listen-connection-string
+        - notification-queue-listen-shared-access-key
 
   environment:
     DB_CONN_OPTIONS: ?sslmode=require
     FLYWAY_SKIP_MIGRATIONS: true
+    QUEUE_ACCESS_KEY_LISTEN_NAME: "ListenSharedAccessKey"
+    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}
     QUEUE_NOTIFICATIONS_MAX_RETRY: 5
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 3000
