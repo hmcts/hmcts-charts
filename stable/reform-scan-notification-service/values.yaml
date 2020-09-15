@@ -23,6 +23,7 @@ java:
     DB_CONN_OPTIONS: ?sslmode=require
     FLYWAY_SKIP_MIGRATIONS: true
     QUEUE_ACCESS_KEY_LISTEN_NAME: "ListenSharedAccessKey"
+    QUEUE_NAME: "notifications"
     QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}
     QUEUE_NOTIFICATIONS_MAX_RETRY: 5
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
