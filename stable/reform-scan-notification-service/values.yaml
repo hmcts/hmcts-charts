@@ -16,7 +16,6 @@ java:
         - notification-service-POSTGRES-HOST
         - notification-service-POSTGRES-PORT
         - notification-service-POSTGRES-DATABASE
-        - notifications-queue-listen-connection-string
         - notification-queue-listen-shared-access-key
 
   environment:

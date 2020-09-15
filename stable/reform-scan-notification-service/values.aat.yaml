@@ -22,5 +22,4 @@ java:
         - notification-service-staging-postgres-host
         - notification-service-staging-postgres-port
         - notification-service-staging-postgres-database
-        - notifications-staging-queue-listen-connection-string
         - notification-staging-queue-listen-shared-access-key
