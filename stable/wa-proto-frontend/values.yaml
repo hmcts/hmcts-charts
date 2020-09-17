@@ -7,5 +7,4 @@ nodejs:
   keyVaults:
     wa:
       secrets:
-        - testsecret
         - AppInsightsInstrumentationKey
