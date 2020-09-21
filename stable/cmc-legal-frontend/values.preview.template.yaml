@@ -1,0 +1,17 @@
+tags:
+  - idam-pr
+
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    LOG_LEVEL: DEBUG
+
+    FEATURE_TESTING_SUPPORT: true
+    FEATURE_RETURN_ERROR_TO_USER: true
+
+idam-pr:
+  enabled: true
+  redirect_uris:
+    Money Claims - Legal:
+      - https://${SERVICE_FQDN}/receiver
