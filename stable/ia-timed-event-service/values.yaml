@@ -8,8 +8,8 @@ java:
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     POSTGRES_PORT: 5432
-    POSTGRES_HOST: ia-timed-event-service-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: ia_tes@ia-timed-event-service-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_HOST: ia-timed-event-service-postgres-11-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: ia_tes@ia-timed-event-service-postgres-11-db-{{ .Values.global.environment }}
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
   postgresql:
     postgresqlUsername: ia_tes
