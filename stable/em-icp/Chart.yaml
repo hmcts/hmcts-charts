@@ -1,7 +1,7 @@
 apiVersion: v1
 name: em-icp
 home: https://github.com/hmcts/em-icp-api
-version: 0.1.10
+version: 0.1.11
 description: Helm chart for the HMCTS EM ICP API
 maintainers:
   - name: HMCTS EM Team
