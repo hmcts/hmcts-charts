@@ -1,7 +1,7 @@
 apiVersion: v2
 name: bulk-scan-sample-app
 home: https://github.com/hmcts/bulk-scan-ccd-event-handler-sample-app
-version: 1.2.0
+version: 1.2.1
 description: HMCTS Bulk Scan CCD event handler application
 maintainers:
   - name: HMCTS BSP Team
