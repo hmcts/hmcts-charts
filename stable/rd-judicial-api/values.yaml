@@ -2,6 +2,7 @@ java:
   applicationPort: 8093
   ingressHost: rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
+  readinessPath: '/health/readiness'
   environment:
     POSTGRES_HOST: rd-judicial-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_USERNAME: dbjuddata@rd-judicial-api-postgres-db-{{ .Values.global.environment }}
