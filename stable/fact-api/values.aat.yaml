@@ -10,5 +10,6 @@ java:
         - api-POSTGRES-PASS
         - api-POSTGRES-PORT
         - api-POSTGRES-USER
+        - mapit-key
   image: https://hmcts.azurecr.io/hmcts/fact-api:latest
   ingressHost: 
