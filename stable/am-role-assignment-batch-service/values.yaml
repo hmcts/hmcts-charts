@@ -7,5 +7,15 @@ job:
   schedule: "*/10 * * * *"
   global:
     jobKind: CronJob
-postgres:
+  keyVaults:
+    am:
+      secrets:
+        - role-assignment-service-POSTGRES-PASS
+        - AppInsightsInstrumentationKey
+  environment:
+    ROLE_ASSIGNMENT_DB_PORT: 5432
+    ROLE_ASSIGNMENT_DB_NAME: role_assignment
+    ROLE_ASSIGNMENT_DB_HOST: am-role-assignment-service-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    ROLE_ASSIGNMENT_DB_USERNAME: am@am-role-assignment-service-postgres-db-{{ .Values.global.environment }}
+postgresql:
   enabled: false
