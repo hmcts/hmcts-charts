@@ -3,8 +3,20 @@ nodejs:
   image: 'hmctspublic.azurecr.io/wa/proto-frontend:latest'
   ingressHost: wa-proto-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: wa
-  environment:
+  environment: 
+    REDIS_STORE: "true"
   keyVaults:
     wa:
       secrets:
         - AppInsightsInstrumentationKey
+        - wa-redis-access-key
+        - wa-redis-connection-string
+redis:
+  enabled: false
+  cluster:
+    enabled: false
+    slaveCount: 0
+  usePassword: false
+  master:
+    persistence:
+      enabled: false

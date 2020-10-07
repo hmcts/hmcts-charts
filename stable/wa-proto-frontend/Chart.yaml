@@ -3,11 +3,14 @@ appVersion: "1.0"
 description: A Helm chart for wa-proto-frontend App
 name: wa-proto-frontend
 home: https://github.com/hmcts/wa-proto-frontend
-version: 0.0.10
+version: 0.0.11
 maintainers: 
   - name: HMCTS WA team
 dependencies:
   - name: nodejs
     version: 2.0.1
     repository: '@hmctspublic'
-
+  - name: redis
+    version: "10.0.0"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled
