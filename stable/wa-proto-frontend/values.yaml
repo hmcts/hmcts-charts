@@ -5,7 +5,6 @@ nodejs:
   aadIdentityName: wa
   environment: 
     REDIS_STORE: "true"
-    REMOVE_ME: "remove_me"
   keyVaults:
     wa:
       secrets:
