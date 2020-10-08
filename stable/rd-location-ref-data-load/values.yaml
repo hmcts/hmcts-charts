@@ -5,7 +5,8 @@ job:
   aadIdentityName: rd
   environment:
     POSTGRES_HOST: rd-location-ref-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: locrefdata@rd-location-ref-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_USERNAME: dbrdlocationref@rd-location-ref-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_NAME: dbrdlocationref
     POSTGRES_PORT: 5432
     LOGBACK_REQUIRE_ALERT_LEVEL: 'false'
     LOGBACK_REQUIRE_ERROR_CODE: 'false'
@@ -13,19 +14,15 @@ job:
     postgresql:
       enabled: false
     image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
-    kind: CronJob
-    schedule: "*/10 * * * *"
-    global:
-      jobKind: CronJob
 
     keyVaults:
       "rd":
         resourceGroup: rd
         secrets:
-          - rd-location-ref-api-POSTGRES-PASS
+          - location-ref-api-POSTGRES-PASS
           - AppInsightsInstrumentationKey
-          - ACCOUNT-NAME
-          - ACCOUNT-KEY
+          - LRD-ACCOUNT-NAME
+          - LRD-ACCOUNT-KEY
           - CONTAINER-NAME
           - BLOB-URL-SUFFIX
   postgresql:
@@ -33,3 +30,6 @@ job:
 
   blobstorage:
     enabled: false
+
+  global:
+    jobKind: CronJob
