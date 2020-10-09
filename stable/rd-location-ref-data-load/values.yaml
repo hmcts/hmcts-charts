@@ -15,16 +15,16 @@ job:
       enabled: false
     image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
 
-    keyVaults:
-      "rd":
-        resourceGroup: rd
-        secrets:
-          - location-ref-api-POSTGRES-PASS
-          - AppInsightsInstrumentationKey
-          - LRD-ACCOUNT-NAME
-          - LRD-ACCOUNT-KEY
-          - CONTAINER-NAME
-          - BLOB-URL-SUFFIX
+  keyVaults:
+    "rd":
+      resourceGroup: rd
+      secrets:
+        - location-ref-api-POSTGRES-PASS
+        - AppInsightsInstrumentationKey
+        - LRD-ACCOUNT-NAME
+        - LRD-ACCOUNT-KEY
+        - CONTAINER-NAME
+        - BLOB-URL-SUFFIX
   postgresql:
     enabled: false
 
