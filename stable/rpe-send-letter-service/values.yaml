@@ -22,7 +22,7 @@ java:
 
   environment:
     # db
-    LETTER_TRACKING_DB_CONN_OPTIONS: "?sslmode=require"
+    LETTER_TRACKING_DB_CONN_OPTIONS: "?sslmode=require&gssEncMode=disable"
 
     # db - migration
     FLYWAY_URL: "jdbc:postgresql://send-letter-service-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/send_letter?sslmode=require"
