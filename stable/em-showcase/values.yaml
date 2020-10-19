@@ -1,6 +1,7 @@
   nodejs:
     applicationPort: 1337
     aadIdentityName: em
+    ingressHost: em-showcase.{{ .Values.global.environment }}.platform.hmcts.net
     image: "hmctspublic.azurecr.io/em/showcase:latest"
     keyVaults:
       em-showcase:
