@@ -1,9 +1,0 @@
-dependencies:
-- name: nodejs
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 1.10.0
-- name: idam-pr
-  repository: https://hmctspublic.azurecr.io/helm/v1/repo
-  version: 2.2.7
-digest: sha256:362a9a2c0d52e26b1bb3d71b1b025f036f76357d4e6d17a2eb964302e6323d87
-generated: "2020-07-22T09:42:04.496152204Z"
