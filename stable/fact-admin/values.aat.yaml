@@ -2,3 +2,10 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/fact-admin:latest
   ingressHost: 
+  environment:
+    OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+idam-pr:
+  enabled: true
+  redirect_uris:
+    FACT Admin:
+      - https:///oauth2/callback
