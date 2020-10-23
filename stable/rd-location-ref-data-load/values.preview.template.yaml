@@ -9,10 +9,10 @@ job:
     FLYWAY_ENABLED: true
     ACCOUNT_NAME: $(BLOB_ACCOUNT_NAME)
     ACCOUNT_KEY: $(BLOB_ACCESS_KEY)
+    CONTAINER_NAME: lrd-ref-data
   keyVaults:
     rd:
       secrets:
-        - CONTAINER-NAME
         - BLOB-URL-SUFFIX
   secrets:
     BLOB_ACCOUNT_NAME:

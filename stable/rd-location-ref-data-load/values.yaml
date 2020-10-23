@@ -11,6 +11,7 @@ job:
     LOGBACK_REQUIRE_ALERT_LEVEL: 'false'
     LOGBACK_REQUIRE_ERROR_CODE: 'false'
     FLYWAY_ENABLED: false
+    CONTAINER_NAME: lrd-ref-data
     postgresql:
       enabled: false
     image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
@@ -23,7 +24,6 @@ job:
         - AppInsightsInstrumentationKey
         - LRD-ACCOUNT-NAME
         - LRD-ACCOUNT-KEY
-        - CONTAINER-NAME
         - BLOB-URL-SUFFIX
   postgresql:
     enabled: false
