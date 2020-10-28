@@ -3,16 +3,18 @@ java:
   image: 'hmctspublic.azurecr.io/rd/rd-location-ref-api:latest'
   ingressHost: rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
-  readinessPath: '/health/readiness'
   environment:
     POSTGRES_HOST: rd-location-ref-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_USERNAME: dbrdlocationref@rd-location-ref-api-postgres-db-{{ .Values.global.environment }}
     POSTGRES_DB_NAME: dbrdlocationref
     POSTGRES_PORT: 5432
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
+    OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
+    IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    LOCATIONS_DB: classpath:db/migration,classpath:db/postgres
   keyVaults:
     rd:
       secrets:
         - location-ref-api-POSTGRES-PASS
         - AppInsightsInstrumentationKey
-        - s2s-secret
