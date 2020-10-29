@@ -2,6 +2,10 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  memoryRequests: "2Gi"
+  cpuRequests: "1000m"
+  memoryLimits: "3Gi"
+  cpuLimits: "2500m"
   keyVaults:
     rpe-send-letter:
       secrets:
