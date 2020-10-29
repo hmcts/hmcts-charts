@@ -1,6 +1,5 @@
 java:
   applicationPort: 8099
-  image: 'hmctspublic.azurecr.io/rd/rd-location-ref-api:latest'
   ingressHost: rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
   environment:
@@ -13,6 +12,8 @@ java:
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     LOCATIONS_DB: classpath:db/migration,classpath:db/postgres
+
+  image: 'hmctspublic.azurecr.io/rd/location-ref-api:latest'
   keyVaults:
     rd:
       secrets:
