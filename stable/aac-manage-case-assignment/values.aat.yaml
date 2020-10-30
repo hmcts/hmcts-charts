@@ -1,6 +1,5 @@
 # Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+# config used by staging aat pod
 java:
   image: https://hmcts.azurecr.io/hmcts/aac-manage-case-assignment:latest
-  ingressHost:   
-  environment:  
-    CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api-staging.service.core-compute-aat.internal  
+  ingressHost: 
