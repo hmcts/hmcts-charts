@@ -16,4 +16,4 @@ java:
         - test-law-firm-a-password
         - idam-redirect-uri
         - idam-secret
-        - s2s-name
+        - s2s-secret-task-configuration-api
