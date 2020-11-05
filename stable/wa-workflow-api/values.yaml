@@ -13,3 +13,4 @@ java:
     wa:
       secrets:
         - AppInsightsInstrumentationKey
+        - s2s-secret-workflow-api
