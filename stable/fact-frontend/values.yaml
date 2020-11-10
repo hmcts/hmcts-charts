@@ -1,6 +1,7 @@
 nodejs:
   applicationPort: 3100
   cpuRequests: 50m
+  memory:   256Mi
   aadIdentityName: fact
   keyVaults:
     fact:
@@ -10,8 +11,8 @@ nodejs:
   ingressHost: fact.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/fact/frontend:latest'
   autoscaling:        # Default is false
-    enabled: true
-    maxReplicas: 5    # Required setting
+    enabled: true 
+    maxReplicas: 14    # Required setting
     targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
   environment:
     FACT_API_URL: "http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
