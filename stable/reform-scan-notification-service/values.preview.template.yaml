@@ -1,10 +1,10 @@
 java:
   secrets:
     SB_ACCESS_KEY:
-      secretRef: servicebus-secret-namespace-{{ .Release.Name }}
+      secretRef: servicebus-secret-namespace-{{ .Release.Name }}-servicebus
       key: primaryKey
     SB_NAMESPACE:
-      secretRef: servicebus-secret-namespace-{{ .Release.Name }}
+      secretRef: servicebus-secret-namespace-{{ .Release.Name }}-servicebus
       key: namespaceName
   environment:
     DB_HOST: "{{ .Release.Name }}-postgresql"
@@ -13,7 +13,6 @@ java:
     DB_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
     DB_PORT: '5432'
     DB_CONN_OPTIONS: ""
-
     FLYWAY_SKIP_MIGRATIONS: false
     QUEUE_ACCESS_KEY_LISTEN_NAME: "RootManageSharedAccessKey"
     QUEUE_NAMESPACE: "$(SB_NAMESPACE)"
