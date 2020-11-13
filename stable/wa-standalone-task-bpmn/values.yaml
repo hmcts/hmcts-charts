@@ -1,0 +1,6 @@
+java:
+  applicationPort: 4550
+  image: 'hmctspublic.azurecr.io/wa/standalone-task-bpmn:latest'
+  ingressHost: wa-standalone-task-bpmn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  environment:
+    ROOT_LOGGING_LEVEL: debug
