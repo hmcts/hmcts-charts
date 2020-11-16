@@ -67,13 +67,19 @@ java:
     PROXY_ENABLED: "false"
   image: 'hmctspublic.azurecr.io/reform-scan/blob-router:latest'
 reformblobstorage:
-  enabled: false
-cftblobstorage:
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
   enabled: false
 crimeblobstorage:
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
   enabled: false
 pcqblobstorage:
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
   enabled: false
 
 servicebus:
+  resourceGroup: reform-scan-aks
+  teamName: "BSP"
   enabled: false
