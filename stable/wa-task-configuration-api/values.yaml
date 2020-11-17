@@ -5,6 +5,7 @@ java:
   aadIdentityName: wa
   environment:
     CAMUNDA_URL: "http://camunda-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/engine-rest"
+    ROLE_ASSIGNMENT_URL: "http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     IDAM_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
@@ -14,6 +15,6 @@ java:
         - AppInsightsInstrumentationKey
         - test-law-firm-a-username
         - test-law-firm-a-password
-        - idam-redirect-uri
-        - idam-secret
+        - wa-idam-client-id
+        - wa-idam-client-secret
         - s2s-secret-task-configuration-api
