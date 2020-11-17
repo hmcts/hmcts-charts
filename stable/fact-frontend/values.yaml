@@ -1,7 +1,7 @@
 nodejs:
   applicationPort: 3100
-  cpuLimits: 2000m
-  cpuRequests: 250m
+  cpuLimits: 500m
+  cpuRequests: 100m
   memoryRequests:   256Mi
   memoryLimits: 1024Mi
   aadIdentityName: fact
