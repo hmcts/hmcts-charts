@@ -13,7 +13,7 @@ nodejs:
   ingressHost: fact.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/fact/frontend:latest'
   autoscaling:        # Default is false
-    enabled: true 
+    enabled: true
     maxReplicas: 14    # Required setting
     targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
   environment:
