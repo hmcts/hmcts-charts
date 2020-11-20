@@ -12,10 +12,12 @@ nodejs:
         - AppInsightsInstrumentationKey
   ingressHost: fact.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/fact/frontend:latest'
+  environment:
+    FACT_API_URL: "http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IMAGE_BASE_URL: "https://fact{{ .Values.global.environment }}.blob.core.windows.net/images/"
+    TEST: 7
   autoscaling:        # Default is false
     enabled: true
     maxReplicas: 14    # Required setting
     targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
-  environment:
-    FACT_API_URL: "http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    IMAGE_BASE_URL: "https://fact{{ .Values.global.environment }}.blob.core.windows.net/images/"
+
