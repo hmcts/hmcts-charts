@@ -2,10 +2,3 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  environment:
-    RESTART_APP: 1
-    ENABLE_SWAGGER: true
-    CAMUNDA_URL: "http://camunda-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/engine-rest"
-    STACKTRACE_ENABLED: "true"
-
-  
