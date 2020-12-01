@@ -12,6 +12,7 @@ java:
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     LOCATIONS_DB: classpath:db/migration,classpath:db/postgres
+    LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
 
   image: 'hmctspublic.azurecr.io/rd/location-ref-api:latest'
   keyVaults:
@@ -19,3 +20,4 @@ java:
       secrets:
         - location-ref-api-POSTGRES-PASS
         - AppInsightsInstrumentationKey
+        -  LD-SDK-KEY

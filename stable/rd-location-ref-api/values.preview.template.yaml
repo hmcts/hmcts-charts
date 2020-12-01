@@ -8,6 +8,7 @@ java:
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
     POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
     LOCATIONS_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
+    LAUNCH_DARKLY_ENV: "preview"
   postgresql:
     enabled: true
     postgresqlUsername: dbrdlocationref
@@ -18,3 +19,4 @@ java:
     rd:
       secrets:
         - AppInsightsInstrumentationKey
+        - LD-SDK-KEY
