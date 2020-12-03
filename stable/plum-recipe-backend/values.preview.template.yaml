@@ -9,3 +9,4 @@ java:
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
     POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase }}"
     POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername }}"
+    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
