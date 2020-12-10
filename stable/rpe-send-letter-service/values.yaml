@@ -19,6 +19,7 @@ java:
         - app-insights-instrumentation-key
         - reports-email-password
         - reports-email-username
+        - delayed-stale-report-recipients
 
   environment:
     # db
