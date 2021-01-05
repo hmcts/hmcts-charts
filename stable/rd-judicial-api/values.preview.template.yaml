@@ -14,4 +14,4 @@ java:
   keyVaults:
     rd:
       secrets:
-        - s2s-secret
+        - judicial-api-s2s-secret
