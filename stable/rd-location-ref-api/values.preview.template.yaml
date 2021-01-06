@@ -20,3 +20,4 @@ java:
       secrets:
         - AppInsightsInstrumentationKey
         - LD-SDK-KEY
+        - location-ref-api-s2s-secret

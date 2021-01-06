@@ -20,4 +20,5 @@ java:
       secrets:
         - location-ref-api-POSTGRES-PASS
         - AppInsightsInstrumentationKey
-        -  LD-SDK-KEY
+        - LD-SDK-KEY
+        - location-ref-api-s2s-secret
