@@ -4,17 +4,9 @@ java:
   applicationPort: '4006'
   image: 'hmctspublic.azurecr.io/finrem/emca:latest'
   environment:
-    IDAM_API_URL : https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    IDAM_API_HEALTH_URI : https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/health
-    EVIDENCE_MANAGEMENT_HEALTH_URL : http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/health
-    HTTP_CONNECT_REQUEST_TIMEOUT : 60000
-    DOCUMENT_MANAGEMENT_STORE_URL : http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    HTTP_CONNECT_TIMEOUT : 60000
-    HTTP_CONNECT_SOCKET_TIMEOUT : 1000
-    AUTH_PROVIDER_SERVICE_CLIENT_BASEURL : http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-
-    EVIDENCE_MANAGEMENT_UPLOAD_FILE_URL : http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/documents
-    AUTH_PROVIDER_SERVICE_CLIENT_TOKENTIMETOLIVEINSECONDS : 900
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    DOCUMENT_MANAGEMENT_STORE_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
   keyVaults:
     finrem:
