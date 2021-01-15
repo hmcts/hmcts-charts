@@ -1,4 +1,13 @@
+
 nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/nfdiv-frontend:latest
   ingressHost: 
+  environment:
+    OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+
+idam-pr:
+  enabled: true
+  redirect_uris:
+    divorce:
+      - https:///oauth2/callback
