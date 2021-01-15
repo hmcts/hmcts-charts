@@ -3,6 +3,10 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/nfdiv-frontend:latest
   ingressHost: 
+  registerAdditionalDns:
+    enabled: true
+    prefix: civil
+    primaryIngressHost: 
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
 
@@ -11,3 +15,4 @@ idam-pr:
   redirect_uris:
     divorce:
       - https:///oauth2/callback
+      - https://civil-/oauth2/callback
