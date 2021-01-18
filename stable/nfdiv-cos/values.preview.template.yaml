@@ -24,10 +24,10 @@ java:
     "nfdiv":
       resourceGroup: nfdiv
       secrets:
-        - ccd-submission-s2s-auth-secret
+        - cms-service-key
         - div-doc-s2s-auth-secret
         - idam-secret
-        - frontend-secret
+        - cos-service-key
         - idam-citizen-username
         - idam-citizen-password
         - idam-caseworker-username

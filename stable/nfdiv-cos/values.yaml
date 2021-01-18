@@ -15,7 +15,6 @@ java:
         DOCUMENT_GENERATOR_SERVICE_API_BASEURL: "http://div-dgs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         FEES_AND_PAYMENTS_SERVICE_API_BASEURL: "http://div-fps-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         DOCUMENT_MANAGEMENT_STORE_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-        SERVICE_AUTH_MICROSERVICE : "divorce_frontend"
         MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE: "30000"
         SCHEDULER_RE_CREATE: true
         FEATURE_DN_REFUSAL: "true"
@@ -34,10 +33,10 @@ java:
         "nfdiv":
             resourceGroup: nfdiv
             secrets:
-                - ccd-submission-s2s-auth-secret
+                - cms-service-key
                 - div-doc-s2s-auth-secret
                 - idam-secret
-                - frontend-secret
+                - cos-service-key
                 - idam-citizen-username
                 - idam-citizen-password
                 - idam-caseworker-username
