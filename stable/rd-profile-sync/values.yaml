@@ -18,7 +18,7 @@ java:
   keyVaults:
     rd:
       secrets:
-        - professional-api-s2s-secret
+        - profile-sync-s2s-secret
         - profile-sync-POSTGRES-PASS
         - AppInsightsInstrumentationKey
         - OAUTH2-CLIENT-SECRET

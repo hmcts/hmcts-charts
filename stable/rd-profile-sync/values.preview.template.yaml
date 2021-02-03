@@ -15,5 +15,5 @@ java:
   keyVaults:
     rd:
       secrets:
-        - professional-api-s2s-secret
+        - profile-sync-s2s-secret
         - OAUTH2-AUTH
