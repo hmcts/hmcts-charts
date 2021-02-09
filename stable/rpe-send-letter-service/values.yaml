@@ -9,6 +9,7 @@ java:
         - ftp-user
         - ftp-private-key
         - ftp-public-key
+        - xerox-ftp-hostname
         - upload-summary-report-recipients
         - send-letter-service-POSTGRES-PASS
         - send-letter-service-POSTGRES-USER
@@ -40,7 +41,6 @@ java:
 
     FILE_CLEANUP_ENABLED: "false"
 
-    FTP_HOSTNAME: "cmseft.services.xerox.com"
     FTP_PORT: "22"
     FTP_FINGERPRINT: "SHA256:3tX3DIkqd1Loz2alHfnt+qjHocfxk0YUOZHlnf9Zgdk"
     FTP_TARGET_FOLDER: "TO_XEROX"

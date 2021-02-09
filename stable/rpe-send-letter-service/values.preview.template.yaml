@@ -12,6 +12,7 @@ java:
         - ftp-user
         - ftp-private-key
         - ftp-public-key
+        - xerox-ftp-hostname
         - encryption-public-key
   environment:
     # db
