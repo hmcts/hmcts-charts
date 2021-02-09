@@ -32,7 +32,6 @@ java:
         "nfdiv":
             resourceGroup: nfdiv
             secrets:
-                - AppInsightsInstrumentationKey
                 - cms-service-key
                 - div-doc-s2s-auth-secret
                 - idam-secret
