@@ -15,7 +15,6 @@ java:
         nfdiv:
             resourceGroup: nfdiv
             secrets:
-                - AppInsightsInstrumentationKey
                 - cms-service-key
                 - idam-secret
                 - idam-caseworker-username
