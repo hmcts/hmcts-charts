@@ -13,8 +13,8 @@ java:
     wa:
       secrets:
         - AppInsightsInstrumentationKey
-        - test-law-firm-a-username
-        - test-law-firm-a-password
+        - wa-test-law-firm-a-username
+        - wa-test-law-firm-a-password
         - wa-idam-client-id
         - wa-idam-client-secret
         - s2s-secret-task-configuration-api
