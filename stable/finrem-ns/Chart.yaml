@@ -1,7 +1,11 @@
 name: finrem-ns
-apiVersion: v1
+apiVersion: v2
 home: https://github.com/hmcts/finrem-notification-service
-version: 0.0.6
+version: 0.1.0
 description: Financial Remedy Notification service. Purpose is to request email notifications and integration with notify.gov.uk
 maintainers:
   - name: HMCTS Financial Remedy Team
+dependencies:
+  - name: java
+    version: ~2.9.1
+    repository: '@hmctspublic'
