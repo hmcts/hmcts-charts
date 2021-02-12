@@ -1,7 +1,11 @@
 name: finrem-emca
-apiVersion: v1
+apiVersion: v2
 home: https://github.com/hmcts/finrem-evidence-management-client-api
-version: 0.0.4
+version: 0.1.0
 description: Financial Remedy Evidence Management API
 maintainers:
   - name: HMCTS Financial Remedy Team
+dependencies:
+  - name: java
+    version: ~2.17.3
+    repository: '@hmctspublic'
