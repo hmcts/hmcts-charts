@@ -2,7 +2,6 @@ java:
   aadIdentityName: finrem
   ingressHost: "finrem-ns-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   applicationPort: '8086'
-  livenessPath: '/health'
   keyVaults:
     finrem:
       secrets:
