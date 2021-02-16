@@ -1,11 +1,11 @@
 name: finrem-ps
 apiVersion: v2
 home: https://github.com/hmcts/finrem-payment-service
-version: 0.1.0
+version: 0.2.0
 description: Financial Remedy Payment Service
 maintainers:
   - name: HMCTS Financial Remedy Team
 dependencies:
   - name: java
-    version: 2.17.2
+    version: 3.4.4
     repository: '@hmctspublic'
