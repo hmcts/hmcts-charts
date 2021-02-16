@@ -1,4 +1,13 @@
-apiVersion: v1
+apiVersion: v2
 description: No Fault Divorce - CCD Definitions
 name: nfdiv-ccd-definitions
-version: 1.0.4
+version: 2.0.1
+dependencies:
+  - name: nodejs
+    version: ~2.3.4
+    repository: '@hmctspublic'
+  - name: ccd
+    version: ~4.3.2
+    repository: '@hmctspublic'
+    tags:
+      - ccd-idam-pr
