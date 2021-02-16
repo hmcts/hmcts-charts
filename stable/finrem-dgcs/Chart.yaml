@@ -1,11 +1,11 @@
 name: finrem-dgcs
 apiVersion: v2
 home: https://github.com/hmcts/finrem-document-generator-client
-version: 0.1.0
+version: 0.2.0
 description: Financial Remedy Document generator service. Purpose is to generate PDF document and store it in document store.
 maintainers:
   - name: HMCTS Financial Remedy Team
 dependencies:
   - name: java
-    version: ~2.18.0
+    version: ~3.4.4
     repository: '@hmctspublic'
