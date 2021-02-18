@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for wa-standalone-task-bpmn App
 name: wa-standalone-task-bpmn
 home: https://github.com/hmcts/wa-standalone-task-bpmn
-version: 0.0.3
+version: 0.0.4
 maintainers:
   - name: HMCTS WA team
 dependencies:
   - name: java
-    version: 3.4.2
+    version: 3.4.4
     repository: '@hmctspublic'
