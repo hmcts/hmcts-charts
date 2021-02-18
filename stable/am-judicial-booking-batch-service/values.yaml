@@ -4,7 +4,7 @@ job:
   applicationPort: 4081
   aadIdentityName: am
   kind: CronJob
-  schedule: "*/10 * * * *"
+  schedule: "*/5 * * * *"
   global:
     jobKind: CronJob
 postgres:
