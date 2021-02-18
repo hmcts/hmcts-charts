@@ -2,4 +2,4 @@ job:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
 global:
-    jobKind: CronJob
+    jobKind: Job

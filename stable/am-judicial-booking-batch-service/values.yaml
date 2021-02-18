@@ -3,9 +3,9 @@ job:
   ingressHost: am-judicial-booking-batch-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   applicationPort: 4081
   aadIdentityName: am
-  kind: CronJob
+  kind: Job
   schedule: "*/5 * * * *"
   global:
-    jobKind: CronJob
+    jobKind: Job
 postgres:
   enabled: false
