@@ -3,9 +3,9 @@ job:
   ingressHost: am-judicial-booking-batch-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   applicationPort: 4081
   aadIdentityName: am
-  kind: Job
+  kind: job
   global:
-    jobKind: Job
+    jobKind: job
 postgres:
   enabled: false
 metadata:
