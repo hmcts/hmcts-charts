@@ -6,3 +6,8 @@ home: https://github.com/hmcts/am-judicial-booking-batch-service
 version: 0.0.4
 maintainers:
   - name: Access Management Team
+dependencies:
+  - name: job
+    version: ~0.6.0
+    repository: '@hmctspublic'
+

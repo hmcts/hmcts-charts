@@ -3,9 +3,16 @@ job:
   ingressHost: am-judicial-booking-batch-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   applicationPort: 4081
   aadIdentityName: am
-  kind: CronJob
-  schedule: "*/5 * * * *"
-  global:
-    jobKind: CronJob
+  kind: Job
 postgres:
   enabled: false
+metadata:
+  name: judicialBookingRefresh
+spec:
+  template:
+    spec:
+      containers:
+        - name: pi
+          image: 'hmctspublic.azurecr.io/am/judicial-booking-batch-service:latest'
+      restartPolicy: Never
+  backoffLimit: 4
