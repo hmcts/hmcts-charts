@@ -1,7 +1,7 @@
 apiVersion: v2
 appVersion: "1.0"
 description: A Helm chart for AM Judicial Booking Batch Service
-name: am-judicial-booking-batch-service
+name: am-judicial-booking-batch-service-temp
 home: https://github.com/hmcts/am-judicial-booking-batch-service
 version: 0.0.6
 maintainers:
