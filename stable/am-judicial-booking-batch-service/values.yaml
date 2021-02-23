@@ -8,5 +8,5 @@ job:
     jobKind: Job
   ttlSecondsAfterFinished: 600
 spec:
-  releaseName: am-judicial-booking-batch-service-temp
+  releaseName: am-judicial-booking-batch-service
   ttlSecondsAfterFinished: 600
