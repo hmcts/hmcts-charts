@@ -1,0 +1,14 @@
+job:
+  image: 'hmctspublic.azurecr.io/am/role-assignment-refresh-batch:latest'
+  ingressHost: am-role-assignment-refresh-batch-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  applicationPort: 5333
+  aadIdentityName: am
+  kind: Job
+  global:
+    jobKind: Job
+  ttlSecondsAfterFinished: 600
+  keyVaults:
+    am:
+      secrets:
+        - AppInsightsInstrumentationKey
+

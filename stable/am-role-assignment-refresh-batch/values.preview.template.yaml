@@ -1,0 +1,7 @@
+job:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  kind: Job
+  global:
+    jobKind: Job
+  ttlSecondsAfterFinished: 600
