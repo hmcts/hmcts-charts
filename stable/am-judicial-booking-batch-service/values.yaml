@@ -7,3 +7,6 @@ job:
   global:
     jobKind: Job
   ttlSecondsAfterFinished: 600
+spec:
+  releaseName: am-judicial-booking-batch-service-temp
+  ttlSecondsAfterFinished: 600
