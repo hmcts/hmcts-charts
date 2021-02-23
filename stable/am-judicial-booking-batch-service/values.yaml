@@ -6,5 +6,4 @@ job:
   kind: Job
   global:
     jobKind: Job
-postgresql:
-  enabled: false
+  ttlSecondsAfterFinished: 600
