@@ -1,4 +1,3 @@
-
 nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/nfdiv-frontend:latest
@@ -12,7 +11,3 @@ nodejs:
 
 idam-pr:
   enabled: false
-  redirect_uris:
-    divorce:
-      - https:///oauth2/callback
-      - https://civil-/oauth2/callback
