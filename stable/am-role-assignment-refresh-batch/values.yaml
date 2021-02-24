@@ -3,10 +3,9 @@ job:
   ingressHost: am-role-assignment-refresh-batch-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   applicationPort: 5333
   aadIdentityName: am
-  kind: Job
+  kind: CronJob
   global:
-    jobKind: Job
-  ttlSecondsAfterFinished: 600
+    jobKind: CronJob
   keyVaults:
     am:
       secrets:
