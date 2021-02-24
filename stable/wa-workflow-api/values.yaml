@@ -11,6 +11,7 @@ java:
     IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     POSTGRES_PORT: 5432
     POSTGRES_HOST: wa-workflow-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_NAME: wa_workflow_api
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
   keyVaults:
     wa:
