@@ -12,15 +12,17 @@ java:
       resourceGroup: em-hrs
       secrets:
         - hrs-POSTGRES-PASS
+        - microservicekey-em-hrs-api
   environment:
     # db
-    SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
-    SPRING_DATASOURCE_USERNAME: emhrs@em-hrs-postgres-db-{{ .Values.global.environment }}
+    SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-postgres-v11-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
+    SPRING_DATASOURCE_USERNAME: emhrs@em-hrs-postgres-v11-db-{{ .Values.global.environment }}
 
     # Document Storage
     STORAGE_CONTAINER_DOCUMENT_CONTAINER_NAME: dm-store-docstore-{{ .Values.global.environment }}
 
     IDAM_API_BASE_URI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
 blobstorage:
   resourceGroup: em-hrs-aks
