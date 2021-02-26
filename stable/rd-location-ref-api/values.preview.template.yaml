@@ -18,6 +18,6 @@ java:
   keyVaults:
     rd:
       secrets:
-        - AppInsightsInstrumentationKey
+        - ApplicationInsightsInstrumentationKey
         - LD-SDK-KEY
         - location-ref-api-s2s-secret
