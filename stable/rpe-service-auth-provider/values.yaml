@@ -10,6 +10,7 @@ java:
         - microservicekey-ccd-admin
         - microservicekey-ccd-case-document-am-api
         - microservicekey-am-role-assignment-service
+        - microservicekey-am-role-assignment-refresh-batch
         - microservicekey-am-judicial-booking-service
         - microservicekey-am-org-role-mapping-service
         - microservicekey-ccd-data
@@ -94,5 +95,6 @@ java:
         - microservicekey-nfdiv-cms
         - microservicekey-nfdiv-cos
         - microservicekey-nfdiv-case-api
+        - microservicekey-em-hrs-api
   image: 'hmctspublic.azurecr.io/rpe/service-auth-provider:latest'
   ingressHost: rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
