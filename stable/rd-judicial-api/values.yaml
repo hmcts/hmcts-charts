@@ -14,4 +14,4 @@ java:
       secrets:
         - judicial-api-POSTGRES-PASS
         - judicial-api-s2s-secret
-        - AppInsightsInstrumentationKey
+        - ApplicationInsightsInstrumentationKey
