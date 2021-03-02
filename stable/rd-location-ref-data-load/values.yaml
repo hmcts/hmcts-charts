@@ -21,7 +21,7 @@ job:
       resourceGroup: rd
       secrets:
         - location-ref-api-POSTGRES-PASS
-        - AppInsightsInstrumentationKey
+        - ApplicationInsightsInstrumentationKey
         - rd-location-storage-account-name
         - rd-location-storage-account-primary-key
         - BLOB-URL-SUFFIX
