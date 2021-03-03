@@ -2,6 +2,10 @@ java:
     applicationPort: 4012
     aadIdentityName: nfdiv
     ingressHost: "nfdiv-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    autoscaling:
+      enabled: true
+      maxReplicas: 9
+      minReplicas: 6
     environment:
         CASE_MAINTENANCE_SERVICE_API_BASEURL: "http://nfdiv-cms-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         PAYMENT_API_BASEURL: "http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"

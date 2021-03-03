@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "1.0"
 description: No Fault Divorce - Case Orchestration Service
 name: nfdiv-cos
-version: 2.0.3
+version: 2.0.4
 dependencies:
   - name: java
     version: 3.4.4
