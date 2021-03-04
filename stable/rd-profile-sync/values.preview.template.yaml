@@ -17,3 +17,4 @@ java:
       secrets:
         - profile-sync-s2s-secret
         - OAUTH2-AUTH
+        - ApplicationInsightsInstrumentationKey
