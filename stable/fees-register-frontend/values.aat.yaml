@@ -1,5 +1,10 @@
 nodejs:
   image: https://hmcts.azurecr.io/hmcts/fees-register-frontend:latest
   ingressHost: 
-
+  devmemoryRequests: 1024Mi
+  devcpuRequests: 1000m
+  devmemoryLimits: 1024Mi
+  devcpuLimits: 1000m
+  memoryRequests: 1024Mi
+  cpuRequests: 1000m
 
