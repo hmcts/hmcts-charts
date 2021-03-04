@@ -13,6 +13,7 @@ java:
       secrets:
         - hrs-api-POSTGRES-PASS
         - microservicekey-em-hrs-api
+        - storage-account-primary-connection-string
   environment:
     # db
     SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-api-postgres-v11-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
