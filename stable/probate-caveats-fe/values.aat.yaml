@@ -2,4 +2,4 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/probate-caveats-fe:latest
   ingressHost: 
   environment:
-    LAUNCHDARKLY_ENABLED: false
+    LAUNCHDARKLY_ENABLED: true
