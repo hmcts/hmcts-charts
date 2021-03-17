@@ -4,6 +4,7 @@ java:
   ingressHost: ${SERVICE_FQDN}
   postgresql:
     enabled: true
+  disableKeyVaults: true
   environment:
     POSTGRES_SSL_MODE: disable
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"

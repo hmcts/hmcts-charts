@@ -4,12 +4,3 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     POSTGRES_SSL_MODE: require
-  aadIdentityName: cnp
-  keyVaults:
-    "plumsi":
-      resourceGroup: plum-shared-infrastructure
-      secrets:
-        - recipe-backend-POSTGRES-DATABASE
-        - recipe-backend-POSTGRES-HOST
-        - recipe-backend-POSTGRES-USER
-        - recipe-backend-POSTGRES-PASS
