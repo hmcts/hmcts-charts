@@ -1,10 +1,15 @@
 java:
   applicationPort: 4550
-  environment:
-    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_SSL_MODE: disable
-    POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
   # Don't modify below here
   image: 'hmctssandbox.azurecr.io/hmcts/crumble-recipe-backend:latest'
+  keyVaults:
+    "crumblesi":
+      secrets:
+        - name: recipe-backend-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
+        - name: recipe-backend-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: recipe-backend-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: recipe-backend-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
