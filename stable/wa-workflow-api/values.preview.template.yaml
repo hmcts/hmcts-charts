@@ -19,3 +19,4 @@ java:
         - s2s-secret-workflow-api
   postgresql:
     enabled: true
+    postgresqlDatabase: wa_workflow_api
