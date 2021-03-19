@@ -4,19 +4,29 @@ java:
   aadIdentityName: ctsc
   keyVaults:
     "ctsc":
-      resourceGroup: ctsc
       secrets:
-        - AppInsightsInstrumentationKey
-        - CTSC-IDAM-CLIENT-SECRET
-        - CTSC-SERVICE-USER-EMAIL
-        - CTSC-SERVICE-USER-PASSWORD
-        - CTSC-SERVICEBUS-CONNECTION-STRING
-        - wa-service-email-address
-        - wa-service-probate-email-address
-        - work-allocation-POSTGRES-PASS
-        - CTSC-WA-SMTP-USER
-        - CTSC-WA-SMTP-PASSWORD
-        - CTSC-S2S-SECRET
+        - name: AppInsightsInstrumentationKey
+          alias: AZURE_APPLICATIONINSIGHTS_INSTRUMENTATIONKEY
+        - name: CTSC-IDAM-CLIENT-SECRET
+          alias: IDAM_CLIENT_SECRET
+        - name: CTSC-SERVICE-USER-EMAIL
+          alias: SERVICE_USER_EMAIL
+        - name: CTSC-SERVICE-USER-PASSWORD
+          alias: SERVICE_USER_PASSWORD
+        - name: CTSC-SERVICEBUS-CONNECTION-STRING
+          alias: SERVICE_BUS_CONNECTION_STRING
+        - name: wa-service-email-address
+          alias: SERVICE_EMAIL_ADDRESS
+        - name: wa-service-probate-email-address
+          alias: SERVICE_PROBATE_EMAIL_ADDRESS
+        - name: work-allocation-POSTGRES-PASS
+          alias: SPRING_DATASOURCE_PASSWORD
+        - name: CTSC-WA-SMTP-USER
+          alias: SMTP_USER
+        - name: CTSC-WA-SMTP-PASSWORD
+          alias: SMTP_PASSWORD
+        - name: CTSC-S2S-SECRET
+          alias: S2S_SECRET
   environment:
     SPRING_DATASOURCE_URL: jdbc:postgresql://ctsc-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/workallocation?gssEncMode=disable
     SPRING_DATASOURCE_USERNAME: workallocation@ctsc-postgres-db-{{.Values.global.environment }}

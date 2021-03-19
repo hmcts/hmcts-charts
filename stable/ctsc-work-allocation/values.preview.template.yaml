@@ -1,7 +1,6 @@
 java:
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: true
-    SPRING_CLOUD_PROPERTIESVOLUME_ENABLED: true
 
     SPRING_DATASOURCE_URL: "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.postgresqlDatabase}}?gssEncMode=disable"
     SPRING_DATASOURCE_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
