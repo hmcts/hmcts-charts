@@ -36,16 +36,6 @@ java:
           alias: SMTP_USERNAME
         - name: delayed-stale-report-recipients
           alias: DELAYED_STALE_REPORT_RECIPIENTS
-        - name: send-letter-service-staging-db-password
-          alias: LETTER_TRACKING_DB_PASSWORD
-        - name: send-letter-service-staging-db-user
-          alias: LETTER_TRACKING_DB_USER_NAME
-        - name: send-letter-service-staging-db-name
-          alias: LETTER_TRACKING_DB_NAME
-        - name: send-letter-service-staging-db-host
-          alias: LETTER_TRACKING_DB_HOST
-        - name: send-letter-service-staging-db-port
-          alias: LETTER_TRACKING_DB_PORT
 
   environment:
     # db
