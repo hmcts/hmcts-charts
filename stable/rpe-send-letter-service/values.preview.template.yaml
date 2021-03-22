@@ -6,14 +6,6 @@ java:
   cpuRequests: "1000m"
   memoryLimits: "3Gi"
   cpuLimits: "2500m"
-  keyVaults:
-    rpe-send-letter:
-      secrets:
-        - ftp-user
-        - ftp-private-key
-        - ftp-public-key
-        - xerox-ftp-hostname
-        - encryption-public-key
   environment:
     # db
     LETTER_TRACKING_DB_HOST: "{{ .Release.Name }}-postgresql"
