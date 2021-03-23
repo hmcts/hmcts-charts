@@ -3,12 +3,12 @@ appVersion: "1.0"
 description: A Helm chart for AM Role Assignment Batch Service
 name: am-role-assignment-batch-service
 home: https://github.com/hmcts/am-role-assignment-batch-service
-version: 0.0.15
+version: 0.0.16
 maintainers:
   - name: Access Management Team
 dependencies:
   - name: job
-    version: ~0.6.0
+    version: ~0.7.1
     repository: '@hmctspublic'
   - name: postgresql
     version: ~8.9.8
