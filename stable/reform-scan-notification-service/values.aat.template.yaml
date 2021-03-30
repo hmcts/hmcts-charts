@@ -10,15 +10,25 @@ java:
     FLYWAY_SKIP_MIGRATIONS: false
     PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
   keyVaults:
-    reform-scan:
+    "reform-scan":
       secrets:
-        - app-insights-instrumentation-key
-        - error-notifications-password
-        - error-notifications-url
-        - error-notifications-username
-        - notification-service-staging-postgres-pass
-        - notification-service-staging-postgres-user
-        - notification-service-staging-postgres-host
-        - notification-service-staging-postgres-port
-        - notification-service-staging-postgres-database
-        - notification-staging-queue-listen-shared-access-key
+        - name: app-insights-instrumentation-key
+          alias: azure.application-insights.instrumentation-key
+        - name: error-notifications-password
+          alias: clients.error-notifications.password
+        - name: error-notifications-url
+          alias: clients.error-notifications.url
+        - name:  error-notifications-username
+          alias: clients.error-notifications.username
+        - name: notification-service-staging-postgres-pass
+          alias: DB_PASSWORD
+        - name: notification-service-staging-postgres-user
+          alias: DB_USER
+        - name: notification-service-staging-postgres-host
+          alias: DB_HOST
+        - name: notification-service-staging-postgres-port
+          alias: DB_PORT
+        - name: notification-service-staging-postgres-database
+          alias: DB_NAME
+        - name:  notification-staging-queue-listen-shared-access-key
+          alias: QUEUE_READ_ACCESS_KEY
