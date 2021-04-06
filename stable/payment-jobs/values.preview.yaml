@@ -1,4 +1,0 @@
-job:
-  image: ${IMAGE_NAME}
-  environment:
-    REPORT_NAME: bar-csv-report
