@@ -1,0 +1,20 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for HMCTS Reform IDAM Web Admin
+name: idam-web-admin
+version: 0.2.6
+dependencies:
+  - name: java
+    version: ~3.4.5
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+maintainers:
+  - name: Amido Reform SIDAM Team
+    email: reform.idam@HMCTS.NET
+keywords:
+- java
+- web
+- springboot
+- idam
+- sidam
+- idam-web-admin
+- web-admin
