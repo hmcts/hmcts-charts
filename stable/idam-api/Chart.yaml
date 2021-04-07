@@ -1,0 +1,27 @@
+apiVersion: v2
+appVersion: "1.0"
+home: https://github.com/hmcts/idam-api
+description: A Helm chart for HMCTS Reform IDAM Web Public
+name: idam-api
+version: 0.3.7
+maintainers:
+  - name: Amido Reform SIDAM Team
+    email: reform.idam@HMCTS.NET
+keywords:
+- java
+- web
+- springboot
+- postgres
+- postgresql
+- idam
+- sidam
+- idam-api
+- api
+dependencies:
+  - name: java
+    version: ~3.4.4
+    repository: '@hmctspublic'
+  - name: keycloak
+    version: ~9.4.0
+    repository: https://codecentric.github.io/helm-charts
+    condition: keycloak.enabled

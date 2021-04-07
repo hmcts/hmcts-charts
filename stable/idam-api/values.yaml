@@ -1,0 +1,149 @@
+global:
+  tenantId: "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
+  environment: preview
+  enableKeyVaults: true
+
+java:
+  postgresql:
+    enabled: false
+  releaseNameOverride: idam-api
+  image: hmctspublic.azurecr.io/idam/api:preview
+  ingressHost: "{{ .Release.Name }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  applicationPort: 5000
+  readinessPath: '/health'
+  readinessDelay: 45
+  livenessDelay: 45
+  aadIdentityName: idam
+  keyVaults:
+    "idam-idam":
+      resourceGroup: idam-idam
+      excludeEnvironmentSuffix: false
+      secrets:
+        - name: web-admin-client-secret
+          alias: security.oauth2.client.clientSecret
+        - name: notify-api-key
+          alias: notify.key
+        - name: am-password
+          alias: idam.spi.forgerock.am.password
+        - name: idm-password
+          alias: idam.spi.forgerock.idm.password
+        - name: pin-user-pass
+          alias: idam.spi.forgerock.idm.pin.defaultPassword
+        - name: idam-api-POSTGRES-HOST
+          alias: DATASOURCE_HOST
+        - name: idam-api-POSTGRES-PORT
+          alias: DATASOURCE_PORT
+        - name: idam-api-POSTGRES-DATABASE
+          alias: DATASOURCE_DATABASE
+        - name: idam-api-POSTGRES-USER
+          alias: spring.datasource.username
+        - name: idam-api-POSTGRES-PASS
+          alias: spring.datasource.password
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+  environment:
+    STRATEGIC_ADMIN_URL: https://idam-web-admin.service.core-compute-{{ .Values.global.environment }}.internal
+    STRATEGIC_WEBPUBLIC_URL: https://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal
+    STRATEGIC_API_URL: https://{{ .Release.Name }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_SPI_FORGEROCK_AM_ROOT: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam
+    IDAM_SPI_FORGEROCK_AM_USERNAME: amadmin
+    IDAM_SPI_FORGEROCK_AM_TOPLEVELHOST: forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443
+    IDAM_SPI_FORGEROCK_AM_JWKSURIFOROAUTH2CLIENTS: http://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8080/openam/oauth2/hmcts/connect/jwk_uri
+    IDAM_SPI_FORGEROCK_IDM_USERNAME: openidm-admin
+    IDAM_SPI_FORGEROCK_IDM_ROOT: https://forgerock-idm.service.core-compute-idam-{{ .Values.global.environment }}.internal:18443/openidm
+    IDAMHEALTHCHECK_AM_TARGET: http://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:9292
+    IDAMHEALTHCHECK_IDM_TARGET: http://forgerock-idm.service.core-compute-idam-{{ .Values.global.environment }}.internal:9292
+    MANAGEMENT_SECURITY_ENABLED: false
+    ENDPOINTS_ENABLED: true
+    TESTING_SUPPORT_ENABLED: false
+    CACHING_USERS_RECACHEINTERVAL: 900000
+    SSL_TRUST_DNS_0: C=UK,ST=London,L=London,O=Amido,CN=*.service.core-compute-idam-{{ .Values.global.environment }}.internal,emailAddress=devops@amido.com
+    SSL_TRUST_DNS_1: C=None,ST=None,L=None,OU=None,O=OpenDJ Self-Signed Certificate,CN=openidm-localhost
+    SSL_TRUST_HOSTNAMES_0: forgerock-idm.service.core-compute-idam-{{ .Values.global.environment }}.internal
+    SSL_TRUST_HOSTNAMES_1: forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal
+
+  cpuRequests: '1000m'
+  cpuLimits: '2500m'
+  memoryRequests: '1024Mi'
+  memoryLimits: '2048Mi'
+  
+  devmemoryRequests: '1024Mi'
+  devcpuRequests: '1000m'
+  devmemoryLimits: '1536Mi'
+  devcpuLimits: '2500m'
+
+# https://github.com/codecentric/helm-charts
+keycloak:
+  enabled: false
+  image:
+    repository: hmctspublic.azurecr.io/imported/jboss/keycloak
+    tag: "11.0.3"
+  postgresql:
+    enabled: false
+  replicas: 1
+  ingress:
+    enabled: true
+    tls: []
+    rules:
+      -
+        host: idam-keycloak-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+        paths:
+          - /
+  args:
+    [
+      '-Dkeycloak.migration.action=import',
+      '-Dkeycloak.migration.provider=dir',
+      '-Dkeycloak.migration.file=/tmp',
+      '-Dkeycloak.migration.strategy=OVERWRITE_EXISTING',
+      '-Dkeycloak.profile.feature.upload_scripts=enabled',
+      '-Dkeycloak.profile.feature.admin_fine_grained_authz=enabled',
+    ]
+  statefulsetLabels:
+    aadpodidbinding: idam
+  podLabels:
+    aadpodidbinding: idam
+  startupScripts:
+    keycloak.cli: |
+      embed-server --server-config=standalone-ha.xml --std-out=echo
+      batch
+
+      echo Configuring node identifier
+
+      ## Sets the node identifier to the node name (= pod name). Node identifiers have to be unique. They can have a
+      ## maximum length of 23 characters. Thus, the chart's fullname template truncates its length accordingly.
+      /subsystem=transactions:write-attribute(name=node-identifier, value=${jboss.node.name})
+      /subsystem=keycloak-server/spi=vault/:add
+      /subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir => "/mnt/secrets/idam-keycloak/"})
+
+      echo Finished configuring node identifier
+
+      run-batch
+      stop-embedded-server
+  extraVolumes: |
+    - name: realm-volume
+      configMap:
+        name: {{ .Release.Name }}-keyclock-realm-cm
+    - name: vault-idam-keycloak
+      flexVolume:
+        driver: "azure/kv"
+        options:
+          usepodidentity: "true"
+          tenantid: {{ .Values.global.tenantId | quote }}
+          keyvaultname: "idam-idam-{{ .Values.global.environment }}"
+          keyvaultobjectnames: "keycloak-admin-username;keycloak-admin-password;keycloak-jhipster-client-secret"
+          keyvaultobjecttypes: "secret;secret;secret"
+  extraVolumeMounts: |
+    - name: realm-volume
+      mountPath: "/tmp/keycloak-export"
+    - name: vault-idam-keycloak
+      mountPath: "/mnt/secrets/idam-keycloak"
+      readOnly: true
+  extraEnv: |
+    - name: KEYCLOAK_USER_FILE
+      value: /mnt/secrets/idam-keycloak/keycloak-admin-username
+    - name: KEYCLOAK_PASSWORD_FILE
+      value: /mnt/secrets/idam-keycloak/keycloak-admin-password
+    - name: DB_VENDOR
+      value: h2
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
