@@ -20,3 +20,4 @@ java:
         - s2s-secret-workflow-api
         - workflow-api-POSTGRES-PASS
         - workflow-api-POSTGRES-USER
+        - ld-secret
