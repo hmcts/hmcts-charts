@@ -7,8 +7,8 @@ java:
   image: hmctspublic.azurecr.io/bulk-scan/sample-app:latest
   keyVaults:
     "bulk-scan":
-      resourceGroup: bulk-scan
       secrets:
-        - app-insights-instrumentation-key
+        - name: app-insights-instrumentation-key
+          alias: azure.application-insights.instrumentation-key
 bulk-scan:
   enabled: false
