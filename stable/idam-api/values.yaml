@@ -18,29 +18,20 @@ java:
     "idam-idam":
       resourceGroup: idam-idam
       excludeEnvironmentSuffix: false
+      secretRef: "kvcreds"
       secrets:
-        - name: web-admin-client-secret
-          alias: security.oauth2.client.clientSecret
-        - name: notify-api-key
-          alias: notify.key
-        - name: am-password
-          alias: idam.spi.forgerock.am.password
-        - name: idm-password
-          alias: idam.spi.forgerock.idm.password
-        - name: pin-user-pass
-          alias: idam.spi.forgerock.idm.pin.defaultPassword
-        - name: idam-api-POSTGRES-HOST
-          alias: DATASOURCE_HOST
-        - name: idam-api-POSTGRES-PORT
-          alias: DATASOURCE_PORT
-        - name: idam-api-POSTGRES-DATABASE
-          alias: DATASOURCE_DATABASE
-        - name: idam-api-POSTGRES-USER
-          alias: spring.datasource.username
-        - name: idam-api-POSTGRES-PASS
-          alias: spring.datasource.password
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - web-admin-client-secret
+        - notify-api-key
+        - am-password
+        - idm-password
+        - pin-user-pass
+        - event-bus-access-key
+        - idam-api-POSTGRES-HOST
+        - idam-api-POSTGRES-PORT
+        - idam-api-POSTGRES-DATABASE
+        - idam-api-POSTGRES-USER
+        - idam-api-POSTGRES-PASS
+        - AppInsightsInstrumentationKey
   environment:
     STRATEGIC_ADMIN_URL: https://idam-web-admin.service.core-compute-{{ .Values.global.environment }}.internal
     STRATEGIC_WEBPUBLIC_URL: https://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal

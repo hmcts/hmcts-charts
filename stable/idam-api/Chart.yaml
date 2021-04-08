@@ -1,11 +1,11 @@
 apiVersion: v2
 appVersion: "1.0"
 home: https://github.com/hmcts/idam-api
-description: A Helm chart for HMCTS Reform IDAM Web Public
+description: A Helm chart for CFT IDAM API
 name: idam-api
 version: 0.3.7
 maintainers:
-  - name: Amido Reform SIDAM Team
+  - name: CFT IDAM Team
     email: reform.idam@HMCTS.NET
 keywords:
 - java
@@ -19,8 +19,8 @@ keywords:
 - api
 dependencies:
   - name: java
-    version: ~3.4.4
-    repository: '@hmctspublic'
+    version: ~3.4.5
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/
   - name: keycloak
     version: ~9.4.0
     repository: https://codecentric.github.io/helm-charts
