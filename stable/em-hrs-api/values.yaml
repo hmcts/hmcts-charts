@@ -16,6 +16,7 @@ java:
         - storage-account-primary-connection-string
         - idam-system-user-name
         - idam-system-user-password
+        - AppInsightsInstrumentationKey
     rpa:
       resourceGroup: rpa
       secrets:
@@ -30,6 +31,16 @@ java:
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     CCD_DATA_API_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_REDIRECT_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
+    JSON_CONSOLE_PRETTY_PRINT: false
+    LOG_OUTPUT: single
+    ROOT_LOGGING_LEVEL: INFO
+    LOG_LEVEL_SPRING_WEB: INFO
+    LOG_LEVEL_DM: INFO
+    SHOW_SQL: true
+    ENDPOINTS_HEALTH_SENSITIVE: false
+    ENDPOINTS_INFO_SENSITIVE: false
+    ENABLE_IDAM_HEALTH_CHECK: false
+    ENABLE_S2S_HEALTH_CHECK: false
 
 blobstorage:
   resourceGroup: em-hrs-api-aks
