@@ -10,5 +10,3 @@ java:
       secrets:
         - name: app-insights-instrumentation-key
           alias: azure.application-insights.instrumentation-key
-bulk-scan:
-  enabled: false
