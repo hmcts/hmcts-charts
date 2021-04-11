@@ -1,5 +1,5 @@
 java:
-  applicationPort: 8080
+  applicationPort: 8090
   image: 'hmctspublic.azurecr.io/em/hrs-ingestor:latest'
   ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: em
