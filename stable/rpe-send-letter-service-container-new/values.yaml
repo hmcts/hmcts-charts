@@ -1,0 +1,14 @@
+java:
+  applicationPort: 4550
+  image: 'hmctspublic.azurecr.io/rpe/send-letter-service-container-new:latest'
+  ingressHost: rpe-send-letter-service-container-new-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: send-letter
+  readinessPath: '/health/readiness'
+  keyVaults:
+    "rpe-send-letter":
+      secrets:
+        - name: app-insights-instrumentation-key
+          alias: azure.application-insights.instrumentation-key
+  environment:
+
+
