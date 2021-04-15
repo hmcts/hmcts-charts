@@ -4,9 +4,6 @@ job:
   schedule: "0 18 * * *"
   startingDeadlineSeconds: 600
   concurrencyPolicy: Forbid
-  labels:
-    app.kubernetes.io/instance: pcq-consolidation-service-001
-    app.kubernetes.io/name: pcq-consolidation-service
   ingressHost: pcq-consolidation-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: pcq
   environment:
