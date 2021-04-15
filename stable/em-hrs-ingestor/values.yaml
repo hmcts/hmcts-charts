@@ -9,5 +9,7 @@ java:
       secrets:
         - microservicekey-em-hrs-ingestor
         - AppInsightsInstrumentationKey
+        - cvp-storage-connection-string
+        - cvp-storage-container-name
   environment:
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
