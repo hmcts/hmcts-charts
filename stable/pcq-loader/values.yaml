@@ -4,9 +4,6 @@ job:
   schedule: "0 18 * * *"
   startingDeadlineSeconds: 600
   concurrencyPolicy: Forbid
-  labels:
-    app.kubernetes.io/instance: pcq-loader-001
-    app.kubernetes.io/name: pcq-loader
   ingressHost: pcq-loader-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: pcq
   environment:
