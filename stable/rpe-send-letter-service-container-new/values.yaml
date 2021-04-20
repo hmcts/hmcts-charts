@@ -1,14 +1,16 @@
-java:
-  applicationPort: 4550
-  image: 'hmctspublic.azurecr.io/rpe/send-letter-service-container-new:latest'
-  ingressHost: rpe-send-letter-service-container-new-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+function:
+  image: 'hmctspublic.azurecr.io/rpe/send-letter-service-container-new::latest'
   aadIdentityName: send-letter
-  readinessPath: '/health/readiness'
+  environment:
+    SEND_LETTER_URL: "http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:
     "rpe-send-letter":
       secrets:
+        - name: storage-account-connection-string
+          alias: STORAGE_ACCOUNT_CONNECTION_STRING
         - name: app-insights-instrumentation-key
           alias: azure.application-insights.instrumentation-key
-  environment:
-
-
+  trigger:
+    type: azure-blob
+    blob:
+      blobContainerName: "new"
