@@ -2,10 +2,3 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  keyVaults:
-    am:
-      secrets:
-        - am-judicial-booking-service-s2s-secret
-        - judicial-booking-service-POSTGRES-PASS
-        - AppInsightsInstrumentationKey
-
