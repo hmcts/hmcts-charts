@@ -9,6 +9,8 @@ java:
       secrets:
         - microservicekey-em-hrs-ingestor
         - AppInsightsInstrumentationKey
+    em-hrs-api:
+      secrets:
         - cvp-storage-connection-string
         - cvp-storage-container-name
   environment:
