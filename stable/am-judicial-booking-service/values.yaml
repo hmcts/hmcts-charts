@@ -10,7 +10,6 @@ java:
         - judicial-booking-service-POSTGRES-PASS
         - AppInsightsInstrumentationKey
         - judicial-booking-service-IDAM-CLIENT-SECRET
-        - judicial-booking-service-IDAM-ADMIN-USERID
         - judicial-booking-service-IDAM-ADMIN-SECRET
         - role-assignment-service-LD-SDK-KEY
   environment:
@@ -25,3 +24,4 @@ java:
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     MICROSERVICE_NAME: am_judicial_booking_service
+    JUDICIAL_BOOKING_IDAM_ADMIN_USERID: ras-validation-system@hmcts.net
