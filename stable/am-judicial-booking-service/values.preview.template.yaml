@@ -5,6 +5,7 @@ java:
     am:
       secrets:
         - am-judicial-booking-service-s2s-secret
+        - judicial-booking-service-IDAM-ADMIN-USERID
         - AppInsightsInstrumentationKey
   environment:
     JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"

@@ -10,6 +10,7 @@ java:
         - judicial-booking-service-POSTGRES-PASS
         - AppInsightsInstrumentationKey
         - judicial-booking-service-IDAM-CLIENT-SECRET
+        - judicial-booking-service-IDAM-ADMIN-USERID
         - judicial-booking-service-IDAM-ADMIN-SECRET
         - role-assignment-service-LD-SDK-KEY
   environment:
