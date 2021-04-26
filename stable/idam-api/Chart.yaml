@@ -1,9 +1,9 @@
 apiVersion: v2
 appVersion: "1.0"
 home: https://github.com/hmcts/idam-api
-description: A Helm chart for CFT IDAM API
+description: A Helm chart for HMCTS Reform IDAM Web Public
 name: idam-api
-version: 0.3.8
+version: 0.3.7
 maintainers:
   - name: CFT IDAM Team
     email: reform.idam@HMCTS.NET
