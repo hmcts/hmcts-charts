@@ -8,6 +8,10 @@ java:
       resourceGroup: em-hrs-api
       secrets:
         - storage-account-primary-connection-string
+        - idam-system-user-name
+        - idam-system-user-password
+        - hrs-api-POSTGRES-PASS
+        - microservicekey-em-hrs-api
   secrets:
     BLOB_ACCOUNT_NAME:
       secretRef: storage-secret-{{ .Release.Name }}
