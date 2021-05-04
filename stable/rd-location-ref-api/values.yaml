@@ -18,7 +18,11 @@ java:
   keyVaults:
     rd:
       secrets:
-        - location-ref-api-POSTGRES-PASS
-        - ApplicationInsightsInstrumentationKey
-        - LD-SDK-KEY
-        - location-ref-api-s2s-secret
+        - name: location-ref-api-POSTGRES-PASS
+          alias: spring.datasource.password
+        - name: ApplicationInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: LD-SDK-KEY
+          alias: LD_SDK_KEY
+        - name: location-ref-api-s2s-secret
+          alias: S2S_SECRET
