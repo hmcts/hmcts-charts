@@ -2,3 +2,7 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/cpo-case-payment-orders-api:latest
   ingressHost: 
+
+  environment:
+    S2S_AUTHORIZATIONS_XUI_ID: xui_webapp
+    S2S_AUTHORIZATIONS_XUI_PERMISSION: CRUD
