@@ -1,3 +1,15 @@
 job:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  kind: CronJob
+  schedule: "*/10 * * * *"
+  global:
+    jobKind: CronJob
+  keyVaults:
+    am:
+      secrets:
+        - AppInsightsInstrumentationKey
+        - am-role-assignment-refresh-batch-s2s-secret
+        - orm-IDAM-CLIENT-ID
+        - orm-IDAM-CLIENT-SECRET
+        - orm-IDAM-ADMIN-SECRET
