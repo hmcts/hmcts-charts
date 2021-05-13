@@ -1,8 +1,12 @@
-java:
+job:
   applicationPort: 8090
   image: 'hmctspublic.azurecr.io/em/hrs-ingestor:latest'
+  schedule: "0 * * * *"
+  # Run once an hour at the beginning of the hour
   ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: em
+  suspend: true
+  concurrencyPolicy: Forbid
   keyVaults:
     em-hrs-ingestor:
       resourceGroup: em-hrs-ingestor
@@ -16,4 +20,7 @@ java:
   environment:
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    ENABLE_CRONJOB: true
 
+global:
+  jobKind: CronJob
