@@ -14,8 +14,8 @@ java:
         - idam-client-id
         - idam-secret
         - idam-redirect-uri
-        - system-username
-        - system-password
+        - ia-system-access-username
+        - ia-system-access-password
         - s2s-secret
         - s2s-microservice
         - AppInsightsInstrumentationKey
