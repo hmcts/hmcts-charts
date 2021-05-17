@@ -1,12 +1,8 @@
-job:
+java:
   applicationPort: 8090
   image: 'hmctspublic.azurecr.io/em/hrs-ingestor:latest'
-  schedule: "*/15 * * * *"
-  # Run every 15 mins at the beginning of the hour
   ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: em
-  suspend: false
-  concurrencyPolicy: Forbid
   keyVaults:
     em-hrs-ingestor:
       resourceGroup: em-hrs-ingestor
@@ -22,5 +18,4 @@ job:
     HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ENABLE_CRONJOB: true
 
-global:
-  jobKind: CronJob
+
