@@ -18,11 +18,19 @@ java:
   keyVaults:
     rd:
       secrets:
-        - profile-sync-s2s-secret
-        - profile-sync-POSTGRES-PASS
-        - ApplicationInsightsInstrumentationKey
-        - OAUTH2-CLIENT-SECRET
-        - OAUTH2-AUTH
-        - OAUTH2-CLIENT-AUTH
-        - SEARCH-QUERY-FROM
-        - CRON-SCHEDULE
+        - name: profile-sync-s2s-secret
+          alias: S2S_SECRET
+        - name: profile-sync-POSTGRES-PASS
+          alias: spring.datasource.password
+        - name: ApplicationInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: OAUTH2-CLIENT-SECRET
+          alias: idam.api-redirect-uri
+        - name: OAUTH2-AUTH
+          alias: idam.api.authorization
+        - name: OAUTH2-CLIENT-AUTH
+          alias: idam.api.client-authorization
+        - name: SEARCH-QUERY-FROM
+          alias: scheduler.hours
+        - name: CRON-SCHEDULE
+          alias: scheduler.config
