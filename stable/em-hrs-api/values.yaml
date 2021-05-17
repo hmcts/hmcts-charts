@@ -16,6 +16,7 @@ java:
         - storage-account-primary-connection-string
         - cvp-storage-connection-string
         - cvp-storage-container-name
+        - hrs-storage-container-name
         - idam-system-user-name
         - idam-system-user-password
         - AppInsightsInstrumentationKey
