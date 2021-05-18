@@ -36,6 +36,8 @@ java:
           alias: SMTP_USERNAME
         - name: delayed-stale-report-recipients
           alias: DELAYED_STALE_REPORT_RECIPIENTS
+        - name: storage-account-connection-string
+          alias: STORAGE_ACCOUNT_CONNECTION_STRING
 
   environment:
     # db
