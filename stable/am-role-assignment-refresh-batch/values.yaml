@@ -4,6 +4,7 @@ job:
   applicationPort: 5333
   aadIdentityName: am
   kind: CronJob
+  schedule: "*/10 * * * *"
   global:
     jobKind: CronJob
   keyVaults:
@@ -22,3 +23,8 @@ job:
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     ROLE_ASSIGNMENT_APP_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ORG_ROLE_MAPPING_IDAM_ADMIN_USERID: orm.admin@hmcts.NET
+    ORG_ROLE_MAPPING_DB_NAME: org_role_mapping
+    ORG_ROLE_MAPPING_DB_HOST: am-org-role-mapping-service-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    ORG_ROLE_MAPPING_DB_USERNAME: am@am-org-role-mapping-service-postgres-db-{{ .Values.global.environment }}
+    ORG_ROLE_MAPPING_DB_OPTIONS: "?stringtype=unspecified&sslmode=require"
+    AM_ORM_URL: http://am-org-role-mapping-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
