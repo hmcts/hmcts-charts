@@ -1,0 +1,11 @@
+java:
+  applicationPort: 4558
+  image: 'hmctspublic.azurecr.io/hmc/hmi-outbound-adapter:latest'
+  ingressHost: hmc-hmi-outbound-adapter-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: hmc
+  keyVaults:
+    hmc:
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+  environment:
