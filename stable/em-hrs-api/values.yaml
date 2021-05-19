@@ -35,6 +35,7 @@ java:
     IDAM_API_BASE_URI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     CCD_DATA_API_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    XUI_API_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/
     IDAM_REDIRECT_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
     JSON_CONSOLE_PRETTY_PRINT: false
     LOG_OUTPUT: single
