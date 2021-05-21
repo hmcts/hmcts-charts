@@ -34,6 +34,10 @@ java:
           alias: SMTP_PASSWORD
         - name: reports-email-username
           alias: SMTP_USERNAME
+        - name: delayed-stale-report-recipients
+          alias: DELAYED_STALE_REPORT_RECIPIENTS
+        - name: storage-account-connection-string
+          alias: STORAGE_ACCOUNT_CONNECTION_STRING
 
   environment:
     FLYWAY_NOOP_STRATEGY: "false"
