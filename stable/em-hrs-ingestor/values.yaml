@@ -1,7 +1,7 @@
 job:
   applicationPort: 8090
   image: 'hmctspublic.azurecr.io/em/hrs-ingestor:latest'
-  schedule: "*/15 21-23,0-7 * * *"
+  schedule: "*/15 * * * *"
   # Run every 15 mins during the evening 9pm through 7am
   ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: em
