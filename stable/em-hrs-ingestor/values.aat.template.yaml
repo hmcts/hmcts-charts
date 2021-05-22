@@ -1,6 +1,19 @@
-# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
-  image: ${IMAGE_NAME}
-  ingressHost: ${SERVICE_FQDN}
+  applicationPort: 8090
+  image: 'hmctspublic.azurecr.io/em/hrs-ingestor:latest'
+  ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: em
+  keyVaults:
+    em-hrs-ingestor:
+      resourceGroup: em-hrs-ingestor
+      secrets:
+        - microservicekey-em-hrs-ingestor
+        - AppInsightsInstrumentationKey
+    em-hrs-api:
+      secrets:
+        - cvp-storage-connection-string
+        - cvp-storage-container-name
   environment:
+    S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ENABLE_CRONJOB: false
