@@ -1,0 +1,21 @@
+function:
+  image: 'hmctspublic.azurecr.io/rpe/send-letter-service-container-processed:latest'
+  aadIdentityName: send-letter
+  environment:
+    SEND_LETTER_URL: "http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  keyVaults:
+    "rpe-send-letter":
+      secrets:
+        - name: storage-account-connection-string
+          alias: STORAGE_ACCOUNT_CONNECTION_STRING
+        - name: app-insights-instrumentation-key
+          alias: azure.application-insights.instrumentation-key
+  job:
+    activeDeadlineSeconds: 300
+    ttlSecondsAfterFinished: 600
+  triggerAuth:
+    enabled: true
+  triggers:
+    - type: azure-blob
+      blobContainerName: "processed"
+      accountName: "rpesendletter{{ .Values.global.environment }}"
