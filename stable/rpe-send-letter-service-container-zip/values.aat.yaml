@@ -1,0 +1,2 @@
+function:
+  image: https://hmcts.azurecr.io/hmcts/rpe-send-letter-service-container-zip:latest
