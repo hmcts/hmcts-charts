@@ -1,0 +1,7 @@
+function:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  triggers:
+    - type: azure-blob
+      blobContainerName: "processed"
+      accountName: "rpesendletterpreview"
