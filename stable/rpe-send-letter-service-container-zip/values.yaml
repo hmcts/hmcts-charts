@@ -3,7 +3,6 @@ function:
   aadIdentityName: send-letter
   environment:
     SEND_LETTER_URL: "http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    VAR_CHART: trigger3
   keyVaults:
     "rpe-send-letter":
       secrets:
@@ -11,6 +10,8 @@ function:
           alias: STORAGE_ACCOUNT_CONNECTION_STRING
         - name: app-insights-instrumentation-key
           alias: azure.application-insights.instrumentation-key
+        - name: encryption-public-key
+          alias: ENCRYPTION_PUBLIC_KEY
   job:
     activeDeadlineSeconds: 300
     ttlSecondsAfterFinished: 600
