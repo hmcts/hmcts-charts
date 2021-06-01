@@ -74,7 +74,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: -xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:prod-816d45c5
+    image: hmctspublic.azurecr.io/xui/webapp:latest
     ingressHost: civil-service-xui-staging.aat.platform.hmcts.net
     environment:
       HEALTH_CCD_COMPONENT_API: http://-ccd-api-gw/health
