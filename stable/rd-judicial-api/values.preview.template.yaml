@@ -6,6 +6,8 @@ java:
     POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
     POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    LAUNCH_DARKLY_ENV: "preview"
+    ENVIRONMENT_NAME: "preview"
   postgresql:
     enabled: true
     postgresqlUsername: dbjuddata
@@ -14,5 +16,9 @@ java:
   keyVaults:
     rd:
       secrets:
-        - judicial-api-s2s-secret
-        - ApplicationInsightsInstrumentationKey
+        - name: ApplicationInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: LD-SDK-KEY
+          alias: LD_SDK_KEY
+        - name: judicial-api-s2s-secret
+          alias: S2S_SECRET
