@@ -4,11 +4,14 @@ java:
   ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: em
   keyVaults:
+    rpa:
+      resourceGroup: rpa
+      secrets:
+        - AppInsightsInstrumentationKey
     em-hrs-ingestor:
       resourceGroup: em-hrs-ingestor
       secrets:
         - microservicekey-em-hrs-ingestor
-        - AppInsightsInstrumentationKey
     em-hrs-api:
       secrets:
         - cvp-storage-connection-string

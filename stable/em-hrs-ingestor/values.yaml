@@ -9,12 +9,16 @@ job:
   #override to suspend future cron jobs
   concurrencyPolicy: Forbid
   keyVaults:
+    rpa:
+      resourceGroup: rpa
+      secrets:
+        - AppInsightsInstrumentationKey
     em-hrs-ingestor:
       resourceGroup: em-hrs-ingestor
       secrets:
         - microservicekey-em-hrs-ingestor
-        - AppInsightsInstrumentationKey
     em-hrs-api:
+      resourceGroup: em-hrs-api
       secrets:
         - cvp-storage-connection-string
         - cvp-storage-container-name
