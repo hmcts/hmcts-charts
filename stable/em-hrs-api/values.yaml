@@ -19,14 +19,13 @@ java:
         - hrs-storage-container-name
         - idam-system-user-name
         - idam-system-user-password
-        - AppInsightsInstrumentationKey
         - notification-api-key
     rpa:
       resourceGroup: rpa
       secrets:
         - show-oauth2-token
         - oauth2-client-id
-
+        - AppInsightsInstrumentationKey
   environment:
     SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-api-postgres-v11-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
     SPRING_DATASOURCE_USERNAME: emhrs@em-hrs-api-postgres-v11-db-{{ .Values.global.environment }}
