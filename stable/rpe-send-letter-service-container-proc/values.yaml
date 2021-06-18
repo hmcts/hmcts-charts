@@ -12,6 +12,7 @@ function:
           alias: azure.application-insights.instrumentation-key
   job:
     parallelism: 5
+    completions: 5
     activeDeadlineSeconds: 300
     ttlSecondsAfterFinished: 600
   triggerAuth:
