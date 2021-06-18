@@ -20,3 +20,4 @@ function:
     - type: azure-blob
       blobContainerName: "processed"
       accountName: "rpesendletter{{ .Values.global.environment }}"
+      blobPrefix: ""
