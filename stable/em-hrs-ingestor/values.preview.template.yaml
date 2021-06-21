@@ -3,7 +3,7 @@ job:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   kind: CronJob
-  schedule: "*/20 * * * *"
+  schedule: "*/16 * * * *"
   startingDeadlineSeconds: 180
   concurrencyPolicy: Forbid
   environment:
