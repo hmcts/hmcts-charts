@@ -3,6 +3,9 @@ job:
   image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
   ingressHost: rd-location-ref-data-load-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
+  kind: CronJob
+  global:
+    jobKind: CronJob
   environment:
     POSTGRES_HOST: rd-location-ref-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_USERNAME: dbrdlocationref@rd-location-ref-api-postgres-db-{{ .Values.global.environment }}
@@ -25,11 +28,8 @@ job:
         - rd-location-storage-account-name
         - rd-location-storage-account-primary-key
         - BLOB-URL-SUFFIX
-  postgresql:
-    enabled: false
+postgresql:
+  enabled: false
 
-  blobstorage:
-    enabled: false
-
-  global:
-    jobKind: CronJob
+blobstorage:
+  enabled: false

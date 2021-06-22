@@ -7,8 +7,6 @@ job:
     POSTGRES_USERNAME: locrefdata
     POSTGRES_PASSWORD: locrefdata
     FLYWAY_ENABLED: true
-    ACCOUNT_NAME: $(BLOB_ACCOUNT_NAME)
-    ACCOUNT_KEY: $(BLOB_ACCESS_KEY)
     CONTAINER_NAME: lrd-ref-data
   keyVaults:
     rd:
@@ -39,11 +37,11 @@ postgresql:
     enabled: false
 
 blobstorage:
-  resourceGroup: rd
+  resourceGroup: rd-aks-pr-test
   teamName: "RD"
-  location: uksouth
-#  setup:
-#    containers:
-#      - loc-ref-data
-#      - loc-ref-data-archive
+  location: ukwest
+  setup:
+    containers:
+      - lrd-ref-data
+      - lrd-ref-data-archive
   enabled: true
