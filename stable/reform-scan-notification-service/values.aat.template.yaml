@@ -3,7 +3,6 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 1000
     QUEUE_NAME: "notifications-staging"
     QUEUE_NOTIFICATIONS_READ: false
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500

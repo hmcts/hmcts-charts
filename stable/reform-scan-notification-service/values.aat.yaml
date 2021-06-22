@@ -3,7 +3,6 @@ java:
   image: https://hmcts.azurecr.io/hmcts/reform-scan-notification-service:latest
   ingressHost: 
   environment:
-    NOTIFICATIONS_CONSUME_TASK_DELAY_IN_MS: 1000
     QUEUE_NAME: "notifications-staging"
     QUEUE_NOTIFICATIONS_READ: false
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
