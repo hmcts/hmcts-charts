@@ -1,0 +1,3 @@
+job:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/wa-task-batch-service:latest
