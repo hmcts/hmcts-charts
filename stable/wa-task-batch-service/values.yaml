@@ -1,10 +1,16 @@
 job:
   image: hmctspublic.azurecr.io/wa/task-batch-service:latest
   schedule: "*/10 * * * *"
+  aadIdentityName: wa
   keyVaults:
     wa:
       secrets:
         - s2s-secret-task-monitor
+  secrets:
+    CONNECTION_STRING:
+      secretRef: some-secret-reference
+      key: s2s-secret-task-monitor
+      disabled: false
   environment:
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     S2S_MICROSERVICE_NAME: "wa_task_monitor"
