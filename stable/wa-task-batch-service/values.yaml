@@ -5,10 +5,10 @@ job:
     wa:
       secrets:
         - s2s-secret-task-monitor
-    environment:
-      S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-      S2S_MICROSERVICE_NAME: "wa_task_monitor"
-      WA_TASK_MONITOR_SERVICE_URL: "wa-task-monitor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  environment:
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    S2S_MICROSERVICE_NAME: "wa_task_monitor"
+    WA_TASK_MONITOR_SERVICE_URL: "wa-task-monitor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 global:
   job:
     kind: CronJob
