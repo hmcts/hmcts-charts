@@ -1,6 +1,6 @@
 job:
   image: hmctspublic.azurecr.io/wa/task-batch-service:latest
-  schedule: "*/10 * * * *"
+  schedule: "*/1 * * * *"
   aadIdentityName: wa
   keyVaults:
     wa:
