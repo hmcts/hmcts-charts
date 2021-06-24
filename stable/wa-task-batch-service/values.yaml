@@ -11,5 +11,4 @@ job:
     S2S_MICROSERVICE_NAME: "wa_task_monitor"
     WA_TASK_MONITOR_SERVICE_URL: "http://wa-task-monitor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 global:
-  job:
-    kind: CronJob
+  jobKind: CronJob
