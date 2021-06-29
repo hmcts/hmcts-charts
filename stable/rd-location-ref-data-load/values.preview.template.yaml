@@ -11,7 +11,6 @@ job:
   keyVaults:
     rd:
       secrets:
-        - BLOB-URL-SUFFIX
         - ApplicationInsightsInstrumentationKey
   secrets:
     BLOB_ACCOUNT_NAME:
