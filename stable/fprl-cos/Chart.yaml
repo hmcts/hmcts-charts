@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for fprl-cos-api
+name: fprl-cos
+version: 0.0.3
+maintainers:
+  - name: Family Private Law
+dependencies:
+  - name: java
+    version: 3.5.1
+    repository: '@hmctspublic'
