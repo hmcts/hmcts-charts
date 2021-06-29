@@ -16,4 +16,10 @@ job:
         - role-assignment-service-LD-SDK-KEY
   environment:
     #ORG_ROLE_MAPPING_DB_HOST: "{{ .Release.Name }}-postgresql"
-    AM_ORM_URL: http://am-org-role-mapping-service-pr-145.service.core-compute-preview.internal
+    AM_ORM_URL: http://am-org-role-mapping-service-pr-288.service.core-compute-preview.internal
+    ORG_ROLE_MAPPING_DB_HOST: am-org-role-mapping-service-pr-288-postgresql
+    ORG_ROLE_MAPPING_DB_NAME: org_role_mapping
+    ORG_ROLE_MAPPING_DB_USERNAME: org_role_mapping
+    ORG_ROLE_MAPPING_DB_PASSWORD: org_role_mapping
+    ORG_ROLE_MAPPING_DB_PORT: 5432
+    ORG_ROLE_MAPPING_DB_OPTIONS: "?stringtype=unspecified"
