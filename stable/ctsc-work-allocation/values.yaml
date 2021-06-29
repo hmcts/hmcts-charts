@@ -38,7 +38,7 @@ java:
     SERVER_URL: https://ctsc-work-allocation-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     CCD_API_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SERVICE_BUS_QUEUE_NAME: ctsc-work-allocation-queue-{{ .Values.global.environment }}
-    DEEPLINK_BASE_URL: https://www-ccd.{{ .Values.global.environment }}.platform.hmcts.net/case/
+    DEEPLINK_BASE_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/case/
 
     LOGBACK_REQUIRE_ALERT_LEVEL: false
     LOGBACK_REQUIRE_ERROR_CODE: false

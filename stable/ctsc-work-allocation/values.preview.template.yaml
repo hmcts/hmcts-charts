@@ -7,7 +7,7 @@ java:
     SPRING_DATASOURCE_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
 
     SERVICE_BUS_QUEUE_NAME: ctsc-work-allocation-queue-preview
-    DEEPLINK_BASE_URL: https://www-ccd.aat.platform.hmcts.net/case/
+    DEEPLINK_BASE_URL: https://manage-case.aat.platform.hmcts.net/case/
     TEST_ENDPOINTS_ENABLED: true
     SMTP_ENABLED: true
     CCD_DRY_RUN: false
