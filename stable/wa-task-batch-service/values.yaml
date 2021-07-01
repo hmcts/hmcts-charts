@@ -13,3 +13,4 @@ job:
     JOB_NAME: "CONFIGURATION"
 global:
   jobKind: CronJob
+  enableKeyVaults: true
