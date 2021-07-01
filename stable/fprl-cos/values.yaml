@@ -1,9 +1,10 @@
 java:
-  applicationPort: 4550
+  applicationPort: 4044
   ingressHost: fprl-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: fprl
 #  Uncomment once the vault containing the app insights key has been set up
 #  keyVaults:
-#    rpe:
+#    fprl:
 #      secrets:
 #        - name: AppInsightsInstrumentationKey
 #          alias: azure.application-insights.instrumentation-key
