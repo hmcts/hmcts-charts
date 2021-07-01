@@ -2,12 +2,3 @@ job:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  kind: CronJob
-  schedule: "*/16 * * * *"
-  startingDeadlineSeconds: 180
-  concurrencyPolicy: Forbid
-  environment:
-    ENABLE_CRONJOB: false
-global:
-  jobKind: CronJob
-

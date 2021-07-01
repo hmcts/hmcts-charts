@@ -1,24 +1,3 @@
 job:
-  applicationPort: 8090
   image: 'hmctspublic.azurecr.io/em/hrs-ingestor:latest'
   ingressHost: em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  kind: CronJob
-  schedule: "*/10 * * * *"
-  aadIdentityName: em
-  keyVaults:
-    rpa:
-      resourceGroup: rpa
-      secrets:
-        - AppInsightsInstrumentationKey
-    em-hrs-ingestor:
-      resourceGroup: em-hrs-ingestor
-      secrets:
-        - microservicekey-em-hrs-ingestor
-    em-hrs-api:
-      secrets:
-        - cvp-storage-connection-string
-        - cvp-storage-container-name
-  environment:
-    S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    ENABLE_CRONJOB: false
