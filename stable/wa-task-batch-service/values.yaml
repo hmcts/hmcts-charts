@@ -11,6 +11,7 @@ job:
     S2S_MICROSERVICE_NAME_TASK_MONITOR: "wa_task_monitor"
     WA_TASK_MONITOR_SERVICE_URL: "http://wa-task-monitor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     JOB_NAME: "CONFIGURATION"
+    ALLOW_CONFIG_MUTATIONS: true
 global:
   jobKind: CronJob
   enableKeyVaults: true
