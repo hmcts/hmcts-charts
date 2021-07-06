@@ -12,6 +12,7 @@ job:
       secrets:
         - role-assignment-service-POSTGRES-PASS
         - AppInsightsInstrumentationKey
+        - am-role-assignment-service-s2s-secret
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
