@@ -10,9 +10,12 @@ job:
   keyVaults:
     am:
       secrets:
-        - role-assignment-service-POSTGRES-PASS
-        - AppInsightsInstrumentationKey
-        - am-role-assignment-service-s2s-secret
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: am-role-assignment-service-s2s-secret
+          alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
+        - name: role-assignment-service-POSTGRES-PASS
+          alias: ROLE_ASSIGNMENT_DB_PASSWORD
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_NAME: role_assignment

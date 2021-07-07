@@ -12,8 +12,10 @@ job:
   keyVaults:
     am:
       secrets:
-        - AppInsightsInstrumentationKey
-        - am-role-assignment-service-s2s-secret
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: am-role-assignment-service-s2s-secret
+          alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
   global:
     jobKind: CronJob
 
