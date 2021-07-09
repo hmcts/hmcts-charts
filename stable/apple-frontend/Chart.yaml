@@ -1,0 +1,11 @@
+name: apple-frontend
+apiVersion: v2
+home: https://github.com/hmcts/cnp-plum-frontend
+version: 0.1.4
+description: HMCTS apple frontend application (test application)
+maintainers:
+  - name: HMCTS Platform Engineering Team
+dependencies:
+  - name: nodejs
+    version: 2.3.7
+    repository: "https://hmctspublic.azurecr.io/helm/v1/repo/"
