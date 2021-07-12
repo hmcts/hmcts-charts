@@ -8,4 +8,16 @@ java:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: ClientId
+          alias: CLIENT_ID
+        - name: ClientSecret
+          alias: CLIENT_SECRET
+        - name: Scope
+          alias: SCOPE
+        - name: hmc-servicebus-connection-string
+          alias: HMC_SERVICE_BUS_CONNECTION_STRING
   environment:
+    HMC_SERVICE_BUS_QUEUE: hmc-to-hmi-{{ .Values.global.environment }}
+
+servicebus:
+  enabled: false
