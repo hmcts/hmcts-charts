@@ -10,14 +10,15 @@ java:
     POSTGRES_USERNAME: refunds@ccpay-refunds-api-postgres-db-v11-{{ .Values.global.environment }}
     POSTGRES_CONNECTION_OPTIONS: ?sslmode=require
     SPRING_LIQUIBASE_ENABLED: false
-
-    RUN_DB_MIGRATION_ON_STARTUP: 'false'
-    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-
     AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     AUTH_IDAM_CLIENT_BASEURL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    TRUSTED_S2S_SERVICE_NAMES: "cmc,cmc_claim_store,probate_frontend,divorce_frontend,ccd_gw,bar_api,api_gw,finrem_payment_service,ccpay_bubble,jui_webapp,xui_webapp,fpl_case_service,civil_service"
-
+    ISSUER_URI: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o"
+    OIDC_CLIENT_ID: "paybubble"
+    OIDC_ISSUER: "https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts"
+    OIDC_S2S_MICROSERVICE_NAME: ccpay_bubble
+    OIDC_AUDIENCE_LIST: paybubble,cmc_citizen,ccd_gateway
+    S2S_AUTHORISED_SERVICES: payment_app,ccpay_bubble,cmc,bulk_scan_payment_processor,api_gw,probate_frontend,divorce_frontend,ccd_gw
+    IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -26,3 +27,7 @@ java:
           alias: POSTGRES_PASSWORD
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: paybubble-s2s-secret
+          alias: OIDC_S2S_SECRET
+        - name: paybubble-idam-client-secret
+          alias: OIDC_CLIENT_SECRET
