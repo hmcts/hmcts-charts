@@ -1,5 +1,5 @@
 java:
-  applicationPort: 4550
+  applicationPort: 8080
   image: 'hmctspublic.azurecr.io/ccpay/refunds-api:latest'
   ingressHost: refunds-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: ccpay
