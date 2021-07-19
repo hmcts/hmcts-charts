@@ -2,7 +2,10 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/nfdiv-frontend:latest
   ingressHost: 
-  devmemoryRequests: '256Mi'
+  devmemoryLimits: '2Gi'
+  devcpuLimits: '1000m'
+  devmemoryRequests: '512Mi'
+  devcpuRequests: '500m'
   registerAdditionalDns:
     enabled: true
     prefix: civil
