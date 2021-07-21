@@ -7,8 +7,14 @@ java:
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CAMUNDA_URL: "http://camunda-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/engine-rest"
     TASK_CONFIGURATION_SERVICE_URL: "http://wa-task-configuration-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CASE_EVENT_HANDLER_SERVICE_URL: "http://wa-case-event-handler-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_SEARCH_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    OPEN_ID_IDAM_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net"
   keyVaults:
     wa:
       secrets:
         - AppInsightsInstrumentationKey
         - s2s-secret-task-monitor
+        - wa-system-username
+        - wa-system-password
+        - wa-idam-client-secret
