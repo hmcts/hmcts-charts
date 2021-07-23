@@ -12,6 +12,7 @@ java:
     LOGBACK_REQUIRE_ERROR_CODE: 'false'
     SPRING_LIQUIBASE_ENABLED: true
     OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
+    LAUNCH_DARKLY_USER_NAME_PREFIX: aat
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -22,5 +23,7 @@ java:
           alias: OIDC_S2S_SECRET
         - name: paybubble-idam-client-secret
           alias: OIDC_CLIENT_SECRET
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
   postgresql:
     enabled: true
