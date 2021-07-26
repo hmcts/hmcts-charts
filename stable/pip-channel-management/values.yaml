@@ -1,0 +1,12 @@
+java:
+  applicationPort: 4550
+  image: 'hmctspublic.azurecr.io/pip-channel-management:latest'
+  ingressHost: pip-subscription-management-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: pip
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    rpe:
+#      secrets:
+#        - name: AppInsightsInstrumentationKey
+#          alias: azure.application-insights.instrumentation-key
+  environment:

@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/pip-channel-management:latest
+  ingressHost: 
