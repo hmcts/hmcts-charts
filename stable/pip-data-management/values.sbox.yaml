@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/pip-data-management:latest
+  ingressHost: 

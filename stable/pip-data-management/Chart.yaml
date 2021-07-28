@@ -1,0 +1,12 @@
+name: pip-data-management
+apiVersion: v2
+appVersion: "0.0.1"
+home: https://github.com/hmcts/pip-data-management
+version: 0.0.3
+description: Publishing & Information Data Management
+maintainers:
+  - name: HMCTS PIP Team
+dependencies:
+  - name: java
+    version: 3.6.0
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo'
