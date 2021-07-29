@@ -1,0 +1,5 @@
+nodejs:
+  environment:
+    RECIPE_BACKEND_URL: "http://toffee-recipe-backend.dev.platform.hmcts.net"
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
