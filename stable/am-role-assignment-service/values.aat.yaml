@@ -2,4 +2,5 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/am-role-assignment-service:latest
   ingressHost: 
-
+  environment:
+    BYPASS_ORG_DROOL_RULE: true
