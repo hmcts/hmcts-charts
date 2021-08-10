@@ -2,7 +2,7 @@ nodejs:
     environment:
         # TODO - this should be changed once we deploy AAT to AKS
         BASE_URL: "https://.service.core-compute-preview.internal"
-
+       
     # Don't modify below here
     image: https://hmcts.azurecr.io/hmcts/div-rfe:latest
     ingressHost: 
