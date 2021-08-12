@@ -1,5 +1,4 @@
 java:
-  # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
@@ -14,8 +13,10 @@ java:
   keyVaults:
     wa:
       secrets:
-        - AppInsightsInstrumentationKey
-        - s2s-secret-workflow-api
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: s2s-secret-workflow-api
+          alias: S2S_SECRET_WORKFLOW_API
   postgresql:
     enabled: true
     postgresqlDatabase: wa_workflow_api
