@@ -14,8 +14,13 @@ java:
   keyVaults:
     wa:
       secrets:
-        - AppInsightsInstrumentationKey
-        - s2s-secret-task-monitor
-        - wa-system-username
-        - wa-system-password
-        - wa-idam-client-secret
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: s2s-secret-task-monitor
+          alias: S2S_SECRET_TASK_MONITOR
+        - name: wa-system-username
+          alias: WA_SYSTEM_USERNAME
+        - name: wa-system-password
+          alias: WA_SYSTEM_PASSWORD
+        - name: wa-idam-client-secret
+          alias: WA_IDAM_CLIENT_SECRET
