@@ -4,11 +4,14 @@ job:
   environment:
     ROLE_ASSIGNMENT_DB_HOST: "{{ .Release.Name }}-postgresql"
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
-    ROLE_ASSIGNMENT_DB_USERNAME: am
-    ROLE_ASSIGNMENT_DB_PASSWORD: am
+    ROLE_ASSIGNMENT_DB_USERNAME: role_assignment
+    ROLE_ASSIGNMENT_DB_PASSWORD: role_assignment
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
     ENABLE_DB_MIGRATE: true
+    EMAIL_ENABLED: true
+    CCD_AM_MIGRATION_MASTER_FLAG: false
+    CCD_AM_MIGRATION_RENAME_TABLES_FLAG: false
   keyVaults:
     am:
       secrets:
@@ -16,6 +19,11 @@ job:
           alias: azure.application-insights.instrumentation-key
         - name: am-role-assignment-service-s2s-secret
           alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
+        - name: role-assignment-service-LD-SDK-KEY
+          alias: LD_SDK_KEY
+        - name: am-sendgrid-api-key
+          alias: AM_SENDGRID_API_KEY
+
   global:
     jobKind: CronJob
 
@@ -23,8 +31,8 @@ postgresql:
   enabled: true
   image:
     tag: '11.3.0'
-  postgresqlUsername: am
-  postgresqlPassword: am
+  postgresqlUsername: role_assignment
+  postgresqlPassword: role_assignment
   postgresqlDatabase: role_assignment
   postgresqlPort: 5432
   persistence:

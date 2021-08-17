@@ -16,6 +16,8 @@ job:
           alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
         - name: role-assignment-service-POSTGRES-PASS
           alias: ROLE_ASSIGNMENT_DB_PASSWORD
+        - name: am-sendgrid-api-key
+          alias: AM_SENDGRID_API_KEY
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
