@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 4000
+  aadIdentityName: lau
+  ingressHost: lau-case-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/lau/case-frontend:latest'
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    lau:
+#      secrets:
+#        - AppInsightsInstrumentationKey
+  environment:
