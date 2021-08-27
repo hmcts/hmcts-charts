@@ -1,2 +1,7 @@
 function:
   image: https://hmcts.azurecr.io/hmcts/rpe-send-letter-service-container-new:latest
+  triggers:
+    - type: azure-blob
+      blobContainerName: "new-bulkprint"
+      accountName: "rpesendletter{{ .Values.global.environment }}"
+      blobPrefix: manifest-
