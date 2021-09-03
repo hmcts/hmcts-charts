@@ -1,12 +1,27 @@
 java:
-  applicationPort: 4450
+  memoryRequests: "1024Mi"
+  cpuRequests: "500m"
+  memoryLimits: "2048Mi"
+  cpuLimits: "1500m"
+  applicationPort: 4550
   image: 'hmctspublic.azurecr.io/lau/case-backend:latest'
   ingressHost: lau-case-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: lau
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    lau:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
   environment:
+    LAU_DB_NAME: lau_case
+    LAU_DB_HOST: lau-case-backend-{{ .Values.global.environment }}.postgres.database.azure.com
+    LAU_DB_PORT: "5432"
+    FLYWAY_URL: jdbc:postgresql://lau-case-backend-{{ .Values.global.environment }}.postgres.database.azure.com:5432/lau_case?sslmode=require
+    FLYWAY_USER: lauadmin@lau-case-backend-{{ .Values.global.environment }}
+    FLYWAY_NOOP_STRATEGY: "false"
+    LAU_DB_CONN_OPTIONS: "?sslmode=require"
+  keyVaults:
+    lau:
+      resourceGroup: lau
+      secrets:
+        - case-backend-POSTGRES-USER
+        - case-backend-POSTGRES-PASS
+        - case-backend-app-db-user
+        - case-backend-app-db-password
+        - case-backend-flyway-password
+        - AppInsightsInstrumentationKey
