@@ -4,7 +4,6 @@ job:
   applicationPort: 4099
   aadIdentityName: am
   kind: CronJob
-  schedule: "*/10 * * * *"
   global:
     jobKind: CronJob
   keyVaults:
