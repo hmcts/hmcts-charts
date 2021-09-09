@@ -2,7 +2,7 @@ nodejs:
   applicationPort: 3100
   aadIdentityName: ccpay
   ingressHost: paymentoutcome-web.{{ .Values.global.environment }}.platform.hmcts.net
-  image: 'hmctspublic.azurecr.io/ccpay-paymentoutcome-web:latest'
+  image: 'hmctspublic.azurecr.io/ccpay/paymentoutcome-web:latest'
 #  Uncomment once the vault containing the app insights key has been set up
 #  keyVaults:
 #    rpe:
