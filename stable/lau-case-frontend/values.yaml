@@ -3,9 +3,25 @@ nodejs:
   aadIdentityName: lau
   ingressHost: lau-case-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/lau/case-frontend:latest'
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    lau:
-#      secrets:
-#        - AppInsightsInstrumentationKey
   environment:
+    USE_REDIS: true
+    REDIS_USE_TLS: true
+    REDIS_PORT: 6380
+    REDIS_HOST: lau-case-frontend-session-storage-{{ .Values.global.environment }}.redis.cache.windows.net
+
+  keyVaults:
+    lau:
+      resourceGroup: lau
+      secrets:
+        - AppInsightsInstrumentationKey
+        - case-frontend-redis-access-key
+
+redis:
+  cluster:
+    enabled: false
+    slaveCount: 0
+  usePassword: false
+  master:
+    persistence:
+      enabled: false
+  enabled: false
