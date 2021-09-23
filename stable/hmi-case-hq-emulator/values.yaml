@@ -1,0 +1,15 @@
+java:
+  applicationPort: 4550
+  ingressHost: hmi-case-hq-emulator.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'sdshmctspublic.azurecr.io/hmi/case-hq-emulator:latest'
+  aadIdentityName: hmi
+#  Uncomment once the vault containing the app insights key has been set up
+keyVaults:
+    hmi-shared-kv-{{ .Values.global.environment }}:
+      excludeEnvironmentSuffix: false
+      resourceGroup: hmi-sharedservices-{{ .Values.global.environment }}-rg
+      usePodIdentity: true
+      secrets:
+        - hmisharedinfrasa-storageaccount-key
+        - hmisharedinfrasa-storageaccount-name  
+environment:
