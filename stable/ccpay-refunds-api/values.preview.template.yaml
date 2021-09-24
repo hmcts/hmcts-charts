@@ -19,11 +19,13 @@ java:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
-        - name: paybubble-s2s-secret
+        - name: refunds-s2s-secret
           alias: OIDC_S2S_SECRET
         - name: paybubble-idam-client-secret
           alias: OIDC_CLIENT_SECRET
         - name: launch-darkly-sdk-key
           alias: LAUNCH_DARKLY_SDK_KEY
+        - name: liberata-api-key
+          alias: LIBERATA_API_KEY
   postgresql:
     enabled: true
