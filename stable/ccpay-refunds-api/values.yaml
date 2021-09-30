@@ -20,6 +20,10 @@ java:
     S2S_AUTHORISED_SERVICES: payment_app,ccpay_bubble,cmc,bulk_scan_payment_processor,api_gw,probate_frontend,divorce_frontend,ccd_gw
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     LAUNCH_DARKLY_USER_NAME_PREFIX: '{{ .Values.global.environment }}'
+    LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
+    LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
+    LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
+    REFUND_STATUS_UPDATE_PATH: "/refunds-api/refunds"
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -36,3 +40,12 @@ java:
           alias: LAUNCH_DARKLY_SDK_KEY
         - name: liberata-api-key
           alias: LIBERATA_API_KEY
+        - name: liberata-keys-oauth2-client-id
+          alias: LIBERATA_OAUTH2_CLIENT_ID
+        - name: liberata-keys-oauth2-client-secret
+          alias: LIBERATA_OAUTH2_CLIENT_SECRET
+        - name: liberata-keys-oauth2-username
+          alias: LIBERATA_OAUTH2_USERNAME
+        - name: liberata-keys-oauth2-password
+          alias: LIBERATA_OAUTH2_PASSWORD
+
