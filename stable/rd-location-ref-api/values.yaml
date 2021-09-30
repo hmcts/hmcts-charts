@@ -25,4 +25,4 @@ java:
         - name: LD-SDK-KEY
           alias: LD_SDK_KEY
         - name: location-ref-api-s2s-secret
-          alias: S2S_SECRET
+          alias: LOCATION_REF_API_S2S_SECRET
