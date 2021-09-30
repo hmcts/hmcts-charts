@@ -22,4 +22,4 @@ java:
         - name: LD-SDK-KEY
           alias: LD_SDK_KEY
         - name: judicial-api-s2s-secret
-          alias: S2S_SECRET
+          alias: JUDICIAL_API_S2S_SECRET

@@ -21,7 +21,7 @@ java:
         - name: judicial-api-POSTGRES-PASS
           alias: spring.datasource.password
         - name: judicial-api-s2s-secret
-          alias: S2S_SECRET
+          alias: JUDICIAL_API_S2S_SECRET
         - name: ApplicationInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
         - name: LD-SDK-KEY
