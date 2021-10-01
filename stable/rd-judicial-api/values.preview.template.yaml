@@ -6,7 +6,7 @@ java:
     POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
     POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
-    JUDICIAL_DB: classpath:db/migration,classpath:db/migrationAks
+    JUDICIAL_DB: classpath:db/migration
     LAUNCH_DARKLY_ENV: "preview"
     ENVIRONMENT_NAME: "preview"
   postgresql:
