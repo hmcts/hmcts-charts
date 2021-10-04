@@ -1,7 +1,7 @@
 nodejs:
   applicationPort: 4000
   aadIdentityName: lau
-  ingressHost: lau-case-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: lau-case.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/lau/case-frontend:latest'
   environment:
     USE_REDIS: true
