@@ -24,6 +24,11 @@ java:
     LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
     LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
     REFUND_STATUS_UPDATE_PATH: "/refunds-api/refunds"
+    REFUND_SERVICE_ACCOUNT_CLIENT_ID: "refunds_api"
+    REFUND_SERVICE_ACCOUNT_GRANT_TYPE: "password"
+    REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
+    REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
+    REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -48,4 +53,8 @@ java:
           alias: LIBERATA_OAUTH2_USERNAME
         - name: liberata-keys-oauth2-password
           alias: LIBERATA_OAUTH2_PASSWORD
+        - name: refunds-api-user-password
+          alias: REFUND_SERVICE_ACCOUNT_PASSWORD
+        - name: refunds-api-client-secret
+          alias: REFUND_SERVICE_ACCOUNT_CLIENT_SECRET
 
