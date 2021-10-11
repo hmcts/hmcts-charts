@@ -3,7 +3,7 @@ appVersion: "1.0"
 home: https://github.com/hmcts/idam-api
 description: A Helm chart for CFT IDAM API
 name: idam-api
-version: 0.4.2
+version: 0.3.9
 maintainers:
   - name: CFT IDAM Team
     email: reform.idam@HMCTS.NET
@@ -21,3 +21,7 @@ dependencies:
   - name: java
     version: ~3.6.0
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+  - name: keycloak
+    version: ~9.4.0
+    repository: https://codecentric.github.io/helm-charts
+    condition: keycloak.enabled

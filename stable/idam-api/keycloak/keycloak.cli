@@ -1,0 +1,16 @@
+embed-server --server-config=standalone-ha.xml --std-out=echo
+batch
+
+echo Configuring node identifier
+
+## Sets the node identifier to the node name (= pod name). Node identifiers have to be unique. They can have a
+## maximum length of 23 characters. Thus, the chart's fullname template truncates its length accordingly.
+/subsystem=transactions:write-attribute(name=node-identifier, value=${jboss.node.name})
+/subsystem=keycloak-server/spi=vault/:add
+/subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir => "/mnt/secrets/idam-idam/"})
+## /subsystem=keycloak-server/spi=hostname/provider=default:write-attribute(name=properties.frontendUrl,value="https://idam-keycloak.{{ .Values.global.environment }}.platform.hmcts.net")
+
+echo Finished configuring node identifier
+
+run-batch
+stop-embedded-server

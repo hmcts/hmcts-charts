@@ -7,5 +7,3 @@ java:
   consulIP: ${CONSUL_LB_IP}
   environment:
     TESTING_SUPPORT_ENABLED: true
-  devApplicationInsightsInstrumentKeyName: DUMMY_APPLICATIONINSIGHTS_DUMMYKEY
-  devApplicationInsightsInstrumentKey: '00000001-0001-0001-0001-000000000001'
