@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for Log and Audit Case Frontend App
 name: lau-case-frontend
 home: https://github.com/hmcts/lau-case-frontend
-version: 0.0.4
+version: 0.0.5
 dependencies:
   - name: nodejs
     version: 2.3.8
@@ -12,4 +12,7 @@ dependencies:
     version: 10.6.18
     repository: 'https://charts.bitnami.com/bitnami'
     condition: redis.enabled
-
+  - name: idam-pr
+    version: 2.2.6
+    repository: '@hmctspublic'
+    condition: idam-pr.enabled

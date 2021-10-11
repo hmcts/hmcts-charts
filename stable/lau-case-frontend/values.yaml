@@ -8,6 +8,11 @@ nodejs:
     REDIS_USE_TLS: true
     REDIS_PORT: 6380
     REDIS_HOST: lau-case-frontend-session-storage-{{ .Values.global.environment }}.redis.cache.windows.net
+    IDAM_WEB_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login"
+    IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token"
+    OAUTH_CLIENT_REDIRECT: "https://lau-case.{{ .Values.global.environment }}.platform.hmcts.net/oauth2/callback"
+    ALLOW_CONFIG_MUTATIONS: true
+
 
   keyVaults:
     lau:
@@ -15,6 +20,7 @@ nodejs:
       secrets:
         - AppInsightsInstrumentationKey
         - case-frontend-redis-access-key
+        - idam-client-secret
 
 redis:
   cluster:
@@ -24,4 +30,7 @@ redis:
   master:
     persistence:
       enabled: false
+  enabled: false
+
+idam-pr:
   enabled: false

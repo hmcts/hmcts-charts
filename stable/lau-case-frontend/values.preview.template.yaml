@@ -6,6 +6,13 @@ nodejs:
     REDIS_HOST: ${SERVICE_NAME}-redis-master
     REDIS_PORT: 6379
     REDIS_USE_TLS: false
+    OAUTH_CLIENT_REDIRECT: https://${SERVICE_FQDN}/oauth2/callback
 
 redis:
   enabled: true
+
+idam-pr:
+  enabled: true
+  redirect_uris:
+    lau:
+      - https://${SERVICE_FQDN}/oauth2/callback
