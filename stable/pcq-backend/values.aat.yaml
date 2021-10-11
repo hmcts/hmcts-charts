@@ -2,3 +2,6 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/pcq-backend:latest
   ingressHost: 
+  environment:
+    DB_ALLOW_DELETE_RECORD: "true"
+

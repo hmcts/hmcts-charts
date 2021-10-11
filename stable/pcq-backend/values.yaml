@@ -15,6 +15,7 @@ java:
     FLYWAY_USER: pcquser@pcq-backend-{{ .Values.global.environment }}
     FLYWAY_NOOP_STRATEGY: "false"
     DB_ENCRYPTION_ENABLED: "Yes"
+    DB_ALLOW_DELETE_RECORD: "false"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:
     pcq:
