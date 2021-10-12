@@ -2,7 +2,7 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/sscs-tribunals-frontend:latest
   ingressHost: 
   environment:
-    FT_ANTENNA_WEBCHAT: false
+    CONTACT_US_WEBCHAT_ENABLED: false
     PCQ_URL: "https://pcq.aat.platform.hmcts.net"
     FT_WELSH: true
     PCQ_ENABLED: true
