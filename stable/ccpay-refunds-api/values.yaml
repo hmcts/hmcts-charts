@@ -23,7 +23,7 @@ java:
     LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
     LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
     LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
-    REFUND_STATUS_UPDATE_PATH: "/refunds-api/refunds"
+    REFUND_STATUS_UPDATE_PATH: "/refunds-api/refund"
     REFUND_SERVICE_ACCOUNT_CLIENT_ID: "refunds_api"
     REFUND_SERVICE_ACCOUNT_GRANT_TYPE: "password"
     REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
