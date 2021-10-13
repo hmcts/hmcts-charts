@@ -1,7 +1,7 @@
 java:
-  # Don't modify below here
-  image: ${IMAGE_NAME}
-  ingressHost: ${SERVICE_FQDN}
   environment:
     DB_ALLOW_DELETE_RECORD: "true"
     FLYWAY_NOOP_STRATEGY: "false"
+    PCQ_DEVELOPERS: "Priyanka and David"
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
