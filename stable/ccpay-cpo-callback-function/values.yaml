@@ -1,0 +1,25 @@
+function:
+  image: hmctspublic.azurecr.io/ccpay/cpo-callback-function
+  trigger:
+    type: azure-servicebus
+    servicebus:
+      topicName: "ccpay-cpo-topic"
+      subscriptionName: defaultServiceCallbackSubscription
+      connection: SERVICE_CALLBACK_BUS_CONNECTION
+      queueLength: 1
+  aadIdentityName: ccpay
+  keyVaults:
+    "ccpay":
+      secrets:
+        - ccpay-cpo-s2s-secret
+        - ccpay-cpo-user-id
+        - ccpay-cpo-user-password
+        - ccpay-cpo-client-id 
+        - ccpay-cpo-client-secret
+        - cpo-topic-primary-send-listen-shared-access-key 
+  environment:
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    MICROSERVICE_PAYMENT_APP: "ccpay_cpo_function_node"
+    USER_AUTH_URL : https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token",
+  servicebus:
+  enabled: false

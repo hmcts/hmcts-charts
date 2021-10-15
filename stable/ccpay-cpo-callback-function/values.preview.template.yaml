@@ -1,0 +1,22 @@
+function:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  environment:
+    APPINSIGHTS_INSTRUMENTATIONKEY: 124e39c3-6dad-49ef-aede-d2cddac865c2
+  secrets:
+    SERVICE_CALLBACK_BUS_CONNECTION:
+      secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-servicecallbacktopic
+      key: connectionString
+    SERVICE_CALLBACK_SUBSCRIPTION:
+      secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-servicecallbacktopic
+      key: subscriptionName
+servicebus:
+  resourceGroup: fees-pay-rg
+  teamName: "Fees Pay"
+  location: ukwest
+  serviceplan: standard
+  setup:
+    topics:
+      - name: ccpay-cpo-topic
+        subscriptionNeeded: yes
+  enabled: true
