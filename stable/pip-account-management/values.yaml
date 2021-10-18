@@ -3,10 +3,18 @@ java:
   ingressHost: pip-account-management.{{ .Values.global.environment }}.platform.hmcts.net
   applicationPort: 6969
   image: 'sdshmctspublic.azurecr.io/pip/account-management:latest'
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    rpe:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
+  keyVaults:
+    pip-shared-kv:
+      excludeEnvironmentSuffix: false
+      resourceGroup: pip-sharedservices-{{ .Values.global.environment }}-rg
+      usePodIdentity: true
+      secrets:
+        - name: otp-app-pip-account-management-id
+          alias: CLIENT_ID
+        - name: otp-app-pip-account-management-pwd
+          alias: CLIENT_SECRET
+        - name: otp-tenant-id
+          alias: TENANT_GUID
+        - name: pipsharedinfrasa-storageaccount-connection-string
+          alias: CONNECTION_STRING
   environment:
