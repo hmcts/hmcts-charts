@@ -3,7 +3,7 @@ function:
   trigger:
     type: azure-servicebus
     servicebus:
-      topicName: "ccpay-cpo-topic"
+      topicName: "test-cpo"
       subscriptionName: defaultServiceCallbackSubscription
       connection: SERVICE_CALLBACK_BUS_CONNECTION
       queueLength: 1
