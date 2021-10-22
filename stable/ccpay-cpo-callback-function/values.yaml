@@ -23,4 +23,4 @@ function:
     USER_AUTH_URL : https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token"
 
 servicebus:
-  enabled: false
+  enabled: true
