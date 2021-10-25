@@ -3,4 +3,4 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/pip-frontend:latest
   ingressHost: 
   environment:
-    API_URL: pip-business-rules.staging.platform.hmcts.net
+    DATA_MANAGEMENT_URL: https://pip-data-management.staging.platform.hmcts.net
