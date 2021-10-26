@@ -14,5 +14,5 @@ redis:
 idam-pr:
   enabled: true
   redirect_uris:
-    lau:
+    Log and Audit:
       - https://${SERVICE_FQDN}/oauth2/callback
