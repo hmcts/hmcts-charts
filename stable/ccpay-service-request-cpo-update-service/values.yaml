@@ -4,9 +4,16 @@ java:
   ingressHost: ccpay-service-request-cpo-update-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: ccpay
 #  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    rpe:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
+  keyVaults:
+    "ccpay":
+      resourceGroup: ccpay
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: ccpay-service-request-cpo-update-topic-shared-access-key
+          alias: AMQP_SHARED_ACCESS_KEY_VALUE
   environment:
+    AMQP_HOST: "ccpay-servicebus-aat.servicebus.windows.net"
+    AMQP_SHARED_ACCESS_KEY_NAME: SendAndListenSharedAccessKey
+    AMQP_TOPIC_NAME: "ccpay-service-request-cpo-update-topic"
+    AMQP_SUBSCRIPTION: serviceRequestCpoUpdateSubscription
