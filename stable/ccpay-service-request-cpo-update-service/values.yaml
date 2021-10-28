@@ -13,7 +13,7 @@ java:
         - name: ccpay-service-request-cpo-update-topic-shared-access-key
           alias: AMQP_SHARED_ACCESS_KEY_VALUE
   environment:
-    AMQP_HOST: "ccpay-servicebus-aat.servicebus.windows.net"
+    AMQP_HOST: "ccpay-servicebus-{{ .Values.global.environment }}.servicebus.windows.net"
     AMQP_SHARED_ACCESS_KEY_NAME: SendAndListenSharedAccessKey
     AMQP_TOPIC_NAME: "ccpay-service-request-cpo-update-topic"
     AMQP_SUBSCRIPTION: serviceRequestCpoUpdateSubscription
