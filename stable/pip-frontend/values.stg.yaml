@@ -3,3 +3,6 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/pip-frontend:latest
   ingressHost: 
   environment:
+    SECRETS_DIRECTORY: /mnt/secrets/pip-shared-kv
+    OIDC: true
+    FRONTEND_URL: https://
