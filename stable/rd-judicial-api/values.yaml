@@ -14,6 +14,9 @@ java:
     JUDICIAL_DB: classpath:db/migration
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
+    LOCATION_REF_DATA_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    REFRESH_PAGE_SIZE: 20
+    REFRESH_SORT_COLUMN: objectId
   image: 'hmctspublic.azurecr.io/rd/judicial-api:latest'
   keyVaults:
     rd:
