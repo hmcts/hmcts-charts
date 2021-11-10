@@ -31,5 +31,5 @@ java:
     CPO_UPDATE_ACCOUNT_USERNAME: idam.user.ccpayfunctionnode@hmcts.net
     AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     OIDC_S2S_MICROSERVICE_NAME: service_request_cpo_update_service
-    CPO_CALLBACK_URL: "http://cpo-case-payment-orders-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    CPO_CALLBACK_PATH: "/case-payment-orders"
+    CPO_URL: "http://cpo-case-payment-orders-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CPO_PATH: "/case-payment-orders"
