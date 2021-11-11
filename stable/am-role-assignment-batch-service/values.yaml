@@ -22,8 +22,8 @@ job:
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
-    ROLE_ASSIGNMENT_DB_HOST: am-role-assignment-service-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    ROLE_ASSIGNMENT_DB_USERNAME: am@am-role-assignment-service-postgres-db-{{ .Values.global.environment }}
+    ROLE_ASSIGNMENT_DB_HOST: am-role-assignment-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    ROLE_ASSIGNMENT_DB_USERNAME: am@am-role-assignment-service-postgres-db-v11-{{ .Values.global.environment }}
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
 postgresql:
   enabled: false

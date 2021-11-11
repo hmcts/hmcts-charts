@@ -2,4 +2,6 @@ job:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-
+  environment:
+    ROLE_ASSIGNMENT_DB_HOST: am-role-assignment-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    ROLE_ASSIGNMENT_DB_USERNAME: am@am-role-assignment-service-postgres-db-v11-{{ .Values.global.environment }}
