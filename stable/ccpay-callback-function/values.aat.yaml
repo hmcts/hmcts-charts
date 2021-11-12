@@ -1,0 +1,2 @@
+function:
+  image: https://hmcts.azurecr.io/hmcts/ccpay-callback-function:latest
