@@ -1,0 +1,7 @@
+nodejs:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/lau-idam-frontend:latest
+  ingressHost: 
+
+idam-pr:
+  enabled: false
