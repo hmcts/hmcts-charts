@@ -8,12 +8,5 @@ function:
       subscriptionName: defaultServiceCallbackSubscription
       connection: SERVICE_CALLBACK_BUS_CONNECTION
       queueLength: 1
-  keyVaults:
-    ccpay:
-      secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: APPINSIGHTS_INSTRUMENTATIONKEY
-        - name: sb-primary-connection-string
-          alias: SERVICE_CALLBACK_BUS_CONNECTION
 servicebus:
   enabled: false
