@@ -2,3 +2,6 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/am-judicial-booking-service:latest
   ingressHost: 
+  environment:
+    JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}

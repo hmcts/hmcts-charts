@@ -18,8 +18,8 @@ java:
     AM_JUDICIAL_BOOKING_S2S_AUTHORISED_SERVICES: am_judicial_booking_service
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-{{ .Values.global.environment }}
+    JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}
     OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
