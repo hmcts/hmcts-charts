@@ -11,7 +11,9 @@ function:
   keyVaults:
     ccpay:
       secrets:
-        - AppInsightsInstrumentationKey
-        - sb-primary-connection-string
+        - name: AppInsightsInstrumentationKey
+          alias: APPINSIGHTS_INSTRUMENTATIONKEY
+        - name: sb-primary-connection-string
+          alias: SERVICE_CALLBACK_BUS_CONNECTION
 servicebus:
   enabled: false
