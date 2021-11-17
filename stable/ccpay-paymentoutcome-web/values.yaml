@@ -14,5 +14,5 @@ nodejs:
 #        - AppInsightsInstrumentationKey
   environment:
      S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-     PAYHUB_URL: http://payment-api-pr-1033.service.core-compute-preview.internal
+     PAYHUB_URL: http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
