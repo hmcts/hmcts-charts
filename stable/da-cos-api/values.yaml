@@ -1,0 +1,15 @@
+java:
+  image: 'hmctspublic.azurecr.io/da/cos-api:latest'
+  ingressHost: da-cos-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  applicationPort: 4550
+  aadIdentityName: domestic-abuse
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    rpe:
+#      secrets:
+#        - name: AppInsightsInstrumentationKey
+#          alias: azure.application-insights.instrumentation-key
+  environment:
+    REFORM_TEAM: da
+    REFORM_SERVICE_NAME: da-cos-api
+    REFORM_ENVIRONMENT: preview

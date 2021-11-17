@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for da-cos-api App
+name: da-cos-api
+home: https://github.com/hmcts/da-cos-api
+version: 0.0.1
+maintainers:
+  - name: HMCTS Domestic Abuse team
+dependencies:
+  - name: java
+    version: 3.6.0
+    repository: '@hmctspublic'
