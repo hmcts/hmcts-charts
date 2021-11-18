@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3100
+  aadIdentityName: idam
+  ingressHost: idam-user-dashboard.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/idam/user-dashboard:latest'
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    idam:
+#      secrets:
+#        - AppInsightsInstrumentationKey
+  environment:
