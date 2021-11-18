@@ -33,3 +33,4 @@ java:
     OIDC_S2S_MICROSERVICE_NAME: service_request_cpo_update_service
     CPO_URL: "http://cpo-case-payment-orders-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CPO_PATH: "/case-payment-orders"
+    THREAD_COUNT: 4
