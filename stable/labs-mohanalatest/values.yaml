@@ -3,3 +3,4 @@ java:
   image: 'hmctspublic.azurecr.io/labs/mohanalatest:latest'
   ingressHost: labs-mohanalatest-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
+    FAVOURITE_FRUIT: plum
