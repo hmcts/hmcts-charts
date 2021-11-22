@@ -1,0 +1,5 @@
+function:
+  image: ${IMAGE_NAME}
+  job:
+    parallelism: 5
+  pollingInterval: 5
