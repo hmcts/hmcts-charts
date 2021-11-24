@@ -1,4 +1,4 @@
 nodejs:
   # Don't modify below here
-  image: https://hmcts.azurecr.io/hmcts/idam-user-dashboard:latest
-  ingressHost: 
+  image: hmctspublic.azurecr.io/idam/user-dashboard:staging-e5e9cb9-20211124164828
+  ingressHost: idam-user-dashboard-staging.service.core-compute-aat.internal
