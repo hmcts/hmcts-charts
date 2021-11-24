@@ -25,4 +25,5 @@ java:
         - idam-backend-app-db-user
         - idam-backend-app-db-password
         - idam-backend-flyway-password
+        - backend-encryption-key
         - AppInsightsInstrumentationKey
