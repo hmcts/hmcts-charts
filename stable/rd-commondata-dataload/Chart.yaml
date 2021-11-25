@@ -1,0 +1,20 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for rd-commondata-dataload
+name: rd-commondata-dataload
+home: https://github.com/hmcts/rd-commondata-dataload
+version: 0.0.1
+maintainers:
+  - name: Reference Data Team
+dependencies:
+  - name: job
+    version: ~0.7.3
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+  - name: postgresql
+    version: ~8.9.8
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+  # - name: blobstorage
+  #   version: 0.2.1
+  #   repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+  #   condition: blobstorage.enabled
