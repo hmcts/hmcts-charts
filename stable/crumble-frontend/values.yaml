@@ -1,5 +1,10 @@
 nodejs:
   applicationPort: 1337
   image: 'hmctspublic.azurecr.io/crumble/frontend:latest'
+  aadIdentityName: crumble
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-java
+  keyVaults:
+    "crumblesi":
+      secrets:
+        - name: appInsights-InstrumentationKey
