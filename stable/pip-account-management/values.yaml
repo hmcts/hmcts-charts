@@ -4,9 +4,8 @@ java:
   applicationPort: 6969
   image: 'sdshmctspublic.azurecr.io/pip/account-management:latest'
   keyVaults:
-    pip-sharedservice-kv:
-      resourceGroup: pip-sharedservice-{{ .Values.global.environment }}-rg
-      usePodIdentity: true
+    pip-ss-kv:
+      resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
       secrets:
         - name: otp-app-pip-account-management-id
           alias: CLIENT_ID
@@ -14,6 +13,6 @@ java:
           alias: CLIENT_SECRET
         - name: otp-tenant-id
           alias: TENANT_GUID
-        - name: pipsharedservicesa-storageaccount-connection-string
+        - name: shared-storageaccount-connection-string
           alias: CONNECTION_STRING
   environment:
