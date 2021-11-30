@@ -1,5 +1,10 @@
 nodejs:
   applicationPort: 1337
   image: 'hmctspublic.azurecr.io/plum/frontend:latest'
+  aadIdentityName: cnp
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-java
+  keyVaults:
+    "plumsi":
+      secrets:
+        - name: appInsights-InstrumentationKey
