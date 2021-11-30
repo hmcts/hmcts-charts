@@ -8,7 +8,6 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/reform-scan-blob-router:latest
   ingressHost: 
-  devApplicationInsightsInstrumentKey: "fb929548-3309-4933-bd6e-f7932b4e0309"
   keyVaults:
     reform-scan:
       resourceGroup: reform-scan
