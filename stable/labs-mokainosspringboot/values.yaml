@@ -1,0 +1,6 @@
+java:
+  applicationPort: 9000
+  image: 'hmctspublic.azurecr.io/labs/mokainosspringboot:latest'
+  ingressHost: labs-mokainosspringboot-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: labs
+  environment:
