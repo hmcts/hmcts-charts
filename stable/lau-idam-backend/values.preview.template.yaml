@@ -12,7 +12,7 @@ java:
     FLYWAY_PASSWORD: "{{ .Values.postgresql.postgresqlPassword }}"
     FLYWAY_NOOP_STRATEGY: "false"
     LAU_IDAM_DB_CONN_OPTIONS: "?sslmode=allow"
-    DB_ENCRYPTION_ENABLED: "No"
+    LAU_IDAM_ENCRYPTION_ENABLED: "No"
     TEST_S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     LAU_FLYWAY_MIGRATE_DB: "true"
   # Don't modify below here
