@@ -10,11 +10,12 @@ java:
     POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
     # LOCATIONS_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
     LAUNCH_DARKLY_ENV: "preview"
+    ENVIRONMENT_NAME: "preview"
   postgresql:
     enabled: true
-    postgresqlUsername: dbrdcommondata
-    postgresqlPassword: dbrdcommondata
-    postgresqlDatabase: dbrdcommondata
+    postgresqlUsername: dbcommondata
+    postgresqlPassword: dbcommondata
+    postgresqlDatabase: dbcommondata
     postgresqlPort: 5432
   keyVaults:
     rd:
@@ -23,5 +24,7 @@ java:
           alias: azure.application-insights.instrumentation-key
         - name: LD-SDK-KEY
           alias: LD_SDK_KEY
-        # - name: commondata-api-s2s-secret
-        #   alias: COMMONDATA_API_S2S_SECRET
+        - name: commondata-api-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
+       #- name: commondata-api-s2s-secret
+       #  alias: COMMONDATA_API_S2S_SECRET
