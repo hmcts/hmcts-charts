@@ -1,5 +1,5 @@
 nodejs:
   # Don't modify below here
-  image: hmctspublic.azurecr.io/idam/user-dashboard:staging-06cd997-20211205222354
+  image: hmctspublic.azurecr.io/idam/user-dashboard:staging-b27015e-20211205224310
   ingressHost: idam-user-dashboard-staging.service.core-compute-aat.internal
   aadIdentityName: idam
