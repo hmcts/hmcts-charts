@@ -6,10 +6,11 @@ job:
     jobKind: CronJob
   environment:
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_DB_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
-    POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
+    POSTGRES_DB_NAME: dbcommondata
+    POSTGRES_USERNAME: dbcommondata
+    POSTGRES_PASSWORD: dbcommondata
+    POSTGRES_PORT: 5432
+    FLYWAY_ENABLED: true
     # LOCATIONS_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
     # LAUNCH_DARKLY_ENV: "preview"
   keyVaults:

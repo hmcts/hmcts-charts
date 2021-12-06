@@ -25,6 +25,7 @@ job:
     POSTGRES_USERNAME: dbcommondata@rd-commondata-api-postgres-db-v11-{{ .Values.global.environment }}
     POSTGRES_DB_NAME: dbcommondata
     POSTGRES_PORT: 5432
+    FLYWAY_ENABLED: false
     # S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     # OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
     # OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
@@ -34,4 +35,3 @@ job:
 
 postgresql:
   enabled: false
-  
