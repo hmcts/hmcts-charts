@@ -13,15 +13,19 @@ java:
     SPRING_LIQUIBASE_ENABLED: true
     OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
     LAUNCH_DARKLY_USER_NAME_PREFIX: aat
+    PAYMENT_API_URL: "http://payment-api-pr-972.service.core-compute-preview.internal"
     LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
     LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
     LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
     REFUND_STATUS_UPDATE_PATH: "/refunds-api/refund"
+    USER_INFO_SIZE: 300
+    USER_LAST_MODIFIED_TIME: 720d
     REFUND_SERVICE_ACCOUNT_CLIENT_ID: "refunds_api"
     REFUND_SERVICE_ACCOUNT_GRANT_TYPE: "password"
     REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
     REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
     REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-aat.service.core-compute-aat.internal/oauth2/callback"
+
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -34,8 +38,6 @@ java:
           alias: OIDC_CLIENT_SECRET
         - name: launch-darkly-sdk-key
           alias: LAUNCH_DARKLY_SDK_KEY
-        - name: liberata-api-key
-          alias: LIBERATA_API_KEY
         - name: liberata-keys-oauth2-client-id
           alias: LIBERATA_OAUTH2_CLIENT_ID
         - name: liberata-keys-oauth2-client-secret
@@ -44,10 +46,11 @@ java:
           alias: LIBERATA_OAUTH2_USERNAME
         - name: liberata-keys-oauth2-password
           alias: LIBERATA_OAUTH2_PASSWORD
+        - name: liberata-api-key
+          alias: LIBERATA_API_KEY
         - name: refunds-api-user-password
           alias: REFUND_SERVICE_ACCOUNT_PASSWORD
         - name: refunds-api-client-secret
           alias: REFUND_SERVICE_ACCOUNT_CLIENT_SECRET
-
   postgresql:
     enabled: true

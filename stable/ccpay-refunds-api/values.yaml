@@ -23,7 +23,7 @@ java:
     PAYMENT_API_URL: "http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
     LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
-    LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
+    LIBERATA_BASE_URL: "https://bpacustomerportal.liberata.com"
     REFUND_STATUS_UPDATE_PATH: "/refunds-api/refund"
     USER_INFO_SIZE: 300
     USER_LAST_MODIFIED_TIME: 720d
@@ -46,8 +46,6 @@ java:
           alias: OIDC_CLIENT_SECRET
         - name: launch-darkly-sdk-key
           alias: LAUNCH_DARKLY_SDK_KEY
-        - name: liberata-api-key
-          alias: LIBERATA_API_KEY
         - name: liberata-keys-oauth2-client-id
           alias: LIBERATA_OAUTH2_CLIENT_ID
         - name: liberata-keys-oauth2-client-secret
@@ -56,8 +54,9 @@ java:
           alias: LIBERATA_OAUTH2_USERNAME
         - name: liberata-keys-oauth2-password
           alias: LIBERATA_OAUTH2_PASSWORD
+        - name: liberata-api-key
+          alias: LIBERATA_API_KEY
         - name: refunds-api-user-password
           alias: REFUND_SERVICE_ACCOUNT_PASSWORD
         - name: refunds-api-client-secret
           alias: REFUND_SERVICE_ACCOUNT_CLIENT_SECRET
-
