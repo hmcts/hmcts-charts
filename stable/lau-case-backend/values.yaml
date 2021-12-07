@@ -16,6 +16,9 @@ java:
     FLYWAY_NOOP_STRATEGY: "false"
     LAU_DB_CONN_OPTIONS: "?sslmode=require"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    IDAM_CLIENT_REDIRECT_URI: "https://lau-case-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
+    IDAM_CLIENT_NAME: 'lau'
   keyVaults:
     lau:
       resourceGroup: lau
