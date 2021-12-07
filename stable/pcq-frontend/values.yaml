@@ -31,6 +31,7 @@ nodejs:
         - divorce-token-key
         - nfd-token-key
         - sscs-token-key
+        - iac-token-key
 
 redis:
   cluster:
