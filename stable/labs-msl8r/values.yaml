@@ -1,0 +1,6 @@
+java:
+  applicationPort: 9000
+  image: 'hmctspublic.azurecr.io/labs/msl8r:latest'
+  ingressHost: labs-msl8r-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: labs
+  environment:
