@@ -8,6 +8,7 @@ java:
       secrets:
         - tornado-access-key
         - et-ccd-callbacks-POSTGRES-PASS
+        - et-ccd-callbacks-s2s-secret
     et:
       secrets:
         - create-updates-queue-send-connection-string

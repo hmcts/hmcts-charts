@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-ccd-callbacks
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.12
+version: 0.0.13
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
