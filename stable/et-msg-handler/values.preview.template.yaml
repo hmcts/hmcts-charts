@@ -1,0 +1,25 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    ET_MSG_HANDLER_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+    ET_MSG_HANDLER_POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
+    ET_MSG_HANDLER_POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
+    ET_MSG_HANDLER_POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    ET_MSG_HANDLER_DB_CONN_OPTIONS: ""
+  keyVaults:
+    et-msg-handler:
+      secrets:
+        - caseworker-user-name
+        - caseworker-password
+        - gov-notify-api-key
+#        - et-msg-handler-s2s-key
+#        - idam-client-secret
+    et:
+      secrets:
+        - create-updates-queue-send-connection-string
+        - create-updates-queue-listen-connection-string
+        - update-case-queue-send-connection-string
+        - update-case-queue-listen-connection-string
+  postgresql:
+    enabled: true
