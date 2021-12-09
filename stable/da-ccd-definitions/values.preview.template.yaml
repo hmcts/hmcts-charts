@@ -31,7 +31,7 @@ xui-webapp:
       SERVICES_CCD_COMPONENT_API: http://gateway-${SERVICE_FQDN}
       SERVICES_CCD_DATA_STORE_API: http://${SERVICE_NAME}-ccd-data-store-api
       SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal
-      JURISDICTIONS: DA
+      JURISDICTIONS: DOMESTICABUSE
 
 ccd:
   ccd:
@@ -148,9 +148,9 @@ ccd:
     userprofile:
       enabled: true
       jurisdictions:
-        - DA
+        - DOMESTICABUSE
       users:
-        - da_caseworker_solicitor@mailinator.com|DA|FL401|Created
+        - da_caseworker_solicitor@mailinator.com|DOMESTICABUSE|FL401|Created
       userProfileDatabaseHost: ${SERVICE_NAME}-ccd-postgres
       userProfileDatabasePort: 5432
       userProfileDatabaseUser: hmcts
