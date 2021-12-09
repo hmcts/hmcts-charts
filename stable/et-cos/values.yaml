@@ -1,0 +1,37 @@
+java:
+  image: 'hmctspublic.azurecr.io/et/et-cos:latest'
+  applicationPort: 8081
+  ingressHost: et-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: et
+  keyVaults:
+    et-cos:
+      secrets:
+#        - tornado-access-key
+        - et-cos-POSTGRES-PASS
+#        - et-cos-s2s-secret
+    et:
+      secrets:
+        - create-updates-queue-send-connection-string
+        - AppInsightsInstrumentationKey
+  environment:
+    SERVER_PORT: 8081
+    REFORM_TEAM: et
+    REFORM_SERVICE_NAME: et-cos
+    REFORM_SERVICE_TYPE: java
+    REFORM_ENVIRONMENT: preview
+    ROOT_LOGGING_LEVEL: INFO
+    LOG_OUTPUT: single
+    ET_COS_URL: "http://et-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    TORNADO_URL: "https://docmosis.{{ .Values.global.environment }}.platform.hmcts.net/rs/render"
+    IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    IDAM_API_JWK_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/jwks"
+    CCD_DATA_STORE_API_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    DOCUMENT_MANAGEMENT_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    SERVICE_AUTH_PROVIDER_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_GATEWAY_BASE_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net"
+    MICRO_SERVICE: "et_cos"
+    ET_COS_DB_CONN_OPTIONS: ?sslmode=require
+    ET_COS_DB_HOST: et-cos-{{ .Values.global.environment }}.postgres.database.azure.com
+    ET_COS_DB_NAME: et_cos
+    ET_COS_DB_PORT: '5432'
+    ET_COS_DB_USER_NAME: et_cos@et-cos-{{ .Values.global.environment }}

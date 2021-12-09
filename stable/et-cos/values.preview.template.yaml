@@ -1,0 +1,18 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    ET_COS_DB_HOST: "{{ .Release.Name }}-postgresql"
+    ET_COS_DB_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
+    ET_COS_DB_USER_NAME: "{{ .Values.postgresql.postgresqlUsername}}"
+    ET_COS_DB_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    ET_COS_DB_CONN_OPTIONS: ""
+  keyVaults:
+    et-cos:
+      secrets:
+        - tornado-access-key
+    et:
+      secrets:
+        - create-updates-queue-send-connection-string
+  postgresql:
+    enabled: true
