@@ -15,7 +15,7 @@ java:
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_USER_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    AM_JUDICIAL_BOOKING_S2S_AUTHORISED_SERVICES: am_judicial_booking_service
+    AM_JUDICIAL_BOOKING_S2S_AUTHORISED_SERVICES: am_judicial_booking_service,am_org_role_mapping_service,xui_webapp
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
     JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
