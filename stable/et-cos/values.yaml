@@ -6,9 +6,9 @@ java:
   keyVaults:
     et-cos:
       secrets:
-#        - tornado-access-key
         - et-cos-POSTGRES-PASS
-#        - et-cos-s2s-secret
+        - tornado-access-key
+        - et-cos-s2s-secret
     et:
       secrets:
         - create-updates-queue-send-connection-string
