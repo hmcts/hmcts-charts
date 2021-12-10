@@ -14,7 +14,7 @@ java:
         - caseworker-user-name
         - caseworker-password
         - gov-notify-api-key
-#        - et-msg-handler-s2s-key
+        - et-msg-handler-s2s-secret
 #        - idam-client-secret
     et:
       secrets:
