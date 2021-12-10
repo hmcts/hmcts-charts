@@ -14,6 +14,9 @@ java:
     LAU_IDAM_DB_CONN_OPTIONS: "?sslmode=allow"
     LAU_IDAM_ENCRYPTION_ENABLED: "No"
     TEST_S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    TEST_IDAM_API_URL: "https://idam-api.aat.platform.hmcts.net"
+    TEST_IDAM_CLIENT_REDIRECT_URI: "https://lau-idam-backend-aat.service.core-compute-aat.internal/oauth2/callback"
+    TEST_IDAM_CLIENT_NAME: 'lau'
     LAU_FLYWAY_MIGRATE_DB: "true"
   # Don't modify below here
   image: ${IMAGE_NAME}
