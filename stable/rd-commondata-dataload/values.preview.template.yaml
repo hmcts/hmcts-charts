@@ -6,23 +6,26 @@ job:
     jobKind: CronJob
   environment:
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_DB_NAME: dbcommondata
+    POSTGRES_NAME: dbcommondata
     POSTGRES_USERNAME: dbcommondata
     POSTGRES_PASSWORD: dbcommondata
-    POSTGRES_PORT: 5432
     FLYWAY_ENABLED: true
-    # LOCATIONS_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
-    # LAUNCH_DARKLY_ENV: "preview"
+    CONTAINER_NAME: rd-common-data
   keyVaults:
     rd:
       secrets:
         - name: ApplicationInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
-        - name: LD-SDK-KEY
-          alias: LD_SDK_KEY
-        # - name: commondata-api-s2s-secret
-        #   alias: COMMONDATA_API_S2S_SECRET
-
+  secrets:
+    BLOB_ACCOUNT_NAME:
+      secretRef: storage-secret-{{ .Release.Name }}
+      key: storageAccountName
+    BLOB_ACCESS_KEY:
+      secretRef: storage-secret-{{ .Release.Name }}
+      key: accessKey
+    BLOB_SERVICE_ENDPOINT:
+      secretRef: storage-secret-{{ .Release.Name }}
+      key: primaryBlobServiceEndPoint
 postgresql:
   enabled: true
   image:
@@ -30,6 +33,15 @@ postgresql:
   postgresqlUsername: dbcommondata
   postgresqlPassword: dbcommondata
   postgresqlDatabase: dbcommondata
-  postgresqlPort: 5432
   persistence:
     enabled: false
+
+blobstorage:
+  resourceGroup: rd-aks-pr-test
+  teamName: "RD"
+  location: ukwest
+  setup:
+    containers:
+      - rd-common-data
+      - rd-common-data-archive
+  enabled: true
