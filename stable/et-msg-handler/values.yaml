@@ -6,11 +6,11 @@ java:
   keyVaults:
     et-msg-handler:
       secrets:
-        - et-msg-handler-POSTGRES-HOST
-        - et-msg-handler-POSTGRES-PORT
-        - et-msg-handler-POSTGRES-DATABASE
-        - et-msg-handler-POSTGRES-USER
-        - et-msg-handler-POSTGRES-PASS
+        - msg-handler-POSTGRES-HOST
+        - msg-handler-POSTGRES-PORT
+        - msg-handler-POSTGRES-DATABASE
+        - msg-handler-POSTGRES-USER
+        - msg-handler-POSTGRES-PASS
         - caseworker-user-name
         - caseworker-password
         - gov-notify-api-key
