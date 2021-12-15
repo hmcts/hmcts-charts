@@ -6,7 +6,7 @@ java:
   keyVaults:
     et-cos:
       secrets:
-        - et-cos-POSTGRES-PASS
+        - cos-POSTGRES-PASS
         - tornado-access-key
         - et-cos-s2s-secret
     et:
