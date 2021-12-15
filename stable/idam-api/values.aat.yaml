@@ -1,6 +1,6 @@
 java:
   releaseNameOverride: idam-api-staging
-  image: hmctspublic.azurecr.io/idam/api:staging-4248049-20211215063010
+  image: hmctspublic.azurecr.io/idam/api:staging-9b635b9-20211215113017
   replicas: 1
   ingressHost: idam-api-staging.service.core-compute-aat.internal
   ingressIP: 10.10.159.250
