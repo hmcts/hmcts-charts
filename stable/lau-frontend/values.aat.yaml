@@ -2,6 +2,8 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/lau-frontend:latest
   ingressHost: 
+  environment:
+    MAX_RECORDS: 10
 
 idam-pr:
   enabled: false
