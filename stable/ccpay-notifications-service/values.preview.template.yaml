@@ -2,3 +2,34 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+    POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
+    LOGBACK_REQUIRE_ALERT_LEVEL: 'false'
+    LOGBACK_REQUIRE_ERROR_CODE: 'false'
+    SPRING_LIQUIBASE_ENABLED: true
+    OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
+    LAUNCH_DARKLY_USER_NAME_PREFIX: aat
+    PAYMENT_API_URL: "http://payment-api-pr-972.service.core-compute-preview.internal"
+    LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
+    LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
+    LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
+    REFUND_STATUS_UPDATE_PATH: "/refunds-api/refund"
+    USER_INFO_SIZE: 300
+    USER_LAST_MODIFIED_TIME: 720d
+    REFUND_SERVICE_ACCOUNT_CLIENT_ID: "refunds_api"
+    REFUND_SERVICE_ACCOUNT_GRANT_TYPE: "password"
+    REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
+    REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
+    REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-aat.service.core-compute-aat.internal/oauth2/callback"
+  keyVaults:
+    "ccpay":
+      resourceGroup: ccpay
+      secrets:
+        - name: notifications-service-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
