@@ -14,6 +14,7 @@ job:
     CCD_AM_MIGRATION_RENAME_TABLES_FLAG: false
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
+    JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS: judicial_booking
     JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
     JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}
     DAYS: 750
