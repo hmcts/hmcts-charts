@@ -1,5 +1,12 @@
 nodejs:
   # Don't modify below here
-  image: hmctspublic.azurecr.io/idam/user-dashboard:staging-aa6f045-20211221145255
-  ingressHost: idam-user-dashboard-staging.service.core-compute-aat.internal
+  image: https://hmcts.azurecr.io/hmcts/idam-user-dashboard:latest
+  ingressHost: 
   aadIdentityName: idam
+  environment:
+    OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+idam-pr:
+  enabled: false
+  redirect_uris:
+    IDAM User Dashboard:
+      - https:///oauth2/callback
