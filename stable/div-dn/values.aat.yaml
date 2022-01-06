@@ -1,4 +1,6 @@
 nodejs:
+    environment:
+        FEATURE_PING_REDIS: "true"
     # Don't modify below here
     image: https://hmcts.azurecr.io/hmcts/div-dn:latest
     ingressHost: 
