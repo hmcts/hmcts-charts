@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for labs-endakelly App
+name: labs-endakelly
+home: https://github.com/hmcts/labs-endakelly
+version: 0.0.1
+maintainers:
+  - name: HMCTS labs team
+dependencies:
+  - name: java
+    version: 3.6.1
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'

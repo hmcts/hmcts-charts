@@ -1,0 +1,6 @@
+java:
+  applicationPort: 8080
+  image: 'hmctspublic.azurecr.io/labs/endakelly:latest'
+  ingressHost: labs-endakelly-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: labs
+  environment:
