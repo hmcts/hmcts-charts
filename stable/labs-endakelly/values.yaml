@@ -4,3 +4,4 @@ java:
   ingressHost: labs-endakelly-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: labs
   environment:
+    FAVOURITE_FRUIT: plum
