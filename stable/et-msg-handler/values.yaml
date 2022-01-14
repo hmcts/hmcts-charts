@@ -15,6 +15,7 @@ java:
         - caseworker-password
         - gov-notify-api-key
         - et-msg-handler-s2s-secret
+        - idam-client-secret
     et:
       secrets:
         - create-updates-queue-send-connection-string
@@ -22,7 +23,6 @@ java:
         - update-case-queue-send-connection-string
         - update-case-queue-listen-connection-string
         - AppInsightsInstrumentationKey
-        - idam-secret
   environment:
     REFORM_TEAM: et
     REFORM_SERVICE_NAME: et-msg-handler

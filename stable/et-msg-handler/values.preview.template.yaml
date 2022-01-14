@@ -14,12 +14,12 @@ java:
         - caseworker-password
         - gov-notify-api-key
         - et-msg-handler-s2s-secret
+        - idam-client-secret
     et:
       secrets:
         - create-updates-queue-send-connection-string
         - create-updates-queue-listen-connection-string
         - update-case-queue-send-connection-string
         - update-case-queue-listen-connection-string
-        - idam-secret
   postgresql:
     enabled: true

@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-msg-handler
 home: https://github.com/hmcts/et-msg-handler
-version: 0.0.9
+version: 0.0.10
 description: HMCTS Employment Tribunals Message Handler service
 maintainers:
   - name: HMCTS Employment Tribunals Team
