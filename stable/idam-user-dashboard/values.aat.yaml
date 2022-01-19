@@ -5,8 +5,6 @@ nodejs:
   aadIdentityName: idam
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+    
 idam-pr:
   enabled: false
-  redirect_uris:
-    IDAM User Dashboard:
-      - https:///oauth2/callback
