@@ -13,6 +13,10 @@ java:
     OPEN_ID_IDAM_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net"
     IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     ROLE_ASSIGNMENT_URL: "http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    INITIATION_TIME_LIMIT_FLAG: true
+    INITIATION_TIME_LIMIT: 120
+    TERMINATION_TIME_LIMIT_FLAG: true
+    TERMINATION_TIME_LIMIT: 120
   keyVaults:
     wa:
       secrets:
