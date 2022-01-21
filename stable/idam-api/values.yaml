@@ -39,6 +39,8 @@ java:
           alias: spring.datasource.username
         - name: idam-api-POSTGRES-PASS
           alias: spring.datasource.password
+        - name: idap-api-s2s-client-secret
+          alias: IDAM_API_S2S_CLIENT_SECRET
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
         - name: redis-hostname
@@ -57,6 +59,7 @@ java:
     IDAM_SPI_FORGEROCK_AM_JWKSURIFOROAUTH2CLIENTS: http://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8080/openam/oauth2/hmcts/connect/jwk_uri
     IDAM_SPI_FORGEROCK_IDM_USERNAME: openidm-admin
     IDAM_SPI_FORGEROCK_IDM_ROOT: https://forgerock-idm.service.core-compute-idam-{{ .Values.global.environment }}.internal:18443/openidm
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAMHEALTHCHECK_AM_TARGET: http://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:9292
     IDAMHEALTHCHECK_IDM_TARGET: http://forgerock-idm.service.core-compute-idam-{{ .Values.global.environment }}.internal:9292
     MANAGEMENT_SECURITY_ENABLED: false
@@ -68,6 +71,8 @@ java:
     SSL_TRUST_DNS_1: C=None,ST=None,L=None,OU=None,O=OpenDJ Self-Signed Certificate,CN=openidm-localhost
     SSL_TRUST_HOSTNAMES_0: forgerock-idm.service.core-compute-idam-{{ .Values.global.environment }}.internal
     SSL_TRUST_HOSTNAMES_1: forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal
+    LOG_AND_AUDIT_IDAM_URL: http://lau-idam-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    LOG_AND_AUDIT_IDAM_ENABLED: false
 
   cpuRequests: '1000m'
   cpuLimits: '2500m'
