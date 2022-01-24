@@ -18,6 +18,7 @@ java:
     TEST_IDAM_CLIENT_REDIRECT_URI: "https://lau-idam-backend-aat.service.core-compute-aat.internal/oauth2/callback"
     TEST_IDAM_CLIENT_NAME: 'lau'
     LAU_FLYWAY_MIGRATE_DB: "true"
+    DB_ALLOW_DELETE_RECORD: "true"
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
