@@ -32,6 +32,7 @@ nodejs:
         - nfd-token-key
         - sscs-token-key
         - iac-token-key
+        - adoption-token-key
 
 redis:
   cluster:
