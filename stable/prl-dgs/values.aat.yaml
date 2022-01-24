@@ -7,4 +7,10 @@ java:
     # Don't modify below here
     image: https://hmcts.azurecr.io/hmcts/prl-dgs:latest
     ingressHost: 
+    keyVaults:
+      prl:
+        resourceGroup: prl
+        secrets:
+          - microservicekey-prl-dgs-api
+          - docmosis-api-key
     aadIdentityName: prl
