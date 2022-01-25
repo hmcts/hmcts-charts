@@ -10,12 +10,12 @@ java:
     POSTGRES_USERNAME: dbcommondata@rd-commondata-api-postgres-db-v11-{{ .Values.global.environment }}
     POSTGRES_DB_NAME: dbcommondata
     POSTGRES_PORT: 5432
-    #S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    #OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
-    #OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
-    #IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    #LOCATIONS_DB: classpath:db/migration,classpath:db/postgres
-    #LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
+    OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
+    IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    COMMONDATA_DB: classpath:db/migration
+    LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
   keyVaults:
     rd:
@@ -26,5 +26,5 @@ java:
           alias: LD_SDK_KEY
         - name: commondata-api-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
-        # - name: commondata-api-s2s-secret
-        #   alias: COMMONDATA_API_S2S_SECRET
+        - name: common-data-api-s2s-secret
+          alias: COMMONDATA_API_S2S_SECRET

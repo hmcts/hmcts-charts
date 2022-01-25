@@ -26,5 +26,5 @@ java:
           alias: LD_SDK_KEY
         - name: commondata-api-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
-       #- name: commondata-api-s2s-secret
-       #  alias: COMMONDATA_API_S2S_SECRET
+        - name: common-data-api-s2s-secret
+          alias: COMMONDATA_API_S2S_SECRET
