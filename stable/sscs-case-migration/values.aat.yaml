@@ -1,0 +1,3 @@
+job:
+  image: https://hmcts.azurecr.io/hmcts/sscs-case-migration:latest
+  ingressHost: 
