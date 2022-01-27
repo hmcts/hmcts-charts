@@ -60,3 +60,7 @@ java:
           alias: REFUND_SERVICE_ACCOUNT_PASSWORD
         - name: refunds-api-client-secret
           alias: REFUND_SERVICE_ACCOUNT_CLIENT_SECRET
+        - name: notifications-letter-template-id
+          alias: NOTIFICATION_LETTER_TEMPLATE_ID
+        - name: notifications-email-template-id
+          alias: NOTIFICATION_EMAIL_TEMPLATE_ID
