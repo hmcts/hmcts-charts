@@ -2,6 +2,7 @@ job:
   image: 'hmctspublic.azurecr.io/sscs/case-migration:latest'
   aadIdentityName: sscs
   ingressHost: sscs-case-migration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ttlSecondsAfterFinished: 3600
   keyVaults:
     sscs:
       resourceGroup: sscs
