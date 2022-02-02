@@ -49,10 +49,4 @@ java:
     ENABLE_S2S_HEALTH_CHECK: false
 
 blobstorage:
-  resourceGroup: em-hrs-api-aks
-  teamName: "EM"
-  location: uksouth
-  setup:
-    containers:
-      - em-hrs-api
   enabled: false
