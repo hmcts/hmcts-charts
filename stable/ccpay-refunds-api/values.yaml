@@ -21,6 +21,7 @@ java:
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     LAUNCH_DARKLY_USER_NAME_PREFIX: '{{ .Values.global.environment }}'
     PAYMENT_API_URL: "http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    NOTIFICATION_API_URL: "http://ccpay-notifications-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
     LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
     LIBERATA_BASE_URL: "https://bpacustomerportal.liberata.com"
