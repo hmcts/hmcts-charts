@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for labs-louisehuyton-nodejs App
 name: labs-louisehuyton-nodejs
 home: https://github.com/hmcts/labs-louisehuyton-nodejs
-version: 0.0.2
+version: 0.0.3
 dependencies:
   - name: nodejs
     version: 2.3.9

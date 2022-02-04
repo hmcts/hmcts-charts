@@ -1,7 +1,7 @@
 nodejs:
   applicationPort: 8080
   aadIdentityName: labs
-  ingressHost: labs-louisehuyton-nodejs.{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: labs-louisehuyton-nodejs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   image: 'hmctspublic.azurecr.io/labs/louisehuyton-nodejs:latest'
   #  Uncomment once the vault containing the app insights key has been set up
   #  keyVaults:
