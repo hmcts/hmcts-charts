@@ -33,4 +33,3 @@ java:
       init.sql: |-
         CREATE ROLE lauuser WITH LOGIN PASSWORD 'laupass';
         CREATE EXTENSION IF NOT EXISTS citext;
-
