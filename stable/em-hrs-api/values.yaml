@@ -22,6 +22,7 @@ java:
         - notification-api-key
         - reports-email-username
         - reports-email-password
+        - summary-report-recipients
     rpa:
       resourceGroup: rpa
       secrets:
