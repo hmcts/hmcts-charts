@@ -49,6 +49,7 @@ java:
     ENDPOINTS_INFO_SENSITIVE: false
     ENABLE_IDAM_HEALTH_CHECK: false
     ENABLE_S2S_HEALTH_CHECK: false
+    SMTP_HOST: false
 
 blobstorage:
   enabled: false
