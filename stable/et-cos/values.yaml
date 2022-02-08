@@ -36,4 +36,4 @@ java:
     ET_COS_DB_PORT: '5432'
     ET_COS_DB_USER_NAME: et_cos@et-cos-{{ .Values.global.environment }}
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    SECURE_DOC_STORE_FEATURE: true
+    SECURE_DOC_STORE_FEATURE: false
