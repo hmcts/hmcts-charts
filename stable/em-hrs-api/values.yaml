@@ -51,6 +51,7 @@ java:
     ENABLE_IDAM_HEALTH_CHECK: false
     ENABLE_S2S_HEALTH_CHECK: false
     SMTP_HOST: false
-
+    SUMMARY_REPORT_CRON: "0 0 6 ? * *"
+    SUMMARY_REPORT_ENABLED: false
 blobstorage:
   enabled: false
