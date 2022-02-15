@@ -1,12 +1,18 @@
 function:
   image: 'hmctspublic.azurecr.io/ccpay/callback-function:latest'
-  environment:
-    name: "dummy"
   triggers:
     - type: azure-servicebus
       topicName: "servicecallbacktopic"
       subscriptionName: defaultServiceCallbackSubscription
       connection: SERVICE_CALLBACK_BUS_CONNECTION
       queueLength: 1
+  aadIdentityName: ccpay
+  keyVaults:
+    "ccpay":
+      secrets:
+        - payment-s2s-secret
+  environment:
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    MICROSERVICE_PAYMENT_APP: "payment_app"
 servicebus:
   enabled: false
