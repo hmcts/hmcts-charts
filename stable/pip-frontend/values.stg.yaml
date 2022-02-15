@@ -3,3 +3,4 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/pip-frontend:latest
   ingressHost: 
   environment:
+    EXCLUDE_E2E: false
