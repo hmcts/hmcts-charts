@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for rd-commondata-api
 name: rd-commondata-api
 home: https://github.com/hmcts/rd-commondata-api
-version: 0.0.3
+version: 0.0.4
 maintainers:
   - name: Reference Data Team
 dependencies:
   - name: java
-    version: 3.6.0
+    version: 3.7.1
     repository: '@hmctspublic'
