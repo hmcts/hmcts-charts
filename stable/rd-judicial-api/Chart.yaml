@@ -2,10 +2,10 @@ apiVersion: v2
 appVersion: "0.1"
 description: Reference data service for judiciary
 name: rd-judicial-api
-version: 0.0.17
+version: 0.0.18
 maintainers:
   - name: Reference Data Team
 dependencies:
   - name: java
-    version: 3.6.0
+    version: 3.7.1
     repository: '@hmctspublic'
