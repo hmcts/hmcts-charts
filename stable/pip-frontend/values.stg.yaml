@@ -4,4 +4,4 @@ nodejs:
   ingressHost: 
   environment:
     EXCLUDE_E2E: false
-    AUTH_RETURN_URL: /login/return
+    AUTH_RETURN_URL: https:///login/return
