@@ -16,6 +16,12 @@ job:
       secrets:
         - name: ApplicationInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: rd-commondata-storage-account-name
+          alias: ACCOUNT_NAME
+        - name: rd-commondata-storage-account-primary-key
+          alias: ACCOUNT_KEY
+        - name: CONTAINER-NAME
+          alias: CONTAINER_NAME
   secrets:
     BLOB_ACCOUNT_NAME:
       secretRef: storage-secret-{{ .Release.Name }}
