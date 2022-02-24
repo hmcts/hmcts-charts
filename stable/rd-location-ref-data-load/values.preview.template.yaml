@@ -9,9 +9,17 @@ job:
     FLYWAY_ENABLED: true
     CONTAINER_NAME: lrd-ref-data
   keyVaults:
-    rd:
+    "rd":
+      resourceGroup: rd
       secrets:
+        - location-ref-api-POSTGRES-PASS
         - ApplicationInsightsInstrumentationKey
+        - name: rd-location-storage-account-name
+          alias: ACCOUNT_NAME
+        - name: rd-location-storage-account-primary-key
+          alias: ACCOUNT_KEY
+        - name: CONTAINER-NAME
+          alias: CONTAINER_NAME
   secrets:
     BLOB_ACCOUNT_NAME:
       secretRef: storage-secret-{{ .Release.Name }}
