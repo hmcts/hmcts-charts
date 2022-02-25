@@ -28,5 +28,5 @@ java:
         - case-backend-POSTGRES-PASS
         - case-backend-app-db-user
         - case-backend-app-db-password
-        - case-backend-flyway-password
+        - flyway-password
         - AppInsightsInstrumentationKey
