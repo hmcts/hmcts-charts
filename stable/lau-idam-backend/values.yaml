@@ -30,6 +30,6 @@ java:
         - idam-backend-POSTGRES-PASS
         - idam-backend-app-db-user
         - idam-backend-app-db-password
-        - idam-backend-flyway-password
+        - idam-flyway-password
         - backend-encryption-key
         - AppInsightsInstrumentationKey
