@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for labs-zchmcts-nodejs App
+name: labs-zchmcts-nodejs
+home: https://github.com/hmcts/labs-zchmcts-nodejs
+version: 0.0.1
+dependencies:
+  - name: nodejs
+    version: 2.4.0
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
