@@ -20,8 +20,8 @@ java:
         - idam-system-user-name
         - idam-system-user-password
         - notification-api-key
-        - reports-email-username
-        - reports-email-password
+        - hrs-reports-email-username
+        - hrs-reports-email-password
         - summary-report-recipients
     rpa:
       resourceGroup: rpa
