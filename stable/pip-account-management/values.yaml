@@ -15,4 +15,12 @@ java:
           alias: TENANT_GUID
         - name: shared-storageaccount-connection-string
           alias: CONNECTION_STRING
+        - name: pip-shared-POSTGRES-DATABASE
+          alias: DB_NAME
+        - name: pip-shared-POSTGRES-PASS
+          alias: DB_PASS
+        - name: pip-shared-POSTGRES-PORT
+          alias: DB_PORT
+        - name: pip-shared-POSTGRES-USER
+          alias: DB_USER
   environment:
