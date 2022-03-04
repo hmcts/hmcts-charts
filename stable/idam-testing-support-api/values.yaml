@@ -4,3 +4,10 @@ java:
   ingressHost: idam-testing-support-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: idam
   environment:
+  keyVaults:
+    "idam-idam":
+      resourceGroup: idam-idam
+      excludeEnvironmentSuffix: false
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
