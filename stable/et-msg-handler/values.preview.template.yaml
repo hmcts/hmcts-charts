@@ -1,12 +1,15 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  environment:
-    ET_MSG_HANDLER_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    ET_MSG_HANDLER_POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
-    ET_MSG_HANDLER_POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
-    ET_MSG_HANDLER_POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
-    ET_MSG_HANDLER_DB_CONN_OPTIONS: ""
+  postgresql:
+    enabled: true
+  secrets:
+    CREATE_UPDATES_CONN_STRING:
+      secretRef: servicebus-secret-queue-{{ .Release.Name }}-servicebus-create-updates
+      key: connectionString
+    UPDATE_CASE_CONN_STRING:
+      secretRef: servicebus-secret-queue-{{ .Release.Name }}-servicebus-update-case
+      key: connectionString
   keyVaults:
     et-msg-handler:
       secrets:
@@ -20,16 +23,22 @@ java:
           alias: ET_MSG_HANDLER_S2S_SECRET
         - name: idam-client-secret
           alias: IDAM_CLIENT_SECRET
-    et:
-      secrets:
-        - name: create-updates-queue-send-connection-string
-          alias: CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING
-        - name: create-updates-queue-listen-connection-string
-          alias: CREATE_UPDATES_QUEUE_LISTEN_CONNECTION_STRING
-        - name: update-case-queue-send-connection-string
-          alias: UPDATE_CASE_QUEUE_SEND_CONNECTION_STRING
-        - name: update-case-queue-listen-connection-string
-          alias: UPDATE_CASE_QUEUE_LISTEN_CONNECTION_STRING
-  postgresql:
-    enabled: true
+  environment:
+    ET_MSG_HANDLER_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+    ET_MSG_HANDLER_POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
+    ET_MSG_HANDLER_POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
+    ET_MSG_HANDLER_POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    ET_MSG_HANDLER_DB_CONN_OPTIONS: ""
+    CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING: "${CREATE_UPDATES_CONN_STRING}"
+    CREATE_UPDATES_QUEUE_LISTEN_CONNECTION_STRING: "${CREATE_UPDATES_CONN_STRING}"
+    UPDATE_CASE_QUEUE_SEND_CONNECTION_STRING: "${UPDATE_CASE_CONN_STRING}"
+    UPDATE_CASE_QUEUE_LISTEN_CONNECTION_STRING: "${UPDATE_CASE_CONN_STRING}"
 
+servicebus:
+  enabled: true
+  resourceGroup: et-aks
+  teamName: et
+  setup:
+    queues:
+      - name: create-updates
+      - name: update-case
