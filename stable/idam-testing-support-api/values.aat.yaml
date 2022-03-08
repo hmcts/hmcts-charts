@@ -1,0 +1,4 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+java:
+  image: hmctspublic.azurecr.io/idam/testing-support-api:staging-aa81068-20220308094840
+  ingressHost: idam-testing-support-api-staging.service.core-compute-aat.internal
