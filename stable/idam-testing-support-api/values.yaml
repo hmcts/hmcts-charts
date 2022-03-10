@@ -10,6 +10,7 @@ java:
   ingressHost: idam-testing-support-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: idam
   environment:
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
