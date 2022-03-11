@@ -25,3 +25,4 @@ java:
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     MICROSERVICE_NAME: am_judicial_booking_service
     JUDICIAL_BOOKING_IDAM_ADMIN_USERID: ras-validation-system@hmcts.net
+    RUN_LD_ON_STARTUP: true
