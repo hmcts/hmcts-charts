@@ -10,10 +10,13 @@ java:
   keyVaults:
     et-cos:
       secrets:
-        - tornado-access-key
-        - et-cos-s2s-secret
+        - name: tornado-access-key
+          alias: TORNADO_ACCESS_KEY
+        - name: et-cos-s2s-secret
+          alias: ET_COS_S2S_SECRET
     et:
       secrets:
-        - create-updates-queue-send-connection-string
+        - name: create-updates-queue-send-connection-string
+          alias: CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING
   postgresql:
     enabled: true

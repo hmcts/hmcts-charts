@@ -6,13 +6,18 @@ java:
   keyVaults:
     et-cos:
       secrets:
-        - cos-POSTGRES-PASS
-        - tornado-access-key
-        - et-cos-s2s-secret
+        - name: cos-POSTGRES-PASS
+          alias: ET_COS_DB_PASSWORD
+        - name: tornado-access-key
+          alias: TORNADO_ACCESS_KEY
+        - name: et-cos-s2s-secret
+          alias: ET_COS_S2S_SECRET
     et:
       secrets:
-        - create-updates-queue-send-connection-string
-        - AppInsightsInstrumentationKey
+        - name: create-updates-queue-send-connection-string
+          alias: CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING
+        - name: AppInsightsInstrumentationKey
+          alias: APP_INSIGHTS_KEY
   environment:
     SERVER_PORT: 8081
     REFORM_TEAM: et
