@@ -11,6 +11,7 @@ java:
   aadIdentityName: idam
   environment:
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
