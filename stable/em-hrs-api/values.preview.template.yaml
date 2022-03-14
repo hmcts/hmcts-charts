@@ -5,13 +5,15 @@ java:
   readinessDelay: 45
   keyVaults:
     em-hrs-api:
-      resourceGroup: em-hrs-api
       secrets:
-        - storage-account-primary-connection-string
-        - idam-system-user-name
-        - idam-system-user-password
-        - hrs-api-POSTGRES-PASS
-        - microservicekey-em-hrs-api
+        - name: storage-account-primary-connection-string
+          alias: STORAGEACCOUNT_PRIMARY_CONNECTION_STRING
+        - name: idam-system-user-name
+          alias: HRS_SYSTEM_USER
+        - name: idam-system-user-password
+          alias: HRS_SYSTEM_USER_PASSWORD
+        - name: microservicekey-em-hrs-api
+          alias: S2S_KEY
   secrets:
     BLOB_ACCOUNT_NAME:
       secretRef: storage-secret-{{ .Release.Name }}
@@ -29,7 +31,6 @@ java:
     OPEN_ID_API_BASE_URI: https://idam-web-public.aat.platform.hmcts.net/o
     ENABLE_LIQUIBASE: true
     ENABLE_DB_MIGRATE: true
-    STORAGEACCOUNT_PRIMARY_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(BLOB_ACCOUNT_NAME);AccountKey=$(BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
     CVP_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(BLOB_ACCOUNT_NAME);AccountKey=$(BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
   postgresql:
     enabled: true
