@@ -2,3 +2,7 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/wa-task-management-api:latest
   ingressHost: 
+  devmemoryRequests: '512Mi'
+  devcpuRequests: '1000m'
+  devmemoryLimits: '3Gi'
+  devcpuLimits: '2500m'
