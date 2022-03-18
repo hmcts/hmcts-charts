@@ -16,8 +16,15 @@ java:
           alias: SCOPE
         - name: hmc-servicebus-connection-string
           alias: HMC_SERVICE_BUS_CONNECTION_STRING
+        - name: fh-get-token-url
+          alias: FH_GET_TOKEN_URL
   environment:
     HMC_SERVICE_BUS_QUEUE: hmc-to-hmi-{{ .Values.global.environment }}
+    HMI_BASE_URL: https://hmi-apim.staging.platform.hmcts.net/hmi
+    HMI_SOURCE_SYSTEM: CFT
+    HMI_DESTINATION_SYSTEM: MOCK
+    GRANT_TYPE: client_credentials
+    FH_BASE_URL: https://login.microsoftonline.com
 
 servicebus:
   enabled: false
