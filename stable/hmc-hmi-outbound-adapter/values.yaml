@@ -20,7 +20,7 @@ java:
           alias: FH_GET_TOKEN_URL
   environment:
     HMC_SERVICE_BUS_QUEUE: hmc-to-hmi-{{ .Values.global.environment }}
-    HMI_BASE_URL: https://hmi-apim.staging.platform.hmcts.net/hmi
+    HMI_BASE_URL: https://hmi-apim.test.platform.hmcts.net/hmi
     HMI_SOURCE_SYSTEM: CFT
     HMI_DESTINATION_SYSTEM: MOCK
     GRANT_TYPE: client_credentials
