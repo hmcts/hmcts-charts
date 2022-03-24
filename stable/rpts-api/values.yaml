@@ -5,15 +5,10 @@ java:
   aadIdentityName: rpts
   keyVaults:
     rpts:
-      resourceGroup: rpts
       secrets:
-        - name: api-POSTGRES-PASS
-          alias: POSTGRES_PASSWORD
-        - name: app-insights-connection-string
-          alias: app-insights-connection-string
-  environment:
-    POSTGRES_PORT: 5432
-    POSTGRES_HOST: rpts-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_NAME: rpts
-    POSTGRES_USERNAME: rpts@rpts-postgres-db-v11-{{ .Values.global.environment }}
-    POSTGRES_CONNECTION_OPTIONS: ?sslmode=require
+        - api-POSTGRES-PASS
+        - api-POSTGRES-USER
+        - api-POSTGRES-HOST
+        - api-POSTGRES-DATABASE
+        - api-POSTGRES-PORT
+        - app-insights-connection-string
