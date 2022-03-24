@@ -16,3 +16,4 @@ java:
     POSTGRES_HOST: rpts-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_DATABASE: rpts
     POSTGRES_USERNAME: rpts@rpts-api-postgres-db-v11-{{ .Values.global.environment }}
+    RUN_DB_MIGRATION_ON_STARTUP: false
