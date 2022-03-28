@@ -8,7 +8,7 @@ java:
     POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
     POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
     POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
-    # LOCATIONS_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
+    COMMONDATA_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
     LAUNCH_DARKLY_ENV: "preview"
     ENVIRONMENT_NAME: "preview"
   postgresql:
