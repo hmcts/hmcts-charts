@@ -24,14 +24,14 @@ java:
           alias: DB_PORT
         - name: notification-service-POSTGRES-DATABASE
           alias: DB_NAME
-        - name:  notification-queue-listen-shared-access-key
+        - name:  notification-queue-listen-shared-access-key-premium
           alias: QUEUE_READ_ACCESS_KEY
   environment:
     DB_CONN_OPTIONS: ?sslmode=require
     FLYWAY_SKIP_MIGRATIONS: true
     QUEUE_ACCESS_KEY_LISTEN_NAME: "ListenSharedAccessKey"
     QUEUE_NAME: "notifications"
-    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}
+    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium
     QUEUE_NOTIFICATIONS_MAX_RETRY: 5
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     NOTIFICATIONS_CONSUME_TASK_CHECK_DELAY_IN_MS: "3600000"

@@ -8,6 +8,7 @@ java:
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
     FLYWAY_SKIP_MIGRATIONS: false
     PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
+    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}
   keyVaults:
     "reform-scan":
       secrets:
