@@ -22,7 +22,7 @@ java:
     HMC_SERVICE_BUS_QUEUE: hmc-to-hmi-{{ .Values.global.environment }}
     HMI_BASE_URL: https://hmi-apim.test.platform.hmcts.net/hmi
     HMI_SOURCE_SYSTEM: CFT
-    HMI_DESTINATION_SYSTEM: MOCK
+    HMI_DESTINATION_SYSTEM: SNL
     GRANT_TYPE: client_credentials
     FH_BASE_URL: https://login.microsoftonline.com
 
