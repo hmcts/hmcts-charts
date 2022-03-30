@@ -25,6 +25,8 @@ java:
     TERMINATION_TIME_LIMIT_FLAG: true
     TERMINATION_TIME_LIMIT: 120
 
+    PENDING_TERMINATION_CAMUNDA_MAX_RESULTS: 1
+
   keyVaults:
     wa:
       secrets:
