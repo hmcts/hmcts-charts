@@ -11,8 +11,8 @@ java:
   livenessPeriod: 120
   aadIdentityName: vh-aad-identity
   keyVaults:
-    pip-ss-kv:
-      excludeEnvironmentSuffix: false
+    pip-ss-kv-sbox:
+      excludeEnvironmentSuffix: true
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
       usePodIdentity: true
       secrets:
