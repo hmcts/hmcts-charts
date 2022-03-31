@@ -11,13 +11,21 @@ java:
   livenessPeriod: 120
   aadIdentityName: vh-aad-identity
   keyVaults:
-    pip-ss-kv-sbox:
-      excludeEnvironmentSuffix: true
-      resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
+    vh-infra-core:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
       usePodIdentity: true
       secrets:
-        - name: shared-storageaccount-connection-string
-          alias: CONNECTION_STRING
+        - servicebusqueue--connectionstring
+        - connectionstrings--vhbookings
+    vh-bookings-api:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - azuread--clientsecret
+        - azuread--clientid
+        - applicationinsights-instrumentationkey
   environment:
     ASPNETCORE_URLS: http://+:8080
     AZUREAD__TENANTID: "fb6e0e22-0da3-4c35-972a-9d61eb256508"
