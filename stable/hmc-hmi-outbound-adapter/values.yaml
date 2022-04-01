@@ -15,11 +15,14 @@ java:
         - name: Scope
           alias: SCOPE
         - name: hmc-servicebus-connection-string
-          alias: HMC_SERVICE_BUS_CONNECTION_STRING
+          alias: HMC_SERVICE_BUS_OUTBOUND_CONNECTION_STRING
+        - name: hmc-servicebus-connection-string
+          alias: HMC_SERVICE_BUS_INBOUND_CONNECTION_STRING
         - name: fh-get-token-url
           alias: FH_GET_TOKEN_URL
   environment:
-    HMC_SERVICE_BUS_QUEUE: hmc-to-hmi-{{ .Values.global.environment }}
+    HMC_SERVICE_BUS_OUTBOUND_QUEUE: hmc-to-hmi-{{ .Values.global.environment }}
+    HMC_SERVICE_BUS_INBOUND_QUEUE: hmc-from-hmi-{{ .Values.global.environment }}
     HMI_BASE_URL: https://hmi-apim.test.platform.hmcts.net/hmi
     HMI_SOURCE_SYSTEM: CFT
     HMI_DESTINATION_SYSTEM: SNL
