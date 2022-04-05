@@ -10,8 +10,8 @@ java:
   ingressHost: idam-testing-support-api.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: idam
   environment:
-    IDAM_API_URL: https://idam-api.service.core-compute-{{ .Values.global.environment }}.internal
-    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/jwks
+    IDAM_API_URL: http://idam-api.service.core-compute-{{ .Values.global.environment }}.internal
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: http://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/jwks
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
