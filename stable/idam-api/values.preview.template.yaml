@@ -14,6 +14,5 @@ java:
     LOG_AND_AUDIT_IDAM_URL: http://lau-idam-backend-aat.service.core-compute-aat.internal
     LOG_AND_AUDIT_IDAM_ENABLED: true
     IDAM_RATELIMIT_PASSWORDGRANT_ENABLED: true
-    FEATUREFLAGS_NOTIFYONUSEREMAILUPDATED: true
   devApplicationInsightsInstrumentKeyName: DUMMY_APPLICATIONINSIGHTS_DUMMYKEY
   devApplicationInsightsInstrumentKey: '00000001-0001-0001-0001-000000000001'
