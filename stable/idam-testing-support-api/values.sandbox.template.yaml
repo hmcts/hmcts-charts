@@ -1,4 +1,5 @@
 # Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
+  releaseNameOverride: ${SERVICE_NAME}
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}

@@ -1,5 +1,5 @@
 java:
-  # Don't modify below here
+  releaseNameOverride: ${SERVICE_NAME}
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   devApplicationInsightsInstrumentKeyName: DUMMY_APPLICATIONINSIGHTS_DUMMYKEY
