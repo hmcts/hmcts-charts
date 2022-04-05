@@ -7,11 +7,11 @@ java:
   releaseNameOverride: idam-testing-support-api
   applicationPort: 5000
   image: 'hmctspublic.azurecr.io/idam/idam-testing-support-api:latest'
-  ingressHost: idam-testing-support-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: idam-testing-support-api.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: idam
   environment:
-    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks
+    IDAM_API_URL: https://idam-api.service.core-compute-{{ .Values.global.environment }}.internal
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/jwks
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
