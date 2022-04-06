@@ -13,6 +13,8 @@ java:
           alias: CLIENT_SECRET
         - name: otp-tenant-id
           alias: TENANT_GUID
+        - name: b2c-extension-app-id
+          alias: EXTENSION_ID
         - name: shared-storageaccount-connection-string
           alias: CONNECTION_STRING
         - name: account-management-POSTGRES-DATABASE
