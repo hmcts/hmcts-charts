@@ -1,0 +1,3 @@
+nodejs:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/wa-message-cron-service:latest

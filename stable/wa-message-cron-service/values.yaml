@@ -1,0 +1,17 @@
+job:
+  image: hmctspublic.azurecr.io/wa/message-cron-service:latest
+  schedule: "*/5 * * * *"
+  aadIdentityName: wa
+  keyVaults:
+    wa:
+      secrets:
+        - s2s-secret-case-event-handler
+  environment:
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    S2S_MICROSERVICE_NAME_CASE_EVENT_HANDLER: "wa_case_event_handler"
+    WA_CASE_EVENT_HANDLER_SERVICE_URL: "http://wa-case-event-handler-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    JOB_NAME: "FIND_PROBLEM_MESSAGES"
+    ALLOW_CONFIG_MUTATIONS: true
+global:
+  jobKind: CronJob
+  enableKeyVaults: true
