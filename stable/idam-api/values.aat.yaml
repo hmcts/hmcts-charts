@@ -1,10 +1,10 @@
 java:
-  releaseNameOverride: ${SERVICE_NAME}
-  image: ${IMAGE_NAME}
+  releaseNameOverride: idam-api-staging
+  image: hmctspublic.azurecr.io/idam/api:staging-b0bed9f-20220413195325
   replicas: 1
-  ingressHost: ${SERVICE_FQDN}
-  ingressIP: ${INGRESS_IP}
-  consulIP: ${CONSUL_LB_IP}
+  ingressHost: idam-api-staging.service.core-compute-aat.internal
+  ingressIP: 10.10.143.250
+  consulIP: 
   aadIdentityName: idam
   environment:
     TESTING_SUPPORT_ENABLED: true
