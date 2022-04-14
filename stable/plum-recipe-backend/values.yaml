@@ -9,11 +9,11 @@ java:
   keyVaults:
     "plumsi":
       secrets:
-        - name: recipe-backend-POSTGRES-DATABASE
+        - name: recipe-backend-POSTGRES-DATABASE-v11
           alias: POSTGRES_DATABASE
-        - name: recipe-backend-POSTGRES-HOST
+        - name: recipe-backend-POSTGRES-HOST-v11
           alias: POSTGRES_HOST
-        - name: recipe-backend-POSTGRES-USER
+        - name: recipe-backend-POSTGRES-USER-v11
           alias: POSTGRES_USER
-        - name: recipe-backend-POSTGRES-PASS
+        - name: recipe-backend-POSTGRES-PASS-v11
           alias: POSTGRES_PASSWORD
