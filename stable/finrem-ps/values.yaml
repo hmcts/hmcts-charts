@@ -18,3 +18,8 @@ java:
         - idam-secret
         - username-solicitor
         - password-solicitor
+  autoscaling:
+    enabled: true
+    maxReplicas: 4
+    minReplicas: 2
+    targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
