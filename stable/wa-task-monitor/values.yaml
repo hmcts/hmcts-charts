@@ -15,7 +15,7 @@ java:
     ROLE_ASSIGNMENT_URL: "http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CONFIGURATION_CAMUNDA_MAX_RESULTS: 100
     CONFIGURATION_TIME_LIMIT_FLAG: true
-    CONFIGURATION_TIME_LIMIT: 60
+    CONFIGURATION_TIME_LIMIT: 1440
 
     INITIATION_CAMUNDA_MAX_RESULTS: 100
     INITIATION_TIME_LIMIT_FLAG: true
