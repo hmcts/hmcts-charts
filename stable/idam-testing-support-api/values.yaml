@@ -29,3 +29,5 @@ java:
           alias: spring.datasource.username
         - name: idam-testing-support-api-POSTGRES-PASS
           alias: spring.datasource.password
+        - name: notify-api-key
+          alias: notify.key
