@@ -1,3 +1,13 @@
+nodejs:
+  applicationPort: 3000
+idam-pr:
+  enabled: false
+xui-webapp:
+  enabled: false
+tags:
+  ccd-pr: false
+  ccd-idam-pr: false
+
 java:
   applicationPort: 8099
   image: 'hmctspublic.azurecr.io/fis/cos-api:latest'
@@ -13,6 +23,7 @@ java:
     IDAM_WEB_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login'
     IDAM_API_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
     IDAM_API_BASEURL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
+    CASE_DATA_STORE_BASEURL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
 
   keyVaults:
     fis:
