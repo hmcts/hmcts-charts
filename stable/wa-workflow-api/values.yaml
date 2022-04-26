@@ -2,6 +2,12 @@ java:
   applicationPort: 8099
   image: 'hmctspublic.azurecr.io/wa/workflow-api:latest'
   ingressHost: wa-workflow-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  autoscaling:
+    enabled: true
+    maxReplicas: 4
+    minReplicas: 2
+    targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
+    targetMemoryUtilizationPercentage: 80 # Default is 80% target Memory utilization
   aadIdentityName: wa
   environment:
     RESTART_APP: 1
