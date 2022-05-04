@@ -3,11 +3,16 @@ java:
   ingressHost: pip-channel-management.{{ .Values.global.environment }}.platform.hmcts.net
   applicationPort: 8181
   image: 'sdshmctspublic.azurecr.io/pip/channel-management:latest'
-
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    rpe:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
+  keyVaults:
+    pip-ss-kv:
+      excludeEnvironmentSuffix: false
+      resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
+      usePodIdentity: true
+      secrets:
+        - name: app-pip-channel-management-id
+          alias: CLIENT_ID
+        - name: app-tenant-id
+          alias: TENANT_ID
+        - name: app-pip-channel-management-scope
+          alias: APP_URI
   environment:
