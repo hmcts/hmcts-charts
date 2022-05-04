@@ -8,11 +8,11 @@ java:
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
       secrets:
         - name: otp-app-pip-account-management-id
-          alias: CLIENT_ID
+          alias: CLIENT_ID_B2C
         - name: otp-app-pip-account-management-pwd
-          alias: CLIENT_SECRET
+          alias: CLIENT_SECRET_B2C
         - name: otp-tenant-id
-          alias: TENANT_GUID
+          alias: TENANT_GUID_B2C
         - name: b2c-extension-app-id
           alias: EXTENSION_ID
         - name: shared-storageaccount-connection-string
@@ -27,3 +27,9 @@ java:
           alias: DB_USER
         - name: account-management-POSTGRES-HOST
           alias: DB_HOST
+        - name: app-pip-account-management-id
+          alias: CLIENT_ID
+        - name: app-tenant-id
+          alias: TENANT_ID
+        - name: app-pip-account-management-scope
+          alias: APP_URI
