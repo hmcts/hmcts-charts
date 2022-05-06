@@ -2,6 +2,10 @@ java:
   aadIdentityName: finrem
   ingressHost: "finrem-ns-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   applicationPort: '8086'
+  autoscaling:
+    enabled: true
+    maxReplicas: 4
+    targetCPUUtilizationPercentage: 70 # Default is 80% target CPU utilization
   keyVaults:
     finrem:
       secrets:
