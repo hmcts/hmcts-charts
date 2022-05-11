@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for AM Role Assignment Batch Service
 name: am-role-assignment-batch-service
 home: https://github.com/hmcts/am-role-assignment-batch-service
-version: 0.0.31
+version: 0.0.32
 maintainers:
   - name: Access Management Team
 dependencies:
@@ -14,6 +14,6 @@ dependencies:
     version: ~0.7.3
     repository: '@hmctspublic'
   - name: postgresql
-    version: ~8.9.8
+    version: ~8.10.0
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
