@@ -7,11 +7,11 @@ java:
     pip-ss-kv:
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
       secrets:
-        - name: otp-app-pip-account-management-id
+        - name: auto-pip-stg-pip-account-management-stg-id
           alias: CLIENT_ID_B2C
-        - name: otp-app-pip-account-management-pwd
+        - name: auto-pip-stg-pip-account-management-stg-pwd
           alias: CLIENT_SECRET_B2C
-        - name: otp-tenant-id
+        - name: b2c-tenant-id
           alias: TENANT_GUID_B2C
         - name: b2c-extension-app-id
           alias: EXTENSION_ID
