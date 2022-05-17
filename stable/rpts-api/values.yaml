@@ -11,6 +11,8 @@ java:
           alias: POSTGRES_PASSWORD
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: os-key
+          alias: OS_KEY
   environment:
     POSTGRES_PORT: 5432
     POSTGRES_HOST: rpts-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
