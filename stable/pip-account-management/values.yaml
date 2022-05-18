@@ -7,9 +7,9 @@ java:
     pip-ss-kv:
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
       secrets:
-        - name: auto-pip-stg-pip-account-management-stg-id
+        - name: auto-pip-<ENV>-pip-account-management-<ENV>-id
           alias: CLIENT_ID_B2C
-        - name: auto-pip-stg-pip-account-management-stg-pwd
+        - name: auto-pip-<ENV>-pip-account-management-<ENV>-pwd
           alias: CLIENT_SECRET_B2C
         - name: b2c-tenant-id
           alias: TENANT_GUID_B2C
