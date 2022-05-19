@@ -3,9 +3,9 @@ nodejs:
   aadIdentityName: rpts
   ingressHost: rpts.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/rpts/frontend:latest'
-  #  Uncomment once the vault containing the app insights key has been set up
-  #  keyVaults:
-  #    rpts:
-  #      secrets:
-  #        - AppInsightsInstrumentationKey
+  keyVaults:
+    rpts:
+      secrets:
+        - AppInsightsInstrumentationKey
   environment:
+    RPTS_API_URL: "http://rpts-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
