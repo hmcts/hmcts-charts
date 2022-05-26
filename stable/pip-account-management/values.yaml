@@ -5,7 +5,9 @@ java:
   image: 'sdshmctspublic.azurecr.io/pip/account-management:latest'
   keyVaults:
     pip-ss-kv:
+      excludeEnvironmentSuffix: false
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
+      usePodIdentity: true
       secrets:
         - name: auto-pip-<ENV>-pip-account-management-<ENV>-id
           alias: CLIENT_ID_B2C
