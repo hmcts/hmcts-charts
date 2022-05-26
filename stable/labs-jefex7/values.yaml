@@ -4,3 +4,5 @@ java:
   ingressHost: labs-jefex7-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: labs
   environment:
+    FAVOURITE_FRUIT: plum
+ 
