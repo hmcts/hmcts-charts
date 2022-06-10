@@ -35,12 +35,12 @@ nodejs:
         - iac-token-key
         - adoption-token-key
         - et-token-key
+        - online-plea-token-key
 
 redis:
-  cluster:
+  architecture: standalone
+  auth:
     enabled: false
-    slaveCount: 0
-  usePassword: false
   master:
     persistence:
       enabled: false
