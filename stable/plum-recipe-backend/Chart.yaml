@@ -1,12 +1,12 @@
 name: plum-recipe-backend
 apiVersion: v2
 home: https://github.com/hmcts/cnp-plum-recipes-service
-version: 0.8.5
+version: 0.8.6
 description: HMCTS Plum recipes service (test application)
 maintainers:
   - name: HMCTS CNP Team
     email: cnpteam@hmcts.net
 dependencies:
   - name: java
-    version: 3.7.2
+    version: 3.7.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
