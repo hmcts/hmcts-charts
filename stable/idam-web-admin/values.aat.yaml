@@ -1,6 +1,6 @@
 java:
   releaseNameOverride: idam-web-admin-staging
-  image: hmctspublic.azurecr.io/idam/web-admin:staging-ee8f344-20220610171421
+  image: hmctspublic.azurecr.io/idam/web-admin:staging-6574093-20220614132015
   ingressHost: idam-web-admin-staging.service.core-compute-aat.internal
   ingressIP: 10.10.143.250
   consulIP: 
