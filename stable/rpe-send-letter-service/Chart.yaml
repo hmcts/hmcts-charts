@@ -1,12 +1,12 @@
 name: rpe-send-letter-service
 apiVersion: v2
 home: https://github.com/hmcts/send-letter-service
-version: 0.4.4
+version: 0.4.5
 description: HMCTS Send letter service
 maintainers:
   - name: HMCTS BSP Team
     email: bspteam@hmcts.net
 dependencies:
   - name: java
-    version: 3.7.7
+    version: 3.7.8
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
