@@ -31,6 +31,8 @@ java:
           alias: DB_HOST
         - name: app-pip-account-management-id
           alias: CLIENT_ID
+        - name: app-pip-account-management-pwd
+          alias: CLIENT_SECRET
         - name: app-tenant-id
           alias: TENANT_ID
         - name: app-pip-account-management-scope
