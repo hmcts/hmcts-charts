@@ -39,3 +39,5 @@ java:
           alias: INSTRUMENTATION_KEY
         - name: app-pip-publication-services-scope
           alias: PUBLICATION_SERVICES_AZ_API
+        - name: b2c-ad-url
+          alias: IDENTITY_ISSUER
