@@ -37,3 +37,5 @@ java:
           alias: APP_URI
         - name: app-insights-java-instrumentation-key
           alias: INSTRUMENTATION_KEY
+        - name: app-pip-publication-services-scope
+          alias: PUBLICATION_SERVICES_AZ_API
