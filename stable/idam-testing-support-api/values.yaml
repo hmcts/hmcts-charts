@@ -12,6 +12,7 @@ java:
   environment:
     IDAM_API_URL: http://idam-api.service.core-compute-{{ .Values.global.environment }}.internal
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: http://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/jwks
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMTESTINGSUPPORTAPI_TOKENURI: http://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/token
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
@@ -31,3 +32,5 @@ java:
           alias: spring.datasource.password
         - name: notify-api-key
           alias: notify.key
+        - name: idam-testing-support-api-client-secret
+          alias: spring.security.oauth2.client.registration.idam-testing-support-api.client-secret
