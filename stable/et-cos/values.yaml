@@ -8,8 +8,6 @@ java:
       secrets:
         - name: cos-POSTGRES-PASS
           alias: ET_COS_DB_PASSWORD
-        - name: tornado-access-key
-          alias: TORNADO_ACCESS_KEY
         - name: et-cos-s2s-secret
           alias: ET_COS_S2S_SECRET
     et:
@@ -18,6 +16,8 @@ java:
           alias: CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING
         - name: AppInsightsInstrumentationKey
           alias: APP_INSIGHTS_KEY
+        - name: tornado-access-key
+          alias: TORNADO_ACCESS_KEY
   environment:
     SERVER_PORT: 8081
     REFORM_TEAM: et
