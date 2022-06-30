@@ -1,5 +1,10 @@
 nodejs:
   applicationPort: 1337
   image: 'hmctspublic.azurecr.io/apple/frontend:latest'
+  aadIdentityName: apple
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-java
+  keyVaults:
+    "applesi":
+      secrets:
+        - name: appInsights-InstrumentationKey
