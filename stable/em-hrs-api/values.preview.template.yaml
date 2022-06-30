@@ -34,6 +34,9 @@ java:
     CVP_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(BLOB_ACCOUNT_NAME);AccountKey=$(BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
   postgresql:
     enabled: true
+    auth:
+      username: emhrs
+      password: emhrs
 blobstorage:
   enabled: true
   resourceGroup: em-hrs-api-aks
