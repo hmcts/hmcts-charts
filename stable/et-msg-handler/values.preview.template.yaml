@@ -25,9 +25,9 @@ java:
           alias: IDAM_CLIENT_SECRET
   environment:
     ET_MSG_HANDLER_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    ET_MSG_HANDLER_POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
-    ET_MSG_HANDLER_POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
-    ET_MSG_HANDLER_POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    ET_MSG_HANDLER_POSTGRES_DATABASE: "{{ .Values.postgresql.auth.database}}"
+    ET_MSG_HANDLER_POSTGRES_USER: "{{ .Values.postgresql.auth.username}}"
+    ET_MSG_HANDLER_POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     ET_MSG_HANDLER_DB_CONN_OPTIONS: ""
     CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING: "$(CREATE_UPDATES_CONN_STRING)"
     CREATE_UPDATES_QUEUE_LISTEN_CONNECTION_STRING: "$(CREATE_UPDATES_CONN_STRING)"
