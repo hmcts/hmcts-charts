@@ -3,18 +3,19 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_DB_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
-    POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
+    POSTGRES_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+    POSTGRES_PORT: "{{ .Values.postgresql.auth.port}}"
     LOCATIONS_DB: classpath:db/migration,classpath:db/postgres,classpath:db/migrationAks
     LAUNCH_DARKLY_ENV: "preview"
   postgresql:
     enabled: true
-    postgresqlUsername: dbrdlocationref
-    postgresqlPassword: dbrdlocationref
-    postgresqlDatabase: dbrdlocationref
-    postgresqlPort: 5432
+    auth:
+      username: dbrdlocationref
+      password: dbrdlocationref
+      database: dbrdlocationref
+      port: 5432
   keyVaults:
     rd:
       secrets:
