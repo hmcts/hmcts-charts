@@ -3,17 +3,18 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    POSTGRES_NAME: "{{ .Values.postgresql.auth.database}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     JUDICIAL_DB: classpath:db/migration
     LAUNCH_DARKLY_ENV: "preview"
     ENVIRONMENT_NAME: "preview"
   postgresql:
     enabled: true
-    postgresqlUsername: dbjuddata
-    postgresqlPassword: dbjuddata
-    postgresqlDatabase: dbjuddata
+    auth:
+      username: dbjuddata
+      password: dbjuddata
+      database: dbjuddata
   keyVaults:
     rd:
       secrets:
