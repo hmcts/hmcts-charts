@@ -14,7 +14,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.2.1
+version: 0.2.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the chart.
@@ -22,9 +22,9 @@ appVersion: 0.2.1
 
 dependencies:
   - name: function
-    version: 1.0.4
-    repository: '@hmctspublic'
+    version: 2.0.1-beta
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: servicebus
     version: 0.3.0
-    repository: '@hmctspublic'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
