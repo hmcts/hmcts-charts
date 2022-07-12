@@ -36,12 +36,15 @@ global:
 postgresql:
   enabled: true
   image:
-    tag: '11.3.0'
-  postgresqlUsername: locrefdata
-  postgresqlPassword: locrefdata
-  postgresqlDatabase: locrefdata
-  persistence:
-    enabled: false
+    tag: '11.16.0'
+  auth:
+    username: locrefdata
+    password: locrefdata
+    database: locrefdata
+  ## Disable Postgres Persistence
+  primary:
+    persistence:
+      enabled: false
 
 blobstorage:
   resourceGroup: rd-aks-pr-test
