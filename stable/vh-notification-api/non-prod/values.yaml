@@ -37,4 +37,4 @@ java:
     Logging__LogLevel__Default: debug
     Logging__LogLevel__System: debug
     Logging__LogLevel__Microsoft: debug
-    NotifyConfiguration__Environment: "{{ .Values.global.environment }}"
+    NotifyConfiguration__Environment: "{{ lower .Values.global.environment }}"
