@@ -1,0 +1,26 @@
+elastic:
+  enabled: false
+ccd:
+  enabled: false
+
+job:
+  image: 'https://hmctspublic.azurecr.io/ccd/ccd-next-hearing-date-updater:latest'
+  kind: CronJob
+  schedule: "0 22 * * *"
+  startingDeadlineSeconds: 600
+  concurrencyPolicy: Forbid
+  ingressHost: ccd-next-hearing-date-updater-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: ccd
+  #  Uncomment once the vault containing the app insights key has been set up
+  keyVaults:
+    ccd:
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+  environment:
+    DELETE_CASE_TYPES:
+    SIMULATED_CASE_TYPES:
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  global:
+    jobKind: CronJob
