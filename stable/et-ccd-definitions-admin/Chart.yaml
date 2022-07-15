@@ -1,0 +1,8 @@
+apiVersion: v2
+name: et-ccd-definitions-admin
+version: 0.0.1
+description: ET CCD Definitions Admin
+dependencies:
+  - name: nodejs
+    version: 2.4.4
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/
