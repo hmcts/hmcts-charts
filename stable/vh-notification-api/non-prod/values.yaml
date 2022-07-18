@@ -18,6 +18,7 @@ java:
       secrets:
         - connectionstrings--vhnotificationsapi
         - applicationinsights--instrumentationkey
+        - azuread--tenantid
     vh-notification-api:
       excludeEnvironmentSuffix: false
       resourceGroup: vh-infra-core-{{ .Values.global.environment }}
@@ -29,11 +30,8 @@ java:
         - notifyconfiguration--callbacksecret
   environment:
     ASPNETCORE_URLS: http://+:8080
-    AZUREAD__TENANTID: "fb6e0e22-0da3-4c35-972a-9d61eb256508"
     DISABLEHTTPSREDIRECTION: true
-    SERVICEBUSQUEUE__QUEUENAME: notification
-    SERVICES__NOTIFICATIONAPIRESOURCEID: http://vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
-    TESTING__TESTUSERNAMESTEM: "@hearings.reform.hmcts.net"
+    SERVICES__VHNOTIFICATIONAPIRESOURCEID: http://vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
     Logging__LogLevel__Default: debug
     Logging__LogLevel__System: debug
     Logging__LogLevel__Microsoft: debug
