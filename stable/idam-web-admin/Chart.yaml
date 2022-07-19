@@ -2,10 +2,10 @@ apiVersion: v2
 appVersion: "1.0"
 description: A Helm chart for CFT IDAM Admin Web
 name: idam-web-admin
-version: 0.2.10
+version: 0.2.11
 dependencies:
   - name: java
-    version: ~3.7.5
+    version: ~4.0.1
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
 maintainers:
   - name: CFT IDAM Team
