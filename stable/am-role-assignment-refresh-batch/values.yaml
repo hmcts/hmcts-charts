@@ -10,13 +10,20 @@ job:
   keyVaults:
     am:
       secrets:
-        - AppInsightsInstrumentationKey
-        - am-role-assignment-refresh-batch-s2s-secret
-        - role-assignment-service-LD-SDK-KEY
-        - orm-IDAM-CLIENT-ID
-        - orm-IDAM-CLIENT-SECRET
-        - orm-IDAM-ADMIN-SECRET
-        - org-role-mapping-service-POSTGRES-PASS
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: orm-IDAM-CLIENT-ID
+          alias: ORM_IDAM_CLIENT_ID
+        - name: orm-IDAM-CLIENT-SECRET
+          alias: ORG_ROLE_MAPPING_IDAM_CLIENT_SECRET
+        - name: orm-IDAM-ADMIN-SECRET
+          alias: ORG_ROLE_MAPPING_IDAM_ADMIN_PASSWORD
+        - name: am-role-assignment-refresh-batch-s2s-secret
+          alias: AM_ROLE_ASSIGNMENT_REFRESH_BATCH_SECRET
+        - name: role-assignment-service-LD-SDK-KEY
+          alias: LD_SDK_KEY
+        - name: org-role-mapping-service-POSTGRES-PASS
+          alias: ORG_ROLE_MAPPING_DB_PASSWORD
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_USER_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
