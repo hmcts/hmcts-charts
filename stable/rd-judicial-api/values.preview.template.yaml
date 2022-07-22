@@ -9,6 +9,7 @@ java:
     JUDICIAL_DB: classpath:db/migration
     LAUNCH_DARKLY_ENV: "preview"
     ENVIRONMENT_NAME: "preview"
+    JRD_SEARCH_SERVICE_CODE: bfa1,bba3
   postgresql:
     enabled: true
     auth:
