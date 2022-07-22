@@ -6,9 +6,9 @@ java:
     CAMUNDA_URL: "http://camunda-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/engine-rest"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    POSTGRES_NAME: "{{ .Values.postgresql.auth.database}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     POSTGRES_CONNECTION_OPTIONS: ""
   keyVaults:
     wa:
@@ -19,4 +19,5 @@ java:
           alias: S2S_SECRET_WORKFLOW_API
   postgresql:
     enabled: true
-    postgresqlDatabase: wa_workflow_api
+    auth:
+      database: wa_workflow_api
