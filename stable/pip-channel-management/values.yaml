@@ -21,4 +21,6 @@ java:
           alias: ACCOUNT_MANAGEMENT_AZ_API
         - name: app-insights-java-instrumentation-key
           alias: INSTRUMENTATION_KEY
+        - name: auto-pip-<ENV>-courtel-api
+          alias: COURTEL_API
   environment:
