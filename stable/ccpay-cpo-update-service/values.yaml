@@ -1,0 +1,36 @@
+java:
+  applicationPort: 8080
+  image: 'hmctspublic.azurecr.io/ccpay/cpo-update-service:latest'
+  ingressHost: ccpay-cpo-update-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: ccpay
+#  Uncomment once the vault containing the app insights key has been set up
+  keyVaults:
+    "ccpay":
+      resourceGroup: ccpay
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: ccpay-service-request-cpo-update-topic-shared-access-key
+          alias: AMQP_SHARED_ACCESS_KEY_VALUE
+        - name: ccpay-cpo-client-id
+          alias: CPO_UPDATE_SERVICE_ACCOUNT_CLIENT_ID
+        - name: ccpay-cpo-client-secret
+          alias: CPO_UPDATE_ACCOUNT_CLIENT_SECRET
+        - name: ccpay-cpo-user-password
+          alias: CPO_UPDATE_ACCOUNT_PASSWORD
+        - name: service-request-cpo-update-service-s2s-secret
+          alias: OIDC_S2S_SECRET
+  environment:
+    IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    AMQP_HOST: "ccpay-servicebus-{{ .Values.global.environment }}.servicebus.windows.net"
+    AMQP_SHARED_ACCESS_KEY_NAME: SendAndListenSharedAccessKey
+    AMQP_TOPIC_NAME: "ccpay-service-request-cpo-update-topic"
+    AMQP_SUBSCRIPTION: serviceRequestCpoUpdateSubscription
+    CPO_UPDATE_ACCOUNT_GRANT_TYPE: password
+    CPO_UPDATE_ACCOUNT_SCOPE: openid profile roles
+    CPO_UPDATE_ACCOUNT_USERNAME: idam.user.ccpayfunctionnode@hmcts.net
+    AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    OIDC_S2S_MICROSERVICE_NAME: service_request_cpo_update_service
+    CPO_URL: "http://cpo-case-payment-orders-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CPO_PATH: "/case-payment-orders"
+    THREAD_COUNT: 4
