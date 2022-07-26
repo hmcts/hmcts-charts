@@ -1,0 +1,8 @@
+java:
+  applicationPort: 8080
+  image: 'sdshmctspublic.azurecr.io/dts-legacy/lgy-iac-web:latest'
+  ingressHost: lgy-iac-web-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: dts-legacy
+  environment:
+    FAVOURITE_FRUIT: IAC Fees
+
