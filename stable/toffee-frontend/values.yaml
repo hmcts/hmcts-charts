@@ -1,6 +1,6 @@
 nodejs:
   applicationPort: 1337
-  image: 'sdshmctsprivate.azurecr.io/toffee/frontend:ek-test-4'
+  image: 'sdshmctspublic.azurecr.io/toffee/frontend:latest'
   aadIdentityName: toffee
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-java
