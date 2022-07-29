@@ -1,0 +1,71 @@
+---
+java:
+  image: "sdshmctspublic.azurecr.io/vh/video-web:latest"
+  applicationPort: 8080
+  replicas: 2
+  ingressHost: vh-video-web.{{ .Values.global.environment }}.platform.hmcts.net
+  releaseNameOverride: vh-video-web
+  readinessPath: /healthcheck/health
+  livenessPath: /healthcheck/health
+  livenessDelay: 360
+  livenessPeriod: 120
+  aadIdentityName: vh-aad-identity
+  keyVaults:
+    vh-infra-core:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - applicationinsights--instrumentationkey
+        - azuread--tenantid
+        - azuread--vhvideowebclientid
+        - connectionstrings--signalr
+        - connectionstrings--rediscache
+    vh-video-web:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - azuread--clientid
+        - azuread--clientsecret
+        - customtoken--secret
+        - customtoken--thirdpartysecret
+        - kinlyconfiguration--apisecret
+        - kinlyconfiguration--callbacksecret
+        - kinlyconfiguration--conferencephonenumber
+        - kinlyconfiguration--heartbeaturlbase
+        - kinlyconfiguration--joinbyphonefromdate
+        - kinlyconfiguration--selftestapisecret
+        - kinlyconfiguration--turnserver
+        - kinlyconfiguration--turnservercredential
+        - kinlyconfiguration--turnserveruser
+        - quicklinks--issuer
+        - quicklinks--rsapublickey
+        - quicklinks--validaudience
+        - vhservices--emailreformdomain
+        - vhservices--internaleventsecret
+  environment:
+    ASPNETCORE_URLS: http://+:8080
+    AZUREAD__POSTLOGOUTREDIRECTURI: https://vh-video-web.{{ .Values.global.environment }}.platform.hmcts.net/logout
+    AZUREAD__REDIRECTURI: https://vh-video-web.{{ .Values.global.environment }}.platform.hmcts.net/home
+    AZUREAD__VHVIDEOWEBRESOURCEID: https://vh-video-web.{{ .Values.global.environment }}.platform.hmcts.net
+    DISABLEHTTPSREDIRECTION: true
+    EJUDAD__CLIENTID: placeholder
+    EJUDAD__POSTLOGOUTREDIRECTURI: placeholder
+    EJUDAD__REDIRECTURI: placeholder
+    EJUDAD__TENANTID: placeholder
+    MSDEPLOY_RENAME_LOCKED_FILES: 1
+    VHSERVICES__BOOKINGSAPIRESOURCEID: https://vh-bookings-api.{{ .Values.global.environment }}.platform.hmcts.net
+    VHSERVICES__BOOKINGSAPIURL: https://vh-bookings-api.{{ .Values.global.environment }}.platform.hmcts.net/
+    VHSERVICES__ENABLEANDROIDSUPPORT: true
+    VHSERVICES__ENABLEDYNAMICEVIDENCESHARING: true
+    VHSERVICES__ENABLEIOSMOBILESUPPORT: true
+    VHSERVICES__ENABLEIOSTABLETSUPPORT: true
+    VHSERVICES__ENABLEVIDEOFILTERS: true
+    VHSERVICES__USERAPIRESOURCEID: https://vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net
+    VHSERVICES__USERAPIURL: https://vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net/
+    VHSERVICES__VIDEOAPIRESOURCEID: https://vh-video-api.{{ .Values.global.environment }}.platform.hmcts.net
+    VHSERVICES__VIDEOAPIURL: https://vh-video-api.{{ .Values.global.environment }}.platform.hmcts.net/
+    Logging__LogLevel__Default: debug
+    Logging__LogLevel__System: debug
+    Logging__LogLevel__Microsoft: debug
