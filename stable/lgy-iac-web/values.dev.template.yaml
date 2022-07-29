@@ -3,5 +3,5 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    FAVOURITE_FRUIT: IAC Fees DEV
+    FAVOURITE_FRUIT: IAC Fees Dev
 
