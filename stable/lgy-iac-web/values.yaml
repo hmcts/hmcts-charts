@@ -2,7 +2,23 @@ java:
   applicationPort: 8080
   image: 'sdshmctspublic.azurecr.io/dts-legacy/lgy-iac-web:latest'
   ingressHost: lgy-iac-web-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  aadIdentityName: dts-legacy
+  aadIdentityName: lgy-iac
+  keyVaults:
+    lgy-iac:
+      resourceGroup: lgy-iac-{{ .Values.global.environment }}
+      secrets:
+        - name: lgy-iac-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
+        - name: lgy-iac-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: lgy-iac-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: lgy-iac-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
   environment:
+    POSTGRES_SSL_MODE: require
+    FLYWAY_URL: jdbc:postgresql://lgy-iac-v11-{{ .Values.global.environment }}.postgres.database.azure.com:5432/lgyiac?&sslmode=require
+    FLYWAY_USER: lgyiacadmin@lgy-iac-v11-{{ .Values.global.environment }}
+    FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
     FAVOURITE_FRUIT: IAC Fees
 
