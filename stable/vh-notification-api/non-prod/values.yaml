@@ -28,6 +28,7 @@ java:
         - azuread--clientid
         - notifyconfiguration--apikey
         - notifyconfiguration--callbacksecret
+        - NotifyConfiguration--Environment
   environment:
     ASPNETCORE_URLS: http://+:8080
     DISABLEHTTPSREDIRECTION: true
