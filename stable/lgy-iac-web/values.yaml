@@ -7,13 +7,13 @@ java:
     lgy-iac:
       resourceGroup: lgy-iac-{{ .Values.global.environment }}
       secrets:
-        - name: lgy-iac-POSTGRES-DATABASE
+        - name: web-POSTGRES-DATABASE
           alias: POSTGRES_DATABASE
-        - name: lgy-iac-POSTGRES-HOST
+        - name: web-POSTGRES-HOST
           alias: POSTGRES_HOST
-        - name: lgy-iac-POSTGRES-USER
+        - name: web-POSTGRES-USER
           alias: POSTGRES_USER
-        - name: lgy-iac-POSTGRES-PASS
+        - name: web-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
   environment:
     POSTGRES_SSL_MODE: require
