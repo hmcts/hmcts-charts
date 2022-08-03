@@ -21,4 +21,5 @@ java:
     FLYWAY_USER: lgyiacadmin@lgy-iac-v11-{{ .Values.global.environment }}
     FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
     FAVOURITE_FRUIT: IAC Fees
+    RUN_DB_MIGRATION_ON_STARTUP: false
 

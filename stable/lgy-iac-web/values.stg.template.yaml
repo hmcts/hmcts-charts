@@ -4,3 +4,4 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     FAVOURITE_FRUIT: IAC Fees STG
+    RUN_DB_MIGRATION_ON_STARTUP: true
