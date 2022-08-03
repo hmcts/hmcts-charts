@@ -33,6 +33,8 @@ java:
 
     PENDING_TERMINATION_CAMUNDA_MAX_RESULTS: 1
 
+    RECONFIGURATION_MAX_TIME_LIMIT_SECONDS: 120
+
   keyVaults:
     wa:
       secrets:
