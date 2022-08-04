@@ -3,5 +3,6 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
+    RUN_DB_MIGRATION_ON_STARTUP: true
     FAVOURITE_FRUIT: IAC Fees Dev
 
