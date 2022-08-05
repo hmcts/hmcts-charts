@@ -1,7 +1,7 @@
 java:
   applicationPort: 8080
   image: 'sdshmctspublic.azurecr.io/lgy-iac/web:latest'
-  ingressHost: lgy-iac-web-{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: lgy-iac-web.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: lgy-iac
   keyVaults:
     lgy-iac:
