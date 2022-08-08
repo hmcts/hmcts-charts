@@ -24,9 +24,12 @@ java:
     lau:
       resourceGroup: lau
       secrets:
-        - case-backend-POSTGRES-USER
-        - case-backend-POSTGRES-PASS
-        - case-backend-app-db-user
-        - case-backend-app-db-password
-        - flyway-password
         - AppInsightsInstrumentationKey
+        - case-backend-POSTGRES-PASS
+        - case-backend-POSTGRES-USER
+        - case-backend-app-db-password
+        - case-backend-app-db-password
+        - case-backend-app-db-user
+        - flyway-password
+        - idam-client-secret
+
