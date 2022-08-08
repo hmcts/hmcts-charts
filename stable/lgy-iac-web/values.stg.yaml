@@ -2,6 +2,3 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/lgy-iac-web:latest
   ingressHost: 
-  environment:
-    RUN_DB_MIGRATION_ON_STARTUP: false
-    FAVOURITE_FRUIT: IAC Fees STG
