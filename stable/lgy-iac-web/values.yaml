@@ -18,8 +18,8 @@ java:
           alias: POSTGRES_PASSWORD
   environment:
     POSTGRES_SSL_MODE: require
-    FLYWAY_URL: jdbc:postgresql://lgy-iac-v11-{{ .Values.global.environment }}.postgres.database.azure.com:5432/lgyiac?&sslmode=require
-    FLYWAY_USER: lgyiacadmin@lgy-iac-v11-{{ .Values.global.environment }}
+    FLYWAY_URL: jdbc:postgresql://lgy-iac-v11-stg.postgres.database.azure.com:5432/lgyiac?&sslmode=require
+    FLYWAY_USER: lgyiacadmin@lgy-iac-v11-stg
     FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
     FAVOURITE_FRUIT: IAC Fees Default
     RUN_DB_MIGRATION_ON_STARTUP: false
