@@ -1,8 +1,7 @@
 java:
   applicationPort: 8080
   image: 'sdshmctspublic.azurecr.io/lgy-iac/web:latest'
-  #need to set ingressHost in sds-flux-config for each env(stg.yaml)
-  ingressHost: lgy-iac-web.staging.platform.hmcts.net
+  ingressHost: lgy-iac-web.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: lgy-iac
   keyVaults:
     lgy-iac:
@@ -22,5 +21,5 @@ java:
     FLYWAY_USER: lgyiacadmin@lgy-iac-v11-stg
     FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
     FAVOURITE_FRUIT: IAC Fees Default
-    RUN_DB_MIGRATION_ON_STARTUP: false
+    RUN_DB_MIGRATION_ON_STARTUP: 'false'
 
