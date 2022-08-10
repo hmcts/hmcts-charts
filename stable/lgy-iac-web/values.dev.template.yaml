@@ -6,8 +6,11 @@ java:
   environment:
     FAVOURITE_FRUIT: IAC Fees Dev
     RUN_DB_MIGRATION_ON_STARTUP: 'true'
-    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_DATABASE: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USER: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    RUN_DB_REPAIR_ON_STARTUP: 'true'
+    FLYWAY_USER: ${FLYWAY_USER}
+    FLYWAY_PASSWORD: ${FLYWAY_PASSWORD}
+    POSTGRES_HOST: ${POSTGRES_HOST}
+    POSTGRES_USER: ${POSTGRES_USER}
+    POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
