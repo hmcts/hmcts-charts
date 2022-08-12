@@ -1,7 +1,0 @@
----
-java:
-  image: '${IMAGE_NAME}'
-  ingressHost: ${SERVICE_FQDN}
-  releaseNameOverride: ${RELEASE_NAME}
-  environment:
-    SERVICES__NOTIFICATIONAPIRESOURCEID: http://vh-notification-api.demo.platform.hmcts.net
