@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for lgy-iac-web App
 name: lgy-iac-web
 home: https://github.com/hmcts/lgy-iac-web
-version: 0.0.36
+version: 0.0.37
 maintainers:
   - name: DTS Legacy Apps team
 dependencies:
