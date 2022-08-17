@@ -45,6 +45,7 @@ java:
   environment:
     SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-api-postgres-v11-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
     SPRING_DATASOURCE_USERNAME: emhrs@em-hrs-api-postgres-v11-db-{{ .Values.global.environment }}
+    RUN_DB_MIGRATION_ON_STARTUP: false
     HRS_STORAGE_CONTAINER_NAME: recordings
     CVP_STORAGE_CONTAINER_NAME: recordings
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
