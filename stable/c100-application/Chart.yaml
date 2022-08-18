@@ -1,0 +1,13 @@
+apiVersion: v2
+name: c100-application
+home: https://github.com/hmcts/c100-application
+version: 0.0.8
+description: C100 Application
+dependencies:
+  - name: base
+    version: 0.2.3
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+  - name: redis
+    version: 17.0.6
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled

@@ -1,0 +1,32 @@
+base:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    DATABASE_URL: 'postgres://{{ .Values.postgresql.auth.username}}:{{ .Values.postgresql.auth.password}}@{{ .Release.Name }}-postgresql/{{ .Values.postgresql.auth.database}}'
+    RAILS_ENV: 'test'
+    REDIS_URL: "redis://${SERVICE_NAME}-redis-master:6379"
+  postgresql:
+    enabled: true
+    debug: true
+    auth:
+      postgresPassword: postgres
+    primary:
+      initdb:
+        user: postgres
+        password: postgres
+        scripts:
+          my_init_script.sql: |
+            CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+            CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+            CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA public;
+
+redis:
+  enabled: true
+  url: "redis://${SERVICE_NAME}-redis-master:6379"
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+  auth:
+    enabled: false

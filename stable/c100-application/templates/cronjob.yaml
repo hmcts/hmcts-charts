@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ template "hmcts.releasename.v2" . }}-cronjob
+{{- include "hmcts.labels.v2" . | indent 2 -}}
+{{- include "hmcts.annotations.v2" . | indent 2 }}
+spec:
+  schedule: "0 3 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  startingDeadlineSeconds: 300
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 216000 # 60 hours
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            tier: worker
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: cronjob-daily-tasks
+            image: {{ .Values.base.image }}
+            imagePullPolicy: Always
+            command: ['bin/rails', 'daily_tasks']
+            env:
+            {{ if .Values.redis.url }}
+              - name: DATABASE_URL
+                value: postgres://{{ .Values.base.postgresql.auth.username}}:{{ .Values.base.postgresql.auth.password}}@{{ .Release.Name }}-postgresql/{{ .Values.base.postgresql.auth.database }}
+              - name: REDIS_URL
+                value: {{ .Values.redis.url }}
+            {{ end }}

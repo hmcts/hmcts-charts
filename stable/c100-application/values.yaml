@@ -1,0 +1,49 @@
+base:
+  applicationPort: 3000
+  readinessPath: /status
+  livenessPath: /status
+  startupPath: /status
+  image: 'sdshmctspublic.azurecr.io/c100/application:latest'
+  ingressHost: c100-application.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: c100
+  environment:
+    RAILS_ENV: 'production'
+  keyVaults:
+    c100:
+      secrets:
+        - name: c100-postgres-user-name
+          alias: DATABASE_USERNAME
+        - name: c100-postgres-password
+          alias: DATABASE_PASSWORD
+        - name: c100-postgres-host-name
+          alias: DATABASE_HOST
+        - name: c100-postgres-database
+          alias: DATABASE_NAME
+        - name: redis-url
+          alias: REDIS_URL
+        - name: external-url
+          alias: EXTERNAL_URL
+        - name: session-expires-in-minutes
+          alias: SESSION_EXPIRES_IN_MINUTES
+        - name: session-warning-when-remaining
+          alias: SESSION_WARNING_WHEN_REMAINING
+        - name: govuk-notify-api-key
+          alias: GOVUK_NOTIFY_API_KEY
+        - name: govuk-notify-bearer-token
+          alias: GOVUK_NOTIFY_BEARER_TOKEN
+        - name: govuk-pay-api-key
+          alias: GOVUK_PAY_API_KEY
+        - name: send-failed-emails-report
+          alias: SEND_FAILED_EMAILS_REPORT
+        - name: auth0-domain
+          alias: AUTH0_DOMAIN
+        - name: auth0-client-id
+          alias: AUTH0_CLIENT_ID
+        - name: auth0-client-secret
+          alias: AUTH0_CLIENT_SECRET
+        - name: maintenance-enabled
+          alias: MAINTENANCE_ENABLED
+        - name: maintenance-allowed-ips
+          alias: MAINTENANCE_ALLOWED_IPS
+redis:
+  enabled: false

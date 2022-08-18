@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ template "hmcts.releasename.v2" . }}-paymts
+{{- include "hmcts.labels.v2" . | indent 2 -}}
+{{- include "hmcts.annotations.v2" . | indent 2 }}
+spec:
+  schedule: "*/15 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  startingDeadlineSeconds: 300
+  jobTemplate:
+    spec:
+      backoffLimit: 5
+      template:
+        metadata:
+          labels:
+            tier: worker
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: cronjob-payments-mop-up
+            image: {{ .Values.base.image }}
+            imagePullPolicy: IfNotPresent
+            command: ['bin/rails', 'payments_mop_up']
+            env:
+            {{ if .Values.redis.url }}
+              - name: DATABASE_URL
+                value: postgres://{{ .Values.base.postgresql.auth.username}}:{{ .Values.base.postgresql.auth.password}}@{{ .Release.Name }}-postgresql/{{ .Values.base.postgresql.auth.database }}
+              - name: REDIS_URL
+                value: {{ .Values.redis.url }}
+            {{ end }}
