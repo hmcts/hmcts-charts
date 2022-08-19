@@ -10,7 +10,8 @@ metadata:
 {{- include "hmcts.labels.v2" . | indent 2 -}}
 {{- include "hmcts.annotations.v2" . | indent 2 }}
 spec:
-  schedule: "*/15 * * * *"
+  schedule: "*/1 * * * *" # for testing
+  # schedule: "*/15 * * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
