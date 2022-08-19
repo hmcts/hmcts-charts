@@ -41,6 +41,7 @@ spec:
               image: {{ .Values.base.image }}
               imagePullPolicy: Always
               command: ['bin/rails', 'daily_tasks']
+              {{- ( include "hmcts.secretMounts.v2" $base ) | indent 14 }}
               env:
               {{ if .Values.redis.url }}
                 - name: DATABASE_URL
