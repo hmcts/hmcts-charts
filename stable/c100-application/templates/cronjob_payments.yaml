@@ -7,7 +7,12 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ template "hmcts.releasename.v2" . }}-paymts
-{{- include "hmcts.labels.v2" . | indent 2 -}}
+  labels:
+    app.kubernetes.io/name: {{ template "hmcts.releasename.v2" $base }}-paymts
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ template "hmcts.releasename.v2" $base }}-paymts
+    aadpodidbinding: {{ .Values.base.aadIdentityName }}
 {{- include "hmcts.annotations.v2" . | indent 2 }}
 spec:
   schedule: "*/1 * * * *" # for testing
@@ -22,7 +27,12 @@ spec:
       template:
         metadata:
           labels:
-            tier: worker
+            name: {{ template "hmcts.releasename.v2" . }}-paymts
+            app.kubernetes.io/name: {{ template "hmcts.releasename.v2" $base }}-paymts
+            helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+            app.kubernetes.io/managed-by: {{ .Release.Service }}
+            app.kubernetes.io/instance: {{ template "hmcts.releasename.v2" $base }}-paymts
+            aadpodidbinding: {{ .Values.base.aadIdentityName }}
         spec:
           restartPolicy: OnFailure
           {{- include "hmcts.interpodantiaffinity.v2" $base | indent 10 }}
