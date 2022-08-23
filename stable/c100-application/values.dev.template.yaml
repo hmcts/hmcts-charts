@@ -4,8 +4,9 @@ base:
   ingressHost: ${SERVICE_FQDN}
   environment:
     DATABASE_URL: 'postgres://{{ .Values.postgresql.auth.username}}:{{ .Values.postgresql.auth.password}}@{{ .Release.Name }}-postgresql/{{ .Values.postgresql.auth.database}}'
-    RAILS_ENV: 'test'
+    RAILS_ENV: 'production'
     REDIS_URL: "redis://${SERVICE_NAME}-redis-master:6379"
+    DATABASE_SSLMODE: 'allow'
   postgresql:
     enabled: true
     debug: true

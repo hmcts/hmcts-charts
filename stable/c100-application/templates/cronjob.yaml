@@ -15,8 +15,7 @@ metadata:
     aadpodidbinding: {{ .Values.base.aadIdentityName }}
 {{- include "hmcts.annotations.v2" . | indent 2 }}
 spec:
-  schedule: "*/1 * * * *" # for testing
-  # schedule: "0 3 * * *"
+  schedule: "0 3 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 1
   startingDeadlineSeconds: 300
@@ -57,4 +56,6 @@ spec:
                   value: postgres://{{ .Values.base.postgresql.auth.username}}:{{ .Values.base.postgresql.auth.password}}@{{ .Release.Name }}-postgresql/{{ .Values.base.postgresql.auth.database }}
                 - name: REDIS_URL
                   value: {{ .Values.redis.url }}
+                - name: DATABASE_SSLMODE
+                  value: 'allow'
               {{ end }}
