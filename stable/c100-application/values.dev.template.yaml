@@ -7,7 +7,7 @@ base:
     RAILS_ENV: 'production'
     REDIS_URL: "redis://${SERVICE_NAME}-redis-master:6379"
     DATABASE_SSLMODE: 'allow'
-    EXTERNAL_URL: ${SERVICE_FQDN}
+    EXTERNAL_URL: "https://${SERVICE_FQDN}"
   postgresql:
     enabled: true
     debug: true
