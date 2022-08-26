@@ -3,6 +3,18 @@ java:
   image: 'sdshmctspublic.azurecr.io/lgy-iac/web:latest'
   ingressHost: lgy-iac-web.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: lgy-iac
+  readinessPath: 'IACFees/health/liveness.do'
+  livenessPath: 'IACFees/health/liveness.do'
+  startupPath: 'IACFees/health/liveness.do'
+  startupDelay: 20
+  startupTimeout: 3
+  startupPeriod: 60
+  startupFailureThreshold: 5
+  livenessDelay: 0
+  smoketests:
+    environment:
+      TEST_URL: ${SERVICE_FQDN}/IACFees
+
   keyVaults:
     lgy-iac:
       resourceGroup: lgy-iac-{{ .Values.global.environment }}
@@ -16,10 +28,12 @@ java:
         - name: web-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
   environment:
-    POSTGRES_SSL_MODE: require
-    FLYWAY_URL: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DATABASE}?&sslmode=require
-    FLYWAY_USER: ${POSTGRES_USER}
-    FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
-    FAVOURITE_FRUIT: IAC Fees Default
+    ENV_NAME: "Azure Dev PG"
     RUN_DB_MIGRATION_ON_STARTUP: 'false'
+    EPDQ_PSPID: "a"
+    EPDQ_URL: "b"
+    EPDQ_SHAIN: "c"
+    EPDQ_SHAOUT: "d"
+    TEST_URL: ${SERVICE_FQDN}/IACFees
+    STORAGE_METHOD: "file"
 

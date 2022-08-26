@@ -2,3 +2,6 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/lgy-iac-web:latest
   ingressHost: 
+
+  environment:
+    ENV_NAME: "Azure Dev PG"

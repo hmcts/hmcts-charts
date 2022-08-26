@@ -2,3 +2,6 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+
+  environment:
+    ENV_NAME: "Azure Dev PG"
