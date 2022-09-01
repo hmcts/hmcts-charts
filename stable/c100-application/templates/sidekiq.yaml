@@ -78,11 +78,11 @@ spec:
           {{- ( include "hmcts.secretMounts.v2" $base ) | indent 10 }}
           env:
             - name: GOVUK_NOTIFY_API_KEY
-              value: TBD
+              value: replace_this_at_build_time
             - name: GOVUK_PAY_API_KEY
-              value: TBD
+              value: replace_this_at_build_time
             - name: SECRET_KEY_BASE
-              value: TBD
+              value: replace_this_at_build_time
             #
             # secrets created by `terraform`
             #
