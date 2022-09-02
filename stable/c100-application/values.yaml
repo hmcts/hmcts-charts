@@ -45,5 +45,7 @@ base:
           alias: MAINTENANCE_ENABLED
         - name: maintenance-allowed-ips
           alias: MAINTENANCE_ALLOWED_IPS
+        - name: ordinance-survey-api-key
+          alias: ORDNANCE_SURVEY_API_KEY
 redis:
   enabled: false

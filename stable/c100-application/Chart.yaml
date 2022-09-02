@@ -1,7 +1,7 @@
 apiVersion: v2
 name: c100-application
 home: https://github.com/hmcts/c100-application
-version: 0.0.8
+version: 0.0.9
 description: C100 Application
 dependencies:
   - name: base
