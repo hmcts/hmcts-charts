@@ -5,10 +5,14 @@ java:
 
   environment:
     ENV_NAME: "Azure Dev PG"
+    FLYWAY_USER: 
+    FLYWAY_PASSWORD: 
+    FLYWAY_URL: jdbc:postgresql://:5432/?&sslmode=require
     POSTGRES_HOST: 
     POSTGRES_PORT: "5432"
     POSTGRES_DATABASE: 
     POSTGRES_USER: 
     POSTGRES_PASSWORD: 
+    POSTGRES_SSL_MODE: require
     DB_JDBC_DRIVER: "org.postgresql.Driver"
     DB_JDBC_URL: "jdbc:postgresql"
