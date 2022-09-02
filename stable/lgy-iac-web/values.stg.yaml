@@ -5,3 +5,8 @@ java:
 
   environment:
     ENV_NAME: "Azure Dev PG"
+    POSTGRES_HOST: 
+    POSTGRES_PORT: "5432"
+    POSTGRES_DATABASE: 
+    POSTGRES_USER: 
+    POSTGRES_PASSWORD: 
