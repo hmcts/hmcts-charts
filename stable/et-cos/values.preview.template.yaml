@@ -7,6 +7,7 @@ java:
     ET_COS_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
     ET_COS_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     ET_COS_DB_CONN_OPTIONS: ""
+    REFERRAL_TEMPLATE_ID: 6ad8c05b-5c0b-4d10-a5e3-f39fdea4647e
   keyVaults:
     et-cos:
       secrets:
@@ -18,5 +19,7 @@ java:
           alias: CREATE_UPDATES_QUEUE_SEND_CONNECTION_STRING
         - name: tornado-access-key
           alias: TORNADO_ACCESS_KEY
+        - name: gov-notify-api-key
+          alias: GOV_NOTIFY_API_KEY
   postgresql:
     enabled: true

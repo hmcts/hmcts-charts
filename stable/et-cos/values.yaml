@@ -18,6 +18,8 @@ java:
           alias: APP_INSIGHTS_KEY
         - name: tornado-access-key
           alias: TORNADO_ACCESS_KEY
+        - name: gov-notify-api-key
+          alias: GOV_NOTIFY_API_KEY
   environment:
     SERVER_PORT: 8081
     REFORM_TEAM: et
@@ -42,3 +44,4 @@ java:
     ET_COS_DB_USER_NAME: et_cos@et-cos-{{ .Values.global.environment }}
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SECURE_DOC_STORE_FEATURE: true
+    REFERRAL_TEMPLATE_ID: 6ad8c05b-5c0b-4d10-a5e3-f39fdea4647e
