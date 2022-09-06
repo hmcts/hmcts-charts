@@ -8,7 +8,7 @@ java:
   startupPath: 'IACFees/health/liveness.do'
   startupDelay: 20
   startupTimeout: 3
-  startupPeriod: 60
+  startupPeriod: 180
   startupFailureThreshold: 5
   livenessDelay: 0
   smoketests:
