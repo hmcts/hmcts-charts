@@ -8,7 +8,7 @@ java:
     FLYWAY_USER: 
     FLYWAY_PASSWORD: 
     FLYWAY_URL: jdbc:postgresql://:5432/?&sslmode=require
-    POSTGRES_HOST: 
+    POSTGRES_HOST: "value_from_stg.template"
     POSTGRES_PORT: "5432"
     POSTGRES_DATABASE: 
     POSTGRES_USER: 

@@ -36,4 +36,5 @@ java:
     EPDQ_SHAOUT: "d"
     TEST_URL: ${SERVICE_FQDN}/IACFees
     STORAGE_METHOD: "file"
+    POSTGRES_HOST: ${POSTGRES_HOST}
 
