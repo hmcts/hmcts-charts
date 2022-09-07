@@ -17,6 +17,8 @@ job:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: ccd-next-hearing-date-updater-s2s-secret
+          alias: IDAM_KEY_NEXT_HEARING_UPDATER
   environment:
     DELETE_CASE_TYPES:
     SIMULATED_CASE_TYPES:
