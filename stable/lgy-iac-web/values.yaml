@@ -6,16 +6,16 @@ java:
   readinessPath: '/health/'
   readinessDelay: 0
   readinessTimeout: 3
-  readinessPeriod: 15
+  readinessPeriod: 30
   startupPath: '/health/'
-  startupDelay: 20
+  startupDelay: 30
   startupTimeout: 3
-  startupPeriod: 60
+  startupPeriod: 30
   startupFailureThreshold: 20
-  livenessPath: '/health/'
+  livenessPath: '/health/liveness'
   livenessDelay: 0
   livenessTimeout: 3
-  livenessPeriod: 60
+  livenessPeriod: 30
   livenessFailureThreshold: 10
   smoketests:
     environment:
