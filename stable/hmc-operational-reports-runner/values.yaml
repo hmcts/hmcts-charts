@@ -1,17 +1,18 @@
-job:
-  image: 'https://hmctspublic.azurecr.io/ccd/ccd-case-disposer:latest'
+java:
+  image: 'https://hmctspublic.azurecr.io/hmc/hmc-operational-reports-runner:latest'
   kind: CronJob
-  schedule: "0 22 * * *"
+  schedule: "0 01 02 ? * * *"
   startingDeadlineSeconds: 600
   concurrencyPolicy: Forbid
   ingressHost: hmc-operational-reports-runner-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: hmc
-#  Uncomment once the vault containing the app insights key has been set up
+  #  Uncomment once the vault containing the app insights key has been set up
   keyVaults:
     hmc:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
   environment:
+  #    TODO
   global:
     jobKind: CronJob
