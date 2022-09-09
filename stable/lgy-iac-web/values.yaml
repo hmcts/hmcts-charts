@@ -7,11 +7,6 @@ java:
   readinessDelay: 0
   readinessTimeout: 3
   readinessPeriod: 30
-  startupPath: '/health/'
-  startupDelay: 30
-  startupTimeout: 3
-  startupPeriod: 30
-  startupFailureThreshold: 20
   livenessPath: '/health/liveness'
   livenessDelay: 0
   livenessTimeout: 3
