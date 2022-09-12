@@ -3,6 +3,11 @@ java:
   image: 'sdshmctspublic.azurecr.io/lgy-iac/web:latest'
   ingressHost: lgy-iac-web.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: lgy-iac
+  startupPath: '/health/'
+  startupDelay: 100
+  startupTimeout: 3
+  startupPeriod: 10
+  startupFailureThreshold: 20
   readinessPath: '/health/'
   readinessDelay: 0
   readinessTimeout: 3
