@@ -4,7 +4,7 @@ java:
   ingressHost: ${SERVICE_FQDN}
 
   environment:
-    ENV_NAME: "Azure Dev PG"
+    ENV_NAME: "Azure Stg PG"
     FLYWAY_USER: ${FLYWAY_USER}
     FLYWAY_PASSWORD: ${FLYWAY_PASSWORD}
     FLYWAY_URL: jdbc:postgresql://${DB_HOST}:5432/${DB_DATABASE}?&sslmode=require
