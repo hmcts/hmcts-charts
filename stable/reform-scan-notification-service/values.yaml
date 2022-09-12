@@ -26,6 +26,8 @@ java:
           alias: DB_NAME
         - name:  notification-queue-listen-shared-access-key-premium
           alias: QUEUE_READ_ACCESS_KEY
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
   environment:
     DB_CONN_OPTIONS: ?sslmode=require
     FLYWAY_SKIP_MIGRATIONS: true
