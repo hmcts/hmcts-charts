@@ -26,13 +26,13 @@ java:
       resourceGroup: lgy-iac-{{ .Values.global.environment }}
       secrets:
         - name: web-POSTGRES-DATABASE
-          alias: POSTGRES_DATABASE
+          alias: DB_DATABASE
         - name: web-POSTGRES-HOST
-          alias: POSTGRES_HOST
+          alias: DB_HOST
         - name: web-POSTGRES-USER
-          alias: POSTGRES_USER
+          alias: DB_USER
         - name: web-POSTGRES-PASS
-          alias: POSTGRES_PASSWORD
+          alias: DB_PASSWORD
   environment:
     ENV_NAME: "Azure Dev PG"
     RUN_DB_MIGRATION_ON_STARTUP: 'false'
@@ -42,5 +42,5 @@ java:
     EPDQ_SHAOUT: "d"
     TEST_URL: ${SERVICE_FQDN}/IACFees
     STORAGE_METHOD: "file"
-    POSTGRES_HOST: ${POSTGRES_HOST}
+    POSTGRES_HOST: ${DB_HOST}
 
