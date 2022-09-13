@@ -13,6 +13,7 @@ job:
       resourceGroup: rpa
       secrets:
         - AppInsightsInstrumentationKey
+        - app-insights-connection-string
     em-hrs-ingestor:
       resourceGroup: em-hrs-ingestor
       secrets:
