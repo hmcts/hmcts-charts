@@ -30,3 +30,4 @@ java:
   #    TODO
   global:
     jobKind: CronJob
+    enableKeyVaults: true
