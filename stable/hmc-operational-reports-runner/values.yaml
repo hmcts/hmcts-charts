@@ -1,4 +1,4 @@
-java:
+job:
   image: 'https://hmctspublic.azurecr.io/hmc/hmc-operational-reports-runner:latest'
   kind: CronJob
   schedule: "0 01 02 ? * * *"
