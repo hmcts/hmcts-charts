@@ -2,10 +2,11 @@ apiVersion: v2
 description: A Helm chart for Presenting Evidence Digitally API
 name: em-ped-api
 home: https://github.com/hmcts/em-ped-api
-version: 0.0.2
+version: 0.0.3
 maintainers:
   - name: HMCTS EM team
 dependencies:
   - name: java
     version: 4.0.1
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+
