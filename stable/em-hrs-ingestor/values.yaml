@@ -10,19 +10,21 @@ job:
   concurrencyPolicy: Forbid
   keyVaults:
     rpa:
-      resourceGroup: rpa
       secrets:
-        - AppInsightsInstrumentationKey
-        - app-insights-connection-string
+        - name: AppInsightsInstrumentationKey
+          alias: APPINSIGHTS_INSTRUMENTATIONKEY
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
     em-hrs-ingestor:
-      resourceGroup: em-hrs-ingestor
       secrets:
-        - microservicekey-em-hrs-ingestor
+        - name: microservicekey-em-hrs-ingestor
+          alias: S2S_KEY
     em-hrs-api:
-      resourceGroup: em-hrs-api
       secrets:
-        - cvp-storage-connection-string
-        - cvp-storage-container-name
+        - name: cvp-storage-connection-string
+          alias: CVP_STORAGE_CONNECTION_STRING
+        - name: cvp-storage-container-name
+          alias: CVP_STORAGE_CONTAINER_NAME
   environment:
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
