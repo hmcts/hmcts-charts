@@ -35,13 +35,15 @@ java:
   environment:
     ENV_NAME: "Azure Dev PG"
     RUN_DB_MIGRATION_ON_STARTUP: 'false'
-    EPDQ_PSPID: "a"
-    EPDQ_URL: "b"
-    EPDQ_SHAIN: "c"
-    EPDQ_SHAOUT: "d"
+    EPDQ_PSPID: "hmc9aj"
+    EPDQ_URL: "https://mdepayments.epdq.co.uk/ncol/test/orderstandard.asp"
+    EPDQ_SHAIN: "webdevnpostcode2013"
+    EPDQ_SHAOUT: "IACReportStore2013"
     TEST_URL: ${SERVICE_FQDN}/IACFees
-    STORAGE_METHOD: "file"
+    STORAGE_METHOD: "S3"
     DB_JDBC_DRIVER: "org.postgresql.Driver"
     DB_JDBC_URL: "jdbc:postgresql"
     POSTGRES_PORT: "5432"
+    BUCKET_NAME: "upload-pdf-test"
+    REST_API_URL: "https://j7ouh6nm42.execute-api.eu-west-2.amazonaws.com/Test/"
 
