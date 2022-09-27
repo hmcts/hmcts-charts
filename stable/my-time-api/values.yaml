@@ -1,0 +1,19 @@
+java:
+  applicationPort: 4000
+  image: 'hmctspublic.azurecr.io/my-time/api:latest'
+  ingressHost: my-time-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: my-time
+  keyVaults:
+    "my-time":
+      resourceGroup: my-time
+      secrets:
+        - name: api-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+  environment:
+    POSTGRES_PORT: 5432
+    POSTGRES_HOST: my-time-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_DATABASE: my-time
+    POSTGRES_USERNAME: my-time@my-time-api-postgres-db-v11-{{ .Values.global.environment }}
+    RUN_DB_MIGRATION_ON_STARTUP: false
