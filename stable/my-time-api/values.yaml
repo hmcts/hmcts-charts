@@ -14,6 +14,6 @@ java:
   environment:
     POSTGRES_PORT: 5432
     POSTGRES_HOST: my-time-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_DATABASE: my-time
-    POSTGRES_USERNAME: my-time@my-time-api-postgres-db-v11-{{ .Values.global.environment }}
+    POSTGRES_DATABASE: mytime
+    POSTGRES_USERNAME: mytime@my-time-api-postgres-db-v11-{{ .Values.global.environment }}
     RUN_DB_MIGRATION_ON_STARTUP: false
