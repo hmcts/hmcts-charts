@@ -1,16 +1,16 @@
 tags:
-  ccd-idam-pr: true
+  ccd-pr: true
 
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    CASE_DATA_STORE_BASEURL: http://ccd-data-store-api-fis-cos-api-pr-${CHANGE_ID}.service.core-compute-preview.internal
+    CASE_DATA_STORE_BASEURL: http://fis-cos-api-pr-${CHANGE_ID}-ccd-data-store-api
     CITIZEN_UPDATE_CASE_STATE_ENABLED: true
     APP_INSIGHTS_KEY: 40c4ab72-faeb-4a79-b7ef-554038d0542f
 
   keyVaults:
-    fis:
+    fis-kv:
       secrets:
         - name: uk-gov-notify-api-key
           alias: UK_GOV_NOTIFY_API_KEY
@@ -57,10 +57,12 @@ ccd:
       ingressHost: gateway-${SERVICE_FQDN}
       ingressIP: ${INGRESS_IP}
       keyVaults: []
+
   ccd-data-store-api:
     java:
       imagePullPolicy: Always
       environment:
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
         DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DATA_STORE_IDAM_KEY: ${DATA_STORE_S2S_KEY}
         DATA_STORE_DEFAULT_LOG_LEVEL: info
@@ -78,16 +80,19 @@ ccd:
         ROLE_ASSIGNMENT_USER_EMAIL: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
       keyVaults: []
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
+
   am-role-assignment-service:
     java:
       keyVaults:
         am:
           secrets:
             - role-assignment-service-LD-SDK-KEY
+
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
       environment:
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
         DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DEFINITION_STORE_IDAM_KEY: ${DEFINITION_STORE_S2S_KEY}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
@@ -111,18 +116,19 @@ ccd:
         IDAM_ADMIN_WEB_SERVICE_KEY: ${ADMIN_S2S_KEY}
         IDAM_OAUTH2_AW_CLIENT_SECRET: ${ADMIN_WEB_IDAM_SECRET}
 
+
   importer:
     userprofile:
       enabled: true
       jurisdictions:
-        - FIS
+        - PRIVATELAW
       users:
-        - fis_caseworker_solicitor@mailinator.com|FIS|A58|Draft
-        - FisCaseWorkerUser@AAT.com|FIS|A58|Draft
-        - TEST_CASE_WORKER_USER@mailinator.com|FIS|A58|Draft
-        - TEST_SOLICITOR@mailinator.com|FIS|A58|Draft
-        - fis_as_caseworker_admin@mailinator.com|FIS|A58|Draft
-        - civil_unspecified@mailinator.com|FIS|A58|Draft
+        - fis_caseworker_solicitor@mailinator.com|PRIVATELAW|PRLAPPS|Created
+        - FisCaseWorkerUser@AAT.com|PRIVATELAW|PRLAPPS|Created
+        - TEST_CASE_WORKER_USER@mailinator.com|PRIVATELAW|PRLAPPS|Created
+        - TEST_SOLICITOR@mailinator.com|PRIVATELAW|PRLAPPS|Created
+        - fis_as_caseworker_admin@mailinator.com|PRIVATELAW|PRLAPPS|Created
+        - civil_unspecified@mailinator.com|PRIVATELAW|PRLAPPS|Created
       userProfileDatabaseHost: ${SERVICE_NAME}-ccd-postgres
       userProfileDatabasePort: 5432
       userProfileDatabaseUser: hmcts

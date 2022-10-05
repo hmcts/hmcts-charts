@@ -19,15 +19,16 @@ java:
     REFORM_TEAM: fis
     REFORM_SERVICE_NAME: fis-cos-api
 
+    NODE_TLS_REJECT_UNAUTHORIZED: 0
     SERVICE_AUTH_PROVIDER_URL: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     IDAM_WEB_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login'
     IDAM_API_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_API_BASEURL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
-    CASE_DATA_STORE_BASEURL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    CASE_DATA_STORE_BASEURL: 'https://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     CCD_CASE_DOCS_AM_API: "http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 
   keyVaults:
-    fis:
+    fis-kv:
       secrets:
         - name: idam-system-user-name
           alias: IDAM_SYSTEM_UPDATE_USERNAME
