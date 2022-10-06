@@ -1,0 +1,26 @@
+job:
+  image: 'sdshmctspublic.azurecr.io/pip/pip-cron-trigger:latest'
+  aadIdentityName: pip
+  keyVaults:
+    pip-ss-kv:
+      excludeEnvironmentSuffix: false
+      resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
+      usePodIdentity: true
+      secrets:
+        - name: app-insights-java-instrumentation-key
+          alias: INSTRUMENTATION_KEY
+        - name: app-pip-cron-timer-id
+          alias: CLIENT_ID
+        - name: app-pip-cron-timer-pwd
+          alias: CLIENT_SECRET
+        - name: app-tenant-id
+          alias: TENANT_ID
+        - name: app-pip-data-management-scope
+          alias: DATA_MANAGEMENT_AZ_API
+        - name: app-pip-account-management-scope
+          alias: ACCOUNT_MANAGEMENT_AZ_API
+  environment:
+  global:
+    jobKind: CronJob
+    enableKeyVaults: true
+  schedule: "0 1 * * *"
