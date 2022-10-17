@@ -19,10 +19,20 @@ job:
           alias: azure.application-insights.instrumentation-key
         - name: ccd-next-hearing-date-updater-s2s-secret
           alias: IDAM_KEY_NEXT_HEARING_UPDATER
+        - name: idam-ccd-next-hearing-date-updater-system-user-username
+          alias: IDAM_NEXT_HEARING_DATE_SYSTEM_USER
+        - name: idam-ccd-next-hearing-date-updater-system-user-password
+          alias: IDAM_NEXT_HEARING_DATE_SYSTEM_PASSWORD
+        - name: idam-ccd-next-hearing-date-updater-client-secret
+          alias: CCD_NEXT_HEARING_DATE_UPDATER_SERVICE_IDAM_CLIENT_SECRET
   environment:
-    DELETE_CASE_TYPES:
-    SIMULATED_CASE_TYPES:
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # CASE_TYPES: <TBD in HMAN-344>
+    CASE_TYPES: FT_NextHearingDate
+    MAX_CSV_RECORDS: 10000
+    ES_QUERY_SIZE: 100
+    HEARING_NEXT_DAY_CRON_JOB_PROCESSING_ENABLED: "true"
   global:
     jobKind: CronJob
