@@ -8,6 +8,7 @@ nodejs:
     primaryIngressHost: 
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+    IDAM_TOKEN_CACHE: true
 
 idam-pr:
   enabled: false
