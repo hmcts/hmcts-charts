@@ -19,6 +19,8 @@ job:
           alias: AM_SENDGRID_API_KEY
         - name: role-assignment-service-LD-SDK-KEY
           alias: LD_SDK_KEY
+        - name: judicial-booking-service-POSTGRES-PASS
+          alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
