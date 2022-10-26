@@ -12,9 +12,10 @@ java:
     POSTGRES_USERNAME: ia_tes@ia-timed-event-service-postgres-11-db-{{ .Values.global.environment }}
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
   postgresql:
-    postgresqlUsername: ia_tes
-    postgresqlPassword: ia_tes
-    postgresqlDatabase: ia_timed_event_service
+    auth:
+      username: ia_tes
+      password: ia_tes
+      database: ia_tes
     service:
       port: 5432
   keyVaults:
