@@ -20,6 +20,7 @@ job:
     ORG_ROLE_MAPPING_DB_HOST: am-org-role-mapping-service-pr-989-postgresql
     ORG_ROLE_MAPPING_DB_NAME: org_role_mapping
     ORG_ROLE_MAPPING_DB_USERNAME: org_role_mapping
-    ORG_ROLE_MAPPING_DB_PASSWORD: org_role_mapping
     ORG_ROLE_MAPPING_DB_PORT: 5432
     ORG_ROLE_MAPPING_DB_OPTIONS: "?stringtype=unspecified"
+  postgresql:
+    enabled: true
