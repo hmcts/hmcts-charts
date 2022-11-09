@@ -26,6 +26,8 @@ java:
       secrets:
         - azuread--clientid
         - azuread--clientsecret
+        - notifyconfiguration--apikey
+        - notifyconfiguration--callbacksecret
         - name: azuread--identifieruri
           alias: services--vhnotificationapiresourceid
         - name: azuread--identifieruri
