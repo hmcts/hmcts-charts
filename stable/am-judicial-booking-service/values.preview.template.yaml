@@ -20,13 +20,8 @@ java:
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: "{{ .Values.postgresql.auth.database}}"
     JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: "{{ .Values.postgresql.auth.username}}"
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS: "{{ .Values.postgresql.auth.password}}"
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: "{{ .Values.postgresql.postgresqlPort}}"
     JUDICIAL_BOOKING_SERVICE_DB_OPTIONS: "?stringtype=unspecified"
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     LAUNCH_DARKLY_ENV: pr
   postgresql:
     enabled: true
-    postgresqlUsername: am
-    postgresqlPassword: am
-    postgresqlDatabase: judicial_booking
-    postgresqlPort: 5432
