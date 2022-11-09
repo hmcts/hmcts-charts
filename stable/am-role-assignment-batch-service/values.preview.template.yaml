@@ -5,7 +5,6 @@ job:
     ROLE_ASSIGNMENT_DB_HOST: "{{ .Release.Name }}-postgresql"
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
     ROLE_ASSIGNMENT_DB_USERNAME: role_assignment
-    ROLE_ASSIGNMENT_DB_PASSWORD: role_assignment
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
     ENABLE_DB_MIGRATE: true
@@ -14,7 +13,6 @@ job:
     CCD_AM_MIGRATION_RENAME_TABLES_FLAG: false
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS: judicial_booking
     JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
     JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}
     DAYS: 750
@@ -37,9 +35,6 @@ postgresql:
   enabled: true
   image:
     tag: '11.3.0'
-  postgresqlUsername: role_assignment
-  postgresqlPassword: role_assignment
-  postgresqlDatabase: role_assignment
   postgresqlPort: 5432
   persistence:
     enabled: false
