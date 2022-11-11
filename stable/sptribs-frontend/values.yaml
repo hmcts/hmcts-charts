@@ -18,8 +18,8 @@ nodejs:
     sptribs:
       secrets:
         - idam-ui-secret
-        - idam-system-user-name
-        - idam-system-user-password
+        - idam-systemupdate-username
+        - idam-systemupdate-password
         - redis-access-key
         - s2s-secret
         - AppInsightsInstrumentationKey
