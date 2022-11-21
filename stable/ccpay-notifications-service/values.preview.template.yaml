@@ -4,9 +4,9 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-    POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
-    POSTGRES_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
-    POSTGRES_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
+    POSTGRES_NAME: "{{ .Values.postgresql.auth.database}}"
+    POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
+    POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
     LOGBACK_REQUIRE_ALERT_LEVEL: 'false'
     LOGBACK_REQUIRE_ERROR_CODE: 'false'
@@ -32,11 +32,21 @@ java:
           alias: POSTGRES_PASSWORD
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
-        - name: notifications-s2s-secret
+        - name: refunds-s2s-secret
           alias: OIDC_S2S_SECRET
         - name: notifications-email-apikey
           alias: EMAIL_APIKEY
         - name: notifications-letter-apikey
           alias: LETTER_APIKEY
+        - name: freg-idam-generated-user-email-pattern
+          alias: GENERATED_USER_EMAIL_PATTERN
+        - name: refunds-api-user-password
+          alias: REFUND_SERVICE_ACCOUNT_PASSWORD
+        - name: refunds-api-client-secret
+          alias: REFUND_SERVICE_ACCOUNT_CLIENT_SECRET
+        - name: notifications-letter-template-id
+          alias: NOTIFICATION_LETTER_TEMPLATE_ID
+        - name: notifications-email-template-id
+          alias: NOTIFICATION_EMAIL_TEMPLATE_ID
   postgresql:
     enabled: true
