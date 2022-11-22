@@ -4,6 +4,7 @@ java:
   applicationPort: 6969
   image: 'sdshmctspublic.azurecr.io/pip/account-management:latest'
   environment:
+    ENABLE_FLYWAY: true
     RUN_DB_MIGRATION_ON_STARTUP: false
   keyVaults:
     pip-ss-kv:
