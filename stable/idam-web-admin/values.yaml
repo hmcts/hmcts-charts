@@ -17,7 +17,7 @@ java:
   environment:
     STRATEGIC_SERVICE_URL: http://idam-api
     STRATEGIC_PUBLIC_URL: http://idam-web-public
-    STRATEGIC_DASHBOARD_URL: https://idam-user-dashboard{{ .Values.global.environment }}.platform.hmcts.net
+    STRATEGIC_DASHBOARD_URL: https://idam-user-dashboard.{{ .Values.global.environment }}.platform.hmcts.net
     ENDPOINTS_ENABLED: true
     MANAGEMENT_SECURITY_ENABLED: false
     SSL_VERIFICATION_ENABLED: true
