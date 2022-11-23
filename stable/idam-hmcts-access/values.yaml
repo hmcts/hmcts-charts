@@ -5,7 +5,7 @@ nodejs:
   memoryRequests: 256Mi
   applicationPort: 3100
   aadIdentityName: idam
-  ingressHost: idam-hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/idam/hmcts-access:latest'
   keyVaults:
     idam-idam:
