@@ -22,5 +22,5 @@ nodejs:
         - idam-systemupdate-password
         - redis-access-key
         - s2s-secret
-        - AppInsightsInstrumentationKey
+        - app-insights-instrumentation-key
         - postcode-lookup-token
