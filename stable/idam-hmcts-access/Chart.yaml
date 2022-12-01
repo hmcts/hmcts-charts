@@ -6,5 +6,5 @@ home: https://github.com/hmcts/idam-hmcts-access
 version: 0.0.2
 dependencies:
   - name: nodejs
-    version: 2.4.6
+    version: 2.4.8
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
