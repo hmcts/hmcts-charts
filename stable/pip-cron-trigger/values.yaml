@@ -21,6 +21,8 @@ job:
           alias: ACCOUNT_MANAGEMENT_AZ_API
         - name: app-pip-publication-services-scope
           alias: PUBLICATION_SERVICES_AZ_API
+        - name: app-pip-subscription-management-scope
+          alias: SUBSCRIPTION_MANAGEMENT_AZ_API
   environment:
   global:
     jobKind: CronJob
