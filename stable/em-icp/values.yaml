@@ -26,6 +26,7 @@ nodejs:
         - redis-password
         - microservicekey-em-icp
         - AppInsightsInstrumentationKey
+        - em-icp-web-pubsub-primary-connection-string
 
 redis:
   enabled: false
