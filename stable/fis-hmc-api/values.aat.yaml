@@ -2,3 +2,7 @@ java:
   image: https://hmcts.azurecr.io/hmcts/fis-hmc-api:latest
   ingressHost: 
 
+
+environment:
+  CASE_DATA_STORE_BASEURL: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal'
+
