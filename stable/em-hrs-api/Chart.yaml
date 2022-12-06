@@ -7,7 +7,7 @@ maintainers:
   - name: HMCTS Evidence Management team
 dependencies:
   - name: java
-    version: 4.0.4
+    version: 4.0.5
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
   - name: blobstorage
     version: 0.3.0
