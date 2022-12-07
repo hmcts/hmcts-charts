@@ -17,9 +17,10 @@ java:
     OIDC_ISSUER: "https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts"
     OIDC_S2S_MICROSERVICE_NAME: notifications_service
     OIDC_AUDIENCE_LIST: refunds_api
-    S2S_AUTHORISED_SERVICES: refunds_api,ccpay_bubble,xui_webapp
+    S2S_AUTHORISED_SERVICES: refunds_api,ccpay_bubble,xui_webapp,payment_app
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     LAUNCH_DARKLY_USER_NAME_PREFIX: '{{ .Values.global.environment }}'
+    PAYMENT_API_URL: "http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -44,5 +45,15 @@ java:
           alias: NOTIFICATION_LETTER_TEMPLATE_ID
         - name: notifications-email-template-id
           alias: NOTIFICATION_EMAIL_TEMPLATE_ID
-
-
+        - name: notifications-letter-cheque-po-cash-template-id
+          alias: NOTIFICATIONS_LETTER_CHEQUE_PO_CASH_TEMPLATE_ID
+        - name: notifications-email-cheque-po-cash-template-id
+          alias: NOTIFICATIONS_EMAIL_CHEQUE_PO_CASH_TEMPLATE_ID
+        - name: notifications-letter-card-pba-template-id
+          alias: NOTIFICATION_LETTER_CARD_PBA_TEMPLATE_ID
+        - name: notifications-email-card-pba-template-id
+          alias: NOTIFICATION_EMAIL_CARD_PBA_TEMPLATE_ID
+        - name: notifications-letter-refund-when-contacted-template-id
+          alias: NOTIFICATION_LETTER_REFUND_WHEN_CONTACTED_TEMPLATE_ID
+        - name: notifications-email-refund-when-contacted-template-id
+          alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID
