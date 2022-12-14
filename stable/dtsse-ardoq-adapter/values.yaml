@@ -5,7 +5,8 @@ nodejs:
   image: 'hmctspublic.azurecr.io/dtsse/ardoq-adapter:latest'
   #  Uncomment once the vault containing the app insights key has been set up
   keyVaults:
-    dtsse:
+    dtsse-aat:
+      excludeEnvironmentSuffix: true
       secrets:
         - AppInsightsConnectionString
         - ardoq-api-key
