@@ -11,6 +11,6 @@ dependencies:
     version: 4.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: job
-    version: ~0.7.3
+    version: ~0.7.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
 
