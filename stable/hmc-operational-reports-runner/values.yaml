@@ -37,7 +37,8 @@ job:
         - name: cft-hearing-service-POSTGRES-DATABASE
           alias: CFT_HEARING_SERVICE_DB_NAME
   environment:
-  #    TODO
+    AWAITING_ACTUALS_CONFIG_DAYS: 2
   global:
     jobKind: CronJob
     enableKeyVaults: true
+    environment: aat
