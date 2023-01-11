@@ -220,6 +220,8 @@ ccd:
       enabled: true
     userProfile:
       enabled: true
+    testStubsService:
+      enabled: true
 
   ingressHost: ${SERVICE_FQDN}
 
@@ -269,3 +271,8 @@ ccd:
       keyVaults: []
       autoscaling:
         enabled: false
+
+  ccd-test-stubs-service:
+    java:
+      ingressHost: ccd-test-stubs-service-${SERVICE_FQDN}
+      imagePullPolicy: Always
