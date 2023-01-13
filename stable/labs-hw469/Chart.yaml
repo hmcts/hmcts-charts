@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for labs-hw469 App
+name: labs-hw469
+home: https://github.com/hmcts/labs-hw469
+version: 0.0.1
+maintainers:
+  - name: HMCTS labs team
+dependencies:
+  - name: java
+    version: 4.0.6
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
