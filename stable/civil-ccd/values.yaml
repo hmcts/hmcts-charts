@@ -53,7 +53,7 @@ civil-general-applications:
 civil-service:
   java:
     imagePullPolicy: Always
-    ingressHost: 
+    ingressHost: .platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -77,7 +77,7 @@ civil-service:
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
     environment:
-      PAYMENTS_CALLBACK_URL: http:///service-request-update
+      PAYMENTS_CALLBACK_URL: https:///service-request-update
       TESTING_SUPPORT_ENABLED: true
       CORE_CASE_DATA_API_URL: http://-ccd-data-store-api
       CMC_DB_HOST: "{{ .Values.postgresql.releaseNameOverride}}"
