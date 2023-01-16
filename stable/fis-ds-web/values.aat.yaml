@@ -2,3 +2,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/fis-ds-web:latest
   ingressHost: 
+idam-pr:
+  enabled: false
