@@ -1,0 +1,2 @@
+job:
+  image: https://hmcts.azurecr.io/hmcts/plum-batch:latest
