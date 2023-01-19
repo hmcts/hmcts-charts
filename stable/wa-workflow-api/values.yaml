@@ -18,7 +18,7 @@ java:
     POSTGRES_HOST: wa-workflow-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_NAME: wa_workflow_api
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
-    TASK_MANAGEMENT_URL: "http://wa-task-management-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:
     wa:
       secrets:
