@@ -16,8 +16,8 @@ java:
     OIDC_CLIENT_ID: "paybubble"
     OIDC_ISSUER: "https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts"
     OIDC_S2S_MICROSERVICE_NAME: notifications_service
-    OIDC_AUDIENCE_LIST: refunds_api,xuiwebapp,xuimowebapp,xuiaowebapp
-    S2S_AUTHORISED_SERVICES: refunds_api,ccpay_bubble,xui_webapp,payment_app
+    OIDC_AUDIENCE_LIST: refunds_api,cmc_citizen,ccd_gateway,xuiwebapp,xuimowebapp,xuiaowebapp
+    S2S_AUTHORISED_SERVICES: refunds_api,ccpay_bubble,api_gw,ccd_gw,xui_webapp,payment_app
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     LAUNCH_DARKLY_USER_NAME_PREFIX: '{{ .Values.global.environment }}'
     PAYMENT_API_URL: "http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
