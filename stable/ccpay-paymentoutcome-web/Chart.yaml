@@ -6,6 +6,5 @@ home: https://github.com/hmcts/ccpay-paymentoutcome-web
 version: 0.0.18
 dependencies:
   - name: nodejs
-    version: 2.4.8
+    version: 2.4.13
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-
