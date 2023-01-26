@@ -89,6 +89,8 @@ civil-service:
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://-camunda/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://-camunda/engine-rest/
       STITCHING_API_ENABLED: true
+      SERVICE_REQUEST_UPDATE: https://.platform.hmcts.net/service-request-update
+      SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://.platform.hmcts.net/service-request-update-claim-issued
       ACA_SERVICE_API_BASEURL: http://-aac-manage-case-assignment
       RELEASE_REVISION: "{{ .Release.Revision }}"
       POLLING_EVENT_EMITTER_ENABLED: false
