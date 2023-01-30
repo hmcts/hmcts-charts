@@ -10,4 +10,6 @@ nodejs:
         - ardoq-api-key
         - ardoq-api-url
         - ardoq-api-workspace
+        - server-api-key-primary
+        - server-api-key-secondary
   environment:
