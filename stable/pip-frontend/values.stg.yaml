@@ -1,12 +1,11 @@
 nodejs:
-  # Don't modify below here
-  image: https://hmcts.azurecr.io/hmcts/pip-frontend:latest
-  ingressHost: 
-  environment:
-    EXCLUDE_E2E: false
-    AUTH_RETURN_URL: https:///login/return
-    MEDIA_VERIFICATION_RETURN_URL: https:///media-verification/return
-    ADMIN_AUTH_RETURN_URL: https:///login/admin/return
-    FRONTEND_URL: https://
-    ENABLE_CFT: true
-
+    # Don't modify below here
+    image: https://hmcts.azurecr.io/hmcts/pip-frontend:latest
+    ingressHost: 
+    environment:
+        EXCLUDE_E2E: false
+        AUTH_RETURN_URL: https:///login/return
+        MEDIA_VERIFICATION_RETURN_URL: https:///media-verification/return
+        ADMIN_AUTH_RETURN_URL: https:///login/admin/return
+        FRONTEND_URL: https://
+        ENABLE_CFT: true
