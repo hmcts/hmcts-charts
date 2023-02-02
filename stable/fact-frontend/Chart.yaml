@@ -6,5 +6,5 @@ home: https://github.com/hmcts/fact-frontend
 version: 0.0.26
 dependencies:
   - name: nodejs
-    version: 2.4.5
+    version: 2.4.13
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
