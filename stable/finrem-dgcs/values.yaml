@@ -1,4 +1,8 @@
 java:
+  cpuRequests: 250m
+  memoryRequests: 1Gi
+  cpuLimits: 1
+  memoryLimits: 2Gi
   aadIdentityName: finrem
   ingressHost: "finrem-dgcs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   applicationPort: '4009'
@@ -13,6 +17,7 @@ java:
     enabled: true
     maxReplicas: 4
     targetCPUUtilizationPercentage: 70 # Default is 80% target CPU utilization
+    targetMemoryUtilizationPercentage: 80
   keyVaults:
       finrem:
           secrets:
