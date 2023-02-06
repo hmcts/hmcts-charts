@@ -6,5 +6,5 @@ home: https://github.com/hmcts/rpts-frontend
 version: 0.0.5
 dependencies:
   - name: nodejs
-    version: 2.4.5
+    version: 2.4.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
