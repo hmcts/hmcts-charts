@@ -6,6 +6,12 @@ java:
   image: 'hmctspublic.azurecr.io/plum/recipe-backend:latest'
   environment:
     POSTGRES_SSL_MODE: require
+  autoscaling:
+    enabled: false
+    enabledForDevMode: true
+    maxReplicas: 5
+    cpu:
+      enabled: false
   keyVaults:
     "plumsi":
       secrets:
