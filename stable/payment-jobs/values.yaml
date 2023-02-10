@@ -4,6 +4,7 @@ job:
   environment:
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     PAYMENT_SERVER_URL: http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    REFUNDS_SERVER_URL: http://ccpay-refunds-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     REPORT_NAME: pba-csv-report
   keyVaults:
     ccpay:
