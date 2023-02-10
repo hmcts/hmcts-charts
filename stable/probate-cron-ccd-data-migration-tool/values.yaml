@@ -3,10 +3,10 @@ job:
   kind: CronJob
   schedule: "0 22 * * *"
   ingressHost: probate-cron-ccd-data-migration-tool-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  aadIdentityName: ccd
+  aadIdentityName: probate
 #  Uncomment once the vault containing the app insights key has been set up
   keyVaults:
-    ccd:
+    probate:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
