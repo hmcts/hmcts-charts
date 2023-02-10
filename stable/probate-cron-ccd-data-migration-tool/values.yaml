@@ -10,10 +10,23 @@ job:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: schedulerCaseWorkerUser
+          alias: IDAM_USER
+        - name: schedulerCaseWorkerPass
+          alias: IDAM_PASS
+        - name: idam-secret-probate
+          alias: IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET
+        - name: s2sAuthTotpSecret
+          alias: DATA_STORE_IDAM_KEY
+        - name: idamRedirectUrl
+          alias: IDAM_REDIRECT_URL
+
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    IDAM_USER: test-user
-    IDAM_PASS: test_pass
-    MIGRATION_CASETYPE: case_type_1
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    MIGRATION_CASETYPE: GrantOfRepresentation
     MIGRATION_QUERY_SIZE: 10000
-
+    IDAM_CLIENT_ID: probate
+    DEFAULT_THREAD_LIMIT: 20
+    DEFAULT_QUERY_SIZE: 100
