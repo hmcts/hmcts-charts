@@ -8,7 +8,7 @@ maintainers:
   - name: HMCTS CCD Team
 dependencies:
   - name: job
-    version: ~0.7.5
+    version: ~0.7.9
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: elasticsearch
     version: 7.8.2
@@ -19,6 +19,6 @@ dependencies:
     repository: 'https://helm.elastic.co'
     condition: elastic.enabled
   - name: ccd
-    version: 8.0.17
+    version: 8.0.24
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: ccd.enabled
