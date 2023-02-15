@@ -18,3 +18,9 @@ java:
 
   postgresql:
     enabled: true
+    primary:
+      initdb:
+        user: "postgres"
+        scripts:
+          init.sql: |-
+            CREATE EXTENSION IF NOT EXISTS pgcrypto;
