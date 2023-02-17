@@ -8,7 +8,7 @@ maintainers:
     email: pcq-action-group@HMCTS.NET
 dependencies:
   - name: nodejs
-    version: 2.4.8
+    version: 2.4.15
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: redis
     version: 17.3.17
