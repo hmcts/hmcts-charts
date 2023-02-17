@@ -37,6 +37,7 @@ nodejs:
         - adoption-token-key
         - et-token-key
         - online-plea-token-key
+        - specialTribunals-cic-token-key
 
 redis:
   architecture: standalone
