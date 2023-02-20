@@ -8,5 +8,5 @@ maintainers:
   - name: HMCTS hmc team
 dependencies:
   - name: job
-    version: ~0.7.5
+    version: ~0.7.11
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
