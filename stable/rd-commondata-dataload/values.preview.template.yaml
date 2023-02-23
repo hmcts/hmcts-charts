@@ -14,8 +14,8 @@ job:
   keyVaults:
     rd:
       secrets:
-        - name: ApplicationInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: rd-commondata-storage-account-name
           alias: ACCOUNT_NAME
         - name: rd-commondata-storage-account-primary-key
