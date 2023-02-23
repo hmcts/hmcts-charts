@@ -1,13 +1,3 @@
-nodejs:
-  applicationPort: 3000
-idam-pr:
-  enabled: false
-xui-webapp:
-  enabled: false
-tags:
-  ccd-pr: false
-  ccd-idam-pr: false
-
 java:
   applicationPort: 8099
   image: 'hmctspublic.azurecr.io/fis/cos-api:latest'
@@ -37,3 +27,5 @@ java:
         - name: s2s-secret-fis-cos-api
           alias: S2S_SECRET
         - name: AppInsightsInstrumentationKey
+        - name: idam-ui-secret
+          alias: OAUTH2_CLIENT_SECRET
