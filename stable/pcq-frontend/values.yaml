@@ -38,6 +38,7 @@ nodejs:
         - et-token-key
         - online-plea-token-key
         - specialTribunals-cic-token-key
+        - jurorDigital-token-key
 
 redis:
   architecture: standalone
