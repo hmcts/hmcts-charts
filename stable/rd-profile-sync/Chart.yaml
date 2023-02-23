@@ -5,5 +5,5 @@ name: rd-profile-sync
 version: 0.0.21
 dependencies:
   - name: java
-    version: 4.0.11
+    version: 4.0.13
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
