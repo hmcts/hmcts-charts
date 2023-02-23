@@ -25,7 +25,7 @@ java:
           alias: spring.datasource.password
         - name: judicial-api-s2s-secret
           alias: JUDICIAL_API_S2S_SECRET
-        - name: ApplicationInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: LD-SDK-KEY
           alias: LD_SDK_KEY
