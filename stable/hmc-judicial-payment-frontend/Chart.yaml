@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for hmc-judicial-payment-frontend App
+name: hmc-judicial-payment-frontend
+home: https://github.com/hmcts/hmc-judicial-payment-frontend
+version: 0.0.3
+dependencies:
+  - name: nodejs
+    version: 2.4.14
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
