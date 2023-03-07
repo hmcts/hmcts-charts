@@ -19,7 +19,6 @@ elasticsearch:
   nameOverride: ${SERVICE_NAME}-es
   ingressHost: es-${SERVICE_FQDN}
   clusterName: "es"
-  imageTag: "7.11.1"
   replicas: 1
   minimumMasterNodes: 1
   antiAffinity: "soft"
@@ -34,12 +33,12 @@ elasticsearch:
   persistence:
     enabled: false
   ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: traefik
-    path: /
-    hosts:
-      - es-${SERVICE_FQDN}
+    enabled: false
+    className: traefik
+    # hosts:
+    #   - host: es-${SERVICE_FQDN}
+    #     paths:
+    #       - path: /
 
 logstash:
   image: "hmctspublic.azurecr.io/imported/logstash/logstash"
