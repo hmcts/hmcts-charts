@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: CaTH Cron Trigger Chart
 name: pip-cron-trigger
 home: https://github.com/hmcts/pip-cron-trigger
-version: 0.0.5
+version: 0.0.6
 maintainers:
   - name: HMCTS PIP Team
 dependencies:
   - name: job
-    version: 0.7.10
+    version: 0.7.11
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
