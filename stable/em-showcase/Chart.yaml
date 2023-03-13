@@ -6,5 +6,5 @@ home: https://github.com/hmcts/em-showcase
 version: 0.2.7
 dependencies:
   - name: nodejs
-    version: 2.4.7
+    version: 2.4.14
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
