@@ -12,12 +12,13 @@ nodejs:
       secrets:
         - AppInsightsInstrumentationKey
         - launchdarkly-sdk-key
+        - hmcts-access-client-secret
         - redis-hostname
         - redis-port
         - redis-key
   environment:
-    STRATEGIC_SERVICE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
-    STRATEGIC_TESTING_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
+    IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
+    IDAM_TESTIING_SUPPORT_API_BASE_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
   autoscaling:
     enabled: true
     minReplicas: 2
