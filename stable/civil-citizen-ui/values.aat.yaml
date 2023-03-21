@@ -1,7 +1,7 @@
 nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/civil-citizen-ui:latest
-  ingressHost: 
+  ingressHost: civil-citizen-ui-staging.aat.platform.hmcts.net
   keyVaults:
     civil-citizen-ui:
       resourceGroup: civil-citizen-ui
