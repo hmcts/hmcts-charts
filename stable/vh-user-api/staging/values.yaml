@@ -1,0 +1,57 @@
+---
+java:
+  image: 'sdshmctspublic.azurecr.io/vh/user-api:latest'
+  applicationPort: 8080
+  replicas: 2
+  ingressHost: vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net
+  releaseNameOverride: vh-user-api
+  readinessPath: /healthcheck/health
+  livenessPath: /healthcheck/health
+  livenessDelay: 360
+  livenessPeriod: 120
+  aadIdentityName: vh-aad-identity
+  keyVaults:
+    vh-admin-web:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - name: FeatureToggles--SDK-Key
+          alias: FeatureToggle--SdkKey
+    vh-infra-core:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - applicationinsights--instrumentationkey
+        - azuread--tenantid
+        - connectionstrings--rediscache
+    vh-user-api:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - name: azuread--identifieruri
+          alias: azuread--VhUserApiResourceId
+        - name: azuread--identifieruri
+          alias: VhServices--UserApiResourceId
+        - AdGroup--Administrator
+        - AdGroup--CaseType
+        - AdGroup--External
+        - AdGroup--Judge
+        - AdGroup--JudgesTestGroup
+        - AdGroup--JudicialOfficeHolder
+        - AdGroup--ProfessionalUser
+        - AdGroup--StaffMember
+        - azuread--clientid
+        - azuread--clientsecret
+        - DefaultPassword
+        - ZapConfiguration--BuildConfigMode
+  environment:
+    ASPNETCORE_URLS: http://+:8080
+    DISABLEHTTPSREDIRECTION: true
+    Logging__LogLevel__Default: debug
+    Logging__LogLevel__System: debug
+    Logging__LogLevel__Microsoft: debug
+    ReformEmail: hearings.reform.hmcts.net
+    VHSERVICES__USERAPIURL: https://vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net/
