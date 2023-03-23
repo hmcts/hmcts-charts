@@ -3,6 +3,8 @@ function:
   aadIdentityName: hmi
   scaleType: Job
   triggerAuth:
+    create: true
+    enabled: true
     triggerPodIdentityProvider: "azure"
   triggers:
     - type: azure-blob
