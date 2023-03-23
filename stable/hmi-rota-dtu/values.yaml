@@ -1,12 +1,12 @@
-java:
-  applicationPort: 3456
+function:
   image: 'sdshmctspublic.azurecr.io/hmi/rota-dtu:latest'
-  ingressHost: hmi-rota-dtu-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: hmi
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    hmi:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
-  environment:
+  scaleType: Job
+  triggerAuth:
+    triggerPodIdentityProvider: "azure"
+  triggers:
+    - type: azure-blob
+      blobContainerName: proof-of-concept
+      blobCount: 1
+      accountName: "hmidtu{{ .Values.global.environment }}"
+      blobDelimiter: "/"

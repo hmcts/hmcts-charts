@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for hmi-rota-dtu App
 name: hmi-rota-dtu
 home: https://github.com/hmcts/hmi-rota-dtu
-version: 0.0.4
+version: 0.0.5
 maintainers:
   - name: HMCTS HMI team
 dependencies:
-  - name: java
-    version: 4.0.13
+  - name: function
+    version: 2.3.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
