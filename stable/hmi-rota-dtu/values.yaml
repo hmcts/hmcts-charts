@@ -8,7 +8,7 @@ function:
     triggerPodIdentityProvider: "azure"
   triggers:
     - type: azure-blob
-      blobContainerName: proof-of-concept
+      blobContainerName: rota
       blobCount: 1
-      accountName: "hmidtu{{ .Values.global.environment }}"
+      accountName: "hmisa{{ .Values.global.environment }}"
       blobDelimiter: "/"
