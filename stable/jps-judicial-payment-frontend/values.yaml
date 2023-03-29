@@ -1,7 +1,7 @@
 nodejs:
   applicationPort: 4000
   aadIdentityName: jps
-  ingressHost: jps-judicial-payment-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: judicial-payments.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/jps/judicial-payment-frontend:latest'
   #  Uncomment once the vault containing the app insights key has been set up
   #  keyVaults:
