@@ -9,3 +9,6 @@ nodejs:
   #      secrets:
   #        - AppInsightsInstrumentationKey
   environment:
+    REFORM_TEAM: jps
+    REFORM_SERVICE_NAME: judicial-payment-frontend
+    REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
