@@ -22,13 +22,13 @@ job:
           alias: CONTAINER_NAME
   secrets:
     BLOB_ACCOUNT_NAME:
-      secretRef: storage-secret-{{ .Release.Name }}
+      secretRef: storage-secret-{{ .Release.Name }}-blobstorage
       key: storageAccountName
     BLOB_ACCESS_KEY:
-      secretRef: storage-secret-{{ .Release.Name }}
+      secretRef: storage-secret-{{ .Release.Name }}-blobstorage
       key: accessKey
     BLOB_SERVICE_ENDPOINT:
-      secretRef: storage-secret-{{ .Release.Name }}
+      secretRef: storage-secret-{{ .Release.Name }}-blobstorage
       key: primaryBlobServiceEndPoint
 global:
   jobKind: CronJob
@@ -47,9 +47,9 @@ postgresql:
       enabled: false
 
 blobstorage:
-  resourceGroup: rd-aks-pr-test
+  resourceGroup: rd-aso-preview-rg
   teamName: "RD"
-  location: ukwest
+  location: uksouth
   setup:
     containers:
       - lrd-ref-data
