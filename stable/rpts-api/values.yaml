@@ -19,3 +19,4 @@ java:
     POSTGRES_DATABASE: rpts
     POSTGRES_USERNAME: rpts@rpts-api-postgres-db-v11-{{ .Values.global.environment }}
     RUN_DB_MIGRATION_ON_STARTUP: false
+    ENABLE_FLYWAY: true
