@@ -3,14 +3,11 @@ appVersion: "1.0"
 description: A Helm chart for AM Role Assignment refresh batch
 name: am-role-assignment-refresh-batch
 home: https://github.com/hmcts/am-role-assignment-refresh-batch
-version: 0.1.3
+version: 0.1.5
 maintainers:
   - name: Access Management Team
 dependencies:
-  - name: java
-    version: 4.0.13
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: job
-    version: ~0.7.10
+    version: ~0.7.12
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
 
