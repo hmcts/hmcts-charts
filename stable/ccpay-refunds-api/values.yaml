@@ -73,3 +73,7 @@ java:
           alias: NOTIFICATION_LETTER_CARD_PBA_TEMPLATE_ID
         - name: notifications-email-card-pba-template-id
           alias: NOTIFICATION_EMAIL_CARD_PBA_TEMPLATE_ID
+        - name: notifications-letter-refund-when-contacted-template-id
+          alias: NOTIFICATION_LETTER_REFUND_WHEN_CONTACTED_TEMPLATE_ID
+        - name: notifications-email-refund-when-contacted-template-id
+          alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID
