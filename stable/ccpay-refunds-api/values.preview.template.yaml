@@ -13,7 +13,7 @@ java:
     SPRING_LIQUIBASE_ENABLED: true
     OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
     LAUNCH_DARKLY_USER_NAME_PREFIX: aat
-    PAYMENT_API_URL: http://payment-api-pr-1400-java
+    PAYMENT_API_URL: "http://payment-api-pr-1391-java"
     LIBERATA_OAUTH2_AUTHORIZE_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/authorize"
     LIBERATA_OAUTH2_TOKEN_URL: "https://bpacustomerportal.liberata.com/pba/public/oauth/token"
     LIBERATA_BASE_URL: "https://lascustomerportaluat.liberata.com"
@@ -25,7 +25,7 @@ java:
     REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
     REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
     REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-aat.service.core-compute-aat.internal/oauth2/callback"
-    NOTIFICATION_API_URL: "http://ccpay-notifications-service-pr-140.service.core-compute-preview.internal"
+    NOTIFICATION_API_URL: "http://ccpay-notifications-service-pr-140-java"
 
   keyVaults:
     "ccpay":
