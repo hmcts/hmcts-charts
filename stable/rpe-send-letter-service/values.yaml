@@ -78,7 +78,7 @@ java:
     #reports. depends on smtp - For prod overwrite
     UPLOAD_SUMMARY_REPORT_ENABLED: "false"
     FTP_UPLOADED_LETTERS_SUMMARY_REPORT_ENABLED: "false"
-    DUPLICATES_CUT_OFF_TIME: 0
+    DUPLICATES_CUT_OFF_TIME: 1
 
   # Don't modify below here
   image: 'hmctspublic.azurecr.io/rpe/send-letter-service:latest'
