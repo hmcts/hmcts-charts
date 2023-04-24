@@ -6,8 +6,6 @@ java:
   keyVaults:
     em-hrs-api:
       secrets:
-        - name: storage-account-primary-connection-string
-          alias: STORAGEACCOUNT_PRIMARY_CONNECTION_STRING
         - name: idam-system-user-name
           alias: HRS_SYSTEM_USER
         - name: idam-system-user-password
@@ -15,34 +13,51 @@ java:
         - name: microservicekey-em-hrs-api
           alias: S2S_KEY
   secrets:
-    BLOB_ACCOUNT_NAME:
-      secretRef: storage-secret-{{ .Release.Name }}
+    CVP_BLOB_ACCOUNT_NAME:
+      secretRef: storage-secret-cvp-{{ .Release.Name }}
       key: storageAccountName
-    BLOB_ACCESS_KEY:
-      secretRef: storage-secret-{{ .Release.Name }}
+    CVP_BLOB_ACCESS_KEY:
+      secretRef: storage-secret-cvp-{{ .Release.Name }}
       key: accessKey
-    BLOB_SERVICE_ENDPOINT:
-      secretRef: storage-secret-{{ .Release.Name }}
-      key: primaryBlobServiceEndPoint
+    HRS_BLOB_ACCOUNT_NAME:
+      secretRef: storage-secret-hrs-{{ .Release.Name }}
+      key: storageAccountName
+    HRS_BLOB_ACCESS_KEY:
+      secretRef: storage-secret-hrs-{{ .Release.Name }}
+      key: accessKey
   environment:
+    HRS_STORAGE_CONTAINER_NAME: hrs
+    CVP_STORAGE_CONTAINER_NAME: cvp
     SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Release.Name }}-{{ .Values.postgresql.nameOverride}}:5432/javadatabase?ssl=disable
     SPRING_DATASOURCE_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
     SPRING_DATASOURCE_PASSWORD: "{{ .Values.postgresql.postgresqlPassword}}"
     OPEN_ID_API_BASE_URI: https://idam-web-public.aat.platform.hmcts.net/o
     ENABLE_DB_MIGRATE: true
     RUN_DB_MIGRATION_ON_STARTUP: true
-    CVP_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(BLOB_ACCOUNT_NAME);AccountKey=$(BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
+    CVP_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(CVP_BLOB_ACCOUNT_NAME);AccountKey=$(CVP_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
+    STORAGEACCOUNT_PRIMARY_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(HRS_BLOB_ACCOUNT_NAME);AccountKey=$(HRS_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
   postgresql:
     enabled: true
     auth:
       username: emhrs
       password: emhrs
-blobstorage:
+
+cvpblobstorage:
   enabled: true
   resourceGroup: em-hrs-api-aks
+  releaseNameOverride: cvp-{{ .Release.Name }}
   teamName: "EM"
   location: uksouth
   setup:
     containers:
-      - em-hrs-api
+      - cvp
 
+hrsblobstorage:
+  enabled: true
+  resourceGroup: em-hrs-api-aks
+  releaseNameOverride: hrs-{{ .Release.Name }}
+  teamName: "EM"
+  location: uksouth
+  setup:
+    containers:
+      - hrs
