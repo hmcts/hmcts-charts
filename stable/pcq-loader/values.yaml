@@ -19,6 +19,7 @@ job:
         - pcq-storage-account-name
         - pcq-storage-account-primary-access-key
         - pcq-storage-account-primary-connection-string
+        - app-insights-connection-string
 blobstorage:
   enabled: false
 global:
