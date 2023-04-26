@@ -23,14 +23,18 @@ job:
       secrets:
         - name: cvp-storage-connection-string
           alias: CVP_STORAGE_CONNECTION_STRING
+        - name: cvp-storage-connection-string
+          alias: VH_STORAGE_CONNECTION_STRING
         - name: cvp-storage-container-name
           alias: CVP_STORAGE_CONTAINER_NAME
+        - name: cvp-storage-container-name
+          alias: VH_STORAGE_CONTAINER_NAME
   environment:
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     JSON_CONSOLE_PRETTY_PRINT: false
     SHOW_SQL: false
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: DEBUG
-    USE_AD_AUTH_FOR_BLOB_CONNECTION: false
+    USE_AD_AUTH_FOR_SOURCE_BLOB_CONNECTION: false
 global:
   jobKind: CronJob
