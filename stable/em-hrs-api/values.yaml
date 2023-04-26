@@ -20,6 +20,10 @@ java:
           alias: CVP_STORAGE_CONNECTION_STRING
         - name: cvp-storage-container-name
           alias: CVP_STORAGE_CONTAINER_NAME
+        - name: cvp-storage-connection-string
+          alias: VH_STORAGE_CONNECTION_STRING
+        - name: cvp-storage-container-name
+          alias: VH_STORAGE_CONTAINER_NAME
         - name: hrs-storage-container-name
           alias: HRS_STORAGE_CONTAINER_NAME
         - name: idam-system-user-name
