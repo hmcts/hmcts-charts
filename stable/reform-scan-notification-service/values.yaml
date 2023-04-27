@@ -41,6 +41,7 @@ java:
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 4000
     PENDING_NOTIFICATIONS_TASK_ENABLED: true
     PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 120
+    JMS_ENABLED: false
   image: 'hmctspublic.azurecr.io/reform-scan/notification-service:latest'
 servicebus:
   enabled: false
