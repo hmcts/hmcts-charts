@@ -1,5 +1,5 @@
 nodejs:
   environment:
-    RECIPE_BACKEND_URL: "http://toffee-recipe-backend.staging.platform.hmcts.net"
+    RECIPE_BACKEND_URL: 'http://toffee-recipe-backend.staging.platform.hmcts.net'
   image: https://hmcts.azurecr.io/hmcts/toffee-frontend:latest
   ingressHost: 
