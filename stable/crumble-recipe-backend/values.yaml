@@ -5,11 +5,11 @@ java:
   keyVaults:
     "crumblesi":
       secrets:
-        - name: recipe-backend-POSTGRES-DATABASE-v11
+        - name: recipe-backend-POSTGRES-DATABASE-v14
           alias: POSTGRES_DATABASE
-        - name: recipe-backend-POSTGRES-HOST-v11
+        - name: recipe-backend-POSTGRES-HOST-v14
           alias: POSTGRES_HOST
-        - name: recipe-backend-POSTGRES-USER-v11
+        - name: recipe-backend-POSTGRES-USER-v14
           alias: POSTGRES_USER
-        - name: recipe-backend-POSTGRES-PASS-v11
+        - name: recipe-backend-POSTGRES-PASS-v14
           alias: POSTGRES_PASSWORD
