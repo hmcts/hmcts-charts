@@ -25,8 +25,6 @@ java:
           alias: notify.key
         - name: am-password
           alias: idam.spi.forgerock.am.password
-        - name: idm-password
-          alias: idam.spi.forgerock.idm.password
         - name: pin-user-pass
           alias: idam.spi.forgerock.idm.pin.defaultPassword
         - name: idam-api-POSTGRES-HOST
