@@ -9,4 +9,16 @@ java:
       secrets:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: judicial-payment-service-POSTGRES-USER
+          alias: JUDICIAL_PAYMENT_SERVICE_DB_USERNAME
+        - name: judicial-payment-service-POSTGRES-PASS
+          alias: JUDICIAL_PAYMENT_SERVICE_DB_PASSWORD
+        - name: judicial-payment-service-POSTGRES-HOST
+          alias: JUDICIAL_PAYMENT_SERVICE_DB_HOST
+        - name: judicial-payment-service-POSTGRES-PORT
+          alias: JUDICIAL_PAYMENT_SERVICE_DB_PORT
+        - name: judicial-payment-service-POSTGRES-DATABASE
+          alias: JUDICIAL_PAYMENT_SERVICE_DB_NAME
   environment:
+    JUDICIAL_PAYMENT_SERVICE_DB_OPTIONS: "?stringtype=unspecified&gssEncMode=disable"
+    RUN_DB_MIGRATION_ON_STARTUP: false
