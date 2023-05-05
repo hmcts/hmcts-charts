@@ -5,6 +5,6 @@ nodejs:
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-java
   keyVaults:
-    "plumsi":
+    'plumsi':
       secrets:
         - name: appInsights-InstrumentationKey
