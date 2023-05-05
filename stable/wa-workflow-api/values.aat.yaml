@@ -2,3 +2,47 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/wa-workflow-api:latest
   ingressHost: 
+  environment:
+    RESTART_APP: 1
+    ENABLE_SWAGGER: true
+    CAMUNDA_URL: "https://wa-workflow-camunda-staging.aat.platform.hmcts.net/engine-rest"
+    S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    POSTGRES_PORT: 5432
+    POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+    POSTGRES_USERNAME: hmcts
+    POSTGRES_PASSWORD: hmcts
+    POSTGRES_CONNECTION_OPTIONS: ""
+    WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-aat.service.core-compute-aat.internal"
+    ENVIRONMENT: "{{ .Values.global.environment }}"
+  keyVaults:
+    wa:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: s2s-secret-workflow-api
+          alias: S2S_SECRET_WORKFLOW_API
+        - name: ld-secret
+          alias: LAUNCH_DARKLY_SDK_KEY
+wa:
+  enabled: true
+  wa:
+    taskManagement:
+      enabled: false
+    taskMonitor:
+      enabled: false
+    eventHandler:
+      enabled: false
+    workflow:
+      enabled: false
+    taskBatchCron:
+      enabled: false
+    messageCron:
+      enabled: false
+    servicebus:
+      enabled: false
+  camunda-bpm:
+    java:
+      ingressHost: wa-workflow-camunda-staging.aat.platform.hmcts.net
+  postgresql:
+    ingressHost: workflow-api-postgres-staging-aat.aat.platform.hmcts.net
+

@@ -19,6 +19,7 @@ java:
     POSTGRES_NAME: wa_workflow_api
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
     WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    ENVIRONMENT: "{{ .Values.global.environment }}"
   keyVaults:
     wa:
       secrets:
@@ -32,3 +33,6 @@ java:
           alias: POSTGRES_USERNAME
         - name: ld-secret
           alias: LAUNCH_DARKLY_SDK_KEY
+
+  wa:
+    enabled: false
