@@ -2,10 +2,6 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  keyVaults:
-    jps:
-      secrets:
-        - AppInsightsInstrumentationKey
   environment:
     JUDICIAL_PAYMENT_SERVICE_DB_HOST: "{{ .Release.Name }}-postgresql"
     JUDICIAL_PAYMENT_SERVICE_DB_NAME: "{{ .Values.postgresql.auth.database}}"
