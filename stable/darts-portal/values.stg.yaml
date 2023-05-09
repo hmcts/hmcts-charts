@@ -2,3 +2,9 @@
 nodejs:
   image: https://hmcts.azurecr.io/hmcts/darts-portal:latest
   ingressHost: 
+  keyVaults:
+    darts:
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: APP_INSIGHTS_KEY
+
