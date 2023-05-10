@@ -9,8 +9,8 @@ function:
       secrets:
         - name: sa-connection-string
           alias: CONNECTION_STRING
-        - name: app-insights-rota-dtu-instrumentation-key
-          alias: AZURE_APPLICATIONINSIGHTS_INSTRUMENTATIONKEY  
+        - name: app-insights-rota-dtu-connection-string
+          alias: AZURE_APPLICATIONINSIGHTS_CONNECTION_STRING
         - name: poc-url
           alias: URL
   scaleType: Job
