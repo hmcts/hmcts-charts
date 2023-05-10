@@ -36,8 +36,8 @@ java:
           alias: UPDATE_CASE_QUEUE_SEND_CONNECTION_STRING
         - name: update-case-queue-listen-connection-string
           alias: UPDATE_CASE_QUEUE_LISTEN_CONNECTION_STRING
-        - name: AppInsightsInstrumentationKey
-          alias: APP_INSIGHTS_KEY
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
   environment:
     REFORM_TEAM: et
     REFORM_SERVICE_NAME: et-msg-handler
