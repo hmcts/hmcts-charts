@@ -2,17 +2,6 @@ java:
   applicationPort: 8999
   aadIdentityName: camunda
   image: 'hmctsprivate.azurecr.io/camunda/bpm:latest'
-  keyVaults:
-    camunda:
-      secrets:
-        - name: bpm-POSTGRES-PASS
-          alias: spring.datasource.password
-        - name: camunda-admin-password
-          alias: CAMUNDA_ADMIN_PASSWORD
-        - name: s2s-secret-camunda-bpm
-          alias: S2S_SECRET_CAMUNDA_BPM
-        - name: app-insights-connection-string
-          alias: app-insights-connection-string
   environment:
     CAMUNDA_DB_HOST: "hmcts-camunda-{{ .Values.global.environment }}.postgres.database.azure.com"
     CAMUNDA_DB_NAME: "camunda"
