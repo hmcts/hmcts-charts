@@ -11,9 +11,9 @@ job:
   keyVaults:
     rpa:
       secrets:
-        - name: AppInsightsInstrumentationKey
+        - name: EmAppInsightsInstrumentationKey
           alias: APPINSIGHTS_INSTRUMENTATIONKEY
-        - name: app-insights-connection-string
+        - name: em-app-insights-connection-string
           alias: app-insights-connection-string
     em-hrs-ingestor:
       secrets:
