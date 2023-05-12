@@ -34,5 +34,5 @@ java:
         - name: ld-secret
           alias: LAUNCH_DARKLY_SDK_KEY
 
-  wa:
-    enabled: false
+wa:
+  enabled: false
