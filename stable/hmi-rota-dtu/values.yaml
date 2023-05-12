@@ -11,8 +11,17 @@ function:
           alias: CONNECTION_STRING
         - name: app-insights-rota-dtu-connection-string
           alias: AZURE_APPLICATIONINSIGHTS_CONNECTION_STRING
-        - name: poc-url
-          alias: URL
+        - name: hmi-url
+          alias: HMI_APIM
+        - name: tenant-id
+          alias: TENANT_ID
+        - name: hmi-rota-dtu-id
+          alias: CLIENT_ID
+        - name: hmi-rota-dtu-pwd
+          alias: CLIENT_SECRET
+        - name: hmi-gateway-scope
+          alias: HMI_APIM_AZ_API
+
   scaleType: Job
   triggerAuth:
     create: true
