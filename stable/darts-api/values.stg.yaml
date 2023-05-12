@@ -2,10 +2,3 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/darts-api:latest
   ingressHost: 
-  keyVaults:
-    darts:
-      secrets:
-        - name: GovukNotifyTestApiKey
-          alias: GOVUK_NOTIFY_API_KEY
-  environment:
-    NOTIFICATION_SCHEDULER_CRON: "* */2 * * * MON-FRI"
