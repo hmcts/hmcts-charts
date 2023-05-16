@@ -39,6 +39,7 @@ nodejs:
         - online-plea-token-key
         - specialtribunals-cic-token-key
         - jurordigital-token-key
+        - prl-token-key
 
 redis:
   architecture: standalone
