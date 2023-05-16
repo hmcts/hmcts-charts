@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/finrem-cos:latest
   ingressHost: 
+  environment:
+    FEATURE_SEND_LETTER_RECIPIENT_CHECK: false
