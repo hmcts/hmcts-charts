@@ -32,4 +32,4 @@ java:
         - idam-backend-app-db-password
         - idam-flyway-password
         - backend-encryption-key
-        - AppInsightsInstrumentationKey
+        - app-insights-connection-string
