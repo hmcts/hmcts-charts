@@ -9,8 +9,8 @@ job:
   keyVaults:
     am:
       secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: am-role-assignment-service-s2s-secret
           alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
         - name: role-assignment-service-POSTGRES-PASS
