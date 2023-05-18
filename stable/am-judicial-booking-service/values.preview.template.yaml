@@ -6,8 +6,8 @@ java:
       secrets:
         - name: am-judicial-booking-service-s2s-secret
           alias: AM_JUDICIAL_BOOKING_SERVICE_SECRET
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: judicial-booking-service-IDAM-CLIENT-SECRET
           alias: JUDICIAL_BOOKING_IDAM_CLIENT_SECRET
         - name: judicial-booking-service-IDAM-ADMIN-SECRET
