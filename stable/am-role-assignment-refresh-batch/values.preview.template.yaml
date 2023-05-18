@@ -8,7 +8,7 @@ job:
   keyVaults:
     am:
       secrets:
-        - AppInsightsInstrumentationKey
+        - app-insights-connection-string
         - am-role-assignment-refresh-batch-s2s-secret
         - orm-IDAM-CLIENT-ID
         - orm-IDAM-CLIENT-SECRET
