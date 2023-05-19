@@ -2,9 +2,14 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    CASE_DATA_STORE_BASEURL: http://fis-cos-api-pr-${CHANGE_ID}-ccd-data-store-api
     CITIZEN_UPDATE_CASE_STATE_ENABLED: true
-    APP_INSIGHTS_KEY: 40c4ab72-faeb-4a79-b7ef-554038d0542f
+    SERVICE_AUTH_PROVIDER_URL: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal'
+    IDAM_WEB_URL: 'https://idam-web-public.aat.platform.hmcts.net/login'
+    IDAM_API_URL: 'https://idam-api.aat.platform.hmcts.net'
+    IDAM_API_BASEURL: 'https://idam-api.aat.platform.hmcts.net'
+    CASE_DATA_STORE_BASEURL: 'https://ccd-data-store-api-aat.service.core-compute-aat.internal'
+    CCD_CASE_DOCS_AM_API: "http://ccd-case-document-am-api-aat.service.core-compute-aat.internal"
+
 
   keyVaults:
     fis-kv:
