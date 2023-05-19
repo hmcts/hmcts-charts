@@ -24,12 +24,18 @@ java:
     lau:
       resourceGroup: lau
       secrets:
-        - AppInsightsInstrumentationKey
-        - case-backend-POSTGRES-PASS
-        - case-backend-POSTGRES-USER
-        - case-backend-app-db-password
-        - case-backend-app-db-password
-        - case-backend-app-db-user
-        - flyway-password
-        - idam-client-secret
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: case-backend-POSTGRES-PASS
+          alias: LAU_DB_ADMIN_PASSWORD
+        - name: case-backend-POSTGRES-USER
+          alias: LAU_DB_ADMIN_USERNAME
+        - name: case-backend-app-db-password
+          alias: LAU_DB_PASSWORD
+        - name: case-backend-app-db-user
+          alias: LAU_DB_USERNAME
+        - name: flyway-password
+          alias: flyway.password
+        - name: idam-client-secret
+          alias: IDAM_CLIENT_SECRET
 
