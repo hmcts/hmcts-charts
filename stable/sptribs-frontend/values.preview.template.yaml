@@ -6,5 +6,5 @@ nodejs:
 idam-pr:
   enabled: true
   redirect_uris:
-    ds-ui:
+    sptribs-frontend:
       - https://${SERVICE_FQDN}/receiver

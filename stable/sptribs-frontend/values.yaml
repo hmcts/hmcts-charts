@@ -12,7 +12,9 @@ nodejs:
     SERVICE_AUTH_PROVIDER_URL: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     IDAM_WEB_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login'
     IDAM_API_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
-    REDIS_HOST: 'sptribs-frontend-session-storage-{{ .Values.global.environment }}.redis.cache.windows.net'
+    REDIS_HOST: 'sptribs-{{ .Values.global.environment }}.redis.cache.windows.net'
+    EQUALITY_URL: 'https://pcq.{{ .Values.global.environment }}.platform.hmcts.net'
+    PCQ_ENABLED: true
 
   keyVaults:
     sptribs:
@@ -24,3 +26,5 @@ nodejs:
         - s2s-secret
         - app-insights-instrumentation-key
         - postcode-lookup-token
+idam-pr:
+  enabled: false
