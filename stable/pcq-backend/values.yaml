@@ -21,12 +21,21 @@ java:
     pcq:
       resourceGroup: pcq
       secrets:
-        - backend-POSTGRES-USER
-        - backend-POSTGRES-PASS
-        - jwt-secret
-        - backend-encryption-key
-        - flyway-password
-        - app-insights-connection-string
-        - pcq-storage-account-primary-connection-string
-        - s2s-secret-pcq-consolidation-service
+        - name: backend-POSTGRES-USER
+          alias: PCQ_DB_USERNAME
+        - name: backend-POSTGRES-PASS
+          alias: PCQ_DB_PASSWORD
+        - name: jwt-secret
+          alias: JWT_SECRET
+        - name: backend-encryption-key
+          alias: DB_ENCRYPTION_KEY
+        - name: flyway-password
+          alias: flyway.password
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: pcq-storage-account-primary-connection-string
+          alias: STORAGE_ACCOUNT_CONNECTION_STRING
+        - name: s2s-secret-pcq-consolidation-service
+          alias: S2S_CS_SECRET
+
   image: 'hmctspublic.azurecr.io/pcq/backend:latest'
