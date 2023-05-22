@@ -19,6 +19,17 @@ job:
         - pcq-storage-account-name
         - pcq-storage-account-primary-access-key
         - pcq-storage-account-primary-connection-string
+        - name: jwt-secret
+          alias: JWT_SECRET
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: pcq-storage-account-name
+          alias: STORAGE_ACCOUNT_NAME
+        - name: pcq-storage-account-primary-access-key
+          alias: STORAGE_KEY
+        - name: pcq-storage-account-primary-connection-string
+          alias: pcq-storage-account-primary-connection-string
+
 blobstorage:
   enabled: false
 global:
