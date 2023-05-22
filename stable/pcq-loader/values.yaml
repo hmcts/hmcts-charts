@@ -14,11 +14,6 @@ job:
     pcq:
       resourceGroup: pcq
       secrets:
-        - jwt-secret
-        - app-insights-connection-string
-        - pcq-storage-account-name
-        - pcq-storage-account-primary-access-key
-        - pcq-storage-account-primary-connection-string
         - name: jwt-secret
           alias: JWT_SECRET
         - name: app-insights-connection-string
