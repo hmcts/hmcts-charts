@@ -23,7 +23,6 @@ nodejs:
         - idam-systemupdate-username
         - idam-systemupdate-password
         - redis-access-key
-        - s2s-secret
         - app-insights-instrumentation-key
         - postcode-lookup-token
 idam-pr:
