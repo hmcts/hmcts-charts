@@ -26,5 +26,6 @@ nodejs:
         - s2s-secret-sptribs-frontend
         - app-insights-instrumentation-key
         - postcode-lookup-token
+        - specialTribunals-cic-pcq-token
 idam-pr:
   enabled: false
