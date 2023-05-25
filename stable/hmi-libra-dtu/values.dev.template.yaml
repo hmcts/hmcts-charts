@@ -1,0 +1,3 @@
+java:
+  # Don't modify below here
+  function: ${IMAGE_NAME}
