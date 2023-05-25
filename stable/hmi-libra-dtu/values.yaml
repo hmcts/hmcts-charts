@@ -15,9 +15,9 @@ function:
           alias: HMI_APIM
         - name: tenant-id
           alias: TENANT_ID
-        - name: hmi-rota-dtu-id
+        - name: hmi-dtu-id
           alias: CLIENT_ID
-        - name: hmi-rota-dtu-pwd
+        - name: hmi-dtu-pwd
           alias: CLIENT_SECRET
         - name: hmi-gateway-scope
           alias: HMI_APIM_AZ_API
