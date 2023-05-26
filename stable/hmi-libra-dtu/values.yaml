@@ -21,6 +21,20 @@ function:
           alias: CLIENT_SECRET
         - name: hmi-gateway-scope
           alias: HMI_APIM_AZ_API
+        - name: sn-url
+          alias: SN_URL
+        - name: sn-username
+          alias: SN_USERNAME
+        - name: sn-password
+          alias: SN_PASSWORD
+        - name: sn-assignment-group
+          alias: SN_ASSIGNMENT_GROUP
+        - name: sn-caller-id
+          alias: SN_CALLER_ID
+        - name: sn-service-offering
+          alias: SN_SERVICE_OFFERING
+        - name: sn-role-type
+          alias: SN_ROLE_TYPE
 
   scaleType: Job
   triggerAuth:
