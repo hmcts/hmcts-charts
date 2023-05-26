@@ -3,10 +3,9 @@ java:
   image: 'hmctspublic.azurecr.io/civil/sdt-commissioning:latest'
   ingressHost: civil-sdt-commissioning-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: civil
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    sdt:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
+  keyVaults:
+    civil-sdt:
+      secrets:
+        - name: civil-sdt-appinsights-connection-string
+          alias: APPINSIGHTS_CONNECTION_STRING
   environment:
