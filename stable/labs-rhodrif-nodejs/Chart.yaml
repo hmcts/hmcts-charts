@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for labs-rhodrif-nodejs App
+name: labs-rhodrif-nodejs
+home: https://github.com/hmcts/labs-rhodrif-nodejs
+version: 0.0.4
+dependencies:
+  - name: nodejs
+    version: 2.4.16
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
