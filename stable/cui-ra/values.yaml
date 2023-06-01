@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3100
+  aadIdentityName: cui
+  ingressHost: cui-ra.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/cui/ra:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    cui:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:
