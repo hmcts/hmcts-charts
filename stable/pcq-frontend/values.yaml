@@ -40,6 +40,7 @@ nodejs:
         - specialtribunals-cic-token-key
         - jurordigital-token-key
         - prl-token-key
+        - civil-citizen-ui-token-key
 
 redis:
   architecture: standalone
