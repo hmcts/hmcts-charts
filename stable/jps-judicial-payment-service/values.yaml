@@ -19,6 +19,10 @@ java:
           alias: JUDICIAL_PAYMENT_SERVICE_DB_PORT
         - name: judicial-payment-service-POSTGRES-DATABASE
           alias: JUDICIAL_PAYMENT_SERVICE_DB_NAME
+        - name: idam-jps-system-username
+          alias: IDAM_JPS_SYSTEM_USERNAME
+        - name: idam-jps-system-password
+          alias: IDAM_JPS_SYSTEM_PASSWORD
         - name: idam-jps-judicial-payment-service-client-secret
           alias: JPS_JUDICIAL_PAYMENT_SERVICE_IDAM_CLIENT_SECRET
         - name: jps-judicial-payment-service-s2s-secret
@@ -58,3 +62,6 @@ java:
     HTTP_CLIENT_SECONDS_IDLE_CONNECTION: '120'
     HTTP_CLIENT_MAX_CLIENT_PER_ROUTE: '20'
     HTTP_CLIENT_VALIDATE_AFTER_INACTIVITY: '2000'
+    LOCATION_API_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    JUDICIAL_USERS_API_URL: http://rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    CASEWORKER_API_URL: http://rd-caseworker-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
