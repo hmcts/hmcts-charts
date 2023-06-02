@@ -137,17 +137,19 @@ ccd:
       enabled: true
 
   postgresql:
-    initdbScripts:
-      init.sql: |-
-        CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "user-profile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "draftstore" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "evidence" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "annotation" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "hmc-cft-hearing-service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-        CREATE DATABASE "sscsjobscheduler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+    primary:
+      initdb:
+        scripts:
+          init.sql: |
+            CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "user-profile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "draftstore" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "evidence" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "annotation" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "hmc-cft-hearing-service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "sscsjobscheduler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 
   global:
     ccdApiGatewayIngress: ${SERVICE_NAME}-ccd-api-gw
@@ -212,7 +214,7 @@ ccd:
     nameOverride: ${SERVICE_NAME}-es
     clusterName: "es"
     replicas: 1
-  
+    
   logstash:
     image: hmctspublic.azurecr.io/imported/logstash/logstash
     imageTag: "7.16.1"
@@ -388,19 +390,16 @@ ccd:
                 timeout => 60
             }
         }
+        
   ccd-admin-web:
     nodejs:
       image: hmctspublic.azurecr.io/ccd/admin-web:latest
-      ingressHost: ${SERVICE_NAME}-ccd-admin-web
-      disableKeyVaults: true
+      ingressHost: admin-web-${SERVICE_FQDN}
       environment:
+        IDAM_ADMIN_WEB_SERVICE_KEY: ${ADMIN_S2S_KEY}
         IDAM_OAUTH2_AW_CLIENT_SECRET: ${ADMIN_WEB_IDAM_SECRET}
-        IDAM_BASE_URL: https://idam-api.aat.platform.hmcts.net
-        IDAM_OAUTH2_TOKEN_ENDPOINT: https://idam-web-public.aat.platform.hmcts.net/oauth2/token'
-        IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-    idam-pr:
-      releaseNameOverride: ${SERVICE_NAME}-ccd-admin-idam-pr
-      enabled: true
+      keyVaults: [ ]
+
 
   ccd-user-profile-api:
     java:
