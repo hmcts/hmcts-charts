@@ -3,7 +3,7 @@ job:
   image: https://hmcts.azurecr.io/hmcts/prl-ccd-case-migration:latest
   ingressHost: 
   kind: CronJob
-  schedule: "*/20 * * * *"
+  schedule: "0 15 16 5 *"
   startingDeadlineSeconds: 180
   concurrencyPolicy: Forbid
 global:

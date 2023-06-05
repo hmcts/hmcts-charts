@@ -1,15 +1,15 @@
 job:
   image: 'hmctspublic.azurecr.io/prl/prl-ccd-case-migration:latest'
   kind: CronJob
-  schedule: "0 22 * * *"
+  schedule: "0 15 16 5 *"
   ingressHost: prl-ccd-case-migration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: prl
 #  Uncomment once the vault containing the app insights key has been set up
   keyVaults:
     prl:
       secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: APP_INSIGHTS_INSTRUMENTATION_KEY
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: prl-cos-idam-client-secret
           alias: IDAM_CLIENT_SECRET
         - name: system-update-user-username
@@ -21,7 +21,9 @@ job:
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    CCD_DATA_STORE_API_BASE_URL: http://prl-ccd-definitions-pr-1215-ccd-data-store-api
+    CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_CLIENT_REDIRECT_URI: https://prl-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
-    MIGRATION_QUERY_SIZE: 10000
-    MIGRATION_CASE_LIMIT: 10000
+    MIGRATION_QUERY_SIZE: 1000
+    MIGRATION_CASE_LIMIT: 1000
+    MIGRATION_ENABLED: false
+    MIGRATION_CASE_IDS: 123L
