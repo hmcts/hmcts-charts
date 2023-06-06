@@ -14,14 +14,14 @@ java:
           alias: S2S_KEY
   secrets:
     CVP_BLOB_ACCOUNT_NAME:
-      secretRef: storage-secret-cvp-{{ .Release.Name }}
-      key: storageAccountName
+      secretRef: storage-account-cvp-{{ .Release.Name }}
+      key: storage_account_name
     CVP_BLOB_ACCESS_KEY:
       secretRef: storage-secret-cvp-{{ .Release.Name }}
       key: accessKey
     HRS_BLOB_ACCOUNT_NAME:
-      secretRef: storage-secret-hrs-{{ .Release.Name }}
-      key: storageAccountName
+      secretRef: storage-account-hrs-{{ .Release.Name }}
+      key: storage_account_name
     HRS_BLOB_ACCESS_KEY:
       secretRef: storage-secret-hrs-{{ .Release.Name }}
       key: accessKey
@@ -44,7 +44,7 @@ java:
 
 cvpblobstorage:
   enabled: true
-  resourceGroup: em-hrs-api-aks
+  resourceGroup: em-aso-preview-rg
   releaseNameOverride: cvp-{{ .Release.Name }}
   teamName: "EM"
   location: uksouth
@@ -54,7 +54,7 @@ cvpblobstorage:
 
 hrsblobstorage:
   enabled: true
-  resourceGroup: em-hrs-api-aks
+  resourceGroup: em-aso-preview-rg
   releaseNameOverride: hrs-{{ .Release.Name }}
   teamName: "EM"
   location: uksouth
