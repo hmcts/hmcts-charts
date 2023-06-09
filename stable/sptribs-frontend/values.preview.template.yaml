@@ -2,6 +2,9 @@ nodejs:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  
+  environment:
+      CASE_API_URL: 'https://sptribs-case-api-pr-880.preview.platform.hmcts.net'
 
 idam-pr:
   enabled: true
