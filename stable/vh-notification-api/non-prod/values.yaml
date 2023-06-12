@@ -2,7 +2,7 @@
 java:
   aadIdentityName: vh-aad-identity
   applicationPort: 8080
-  image: 'sdshmctspublic.azurecr.io/vh/notification-api:latest'
+  image: "sdshmctspublic.azurecr.io/vh/notification-api:latest"
   ingressHost: vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
   livenessDelay: 360
   livenessPath: /healthcheck/health
@@ -19,6 +19,8 @@ java:
         - applicationinsights--instrumentationkey
         - azuread--tenantid
         - connectionstrings--vhnotificationsapi
+        - name: launchdarkly-client-id
+          alias: FeatureToggle--SdkKey
     vh-notification-api:
       excludeEnvironmentSuffix: false
       resourceGroup: vh-infra-core-{{ .Values.global.environment }}
