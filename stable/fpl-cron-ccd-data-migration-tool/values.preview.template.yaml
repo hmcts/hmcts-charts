@@ -7,6 +7,8 @@ job:
   concurrencyPolicy: Forbid
   environment:
     IDAM_REDIRECT_URL: https://fpl-case-service-*.service.core-compute-aat.internal/oauth2/callback
+    IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
 
 global:
   jobKind: CronJob
