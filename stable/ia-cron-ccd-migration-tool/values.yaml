@@ -23,7 +23,7 @@ job:
         - name: s2s-microservice
           alias: IA_S2S_MICROSERVICE
         - name: idam-redirect-uri
-          alias: IDAM_REDIRECT_URL
+          alias: IDAM_REDIRECT_URI
         - name: s2s-url
           alias: IDAM_S2S_URL
         - name: idam-url
