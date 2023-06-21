@@ -14,12 +14,21 @@ job:
           alias: IDAM_USER
         - name: system-password
           alias: IDAM_PASS
+        - name: idam-client-id
+          alias: IA_IDAM_CLIENT_ID
         - name: idam-secret
-          alias: IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET
+          alias: IA_IDAM_SECRET
         - name: s2s-secret
-          alias: DATA_STORE_IDAM_KEY
+          alias: IA_S2S_SECRET
+        - name: s2s-microservice
+          alias: IA_S2S_MICROSERVICE
         - name: idam-redirect-uri
           alias: IDAM_REDIRECT_URL
+        - name: s2s-url
+          alias: IDAM_S2S_URL
+        - name: idam-url
+          alias: IDAM_API_URL
+
 
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
