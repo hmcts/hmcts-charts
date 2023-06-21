@@ -3,9 +3,9 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/fact-admin:latest
   ingressHost: 
   environment:
-    OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+    OAUTH_CLIENT_REDIRECT: https:///
 idam-pr:
   enabled: false
   redirect_uris:
     fact_admin:
-      - https:///oauth2/callback
+      - https:///
