@@ -1,8 +1,8 @@
 job:
   image: 'hmctspublic.azurecr.io/ia/cron-ccd-migration-tool:latest'
   kind: CronJob
-  schedule: "0 22 * * *"
-  ingressHost: ia-cron-ccd-data-migration-tool-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  schedule: "0/5 12 16 6 *"
+  ingressHost: ia-cron-ccd-migration-tool-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: ia
   #  Uncomment once the vault containing the app insights key has been set up
   keyVaults:
@@ -10,15 +10,15 @@ job:
       secrets:
         - name: app-insights-connection-string
           alias: app-insights-connection-string
-        - name: schedulerCaseWorkerUser
+        - name: system-username
           alias: IDAM_USER
-        - name: schedulerCaseWorkerPass
+        - name: system-password
           alias: IDAM_PASS
-        - name: idam-secret-probate
+        - name: idam-secret
           alias: IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET
-        - name: s2sAuthTotpSecret
+        - name: s2s-secret
           alias: DATA_STORE_IDAM_KEY
-        - name: idamRedirectUrl
+        - name: idam-redirect-uri
           alias: IDAM_REDIRECT_URL
 
   environment:
@@ -30,3 +30,7 @@ job:
     IDAM_CLIENT_ID: ia
     DEFAULT_THREAD_LIMIT: 20
     DEFAULT_QUERY_SIZE: 100
+    MIGRATE_CASE_FLAGS_INTERNAL: false
+    MIGRATE_LEGACY_CASE_FLAGS: false
+    MIGRATION_ENABLED: false
+
