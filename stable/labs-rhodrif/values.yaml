@@ -2,5 +2,7 @@ java:
   applicationPort: 8080
   image: 'hmctspublic.azurecr.io/labs/rhodrif:latest'
   ingressHost: labs-rhodrif-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  # ingressHost: labs-rhodrif-sandbox.service.core-compute-sandbox.internal
   aadIdentityName: labs
   environment:
+    FAVOURITE_FRUIT: plum

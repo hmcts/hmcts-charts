@@ -1,4 +1,8 @@
 java:
   # Don't modify below here
   image: ${IMAGE_NAME}
+  # image: 'hmctspublic.azurecr.io/labs/rhodrif:latest'
   ingressHost: ${SERVICE_FQDN}
+  # ingressHost: labs-rhodrif-sandbox.service.core-compute-sandbox.internal
+  environment:
+    FAVOURITE_FRUIT: sausage
