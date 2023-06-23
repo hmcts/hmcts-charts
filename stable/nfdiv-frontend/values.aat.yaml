@@ -9,6 +9,7 @@ nodejs:
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
     IDAM_TOKEN_CACHE: true
+    REDIS_HOST: 'nfdiv-frontend-{{ .Values.global.environment }}.redis.cache.windows.net'
 
 idam-pr:
   enabled: false
