@@ -28,15 +28,12 @@ job:
           alias: IDAM_S2S_URL
         - name: idam-url
           alias: IDAM_API_URL
-
-
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     MIGRATION_CASETYPE: Asylum
     MIGRATION_QUERY_SIZE: 2
-    IDAM_CLIENT_ID: ia
     DEFAULT_THREAD_LIMIT: 20
     DEFAULT_QUERY_SIZE: 100
     MIGRATE_CASE_FLAGS_INTERNAL: false
