@@ -17,8 +17,11 @@ java:
     TIMEOUT_SERVER_SHUTDOWN_PHASE: 30s
   keyVaults:
     bar:
+      resourceGroup: bar
       secrets:
-        - bar-S2S-SECRET
-        - api-POSTGRES-PASS
-        - AppInsightsInstrumentationKey
-
+        - name: bar-S2S-SECRET
+          alias: S2S_SECRET
+        - name: api-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
