@@ -1,6 +1,6 @@
 job:
-  image: 'hmctspublic.azurecr.io/disposer/idam-user-disposer:latest'
-  ingressHost: idam-user-disposer-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  image: 'hmctspublic.azurecr.io/disposer/idam-user:latest'
+  ingressHost: disposer-idam-user-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment}}.internal
   kind: CronJob
   schedule: "0 22 * * *"
   startingDeadlineSeconds: 600
