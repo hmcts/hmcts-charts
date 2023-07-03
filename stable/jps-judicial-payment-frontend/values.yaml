@@ -1,14 +1,42 @@
 nodejs:
-  applicationPort: 4000
   aadIdentityName: jps
-  ingressHost: judicial-payments.{{ .Values.global.environment }}.platform.hmcts.net
-  image: 'hmctspublic.azurecr.io/jps/judicial-payment-frontend:latest'
-  #  Uncomment once the vault containing the app insights key has been set up
-  #  keyVaults:
-  #    rpe:
-  #      secrets:
-  #        - AppInsightsInstrumentationKey
+  applicationPort: 4000
   environment:
     REFORM_TEAM: jps
     REFORM_SERVICE_NAME: judicial-payment-frontend
     REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
+    NODE_ENV: production
+    NODE_CONFIG_ENV: production
+    MICROSERVICE: jps_judicial_payment_frontend
+    SESSION_SECRET: secretSauce
+    ALLOW_CONFIG_MUTATIONS: 1
+    NOW: false
+    # Services Location Ref
+    SERVICES_LOCATION_REF_API_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # Services Idam
+    SERVICES_IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    SERVICES_IDAM_CLIENT_ID: jps_judicial_payment_frontend
+    SERVICES_IDAM_LOGIN_URL: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net
+    SERVICES_IDAM_INDEX_URL: /
+    SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
+    # Services S2s
+    SERVICES_S2S: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # OpenId ISS
+    SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}2.internal:8443/openam/oauth2/hmcts
+    memoryRequests: "512Mi"
+    cpuRequests: "25m"
+    memoryLimits: "1024Mi"
+    cpuLimits: "2500m"
+  keyVaults:
+    jps:
+      resourceGroup: jps
+      secrets:
+        - jps-s2s-client-secret
+        - jps-idam-client-secret
+
+  # Don't modify below here
+  image: 'hmctspublic.azurecr.io/jps/judicial-payment-frontend:latest'
+  ingressHost: judicial-payments.{{ .Values.global.environment }}.platform.hmcts.net
+
+idam-pr:
+  enabled: false
