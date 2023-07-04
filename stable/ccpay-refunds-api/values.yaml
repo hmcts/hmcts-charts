@@ -77,3 +77,10 @@ java:
           alias: NOTIFICATION_LETTER_REFUND_WHEN_CONTACTED_TEMPLATE_ID
         - name: notifications-email-refund-when-contacted-template-id
           alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID
+
+payment-api:
+  enabled: false
+ccpay-bulkscanning-api:
+  enabled: false
+ccpay-notifications-service:
+  enabled: false
