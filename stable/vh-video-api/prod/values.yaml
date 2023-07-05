@@ -17,8 +17,7 @@ java:
       usePodIdentity: true
       secrets:
         - azuread--tenantid
-        - name: connectionstrings--applicationinsights
-          alias: applicationinsights--instrumentationkey
+        - applicationinsights--instrumentationkey
         - CvpConfiguration--StorageAccountName
         - CvpConfiguration--StorageAccountKey
         - CvpConfiguration--StorageContainerName
