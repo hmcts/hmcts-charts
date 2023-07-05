@@ -1,5 +1,6 @@
 nodejs:
-  environment:
-    RECIPE_BACKEND_URL: 'http://toffee-recipe-backend.staging.platform.hmcts.net'
   image: https://hmcts.azurecr.io/hmcts/toffee-frontend:latest
   ingressHost: 
+  environment:
+    # DNS zone is staging but global.environment is stg
+    RECIPE_BACKEND_URL: http://toffee-recipe-backend.staging.platform.hmcts.net
