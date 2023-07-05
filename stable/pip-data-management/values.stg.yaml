@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/pip-data-management:latest
   ingressHost: 
+  environment:
+    ENABLE_TESTING_SUPPORT_API: true
