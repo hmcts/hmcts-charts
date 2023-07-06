@@ -4,9 +4,19 @@ nodejs:
   ingressHost: cui-ra.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/cui/ra:latest'
   #  Uncomment once the vault containing the app insights key has been set up
+  readinessDelay: 45
+  readinessTimeout: 5
+  readinessPeriod: 15
+  livenessDelay: 45
+  livenessTimeout: 5
+  livenessPeriod: 15
   keyVaults:
     cui:
       secrets:
         - AppInsightsInstrumentationKey
         - s2s-secret
+        - redis-access-key
   environment:
+    SERVICES_S2S_ENDPOINT: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    SERVICES_REFDATA_ENDPOINT: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    REDIS_HOST: 'cui-ra-{{ .Values.global.environment }}.redis.cache.windows.net'
