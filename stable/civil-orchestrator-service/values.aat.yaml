@@ -27,7 +27,7 @@ java:
 
 
 civil-service:
-  enabled: false
+  enabled: true
   java:
     applicationPort: 4000
     releaseNameOverride: -civil-service
@@ -100,13 +100,14 @@ idam-pr:
       - https://civil-orchestrator-service-xui-staging.aat.platform.hmcts.net/oauth2/callback
 
 xui-webapp:
-  enabled: false
+  enabled: true
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: -xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
     devmemoryRequests: 2048Mi
     devmemoryLimits: 4096Mi
+    ingressHost: xui-
     environment:
       HEALTH_CCD_COMPONENT_API: http://-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://-ccd-data-store-api/health
