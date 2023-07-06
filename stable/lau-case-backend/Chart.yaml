@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for lau-case-backend App
 name: lau-case-backend
 home: https://github.com/hmcts/lau-case-backend
-version: 1.2.3
+version: 1.2.4
 maintainers:
   - name: HMCTS lau team
 dependencies:
   - name: java
-    version: 4.1.4
+    version: 4.1.5
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
