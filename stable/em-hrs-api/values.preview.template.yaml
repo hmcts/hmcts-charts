@@ -27,6 +27,7 @@ java:
       key: accessKey
   environment:
     HRS_CVP_DEST_CONTAINER_NAME: hrs-cvp
+    HRS_VH_DEST_CONTAINER_NAME: hrs-vh
     CVP_STORAGE_CONTAINER_NAME: cvp
     SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Release.Name }}-{{ .Values.postgresql.nameOverride}}:5432/javadatabase?ssl=disable
     SPRING_DATASOURCE_USERNAME: "{{ .Values.postgresql.postgresqlUsername}}"
@@ -61,3 +62,4 @@ hrsblobstorage:
   setup:
     containers:
       - hrs-cvp
+      - hrs-vh

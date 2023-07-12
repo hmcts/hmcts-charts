@@ -20,9 +20,9 @@ java:
           alias: CVP_STORAGE_CONNECTION_STRING
         - name: cvp-storage-container-name
           alias: CVP_STORAGE_CONTAINER_NAME
-        - name: cvp-storage-connection-string
+        - name: vh-storage-connection-string
           alias: VH_STORAGE_CONNECTION_STRING
-        - name: cvp-storage-container-name
+        - name: vh-storage-container-name
           alias: VH_STORAGE_CONTAINER_NAME
         - name: hrs-storage-container-name
           alias: HRS_CVP_DEST_CONTAINER_NAME
@@ -73,6 +73,7 @@ java:
     SUMMARY_REPORT_ENABLED: false
     SHAREE_LINK_TTL: 72 #ttl in hours
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: DEBUG
+    HRS_VH_DEST_CONTAINER_NAME: vhrecordings
 hrsblobstorage:
   enabled: false
 cvpblobstorage:
