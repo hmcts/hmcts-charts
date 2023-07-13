@@ -73,6 +73,7 @@ java:
     SUMMARY_REPORT_ENABLED: false
     SHAREE_LINK_TTL: 72 #ttl in hours
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: DEBUG
+    USE_AD_AUTH_FOR_SOURCE_BLOB_CONNECTION: false
     HRS_VH_DEST_CONTAINER_NAME: vhrecordings
 hrsblobstorage:
   enabled: false
