@@ -16,4 +16,5 @@ nodejs:
         - software-frameworks-workspace
         - server-api-key-primary
         - server-api-key-secondary
+        - dependency-report-id
   environment:
