@@ -19,8 +19,6 @@ java:
         - applicationinsights--instrumentationkey
         - azuread--tenantid
         - connectionstrings--vhnotificationsapi
-        - name: launchdarkly-client-id
-          alias: FeatureToggle--SdkKey
     vh-notification-api:
       excludeEnvironmentSuffix: false
       resourceGroup: vh-infra-core-{{ .Values.global.environment }}
@@ -34,6 +32,8 @@ java:
           alias: services--vhnotificationapiresourceid
         - name: azuread--identifieruri
           alias: azuread--vhnotificationapiresourceid
+        - name: launchdarkly--sdkkey
+          alias: FeatureToggle--SdkKey
   environment:
     ASPNETCORE_URLS: http://+:8080
     DISABLEHTTPSREDIRECTION: true
