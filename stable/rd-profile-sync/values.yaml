@@ -23,8 +23,8 @@ java:
           alias: S2S_SECRET
         - name: profile-sync-POSTGRES-PASS
           alias: spring.datasource.password
-        - name: ApplicationInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: OAUTH2-CLIENT-SECRET
           alias: idam.api-redirect-uri
         - name: OAUTH2-AUTH
