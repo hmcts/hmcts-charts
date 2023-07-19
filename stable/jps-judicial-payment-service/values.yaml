@@ -47,6 +47,10 @@ java:
           alias: JPS_INVALID_USERNAME
         - name: idam-jps-invalid-password
           alias: JPS_INVALID_PASSWORD
+        - name: idam-jps-joh-admin-username
+          alias: JPS_JOH_ADMIN_USERNAME
+        - name: idam-jps-joh-admin-password
+          alias: JPS_JOH_ADMIN_PASSWORD
 
   environment:
     JUDICIAL_PAYMENT_SERVICE_DB_OPTIONS: "?stringtype=unspecified&gssEncMode=disable"
