@@ -4,7 +4,7 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
 
   environment:
-      CASE_API_URL: 'https://sptribs-case-api-pr-1060.preview.platform.hmcts.net'
+      CASE_API_URL: 'https://sptribs-case-api-pr-1133.preview.platform.hmcts.net'
 
 idam-pr:
   enabled: true
