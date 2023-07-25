@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for AM Judicial Booking Service
 name: am-judicial-booking-service
 home: https://github.com/hmcts/am-judicial-booking-service
-version: 0.0.52
+version: 0.0.53
 maintainers:
   - name: Access Management Team
 dependencies:
   - name: java
-    version: 4.1.1
+    version: 4.1.5
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
