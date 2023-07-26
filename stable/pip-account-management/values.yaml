@@ -23,6 +23,8 @@ java:
           alias: EXTENSION_ID
         - name: shared-storageaccount-connection-string
           alias: CONNECTION_STRING
+        - name: shared-storageaccount-name
+          alias: STORAGE_ACCOUNT_NAME
         - name: account-management-POSTGRES-DATABASE
           alias: DB_NAME
         - name: account-management-POSTGRES-PASS
