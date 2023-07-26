@@ -1,9 +1,10 @@
 nodejs:
   applicationPort: 1337
   image: 'hmctspublic.azurecr.io/crumble/frontend:latest'
+  ingressHost: plum-recipe-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: crumble
   environment:
-    RECIPE_BACKEND_URL: http://plum-recipe-backend-java
+    RECIPE_BACKEND_URL: http://plum-recipe-backend-sandbox.service.core-compute-{{ .Values.global.environment }}.internal
   keyVaults:
     'crumblesi':
       secrets:
