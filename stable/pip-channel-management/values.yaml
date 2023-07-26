@@ -27,4 +27,6 @@ java:
           alias: COURTEL_API
         - name: shared-storageaccount-connection-string
           alias: CONNECTION_STRING
+        - name: shared-storageaccount-name
+          alias: STORAGE_ACCOUNT_NAME
   environment:
