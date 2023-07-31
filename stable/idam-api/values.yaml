@@ -19,6 +19,8 @@ java:
       resourceGroup: idam-idam
       excludeEnvironmentSuffix: false
       secrets:
+        - name: AppInsightsConnectionString
+          alias: app-insights-connection-string
         - name: web-admin-client-secret
           alias: security.oauth2.client.clientSecret
         - name: notify-api-key
@@ -42,11 +44,11 @@ java:
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
         - name: redis-hostname
-          alias: spring.redis.host
+          alias: spring.data.redis.host
         - name: redis-key
-          alias: spring.redis.password
+          alias: spring.data.redis.password
         - name: redis-port
-          alias: spring.redis.port
+          alias: spring.data.redis.port
   environment:
     STRATEGIC_ADMIN_URL: https://idam-web-admin.service.core-compute-{{ .Values.global.environment }}.internal
     STRATEGIC_WEBPUBLIC_URL: https://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal
