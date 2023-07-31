@@ -18,4 +18,6 @@ java:
         - ia-system-access-password
         - s2s-secret
         - s2s-microservice
+        - AppInsightsInstrumentationKey
+        - ia-config-validator-secret
         - app-insights-connection-string
