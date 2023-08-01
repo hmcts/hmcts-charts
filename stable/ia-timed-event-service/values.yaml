@@ -31,4 +31,5 @@ java:
         - s2s-microservice
         - AppInsightsInstrumentationKey
         - timed-event-service-POSTGRES-PASS-11
+        - app-insights-connection-string
         - ia-config-validator-secret
