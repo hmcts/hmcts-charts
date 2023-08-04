@@ -59,3 +59,5 @@ java:
           alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID
         - name: postcode-address-lookup-id
           alias: POSTCODE_ADDRESS_LOOKUP_ID
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
