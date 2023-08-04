@@ -21,12 +21,12 @@ java:
           alias: ACCOUNT_MANAGEMENT_AZ_API
         - name: app-pip-data-management-scope
           alias: DATA_MANAGEMENT_AZ_API
-        - name: app-insights-java-instrumentation-key
-          alias: INSTRUMENTATION_KEY
         - name: auto-pip-<ENV>-courtel-api
           alias: COURTEL_API
         - name: shared-storageaccount-connection-string
           alias: CONNECTION_STRING
         - name: shared-storageaccount-name
           alias: STORAGE_ACCOUNT_NAME
+        - name: app-insights-java-connection-string
+          alias: APP_INSIGHTS_CONNECTION_STRING
   environment:
