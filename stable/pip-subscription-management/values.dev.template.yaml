@@ -12,6 +12,5 @@ java:
     DB_USER: "{{ .Values.postgresql.auth.username}}"
     DB_PASS: "{{ .Values.postgresql.auth.password}}"
     DB_PORT: "5432"
-  disableKeyVaults: true
   postgresql:
     enabled: true
