@@ -11,5 +11,12 @@ job:
       secrets:
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: idam-client-secret
+          alias: DISPOSER_IDAM_USER_CLIENT_SECRET
+        - name: s2s-secret-disposer-idam-user
+          alias: S2S_SECRET_DISPOSER_IDAM_USER
+  environment:
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   global:
     jobKind: CronJob
