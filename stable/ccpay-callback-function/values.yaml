@@ -1,10 +1,6 @@
 function:
   image: 'hmctspublic.azurecr.io/ccpay/callback-function:latest'
   scaleType: Job
-  triggerAuth:
-    create: true
-    enabled: true
-    triggerPodIdentityProvider: "azure"
   triggers:
     - type: azure-servicebus
       topicName: "servicecallbacktopic"
