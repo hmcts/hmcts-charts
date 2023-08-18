@@ -1,5 +1,9 @@
 function:
   image: 'hmctspublic.azurecr.io/ccpay/callback-function:latest'
+  memoryRequests: 64Mi
+  cpuRequests: 100m
+  memoryLimits: 500Mi
+  cpuLimits: 300m
   scaleType: Job
   triggers:
     - type: azure-servicebus
