@@ -25,6 +25,6 @@ servicebus:
   serviceplan: standard
   setup:
     topics:
-    - name: topic
-      subscriptionNeeded: yes
+      - name: topic
+        subscriptionNeeded: yes
   enabled: true
