@@ -2,3 +2,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/cui-ra:latest
   ingressHost: 
+  environment:
+    REDIS_HOST: 'cui-ra-{{ .Values.global.environment }}.redis.cache.windows.net'
