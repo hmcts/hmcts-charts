@@ -1,7 +1,7 @@
 java:
   applicationPort: 8080
   image: 'hmctspublic.azurecr.io/idam/user-profile-bridge:latest'
-  ingressHost: idam-user-profile-bridge-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: idam-user-profile-bridge.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: idam
   environment:
   keyVaults:
@@ -11,3 +11,6 @@ java:
       secrets:
         - name: AppInsightsConnectionString
           alias: app-insights-connection-string
+  environment:
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks
