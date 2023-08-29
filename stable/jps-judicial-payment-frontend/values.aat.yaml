@@ -2,3 +2,6 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/jps-judicial-payment-frontend:latest
   ingressHost: 
+
+idam-pr:
+  enabled: false
