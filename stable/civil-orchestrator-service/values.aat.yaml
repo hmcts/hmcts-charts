@@ -24,6 +24,8 @@ java:
     auth:
       username: 
       password: 
+  environment:
+      CIVIL_SERVICE_URL: http://-civil-service
 
 
 civil-service:
