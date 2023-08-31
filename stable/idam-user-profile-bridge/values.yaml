@@ -4,6 +4,12 @@ java:
   ingressHost: idam-user-profile-bridge.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: idam
   environment:
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    RD_USERPROFILE_API_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    RPE_CASEWORKER_API_URL: http://rd-caseworker-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMUSERPROFILEBRIDGE_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
@@ -11,6 +17,11 @@ java:
       secrets:
         - name: AppInsightsConnectionString
           alias: app-insights-connection-string
-  environment:
-    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks
+        - name: idam-user-profile-bridge-client-secret
+          alias: spring.security.oauth2.client.registration.idam-user-profile-bridge.client-secret
+        - name: idam-user-profile-bridge-client-secret
+          alias: spring.security.oauth2.client.registration.rd-userprofile-api.client-secret
+        - name: idam-user-profile-bridge-rd-system-username
+          alias: rd.userprofile.client.registration.service-account-user
+        - name: idam-user-profile-bridge-rd-system-password
+          alias: rd.userprofile.client.registration.service-account-password
