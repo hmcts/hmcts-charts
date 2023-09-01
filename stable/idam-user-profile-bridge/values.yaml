@@ -25,6 +25,8 @@ java:
           alias: app-insights-connection-string
         - name: idam-user-profile-bridge-client-secret
           alias: spring.security.oauth2.client.registration.idam-user-profile-bridge.client-secret
+        - name: idam-user-profile-bridge-client-secret
+          alias: spring.security.oauth2.client.registration.rd-userprofile-api.client-secret
         - name: idam-user-profile-bridge-rd-system-username
           alias: rd.userprofile.client.registration.service-account-user
         - name: idam-user-profile-bridge-rd-system-password
