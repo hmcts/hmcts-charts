@@ -1,4 +1,4 @@
 # Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
-  image: hmctspublic.azurecr.io/idam/user-profile-bridge:staging-cf1ce09-20230901141813
+  image: hmctspublic.azurecr.io/idam/user-profile-bridge:staging-b1e17f7-20230901152956
   ingressHost: idam-user-profile-bridge-staging.aat.platform.hmcts.net
