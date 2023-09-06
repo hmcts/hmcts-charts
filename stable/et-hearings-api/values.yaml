@@ -4,8 +4,17 @@ java:
   ingressHost: et-hearings-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et
   keyVaults:
+    et-hearings-api:
+      secrets:
+        - name: et-hearings-api-s2s-secret
+          alias: ET_HEARINGS_S2S_SECRET
     et:
       secrets:
         - name: app-insights-connection-string
           alias: app-insights-connection-string
   environment:
+    IDAM_API_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    IDAM_JWKS_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks"
+    CASE_DATA_STORE_BASEURL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    SERVICE_AUTH_PROVIDER_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    MICRO_SERVICE: "et_hearings_api"
