@@ -7,12 +7,15 @@ nodejs:
     SERVICES_IDAM_LOGIN_URL: https://idam-web-public.aat.platform.hmcts.net
     DEBUG: xuiNode:*,-xuiNode:auth:s2s,-xuiNode:auth:oauth2
     SERVICES_LOCATION_REF_API_URL: http://rd-location-ref-api-aat.service.core-compute-aat.internal
+    SERVICES_USERS_REF_API_URL: http://rd-judicial-api-aat.service.core-compute-aat.internal
   keyVaults:
     jps:
       resourceGroup: jps
       secrets:
         - jps-s2s-client-secret
         - jps-idam-client-secret
+        - idam-jps-system-username
+        - idam-jps-system-password
   autoscaling:
     enabled: false
 tags:
