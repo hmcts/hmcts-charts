@@ -79,3 +79,5 @@ hrsblobstorage:
   enabled: false
 cvpblobstorage:
   enabled: false
+vhblobstorage:
+  enabled: false
