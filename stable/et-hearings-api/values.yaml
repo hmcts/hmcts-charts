@@ -8,6 +8,8 @@ java:
       secrets:
         - name: et-hearings-api-s2s-secret
           alias: ET_HEARINGS_S2S_SECRET
+        - name: hmc-servicebus-shared-access-key
+          alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
     et:
       secrets:
         - name: app-insights-connection-string
@@ -17,4 +19,9 @@ java:
     IDAM_JWKS_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks"
     CASE_DATA_STORE_BASEURL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     SERVICE_AUTH_PROVIDER_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    HMC_HEARINGS_TOPIC_NAMESPACE: "hmc-servicebus-{{ .Values.global.environment }}"
+    HMC_HEARINGS_TOPIC_NAME: "hmc-to-cft-{{ .Values.global.environment }}"
+    HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-to-et-subscription-{{ .Values.global.environment }}"
+    HMC_HEARINGS_LISTENING_ENABLED: false
+    HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
     MICRO_SERVICE: "et_hearings_api"
