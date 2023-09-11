@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for idam-user-profile-bridge App
 name: idam-user-profile-bridge
 home: https://github.com/hmcts/idam-user-profile-bridge
-version: 0.0.13
+version: 0.0.14
 maintainers:
   - name: HMCTS idam team
 dependencies:
