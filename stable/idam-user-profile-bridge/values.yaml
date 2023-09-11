@@ -13,7 +13,7 @@ java:
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     RD_USERPROFILE_API_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     RD_CASEWORKER_API_URL: http://rd-caseworker-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    IDAM_S2SAUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_S2S-AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMUSERPROFILEBRIDGE_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
