@@ -1,0 +1,47 @@
+base:
+  applicationPort: 7433
+  readinessPath: /health
+  livenessPath: /health
+  startupPath: /health
+  image: "hmctspublic.azurecr.io/et-pet/ccd-export:latest"
+  ingressHost: et-pet-ccd-export.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: et-pet
+  environment:
+    SECRETS_PATH: "/mnt/secrets/et-pet"
+    RAILS_ENV: "production"
+    RAILS_MAX_THREADS: 10
+    RAILS_LOG_LEVEL: "debug"
+    WEB_CONCURRENCY: 3
+    DOCKER_STATE: "migrate"
+    RAILS_LOG_TO_STDOUT: true
+    RAVEN_SSL_VERIFICATION: false
+    ET_CCD_SIMULATION: false
+    CCD_ECM_BASE_URL: "http://ethos-repl-docmosis-backend-demo.service.core-compute-demo.internal"
+    CCD_IDAM_BASE_URL: "https://idam-api-demo.service.core-compute-demo.internal"
+    CCD_SSL_VERIFICATION: false
+    CCD_DOCUMENT_STORE_URL_REWRITE: false
+    CCD_GENERATE_ETHOS_CASE_REFERENCE: false
+    AZURE_APP_INSIGHTS_ROLE_NAME: "ET-CCD-EXPORT"
+  keyVaults:
+    et-pet:
+      secrets:
+        - name: et-pet-api-redis-url
+          alias: REDIS_URL
+        - name: ccd-export-raven-dsn
+          alias: RAVEN_DSN
+        - name: ccd-export-microservice-secret
+          alias: CCD_MICROSERVICE_SECRET
+        - name: ccd-export-microservice-id
+          alias: CCD_MICROSERVICE_ID
+        - name: ccd-export-sidam-username
+          alias: CCD_SIDAM_USERNAME
+        - name: ccd-export-sidam-password
+          alias: CCD_SIDAM_PASSWORD
+        - name: ccd-export-auth-base-url
+          alias: CCD_AUTH_BASE_URL
+        - name: ccd-export-data-store-base-url
+          alias: CCD_DATA_STORE_BASE_URL
+        - name: ccd-export-ccd-document-store-base-url
+          alias: CCD_DOCUMENT_STORE_BASE_URL
+        - name: ccd-export-appinsights-key
+          alias: AZURE_APP_INSIGHTS_KEY
