@@ -48,6 +48,8 @@ base:
           alias: DB_PORT
         - name: et-api-postgres-user
           alias: DB_USERNAME
+        - name: et-api-postgres-password
+          alias: DB_PASSWORD
         - name: et-api-postgres-database
           alias: DB_NAME
         - name: api-secret-key-base
