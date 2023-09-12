@@ -11,6 +11,10 @@ java:
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.preview.platform.hmcts.net/citizen-hub/"
 
   keyVaults:
+    et-sya-api:
+      secrets:
+        - name: Ocp-Apim-Subscription-Key
+          alias: ACAS_KEY
     et-cos:
       secrets:
         - name: et-cos-s2s-secret

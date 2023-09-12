@@ -4,6 +4,10 @@ java:
   ingressHost: et-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et
   keyVaults:
+    et-sya-api:
+      secrets:
+        - name: Ocp-Apim-Subscription-Key
+          alias: ACAS_KEY
     et-cos:
       secrets:
         - name: cos-POSTGRES-PASS
@@ -54,3 +58,4 @@ java:
     SECURE_DOC_STORE_FEATURE: true
     EXUI_CASE_DETAILS_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/"
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.{{ .Values.global.environment }}.platform.hmcts.net/citizen-hub/"
+    ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
