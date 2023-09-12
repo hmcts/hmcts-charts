@@ -1,7 +1,5 @@
-java:
-  applicationPort: 8080
+job:
   image: 'hmctspublic.azurecr.io/sscs/cron-trigger:latest'
-  ingressHost: sscs-cron-trigger-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: sscs
 #  Uncomment once the vault containing the app insights key has been set up
 #  keyVaults:
@@ -10,3 +8,6 @@ java:
 #        - name: AppInsightsInstrumentationKey
 #          alias: azure.application-insights.instrumentation-key
   environment:
+  global:
+    jobKind: CronJob
+  schedule: "0 1 * * *"

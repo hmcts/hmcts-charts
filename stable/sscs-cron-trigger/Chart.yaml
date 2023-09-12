@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for sscs-cron-trigger App
 name: sscs-cron-trigger
 home: https://github.com/hmcts/sscs-cron-trigger
-version: 0.0.9
+version: 0.0.10
 maintainers:
   - name: HMCTS SSCS Team
 dependencies:
-  - name: java
-    version: 4.1.5
+  - name: job
+    version: 1.0.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
