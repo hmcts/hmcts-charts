@@ -1,0 +1,74 @@
+base:
+  applicationPort: 8080
+  image: "hmctspublic.azurecr.io/et-pet/admin:latest"
+  ingressHost: et-pet-admin.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: et-pet
+  environment:
+    SECRETS_PATH: "/mnt/secrets/et-pet"
+    RAILS_SERVE_STATIC_FILES: true
+    CLOUD_PROVIDER: "azure"
+    SEED_EXAMPLE_USERS: true
+    ACAS_SERVICE_URL: "https://testec.acas.org.uk/Lookup/ECService.svc"
+    SMTP_HOSTNAME: "smtp.sendgrid.net"
+    SMTP_PORT: 587
+    RAILS_ENV: "production"
+    RAILS_LOG_LEVEL: "info"
+    RACK_ENV: "production"
+    WEB_CONCURRENCY: 3
+    ATOS_API_URL: "http://et-atos-api.employmenttribunal:8080"
+    ACAS_API_URL: "http://et-api.employmenttribunal:8080/et_acas_api"
+    ET_API_URL: "http://et-api.employmenttribunal:8080/api"
+    RAILS_LOG_TO_STDOUT: true
+    RAVEN_SSL_VERIFICATION: false
+    CCD_UI_BASE_URL: "https://www.ccd.aat.platform.hmcts.net/case/EMPLOYMENT"
+    AZURE_APP_INSIGHTS_ROLE_NAME: "ET-ADMIN"
+    MAINTENANCE_ENABLED: false
+    MAINTENANCE_END: "9am (if you're seeing this message after this time it means things are taking a little longer than expected.) Please check back again soon."
+    MAINTENANCE_ALLOWED_IPS: "109.157.179.51,151.225.112.106"
+    SERVICE_FQDN: ${SERVICE_FQDN}
+    DB_SSL_MODE: "require"
+    REDIS_HOST: "et-pet-api-{{ .Values.global.environment }}.redis.cache.windows.net"
+    REDIS_PORT: 6379
+    AZURE_STORAGE_ACCOUNT: etpetsa{{ .Values.global.environment }}
+    AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
+    AZURE_STORAGE_CONTAINER: private
+    AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: public
+  keyVaults:
+    et-pet:
+      secrets:
+        - name: etapi-redis-access-key
+          alias: REDIS_PASSWORD
+        - name: api-azure-storage-access-key
+          alias: AZURE_STORAGE_ACCESS_KEY
+        - name: api-azure-storage-direct-upload-access-key
+          alias: AZURE_STORAGE_DIRECT_UPLOAD_ACCESS_KEY
+        - name: et-api-postgres-host
+          alias: DB_HOST
+        - name: et-api-postgres-port
+          alias: DB_PORT
+        - name: et-api-postgres-user
+          alias: DB_USERNAME
+        - name: et-api-postgres-password
+          alias: DB_PASSWORD
+        - name: et-api-postgres-database
+          alias: DB_NAME
+        - name: admin-secret-key-base
+          alias: SECRET_KEY_BASE
+        - name: admin-devise-secret-key
+          alias: DEVISE_SECRET_KEY
+        - name: atos-api-username
+          alias: ATOS_API_USERNAME
+        - name: atos-api-password
+          alias: ATOS_API_PASSWORD
+        - name: sendgrid-username
+          alias: SMTP_USERNAME
+        - name: sendgrid-password
+          alias: SMTP_PASSWORD
+        - name: admin-raven-dsn
+          alias: RAVEN_DSN
+        - name: admin-azure-storage-access-key
+          alias: AZURE_STORAGE_ACCESS_KEY
+        - name: admin-azure-storage-direct-upload-access-key
+          alias: AZURE_STORAGE_DIRECT_UPLOAD_ACCESS_KEY
+        - name: admin-appinsights-key
+          alias: AZURE_APP_INSIGHTS_KEY
