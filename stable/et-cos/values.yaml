@@ -4,12 +4,10 @@ java:
   ingressHost: et-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et
   keyVaults:
-    et-sya-api:
+    et-cos:
       secrets:
         - name: Ocp-Apim-Subscription-Key
           alias: ACAS_KEY
-    et-cos:
-      secrets:
         - name: cos-POSTGRES-PASS
           alias: ET_COS_DB_PASSWORD
         - name: et-cos-s2s-secret
