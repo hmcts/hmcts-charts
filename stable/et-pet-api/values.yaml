@@ -27,8 +27,6 @@ base:
     SERVICE_NOW_EMAIL: "DCD-ETOnlineServiceDesk@HMCTS.NET"
     SERVICE_FQDN: ${SERVICE_FQDN}
     DB_SSL_MODE: "require"
-    REDIS_HOST: "et-pet-api-{{ .Values.global.environment }}.redis.cache.windows.net"
-    REDIS_PORT: 6379
     AZURE_STORAGE_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_CONTAINER: private
@@ -36,8 +34,94 @@ base:
   keyVaults:
     et-pet:
       secrets:
-        - name: etapi-redis-access-key
-          alias: REDIS_PASSWORD
+        - name: et-pet-api-redis-url
+          alias: REDIS_URL
+        - name: api-azure-storage-access-key
+          alias: AZURE_STORAGE_ACCESS_KEY
+        - name: api-azure-storage-direct-upload-access-key
+          alias: AZURE_STORAGE_DIRECT_UPLOAD_ACCESS_KEY
+        - name: et-api-postgres-host
+          alias: DB_HOST
+        - name: et-api-postgres-port
+          alias: DB_PORT
+        - name: et-api-postgres-user
+          alias: DB_USERNAME
+        - name: et-api-postgres-password
+          alias: DB_PASSWORD
+        - name: et-api-postgres-database
+          alias: DB_NAME
+        - name: api-secret-key-base
+          alias: SECRET_KEY_BASE
+        - name: api-devise-secret-key
+          alias: DEVISE_SECRET_KEY
+        - name: atos-api-username
+          alias: ATOS_API_USERNAME
+        - name: atos-api-password
+          alias: ATOS_API_PASSWORD
+        - name: api-rsa-acas-public-certificate-new
+          alias: RSA_ACAS_PUBLIC_CERTIFICATE_BASE64
+        - name: api-rsa-et-public-certificate-new
+          alias: RSA_ET_PUBLIC_CERTIFICATE_BASE64
+        - name: api-rsa-et-private-key-new
+          alias: RSA_ET_PRIVATE_KEY_BASE64
+        - name: sendgrid-username
+          alias: SMTP_USERNAME
+        - name: sendgrid-password
+          alias: SMTP_PASSWORD
+        - name: api-raven-dsn
+          alias: RAVEN_DSN
+        - name: api-azure-storage-access-key
+          alias: AZURE_STORAGE_ACCESS_KEY
+        - name: api-azure-storage-direct-upload-access-key
+          alias: AZURE_STORAGE_DIRECT_UPLOAD_ACCESS_KEY
+        - name: govuk-notify-api-key
+          alias: GOVUK_NOTIFY_API_KEY_LIVE
+        - name: api-acas-json-subscription-key
+          alias: ACAS_SUBSCRIPTION_KEY
+        - name: api-appinsights-key
+          alias: AZURE_APP_INSIGHTS_KEY
+sidekiq:
+  applicationPort: 7433
+  readinessPath: /health
+  livenessPath: /health
+  startupPath: /health
+  image: "hmctspublic.azurecr.io/et-pet/api:latest"
+  ingressHost: et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: et-pet
+  args: ['./run_sidekiq.sh']
+  environment:
+    SECRETS_PATH: "/mnt/secrets/et-pet"
+    CLOUD_PROVIDER: "azure"
+    AZURE_STORAGE_CONTAINER: "et-container"
+    AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: "et-upload-container"
+    SEED_EXAMPLE_USERS: true
+    ACAS_SERVICE_URL: "https://testec.acas.org.uk/Lookup/ECService.svc"
+    ACAS_JSON_SERVICE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
+    ACAS_SERVICE_API_VERSION: 2
+    SMTP_HOSTNAME: "smtp.sendgrid.net"
+    SMTP_PORT: 587
+    RAILS_ENV: "production"
+    RAILS_MAX_THREADS: 10
+    RAILS_LOG_LEVEL: "info"
+    RACK_ENV: "production"
+    WEB_CONCURRENCY: 3
+    DOCKER_STATE: "migrate"
+    RAILS_LOG_TO_STDOUT: true
+    FLATTEN_PDF: true
+    RAVEN_SSL_VERIFICATION: false
+    AZURE_APP_INSIGHTS_ROLE_NAME: "ET-API"
+    SERVICE_NOW_EMAIL: "DCD-ETOnlineServiceDesk@HMCTS.NET"
+    SERVICE_FQDN: ${SERVICE_FQDN}
+    DB_SSL_MODE: "require"
+    AZURE_STORAGE_ACCOUNT: etpetsa{{ .Values.global.environment }}
+    AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
+    AZURE_STORAGE_CONTAINER: private
+    AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: public
+  keyVaults:
+    et-pet:
+      secrets:
+        - name: et-pet-api-redis-url
+          alias: REDIS_URL
         - name: api-azure-storage-access-key
           alias: AZURE_STORAGE_ACCESS_KEY
         - name: api-azure-storage-direct-upload-access-key
