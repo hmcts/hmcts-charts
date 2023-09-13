@@ -9,8 +9,6 @@ base:
     AZURE_STORAGE_CONTAINER: "et-container"
     AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: "et-upload-container"
     SEED_EXAMPLE_USERS: true
-    ACAS_SERVICE_URL: "https://testec.acas.org.uk/Lookup/ECService.svc"
-    ACAS_JSON_SERVICE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     ACAS_SERVICE_API_VERSION: 2
     SMTP_HOSTNAME: "smtp.sendgrid.net"
     SMTP_PORT: 587
@@ -50,6 +48,8 @@ base:
           alias: DB_PASSWORD
         - name: et-api-postgres-database
           alias: DB_NAME
+        - name: api-acas-json-service-url
+          alias: ACAS_JSON_SERVICE_URL
         - name: api-secret-key-base
           alias: SECRET_KEY_BASE
         - name: api-devise-secret-key
@@ -95,8 +95,6 @@ sidekiq:
     AZURE_STORAGE_CONTAINER: "et-container"
     AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: "et-upload-container"
     SEED_EXAMPLE_USERS: true
-    ACAS_SERVICE_URL: "https://testec.acas.org.uk/Lookup/ECService.svc"
-    ACAS_JSON_SERVICE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     ACAS_SERVICE_API_VERSION: 2
     SMTP_HOSTNAME: "smtp.sendgrid.net"
     SMTP_PORT: 587
@@ -136,6 +134,8 @@ sidekiq:
           alias: DB_PASSWORD
         - name: et-api-postgres-database
           alias: DB_NAME
+        - name: api-acas-json-service-url
+          alias: ACAS_JSON_SERVICE_URL
         - name: api-secret-key-base
           alias: SECRET_KEY_BASE
         - name: api-devise-secret-key
