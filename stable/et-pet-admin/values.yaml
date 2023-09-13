@@ -12,12 +12,12 @@ base:
     SMTP_HOSTNAME: "smtp.sendgrid.net"
     SMTP_PORT: 587
     RAILS_ENV: "production"
-    RAILS_LOG_LEVEL: "info"
+    RAILS_LOG_LEVEL: "debug"
     RACK_ENV: "production"
     WEB_CONCURRENCY: 3
     ATOS_API_URL: "http://et-atos-api.employmenttribunal:8080"
-    ACAS_API_URL: "et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net/et_acas_api"
-    ET_API_URL: "et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net/api"
+    ACAS_API_URL: "http://et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net/et_acas_api"
+    ET_API_URL: "http://et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net/api"
     RAILS_LOG_TO_STDOUT: true
     RAVEN_SSL_VERIFICATION: false
     CCD_UI_BASE_URL: "https://www.ccd.aat.platform.hmcts.net/case/EMPLOYMENT"
