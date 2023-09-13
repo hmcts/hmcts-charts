@@ -16,8 +16,8 @@ base:
     RACK_ENV: "production"
     WEB_CONCURRENCY: 3
     ATOS_API_URL: "http://et-atos-api.employmenttribunal:8080"
-    ACAS_API_URL: "http://et-api.employmenttribunal:8080/et_acas_api"
-    ET_API_URL: "http://et-api.employmenttribunal:8080/api"
+    ACAS_API_URL: "et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net/et_acas_api"
+    ET_API_URL: "et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net/api"
     RAILS_LOG_TO_STDOUT: true
     RAVEN_SSL_VERIFICATION: false
     CCD_UI_BASE_URL: "https://www.ccd.aat.platform.hmcts.net/case/EMPLOYMENT"
@@ -27,8 +27,6 @@ base:
     MAINTENANCE_ALLOWED_IPS: "109.157.179.51,151.225.112.106"
     SERVICE_FQDN: ${SERVICE_FQDN}
     DB_SSL_MODE: "require"
-    REDIS_HOST: "et-pet-api-{{ .Values.global.environment }}.redis.cache.windows.net"
-    REDIS_PORT: 6379
     AZURE_STORAGE_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_CONTAINER: private
@@ -36,8 +34,8 @@ base:
   keyVaults:
     et-pet:
       secrets:
-        - name: etapi-redis-access-key
-          alias: REDIS_PASSWORD
+        - name: et-pet-api-redis-url
+          alias: REDIS_URL
         - name: api-azure-storage-access-key
           alias: AZURE_STORAGE_ACCESS_KEY
         - name: api-azure-storage-direct-upload-access-key
