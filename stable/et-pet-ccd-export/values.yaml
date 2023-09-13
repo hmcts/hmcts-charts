@@ -16,8 +16,8 @@ base:
     RAILS_LOG_TO_STDOUT: true
     RAVEN_SSL_VERIFICATION: false
     ET_CCD_SIMULATION: false
-    CCD_ECM_BASE_URL: "http://ethos-repl-docmosis-backend-demo.service.core-compute-demo.internal"
-    CCD_IDAM_BASE_URL: "https://idam-api-demo.service.core-compute-demo.internal"
+    CCD_ECM_BASE_URL: "http://ethos-repl-docmosis-backend-{{ .Values.global.environment }}.service.core-compute-demo.internal"
+    CCD_IDAM_BASE_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     CCD_SSL_VERIFICATION: false
     CCD_DOCUMENT_STORE_URL_REWRITE: false
     CCD_GENERATE_ETHOS_CASE_REFERENCE: false
