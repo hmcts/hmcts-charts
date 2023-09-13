@@ -18,6 +18,9 @@ base:
     ET_CCD_SIMULATION: false
     CCD_ECM_BASE_URL: "http://ethos-repl-docmosis-backend-{{ .Values.global.environment }}.service.core-compute-demo.internal"
     CCD_IDAM_BASE_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    CCD_AUTH_BASE_URL: "https://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_DATA_STORE_BASE_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_DOCUMENT_STORE_BASE_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CCD_SSL_VERIFICATION: false
     CCD_DOCUMENT_STORE_URL_REWRITE: false
     CCD_GENERATE_ETHOS_CASE_REFERENCE: false
@@ -37,11 +40,5 @@ base:
           alias: CCD_SIDAM_USERNAME
         - name: ccd-export-sidam-password
           alias: CCD_SIDAM_PASSWORD
-        - name: ccd-export-auth-base-url
-          alias: CCD_AUTH_BASE_URL
-        - name: ccd-export-data-store-base-url
-          alias: CCD_DATA_STORE_BASE_URL
-        - name: ccd-export-ccd-document-store-base-url
-          alias: CCD_DOCUMENT_STORE_BASE_URL
         - name: ccd-export-appinsights-key
           alias: AZURE_APP_INSIGHTS_KEY
