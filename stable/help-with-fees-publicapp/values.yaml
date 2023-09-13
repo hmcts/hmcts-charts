@@ -9,7 +9,6 @@ base:
     SERVICE_FQDN: ${SERVICE_FQDN}
     HELP_ME_EMAIL: "helpwithfees@justice.gov.uk"
     RAILS_SERVE_STATIC_FILES: true
-    RAILS_ENV: "production"
     RACK_ENV: "production"
     WEB_CONCURRENCY: 1
     SUBMISSION_URL: "http://hwf-staff.helpwithfees:3000"
@@ -51,7 +50,7 @@ base:
           alias: ADDRESS_LOOKUP_API_KEY
         - name: hwf-public-address-lookup-api-secret
           alias: ADDRESS_LOOKUP_API_SECRET
-        - name: hwf-maintenance-enabled
+        - name: hwf-public-maintenance-enabled
           alias: MAINTENANCE_ENABLED
-        - name: hwf-maintenance-allowed-ips
+        - name: hwf-public-maintenance-allowed-ips
           alias: MAINTENANCE_ALLOWED_IPS
