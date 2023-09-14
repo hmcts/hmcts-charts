@@ -6,3 +6,7 @@ base:
 sidekiq:
   # Don't modify below here
   image: ${IMAGE_NAME}
+
+job:
+  # Don't modify below here
+  image: ${IMAGE_NAME}

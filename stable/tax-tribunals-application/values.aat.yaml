@@ -6,3 +6,7 @@ base:
 sidekiq:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/tax-tribunals-application:latest
+
+job:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/tax-tribunals-application:latest
