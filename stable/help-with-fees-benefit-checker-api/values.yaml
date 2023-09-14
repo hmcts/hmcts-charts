@@ -1,0 +1,25 @@
+base:
+  applicationPort: 3000
+  image: 'hmctspublic.azurecr.io/help-with-fees/benefit-checker-api:latest'
+  ingressHost: hwf-benefit-checker-api.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: help-with-fees
+  environment:
+    SECRETS_PATH: "/mnt/secrets/help-with-fees"
+    SERVICE_NOW_EMAIL: "DCD-HWFSupportServiceDeskPPE@HMCTS.NET"
+    RAILS_ENV: "production"
+    RACK_ENV: "production"
+    WEB_CONCURRENCY: 1
+    API_XMLNS: "https://lsc.gov.uk/benefitchecker/service/1.0/API_1.0_Check"
+    API_HOST: "http://hwf-laa-benefit-checker.helpwithfees:8080"
+    API_PATH: "/bc-DS_Dev/lsc-services/benefitChecker"
+  keyVaults:
+    help-with-fees:
+      secrets:
+        - name: hwf-benefit-checker-api-org-id
+          alias: API_ORG_ID
+        - name: hwf-benefit-checker-api-user-id
+          alias: API_USER_ID
+        - name: hwf-benefit-checker-api-service-name
+          alias: API_SERVICE_NAME
+        - name: hwf-benefit-checker-appinsights-key
+          alias: AZURE_APP_INSIGHTS_INSTRUMENTATION_KEY

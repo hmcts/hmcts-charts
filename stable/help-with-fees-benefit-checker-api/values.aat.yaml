@@ -1,0 +1,4 @@
+base:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/help-with-fees-benefit-checker-api:latest
+  ingressHost: 
