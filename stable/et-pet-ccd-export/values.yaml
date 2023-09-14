@@ -4,7 +4,7 @@ base:
   livenessPath: /health
   startupPath: /health
   image: "hmctspublic.azurecr.io/et-pet/ccd-export:latest"
-  ingressHost: et-pet-ccd-export.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: et-pet-ccd-export-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et-pet
   environment:
     SECRETS_PATH: "/mnt/secrets/et-pet"
