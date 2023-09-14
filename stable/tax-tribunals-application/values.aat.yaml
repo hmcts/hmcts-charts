@@ -1,0 +1,8 @@
+base:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/tax-tribunals-application:latest
+  ingressHost: 
+
+sidekiq:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/tax-tribunals-application:latest
