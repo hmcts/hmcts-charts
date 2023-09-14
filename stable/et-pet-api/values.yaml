@@ -86,7 +86,7 @@ sidekiq:
   livenessPath: /health
   startupPath: /health
   image: "hmctspublic.azurecr.io/et-pet/api:latest"
-  ingressHost: et-pet-api.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: et-pet-api-sidekiq.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: et-pet
   args: ['./run_sidekiq.sh']
   environment:
