@@ -2,3 +2,7 @@ base:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/et-pet-et1:latest
   ingressHost: 
+sidekiq:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/et-pet-et1:latest
+  ingressHost: 
