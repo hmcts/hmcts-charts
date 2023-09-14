@@ -22,10 +22,6 @@ base:
   keyVaults:
     help-with-fees:
       secrets:
-        - name: prod-hwf-public-secret-token
-          alias: prod-hwf-public-secret-token
-        - name: dev-hwf-public-secret-token
-          alias: SECRET_KEY_BASE
         - name: hwf-public-secret-token
           alias: SECRET_TOKEN
         - name: hwf-public-appinsights-key
