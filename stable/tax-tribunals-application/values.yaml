@@ -121,7 +121,6 @@ sidekiq:
   livenessPath: /health
   startupPath: /health
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
-  ingressHost: tax-tribunals-datacapture.{{ .Values.global.environment }}.platform.hmcts.net
   args: [ './sidekiq.sh' ]
   useWorkloadIdentity: true
   # set for aat and preview, overridden in flux for other environments
