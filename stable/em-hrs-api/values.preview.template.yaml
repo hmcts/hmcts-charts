@@ -14,22 +14,22 @@ java:
           alias: S2S_KEY
   secrets:
     CVP_BLOB_ACCOUNT_NAME:
-      secretRef: storage-account-cvp-storage
+      secretRef: storage-account-cvp-{{ .Release.Name }}
       key: storage_account_name
     CVP_BLOB_ACCESS_KEY:
-      secretRef: storage-secret-cvp-storage
+      secretRef: storage-secret-cvp-{{ .Release.Name }}
       key: accessKey
     VH_BLOB_ACCOUNT_NAME:
-      secretRef: storage-account-vh-storage
+      secretRef: storage-account-vh-{{ .Release.Name }}
       key: storage_account_name
     VH_BLOB_ACCESS_KEY:
-      secretRef: storage-secret-vh-storage
+      secretRef: storage-secret-vh-{{ .Release.Name }}
       key: accessKey
     HRS_BLOB_ACCOUNT_NAME:
-      secretRef: storage-account-hrs-storage
+      secretRef: storage-account-hrs-{{ .Release.Name }}
       key: storage_account_name
     HRS_BLOB_ACCESS_KEY:
-      secretRef: storage-secret-hrs-storage
+      secretRef: storage-secret-hrs-{{ .Release.Name }}
       key: accessKey
   environment:
     HRS_CVP_DEST_CONTAINER_NAME: hrs-cvp
@@ -54,7 +54,7 @@ java:
 cvpblobstorage:
   enabled: true
   resourceGroup: em-aso-preview-rg
-  releaseNameOverride: cvp-storage
+  releaseNameOverride: cvp-{{ .Release.Name }}
   teamName: "EM"
   location: uksouth
   setup:
@@ -64,7 +64,7 @@ cvpblobstorage:
 vhblobstorage:
   enabled: true
   resourceGroup: em-aso-preview-rg
-  releaseNameOverride: vh-storage
+  releaseNameOverride: vh-{{ .Release.Name }}
   teamName: "EM"
   location: uksouth
   setup:
@@ -74,7 +74,7 @@ vhblobstorage:
 hrsblobstorage:
   enabled: true
   resourceGroup: em-aso-preview-rg
-  releaseNameOverride: hrs-storage
+  releaseNameOverride: hrs-{{ .Release.Name }}
   teamName: "EM"
   location: uksouth
   setup:
