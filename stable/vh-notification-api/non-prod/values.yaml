@@ -4,9 +4,9 @@ java:
   applicationPort: 8080
   image: "sdshmctspublic.azurecr.io/vh/notification-api:latest"
   ingressHost: vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
-  livenessPath: /healthcheck/liveness
-  readinessPath: /healthcheck/readiness
-  startupPath: /healthcheck/startup
+  livenessPath: /health/liveness
+  readinessPath: /health/readiness
+  startupPath: /health/startup
   releaseNameOverride: vh-notification-api
   replicas: 2
   keyVaults:
