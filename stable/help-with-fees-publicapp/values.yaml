@@ -15,7 +15,7 @@ base:
     RAILS_SERVE_STATIC_FILES: true
     RACK_ENV: "production"
     WEB_CONCURRENCY: 1
-    SUBMISSION_URL: "http://hwf-staffapp-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal:3000"
+    SUBMISSION_URL: "http://hwf-staffapp.{{ .Values.global.environment }}.platform.hmcts.net"
     SENTRY_SSL_VERIFICATION: false
     ZENDESK_ENABLED: true
     RAILS_LOG_TO_STDOUT: true
