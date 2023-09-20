@@ -28,6 +28,8 @@ java:
           alias: TORNADO_ACCESS_KEY
         - name: gov-notify-api-key
           alias: GOV_NOTIFY_API_KEY
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
   environment:
     SERVER_PORT: 8081
     REFORM_TEAM: et
@@ -57,3 +59,4 @@ java:
     EXUI_CASE_DETAILS_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/"
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.{{ .Values.global.environment }}.platform.hmcts.net/citizen-hub/"
     ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
+    LAUNCH_DARKLY_ENV: '{{ .Values.global.environment }}'

@@ -9,7 +9,7 @@ java:
     ET_COS_DB_CONN_OPTIONS: ""
     EXUI_CASE_DETAILS_URL: "https://manage-case.preview.platform.hmcts.net/cases/case-details/"
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.preview.platform.hmcts.net/citizen-hub/"
-
+    LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
   keyVaults:
     et-cos:
       secrets:
@@ -31,5 +31,7 @@ java:
           alias: TORNADO_ACCESS_KEY
         - name: gov-notify-api-key
           alias: GOV_NOTIFY_API_KEY
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
   postgresql:
     enabled: true
