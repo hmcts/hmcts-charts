@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/jps-judicial-payment-service:latest
   ingressHost: 
+  environment:
+   TESTING_SUPPORT_ENABLED: true
