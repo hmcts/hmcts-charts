@@ -21,7 +21,7 @@ job:
           alias: app-insights-connection-string
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    IDAM_CLIENT_REDIRECT_URI: https://et-msg-handler-aat.service.core-compute-aat.internal/oauth2redirect
+    IDAM_CLIENT_REDIRECT_URI: https://et-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
     MIGRATION_CASETYPE: ET_EnglandWales
     MIGRATION_QUERY_SIZE: 10000
 
