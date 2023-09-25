@@ -3,7 +3,7 @@ appVersion: '1.0'
 description: A Helm chart for cui-ra App
 name: cui-ra
 home: https://github.com/hmcts/cui-ra
-version: 0.0.7
+version: 0.0.8
 dependencies:
   - name: nodejs
     version: 2.4.18

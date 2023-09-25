@@ -4,3 +4,4 @@ nodejs:
   ingressHost: 
   environment:
     REDIS_HOST: 'cui-ra-{{ .Values.global.environment }}.redis.cache.windows.net'
+    DEMO_ENABLED: 'true'
