@@ -231,6 +231,8 @@ sidekiq:
           alias: AZURE_STORAGE_CONTAINER
         - name: virus-scanner-enabled
           alias: VIRUS_SCANNER_ENABLED
+        - name: app-insights-instrumentation-key
+          alias: APP_INSIGHTS_INSTRUMENTATION_KEY
 job:
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
   useWorkloadIdentity: true
