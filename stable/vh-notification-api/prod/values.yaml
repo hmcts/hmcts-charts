@@ -2,7 +2,7 @@
 java:
   aadIdentityName: vh-aad-identity
   applicationPort: 8080
-  image: 'sdshmctspublic.azurecr.io/vh/notification-api:latest'
+  image: "sdshmctspublic.azurecr.io/vh/notification-api:latest"
   ingressHost: vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
   livenessDelay: 360
   livenessPath: /healthcheck/health
@@ -16,7 +16,8 @@ java:
       resourceGroup: vh-infra-core-{{ .Values.global.environment }}
       usePodIdentity: true
       secrets:
-        - applicationinsights--instrumentationkey
+        - name: connectionstrings--applicationinsights
+          alias: applicationinsights--connectionstring
         - azuread--tenantid
         - connectionstrings--vhnotificationsapi
     vh-notification-api:
@@ -32,6 +33,8 @@ java:
           alias: services--vhnotificationapiresourceid
         - name: azuread--identifieruri
           alias: azuread--vhnotificationapiresourceid
+        - name: launchdarkly--sdkkey
+          alias: FeatureToggle--SdkKey
   environment:
     ASPNETCORE_URLS: http://+:8080
     DISABLEHTTPSREDIRECTION: true
