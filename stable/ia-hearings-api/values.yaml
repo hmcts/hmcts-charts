@@ -18,7 +18,7 @@ java:
     XUI_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/"
     HMC_HEARINGS_TOPIC_NAMESPACE: "hmc-servicebus-{{ .Values.global.environment }}"
     HMC_HEARINGS_TOPIC_NAME: "hmc-to-cft-{{ .Values.global.environment }}"
-    HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-to-ia-subscription-{{ .Values.global.environment }}"
+    HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-ia-subs-to-cft-{{ .Values.global.environment }}"
     HMC_HEARINGS_LISTENING_ENABLED: false
     HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
 
