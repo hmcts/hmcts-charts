@@ -11,7 +11,7 @@ base:
     RAILS_ENV: 'production'
     SECRETS_PATH: "/mnt/secrets/help-with-fees"
     SERVICE_FQDN: ${SERVICE_FQDN}
-    HELP_ME_EMAIL: "helpwithfees@justice.gov.uk"
+    HELP_ME_EMAIL: "petr.zaparka@hmcts.net"
     RAILS_SERVE_STATIC_FILES: true
     RACK_ENV: "production"
     WEB_CONCURRENCY: 1
@@ -23,6 +23,7 @@ base:
     SMTP_DOMAIN: "public.demo.hwf.dsd.io"
     SMTP_HOSTNAME: "smtp.sendgrid.net"
     SMTP_PORT: 587
+    NOTIFY_TECHNICAL_FORM: 'affbd7b3-4946-4fc5-a0e3-e87d8ccadca2'
   keyVaults:
     help-with-fees:
       secrets:
@@ -54,3 +55,5 @@ base:
           alias: MAINTENANCE_ENABLED
         - name: hwf-public-maintenance-allowed-ips
           alias: MAINTENANCE_ALLOWED_IPS
+        - name: hwf-staff-notify-api-key
+          alias: GOVUK_NOTIFY_API_KEY
