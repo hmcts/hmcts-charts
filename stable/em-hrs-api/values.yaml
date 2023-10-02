@@ -38,6 +38,8 @@ java:
           alias: SMTP_PASSWORD
         - name: summary-report-recipients
           alias: SUMMARY_REPORT_RECIPIENTS
+        - name: report-api-key
+          alias: REPORT_API_KEY
     rpa:
       secrets:
         - name: show-oauth2-token
