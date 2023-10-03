@@ -24,4 +24,5 @@ job:
     IDAM_CLIENT_REDIRECT_URI: https://et-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
     MIGRATION_CASETYPE: ET_EnglandWales
     MIGRATION_QUERY_SIZE: 10000
+    MIGRATION_ROLLBACK: false
 
