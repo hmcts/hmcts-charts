@@ -27,6 +27,8 @@ base:
   keyVaults:
     help-with-fees:
       secrets:
+        - name: hwf-redis-url
+          alias: REDIS_URL
         - name: hwf-public-secret-token
           alias: SECRET_TOKEN
         - name: app-insights-instrumentation-key
