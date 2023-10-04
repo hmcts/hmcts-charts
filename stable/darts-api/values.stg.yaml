@@ -2,5 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/darts-api:latest
   ingressHost: 
-  testing-support-endpoints:
-    enabled: true
+  environment:
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: true
