@@ -13,6 +13,10 @@ java:
     IDAM_API_URL: http://idam-api.service.core-compute-{{ .Values.global.environment }}.internal
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: http://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/jwks
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMTESTINGSUPPORTAPI_TOKENURI: http://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal/o/token
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
+    RD_USERPROFILE_API_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    RD_CASEWORKER_API_URL: http://rd-caseworker-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_S2S-AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   keyVaults:
     "idam-idam":
       resourceGroup: idam-idam
@@ -34,3 +38,9 @@ java:
           alias: notify.key
         - name: idam-testing-support-api-client-secret
           alias: spring.security.oauth2.client.registration.idam-testing-support-api.client-secret
+        - name: idam-testing-support-api-client-secret
+          alias: spring.security.oauth2.client.registration.rd-userprofile-api.client-secret
+        - name: idam-user-profile-bridge-rd-system-username
+          alias: rd.userprofile.client.registration.service-account-user
+        - name: idam-user-profile-bridge-rd-system-password
+          alias: rd.userprofile.client.registration.service-account-password
