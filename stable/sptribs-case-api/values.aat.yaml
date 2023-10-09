@@ -1,6 +1,8 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/sptribs-case-api:latest
   ingressHost: 
+  environment:
+    ENABLED_SNI_4753: true
   keyVaults:
     sptribs:
       secrets:
