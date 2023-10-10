@@ -1,8 +1,3 @@
-global:
-  tenantId: "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
-  environment: preview
-  enableKeyVaults: true
-
 java:
   releaseNameOverride: idam-user-profile-bridge
   applicationPort: 8080
@@ -18,7 +13,7 @@ java:
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMUSERPROFILEBRIDGE_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token
   keyVaults:
-    "idam-idam":
+    idam-idam:
       resourceGroup: idam-idam
       excludeEnvironmentSuffix: false
       secrets:

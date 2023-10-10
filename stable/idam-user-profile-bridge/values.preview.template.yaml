@@ -6,10 +6,12 @@ java:
   devApplicationInsightsInstrumentKeyName: DUMMY_APPLICATIONINSIGHTS_DUMMYKEY
   devApplicationInsightsInstrumentKey: '00000001-0001-0001-0001-000000000001'
   environment:
-    IDAM_API_URL: http://idam-api
-    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: http://idam-web-public/o/jwks
-    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMUSERPROFILEBRIDGE_TOKENURI: http://idam-web-public/o/token
-    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: http://idam-web-public/o/token
+    SPRING_PROFILES_ACTIVE: events-in-memory,disable-db
+    SCHEDULER_ENABLED: false
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.aat.platform.hmcts.net/o/jwks
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMUSERPROFILEBRIDGE_TOKENURI: https://idam-web-public.aat.platform.hmcts.net/o/token
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.aat.platform.hmcts.net/o/token
     RD_USERPROFILE_API_URL: http://rd-user-profile-api-aat.service.core-compute-aat.internal
     RD_CASEWORKER_API_URL: http://rd-caseworker-ref-api-aat.service.core-compute-aat.internal
     IDAM_S2SAUTH_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
