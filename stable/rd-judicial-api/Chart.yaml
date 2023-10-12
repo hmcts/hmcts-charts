@@ -2,12 +2,12 @@ apiVersion: v2
 appVersion: "0.1"
 description: Reference data service for judiciary
 name: rd-judicial-api
-version: 1.0.0
+version: 1.0.1
 maintainers:
   - name: Reference Data Team
 dependencies:
   - name: java
-    version: 4.0.13
+    version: 5.0.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: servicebus
     version: 1.0.4
