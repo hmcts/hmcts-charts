@@ -5,10 +5,10 @@ java:
     enabled: true
   secrets:
     CREATE_UPDATES_CONN_STRING:
-      secretRef: servicebus-secret-queue-{{ .Release.Name }}-servicebus-create-updates
+      secretRef: et-sb-preview
       key: connectionString
     UPDATE_CASE_CONN_STRING:
-      secretRef: servicebus-secret-queue-{{ .Release.Name }}-servicebus-update-case
+      secretRef: et-sb-preview
       key: connectionString
   keyVaults:
     et-msg-handler:
@@ -36,7 +36,8 @@ java:
 
 servicebus:
   enabled: true
-  resourceGroup: et-aks
+  resourceGroup: et-aso-preview-rg
+  sbNamespace: et-sb-preview
   teamName: et
   setup:
     queues:
