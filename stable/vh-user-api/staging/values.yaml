@@ -1,14 +1,13 @@
 ---
 java:
-  image: 'sdshmctspublic.azurecr.io/vh/user-api:latest'
+  image: "sdshmctspublic.azurecr.io/vh/user-api:latest"
   applicationPort: 8080
   replicas: 2
   ingressHost: vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net
   releaseNameOverride: vh-user-api
-  readinessPath: /healthcheck/health
-  livenessPath: /healthcheck/health
-  livenessDelay: 360
-  livenessPeriod: 120
+  livenessPath: /health/liveness
+  readinessPath: /health/readiness
+  startupPath: /health/startup
   aadIdentityName: vh-aad-identity
   keyVaults:
     vh-admin-web:
@@ -36,13 +35,13 @@ java:
           alias: azuread--VhUserApiResourceId
         - name: azuread--identifieruri
           alias: VhServices--UserApiResourceId
-        - AdGroup--Administrator
-        - AdGroup--CaseType
+        - AdGroup--VirtualRoomAdministrator
         - AdGroup--External
-        - AdGroup--Judge
-        - AdGroup--JudgesTestGroup
+        - AdGroup--Internal        
+        - AdGroup--VirtualRoomJudge
+        - AdGroup--TestAccount
         - AdGroup--JudicialOfficeHolder
-        - AdGroup--ProfessionalUser
+        - AdGroup--VirtualRoomProfessionalUser
         - AdGroup--StaffMember
         - azuread--clientid
         - azuread--clientsecret
@@ -51,8 +50,8 @@ java:
   environment:
     ASPNETCORE_URLS: http://+:8080
     DISABLEHTTPSREDIRECTION: true
-    Logging__LogLevel__Default: debug
-    Logging__LogLevel__System: debug
-    Logging__LogLevel__Microsoft: debug
+    Logging__LogLevel__Default: warning
+    Logging__LogLevel__System: warning
+    Logging__LogLevel__Microsoft: warning
     ReformEmail: hearings.reform.hmcts.net
     VHSERVICES__USERAPIURL: https://vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net/
