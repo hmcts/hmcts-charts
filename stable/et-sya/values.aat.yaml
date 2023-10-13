@@ -2,6 +2,8 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/et-sya:latest
   ingressHost: 
+  devmemoryLimits: 1024Mi
+  devmemoryRequests: 512Mi
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
   keyVaults:
