@@ -2,12 +2,10 @@ java:
   applicationPort: 4550
   image: 'sdshmctspublic.azurecr.io/pip/subscription-management:latest'
   ingressHost: pip-subscription-management.{{ .Values.global.environment }}.platform.hmcts.net
-  aadIdentityName: pip
   keyVaults:
     pip-ss-kv:
       excludeEnvironmentSuffix: false
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
-      usePodIdentity: true
       secrets:
         - name: subscription-management-POSTGRES-DATABASE
           alias: DB_NAME
