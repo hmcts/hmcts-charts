@@ -1,5 +1,4 @@
 java:
-  aadIdentityName: pip
   ingressHost: pip-account-management.{{ .Values.global.environment }}.platform.hmcts.net
   applicationPort: 6969
   image: 'sdshmctspublic.azurecr.io/pip/account-management:latest'
@@ -11,7 +10,6 @@ java:
     pip-ss-kv:
       excludeEnvironmentSuffix: false
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
-      usePodIdentity: true
       secrets:
         - name: auto-pip-<ENV>-pip-account-management-<ENV>-id
           alias: CLIENT_ID_B2C
