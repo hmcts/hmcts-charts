@@ -78,7 +78,7 @@ base:
           alias: GOVUK_NOTIFY_API_KEY_LIVE
         - name: api-acas-json-subscription-key
           alias: ACAS_SUBSCRIPTION_KEY
-        - name: api-appinsights-key
+        - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
 sidekiq:
   applicationPort: 7433
@@ -164,5 +164,5 @@ sidekiq:
           alias: GOVUK_NOTIFY_API_KEY_LIVE
         - name: api-acas-json-subscription-key
           alias: ACAS_SUBSCRIPTION_KEY
-        - name: api-appinsights-key
+        - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
