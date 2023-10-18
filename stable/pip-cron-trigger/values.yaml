@@ -1,11 +1,9 @@
 job:
   image: 'sdshmctspublic.azurecr.io/pip/pip-cron-trigger:latest'
-  aadIdentityName: pip
   keyVaults:
     pip-ss-kv:
       excludeEnvironmentSuffix: false
       resourceGroup: pip-ss-{{ .Values.global.environment }}-rg
-      usePodIdentity: true
       secrets:
         - name: app-pip-cron-timer-id
           alias: CLIENT_ID
