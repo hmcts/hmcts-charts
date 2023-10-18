@@ -40,5 +40,5 @@ base:
           alias: CCD_SIDAM_USERNAME
         - name: ccd-export-sidam-password
           alias: CCD_SIDAM_PASSWORD
-        - name: ccd-export-appinsights-key
+        - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
