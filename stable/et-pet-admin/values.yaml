@@ -68,5 +68,5 @@ base:
           alias: AZURE_STORAGE_ACCESS_KEY
         - name: admin-azure-storage-direct-upload-access-key
           alias: AZURE_STORAGE_DIRECT_UPLOAD_ACCESS_KEY
-        - name: admin-appinsights-key
+        - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
