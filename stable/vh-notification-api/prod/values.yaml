@@ -4,10 +4,9 @@ java:
   applicationPort: 8080
   image: "sdshmctspublic.azurecr.io/vh/notification-api:latest"
   ingressHost: vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
-  livenessDelay: 360
-  livenessPath: /healthcheck/health
-  livenessPeriod: 120
-  readinessPath: /healthcheck/health
+  livenessPath: /health/liveness
+  readinessPath: /health/readiness
+  startupPath: /health/startup
   releaseNameOverride: vh-notification-api
   replicas: 2
   keyVaults:
@@ -38,7 +37,7 @@ java:
   environment:
     ASPNETCORE_URLS: http://+:8080
     DISABLEHTTPSREDIRECTION: true
-    Logging__LogLevel__Default: debug
-    Logging__LogLevel__Microsoft: debug
-    Logging__LogLevel__System: debug
+    Logging__LogLevel__Default: warning
+    Logging__LogLevel__Microsoft: warning
+    Logging__LogLevel__System: warning
     NotifyConfiguration__Environment: "{{ lower .Values.global.environment }}"
