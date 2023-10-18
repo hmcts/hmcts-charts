@@ -5,10 +5,9 @@ java:
   replicas: 2
   ingressHost: vh-admin-web.{{ .Values.global.environment }}.platform.hmcts.net
   releaseNameOverride: vh-admin-web
-  readinessPath: /health/liveness
   livenessPath: /health/liveness
-  livenessDelay: 360
-  livenessPeriod: 120
+  readinessPath: /health/readiness
+  startupPath: /health/startup
   aadIdentityName: vh-aad-identity
   keyVaults:
     vh-infra-core:
@@ -80,9 +79,9 @@ java:
     DOM1__REDIRECTURI: https://vh-admin-web.{{ .Values.global.environment }}.platform.hmcts.net/home
     DISABLEHTTPSREDIRECTION: true
     ISLIVE: "False"
-    Logging__LogLevel__Default: debug
-    Logging__LogLevel__System: debug
-    Logging__LogLevel__Microsoft: debug
+    Logging__LogLevel__Default: warning
+    Logging__LogLevel__System: warning
+    Logging__LogLevel__Microsoft: warning
     VHSERVICES__VALIDATEEMAIL: "@hearings.reform.hmcts.net"
     VHSERVICES__VIDEOAPIURL: https://vh-video-api.{{ .Values.global.environment }}.platform.hmcts.net/
     VHSERVICES__VIDEOWEBURL: https://vh-video-web.{{ .Values.global.environment }}.platform.hmcts.net/
