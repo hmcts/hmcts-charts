@@ -1,7 +1,7 @@
 java:
   applicationPort: 4000
   image: 'hmctspublic.azurecr.io/rpts/api:latest'
-  ingressHost: rpts-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: rpts-api-{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: rpts
   keyVaults:
     "rpts":
