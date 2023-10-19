@@ -19,4 +19,4 @@ java:
     POSTGRES_DATABASE: rpts
     POSTGRES_USERNAME: api_user
     RUN_DB_MIGRATION_ON_STARTUP: false
-    ENABLE_FLYWAY: true
+    ENABLE_FLYWAY: false
