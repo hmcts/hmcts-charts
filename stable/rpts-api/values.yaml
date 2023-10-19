@@ -7,7 +7,7 @@ java:
     "rpts":
       resourceGroup: rpts
       secrets:
-        - name: api-POSTGRES-PASS
+        - name: api-POSTGRES-FLEXIBLE-PASS
           alias: POSTGRES_PASSWORD
         - name: app-insights-connection-string
           alias: app-insights-connection-string
@@ -15,8 +15,8 @@ java:
           alias: OS_KEY
   environment:
     POSTGRES_PORT: 5432
-    POSTGRES_HOST: rpts-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_HOST: rpts-api-flexible-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_DATABASE: rpts
-    POSTGRES_USERNAME: rpts@rpts-api-postgres-db-v11-{{ .Values.global.environment }}
+    POSTGRES_USERNAME: api_user
     RUN_DB_MIGRATION_ON_STARTUP: false
     ENABLE_FLYWAY: true
