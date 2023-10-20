@@ -2,7 +2,6 @@ java:
   applicationPort: 8080
   image: 'hmctspublic.azurecr.io/ccpay/refunds-api:latest'
   ingressHost: ccpay-refunds-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  aadIdentityName: ccpay
   environment:
     POSTGRES_PORT: 5432
     POSTGRES_HOST: ccpay-refunds-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
