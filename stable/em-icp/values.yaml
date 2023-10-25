@@ -23,7 +23,7 @@ nodejs:
     em-icp:
       resourceGroup: em-icp
       secrets:
-        - redis-password
+#        - redis-password
         - microservicekey-em-icp
         - AppInsightsInstrumentationKey
 #        - em-icp-web-pubsub-primary-connection-string
