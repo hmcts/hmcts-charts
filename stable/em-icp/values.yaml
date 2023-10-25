@@ -25,7 +25,7 @@ nodejs:
       secrets:
 #        - redis-password
         - microservicekey-em-icp
-        - AppInsightsInstrumentationKey
+#        - AppInsightsInstrumentationKey
 #        - em-icp-web-pubsub-primary-connection-string
 
 redis:
