@@ -3,5 +3,9 @@ nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
 
+  environment:
+    OIDC_ENABLED: true
+    DEBUG: xuiNode:*
+
 idam-pr:
   enabled: false

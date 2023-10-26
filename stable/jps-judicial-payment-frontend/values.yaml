@@ -28,6 +28,8 @@ nodejs:
     cpuRequests: "25m"
     memoryLimits: "1024Mi"
     cpuLimits: "2500m"
+    #OIDC Flag
+    OIDC_ENABLED: false
   keyVaults:
     jps:
       resourceGroup: jps

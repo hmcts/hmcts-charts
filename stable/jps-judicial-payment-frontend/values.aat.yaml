@@ -3,5 +3,9 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/jps-judicial-payment-frontend:latest
   ingressHost: 
 
+  environment:
+    OIDC_ENABLED: true
+    DEBUG: xuiNode:*
+
 idam-pr:
   enabled: false
