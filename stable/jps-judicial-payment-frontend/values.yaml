@@ -24,6 +24,13 @@ nodejs:
     SERVICES_S2S: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     # OpenId ISS
     SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}2.internal:8443/openam/oauth2/hmcts
+    SERVICES_JPS_API_URL: http://jps-judicial-payment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    #REDIS
+    REDIS_ENABLED: false
+    REDIS_KEY_PREFIX: 'activity:'
+    REDIS_TTL: 6000
+    REDISCLOUD_URL: jps-session-storage-{{ .Values.global.environment }}.redis.cache.windows.net
+
     memoryRequests: "512Mi"
     cpuRequests: "25m"
     memoryLimits: "1024Mi"
@@ -38,10 +45,20 @@ nodejs:
         - jps-idam-client-secret
         - idam-jps-system-username
         - idam-jps-system-password
+        - judicial-payment-frontend-redis6-connection-string
 
   # Don't modify below here
   image: 'hmctspublic.azurecr.io/jps/judicial-payment-frontend:latest'
   ingressHost: judicial-payments.{{ .Values.global.environment }}.platform.hmcts.net
+
+redis:
+  enabled: false
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+  auth:
+    enabled: false
 
 idam-pr:
   enabled: false
