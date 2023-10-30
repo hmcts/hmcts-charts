@@ -9,6 +9,7 @@ function:
     - type: azure-servicebus
       topicName: "servicecallbacktopic"
       subscriptionName: defaultServiceCallbackSubscription
+      connectionFromEnv: SERVICE_CALLBACK_BUS_CONNECTION
       connection: SERVICE_CALLBACK_BUS_CONNECTION
       queueLength: 1
   keyVaults:
