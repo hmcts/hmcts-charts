@@ -29,7 +29,7 @@ nodejs:
     REDIS_ENABLED: false
     REDIS_KEY_PREFIX: 'activity:'
     REDIS_TTL: 6000
-    REDISCLOUD_URL: jps-session-storage-{{ .Values.global.environment }}.redis.cache.windows.net
+    REDISCLOUD_URL: jps-judicial-payment-frontend-session-storage-aat.redis.cache.windows.net
 
     memoryRequests: "512Mi"
     cpuRequests: "25m"
