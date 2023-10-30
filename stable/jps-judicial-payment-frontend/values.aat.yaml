@@ -5,6 +5,7 @@ nodejs:
 
   environment:
     OIDC_ENABLED: true
+    REDIS_ENABLED: true
     DEBUG: xuiNode:*
 
 idam-pr:
