@@ -31,6 +31,8 @@ java:
     THREAD_PAUSE_TIME: 2000
     THREAD_RETRIGGER_TIME: 1000
     Clean_Elinks_Responses_Days: 30
+    Del_Joh_Profiles_Years: 7
+    Del_Joh_Profiles: false
   image: 'hmctspublic.azurecr.io/rd/judicial-api:latest'
   keyVaults:
     rd:
