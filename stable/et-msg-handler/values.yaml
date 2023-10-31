@@ -6,6 +6,7 @@ java:
   keyVaults:
     et-msg-handler:
       secrets:
+        # TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
         - name: msg-handler-POSTGRES-HOST
           alias: ET_MSG_HANDLER_POSTGRES_HOST
         - name: msg-handler-POSTGRES-PORT
@@ -16,6 +17,7 @@ java:
           alias: ET_MSG_HANDLER_POSTGRES_USER
         - name: msg-handler-POSTGRES-PASS
           alias: ET_MSG_HANDLER_POSTGRES_PASSWORD
+        # ABOVE TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
         - name: caseworker-user-name
           alias: CASEWORKER_USER_NAME
         - name: caseworker-password
@@ -26,6 +28,15 @@ java:
           alias: ET_MSG_HANDLER_S2S_SECRET
         - name: idam-client-secret
           alias: IDAM_CLIENT_SECRET
+        # TO BE ACTIVATED ONCE DATA HAS BEEN MIGRATED TO V15 DB
+        #        - name: et-msg-handler-postgres-user-v15
+        #          alias: ET_MSG_HANDLER_POSTGRES_USER
+        #        - name: et-msg-handler-postgres-password-v15
+        #          alias: ET_MSG_HANDLER_POSTGRES_PASSWORD
+        #        - name: et-msg-handler-postgres-host-v15
+        #          alias: ET_MSG_HANDLER_POSTGRES_HOST
+        #        - name: et-msg-handler-postgres-port-v15
+        #          alias: ET_MSG_HANDLER_POSTGRES_PORT
     et:
       secrets:
         - name: create-updates-queue-send-connection-string
