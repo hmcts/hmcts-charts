@@ -13,7 +13,6 @@ nodejs:
     NOW: false
 
     DEBUG: xuiNode:*
-
     # Services Location Ref
     SERVICES_LOCATION_REF_API_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SERVICES_USERS_REF_API_URL: http://rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
@@ -30,6 +29,9 @@ nodejs:
     SERVICES_JPS_API_URL: http://jps-judicial-payment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     #REDIS
     REDIS_ENABLED: true
+    #OIDC Flag
+    OIDC_ENABLED: false
+
     REDIS_KEY_PREFIX: 'activity:'
     REDIS_TTL: 6000
 
@@ -37,8 +39,6 @@ nodejs:
     cpuRequests: "25m"
     memoryLimits: "1024Mi"
     cpuLimits: "2500m"
-    #OIDC Flag
-    OIDC_ENABLED: false
   keyVaults:
     jps:
       resourceGroup: jps
