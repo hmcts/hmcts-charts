@@ -11,6 +11,9 @@ nodejs:
     SESSION_SECRET: secretSauce
     ALLOW_CONFIG_MUTATIONS: 1
     NOW: false
+
+    DEBUG: xuiNode:*
+
     # Services Location Ref
     SERVICES_LOCATION_REF_API_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SERVICES_USERS_REF_API_URL: http://rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
