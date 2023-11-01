@@ -4,9 +4,9 @@ java:
   ingressHost: ccpay-notifications-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
     POSTGRES_PORT: 5432
-    POSTGRES_HOST: ccpay-notifications-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+    #POSTGRES_HOST: ccpay-notifications-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_NAME: notifications
-    POSTGRES_USERNAME: notifications@ccpay-notifications-service-postgres-db-v11-{{ .Values.global.environment }}
+   # POSTGRES_USERNAME: notifications@ccpay-notifications-service-postgres-db-v11-{{ .Values.global.environment }}
     POSTGRES_CONNECTION_OPTIONS: ?sslmode=require
     SPRING_LIQUIBASE_ENABLED: false
     AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
@@ -26,6 +26,10 @@ java:
       secrets:
         - name: notifications-service-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
+        - name: notifications-service-POSTGRES-USER
+          alias: POSTGRES_USERNAME
+        - name: notifications-service-POSTGRES-HOST
+          alias: POSTGRES_HOST
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
         - name: notifications-s2s-secret
