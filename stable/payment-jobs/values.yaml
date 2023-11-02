@@ -11,6 +11,5 @@ job:
       secrets:
         - gateway-s2s-client-id
         - gateway-s2s-client-secret
-  aadIdentityName: ccpay
 global:
   jobkind: CronJob
