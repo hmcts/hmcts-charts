@@ -1,0 +1,3 @@
+nodejs:
+  image: https://hmcts.azurecr.io/hmcts/juror-public:latest
+  ingressHost: 

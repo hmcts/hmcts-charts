@@ -1,0 +1,14 @@
+nodejs:
+  image: 'sdshmctspublic.azurecr.io/juror/public:latest'
+  applicationPort: 3000
+  ingressHost: juror-public.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: juror
+  keyVaults:
+    juror:
+      secrets:
+        - name: public-sessionSecret
+        - name: public-jwtKey
+        - name: public-jwtNoAuthKey
+        - name: public-jwtKeyBureau
+        - name: public-jwtTTL
+        - name: public-pcqTokenKey
