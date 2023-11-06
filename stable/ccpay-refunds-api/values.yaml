@@ -3,10 +3,10 @@ java:
   image: 'hmctspublic.azurecr.io/ccpay/refunds-api:latest'
   ingressHost: ccpay-refunds-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
-    POSTGRES_PORT: 5432
-    POSTGRES_HOST: ccpay-refunds-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
+   # POSTGRES_PORT: 5432
+   # POSTGRES_HOST: ccpay-refunds-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_NAME: refunds
-    POSTGRES_USERNAME: refunds@ccpay-refunds-api-postgres-db-v11-{{ .Values.global.environment }}
+  #  POSTGRES_USERNAME: refunds@ccpay-refunds-api-postgres-db-v11-{{ .Values.global.environment }}
     POSTGRES_CONNECTION_OPTIONS: ?sslmode=require
     SPRING_LIQUIBASE_ENABLED: false
     AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
@@ -38,6 +38,14 @@ java:
       secrets:
         - name: refunds-api-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
+        - name: refunds-api-POSTGRES-PORT
+          alias: POSTGRES_PORT
+        - name: refunds-api-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: refunds-api-POSTGRES-USER
+          alias: POSTGRES_USERNAME
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
         - name: refunds-s2s-secret
