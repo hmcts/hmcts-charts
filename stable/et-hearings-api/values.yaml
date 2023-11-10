@@ -19,6 +19,7 @@ java:
     IDAM_JWKS_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks"
     CASE_DATA_STORE_BASEURL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     SERVICE_AUTH_PROVIDER_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    EXUI_CASE_DETAILS_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/"
     HMC_HEARINGS_TOPIC_NAMESPACE: "hmc-servicebus-{{ .Values.global.environment }}"
     HMC_HEARINGS_TOPIC_NAME: "hmc-to-cft-{{ .Values.global.environment }}"
     HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-to-et-subscription-{{ .Values.global.environment }}"
