@@ -19,8 +19,8 @@ java:
     JRD_SEARCH_SERVICE_CODE: bfa1,bba3
     ELINKS_URL: https://judiciary-middleware-futureehr.herokuapp.com/api/v5
     LAST_UPDATED: 2014-01-01
-    SCHEDULER_ENABLED: true
-    CRON_EXPRESSION: "* 00 12 * * *"
+    SCHEDULER_ENABLED: false
+    CRON_EXPRESSION: "0 0 0 25 03 ?"
   postgresql:
     enabled: true
     auth:
