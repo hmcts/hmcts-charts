@@ -21,6 +21,7 @@ java:
     LAST_UPDATED: 2014-01-01
     SCHEDULER_ENABLED: false
     CRON_EXPRESSION: "0 0 0 25 03 ?"
+    DB_READER_USERNAME: "{{ .Values.postgresql.auth.username}}"
   postgresql:
     enabled: true
     auth:
