@@ -10,7 +10,7 @@ nodejs:
   keyVaults:
     idam-idam:
       secrets:
-        - AppInsightsInstrumentationKey
+        - AppInsightsConnectionString
         - launchdarkly-sdk-key
         - hmcts-access-client-secret
         - redis-hostname
