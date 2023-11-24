@@ -1,0 +1,10 @@
+java:
+  releaseNameOverride: idam-web-public-staging
+  image: hmctspublic.azurecr.io/idam/web-public:staging-a67c094-20231124095135
+  ingressHost: idam-web-public-staging.aat.platform.hmcts.net
+  ingressIP: 10.10.143.250
+  consulIP: 
+  replicas: 1
+  aadIdentityName: idam
+  environment:
+    STRATEGIC_SERVICE_URL: https://idam-api.aat.platform.hmcts.net
