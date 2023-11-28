@@ -65,6 +65,7 @@ java:
     CCD_DATA_STORE_API_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     MICRO_SERVICE: "et_msg_handler"
     ET_MSG_HANDLER_DB_CONN_OPTIONS: ?sslmode=require
+    CCD_GATEWAY_BASE_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net"
 
 servicebus:
   enabled: false
