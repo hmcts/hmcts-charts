@@ -12,6 +12,7 @@ nodejs:
         - name: public-jwtKeyBureau
         - name: public-jwtTTL
         - name: public-pcqTokenKey
+        - name: public-redisConnection
   environment:
     API_ENDPOINT: https://juror-public.{{ .Values.global.environment }}.platform.hmcts.net/v1
     USE_AUTH: false
