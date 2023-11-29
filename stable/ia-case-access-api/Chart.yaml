@@ -3,11 +3,11 @@ appVersion: "1.0"
 description: Helm chart for ia-case-access-api microservice
 name: ia-case-access-api
 home: https://github.com/hmcts/ia-case-access-api
-version: 0.0.9
+version: 0.0.10
 maintainers:
   - name: HMCTS Immigration & Asylum Team
     email: ImmigrationandAsylum@HMCTS.NET
 dependencies:
   - name: java
-    version: 5.0.0
+    version: 5.0.2
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
