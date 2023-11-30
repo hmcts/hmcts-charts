@@ -10,6 +10,7 @@ java:
     POSTGRES_USERNAME: hmcts
     POSTGRES_PASSWORD: hmcts
     POSTGRES_CONNECTION_OPTIONS: ""
+    DB_READER_USERNAME: "postgres"
   keyVaults:
     wa:
       secrets:

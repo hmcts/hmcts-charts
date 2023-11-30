@@ -20,6 +20,7 @@ java:
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
     WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     ENVIRONMENT: "{{ .Values.global.environment }}"
+    DB_READER_USERNAME: "DTS JIT Access wa DB Reader SC"
   keyVaults:
     wa:
       secrets:
