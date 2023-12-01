@@ -1,11 +1,9 @@
 function:
   image: 'sdshmctspublic.azurecr.io/hmi/rota-dtu:latest'
-  aadIdentityName: hmi
   keyVaults:
     hmi-sds-kv:
       excludeEnvironmentSuffix: false
       resourceGroup: hmi-sharedinfra-sds-{{ .Values.global.environment }}-rg
-      usePodIdentity: true
       secrets:
         - name: sa-name
           alias: STORAGE_ACCOUNT_NAME
