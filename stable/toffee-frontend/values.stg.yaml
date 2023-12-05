@@ -4,3 +4,5 @@ nodejs:
   environment:
     # DNS zone is staging but global.environment is stg
     RECIPE_BACKEND_URL: http://toffee-recipe-backend.staging.platform.hmcts.net
+  ingressAnnotations:
+    external-dns.alpha.kubernetes.io/exclude: 'true'
