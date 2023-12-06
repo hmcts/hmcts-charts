@@ -5,7 +5,7 @@ java:
     FLYWAY_SKIP_MIGRATIONS: false
     STORAGE_URL: https://reformscanstg.aat.platform.hmcts.net
     NOTIFICATIONS_QUEUE_NAME: "notifications-staging"
-    NOTIFICATIONS_QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}
+    NOTIFICATIONS_QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/reform-scan-blob-router:latest
   ingressHost: 
