@@ -20,7 +20,7 @@ java:
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     IDAM_CLIENT_REDIRECT_URI: "https://lau-idam-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
     IDAM_CLIENT_NAME: 'lau'
-    LAU_FLYWAY_MIGRATE_DB: "false"
+    LAU_FLYWAY_MIGRATE_DB: "true"
     DB_ALLOW_DELETE_RECORD: "false"
   keyVaults:
     lau:
