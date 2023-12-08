@@ -14,6 +14,7 @@ java:
     POSTGRES_CONNECTION_OPTIONS: ""
     WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-aat.service.core-compute-aat.internal"
     ENVIRONMENT: "{{ .Values.global.environment }}"
+    DB_READER_USERNAME: "postgres"
   keyVaults:
     wa:
       secrets:
