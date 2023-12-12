@@ -20,7 +20,7 @@ java:
     HMC_HEARINGS_TOPIC_NAMESPACE: "hmc-servicebus-{{ .Values.global.environment }}"
     HMC_HEARINGS_TOPIC_NAME: "hmc-to-cft-{{ .Values.global.environment }}"
     HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-ia-subs-to-cft-{{ .Values.global.environment }}"
-    HMC_HEARINGS_LISTENING_ENABLED: false
+    HMC_HEARINGS_LISTENING_ENABLED: true
     HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
 
   keyVaults:
