@@ -15,7 +15,7 @@ java:
     CAMUNDA_URL: "http://camunda-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/engine-rest"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     POSTGRES_PORT: 5432
-    POSTGRES_HOST: wa-workflow-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_HOST: wa-workflow-api-postgres-db-flex-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_NAME: wa_workflow_api
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
     WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
@@ -28,9 +28,9 @@ java:
           alias: app-insights-connection-string
         - name: s2s-secret-workflow-api
           alias: S2S_SECRET_WORKFLOW_API
-        - name: workflow-api-POSTGRES-PASS
+        - name: workflow-api-POSTGRES-PASS-V15
           alias: POSTGRES_PASSWORD
-        - name: workflow-api-POSTGRES-USER
+        - name: workflow-api-POSTGRES-USER-V15
           alias: POSTGRES_USERNAME
         - name: ld-secret
           alias: LAUNCH_DARKLY_SDK_KEY
