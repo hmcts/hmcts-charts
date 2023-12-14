@@ -9,10 +9,10 @@ java:
   aadIdentityName: lau
   environment:
     LAU_DB_NAME: lau_case
-    LAU_DB_HOST: lau-case-backend-{{ .Values.global.environment }}.postgres.database.azure.com
+    LAU_DB_HOST: lau-case-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
     LAU_DB_PORT: "5432"
-    FLYWAY_URL: jdbc:postgresql://lau-case-backend-{{ .Values.global.environment }}.postgres.database.azure.com:5432/lau_case?sslmode=require
-    FLYWAY_USER: lauadmin@lau-case-backend-{{ .Values.global.environment }}
+    FLYWAY_URL: jdbc:postgresql://lau-case-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com:5432/lau_case?sslmode=require
+    FLYWAY_USER: lauadmin
     FLYWAY_NOOP_STRATEGY: "false"
     LAU_DB_CONN_OPTIONS: "?sslmode=require"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
@@ -20,6 +20,7 @@ java:
     IDAM_CLIENT_REDIRECT_URI: "https://lau-case-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
     IDAM_CLIENT_NAME: 'lau'
     DB_ALLOW_DELETE_RECORD: "false"
+    LAU_FLYWAY_MIGRATE_DB: "false" # should stay false as long as enableDbMigration('lau') is executed in Jenkinsfile_CNP
   keyVaults:
     lau:
       resourceGroup: lau
@@ -32,7 +33,7 @@ java:
           alias: LAU_DB_ADMIN_USERNAME
         - name: case-backend-app-db-password
           alias: LAU_DB_PASSWORD
-        - name: case-backend-app-db-user
+        - name: case-backend-app-db-user-flexible
           alias: LAU_DB_USERNAME
         - name: flyway-password
           alias: flyway.password
