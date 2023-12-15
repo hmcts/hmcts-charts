@@ -3,8 +3,8 @@ appVersion: "1.0"
 description: A Helm chart for paymentoutcome web App
 name: ccpay-paymentoutcome-web
 home: https://github.com/hmcts/ccpay-paymentoutcome-web
-version: 0.0.21
+version: 0.0.22
 dependencies:
   - name: nodejs
-    version: 3.0.1
+    version: 3.0.2
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
