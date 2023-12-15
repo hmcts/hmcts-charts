@@ -8,11 +8,11 @@ java:
   aadIdentityName: pcq
   environment:
     PCQ_DB_NAME: pcq
-    PCQ_DB_HOST: pcq-backend-{{ .Values.global.environment }}.postgres.database.azure.com
+    PCQ_DB_HOST: pcq-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
     PCQ_DB_PORT: "5432"
     STORAGE_URL: https://pcqshared{{ .Values.global.environment }}.blob.core.windows.net
-    FLYWAY_URL: jdbc:postgresql://pcq-backend-{{ .Values.global.environment }}.postgres.database.azure.com:5432/pcq?sslmode=require
-    FLYWAY_USER: pcquser@pcq-backend-{{ .Values.global.environment }}
+    FLYWAY_URL: jdbc:postgresql://pcq-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com:5432/pcq?sslmode=require
+    FLYWAY_USER: pcquser
     FLYWAY_NOOP_STRATEGY: "false"
     DB_ENCRYPTION_ENABLED: "Yes"
     DB_ALLOW_DELETE_RECORD: "false"
