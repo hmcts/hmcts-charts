@@ -29,3 +29,4 @@ blobstorage:
   enabled: false
 global:
   jobKind: CronJob
+  disableActiveClusterCheck: true
