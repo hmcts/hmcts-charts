@@ -4,6 +4,8 @@ java:
   keyVaults:
     probate:
       secrets:
+        - name: probate-notify-invite-apikey
+          alias: services.notify.apiKey
         - name: business-services-notify-invitedata-templateId
           alias: services.notify.invitedata.templateId
         - name: business-services-notify-pin-templateId
