@@ -8,8 +8,8 @@ java:
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CCD_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     POSTGRES_PORT: 5432
-    POSTGRES_HOST: ia-timed-event-service-postgres-11-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: ia_tes@ia-timed-event-service-postgres-11-db-{{ .Values.global.environment }}
+    POSTGRES_HOST: ia-timed-event-service-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: pgadmin
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
   postgresql:
     auth:
@@ -22,14 +22,23 @@ java:
     ia:
       resourceGroup: ia
       secrets:
-        - idam-client-id
-        - idam-secret
-        - idam-redirect-uri
-        - system-username
-        - system-password
-        - s2s-secret
-        - s2s-microservice
-        - AppInsightsInstrumentationKey
-        - timed-event-service-POSTGRES-PASS-11
-        - app-insights-connection-string
-        - ia-config-validator-secret
+        - name: idam-client-id
+          alias: IA_IDAM_CLIENT_ID
+        - name: idam-secret
+          alias: IA_IDAM_SECRET
+        - name: idam-redirect-uri
+          alias: IA_IDAM_REDIRECT_URI
+        - name: system-username
+          alias: IA_SYSTEM_USERNAME
+        - name: system-password
+          alias: IA_SYSTEM_PASSWORD
+        - name: s2s-secret
+          alias: IA_S2S_SECRET
+        - name: s2s-microservice
+          alias: IA_S2S_MICROSERVICE
+        - name: timed-event-service-POSTGRES-PASS-15
+          alias: spring.datasource.password
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: ia-config-validator-secret
+          alias: IA_CONFIG_VALIDATOR_SECRET
