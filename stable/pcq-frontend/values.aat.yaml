@@ -1,5 +1,3 @@
 nodejs:
-  environment:
-    NODE_ENV: "aat"
   image: https://hmcts.azurecr.io/hmcts/pcq-frontend:latest
   ingressHost: 
