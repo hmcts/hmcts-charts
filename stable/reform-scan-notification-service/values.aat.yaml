@@ -3,7 +3,7 @@ java:
   image: https://hmcts.azurecr.io/hmcts/reform-scan-notification-service:latest
   ingressHost: 
   environment:
-    QUEUE_NAME: "notifications"
+    QUEUE_NAME: "notifications-staging"
     QUEUE_NOTIFICATIONS_READ: false
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
     FLYWAY_SKIP_MIGRATIONS: false
@@ -30,5 +30,5 @@ java:
           alias: DB_PORT
         - name: notification-service-staging-postgres-database
           alias: DB_NAME
-        - name:  notification-queue-listen-shared-access-key-premium
+        - name:  notification-staging-queue-listen-shared-access-key
           alias: QUEUE_READ_ACCESS_KEY
