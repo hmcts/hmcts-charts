@@ -1,5 +1,6 @@
 nodejs:
   environment:
+    NODE_ENV: "preview"
     REDIS_HOST: ${SERVICE_NAME}-redis-master
     REDIS_PORT: 6379
     REDIS_USE_TLS: false
