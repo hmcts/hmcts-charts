@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for ccd-migration App
 name: probate-cron-ccd-data-migration-tool
 home: https://github.com/hmcts/ccd-case-migration-starter
-version: 0.0.4
+version: 0.0.5
 maintainers:
   - name: HMCTS ccd team
 dependencies:
   - name: job
-    version: ~1.1.5
+    version: ~2.1.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
