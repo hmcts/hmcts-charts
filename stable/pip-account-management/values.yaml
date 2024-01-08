@@ -19,8 +19,6 @@ java:
           alias: TENANT_GUID_B2C
         - name: b2c-extension-app-id
           alias: EXTENSION_ID
-        - name: shared-storageaccount-connection-string
-          alias: CONNECTION_STRING
         - name: shared-storageaccount-name
           alias: STORAGE_ACCOUNT_NAME
         - name: account-management-POSTGRES-DATABASE
