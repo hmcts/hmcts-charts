@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/opal-fines-service:latest
   ingressHost: 
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend.staging.platform.hmcts.net
