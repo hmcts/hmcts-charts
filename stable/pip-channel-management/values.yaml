@@ -21,8 +21,6 @@ java:
           alias: DATA_MANAGEMENT_AZ_API
         - name: auto-pip-<ENV>-courtel-api
           alias: COURTEL_API
-        - name: shared-storageaccount-connection-string
-          alias: CONNECTION_STRING
         - name: shared-storageaccount-name
           alias: STORAGE_ACCOUNT_NAME
         - name: app-insights-java-connection-string
