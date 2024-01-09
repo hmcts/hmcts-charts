@@ -1,6 +1,7 @@
 job:
   image: 'hmctspublic.azurecr.io/ccd/migration:latest'
   disableActiveClusterCheck: true
+  suspend: true
   kind: CronJob
   schedule: "0 22 * * *"
   ingressHost: et-migration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
