@@ -28,6 +28,10 @@ java:
           alias: QUEUE_READ_ACCESS_KEY
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+        - name: launch-darkly-offline-mode
+          alias: LAUNCH_DARKLY_OFFLINE_MODE
   environment:
     DB_CONN_OPTIONS: ?sslmode=require
     FLYWAY_SKIP_MIGRATIONS: true
