@@ -1,12 +1,12 @@
 apiVersion: v2
 name: payment-jobs
 home: https://github.com/hmcts/ccpay-scheduled-jobs
-version: 0.0.19
+version: 0.0.20
 description: HMCTS CCPAY Scheduled Jobs
 maintainers:
   - name: HMCTS Fees & Payments Dev Team
     email: ccpay@hmcts.net
 dependencies:
   - name: job
-    version: 2.1.0
+    version: 2.1.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
