@@ -1,4 +1,7 @@
-# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
   image: https://hmcts.azurecr.io/hmcts/juror-pnc:latest
   ingressHost: 
+  environment:
+    PNC_SERVICE_HOST: juror-pnc.staging.platform.hmcts.net
+    JUROR_SERVICE_HOST: juror-api.staging.platform.hmcts.net
+    JOB_EXECUTION_SERVICE_HOST: juror-scheduler-execution.staging.platform.hmcts.net
