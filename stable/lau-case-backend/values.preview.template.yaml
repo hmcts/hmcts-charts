@@ -19,7 +19,6 @@ java:
     TEST_IDAM_CLIENT_NAME: 'lau'
     LAU_FLYWAY_MIGRATE_DB: "true"
     DB_ALLOW_DELETE_RECORD: "true"
-    FLYWAY_POSTGRESQL_TRANSACTIONAL_LOCK: "false"
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
