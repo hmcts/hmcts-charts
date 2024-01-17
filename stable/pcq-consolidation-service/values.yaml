@@ -31,4 +31,3 @@ job:
           alias: app-insights-connection-string
 global:
   jobKind: CronJob
-  disableActiveClusterCheck: true
