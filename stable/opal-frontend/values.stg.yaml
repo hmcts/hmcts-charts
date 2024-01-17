@@ -2,3 +2,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/opal-frontend:latest
   ingressHost: 
+  environment:
+    OPAL_API_URL: https://opal-fines-service.staging.platform.hmcts.net
