@@ -1,0 +1,25 @@
+nodejs:
+  image: 'sdshmctspublic.azurecr.io/juror/public:latest'
+  applicationPort: 3000
+  ingressHost: juror.{{ .Values.global.environment }}.apps.hmcts.net
+  aadIdentityName: juror
+  keyVaults:
+    juror:
+      secrets:
+        - name: bureau-sessionSecret
+        - name: bureau-jwtKey
+        - name: bureau-jwtNoAuthKey
+        - name: bureau-jwtTTL
+        - name: bureau-smartSurveyToken
+        - name: bureau-smartSurveyTokenSecret
+        - name: bureau-redisConnection
+        - name: launchDarklyKey
+  environment:
+    API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/v1
+    USE_AUTH: false
+    TRACKING_CODE: ''
+    SMARTSURVEY_API_ENDPOINT: https://api.smartsurvey.io/v1/surveys
+    SMARTSURVEY_ID_V1: 301219
+    SMARTSURVEY_ID_V2: 652997
+    SMARTSURVEY_EXPORT_V1: Dashboard Export
+    SMARTSURVEY_EXPORT_V2: Dashboard Export
