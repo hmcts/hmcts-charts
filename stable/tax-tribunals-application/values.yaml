@@ -109,8 +109,6 @@ base:
           alias: AZURE_STORAGE_KEY
         - name: azure-storage-container
           alias: AZURE_STORAGE_CONTAINER
-        - name: virus-scanner-enabled
-          alias: VIRUS_SCANNER_ENABLED
         - name: glimr-authorization-key
           alias: GLIMR_AUTHORIZATION_KEY
         - name: glimr-api-client-mock
@@ -233,8 +231,6 @@ sidekiq:
           alias: AZURE_STORAGE_KEY
         - name: azure-storage-container
           alias: AZURE_STORAGE_CONTAINER
-        - name: virus-scanner-enabled
-          alias: VIRUS_SCANNER_ENABLED
         - name: app-insights-instrumentation-key
           alias: APP_INSIGHTS_INSTRUMENTATION_KEY
 job:
@@ -356,8 +352,6 @@ job:
           alias: AZURE_STORAGE_KEY
         - name: azure-storage-container
           alias: AZURE_STORAGE_CONTAINER
-        - name: virus-scanner-enabled
-          alias: VIRUS_SCANNER_ENABLED
 # wsproxy:
 #   applicationPort: 8080
 #   readinessPath: /status
