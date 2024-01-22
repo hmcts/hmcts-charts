@@ -10,8 +10,6 @@ java:
     IDAM_SCHEDULED_BATCHPROCESSING_INITIALPROCESSOR: ${IMAGE_NAME}
     IDAM_SCHEDULED_BATCHPROCESSING_INITIALDELAY: 180000
     IDAM_SCHEDULED_BATCHPROCESSING_FIXEDDELAY: 360000
-    IDAM_REGISTRATION_APPOINTDOMAINREGEX_0: idam\.sso
-    IDAM_REGISTRATION_APPOINTDOMAINREGEX_1: ejudiciary\.net
     IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     LOG_AND_AUDIT_IDAM_URL: http://lau-idam-backend-aat.service.core-compute-aat.internal
     LOG_AND_AUDIT_IDAM_ENABLED: true
