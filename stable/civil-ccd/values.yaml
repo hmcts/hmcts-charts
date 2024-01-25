@@ -59,6 +59,9 @@ civil-service:
     releaseNameOverride: -java
     imagePullPolicy: Always
     ingressHost: .preview.platform.hmcts.net
+    devcpuRequests: 500m
+    devmemoryRequests: 2048Mi
+    devmemoryLimits: 4096Mi
     keyVaults:
       civil:
         resourceGroup: civil
