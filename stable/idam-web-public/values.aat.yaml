@@ -1,6 +1,6 @@
 java:
   releaseNameOverride: idam-web-public-staging
-  image: hmctspublic.azurecr.io/idam/web-public:staging-c1a3cf4-20240125160320
+  image: hmctspublic.azurecr.io/idam/web-public:staging-b72af2b-20240126102929
   ingressHost: idam-web-public-staging.aat.platform.hmcts.net
   ingressIP: 10.10.143.250
   consulIP: 
