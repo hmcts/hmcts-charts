@@ -22,6 +22,7 @@ java:
     HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-ia-subs-to-cft-{{ .Values.global.environment }}"
     HMC_HEARINGS_LISTENING_ENABLED: true
     HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
+    LOCATION_REF_DATA_URL: "http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 
   keyVaults:
     ia:
