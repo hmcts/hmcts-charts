@@ -1,0 +1,14 @@
+nodejs:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+
+  keyvaults:
+    sptribs:
+      secrets:
+        - redis-access-key
+        - app-insights-instrumentation-key
+        - idam-systemupdate-username
+        - idam-systemupdate-password
+        - idam-ui-secret
+

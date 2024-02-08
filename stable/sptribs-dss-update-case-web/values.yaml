@@ -1,0 +1,25 @@
+nodejs:
+  applicationPort: 3100
+  readinessDelay: 130
+  livenessDelay: 130
+  aadIdentityName: sptribs
+  ingressHost: sptribs-dss-update-case-web.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/sptribs/sptribs-dss-update-case-web:latest'
+
+  environment:
+    NODE_ENV: production
+    REFORM_TEAM: sptribs
+    REFORM_SERVICE_NAME: sptribs-dss-update-case-web
+    REDIS_HOST: 'sptribs-{{ .Values.global.environment }}.redis.cache.windows.net'
+    RPE_API: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    CCD_URL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    IDAM_API_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
+
+  keyVaults:
+    sptribs:
+      secrets:
+        - redis-access-key
+        - app-insights-instrumentation-key
+        - idam-systemupdate-username
+        - idam-systemupdate-password
+        - idam-ui-secret
