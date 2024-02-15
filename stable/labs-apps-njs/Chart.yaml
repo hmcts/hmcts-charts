@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for labs-apps-njs App
+name: labs-apps-njs
+home: https://github.com/hmcts/labs-apps-njs
+version: 0.0.10
+dependencies:
+  - name: nodejs
+    version: 3.0.3
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'

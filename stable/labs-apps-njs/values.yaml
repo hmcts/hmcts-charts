@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3100 # TODO: change this mapping to map the port your application listens on
+  aadIdentityName: labs
+  ingressHost: labs-apps-njs.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/labs/apps-njs:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    labs-apps-njs:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:
