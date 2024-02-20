@@ -22,4 +22,4 @@ nodejs:
         - app-insights-instrumentation-key
         - idam-systemupdate-username
         - idam-systemupdate-password
-        - idam-ui-secret
+        - idam-dss-update-ui-secret
