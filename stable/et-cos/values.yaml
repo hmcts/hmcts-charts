@@ -17,17 +17,17 @@ java:
         - name: idam-client-secret
           alias: IDAM_CLIENT_SECRET
         # TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
-        - name: cos-POSTGRES-PASS
-          alias: ET_COS_DB_PASSWORD
+        # - name: cos-POSTGRES-PASS
+        #  alias: ET_COS_DB_PASSWORD
           # TO BE ACTIVATED ONCE DATA HAS BEEN MIGRATED TO V15 DB
-#        - name: et-cos-postgres-user-v15
-#          alias: ET_COS_DB_USER_NAME
-#        - name: et-cos-postgres-password-v15
-#          alias: ET_COS_DB_PASSWORD
-#        - name: et-cos-postgres-host-v15
-#          alias: ET_COS_DB_HOST
-#        - name: et-cos-postgres-port-v15
-#          alias: ET_COS_DB_PORT_V15
+        - name: et-cos-postgres-user-v15
+          alias: ET_COS_DB_USER_NAME
+        - name: et-cos-postgres-password-v15
+          alias: ET_COS_DB_PASSWORD
+        - name: et-cos-postgres-host-v15
+          alias: ET_COS_DB_HOST
+        - name: et-cos-postgres-port-v15
+          alias: ET_COS_DB_PORT
     et:
       secrets:
         - name: create-updates-queue-send-connection-string
@@ -60,10 +60,10 @@ java:
     MICRO_SERVICE: "et_cos"
     ET_COS_DB_CONN_OPTIONS: ?sslmode=require
     # TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
-    ET_COS_DB_HOST: et-cos-{{ .Values.global.environment }}.postgres.database.azure.com
-    ET_COS_DB_NAME: et_cos
-    ET_COS_DB_PORT: '5432'
-    ET_COS_DB_USER_NAME: et_cos@et-cos-{{ .Values.global.environment }}
+    # ET_COS_DB_HOST: et-cos-{{ .Values.global.environment }}.postgres.database.azure.com
+    # ET_COS_DB_NAME: et_cos
+    # ET_COS_DB_PORT: '5432'
+    # ET_COS_DB_USER_NAME: et_cos@et-cos-{{ .Values.global.environment }}
     # ABOVE TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
