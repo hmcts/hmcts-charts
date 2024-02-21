@@ -15,7 +15,7 @@ nodejs:
         - name: bureau-redisConnection
         - name: launchDarklyKey
   environment:
-    API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/v1
+    API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/api/v1
     USE_AUTH: false
     TRACKING_CODE: ''
     SMARTSURVEY_API_ENDPOINT: https://api.smartsurvey.io/v1/surveys
