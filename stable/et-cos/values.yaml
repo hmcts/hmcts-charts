@@ -70,5 +70,6 @@ java:
     SECURE_DOC_STORE_FEATURE: true
     EXUI_CASE_DETAILS_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/"
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.{{ .Values.global.environment }}.platform.hmcts.net/citizen-hub/"
+    EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     LAUNCH_DARKLY_ENV: '{{ .Values.global.environment }}'
