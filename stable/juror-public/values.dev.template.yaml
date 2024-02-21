@@ -2,4 +2,4 @@ nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    API_ENDPOINT: https://juror-api.staging.platform.hmcts.net/v1
+    API_ENDPOINT: https://juror-api.staging.platform.hmcts.net/api/v1
