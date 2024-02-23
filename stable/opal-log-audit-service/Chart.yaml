@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for opal-log-audit-service App
+name: opal-log-audit-service
+home: https://github.com/hmcts/opal-log-audit-service
+version: 0.0.16
+maintainers:
+  - name: HMCTS opal team
+dependencies:
+  - name: java
+    version: 5.0.4
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
