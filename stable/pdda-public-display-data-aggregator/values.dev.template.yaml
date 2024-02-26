@@ -1,0 +1,9 @@
+java:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    DB_HOST: "pdda-infrastructure-dev.postgres.database.azure.com"
+    DB_USER_NAME: "pgadmin"
+    DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+    DB_NAME: "PDDA"
