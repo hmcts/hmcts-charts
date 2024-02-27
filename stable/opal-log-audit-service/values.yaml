@@ -3,10 +3,21 @@ java:
   image: 'hmctspublic.azurecr.io/opal/log-audit-service:latest'
   ingressHost: opal-log-audit-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: opal
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    opal:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: log-audit-service-POSTGRES-HOST
+          alias: OPAL_LOG_AUDIT_DB_HOST
+        - name: log-audit-service-POSTGRES-PASS
+          alias: OPAL_LOG_AUDIT_DB_PASSWORD
+        - name: log-audit-service-POSTGRES-PORT
+          alias: OPAL_LOG_AUDIT_DB_PORT
+        - name: log-audit-service-POSTGRES-USER
+          alias: OPAL_LOG_AUDIT_DB_USERNAME
+        - name: log-audit-service-POSTGRES-DATABASE
+          alias: OPAL_LOG_AUDIT_DB_NAME
   environment:
+    RUN_DB_MIGRATION_ON_STARTUP: true
+
