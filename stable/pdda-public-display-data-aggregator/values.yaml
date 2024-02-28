@@ -2,5 +2,11 @@ java:
   applicationPort: 5432
   image: 'sdshmctspublic.azurecr.io/pdda/public-display-data-aggregator:latest'
   ingressHost: pdda-public-display-data-aggregator.{{ .Values.global.environment }}.platform.hmcts.net
-  environment:
-    A_KEY: 'a value'
+  keyVaults:
+    pdda:
+      excludeEnvironmentSuffix: false
+      resourceGroup: pdda-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        name: pdda-POSTGRES-USER
+        alias: POSTGRES_USER
