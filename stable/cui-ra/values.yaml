@@ -13,7 +13,7 @@ nodejs:
   keyVaults:
     cui:
       secrets:
-        - AppInsightsInstrumentationKey
+        - app-insights-connection-string
         - s2s-secret
         - redis-access-key
   environment:
