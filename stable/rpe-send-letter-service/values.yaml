@@ -16,15 +16,15 @@ java:
           alias: FTP_HOSTNAME
         - name: upload-summary-report-recipients
           alias: UPLOAD_SUMMARY_REPORT_RECIPIENTS
-        - name: send-letter-service-POSTGRES-PASS
+        - name: send-letter-service-POSTGRES-FLEXIBLE-PASS
           alias: LETTER_TRACKING_DB_PASSWORD
-        - name: send-letter-service-POSTGRES-USER
+        - name: send-letter-service-POSTGRES-FLEXIBLE-USER
           alias: LETTER_TRACKING_DB_USER_NAME
-        - name: send-letter-service-POSTGRES-DATABASE
+        - name: send-letter-service-POSTGRES-FLEXIBLE-DATABASE
           alias: LETTER_TRACKING_DB_NAME
-        - name: send-letter-service-POSTGRES-PORT
+        - name: send-letter-service-POSTGRES-FLEXIBLE-PORT
           alias: LETTER_TRACKING_DB_PORT
-        - name: send-letter-service-POSTGRES-HOST
+        - name: send-letter-service-POSTGRES-FLEXIBLE-HOST
           alias: LETTER_TRACKING_DB_HOST
         - name: encryption-public-key
           alias: ENCRYPTION_PUBLIC_KEY
@@ -50,7 +50,7 @@ java:
     LETTER_TRACKING_DB_CONN_OPTIONS: "?sslmode=require&gssEncMode=disable"
 
     # db - migration
-    FLYWAY_URL: "jdbc:postgresql://send-letter-service-db-{{ .Values.global.environment }}.postgres.database.azure.com:5432/send_letter?sslmode=require"
+    FLYWAY_URL: "jdbc:postgresql://send-letter-service-flexible-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com:5432/send_letter?sslmode=require"
 
     # encryption
     ENCRYPTION_ENABLED: "true"
