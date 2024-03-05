@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/juror-scheduler-execution:latest
   ingressHost: 
+  environment:
+    JUROR_SERVICE_HOST: juror-api.staging.platform.hmcts.net
