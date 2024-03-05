@@ -30,6 +30,10 @@ base:
           alias: TAX_TRIBUNALS_DOWNLOADER_URL
         - name: glimr-api-url
           alias: GLIMR_API_URL
+        - name: glimr-direct-api-url
+          alias: GLIMR_DIRECT_API_URL
+        - name: glimr-direct-enabled
+          alias: GLIMR_DIRECT_ENABLED
         - name: upload-problems-report-auth-user
           alias: UPLOAD_PROBLEMS_REPORT_AUTH_USER
         - name: upload-problems-report-auth-digest
@@ -152,6 +156,10 @@ sidekiq:
           alias: TAX_TRIBUNALS_DOWNLOADER_URL
         - name: glimr-api-url
           alias: GLIMR_API_URL
+        - name: glimr-direct-api-url
+          alias: GLIMR_DIRECT_API_URL
+        - name: glimr-direct-enabled
+          alias: GLIMR_DIRECT_ENABLED
         - name: upload-problems-report-auth-user
           alias: UPLOAD_PROBLEMS_REPORT_AUTH_USER
         - name: upload-problems-report-auth-digest
@@ -273,6 +281,10 @@ job:
           alias: TAX_TRIBUNALS_DOWNLOADER_URL
         - name: glimr-api-url
           alias: GLIMR_API_URL
+        - name: glimr-direct-api-url
+          alias: GLIMR_DIRECT_API_URL
+        - name: glimr-direct-enabled
+          alias: GLIMR_DIRECT_ENABLED
         - name: upload-problems-report-auth-user
           alias: UPLOAD_PROBLEMS_REPORT_AUTH_USER
         - name: upload-problems-report-auth-digest
