@@ -16,15 +16,15 @@ java:
           alias: FTP_HOSTNAME
         - name: upload-summary-report-recipients
           alias: UPLOAD_SUMMARY_REPORT_RECIPIENTS
-        - name: send-letter-service-staging-db-password
+        - name: send-letter-service-staging-flexible-db-password
           alias: LETTER_TRACKING_DB_PASSWORD
-        - name: send-letter-service-staging-db-user
+        - name: send-letter-service-staging-flexible-db-user
           alias: LETTER_TRACKING_DB_USER_NAME
-        - name: send-letter-service-staging-db-name
+        - name: send-letter-service-staging-flexible-db-name
           alias: LETTER_TRACKING_DB_NAME
-        - name: send-letter-service-staging-db-host
+        - name: send-letter-service-staging-flexible-db-host
           alias: LETTER_TRACKING_DB_HOST
-        - name: send-letter-service-staging-db-port
+        - name: send-letter-service-staging-flexible-db-port
           alias: LETTER_TRACKING_DB_PORT
         - name: encryption-public-key
           alias: ENCRYPTION_PUBLIC_KEY
