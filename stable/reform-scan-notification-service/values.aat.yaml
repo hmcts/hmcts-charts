@@ -20,15 +20,15 @@ java:
           alias: clients.error-notifications.url
         - name:  error-notifications-username
           alias: clients.error-notifications.username
-        - name: notification-service-staging-postgres-pass
+        - name: notification-service-staging-db-flexible-pass
           alias: DB_PASSWORD
-        - name: notification-service-staging-postgres-user
+        - name: notification-service-staging-db-flexible-user
           alias: DB_USER
-        - name: notification-service-staging-postgres-host
+        - name: notification-service-staging-db-flexible-host
           alias: DB_HOST
-        - name: notification-service-staging-postgres-port
+        - name: notification-service-staging-db-flexible-port
           alias: DB_PORT
-        - name: notification-service-staging-postgres-database
+        - name: notification-service-staging-db-flexible-database
           alias: DB_NAME
         - name:  notification-staging-queue-listen-shared-access-key
           alias: QUEUE_READ_ACCESS_KEY
