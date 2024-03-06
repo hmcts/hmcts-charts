@@ -1,0 +1,3 @@
+java:
+  image: 'sdshmctspublic.azurecr.io/darts/proxy:staging'
+  ingressHost: darts-proxy-staging.staging.platform.hmcts.net

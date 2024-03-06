@@ -1,0 +1,11 @@
+java:
+  applicationPort: 8080
+  image: 'sdshmctspublic.azurecr.io/darts/proxy:latest'
+  ingressHost: darts-proxy.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: darts
+  keyVaults:
+    "darts":
+  environment:
+    DARTS_MODERNISED_API_URL: https://darts-gateway.{{ .Values.global.environment }}.platform.hmcts.net
+    DARTS_GATEWAY_API_URL: https://darts-api.{{ .Values.global.environment }}.platform.hmcts.net
+    UCF_AUDIO_TRANSFER_ENABLED: true
