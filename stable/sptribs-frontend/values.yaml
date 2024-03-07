@@ -29,5 +29,6 @@ nodejs:
         - app-insights-instrumentation-key
         - postcode-lookup-token
         - specialTribunals-cic-pcq-token
+        - sptribs-frontend-dynatrace-url
 idam-pr:
   enabled: false
