@@ -4,7 +4,7 @@ java:
   ingressHost: darts-proxy.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: darts
   keyVaults:
-    "darts":
+    darts:
   environment:
     DARTS_MODERNISED_API_URL: https://darts-gateway.{{ .Values.global.environment }}.platform.hmcts.net
     DARTS_GATEWAY_API_URL: https://darts-api.{{ .Values.global.environment }}.platform.hmcts.net
