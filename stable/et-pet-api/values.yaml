@@ -29,7 +29,6 @@ base:
     AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_CONTAINER: private
     AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: public
-    FILE_CONVERSIONS_ENABLED: 'false'
   keyVaults:
     et-pet:
       secrets:
