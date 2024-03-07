@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for darts-proxy App
 name: darts-proxy
 home: https://github.com/hmcts/darts-proxy
-version: 0.0.4
+version: 0.0.5
 maintainers:
   - name: HMCTS darts proxy team
 dependencies:
