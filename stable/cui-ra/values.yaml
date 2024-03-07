@@ -16,6 +16,7 @@ nodejs:
         - app-insights-connection-string
         - s2s-secret
         - redis-access-key
+        - redis-host1
   environment:
     DEMO_ENABLED: 'false'
     ENV_INSTANCE: '{{ .Values.global.environment }}'
