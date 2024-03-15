@@ -49,6 +49,10 @@ java:
           alias: OAUTH2_CLIENT_AUTH
         - name: rd-sendgrid-api-key
           alias: RD_SENDGRID_API_KEY
+        - name: idam-rd-system-user-username
+          alias: RD_SYSTEM_USER_USERNAME
+        - name: idam-rd-system-user-password
+          alias: RD_SYSTEM_USER_PASSWORD
   secrets:
     JRD_MQ_PASSWORD:
       secretRef: rd-sb-preview
