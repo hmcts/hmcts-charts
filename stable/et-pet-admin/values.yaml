@@ -15,7 +15,6 @@ base:
     RAILS_LOG_LEVEL: "debug"
     RACK_ENV: "production"
     WEB_CONCURRENCY: 3
-    ATOS_API_URL: "http://et-atos-api.employmenttribunal:8080"
     ACAS_API_URL: "http://et-pet-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/et_acas_api"
     ET_API_URL: "http://et-pet-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/api"
     RAILS_LOG_TO_STDOUT: true
@@ -54,10 +53,6 @@ base:
           alias: SECRET_KEY_BASE
         - name: admin-devise-secret-key
           alias: DEVISE_SECRET_KEY
-        - name: atos-api-username
-          alias: ATOS_API_USERNAME
-        - name: atos-api-password
-          alias: ATOS_API_PASSWORD
         - name: sendgrid-username
           alias: SMTP_USERNAME
         - name: sendgrid-password
