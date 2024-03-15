@@ -54,10 +54,6 @@ base:
           alias: SECRET_KEY_BASE
         - name: api-devise-secret-key
           alias: DEVISE_SECRET_KEY
-        - name: atos-api-username
-          alias: ATOS_API_USERNAME
-        - name: atos-api-password
-          alias: ATOS_API_PASSWORD
         - name: api-rsa-acas-public-certificate-new
           alias: RSA_ACAS_PUBLIC_CERTIFICATE_BASE64
         - name: api-rsa-et-public-certificate-new
@@ -140,10 +136,6 @@ sidekiq:
           alias: SECRET_KEY_BASE
         - name: api-devise-secret-key
           alias: DEVISE_SECRET_KEY
-        - name: atos-api-username
-          alias: ATOS_API_USERNAME
-        - name: atos-api-password
-          alias: ATOS_API_PASSWORD
         - name: api-rsa-acas-public-certificate-new
           alias: RSA_ACAS_PUBLIC_CERTIFICATE_BASE64
         - name: api-rsa-et-public-certificate-new
