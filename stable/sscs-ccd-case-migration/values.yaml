@@ -14,6 +14,8 @@ job:
           alias: IDAM_PASS
         - name: sscs-s2s-secret
           alias: DATA_STORE_IDAM_KEY
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
   environment:
     MIGRATION_WA_ENABLED: true
     IDAM_CLIENT_ID: sscs
