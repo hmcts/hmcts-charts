@@ -4,6 +4,8 @@ nodejs:
   livenessDelay: 130
   aadIdentityName: sptribs
   ingressHost: sptribs-dss-update-case-web.{{ .Values.global.environment }}.platform.hmcts.net
+  spotInstances:
+    enabled: true
   image: 'hmctspublic.azurecr.io/sptribs/sptribs-dss-update-case-web:latest'
 
   environment:
