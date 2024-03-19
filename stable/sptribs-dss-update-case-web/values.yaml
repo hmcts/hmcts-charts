@@ -24,7 +24,3 @@ nodejs:
         - idam-systemupdate-password
         - idam-dss-update-ui-secret
         - sptribs-dss-update-case-dynatrace-url
-
-  autoscaling:
-    enabled: true
-    maxReplicas: 4
