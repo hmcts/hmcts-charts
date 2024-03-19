@@ -31,9 +31,5 @@ nodejs:
         - specialTribunals-cic-pcq-token
         - sptribs-frontend-dynatrace-url
 
-  autoscaling:
-    enabled: true
-    maxReplicas: 4
-
 idam-pr:
   enabled: false
