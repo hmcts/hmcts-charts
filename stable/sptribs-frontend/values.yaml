@@ -2,6 +2,8 @@ nodejs:
   applicationPort: 4000
   aadIdentityName: sptribs
   ingressHost: sptribs-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  spotInstances:
+    enabled: true
   image: 'hmctspublic.azurecr.io/sptribs/frontend:latest'
 
   environment:
