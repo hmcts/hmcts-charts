@@ -35,3 +35,7 @@ java:
           alias: scheduler.hours
         - name: CRON-SCHEDULE
           alias: scheduler.config
+        - name: idam-rd-system-user-username
+          alias: RD_SYSTEM_USER_USERNAME
+        - name: idam-rd-system-user-password
+          alias: RD_SYSTEM_USER_PASSWORD

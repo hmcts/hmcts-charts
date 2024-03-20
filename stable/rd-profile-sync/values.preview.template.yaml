@@ -22,3 +22,7 @@ java:
           alias: idam.api.authorization
         - name: ApplicationInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
+        - name: idam-rd-system-user-username
+          alias: RD_SYSTEM_USER_USERNAME
+        - name: idam-rd-system-user-password
+          alias: RD_SYSTEM_USER_PASSWORD
