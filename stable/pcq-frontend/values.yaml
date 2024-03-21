@@ -6,6 +6,11 @@ nodejs:
   cpuLimits: "1500m"
   spotInstances:
     enabled: true
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetCPUUtilizationPercentage: 80
   environment:
     PUBLIC_PROTOCOL: https
     REFORM_TEAM: pcq
