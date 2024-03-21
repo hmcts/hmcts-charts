@@ -4,6 +4,8 @@ nodejs:
   cpuRequests: "500m"
   memoryLimits: "2048Mi"
   cpuLimits: "1500m"
+  spotInstances:
+    enabled: true
   environment:
     PUBLIC_PROTOCOL: https
     REFORM_TEAM: pcq
