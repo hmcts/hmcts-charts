@@ -7,6 +7,8 @@ java:
   image: 'hmctspublic.azurecr.io/lau/case-backend:latest'
   ingressHost: lau-case-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: lau
+  spotInstances:
+    enabled: true
   environment:
     LAU_DB_NAME: lau_case
     LAU_DB_HOST: lau-case-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
@@ -39,4 +41,3 @@ java:
           alias: flyway.password
         - name: idam-client-secret
           alias: IDAM_CLIENT_SECRET
-
