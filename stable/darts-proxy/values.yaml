@@ -4,22 +4,11 @@ java:
   ingressHost: darts-proxy.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: darts
   secrets:
-    REDIS_ADDRESS:
-      secretRef: redis-address
-      key: address
-    REDIS_PASSWORD:
-      secretRef: redis-password
-      key: password
   keyVaults:
     "darts":
       secrets:
         - name: app-insights-connection-string
           alias: app-insights-connection-string
-        - name: redis-address
-          alias: REDIS_ADDRESS
-        - name: redis-password
-          alias: REDIS_PASSWORD
   environment:
-    DARTS_MODERNISED_API_URL: https://darts-gateway.{{ .Values.global.environment }}.platform.hmcts.net
+    DARTS_MODERNISED_API_URL: https://darts-gateway.{{ .Values.global.environment }}.platform.hmcts.net/service/darts/
     DARTS_GATEWAY_API_URL: https://darts-api.{{ .Values.global.environment }}.platform.hmcts.net
-    UCF_AUDIO_TRANSFER_ENABLED: true
