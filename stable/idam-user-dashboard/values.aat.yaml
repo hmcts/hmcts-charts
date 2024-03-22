@@ -1,4 +1,6 @@
 nodejs:
+  ingressAnnotations:
+    external-dns.alpha.kubernetes.io/exclude: "true"
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/idam-user-dashboard:latest
   ingressHost: 
@@ -6,6 +8,6 @@ nodejs:
   environment:
     DASHBOARD_URL: https:///
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
-    
+
 idam-pr:
   enabled: false
