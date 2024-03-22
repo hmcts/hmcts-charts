@@ -1,4 +1,6 @@
 nodejs:
+  ingressAnnotations:
+    external-dns.alpha.kubernetes.io/exclude: 'true'
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/idam-hmcts-access:latest
   ingressHost: 
