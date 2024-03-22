@@ -7,6 +7,8 @@ java:
   image: 'hmctspublic.azurecr.io/lau/idam-backend:latest'
   ingressHost: lau-idam-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: lau
+  spotInstances:
+    enabled: true
   environment:
     LAU_IDAM_DB_NAME: lau_idam
     LAU_IDAM_DB_HOST: lau-idam-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
