@@ -1,7 +1,7 @@
 java:
-  memoryRequests: "1024Mi"
+  memoryRequests: "2048Mi"
   cpuRequests: "500m"
-  memoryLimits: "2048Mi"
+  memoryLimits: "4096Mi"
   cpuLimits: "1500m"
   applicationPort: 4550
   ingressHost: pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
