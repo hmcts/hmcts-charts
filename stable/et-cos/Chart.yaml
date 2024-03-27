@@ -1,11 +1,11 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.42
+version: 0.0.43
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
 dependencies:
   - name: java
-    version: 5.0.4
+    version: 5.2.0
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
