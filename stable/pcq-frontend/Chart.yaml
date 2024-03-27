@@ -2,13 +2,13 @@ apiVersion: v2
 name: pcq-frontend
 description: A Helm chart for the HMCTS PCQ product
 home: https://github.com/hmcts/pcq-frontend
-version: 1.2.99
+version: 1.2.100
 maintainers:
   - name: HMCTS PCQ Team
     email: pcq-action-group@HMCTS.NET
 dependencies:
   - name: nodejs
-    version: 3.0.3
+    version: 3.1.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: redis
     version: 19.0.1
