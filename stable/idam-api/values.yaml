@@ -75,14 +75,10 @@ java:
     SSL_TRUST_HOSTNAMES_1: forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal
     LOG_AND_AUDIT_IDAM_URL: http://lau-idam-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     LOG_AND_AUDIT_IDAM_ENABLED: false
-  autoscaling:
-    enabled: true
-    maxReplicas: 4
-    targetCPUUtilizationPercentage: 80
 
-  cpuRequests: '160m'
-  cpuLimits: '200m'
-  memoryRequests: '1536Mi'
+  cpuRequests: '1000m'
+  cpuLimits: '2500m'
+  memoryRequests: '1024Mi'
   memoryLimits: '2048Mi'
   
   devmemoryRequests: '1024Mi'
