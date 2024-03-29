@@ -3,7 +3,7 @@ appVersion: "1.0"
 home: https://github.com/hmcts/idam-api
 description: A Helm chart for CFT IDAM API
 name: idam-api
-version: 0.7.1
+version: 0.8.0
 maintainers:
   - name: CFT IDAM Team
     email: reform.idam@HMCTS.NET
@@ -19,5 +19,5 @@ keywords:
 - api
 dependencies:
   - name: java
-    version: ~5.0.0
+    version: ~5.2.0
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/

@@ -6,6 +6,7 @@ java:
   ingressIP: ${INGRESS_IP}
   consulIP: ${CONSUL_LB_IP}
   environment:
+    SPRING_PROFILES_ACTIVE: events-in-memory
     TESTING_SUPPORT_ENABLED: true
     IDAM_SCHEDULED_BATCHPROCESSING_INITIALPROCESSOR: ${IMAGE_NAME}
     IDAM_SCHEDULED_BATCHPROCESSING_INITIALDELAY: 180000
@@ -14,6 +15,9 @@ java:
     IDAM_REGISTRATION_APPOINTDOMAINREGEX_1: ejudiciary\.net
     IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     LOG_AND_AUDIT_IDAM_URL: http://lau-idam-backend-aat.service.core-compute-aat.internal
+    SPRING_JMS_SERVICEBUS_CONNECTION_STRING: Endpoint=sb://idam-servicebus-preview.servicebus.windows.net/
+    SPRING_JMS_SERVICEBUS_TOPIC_CLIENT_ID: 1c4f0704-a29e-403d-b719-b90c34ef14c9
+    SPRING_JMS_SERVICEBUS_NAMESPACE: idam-servicebus-preview
     LOG_AND_AUDIT_IDAM_ENABLED: true
     IDAM_RATELIMIT_PASSWORDGRANT_ENABLED: true
     FEATUREFLAGS_NOTIFYONUSEREMAILUPDATED: true
