@@ -16,10 +16,6 @@ java:
           alias: ET_COS_SYSTEM_USER_PASSWORD
         - name: idam-client-secret
           alias: IDAM_CLIENT_SECRET
-        # TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
-        # - name: cos-POSTGRES-PASS
-        #  alias: ET_COS_DB_PASSWORD
-          # TO BE ACTIVATED ONCE DATA HAS BEEN MIGRATED TO V15 DB
         - name: et-cos-postgres-user-v15
           alias: ET_COS_DB_USER_NAME
         - name: et-cos-postgres-password-v15
@@ -59,12 +55,6 @@ java:
     CCD_GATEWAY_BASE_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net"
     MICRO_SERVICE: "et_cos"
     ET_COS_DB_CONN_OPTIONS: ?sslmode=require
-    # TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
-    # ET_COS_DB_HOST: et-cos-{{ .Values.global.environment }}.postgres.database.azure.com
-    # ET_COS_DB_NAME: et_cos
-    # ET_COS_DB_PORT: '5432'
-    # ET_COS_DB_USER_NAME: et_cos@et-cos-{{ .Values.global.environment }}
-    # ABOVE TO BE REMOVED ONCE DATA HAS BEEN MIGRATED TO V15 DB
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SECURE_DOC_STORE_FEATURE: true
