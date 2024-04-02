@@ -2,8 +2,8 @@ apiVersion: v2
 appVersion: "0.1"
 description: Reference data service for professional users
 name: rd-profile-sync
-version: 0.0.28
+version: 0.0.29
 dependencies:
   - name: java
-    version: 5.0.3
+    version: 5.2.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
