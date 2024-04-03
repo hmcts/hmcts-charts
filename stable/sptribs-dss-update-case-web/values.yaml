@@ -27,4 +27,5 @@ nodejs:
         - idam-systemupdate-username
         - idam-systemupdate-password
         - idam-dss-update-ui-secret
+        - s2s-secret-sptribs-dss-update-case-web
         - sptribs-dss-update-case-dynatrace-url
