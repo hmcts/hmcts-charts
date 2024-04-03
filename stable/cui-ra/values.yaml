@@ -26,4 +26,4 @@ nodejs:
     SERVICES_REFDATA_ENDPOINT: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SERVICES_S2S_ENDPOINT: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     S2S_ALLOWED_SERVICES:
-      - private-law
+      - prl_citizen_frontend
