@@ -14,6 +14,8 @@ java:
     LOCATIONS_DB: classpath:db/migration,classpath:db/postgres
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
 
+  spotInstances:
+    enabled: true
   image: 'hmctspublic.azurecr.io/rd/location-ref-api:latest'
   keyVaults:
     rd:
