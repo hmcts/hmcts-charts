@@ -1,0 +1,43 @@
+---
+java:
+  aadIdentityName: vh-aad-identity
+  applicationPort: 8080
+  image: "sdshmctspublic.azurecr.io/vh/notification-api:latest"
+  ingressHost: vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
+  livenessPath: /health/liveness
+  readinessPath: /health/readiness
+  startupPath: /health/startup
+  releaseNameOverride: vh-notification-api
+  replicas: 2
+  keyVaults:
+    vh-infra-core:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - name: connectionstrings--applicationinsights
+          alias: applicationinsights--connectionstring
+        - azuread--tenantid
+        - connectionstrings--vhnotificationsapi
+    vh-notification-api:
+      excludeEnvironmentSuffix: false
+      resourceGroup: vh-infra-core-{{ .Values.global.environment }}
+      usePodIdentity: true
+      secrets:
+        - azuread--clientid
+        - azuread--clientsecret
+        - notifyconfiguration--apikey
+        - notifyconfiguration--callbacksecret
+        - name: azuread--identifieruri
+          alias: services--vhnotificationapiresourceid
+        - name: azuread--identifieruri
+          alias: azuread--vhnotificationapiresourceid
+        - name: launchdarkly--sdkkey
+          alias: FeatureToggle--SdkKey
+  environment:
+    ASPNETCORE_URLS: http://+:8080
+    DISABLEHTTPSREDIRECTION: true
+    Logging__LogLevel__Default: warning
+    Logging__LogLevel__Microsoft: warning
+    Logging__LogLevel__System: warning
+    NotifyConfiguration__Environment: "{{ lower .Values.global.environment }}"
