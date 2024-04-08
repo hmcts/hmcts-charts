@@ -37,5 +37,6 @@ job:
     VH_STORAGE_CONTAINER_NAME: vhsimulator
     VH_PROCESS_BACK_TO_DAY: 2
     VH_PROCESS: false
+    CVP_PROCESS: true
 global:
   jobKind: CronJob
