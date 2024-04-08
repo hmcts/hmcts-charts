@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for disposer-idam-user App
 name: disposer-idam-user
 home: https://github.com/hmcts/disposer-idam-user
-version:  0.0.16
+version:  0.1.0
 maintainers:
   - name: HMCTS Retain and Dispose team
 dependencies:
