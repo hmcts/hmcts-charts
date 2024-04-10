@@ -36,6 +36,9 @@ java:
     RECONFIGURATION_MAX_TIME_LIMIT_SECONDS: 120
     RECONFIGURATION_RETRY_WINDOW_TIME_HOURS: 2
 
+  spotInstances:
+    enabled: false
+
   keyVaults:
     wa:
       secrets:
