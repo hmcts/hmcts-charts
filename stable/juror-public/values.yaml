@@ -13,6 +13,7 @@ nodejs:
         - name: public-jwtTTL
         - name: public-pcqTokenKey
         - name: public-redisConnection
+        - name: public-dynatraceScriptUrl
         - name: app-insights-connection-string
   environment:
     API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/api/v1
