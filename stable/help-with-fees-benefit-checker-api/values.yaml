@@ -21,5 +21,5 @@ base:
           alias: API_USER_ID
         - name: hwf-benefit-checker-api-service-name
           alias: API_SERVICE_NAME
-        - name: hwf-benefit-checker-appinsights-key
+        - name: hwf-app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_INSTRUMENTATION_KEY
