@@ -7,8 +7,8 @@ function:
   scaleType: Job
   triggers:
     - type: azure-servicebus
-      topicName: "servicecallbacktopic"
-      subscriptionName: defaultServiceCallbackSubscription
+      topicName: "ccpay-service-callback-topic"
+      subscriptionName: serviceCallbackPremiumSubscription
       connectionFromEnv: SERVICE_CALLBACK_BUS_CONNECTION
       connection: SERVICE_CALLBACK_BUS_CONNECTION
       queueLength: 1
