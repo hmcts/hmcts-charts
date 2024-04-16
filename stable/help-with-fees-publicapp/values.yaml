@@ -17,7 +17,6 @@ base:
     WEB_CONCURRENCY: 1
     SUBMISSION_URL: "http://help-with-fees-staffapp-base"
     SENTRY_SSL_VERIFICATION: false
-    ZENDESK_ENABLED: true
     RAILS_LOG_TO_STDOUT: true
     LOG_LEVEL: "info"
     SMTP_DOMAIN: "public.demo.hwf.dsd.io"
@@ -38,12 +37,6 @@ base:
           alias: SUBMISSION_TOKEN
         - name: hwf-public-sentry-dsn
           alias: SENTRY_DSN
-        - name: hwf-public-zendesk-url
-          alias: ZENDESK_URL
-        - name: hwf-public-zendesk-username
-          alias: ZENDESK_USERNAME
-        - name: hwf-public-zendesk-token
-          alias: ZENDESK_TOKEN
         - name: hwf-public-smtp-username
           alias: SMTP_USERNAME
         - name: hwf-public-smtp-password
