@@ -47,4 +47,6 @@ java:
           alias: SUBSCRIPTION_MANAGEMENT_AZ_API
         - name: app-insights-java-connection-string
           alias: APP_INSIGHTS_CONNECTION_STRING
+  autoscaling:
+    enabled: false #To be enabled as part of PUB-1692
 
