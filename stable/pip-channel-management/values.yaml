@@ -25,4 +25,5 @@ java:
           alias: STORAGE_ACCOUNT_NAME
         - name: app-insights-java-connection-string
           alias: APP_INSIGHTS_CONNECTION_STRING
-  environment:
+  autoscaling:
+    enabled: false #To be enabled as part of PUB-1692

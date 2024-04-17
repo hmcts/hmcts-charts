@@ -3,10 +3,10 @@ appVersion: "1.0"
 name: pip-channel-management
 description: Publishing & Information Channel Management
 home: https://github.com/hmcts/pip-channel-management
-version: 0.0.31
+version: 0.0.32
 maintainers:
   - name: HMCTS PIP Team
 dependencies:
   - name: java
-    version: 5.0.4
+    version: 5.2.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
