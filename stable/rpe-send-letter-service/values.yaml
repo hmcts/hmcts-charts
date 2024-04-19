@@ -16,15 +16,15 @@ java:
           alias: FTP_HOSTNAME
         - name: upload-summary-report-recipients
           alias: UPLOAD_SUMMARY_REPORT_RECIPIENTS
-        - name: send-letter-service-POSTGRES-FLEXIBLE-PASS
+        - name: send-letter-service-POSTGRES-PASS
           alias: LETTER_TRACKING_DB_PASSWORD
-        - name: send-letter-service-POSTGRES-FLEXIBLE-USER
+        - name: send-letter-service-POSTGRES-USER
           alias: LETTER_TRACKING_DB_USER_NAME
-        - name: send-letter-service-POSTGRES-FLEXIBLE-DATABASE
+        - name: send-letter-service-POSTGRES-DATABASE
           alias: LETTER_TRACKING_DB_NAME
-        - name: send-letter-service-POSTGRES-FLEXIBLE-PORT
+        - name: send-letter-service-POSTGRES-PORT
           alias: LETTER_TRACKING_DB_PORT
-        - name: send-letter-service-POSTGRES-FLEXIBLE-HOST
+        - name: send-letter-service-POSTGRES-HOST
           alias: LETTER_TRACKING_DB_HOST
         - name: encryption-public-key
           alias: ENCRYPTION_PUBLIC_KEY
