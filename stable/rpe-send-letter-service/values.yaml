@@ -28,10 +28,6 @@ java:
           alias: LETTER_TRACKING_DB_HOST
         - name: encryption-public-key
           alias: ENCRYPTION_PUBLIC_KEY
-        - name: app-insights-instrumentation-key
-          alias: azure.application-insights.instrumentation-key
-        - name: app-insights-connection-string
-          alias: app-insights-connection-string
         - name: reports-email-password
           alias: SMTP_PASSWORD
         - name: reports-email-username
@@ -44,6 +40,8 @@ java:
           alias: LAUNCH_DARKLY_SDK_KEY
         - name: launch-darkly-offline-mode
           alias: LAUNCH_DARKLY_OFFLINE_MODE
+        - name: app-insights-connection-string
+          alias: APP_INSIGHTS_CONNECTION_STRING
 
   environment:
     # db

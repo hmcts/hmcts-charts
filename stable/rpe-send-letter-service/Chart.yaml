@@ -1,7 +1,7 @@
 name: rpe-send-letter-service
 apiVersion: v2
 home: https://github.com/hmcts/send-letter-service
-version: 0.4.23
+version: 0.4.24
 description: HMCTS Send letter service
 maintainers:
   - name: HMCTS BSP Team
