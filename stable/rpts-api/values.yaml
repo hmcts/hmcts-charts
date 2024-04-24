@@ -10,7 +10,7 @@ java:
         - name: api-POSTGRES-FLEXIBLE-PASS
           alias: POSTGRES_PASSWORD
         - name: app-insights-connection-string
-          alias: app-insights-connection-string
+          alias: APP_INSIGHTS_CONNECTION_STRING
         - name: os-key
           alias: OS_KEY
   environment:

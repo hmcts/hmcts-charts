@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for rpts-api App
 name: rpts-api
 home: https://github.com/hmcts/rpts-api
-version: 0.0.48
+version: 0.0.49
 maintainers:
   - name: HMCTS rpts team
 dependencies:
