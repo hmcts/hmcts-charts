@@ -1,8 +1,8 @@
 # Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
-  releaseNameOverride: idam-testing-support-api-staging
-  image: hmctspublic.azurecr.io/idam/testing-support-api:staging-3fd8e0d-20240412163215
-  ingressHost: idam-testing-support-api-staging.aat.platform.hmcts.net
+  releaseNameOverride: 
+  image: https://hmcts.azurecr.io/hmcts/idam-testing-support-api:latest
+  ingressHost: 
   environment:
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.aat.platform.hmcts.net/o/jwks
