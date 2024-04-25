@@ -3,6 +3,8 @@ java:
   ingressHost: am-judicial-booking-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   applicationPort: 4097
   aadIdentityName: am
+  autoscaling:
+    enabled: false
   keyVaults:
     am:
       secrets:
