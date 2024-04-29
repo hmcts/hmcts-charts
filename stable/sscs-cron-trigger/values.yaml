@@ -18,6 +18,8 @@ job:
             alias: IDAM_S2S_AUTH_TOTP_SECRET
           - name: s2s-micro
             alias: IDAM_S2S_AUTH_MICROSERVICE
+          - name: app-insights-connection-string
+            alias: app_insights_connection_string
   schedule: "0 1 * * *"
   global:
     jobKind: CronJob
