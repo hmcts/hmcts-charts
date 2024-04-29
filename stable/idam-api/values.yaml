@@ -50,7 +50,7 @@ java:
         - name: redis-port
           alias: spring.data.redis.port
   environment:
-    STRATEGIC_ADMIN_URL: https://idam-web-admin.service.core-compute-{{ .Values.global.environment }}.internal
+    STRATEGIC_ADMIN_URL: https://idam-user-dashboard.platform.hmcts.net
     STRATEGIC_WEBPUBLIC_URL: https://idam-web-public.service.core-compute-{{ .Values.global.environment }}.internal
     STRATEGIC_API_URL: https://{{ .Release.Name }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_SPI_FORGEROCK_AM_ROOT: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam
