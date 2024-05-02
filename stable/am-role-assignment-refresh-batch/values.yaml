@@ -22,8 +22,12 @@ job:
           alias: AM_ROLE_ASSIGNMENT_REFRESH_BATCH_SECRET
         - name: role-assignment-service-LD-SDK-KEY
           alias: LD_SDK_KEY
-        - name: org-role-mapping-service-POSTGRES-PASS
+        - name: org-role-mapping-service-POSTGRES-PASS-V15
           alias: ORG_ROLE_MAPPING_DB_PASSWORD
+        - name: org-role-mapping-service-POSTGRES-USER-V15
+          alias: ORG_ROLE_MAPPING_DB_USERNAME
+        - name: org-role-mapping-service-POSTGRES-HOST-V15
+          alias: ORG_ROLE_MAPPING_DB_HOST
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_USER_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
@@ -33,8 +37,6 @@ job:
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     ORG_ROLE_MAPPING_DB_PORT: 5432
     ORG_ROLE_MAPPING_DB_NAME: org_role_mapping
-    ORG_ROLE_MAPPING_DB_HOST: am-org-role-mapping-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    ORG_ROLE_MAPPING_DB_USERNAME: am@am-org-role-mapping-service-postgres-db-v11-{{ .Values.global.environment }}
     ORG_ROLE_MAPPING_DB_OPTIONS: "?stringtype=unspecified&sslmode=require"
     AM_ORM_URL: http://am-org-role-mapping-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     AM_RAS_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
