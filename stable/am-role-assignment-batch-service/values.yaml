@@ -13,23 +13,27 @@ job:
           alias: app-insights-connection-string
         - name: am-role-assignment-service-s2s-secret
           alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
-        - name: role-assignment-service-POSTGRES-PASS
+        - name: role-assignment-service-POSTGRES-PASS-V15
           alias: ROLE_ASSIGNMENT_DB_PASSWORD
+        - name: role-assignment-service-POSTGRES-USER-V15
+          alias: ROLE_ASSIGNMENT_DB_USERNAME
+        - name: role-assignment-service-POSTGRES-HOST-V15
+          alias: ROLE_ASSIGNMENT_DB_HOST
         - name: am-sendgrid-api-key
           alias: AM_SENDGRID_API_KEY
         - name: role-assignment-service-LD-SDK-KEY
           alias: LD_SDK_KEY
-        - name: judicial-booking-service-POSTGRES-PASS
+        - name: judicial-booking-service-POSTGRES-PASS-V15
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
+        - name: judicial-booking-service-POSTGRES-USER-V15
+          alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_USER
+        - name: judicial-booking-service-POSTGRES-HOST-V15
+          alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432
     ROLE_ASSIGNMENT_DB_NAME: role_assignment
-    ROLE_ASSIGNMENT_DB_HOST: am-role-assignment-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    ROLE_ASSIGNMENT_DB_USERNAME: am@am-role-assignment-service-postgres-db-v11-{{ .Values.global.environment }}
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
 postgresql:
   enabled: false
