@@ -10,8 +10,12 @@ java:
       secrets:
         - name: am-judicial-booking-service-s2s-secret
           alias: AM_JUDICIAL_BOOKING_SERVICE_SECRET
-        - name: judicial-booking-service-POSTGRES-PASS
+        - name: judicial-booking-service-POSTGRES-PASS-V15
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
+        - name: judicial-booking-service-POSTGRES-USER-V15
+          alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_USER
+        - name: judicial-booking-service-POSTGRES-HOST-V15
+          alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST
         - name: app-insights-connection-string
           alias: app-insights-connection-string
         - name: judicial-booking-service-IDAM-CLIENT-SECRET
@@ -26,8 +30,6 @@ java:
     AM_JUDICIAL_BOOKING_S2S_AUTHORISED_SERVICES: am_judicial_booking_service,am_org_role_mapping_service,xui_webapp
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: am@am-judicial-booking-service-postgres-db-v11-{{ .Values.global.environment }}
     OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
