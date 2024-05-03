@@ -9,6 +9,8 @@ java:
       secrets:
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: MaxFileUploadRequestSizeInMegabytes
+          alias: MAX_FILE_UPLOAD_REQUEST_SIZE_MEGABYTES
   environment:
     DARTS_MODERNISED_API_URL: https://darts-api.{{ .Values.global.environment }}.platform.hmcts.net
     DARTS_GATEWAY_API_URL: http://darts-gateway.{{ .Values.global.environment }}.platform.hmcts.net/service/darts
