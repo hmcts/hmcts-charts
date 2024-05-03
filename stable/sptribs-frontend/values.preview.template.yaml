@@ -4,6 +4,7 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   environment:
     PCQ_ENABLED: true
+    RATE_LIMITER_DISABLED: true
 
 idam-pr:
   enabled: true
