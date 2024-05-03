@@ -1,8 +1,4 @@
 java:
-  postgresql:
-    postgresqlUsername: emhrs
-    postgresqlPassword: emhrs
-    nameOverride: em-hrs-db
   applicationPort: 8080
   image: 'hmctspublic.azurecr.io/em/hrs-api:latest'
   ingressHost: em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
