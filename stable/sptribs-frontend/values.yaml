@@ -3,7 +3,7 @@ nodejs:
   aadIdentityName: sptribs
   ingressHost: sptribs-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   spotInstances:
-    enabled: true
+    enabled: false
   image: 'hmctspublic.azurecr.io/sptribs/frontend:latest'
 
   environment:
