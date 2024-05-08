@@ -16,7 +16,7 @@ java:
     AUTH_IDAM_CLIENT_BASEURL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
 
   spotInstances:
-    enabled: true
+    enabled: false
   image: 'hmctspublic.azurecr.io/rd/profile-sync:latest'
   keyVaults:
     rd:
