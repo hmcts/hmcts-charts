@@ -11,8 +11,8 @@ job:
       secrets:
         - name: gateway-s2s-client-id
           alias: gateway-s2s-client-id
-        - name: gateway-s2s-secret
-          alias: gateway-s2s-secret
+        - name: gateway-s2s-client-secret
+          alias: gateway-s2s-client-secret
         - name: app-insights-connection-string
           alias: app-insights-connection-string
 
