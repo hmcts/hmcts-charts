@@ -3,7 +3,7 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     RESTART_APP: 1
-    CAMUNDA_URL: "http://{{ .Release.Name }}-camunda/engine-rest"
+    CAMUNDA_URL: "https://camunda-${SERVICE_FQDN}/engine-rest/"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     POSTGRES_NAME: wa_workflow_api
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
@@ -18,6 +18,31 @@ java:
           alias: azure.application-insights.instrumentation-key
         - name: s2s-secret-workflow-api
           alias: S2S_SECRET_WORKFLOW_API
+
+  postgresql:
+    releaseNameOverride: "{{ .Release.Name }}-postgresql"
+    enabled: true
+    ingressHost: "postgres-{{ .Release.Name }}.preview.platform.hmcts.net"
+    image:
+      registry: hmctspublic.azurecr.io
+      repository: imported/bitnami/postgresql
+      tag: '11.6.0'
+    auth:
+      username: hmcts
+      password: hmcts
+      postgresPassword: hmcts
+    primary:
+      persistence:
+        enabled: false
+      resources:
+        requests:
+          cpu: 25m
+      initdb:
+        scripts:
+          init.sql: |
+            ALTER ROLE hmcts SUPERUSER;
+            CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 
 wa:
   enabled: true
@@ -36,3 +61,28 @@ wa:
       enabled: false
     servicebus:
       enabled: false
+    postgresql:
+      enabled: false
+    camunda:
+      enabled: false
+    reconfigurationBatchCron:
+      enabled: false
+    terminationBatchCron:
+      enabled: false
+
+camunda-bpm:
+  enabled: true
+  java:
+    releaseNameOverride: "{{ .Release.Name }}-camunda"
+    ingressHost: "camunda-{{ .Release.Name }}.preview.platform.hmcts.net"
+    disableKeyVaults: true
+    environment:
+      CAMUNDA_DB_HOST: "{{ .Release.Name }}-postgresql"
+      CAMUNDA_DB_USER_NAME: hmcts
+      CAMUNDA_DB_PASSWORD: hmcts
+      CAMUNDA_DB_CONN_OPTIONS: ""
+      CAMUNDA_DB_NAME: camunda
+      TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
+      CAMUNDA_BPM_DATABASE_SCHEMAUPDATE: true
+      RELEASE_REVISION: "{{ .Release.Revision }}"
+      CAMUNDA_API_AUTH_ENABLED: false

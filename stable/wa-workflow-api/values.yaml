@@ -39,3 +39,5 @@ java:
 
 wa:
   enabled: false
+camunda-bpm:
+  enabled: false
