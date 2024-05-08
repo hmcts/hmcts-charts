@@ -3,7 +3,7 @@ nodejs:
   aadIdentityName: cui
   ingressHost: cui-ra.{{ .Values.global.environment }}.platform.hmcts.net
   spotInstances:
-    enabled: true
+    enabled: false
   image: 'hmctspublic.azurecr.io/cui/ra:latest'
   #  Uncomment once the vault containing the app insights key has been set up
   readinessDelay: 45
