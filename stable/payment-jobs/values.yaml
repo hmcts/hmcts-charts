@@ -9,7 +9,12 @@ job:
   keyVaults:
     ccpay:
       secrets:
-        - gateway-s2s-client-id
-        - gateway-s2s-client-secret
+        - name: gateway-s2s-client-id
+          alias: gateway-s2s-client-id
+        - name: gateway-s2s-secret
+          alias: gateway-s2s-secret
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+
 global:
   jobkind: CronJob
