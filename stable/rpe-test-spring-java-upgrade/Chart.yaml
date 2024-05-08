@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for test-spring-java-upgrade App
+name: rpe-test-spring-java-upgrade
+home: https://github.com/hmcts/test-spring-java-upgrade
+version: 0.0.16
+maintainers:
+  - name: HMCTS rpe team
+dependencies:
+  - name: java
+    version: 5.2.0
+    repository: "https://hmctspublic.azurecr.io/helm/v1/repo/"
