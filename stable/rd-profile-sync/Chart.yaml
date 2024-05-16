@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "0.1"
 description: Reference data service for professional users
 name: rd-profile-sync
-version: 0.0.31
+version: 0.0.32
 dependencies:
   - name: java
     version: 5.2.0

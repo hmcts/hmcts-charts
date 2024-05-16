@@ -3,5 +3,5 @@ java:
   image: https://hmcts.azurecr.io/hmcts/rd-profile-sync:latest
   ingressHost: 
   environment:
-    POSTGRES_HOST: rd-profile-sync-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: dbsyncdata@rd-profile-sync-postgres-db-v11-{{ .Values.global.environment }}
+    POSTGRES_HOST: rd-profile-sync-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: pgadmin
