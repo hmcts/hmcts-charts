@@ -16,6 +16,10 @@ nodejs:
         - redis-hostname
         - redis-port
         - redis-key
+        - sso-client-id
+        - sso-client-secret
+        - sso-client-id-moj
+        - sso-client-secret-moj
   environment:
     IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_TESTIING_SUPPORT_API_BASE_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
