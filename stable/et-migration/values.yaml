@@ -2,7 +2,7 @@ job:
   image: 'hmctspublic.azurecr.io/ccd/migration:latest'
   suspend: true
   kind: CronJob
-  schedule: "0 22 * * *"
+  schedule: "0 15 * * *"
   ingressHost: et-migration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et
   keyVaults:
