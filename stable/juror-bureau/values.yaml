@@ -24,3 +24,5 @@ nodejs:
     SMARTSURVEY_ID_V2: 652997
     SMARTSURVEY_EXPORT_V1: Dashboard Export
     SMARTSURVEY_EXPORT_V2: Dashboard Export
+    RATE_LIMIT_TIME: 300000 # 5 minutes
+    RATE_LIMIT_MAX: 1000000 # 1 mil requests
