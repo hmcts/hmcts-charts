@@ -19,8 +19,8 @@ job:
           alias: ACCOUNT_KEY
 
   environment:
-    POSTGRES_HOST: rd-commondata-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: dbcommondata@rd-commondata-api-postgres-db-v11-{{ .Values.global.environment }}
+    POSTGRES_HOST: rd-commondata-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: dbcommondata@rd-commondata-api-postgres-db-v16-{{ .Values.global.environment }}
     POSTGRES_NAME: dbcommondata
     POSTGRES_PORT: 5432
     FLYWAY_ENABLED: false
