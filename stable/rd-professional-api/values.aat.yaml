@@ -7,5 +7,5 @@ java:
   image: https://hmcts.azurecr.io/hmcts/rd-professional-api:latest
   ingressHost: 
   environment:
-    POSTGRES_HOST: rd-professional-api-postgres-db-v11-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: dbrefdata@rd-professional-api-postgres-db-v11-{{ .Values.global.environment }}
+    POSTGRES_HOST: rd-professional-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: pgadmin
