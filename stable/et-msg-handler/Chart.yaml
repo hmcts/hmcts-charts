@@ -1,13 +1,13 @@
 apiVersion: v2
 name: et-msg-handler
 home: https://github.com/hmcts/et-msg-handler
-version: 0.0.34
+version: 0.0.35
 description: HMCTS Employment Tribunals Message Handler service
 maintainers:
   - name: HMCTS Employment Tribunals Team
 dependencies:
   - name: java
-    version: 5.2.0
+    version: 5.2.1
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
   - name: servicebus
     version: 1.0.4
