@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for labs-hub-ngfw-poc App
 name: labs-hub-ngfw-poc
 home: https://github.com/hmcts/labs-hub-ngfw-poc
-version: 0.0.12
+version: 0.0.13
 maintainers:
   - name: HMCTS labs team
 dependencies:
   - name: java
-    version: 5.0.4
+    version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
