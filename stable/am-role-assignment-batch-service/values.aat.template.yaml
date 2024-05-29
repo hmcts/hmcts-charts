@@ -2,23 +2,3 @@ job:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  keyVaults:
-    am:
-      secrets:
-        - name: app-insights-connection-string
-          alias: app-insights-connection-string
-        - name: am-role-assignment-service-s2s-secret
-          alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
-        - name: role-assignment-service-POSTGRES-PASS-V15
-          alias: ROLE_ASSIGNMENT_DB_PASSWORD
-        - name: am-sendgrid-api-key
-          alias: AM_SENDGRID_API_KEY
-        - name: role-assignment-service-LD-SDK-KEY
-          alias: LD_SDK_KEY
-        - name: judicial-booking-service-POSTGRES-PASS-V15
-          alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
-  environment:
-    ROLE_ASSIGNMENT_DB_HOST: am-role-assignment-service-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com
-    ROLE_ASSIGNMENT_DB_USERNAME: pgadmin
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: am-judicial-booking-service-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com
-    JUDICIAL_BOOKING_SERVICE_POSTGRES_USER: pgadmin
