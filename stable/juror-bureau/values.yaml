@@ -15,6 +15,9 @@ nodejs:
         - name: bureau-redisConnection
         - name: launchDarklyKey
         - name: app-insights-connection-string
+        - name: azure-app-id
+        - name: azure-tenant-id
+        - name: azure-client-secret
   environment:
     API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/api/v1
     USE_AUTH: false
@@ -24,5 +27,7 @@ nodejs:
     SMARTSURVEY_ID_V2: 652997
     SMARTSURVEY_EXPORT_V1: Dashboard Export
     SMARTSURVEY_EXPORT_V2: Dashboard Export
+    CALLBACK_URL: https://juror.{{ .Values.global.environment }}.apps.hmcts.net/auth/internal/callback
+    LOGOUT_REDIRECT: https://juror.{{ .Values.global.environment }}.apps.hmcts.net
     RATE_LIMIT_TIME: 300000 # 5 minutes
     RATE_LIMIT_MAX: 1000000 # 1 mil requests
