@@ -22,11 +22,11 @@ job:
           alias: AM_ROLE_ASSIGNMENT_REFRESH_BATCH_SECRET
         - name: role-assignment-service-LD-SDK-KEY
           alias: LD_SDK_KEY
-        - name: org-role-mapping-service-POSTGRES-PASS-V15
+        - name: org-role-mapping-service-POSTGRES-PASS
           alias: ORG_ROLE_MAPPING_DB_PASSWORD
-        - name: org-role-mapping-service-POSTGRES-USER-V15
+        - name: org-role-mapping-service-POSTGRES-USER
           alias: ORG_ROLE_MAPPING_DB_USERNAME
-        - name: org-role-mapping-service-POSTGRES-HOST-V15
+        - name: org-role-mapping-service-POSTGRES-HOST
           alias: ORG_ROLE_MAPPING_DB_HOST
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
