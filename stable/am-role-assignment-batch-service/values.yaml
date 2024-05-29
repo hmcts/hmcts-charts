@@ -13,21 +13,21 @@ job:
           alias: app-insights-connection-string
         - name: am-role-assignment-service-s2s-secret
           alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
-        - name: role-assignment-service-POSTGRES-PASS-V15
+        - name: role-assignment-service-POSTGRES-PASS
           alias: ROLE_ASSIGNMENT_DB_PASSWORD
-        - name: role-assignment-service-POSTGRES-USER-V15
+        - name: role-assignment-service-POSTGRES-USER
           alias: ROLE_ASSIGNMENT_DB_USERNAME
-        - name: role-assignment-service-POSTGRES-HOST-V15
+        - name: role-assignment-service-POSTGRES-HOST
           alias: ROLE_ASSIGNMENT_DB_HOST
         - name: am-sendgrid-api-key
           alias: AM_SENDGRID_API_KEY
         - name: role-assignment-service-LD-SDK-KEY
           alias: LD_SDK_KEY
-        - name: judicial-booking-service-POSTGRES-PASS-V15
+        - name: judicial-booking-service-POSTGRES-PASS
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
-        - name: judicial-booking-service-POSTGRES-USER-V15
+        - name: judicial-booking-service-POSTGRES-USER
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_USER
-        - name: judicial-booking-service-POSTGRES-HOST-V15
+        - name: judicial-booking-service-POSTGRES-HOST
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST
   environment:
     ROLE_ASSIGNMENT_DB_PORT: 5432

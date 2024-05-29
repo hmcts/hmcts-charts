@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for AM Role Assignment Batch Service
 name: am-role-assignment-batch-service
 home: https://github.com/hmcts/am-role-assignment-batch-service
-version: 0.0.46
+version: 0.0.47
 maintainers:
   - name: Access Management Team
 dependencies:
