@@ -10,11 +10,11 @@ java:
       secrets:
         - name: am-judicial-booking-service-s2s-secret
           alias: AM_JUDICIAL_BOOKING_SERVICE_SECRET
-        - name: judicial-booking-service-POSTGRES-PASS-V15
+        - name: judicial-booking-service-POSTGRES-PASS
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
-        - name: judicial-booking-service-POSTGRES-USER-V15
+        - name: judicial-booking-service-POSTGRES-USER
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_USER
-        - name: judicial-booking-service-POSTGRES-HOST-V15
+        - name: judicial-booking-service-POSTGRES-HOST
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST
         - name: app-insights-connection-string
           alias: app-insights-connection-string
