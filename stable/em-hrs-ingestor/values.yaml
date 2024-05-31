@@ -15,10 +15,18 @@ job:
           alias: APPINSIGHTS_INSTRUMENTATIONKEY
         - name: em-app-insights-connection-string
           alias: app-insights-connection-string
+        - name: show-oauth2-token
+          alias: IDAM_CLIENT_OAUTH_SECRET
+        - name: oauth2-client-id
+          alias: OAUTH_CLIENT_ID
     em-hrs-ingestor:
       secrets:
         - name: microservicekey-em-hrs-ingestor
           alias: S2S_KEY
+        - name: idam-hrs-ingestor-system-user-name
+          alias: IDAM_HRS_INGESTOR_SYSTEM_USER_NAME
+        - name: idam-hrs-ingestor-system-password
+          alias: IDAM_HRS_INGESTOR_SYSTEM_PASSWORD
     em-hrs-api:
       secrets:
         - name: cvp-storage-connection-string
@@ -38,5 +46,7 @@ job:
     VH_PROCESS_BACK_TO_DAY: 2
     VH_PROCESS: false
     CVP_PROCESS: true
+    IDAM_REDIRECT_URI: http://em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
 global:
   jobKind: CronJob
