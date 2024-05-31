@@ -4,4 +4,5 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   environment:
     DEMO_ENABLED: 'true'
+    IS_DEV: 'true'
     ENV_INSTANCE: preview

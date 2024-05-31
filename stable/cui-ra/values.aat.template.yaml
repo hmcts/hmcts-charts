@@ -5,3 +5,4 @@ nodejs:
   environment:
     REDIS_HOST: 'cui-ra-{{ .Values.global.environment }}.redis.cache.windows.net'
     DEMO_ENABLED: 'true'
+    IS_DEV: 'true'
