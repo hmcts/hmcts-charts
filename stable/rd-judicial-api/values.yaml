@@ -4,8 +4,8 @@ java:
   aadIdentityName: rd
   readinessPath: '/health/readiness'
   environment:
-    POSTGRES_HOST: rd-judicial-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: dbjuddata@rd-judicial-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_HOST: rd-judicial-ref-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
+    POSTGRES_USERNAME: pgadmin
     POSTGRES_PORT: 5432
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
@@ -36,7 +36,7 @@ java:
     Del_Joh_Profiles: false
     DB_READER_USERNAME: "DTS CFT DB Access Reader"
   spotInstances:
-    enabled: true
+    enabled: false
   image: 'hmctspublic.azurecr.io/rd/judicial-api:latest'
   keyVaults:
     rd:
