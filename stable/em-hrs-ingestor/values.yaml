@@ -23,10 +23,6 @@ job:
       secrets:
         - name: microservicekey-em-hrs-ingestor
           alias: S2S_KEY
-        - name: idam-hrs-ingestor-system-user-name
-          alias: IDAM_HRS_INGESTOR_SYSTEM_USER_NAME
-        - name: idam-hrs-ingestor-system-password
-          alias: IDAM_HRS_INGESTOR_SYSTEM_PASSWORD
     em-hrs-api:
       secrets:
         - name: cvp-storage-connection-string
@@ -35,6 +31,10 @@ job:
           alias: VH_STORAGE_CONNECTION_STRING
         - name: cvp-storage-container-name
           alias: CVP_STORAGE_CONTAINER_NAME
+        - name: idam-system-user-name
+          alias: IDAM_HRS_INGESTOR_SYSTEM_USER_NAME
+        - name: idam-system-user-password
+          alias: IDAM_HRS_INGESTOR_SYSTEM_PASSWORD
   environment:
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     HRS_API_BASE_URI: http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
