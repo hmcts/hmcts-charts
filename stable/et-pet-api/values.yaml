@@ -29,6 +29,7 @@ base:
     AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_CONTAINER: private
     AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: public
+    PORT: "8080"
   keyVaults:
     et-pet:
       secrets:
