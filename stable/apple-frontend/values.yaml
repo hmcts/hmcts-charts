@@ -1,10 +1,10 @@
 nodejs:
   applicationPort: 1337
-  image: 'hmctspublic.azurecr.io/apple/frontend:latest'
-  aadIdentityName: apple
+  image: 'sdshmctspublic.azurecr.io/apple/frontend:latest'
+  ingressHost: toffee-recipe-backend.{{ .Values.global.environment }}.platform.hmcts.net
   environment:
-    RECIPE_BACKEND_URL: http://plum-recipe-backend-java
+    RECIPE_BACKEND_URL: http://toffee-recipe-backend.{{ .Values.global.environment }}.platform.hmcts.net
   keyVaults:
-    "applesi":
+    'applesi':
       secrets:
         - name: appInsights-InstrumentationKey

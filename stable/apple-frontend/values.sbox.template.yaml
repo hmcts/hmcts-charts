@@ -1,3 +1,6 @@
 nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    # DNS zone is staging but global.environment is sbox
+    RECIPE_BACKEND_URL: http://toffee-recipe-backend.sandbox.platform.hmcts.net
