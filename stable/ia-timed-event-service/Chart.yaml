@@ -3,11 +3,11 @@ appVersion: "1.0"
 description: A Helm chart for ia-timed-event-service App
 name: ia-timed-event-service
 home: https://github.com/hmcts/ia-timed-event-service
-version: 0.0.27
+version: 0.0.28
 maintainers:
   - name: HMCTS Immigration & Asylum Team
     email: ImmigrationandAsylum@HMCTS.NET
 dependencies:
   - name: java
-    version: 5.0.2
+    version: 5.2.1
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
