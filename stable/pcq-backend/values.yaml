@@ -23,6 +23,8 @@ java:
     DB_ENCRYPTION_ENABLED: "Yes"
     DB_ALLOW_DELETE_RECORD: "false"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    # disable by default, use cnp-flux-config to enable on a per environment basis
+    PCQ_DISPOSER_SCHEDULE: "-"
   keyVaults:
     pcq:
       resourceGroup: pcq
