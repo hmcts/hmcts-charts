@@ -118,6 +118,8 @@ base:
           alias: GLIMR_AUTHORIZATION_KEY
         - name: glimr-api-client-mock
           alias: GLIMR_API_CLIENT_MOCK
+        - name: sentry-dsn-datacapture
+          alias: SENTRY_DSN
 
 redis:
   enabled: false
