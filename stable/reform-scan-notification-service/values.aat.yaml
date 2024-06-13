@@ -14,6 +14,12 @@ java:
       secrets:
         - name: app-insights-instrumentation-key
           alias: azure.application-insights.instrumentation-key
+        - name: error-notifications-secondary-password
+          alias: clients.error-notifications.secondary.password
+        - name: error-notifications-secondary-url
+          alias: clients.error-notifications.secondary.url
+        - name:  error-notifications-secondary-username
+          alias: clients.error-notifications.secondary.username
         - name: error-notifications-password
           alias: clients.error-notifications.password
         - name: error-notifications-url

@@ -22,6 +22,7 @@ java:
     PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
     PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
     SB_NAMESPACE: "reform-scan-sb-preview"
+    CLIENTS_ERROR_NOTIFICATIONS_SECONDARY_JURISDICTIONS: ""
   keyVaults:
     "reform-scan":
       secrets:
@@ -31,6 +32,12 @@ java:
           alias: clients.error-notifications.url
         - name:  error-notifications-username
           alias: clients.error-notifications.username
+        - name: error-notifications-secondary-password
+          alias: clients.error-notifications.secondary.password
+        - name: error-notifications-secondary-url
+          alias: clients.error-notifications.secondary.url
+        - name:  error-notifications-secondary-username
+          alias: clients.error-notifications.secondary.username
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
