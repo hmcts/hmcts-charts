@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for rpts-api App
 name: rpts-api
 home: https://github.com/hmcts/rpts-api
-version: 0.0.49
+version: 0.0.50
 maintainers:
   - name: HMCTS rpts team
 dependencies:
   - name: java
-    version: 5.0.0
+    version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
