@@ -3,10 +3,13 @@ appVersion: "1.0"
 description: A Helm chart for pcq-backend App
 name: pcq-backend
 home: https://github.com/hmcts/pcq-backend
-version: 1.1.21
+version: 1.2.0
 maintainers:
   - name: HMCTS Platform engineering team
 dependencies:
   - name: java
     version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+  - name: job
+    version: 2.1.1
+    repository: https://hmctspublic.azurecr.io/helm/v1/repo/

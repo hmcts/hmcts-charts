@@ -3,3 +3,8 @@ java:
     DB_ALLOW_DELETE_RECORD: "true"
   image: https://hmcts.azurecr.io/hmcts/pcq-backend:latest
   ingressHost: 
+
+job:
+  image: https://hmcts.azurecr.io/hmcts/pcq-backend:latest
+  kind: CronJob
+  schedule: "33 */1 * * *" # 33min past every hour

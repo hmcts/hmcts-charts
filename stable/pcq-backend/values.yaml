@@ -23,9 +23,6 @@ java:
     DB_ENCRYPTION_ENABLED: "Yes"
     DB_ALLOW_DELETE_RECORD: "false"
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    # disable by default, use cnp-flux-config to enable on a per environment basis
-    PCQ_DISPOSER_SCHEDULE: "-"
-    PCQ_DISPOSER_ENABLED: false
   keyVaults:
     pcq:
       resourceGroup: pcq
@@ -48,3 +45,28 @@ java:
           alias: S2S_CS_SECRET
 
   image: 'hmctspublic.azurecr.io/pcq/backend:latest'
+
+job:
+  image: 'hmctspublic.azurecr.io/pcq/backend:latest'
+  kind: CronJob
+  schedule: "17 22 * * *" # 22:17 UTC
+  aadIdentityName: pcq
+  environment:
+    # this controls whether to start as the job or backend server
+    PCQ_DISPOSER_JOB: true
+    PCQ_DB_NAME: pcq
+    PCQ_DB_HOST: pcq-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
+    PCQ_DB_PORT: "5432"
+    PCQ_DISPOSER_ENABLED: false
+    # NONE for job, SERVLET (default) for backend server
+    PCQ_APPLICATION_TYPE: NONE
+  keyVaults:
+    pcq:
+      resourceGroup: pcq
+      secrets:
+        - name: backend-POSTGRES-USER
+          alias: PCQ_DB_USERNAME
+        - name: backend-POSTGRES-PASS
+          alias: PCQ_DB_PASSWORD
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string

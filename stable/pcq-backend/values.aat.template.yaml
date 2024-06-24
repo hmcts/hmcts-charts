@@ -3,3 +3,8 @@ java:
     DB_ALLOW_DELETE_RECORD: "true"
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+
+job:
+  image: ${IMAGE_NAME}
+  kind: CronJob
+  schedule: "33 */1 * * *" # 33min past every hour

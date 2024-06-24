@@ -24,3 +24,25 @@ java:
         scripts:
           init.sql: |-
             CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+job:
+  image: ${IMAGE_NAME}
+  kind: CronJob
+  schedule: "*/15 * * * *" # every 15 minutes
+  environment:
+    PCQ_DISPOSER_JOB: true
+    PCQ_DB_NAME: pcq
+    PCQ_DB_HOST: pcq-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
+    PCQ_DB_PORT: "5432"
+    PCQ_DISPOSER_ENABLED: false
+    PCQ_APPLICATION_TYPE: NONE
+  keyVaults:
+    pcq:
+      resourceGroup: pcq
+      secrets:
+        - name: backend-POSTGRES-USER
+          alias: PCQ_DB_USERNAME
+        - name: backend-POSTGRES-PASS
+          alias: PCQ_DB_PASSWORD
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
