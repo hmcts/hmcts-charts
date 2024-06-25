@@ -6,8 +6,6 @@ base:
   environment:
     SECRETS_PATH: "/mnt/secrets/et-pet"
     CLOUD_PROVIDER: "azure"
-    AZURE_STORAGE_CONTAINER: "et-container"
-    AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: "et-upload-container"
     SEED_EXAMPLE_USERS: true
     ACAS_SERVICE_API_VERSION: 2
     SMTP_HOSTNAME: "smtp.sendgrid.net"
@@ -89,8 +87,6 @@ sidekiq:
   environment:
     SECRETS_PATH: "/mnt/secrets/et-pet"
     CLOUD_PROVIDER: "azure"
-    AZURE_STORAGE_CONTAINER: "et-container"
-    AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: "et-upload-container"
     SEED_EXAMPLE_USERS: true
     ACAS_SERVICE_API_VERSION: 2
     SMTP_HOSTNAME: "smtp.sendgrid.net"
