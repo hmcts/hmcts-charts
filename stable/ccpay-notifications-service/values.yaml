@@ -6,7 +6,7 @@ java:
     POSTGRES_PORT: 5432
     POSTGRES_NAME: notifications
     POSTGRES_CONNECTION_OPTIONS: ?sslmode=require
-    SPRING_LIQUIBASE_ENABLED: false
+    SPRING_LIQUIBASE_ENABLED: true
     AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     AUTH_IDAM_CLIENT_BASEURL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     ISSUER_URI: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o"
