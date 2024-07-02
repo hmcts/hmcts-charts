@@ -1,0 +1,10 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+job:
+  image: https://hmcts.azurecr.io/hmcts/nfdiv-ccd-case-migration:latest
+  ingressHost: 
+  kind: CronJob
+  schedule: "*/20 * * * *"
+  startingDeadlineSeconds: 180
+  concurrencyPolicy: Forbid
+global:
+  jobKind: CronJob
