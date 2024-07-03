@@ -1,0 +1,7 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/pdda-public-display-manager:latest
+  ingressHost: 
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: true
+    POSTGRES_USER: "{{ .Values.postgresql.auth.username }}"
