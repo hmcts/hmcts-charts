@@ -15,5 +15,4 @@ java:
     RD_USERPROFILE_API_URL: http://rd-user-profile-api-aat.service.core-compute-aat.internal
     RD_CASEWORKER_API_URL: http://rd-caseworker-ref-api-aat.service.core-compute-aat.internal
     IDAM_S2SAUTH_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-    IDAM_S2SAUTH_MICROSERVICE: rd_profile_sync
-    FEATUREFLAGS_S2STESTINGSUPPORTENABLED: true
+    IDAM_S2SAUTH_TESTINGSUPPORT_ENABLED: true

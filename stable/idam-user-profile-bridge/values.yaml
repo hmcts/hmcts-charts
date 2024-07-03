@@ -28,9 +28,9 @@ java:
         - name: idam-user-profile-bridge-client-secret
           alias: spring.security.oauth2.client.registration.rd-userprofile-api.client-secret
         - name: idam-user-profile-bridge-rd-system-username
-          alias: rd.userprofile.client.registration.service-account-user
+          alias: idam.legacy.password-grant.service-account.email-address
         - name: idam-user-profile-bridge-rd-system-password
-          alias: rd.userprofile.client.registration.service-account-password
+          alias: idam.legacy.password-grant.service-account.password
         - name: idam-user-profile-bridge-s2s-secret
           alias: idam.s2s-auth.totp_secret
         - name: idam-api-POSTGRES-HOST
