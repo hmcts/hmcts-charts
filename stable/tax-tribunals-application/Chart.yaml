@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "1.0"
 name: tax-tribunals-application
 home: https://github.com/hmcts/tax-tribunals
-version: 0.0.39
+version: 0.0.40
 description: Tax Tribunals
 dependencies:
   - name: base
@@ -13,5 +13,5 @@ dependencies:
     alias: sidekiq
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
   - name: job
-    version: 2.1.1
+    version: 2.1.2
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
