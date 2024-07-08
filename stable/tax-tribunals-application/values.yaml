@@ -120,6 +120,8 @@ base:
           alias: GLIMR_API_CLIENT_MOCK
         - name: sentry-dsn-datacapture
           alias: SENTRY_DSN
+        - name: tt-storage-account-primary-access-key
+          alias: NEW_AZURE_STORAGE_KEY
 
 redis:
   enabled: false
