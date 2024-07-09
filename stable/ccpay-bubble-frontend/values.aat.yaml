@@ -1,3 +1,5 @@
 nodejs:
   image: https://hmcts.azurecr.io/hmcts/ccpay-bubble-frontend:latest
   ingressHost: 
+  devcpuRequests: 2000m
+  devcpuLimits: 4000m
