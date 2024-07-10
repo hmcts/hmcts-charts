@@ -42,6 +42,7 @@ job:
     MIGRATE_CASE_FLAGS_INTERNAL: false
     MIGRATE_LEGACY_CASE_FLAGS: false
     MIGRATE_CLEAR_LEGACY_CASE_FLAGS: false
+    MIGRATE_APPELLANT_INTERPRETER_LANGUAGES_CASE: false
     MIGRATION_ENABLED: false
     MIGRATION_NUMBER_OF_CASES: 5
     AM_ROLE_ASSIGNMENT_API_BASE_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
