@@ -2,6 +2,8 @@ nodejs:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  devmemoryRequests: 768Mi
+  devmemoryLimits: 1024Mi
   environment:
     DEMO_ENABLED: 'true'
     IS_DEV: 'true'

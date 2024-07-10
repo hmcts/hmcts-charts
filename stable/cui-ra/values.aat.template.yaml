@@ -2,6 +2,8 @@ nodejs:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  devmemoryRequests: 768Mi
+  devmemoryLimits: 1024Mi
   environment:
     REDIS_HOST: 'cui-ra-{{ .Values.global.environment }}.redis.cache.windows.net'
     DEMO_ENABLED: 'true'
