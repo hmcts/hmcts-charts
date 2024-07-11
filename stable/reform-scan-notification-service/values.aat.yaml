@@ -9,6 +9,12 @@ java:
     FLYWAY_SKIP_MIGRATIONS: false
     PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
     QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium
+    DB_HOST: "{{ .Release.Name }}-postgresql"
+    DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    DB_USER: "{{ .Values.postgresql.auth.username}}"
+    DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+    DB_PORT: "5432"
+    DB_CONN_OPTIONS: ""
   keyVaults:
     "reform-scan":
       secrets:
@@ -26,15 +32,7 @@ java:
           alias: clients.error-notifications.url
         - name:  error-notifications-username
           alias: clients.error-notifications.username
-        - name: notification-service-staging-db-flexible-pass
-          alias: DB_PASSWORD
-        - name: notification-service-staging-db-flexible-user
-          alias: DB_USER
-        - name: notification-service-staging-db-flexible-host
-          alias: DB_HOST
-        - name: notification-service-staging-db-flexible-port
-          alias: DB_PORT
-        - name: notification-service-staging-db-flexible-database
-          alias: DB_NAME
         - name:  notification-staging-queue-listen-shared-access-key
           alias: QUEUE_READ_ACCESS_KEY
+  postgresql:
+    enabled: true

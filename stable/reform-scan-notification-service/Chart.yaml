@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for Reform Scan Notification Service
 name: reform-scan-notification-service
 home: https://github.com/hmcts/reform-scan-notification-service
-version: 2.0.14
+version: 2.0.15
 maintainers:
   - name: HMCTS BSP Team
     email: bspteam@hmcts.net
@@ -11,6 +11,6 @@ dependencies:
     version: 5.2.0
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
   - name: servicebus
-    version: 1.0.4
+    version: 1.0.6
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
     condition: servicebus.enabled
