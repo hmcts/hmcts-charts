@@ -12,6 +12,8 @@ java:
           alias: HRS_SYSTEM_USER_PASSWORD
         - name: microservicekey-em-hrs-api
           alias: S2S_KEY
+        - name: notification-api-key
+          alias: NOTIFICATION_API_KEY
   secrets:
     CVP_BLOB_ACCOUNT_NAME:
       secretRef: storage-account-cvp-{{ .Release.Name }}
