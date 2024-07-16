@@ -3,12 +3,12 @@ appVersion: "1.0"
 description: A Helm chart for RD Location Ref Data Load App
 name: rd-location-ref-data-load
 home: https://github.com/hmcts/rd-location-ref-data-load
-version: 0.0.30
+version: 0.0.31
 maintainers:
   - name: Reference Data Team
 dependencies:
   - name: job
-    version: 2.1.1
+    version: 2.1.2
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
   - name: blobstorage
     version: 2.0.1
