@@ -2,3 +2,38 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/em-hrs-api:latest
   ingressHost: 
+  keyVaults:
+    em-hrs-api:
+      secrets:
+        - name: hrs-api-POSTGRES-PASS
+          alias: SPRING_DATASOURCE_PASSWORD
+        - name: microservicekey-em-hrs-api
+          alias: S2S_KEY
+        - name: storage-account-primary-connection-string
+          alias: STORAGEACCOUNT_PRIMARY_CONNECTION_STRING
+        - name: cvp-storage-connection-string
+          alias: CVP_STORAGE_CONNECTION_STRING
+        - name: cvp-storage-container-name
+          alias: CVP_STORAGE_CONTAINER_NAME
+        - name: vh-storage-connection-string
+          alias: VH_STORAGE_CONNECTION_STRING
+        - name: vh-storage-container-name
+          alias: VH_STORAGE_CONTAINER_NAME
+        - name: hrs-storage-container-name
+          alias: HRS_CVP_DEST_CONTAINER_NAME
+        - name: idam-system-user-name
+          alias: HRS_SYSTEM_USER
+        - name: idam-system-user-password
+          alias: HRS_SYSTEM_USER_PASSWORD
+        - name: notification-api-key-pretend-to-send
+          alias: NOTIFICATION_API_KEY
+        - name: hrs-reports-email-username
+          alias: SMTP_USERNAME
+        - name: hrs-reports-email-password
+          alias: SMTP_PASSWORD
+        - name: summary-report-recipients
+          alias: SUMMARY_REPORT_RECIPIENTS
+        - name: monthly-hearing-report-recipients
+          alias: MONTHLY_HEARING_REPORT_RECIPIENTS
+        - name: report-api-key
+          alias: REPORT_API_KEY
