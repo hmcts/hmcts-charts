@@ -1,0 +1,20 @@
+nodejs:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/et-syr:latest
+  ingressHost: 
+  devmemoryLimits: 1024Mi
+  devmemoryRequests: 512Mi
+  environment:
+    OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+  keyVaults:
+    et:
+      resourceGroup: et
+      secrets:
+        - AppInsightsInstrumentationKey
+        - idam-secret
+        - et-syr-redis-access-key
+        - os-places-token
+        - pcq-token-key
+        - launch-darkly-sdk-key
+idam-pr:
+  enabled: false
