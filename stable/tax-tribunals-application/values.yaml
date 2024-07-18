@@ -3,6 +3,9 @@ base:
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
   ingressHost: tax-tribunals-datacapture.{{ .Values.global.environment }}.platform.hmcts.net
   useWorkloadIdentity: true
+  memoryRequests: "2Gi"
+  cpuRequests: "500m"
+  memoryLimits: "3Gi"
   # set for aat and preview, overridden in flux for other environments
   workloadClientID: "0af403db-e3ab-450b-bcde-884101a065cd"
   environment:
@@ -369,31 +372,3 @@ job:
           alias: AZURE_STORAGE_KEY
         - name: azure-storage-container
           alias: AZURE_STORAGE_CONTAINER
-# wsproxy:
-#   applicationPort: 8080
-#   readinessPath: /status
-#   livenessPath: /status
-#   startupPath: /status
-#   replicaCount: 1
-#   image:
-#     repository: employmenttribunal.azurecr.io/tt-dss-a
-#     pullPolicy: Always
-#   nameOverride: ""
-#   fullnameOverride: ""
-#   service:
-#     type: ClusterIP
-#     port: 8080
-#   wsservice:
-#     type: ClusterIP
-#     port: 443
-#   ingress:
-#     enabled: false
-#     annotations:
-#       kubernetes.io/ingress.class: traefik-tt
-#     paths:
-#       - /
-#     tls: []
-#   resources:
-#   nodeSelector: {}
-#   tolerations: []
-#   affinity: {}
