@@ -2,5 +2,9 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/fis-ds-web:latest
   ingressHost: 
+  devmemoryLimits: 2Gi
+  devmemoryRequests: 512Mi
+  devcpuLimits: 1000m
+  devcpuRequests: 500m
 idam-pr:
   enabled: false
