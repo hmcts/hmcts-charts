@@ -137,6 +137,9 @@ sidekiq:
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
   args: [ './sidekiq.sh' ]
   useWorkloadIdentity: true
+  memoryRequests: "2Gi"
+  cpuRequests: "500m"
+  memoryLimits: "3Gi"
   # set for aat and preview, overridden in flux for other environments
   workloadClientID: "0af403db-e3ab-450b-bcde-884101a065cd"
   environment:
