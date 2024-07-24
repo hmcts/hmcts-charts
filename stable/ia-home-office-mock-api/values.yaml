@@ -8,4 +8,5 @@ java:
     ia:
       resourceGroup: ia
       secrets:
-        - app-insights-connection-string
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string

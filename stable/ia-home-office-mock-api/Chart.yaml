@@ -1,12 +1,12 @@
 apiVersion: v2
 name: ia-home-office-mock-api
 home: https://github.com/hmcts/ia-home-office-mock-api
-version: 0.0.8
+version: 0.0.9
 description: A Helm chart for ia-home-office-mock-api App
 maintainers:
   - name: HMCTS Immigration & Asylum Team
     email: ImmigrationandAsylum@HMCTS.NET
 dependencies:
   - name: java
-    version: 5.0.2
+    version: 5.2.1
     repository: https://hmctspublic.azurecr.io/helm/v1/repo/
