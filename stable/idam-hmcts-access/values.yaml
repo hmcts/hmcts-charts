@@ -21,6 +21,7 @@ nodejs:
         - sso-client-id-moj
         - sso-client-secret-moj
   environment:
+    APP_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_TESTIING_SUPPORT_API_BASE_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
   autoscaling:
