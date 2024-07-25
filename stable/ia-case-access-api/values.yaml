@@ -11,13 +11,23 @@ java:
     ia:
       resourceGroup: ia
       secrets:
-        - idam-client-id
-        - idam-secret
-        - idam-redirect-uri
-        - ia-system-access-username
-        - ia-system-access-password
-        - s2s-secret
-        - s2s-microservice
-        - AppInsightsInstrumentationKey
-        - ia-config-validator-secret
-        - app-insights-connection-string
+        - name: idam-client-id
+          alias: IA_IDAM_CLIENT_ID
+        - name: idam-secret
+          alias: IA_IDAM_SECRET
+        - name: idam-redirect-uri
+          alias: IA_IDAM_REDIRECT_URI
+        - name: ia-system-access-username
+          alias: IA_SYSTEM_ACCESS_USERNAME
+        - name: ia-system-access-password
+          alias: IA_SYSTEM_ACCESS_PASSWORD
+        - name: s2s-secret
+          alias: idam.s2s-auth.totp_secret
+        - name: s2s-microservice
+          alias: IA_S2S_MICROSERVICE
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+        - name: ia-config-validator-secret
+          alias: IA_CONFIG_VALIDATOR_SECRET
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
