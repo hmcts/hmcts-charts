@@ -2,12 +2,12 @@ name: pip-account-management
 apiVersion: v2
 appVersion: "1.0"
 home: https://github.com/hmcts/pip-account-management
-version: 0.0.44
+version: 0.0.45
 description: Publishing & Information Account Management
 maintainers:
   - name: HMCTS PIP Team
 dependencies:
   - name: java
-    version: 5.2.0
+    version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
 
