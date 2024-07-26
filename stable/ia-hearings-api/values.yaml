@@ -23,6 +23,9 @@ java:
     HMC_HEARINGS_LISTENING_ENABLED: true
     HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
     LOCATION_REF_DATA_URL: "http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    PACT_BROKER_URL: "pact-broker.platform.hmcts.net"
+    PACT_BROKER_PORT: "443"
+    PACT_BROKER_SCHEME: "https"
 
   keyVaults:
     ia:
