@@ -1,11 +1,11 @@
 name: toffee-frontend
 apiVersion: v2
 home: https://github.com/HMCTS/sds-toffee-frontend
-version: 0.1.36
+version: 0.1.37
 description: HMCTS Toffee frontend application (test application)
 maintainers:
   - name: HMCTS Platform Engineering Team
 dependencies:
   - name: nodejs
-    version: 3.1.0
+    version: 3.1.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
