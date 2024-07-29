@@ -1,4 +1,10 @@
 java:
+#  overidding dev memory and cpu limits to make it match with standard limits
+#  https://github.com/hmcts/chart-java/blob/master/java/values.yaml
+  devmemoryRequests: 1024Mi
+  devcpuRequests: 250m
+  devmemoryLimits: 2048Mi
+  devcpuLimits: 1500m
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/am-role-assignment-service:latest
   ingressHost: 
