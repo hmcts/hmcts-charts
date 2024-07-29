@@ -2,3 +2,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/lau-frontend:latest
   ingressHost: 
+  environment:
+    OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
