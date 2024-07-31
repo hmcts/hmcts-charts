@@ -18,8 +18,6 @@ java:
           alias: UPLOAD_SUMMARY_REPORT_RECIPIENTS
         - name: encryption-public-key
           alias: ENCRYPTION_PUBLIC_KEY
-        - name: app-insights-instrumentation-key
-          alias: azure.application-insights.instrumentation-key
         - name: reports-email-password
           alias: SMTP_PASSWORD
         - name: reports-email-username
