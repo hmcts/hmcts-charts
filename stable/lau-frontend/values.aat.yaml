@@ -4,4 +4,3 @@ nodejs:
   ingressHost: 
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
-    IS_DEV: true
