@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for pip-subscription-management App
 name: pip-subscription-management
 home: https://github.com/hmcts/pip-subscription-management
-version: 0.0.34
+version: 0.0.35
 maintainers:
   - name: HMCTS PIP Team
 dependencies:
   - name: java
-    version: 5.2.0
+    version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
