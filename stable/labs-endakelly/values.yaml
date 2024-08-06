@@ -1,7 +1,11 @@
-java:
+nodejs:
   applicationPort: 8080
-  image: 'hmctspublic.azurecr.io/labs/endakelly:latest'
-  ingressHost: labs-endakelly-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: labs
+  ingressHost: labs-endakelly.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/labs/endakelly:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    labs:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
   environment:
-    FAVOURITE_FRUIT: plum
