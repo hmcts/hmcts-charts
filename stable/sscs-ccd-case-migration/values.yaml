@@ -20,6 +20,8 @@ job:
           alias: IDAM_SSCS_SYSTEMUPDATE_PASSWORD
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: encoded-data-string-wa-fields-removal
+          alias: WA_FIELDS_ENCODED_DATA_STRING
   environment:
     MIGRATION_WA_ENABLED: true
     IDAM_CLIENT_ID: sscs
