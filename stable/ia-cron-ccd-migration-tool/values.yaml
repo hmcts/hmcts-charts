@@ -42,10 +42,13 @@ job:
     MIGRATE_CASE_FLAGS_INTERNAL: false
     MIGRATE_LEGACY_CASE_FLAGS: false
     MIGRATE_CLEAR_LEGACY_CASE_FLAGS: false
+    MIGRATE_BAIL_REF_DATA_LOCATION_FLAG: false
     MIGRATE_APPELLANT_INTERPRETER_LANGUAGES_CASE: false
     MIGRATION_ENABLED: false
     MIGRATION_NUMBER_OF_CASES: 5
     AM_ROLE_ASSIGNMENT_API_BASE_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ASSIGN_HEARING_ROLES_TO_SYSTEM_USER: false
     FUNCTION_ENABLED: false
+    SERVICE_ID: BFA1
+    LOCATION_REF_DATA_URL: "http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 
