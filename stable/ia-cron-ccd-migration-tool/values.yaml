@@ -44,7 +44,9 @@ job:
     MIGRATE_CLEAR_LEGACY_CASE_FLAGS: false
     MIGRATE_BAIL_REF_DATA_LOCATION_FLAG: false
     MIGRATE_APPELLANT_INTERPRETER_LANGUAGES_CASE: false
+    MIGRATE_APPEALS_REF_DATA_LOCATION_FLAG: false
     MIGRATION_ENABLED: false
+    MIGRATION_NUMBER_OF_THREADS: 4
     MIGRATION_NUMBER_OF_CASES: 5
     AM_ROLE_ASSIGNMENT_API_BASE_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ASSIGN_HEARING_ROLES_TO_SYSTEM_USER: false
