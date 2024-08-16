@@ -7,3 +7,4 @@ java:
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.aat.platform.hmcts.net/o/jwks
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMTESTINGSUPPORTAPI_TOKENURI: https://idam-web-public.aat.platform.hmcts.net/o/token
+    SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.aat.platform.hmcts.net/o/token

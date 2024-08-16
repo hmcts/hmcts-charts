@@ -44,3 +44,9 @@ java:
           alias: rd.userprofile.client.registration.service-account-user
         - name: idam-user-profile-bridge-rd-system-password
           alias: rd.userprofile.client.registration.service-account-password
+        - name: redis-hostname
+          alias: spring.data.redis.host
+        - name: redis-key
+          alias: spring.data.redis.password
+        - name: redis-port
+          alias: spring.data.redis.port
