@@ -2,11 +2,12 @@ java:
   applicationPort: 4551
   image: 'sdshmctpsublic.azurecr.io/opal/external-api:latest'
   ingressHost: opal-external-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  aadIdentityName: opal
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    opal:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
-  environment:
+  keyVaults:
+    opal:
+      secrets:
+        - name: opal-soap-jks-string
+          alias: OPAL_SOAP_JKS_STRING
+        - name: opal-soap-jks-password
+          alias: OPAL_SOAP_JKS_PASSWORD
+environment:
+    S2S_ENDPOINTS_OPAL_FINES_SERVICE: https://opal-fines-service.{{ .Values.global.environment }}.platform.hmcts.net

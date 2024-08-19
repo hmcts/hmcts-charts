@@ -2,3 +2,12 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    opal:
+      secrets:
+        - name: opal-soap-jks-string
+          alias: OPAL_SOAP_JKS_STRING
+        - name: opal-soap-jks-password
+          alias: OPAL_SOAP_JKS_PASSWORD
+  environment:
+    S2S_ENDPOINTS_OPAL_FINES_SERVICE: https://opal-fines-service.staging.platform.hmcts.net

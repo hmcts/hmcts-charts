@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for opal-external-api App
 name: opal-external-api
 home: https://github.com/hmcts/opal-external-api
-version: 0.0.17
+version: 0.0.18
 maintainers:
   - name: HMCTS opal team
 dependencies:
