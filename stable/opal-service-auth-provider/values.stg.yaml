@@ -1,0 +1,3 @@
+java:
+  image: https://hmcts.azurecr.io/hmcts/opal-service-auth-provider:latest
+  ingressHost: 
