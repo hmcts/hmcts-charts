@@ -5,6 +5,19 @@ nodejs:
   environment:
     PCQ_ENABLED: true
     RATE_LIMITER_DISABLED: true
+  keyVaults:
+    sptribs:
+      secrets:
+        - name: app-insights-instrumentation-key-preview
+          alias: app-insights-instrumentation-key
+        - idam-ui-secret
+        - idam-systemupdate-username
+        - idam-systemupdate-password
+        - redis-access-key
+        - s2s-secret-sptribs-frontend
+        - postcode-lookup-token
+        - specialTribunals-cic-pcq-token
+        - sptribs-frontend-dynatrace-url
 
 idam-pr:
   enabled: true
