@@ -5,7 +5,7 @@ nodejs:
   environment:
     FRONTEND_HOSTNAME: https://
     OPAL_API_URL: http://-opal-fines-service
-    OPAL_FINES_SERVICE_API_URL: https://opal-fines-service-
+    OPAL_FINES_SERVICE_API_URL: http://-opal-fines-service
     FEATURES_LAUNCH_DARKLY_ENABLED: false
     FEATURES_SSO_ENABLED: true
     SESSION_SAME_SITE: 'lax'
