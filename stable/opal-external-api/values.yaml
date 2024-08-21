@@ -10,4 +10,4 @@ java:
         - name: opal-soap-jks-password
           alias: OPAL_SOAP_JKS_PASSWORD
 environment:
-    S2S_ENDPOINTS_OPAL_FINES_SERVICE: https://opal-fines-service.{{ .Values.global.environment }}.platform.hmcts.net
+  OPAL_FINES_S2S_URL: https://opal-fines-service.{{ .Values.global.environment }}.platform.hmcts.net
