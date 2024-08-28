@@ -12,9 +12,6 @@ java:
           alias: JUDICIAL_BOOKING_IDAM_CLIENT_SECRET
         - name: judicial-booking-service-IDAM-ADMIN-SECRET
           alias: JUDICIAL_BOOKING_IDAM_ADMIN_PASSWORD
-        - name: role-assignment-service-LD-SDK-KEY
-          alias: LD_SDK_KEY
-
   environment:
     JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: "{{ .Values.postgresql.auth.database}}"
@@ -22,6 +19,6 @@ java:
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS: "{{ .Values.postgresql.auth.password}}"
     JUDICIAL_BOOKING_SERVICE_DB_OPTIONS: "?stringtype=unspecified"
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    LAUNCH_DARKLY_ENV: pr
+    JBS_ENV: pr
   postgresql:
     enabled: true
