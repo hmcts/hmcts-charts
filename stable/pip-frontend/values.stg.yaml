@@ -11,5 +11,4 @@ nodejs:
         MEDIA_VERIFICATION_RETURN_URL: https:///media-verification/return
         ADMIN_AUTH_RETURN_URL: https:///login/admin/return
         FRONTEND_URL: https://
-        ENABLE_CFT: true
         SESSION_COOKIE_SAME_SITE: ''
