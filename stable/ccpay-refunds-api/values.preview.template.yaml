@@ -113,8 +113,6 @@ payment-api:
       "ccpay":
         resourceGroup: ccpay
         secrets:
-          - name: sb-primary-connection-string
-            alias: azure.servicebus.connection-string
           - name: pci-pal-account-id-cmc
             alias: pci-pal.account.id.cmc
           - name: pci-pal-account-id-probate
