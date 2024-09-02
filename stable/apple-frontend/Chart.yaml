@@ -1,11 +1,11 @@
 name: apple-frontend
 apiVersion: v2
 home: https://github.com/hmcts/sds-toffee-frontend
-version: 0.1.20
+version: 0.1.21
 description: HMCTS apple frontend application (test application)
 maintainers:
   - name: HMCTS Platform Engineering Team
 dependencies:
   - name: nodejs
-    version: 3.1.0
+    version: 3.1.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
