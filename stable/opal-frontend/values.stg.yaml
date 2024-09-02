@@ -15,6 +15,7 @@ opal-fines-service:
   java:
     releaseNameOverride: -opal-fines-service
     ingressHost: opal-fines-service-
+    imagePullPolicy: Always
     keyVaults:
       opal:
         secrets:
