@@ -3,5 +3,5 @@ java:
   image: https://hmcts.azurecr.io/hmcts/pdda-public-display-manager:latest
   ingressHost: 
   environment:
-    RUN_DB_MIGRATION_ON_STARTUP: true
+    RUN_DB_MIGRATION_ON_STARTUP: false
     POSTGRES_USER: "{{ .Values.postgresql.auth.username }}"
