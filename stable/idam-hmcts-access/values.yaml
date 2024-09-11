@@ -24,6 +24,7 @@ nodejs:
     APP_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_TESTIING_SUPPORT_API_BASE_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
+  NODE_OPTIONS: '--max-old-space-size=1024'
   autoscaling:
     enabled: true
     minReplicas: 2
