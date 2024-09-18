@@ -28,5 +28,7 @@ java:
           alias: PDDA_AZURE_CLIENT_SECRET
         - name: public-display-data-aggregator-authentication-tenantID
           alias: PDDA_AZURE_TENANT_ID
+        - name: public-display-data-aggregator-authentication-redirectURI
+          alias: PDDA_AZURE_REDIRECT_URI
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
