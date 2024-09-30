@@ -4,5 +4,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/idam-hmcts-access:latest
   ingressHost: 
-  devmemoryRequests: 3Gi
-  devmemoryLimits: 3Gi
+  devmemoryRequests: 1024Mi
+  devmemoryLimits: 2048Mi
