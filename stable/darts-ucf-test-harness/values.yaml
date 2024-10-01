@@ -3,6 +3,8 @@ java:
   image: 'hmctspublic.azurecr.io/darts/ucf-test-harness:latest'
   ingressHost: darts-ucf-test-harness.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: darts
+  autoscaling:
+    enabled: false
   keyVaults:
     darts:
       secrets:
