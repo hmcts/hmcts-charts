@@ -1,4 +1,8 @@
 java:
+  devmemoryRequests: 2048Mi
+  devcpuRequests: 2000m
+  devmemoryLimits: 4096Mi
+  devcpuLimits: 4000m
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
@@ -10,17 +14,19 @@ java:
     JRD_MQ_HOST: "rd-sb-preview.servicebus.windows.net"
     JUDICIAL_TOPIC_PRIMARY_SEND_LISTEN_SHARED_ACCESS_KEY: "$(JRD_MQ_PASSWORD)"
     JRD_MQ_TOPIC_NAME: "{{ .Release.Name }}-servicebus-jrdapi-topic"
-    JRD_MQ_USERNAME: SendAndListenSharedAccessKey
+    JRD_MQ_USERNAME: RootManageSharedAccessKey
     JRD_MQ_TRUST_ALL_CERTS: false
-    JRD_DATA_PER_MESSAGE: 50
+    JRD_DATA_PER_MESSAGE: 200
     LAUNCH_DARKLY_ENV: "preview"
     ENVIRONMENT_NAME: "preview"
-    CUSTOMIZE_UPDATEDSINCE: false
+    Del_Joh_Profiles: true
+    CUSTOMIZE_UPDATEDSINCE: true
+    INCLUDE_PREVIOUS_APPOINTMENT: true
     JRD_SEARCH_SERVICE_CODE: bfa1,bba3
-    ELINKS_URL: https://judiciary-middleware-futureehr.herokuapp.com/api/v5
-    LAST_UPDATED: 2014-01-01
-    SCHEDULER_ENABLED: false
-    CRON_EXPRESSION: "0 0 0 25 03 ?"
+    ELINKS_URL: https://gateway.staging.elinks.judiciary.uk/elinks/api/v5
+    LAST_UPDATED: 1900-01-01
+    SCHEDULER_ENABLED: true
+    CRON_EXPRESSION: "0 00 10 7 10 ?"
     DB_READER_USERNAME: "{{ .Values.postgresql.auth.username}}"
   postgresql:
     enabled: true
@@ -37,7 +43,7 @@ java:
           alias: LD_SDK_KEY
         - name: judicial-api-s2s-secret
           alias: JUDICIAL_API_S2S_SECRET
-        - name: judicial-api-elinks-api-key
+        - name: judicial-api-elinks-api-key-new
           alias: judicial_api_elinks_api_key
         - name: judicial-topic-primary-connection-string
           alias: JUDICIAL_TOPIC_PRIMARY_CONNECTION_STRING
@@ -62,7 +68,7 @@ servicebus:
   enabled: true
   teamName: RD
   resourceGroup: rd-aso-preview-rg
-  sbNamespace: rd
+  sbNamespace: rd-servicebus-preview
   setup:
     topics:
       - name: jrdapi-topic
