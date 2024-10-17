@@ -107,7 +107,8 @@ base:
           alias: SENTRY_DSN
         - name: tt-storage-account-primary-access-key
           alias: NEW_AZURE_STORAGE_KEY
-
+        - name: dynatrace-ui-tracking-id
+          alias: DYNATRACE_UI_TRACKING_ID
 redis:
   enabled: false
 
@@ -215,6 +216,8 @@ sidekiq:
           alias: AZURE_STORAGE_CONTAINER
         - name: app-insights-instrumentation-key
           alias: APP_INSIGHTS_INSTRUMENTATION_KEY
+        - name: dynatrace-ui-tracking-id
+          alias: DYNATRACE_UI_TRACKING_ID
 job:
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
   useWorkloadIdentity: true
@@ -319,3 +322,5 @@ job:
           alias: AZURE_STORAGE_KEY
         - name: azure-storage-container
           alias: AZURE_STORAGE_CONTAINER
+        - name: dynatrace-ui-tracking-id
+          alias: DYNATRACE_UI_TRACKING_ID
