@@ -109,6 +109,8 @@ base:
           alias: NEW_AZURE_STORAGE_KEY
         - name: dynatrace-ui-tracking-id
           alias: DYNATRACE_UI_TRACKING_ID
+        - name: test-loading-env-v1
+          alias: TEST_ENV_ID
 redis:
   enabled: false
 
@@ -218,6 +220,9 @@ sidekiq:
           alias: APP_INSIGHTS_INSTRUMENTATION_KEY
         - name: dynatrace-ui-tracking-id
           alias: DYNATRACE_UI_TRACKING_ID
+        - name: test-loading-env-v1
+          alias: TEST_ENV_ID
+
 job:
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
   useWorkloadIdentity: true
@@ -324,3 +329,5 @@ job:
           alias: AZURE_STORAGE_CONTAINER
         - name: dynatrace-ui-tracking-id
           alias: DYNATRACE_UI_TRACKING_ID
+        - name: test-loading-env-v1
+          alias: TEST_ENV_ID
