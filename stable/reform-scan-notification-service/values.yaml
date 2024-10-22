@@ -30,7 +30,7 @@ java:
           alias: DB_PORT
         - name: notification-service-POSTGRES-DATABASE
           alias: DB_NAME
-        - name:  notification-queue-listen-shared-access-key-premium
+        - name:  notification-queue-listen-shared-access-key-premium #TODO: FACT-2026
           alias: QUEUE_READ_ACCESS_KEY
         - name: app-insights-connection-string
           alias: app-insights-connection-string
@@ -41,18 +41,18 @@ java:
   environment:
     DB_CONN_OPTIONS: ?sslmode=require
     FLYWAY_SKIP_MIGRATIONS: true
-    QUEUE_ACCESS_KEY_LISTEN_NAME: "ListenSharedAccessKey"
-    QUEUE_NAME: "notifications"
-    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium
-    QUEUE_NOTIFICATIONS_MAX_RETRY: 5
+    QUEUE_ACCESS_KEY_LISTEN_NAME: "ListenSharedAccessKey" #TODO: FACT-2026
+    QUEUE_NAME: "notifications" #TODO: FACT-2026
+    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium #TODO: FACT-2026
+    QUEUE_NOTIFICATIONS_MAX_RETRY: 5 #TODO: FACT-2026
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    NOTIFICATIONS_CONSUME_TASK_CHECK_DELAY_IN_MS: "3600000"
-    NOTIFICATIONS_CONSUME_TASK_ENABLED: true
-    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 4000
-    PENDING_NOTIFICATIONS_TASK_ENABLED: true
-    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 120
-    JMS_ENABLED: false
+    NOTIFICATIONS_CONSUME_TASK_CHECK_DELAY_IN_MS: "3600000" #TODO: FACT-2026
+    NOTIFICATIONS_CONSUME_TASK_ENABLED: true #TODO: FACT-2026
+    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 4000 #TODO: FACT-2026
+    PENDING_NOTIFICATIONS_TASK_ENABLED: true #TODO: FACT-2026
+    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 120 #TODO: FACT-2026
+    JMS_ENABLED: false #TODO: FACT-2026
     CLIENTS_ERROR_NOTIFICATIONS_SECONDARY_JURISDICTIONS: ""
   image: 'hmctspublic.azurecr.io/reform-scan/notification-service:latest'
-servicebus:
+servicebus: #TODO: FACT-2026
   enabled: false

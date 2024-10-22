@@ -14,14 +14,14 @@ java:
     DB_PORT: '5432'
     DB_CONN_OPTIONS: ""
     FLYWAY_SKIP_MIGRATIONS: false
-    QUEUE_ACCESS_KEY_LISTEN_NAME: "RootManageSharedAccessKey"
-    QUEUE_NAME: "{{ .Release.Name }}-servicebus-notifications"
-    QUEUE_NAMESPACE: "reform-scan-sb-preview"
-    QUEUE_READ_ACCESS_KEY: "$(SB_ACCESS_KEY)"
+    QUEUE_ACCESS_KEY_LISTEN_NAME: "RootManageSharedAccessKey" #TODO: FACT-2026
+    QUEUE_NAME: "{{ .Release.Name }}-servicebus-notifications" #TODO: FACT-2026
+    QUEUE_NAMESPACE: "reform-scan-sb-preview" #TODO: FACT-2026
+    QUEUE_READ_ACCESS_KEY: "$(SB_ACCESS_KEY)" #TODO: FACT-2026
     S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
-    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
-    SB_NAMESPACE: "reform-scan-sb-preview"
+    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500 #TODO: FACT-2026
+    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0 #TODO: FACT-2026
+    SB_NAMESPACE: "reform-scan-sb-preview" #TODO: FACT-2026
     CLIENTS_ERROR_NOTIFICATIONS_SECONDARY_JURISDICTIONS: ""
   keyVaults:
     "reform-scan":
@@ -44,10 +44,14 @@ java:
 
   postgresql:
     enabled: true
+    image:
+      registry: hmctspublic.azurecr.io
+      repository: imported/bitnami/postgresql
+      tag: '16'
     postgresqlUsername: db_user
     postgresqlPassword: db_password
     postgresqlDatabase: db_database
-servicebus:
+servicebus: #TODO: FACT-2026 - All of this below
   resourceGroup: reform-scan-aso-preview-rg
   teamName: "BSP"
   location: uksouth

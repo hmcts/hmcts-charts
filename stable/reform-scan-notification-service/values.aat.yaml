@@ -3,12 +3,12 @@ java:
   image: https://hmcts.azurecr.io/hmcts/reform-scan-notification-service:latest
   ingressHost: 
   environment:
-    QUEUE_NAME: "notifications-staging"
-    QUEUE_NOTIFICATIONS_READ: false
-    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500
+    QUEUE_NAME: "notifications-staging" #TODO: FACT-2026
+    QUEUE_NOTIFICATIONS_READ: false #TODO: FACT-2026
+    PENDING_NOTIFICATIONS_TASK_DELAY_IN_MS: 500 #TODO: FACT-2026
     FLYWAY_SKIP_MIGRATIONS: false
-    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0
-    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium
+    PENDING_NOTIFICATIONS_SEND_DELAY_IN_MINUTE: 0 #TODO: FACT-2026
+    QUEUE_NAMESPACE: reform-scan-servicebus-{{ .Values.global.environment }}-premium #TODO: FACT-2026
     DB_HOST: "{{ .Release.Name }}-postgresql"
     DB_NAME: "{{ .Values.postgresql.auth.database}}"
     DB_USER: "{{ .Values.postgresql.auth.username}}"
@@ -32,7 +32,11 @@ java:
           alias: clients.error-notifications.url
         - name:  error-notifications-username
           alias: clients.error-notifications.username
-        - name:  notification-staging-queue-listen-shared-access-key
+        - name:  notification-staging-queue-listen-shared-access-key #TODO: FACT-2026
           alias: QUEUE_READ_ACCESS_KEY
   postgresql:
     enabled: true
+    image:
+      registry: hmctspublic.azurecr.io
+      repository: imported/bitnami/postgresql
+      tag: '16'
