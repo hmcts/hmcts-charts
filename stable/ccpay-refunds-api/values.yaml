@@ -29,6 +29,7 @@ java:
     REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
     REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
     REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
+    IAC_SERVICE_API_URL: "http://ia-case-access-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
