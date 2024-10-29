@@ -28,6 +28,10 @@ job:
           alias: ORG_ROLE_MAPPING_DB_USERNAME
         - name: org-role-mapping-service-POSTGRES-HOST
           alias: ORG_ROLE_MAPPING_DB_HOST
+        - name: role-assignment-refresh-batch-EMAIL-LIST
+          alias: EMAIL_LIST
+        - name: am-sendgrid-api-key
+          alias: AM_SENDGRID_API_KEY
   environment:
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_USER_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
@@ -35,8 +39,12 @@ job:
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     ORG_ROLE_MAPPING_IDAM_ADMIN_USERID: orm.admin@hmcts.NET
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
+    REFRESH_ENV: "{{ .Values.global.environment }}"
     ORG_ROLE_MAPPING_DB_PORT: 5432
     ORG_ROLE_MAPPING_DB_NAME: org_role_mapping
     ORG_ROLE_MAPPING_DB_OPTIONS: "?stringtype=unspecified&sslmode=require"
     AM_ORM_URL: http://am-org-role-mapping-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     AM_RAS_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    EMAIL_ENABLED: false
+
+
