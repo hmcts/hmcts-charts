@@ -76,6 +76,7 @@ java:
     USE_AD_AUTH_FOR_SOURCE_BLOB_CONNECTION: false
     HRS_VH_DEST_CONTAINER_NAME: vhrecordings
     DEFAULT_TTL: P6Y
+    TTL_ENABLED: false
     DELETE_CASE_ENDPOINT_ENABLED: false
     DELETE_CASE_S2S_WHITELIST: ccd_case_disposer,em_gw
 hrsblobstorage:
