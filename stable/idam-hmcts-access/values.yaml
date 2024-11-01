@@ -1,10 +1,10 @@
 nodejs:
-  cpuLimits: 1500m
-  cpuRequests: 500m
-  memoryLimits: 3072Mi
-  memoryRequests: 1536Mi
+  cpuLimits: 500m
+  cpuRequests: 100m
+  memoryLimits: 1024Mi
+  memoryRequests: 256Mi
   devcpuLimits: 500m
-  devcpuRequests: 200m
+  devcpuRequests: 250m
   devmemoryLimits: 1024Mi
   devmemoryRequests: 512Mi
   applicationPort: 3100
@@ -28,7 +28,7 @@ nodejs:
     APP_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_TESTIING_SUPPORT_API_BASE_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
-  NODE_OPTIONS: '--max-old-space-size=2048'
+  NODE_OPTIONS: '--max-old-space-size=1024'
   autoscaling:
     enabled: true
     minReplicas: 2
