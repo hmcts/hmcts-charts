@@ -2,9 +2,9 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/prl-citizen-frontend:latest
   ingressHost: 
-  devmemoryLimits: 2Gi
-  devmemoryRequests: 512Mi
+  devmemoryRequests: 256Mi
+  devcpuRequests: 250m
+  devmemoryLimits: 1024Mi
   devcpuLimits: 1000m
-  devcpuRequests: 500m
 idam-pr:
   enabled: false
