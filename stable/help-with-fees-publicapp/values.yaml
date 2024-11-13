@@ -23,7 +23,6 @@ base:
     SMTP_HOSTNAME: "smtp.sendgrid.net"
     SMTP_PORT: 587
     NOTIFY_TECHNICAL_FORM: 'affbd7b3-4946-4fc5-a0e3-e87d8ccadca2'
-    NEW_LEGISLATION_ACTIVE_DATE: ‘27-10-2023’
   keyVaults:
     help-with-fees:
       secrets:
