@@ -49,4 +49,5 @@ java:
           alias: APP_INSIGHTS_CONNECTION_STRING
   autoscaling:
     enabled: false #To be enabled as part of PUB-1692
-
+blobstorage:
+  enabled: false
