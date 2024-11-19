@@ -1,0 +1,12 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+job:
+  image: https://hmcts.azurecr.io/hmcts/adoption-cron-ccd-data-migration-tool:latest
+  ingressHost: 
+  kind: CronJob
+  schedule: "*/20 * * * *"
+  startingDeadlineSeconds: 180
+  concurrencyPolicy: Forbid
+  environment:
+    IDAM_REDIRECT_URL: https://adoption-cos-api-*.service.core-compute-aat.internal/oauth2/callback
+global:
+  jobKind: CronJob

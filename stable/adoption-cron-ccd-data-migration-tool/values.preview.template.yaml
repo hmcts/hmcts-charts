@@ -1,0 +1,14 @@
+job:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  kind: CronJob
+  schedule: "*/20 * * * *"
+  startingDeadlineSeconds: 180
+  concurrencyPolicy: Forbid
+  environment:
+    IDAM_REDIRECT_URL: https://adoption-cos-api-*.service.core-compute-aat.internal/oauth2/callback
+    IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+
+global:
+  jobKind: CronJob
