@@ -1,12 +1,12 @@
 nodejs:
-  cpuLimits: 500m
-  cpuRequests: 100m
-  memoryLimits: 1024Mi
-  memoryRequests: 256Mi
+  cpuRequests: 200m
+  cpuLimits: 1000m
+  memoryRequests: 512Mi
+  memoryLimits: 2048Mi
+  devcpuRequests: 200m
   devcpuLimits: 500m
-  devcpuRequests: 250m
-  devmemoryLimits: 1024Mi
   devmemoryRequests: 512Mi
+  devmemoryLimits: 1024Mi
   applicationPort: 3100
   aadIdentityName: idam
   ingressHost: hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
