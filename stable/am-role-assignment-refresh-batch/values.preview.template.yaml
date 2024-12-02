@@ -13,7 +13,6 @@ job:
         - orm-IDAM-CLIENT-ID
         - orm-IDAM-CLIENT-SECRET
         - orm-IDAM-ADMIN-SECRET
-        - role-assignment-service-LD-SDK-KEY
   environment:
     #ORG_ROLE_MAPPING_DB_HOST: "{{ .Release.Name }}-postgresql"
     AM_ORM_URL: http://am-org-role-mapping-service-pr-1540.service.core-compute-preview.internal
