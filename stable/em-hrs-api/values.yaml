@@ -38,6 +38,8 @@ java:
           alias: MONTHLY_HEARING_REPORT_RECIPIENTS
         - name: report-api-key
           alias: REPORT_API_KEY
+        - name: monthly-hearing-report-recipients
+          alias: MONTHLY_AUDIT_REPORT_RECIPIENTS
     rpa:
       secrets:
         - name: show-oauth2-token
