@@ -1,7 +1,7 @@
 name: plum-frontend
 apiVersion: v2
 home: https://github.com/hmcts/cnp-plum-frontend
-version: 0.1.28
+version: 0.1.27
 description: HMCTS Plum frontend application (test application)
 maintainers:
   - name: HMCTS Platform Engineering Team
