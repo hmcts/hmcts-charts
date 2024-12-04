@@ -83,6 +83,9 @@ java:
     TTL_ENABLED: false
     DELETE_CASE_ENDPOINT_ENABLED: false
     DELETE_CASE_S2S_WHITELIST: ccd_case_disposer,em_gw
+    UPDATE_TTL_CRONJOB_SCHEDULE: 0 15 17 26 8 * # Some time in future
+    UPDATE_TTL_BATCH_SIZE: 10
+    UPDATE_TTL_JOB_ENABLED: false
 
 hrsblobstorage:
   enabled: false
