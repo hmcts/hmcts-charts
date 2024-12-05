@@ -22,6 +22,9 @@ job:
           alias: app-insights-connection-string
         - name: encoded-data-string-wa-fields-removal
           alias: WA_FIELDS_ENCODED_DATA_STRING
+        - name: encoded-data-string-hearing-outcome-migration
+          alias: HEARING_OUTCOME_ENCODED_DATA_STRING
+
   environment:
     MIGRATION_WA_ENABLED: true
     IDAM_CLIENT_ID: sscs
@@ -31,3 +34,4 @@ job:
     MIGRATION_CASETYPE: Benefit
     MIGRATION_QUERY_SIZE: 10000
     MIGRATION_CASE_LIMIT: 1000
+    HMC_API_URL: "http://hmc-cft-hearing-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
