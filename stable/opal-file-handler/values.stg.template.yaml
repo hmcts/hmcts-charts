@@ -2,3 +2,6 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: true
+    FLYWAY_LOCATIONS: classpath:db/migration/allEnvs
