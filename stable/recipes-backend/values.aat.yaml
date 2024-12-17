@@ -1,0 +1,6 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/recipes-backend:latest
+  ingressHost: 
+  environment:
+    POSTGRES_SSL_MODE: require

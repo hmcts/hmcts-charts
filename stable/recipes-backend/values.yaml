@@ -1,0 +1,25 @@
+java:
+  applicationPort: 4550
+  aadIdentityName: cnp
+  readinessPath: '/health/readiness'
+  # Don't modify below here
+  image: 'hmctspublic.azurecr.io/recipes/backend:latest'
+  environment:
+    POSTGRES_SSL_MODE: require
+  autoscaling:
+    enabled: false
+    enabledForDevMode: true
+    maxReplicas: 5
+    cpu:
+      enabled: false
+  keyVaults:
+    "plumsi":
+      secrets:
+        - name: recipe-backend-POSTGRES-DATABASE-v14
+          alias: POSTGRES_DATABASE
+        - name: recipe-backend-POSTGRES-HOST-v14
+          alias: POSTGRES_HOST
+        - name: recipe-backend-POSTGRES-USER-v14
+          alias: POSTGRES_USER
+        - name: recipe-backend-POSTGRES-PASS-v14
+          alias: POSTGRES_PASSWORD
