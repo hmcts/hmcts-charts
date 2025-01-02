@@ -10,8 +10,8 @@ job:
   keyVaults:
     hmc:
       secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: notify-hmc-api-key
           alias: NOTIFY_HMC_API_KEY
         - name: notify-error-template-id
