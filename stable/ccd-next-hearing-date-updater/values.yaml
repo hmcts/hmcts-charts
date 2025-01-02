@@ -15,8 +15,8 @@ job:
   keyVaults:
     ccd:
       secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: ccd-next-hearing-date-updater-s2s-secret
           alias: IDAM_KEY_NEXT_HEARING_UPDATER
         - name: idam-ccd-next-hearing-date-updater-system-user-username
