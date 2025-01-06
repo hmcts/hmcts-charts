@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for labs-ashleigh31-nodejs App
+name: labs-ashleigh31-nodejs
+home: https://github.com/hmcts/labs-ashleigh31-nodejs
+version: 0.0.6
+dependencies:
+  - name: nodejs
+    version: 3.1.1
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
