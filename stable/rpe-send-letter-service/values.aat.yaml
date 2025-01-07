@@ -37,3 +37,7 @@ java:
     FLYWAY_NOOP_STRATEGY: "false"
   postgresql:
     enabled: true
+    image:
+      registry: hmctspublic.azurecr.io
+      repository: imported/bitnami/postgresql
+      tag: '15'
