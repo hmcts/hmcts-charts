@@ -2,6 +2,6 @@ job:
   image: ${IMAGE_NAME}
   schedule: "0 0,0 15 ? * * *"
   environment:
-    REPORT_NAME: pba-csv-report
-    PAYMENT_SERVER_URL: http://payment-api-pr-952.service.core-compute-preview.internal
+    REPORT_NAME: duplicate-sr-report
+    PAYMENT_SERVER_URL: https://payment-api-pr-1676.preview.platform.hmcts.net/
 
