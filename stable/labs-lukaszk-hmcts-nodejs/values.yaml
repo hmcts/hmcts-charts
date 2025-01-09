@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 8080
+  aadIdentityName: labs
+  ingressHost: labs-lukaszk-hmcts-nodejs.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/labs/lukaszk-hmcts-nodejs:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    labs:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:
