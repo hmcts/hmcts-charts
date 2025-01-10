@@ -2,5 +2,3 @@ nodejs:
   applicationPort: 1337
   image: 'hmctspublic.azurecr.io/recipes/frontend:latest'
   ingressHost: recipes-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  environment:
-    RECIPE_BACKEND_URL: http://recipes-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
