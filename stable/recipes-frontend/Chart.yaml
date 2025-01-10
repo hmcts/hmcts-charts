@@ -1,7 +1,7 @@
 name: recipes-frontend
 apiVersion: v2
 home: https://github.com/hmcts/recipes-frontend
-version: 0.1.0
+version: 0.1.1
 description: HMCTS recipes frontend application (test application)
 maintainers:
   - name: HMCTS Platform Engineering Team

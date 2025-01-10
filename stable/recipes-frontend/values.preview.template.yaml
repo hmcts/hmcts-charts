@@ -3,3 +3,7 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  keyVaults:
+    'plumsi':
+      secrets:
+        - name: appInsights-InstrumentationKey

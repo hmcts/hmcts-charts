@@ -4,7 +4,3 @@ nodejs:
   ingressHost: recipes-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
     RECIPE_BACKEND_URL: http://recipes-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  keyVaults:
-    'plumsi':
-      secrets:
-        - name: appInsights-InstrumentationKey

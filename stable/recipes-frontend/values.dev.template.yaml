@@ -1,0 +1,9 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    RECIPE_BACKEND_URL: http://toffee-recipe-backend.staging.platform.hmcts.net
+  keyVaults:
+    'toffeesi':
+      secrets:
+        - name: appInsights-InstrumentationKey
