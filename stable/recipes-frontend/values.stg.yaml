@@ -4,8 +4,8 @@ nodejs:
   ingressAnnotations:
     external-dns.alpha.kubernetes.io/exclude: 'true'
   environment:
-    RECIPE_BACKEND_URL: http://plum-recipe-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    RECIPE_BACKEND_URL: http://toffee-recipe-backend.staging.platform.hmcts.net
   keyVaults:
-    'plumsi':
+    'toffeesi':
       secrets:
         - name: appInsights-InstrumentationKey
