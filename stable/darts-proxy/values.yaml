@@ -16,3 +16,4 @@ java:
   environment:
     DARTS_MODERNISED_API_URL: https://darts-api.{{ .Values.global.environment }}.platform.hmcts.net
     DARTS_GATEWAY_API_URL: http://darts-gateway.{{ .Values.global.environment }}.platform.hmcts.net/service/darts
+    AZURE_STORAGE_BLOB_CONTAINER_NAME_INBOUND: darts-inbound-container
