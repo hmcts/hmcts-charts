@@ -47,7 +47,6 @@ java:
     CVP_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(CVP_BLOB_ACCOUNT_NAME);AccountKey=$(CVP_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
     VH_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(VH_BLOB_ACCOUNT_NAME);AccountKey=$(VH_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
     STORAGEACCOUNT_PRIMARY_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(HRS_BLOB_ACCOUNT_NAME);AccountKey=$(HRS_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
-    TTL_ENABLED: true
   postgresql:
     enabled: true
 
