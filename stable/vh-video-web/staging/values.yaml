@@ -39,31 +39,17 @@ java:
         - azuread--clientsecret
         - customtoken--secret
         - customtoken--thirdpartysecret
-        #kinly configuration
-        - kinlyconfiguration--apisecret
-        - kinlyconfiguration--callbacksecret
-        - kinlyconfiguration--conferencephonenumber
-        - kinlyconfiguration--heartbeaturlbase
-        - kinlyconfiguration--joinbyphonefromdate
-        - kinlyconfiguration--selftestapisecret
-        - kinlyconfiguration--turnserver
-        - kinlyconfiguration--turnservercredential
-        - kinlyconfiguration--turnserveruser
         #vodafone configuration
         - vodafoneconfiguration--apisecret
         - vodafoneconfiguration--callbacksecret
         - vodafoneconfiguration--conferencephonenumber
         - vodafoneconfiguration--conferencephonenumberWelsh
         - vodafoneconfiguration--heartbeaturlbase
-        - name: kinlyconfiguration--joinbyphonefromdate
-          alias: vodafoneconfiguration--joinbyphonefromdate
+        - vodafoneconfiguration--joinbyphonefromdate
         - vodafoneconfiguration--selftestapisecret
-        - name: kinlyconfiguration--turnserver
-          alias: vodafoneconfiguration--turnserver
-        - name: kinlyconfiguration--turnservercredential
-          alias: vodafoneconfiguration--turnservercredential
-        - name: kinlyconfiguration--turnserveruser
-          alias: vodafoneconfiguration--turnserveruser
+        - vodafoneconfiguration--turnserver
+        - vodafoneconfiguration--turnservercredential
+        - vodafoneconfiguration--turnserveruser
 
         - quicklinks--issuer
         - quicklinks--rsapublickey
@@ -117,3 +103,6 @@ java:
     VHSERVICES__ENABLEVIDEOFILTERS: true
     VHSERVICES__USERAPIURL: https://vh-user-api.{{ .Values.global.environment }}.platform.hmcts.net/
     VHSERVICES__VIDEOAPIURL: https://vh-video-api.{{ .Values.global.environment }}.platform.hmcts.net/
+    CACHESETTINGS__DAILYROUTINETIME: 2
+    CACHESETTINGS__CACHEDURATION: 18
+    CACHESETTINGS__LOCKDURATION: 3
