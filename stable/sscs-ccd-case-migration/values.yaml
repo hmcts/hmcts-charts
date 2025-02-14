@@ -22,8 +22,10 @@ job:
           alias: app-insights-connection-string
         - name: encoded-data-string-wa-fields-removal
           alias: WA_FIELDS_ENCODED_DATA_STRING
-        - name: encoded-data-string-hearing-outcome-migration
-          alias: HEARING_OUTCOME_ENCODED_DATA_STRING
+        - name: encoded-data-string-completed-hearings-outcomes
+          alias: COMPLETED_HEARINGS_OUTCOMES_ENCODED_DATA_STRING
+        - name: encoded-data-string-non-listed-hearings-outcomes
+          alias: NON_LISTED_HEARINGS_OUTCOMES_ENCODED_DATA_STRING
         - name: encoded-data-string-case-outcome-gaps-migration
           alias: CASE_OUTCOME_GAPS_ENCODED_DATA_STRING
         - name: encoded-data-string-hmcts-dwp-state-migration
