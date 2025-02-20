@@ -19,6 +19,7 @@ nodejs:
     RATE_LIMITE_MAX: 10
     IDAM_API_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    ICP_WS_URL: wss://em-icp-webpubsub.{{ .Values.global.environment }}.platform.hmcts.net/client/hubs/Hub
   spotInstances:
     enabled: true
   keyVaults:
