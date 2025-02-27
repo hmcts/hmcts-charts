@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for pcq-consolidation-service App
 name: pcq-consolidation-service
 home: https://github.com/hmcts/pcq-consolidation-service
-version: 0.1.6
+version: 0.1.7
 maintainers:
   - name: HMCTS PCQ Team
 dependencies:
   - name: job
-    version: ~2.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
