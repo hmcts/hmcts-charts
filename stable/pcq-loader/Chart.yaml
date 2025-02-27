@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for pcq-loader App
 name: pcq-loader
 home: https://github.com/hmcts/pcq-loader
-version: 0.1.11
+version: 0.1.12
 maintainers:
   - name: HMCTS PCQ Team
 dependencies:
   - name: job
-    version: ~2.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
