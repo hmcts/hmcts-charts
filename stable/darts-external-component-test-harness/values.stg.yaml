@@ -1,0 +1,4 @@
+java:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/darts-external-component-test-harness:latest
+  ingressHost: 

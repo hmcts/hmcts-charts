@@ -1,0 +1,17 @@
+java:
+  applicationPort: 4549
+  image: 'hmctspublic.azurecr.io/darts/external-component-test-harness:latest'
+  ingressHost: darts-external-component-test-harness.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: darts
+  autoscaling:
+    enabled: false
+  keyVaults:
+    darts:
+      secrets:
+        - name: ViQExternalUserName
+          alias: TEST_HARNESS_PROXY_USERNAME
+        - name: ViQExternalPassword
+          alias: TEST_HARNESS_PROXY_PASSWORD
+  environment:
+    TEST_HARNESS_AUTOMATION_ENABLED: false
+    TEST_HARNESS_PROXY_URL: http://darts-proxy.demo.platform.hmcts.net/service
