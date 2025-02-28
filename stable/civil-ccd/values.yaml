@@ -345,7 +345,6 @@ camunda-bpm:
   enabled: true
   java:
     imagePullPolicy: Always
-    image: hmctsprivatetemp.azurecr.io/camunda/bpm:latest
     ingressHost: camunda-
     disableKeyVaults: true
     releaseNameOverride: -camunda
