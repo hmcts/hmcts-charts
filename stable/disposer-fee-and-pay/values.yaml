@@ -1,0 +1,20 @@
+job:
+  image: 'hmctspublic.azurecr.io/disposer/fee-and-pay:latest'
+  ingressHost: disposer-fee-and-pay-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  kind: CronJob
+  schedule: "0 22 * * *"
+  startingDeadlineSeconds: 600
+  concurrencyPolicy: Forbid
+  aadIdentityName: disposer
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    disposer:
+#      secrets:
+#        - name: AppInsightsInstrumentationKey
+#          alias: azure.application-insights.instrumentation-key
+  environment:
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+
+global:
+  jobKind: CronJob

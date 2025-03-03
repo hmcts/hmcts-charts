@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for disposer-fee-and-pay App
+name: disposer-fee-and-pay
+home: https://github.com/hmcts/disposer-fee-and-pay
+version: 0.0.19
+maintainers:
+  - name: HMCTS Retain and Dispose team
+dependencies:
+  - name: job
+    version: 2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
