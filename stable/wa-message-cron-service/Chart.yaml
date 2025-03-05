@@ -3,8 +3,8 @@ appVersion: '1.0'
 description: A Helm chart for wa-message-cron-service App
 name: wa-message-cron-service
 home: https://github.com/hmcts/wa-message-cron-service
-version: 0.0.14
+version: 0.0.15
 dependencies:
   - name: job
-    version: 2.1.2
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
