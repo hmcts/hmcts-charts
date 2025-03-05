@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for civil-rtl-export App
 name: civil-rtl-export
 home: https://github.com/hmcts/civil-rtl-export
-version: 0.0.20
+version: 0.0.21
 maintainers:
   - name: HMCTS civil team
 dependencies:
