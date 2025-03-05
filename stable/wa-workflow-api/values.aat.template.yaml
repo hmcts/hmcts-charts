@@ -78,7 +78,6 @@ wa:
 camunda-bpm:
   enabled: true
   java:
-    image: hmctsprivatetemp.azurecr.io/camunda/bpm:latest
     releaseNameOverride: "{{ .Release.Name }}-camunda"
     ingressHost: "wa-workflow-camunda-staging.aat.platform.hmcts.net"
     disableKeyVaults: true
