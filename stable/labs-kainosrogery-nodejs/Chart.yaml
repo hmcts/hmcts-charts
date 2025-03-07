@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for labs-kainosrogery-nodejs App
+name: labs-kainosrogery-nodejs
+home: https://github.com/hmcts/labs-kainosrogery-nodejs
+version: 0.0.6
+dependencies:
+  - name: nodejs
+    version: 3.1.1
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
