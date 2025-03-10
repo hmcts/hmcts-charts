@@ -36,6 +36,8 @@ java:
           alias: SUMMARY_REPORT_RECIPIENTS
         - name: monthly-hearing-report-recipients
           alias: MONTHLY_HEARING_REPORT_RECIPIENTS
+        - name: monthly-hearing-report-recipients
+          alias: WEEKLY_HEARING_REPORT_RECIPIENTS
         - name: report-api-key
           alias: REPORT_API_KEY
         - name: monthly-hearing-report-recipients

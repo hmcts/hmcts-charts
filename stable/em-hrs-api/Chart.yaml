@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for Hearing Recording Service
 name: em-hrs-api
 home: https://github.com/hmcts/em-hrs-api
-version: 1.2.0
+version: 1.2.1
 maintainers:
   - name: HMCTS Evidence Management team
 dependencies:
