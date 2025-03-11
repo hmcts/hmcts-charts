@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for wa-workflow-api App
 name: wa-workflow-api
 home: https://github.com/hmcts/wa-workflow-api
-version: 0.1.0
+version: 0.1.1
 maintainers:
   - name: HMCTS wa team
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
 
   # WA
   - name: wa
-    version: ~1.0.5
+    version: ~1.0.6
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: wa.enabled
   - name: camunda-bpm
