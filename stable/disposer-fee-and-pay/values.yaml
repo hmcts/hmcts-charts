@@ -7,13 +7,14 @@ job:
   concurrencyPolicy: Forbid
   aadIdentityName: disposer
 #  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    disposer:
-#      secrets:
+  keyVaults:
+    disposer:
+      secrets:
+      - name: s2s-secret-disposer-fee-and-pay
+        alias: S2S_SECRET_DISPOSER_FEE_AND_PAY
 #        - name: AppInsightsInstrumentationKey
 #          alias: azure.application-insights.instrumentation-key
   environment:
-    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
 global:

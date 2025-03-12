@@ -4,7 +4,6 @@ job:
   ingressHost: ${SERVICE_FQDN}.preview.platform.hmcts.net
   environment:
     S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
   kind: CronJob
   schedule: "* */2 * * *"
   startingDeadlineSeconds: 300
