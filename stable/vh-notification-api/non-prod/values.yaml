@@ -1,6 +1,5 @@
 ---
 java:
-  aadIdentityName: vh-aad-identity
   applicationPort: 8080
   image: "sdshmctspublic.azurecr.io/vh/notification-api:latest"
   ingressHost: vh-notification-api.{{ .Values.global.environment }}.platform.hmcts.net
@@ -13,7 +12,6 @@ java:
     vh-infra-core:
       excludeEnvironmentSuffix: false
       resourceGroup: vh-infra-core-{{ .Values.global.environment }}
-      usePodIdentity: true
       secrets:
         - name: connectionstrings--applicationinsights
           alias: applicationinsights--connectionstring
@@ -22,7 +20,6 @@ java:
     vh-notification-api:
       excludeEnvironmentSuffix: false
       resourceGroup: vh-infra-core-{{ .Values.global.environment }}
-      usePodIdentity: true
       secrets:
         - azuread--clientid
         - azuread--clientsecret
