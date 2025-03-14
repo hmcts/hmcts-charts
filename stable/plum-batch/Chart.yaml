@@ -1,9 +1,9 @@
 name: plum-batch
 home: https://github.com/hmcts/cnp-plum-batch
-version: 0.0.6
+version: 0.0.7
 description: HMCTS Plum batch (test application)
 apiVersion: v2
 dependencies:
   - name: job
-    version: 0.7.8
+    version: 2.1.2
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
