@@ -3,8 +3,8 @@ appVersion: "1.0"
 description: A Helm chart for et-pet ccd-export application
 name: et-pet-ccd-export
 home: https://github.com/hmcts/et-pet-ccd-export
-version: 0.0.13
+version: 0.0.14
 dependencies:
   - name: base
-    version: 1.3.0
-    repository: https://hmctspublic.azurecr.io/helm/v1/repo/
+    version: 1.4.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
