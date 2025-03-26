@@ -3,13 +3,13 @@ appVersion: "1.0"
 description: A Helm chart for ccd-next-hearing-date-updater App
 name: ccd-next-hearing-date-updater
 home: https://github.com/hmcts/ccd-next-hearing-date-updater
-version: 0.0.13
+version: 0.0.14
 maintainers:
   - name: HMCTS CCD Team
 dependencies:
   - name: job
-    version: 2.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: elasticsearch
     version: 7.17.3
     repository: 'https://helm.elastic.co'
