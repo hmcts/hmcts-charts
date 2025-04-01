@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for ccd-migration App
 name: prl-ccd-case-migration
 home: https://github.com/hmcts/ccd-case-migration-starter
-version: 1.0.4
+version: 1.0.5
 maintainers:
   - name: HMCTS prl team
 dependencies:
   - name: job
-    version: ~2.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
