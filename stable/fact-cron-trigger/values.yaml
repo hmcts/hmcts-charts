@@ -1,0 +1,12 @@
+java:
+  applicationPort: 8050
+  image: 'hmctspublic.azurecr.io/fact/cron-trigger:latest'
+  ingressHost: fact-cron-trigger-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: fact
+  keyVaults:
+    fact:
+      secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
+  environment:
+    FACT_API_URL: "http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
