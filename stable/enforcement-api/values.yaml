@@ -6,5 +6,8 @@ java:
   keyVaults:
     enforcement:
       secrets:
+        - name: enforcement-api-s2s-secret
+          alias: ENFORCEMENT_API_S2S_SECRET
         - name: app-insights-connection-string
   environment:
+    IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
