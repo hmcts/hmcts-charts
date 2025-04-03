@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for et data migration App
 name: et-migration
 home: https://github.com/hmcts/et-ccd-case-migration
-version: 0.0.10
+version: 0.0.11
 maintainers:
   - name: HMCTS Employment Tribunals Team
 dependencies:
   - name: job
-    version: 2.1.2
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 2.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
