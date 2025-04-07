@@ -10,7 +10,7 @@ java:
     POSTGRES_PORT: 5432
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
     POSTGRES_USERNAME: hmcts
-    POSTGRES_PASSWORD: hmcts
+    POSTGRES_PASSWORD: 
     POSTGRES_CONNECTION_OPTIONS: ""
     WA_TASK_MANAGEMENT_API_URL: "http://wa-task-management-api-aat.service.core-compute-aat.internal"
     ENVIRONMENT: "{{ .Values.global.environment }}"
@@ -34,8 +34,8 @@ java:
       tag: '11.6.0'
     auth:
       username: hmcts
-      password: hmcts
-      postgresPassword: hmcts
+      password: 
+      postgresPassword: 
     primary:
       persistence:
         enabled: false
@@ -84,7 +84,7 @@ camunda-bpm:
     environment:
       CAMUNDA_DB_HOST: "{{ .Release.Name }}-postgresql"
       CAMUNDA_DB_USER_NAME: hmcts
-      CAMUNDA_DB_PASSWORD: hmcts
+      CAMUNDA_DB_PASSWORD: 
       CAMUNDA_DB_CONN_OPTIONS: ""
       CAMUNDA_DB_NAME: camunda
       TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
