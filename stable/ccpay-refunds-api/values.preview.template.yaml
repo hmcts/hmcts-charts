@@ -25,14 +25,13 @@ java:
     REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
     REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-aat.service.core-compute-aat.internal/oauth2/callback"
     PAYMENT_API_URL: "http://${SERVICE_NAME}-payment-api"
-    NOTIFICATION_API_URL: "http://${SERVICE_NAME}-ccpay-notifications-service"
     TEST_URL_PAYMENT: "http://${SERVICE_NAME}-payment-api"
+    NOTIFICATION_API_URL: "http://${SERVICE_NAME}-ccpay-notifications-service"
 
     # PR Pointing - these should no longer be required unless testing simultanous changes between apps.
     # PAYMENT_API_URL: "http://payment-api-pr-1376-java"
     # NOTIFICATION_API_URL: "http://ccpay-notifications-service-pr-164-java"
     # TEST_URL_PAYMENT: "http://payment-api-pr-1376-java"
-
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -84,7 +83,6 @@ java:
             CREATE DATABASE payment WITH OWNER = javapostgres ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             CREATE DATABASE notifications WITH OWNER = javapostgres ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             CREATE DATABASE bulkscanning WITH OWNER = javapostgres ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-
 
 payment-api:
   enabled: true
