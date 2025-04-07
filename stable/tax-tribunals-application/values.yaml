@@ -37,6 +37,7 @@ base:
     NOTIFY_FTT_CASE_NOTIFICATION_CY_TEMPLATE_ID: '50d09d1e-4e61-4ad3-9697-836b8cbb9f1f'
     # Misc templates - not present on GovNotify Live Account - using trial id
     NOTIFY_REPORT_PROBLEM_TEMPLATE_ID: '6449ed0c-1424-4977-829b-4ce3efb04bcb'
+    NOTIFY_EMPLOYEE_INVITE_TEMPLATE_ID: '6a70ce06-3823-45f4-b3da-006ed153e8be'
   keyVaults:
     tax-tribunals-cft:
       secrets:
@@ -155,6 +156,7 @@ sidekiq:
     NOTIFY_CASE_LAST_REMINDER_CY_TEMPLATE_ID: "4bbd075a-2a5d-4146-93a6-dc53435a5f64"
     NOTIFY_SEND_APPLICATION_DETAIL_CY_TEMPLATE_ID: "be590b09-7371-4f46-8c6e-3393df5faef4"
     NOTIFY_SEND_APPLICATION_DETAIL_TEXT_CY_TEMPLATE_ID: "0654c83d-842c-4464-bdbf-a14160cde0c3"
+    NOTIFY_EMPLOYEE_INVITE_TEMPLATE_ID: '6a70ce06-3823-45f4-b3da-006ed153e8be'
   keyVaults:
     tax-tribunals-cft:
       secrets:
@@ -271,6 +273,7 @@ job:
     NOTIFY_FTT_CASE_NOTIFICATION_CY_TEMPLATE_ID: '50d09d1e-4e61-4ad3-9697-836b8cbb9f1f'
     # Misc templates - not present on GovNotify Live Account - using trial id
     NOTIFY_REPORT_PROBLEM_TEMPLATE_ID: '6449ed0c-1424-4977-829b-4ce3efb04bcb'
+    NOTIFY_EMPLOYEE_INVITE_TEMPLATE_ID: '6a70ce06-3823-45f4-b3da-006ed153e8be'
   keyVaults:
     tax-tribunals-cft:
       secrets:
