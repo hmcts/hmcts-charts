@@ -24,7 +24,7 @@ java:
     REFUND_SERVICE_ACCOUNT_USERNAME: "idam.user.ccpayrefundsapi@hmcts.net"
     REFUND_SERVICE_ACCOUNT_SCOPE: "openid profile roles search-user"
     REFUND_SERVICE_ACCOUNT_REDIRECT_URI: "http://ccpay-refunds-api-aat.service.core-compute-aat.internal/oauth2/callback"
-    PAYMENT_API_URL: "http://payment-api-pr-1301-java"
+    PAYMENT_API_URL: "http://payment-api-aat.service.core-compute-aat.internal"
   keyVaults:
     "ccpay":
       resourceGroup: ccpay
@@ -60,7 +60,7 @@ java:
         - name: notifications-letter-refund-when-contacted-template-id
           alias: NOTIFICATION_LETTER_REFUND_WHEN_CONTACTED_TEMPLATE_ID
         - name: notifications-email-refund-when-contacted-template-id
-          alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID
+          alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID9"
         - name: postcode-address-lookup-id
           alias: POSTCODE_ADDRESS_LOOKUP_ID
         - name: app-insights-connection-string

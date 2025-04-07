@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for notifications-service App
 name: ccpay-notifications-service
 home: https://github.com/hmcts/ccpay-notifications-service
-version: 1.0.17
+version: 1.0.18
 maintainers:
   - name: HMCTS Fees and Pay team
 dependencies:
