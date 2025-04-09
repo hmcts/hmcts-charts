@@ -1,3 +1,7 @@
+global:
+  enableKeyVaults: true
+  functionaltestscron:
+    enabled: true
 java:
   applicationPort: 8050
   image: 'hmctspublic.azurecr.io/fact/cron-trigger:latest'
