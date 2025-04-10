@@ -1,4 +1,4 @@
-java:
+job:
   applicationPort: 8050
   image: 'hmctspublic.azurecr.io/fact/cron-trigger:latest'
   ingressHost: fact-cron-trigger-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
@@ -12,3 +12,8 @@ java:
           alias: STORAGE_ACCOUNT_CONNECTION_STRING
   environment:
     FACT_API_URL: "http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  global:
+    jobKind: CronJob
+    enableKeyVaults: true
+  schedule: "0 1 * * *"
+  disableActiveClusterCheck: true
