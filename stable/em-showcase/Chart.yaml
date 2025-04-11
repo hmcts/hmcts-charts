@@ -3,8 +3,8 @@ appVersion: "1.0"
 description: A Helm chart for Evidence Management Showcase application
 name: em-showcase
 home: https://github.com/hmcts/em-showcase
-version: 0.2.11
+version: 0.2.12
 dependencies:
   - name: nodejs
-    version: 3.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 3.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
