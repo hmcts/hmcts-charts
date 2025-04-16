@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/pcs-api:latest
   ingressHost: 
+  environment:
+    ENABLE_TESTING_SUPPORT: true
