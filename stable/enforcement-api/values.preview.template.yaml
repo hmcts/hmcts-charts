@@ -13,5 +13,7 @@ java:
     ENFORCEMENT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
     ENFORCEMENT_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     ENFORCEMENT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    ENABLE_TESTING_SUPPORT: true
   postgresql:
     enabled: true
+
