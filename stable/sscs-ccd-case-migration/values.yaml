@@ -32,14 +32,12 @@ job:
           alias: CASE_OUTCOME_GAPS_ENCODED_DATA_STRING
         - name: encoded-data-string-hmcts-dwp-state-migration
           alias: HMCTS_DWP_STATE_ENCODED_DATA_STRING
+        - name: encoded-string-update-listing-reqs-amend-reason
+          alias: UPDATE_LISTING_REQS_MISSING_AMEND_REASON_ENCODED_STRING
 
   environment:
-    MIGRATION_WA_ENABLED: true
     IDAM_CLIENT_ID: sscs
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     IDAM_OAUTH2_REDIRECT_URL: https://evidence-sharing-preprod.sscs.reform.hmcts.net
-    MIGRATION_CASETYPE: Benefit
-    MIGRATION_QUERY_SIZE: 10000
-    MIGRATION_CASE_LIMIT: 1000
     HMC_API_URL: "http://hmc-cft-hearing-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
