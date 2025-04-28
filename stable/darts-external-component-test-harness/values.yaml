@@ -13,7 +13,8 @@ java:
         - name: ViQExternalPassword
           alias: TEST_HARNESS_PROXY_PASSWORD
         - name: app-insights-connection-string
-          alias: app-insights-connection-string
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+
   environment:
     TEST_HARNESS_AUTOMATION_ENABLED: false
     TEST_HARNESS_PROXY_URL: http://darts-proxy.demo.platform.hmcts.net/service
