@@ -58,6 +58,7 @@ job:
     PCQ_DB_HOST: pcq-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
     PCQ_DB_PORT: "5432"
     PCQ_DISPOSER_ENABLED: false
+    PCQ_DISPOSER_RATE_LIMIT: 1000
     # NONE for job, SERVLET (default) for backend server
     PCQ_APPLICATION_TYPE: NONE
   keyVaults:
