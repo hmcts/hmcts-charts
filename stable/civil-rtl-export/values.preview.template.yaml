@@ -2,3 +2,11 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    JF_DB_HOST: "{{ .Release.Name }}-postgresql"
+    JF_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    JF_DB_USERNAME: "{{ .Values.postgresql.auth.username}}"
+    JF_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+    JF_DB_PORT: 5432
+  postgresql:
+    enabled: true

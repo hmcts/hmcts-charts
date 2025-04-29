@@ -1,4 +1,4 @@
-java:
+java: &javaValues # This is an anchor to reuse settings in Job mode.
   applicationPort: 4550
   image: 'hmctspublic.azurecr.io/civil/rtl-export:latest'
   ingressHost: civil-rtl-export-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
@@ -28,3 +28,15 @@ java:
           alias: IDAM_RTL_EXPORT_USERNAME
         - name: civil-rtl-export-system-user-password
           alias: IDAM_RTL_EXPORT_PASSWORD
+        - name: sftp-host
+          alias: SFTP_HOST
+        - name: sftp-port
+          alias: SFTP_PORT
+        - name: sftp-username
+          alias: SFTP_USERNAME
+        - name: sftp-password
+          alias: SFTP_PASSWORD
+job:
+  # The following line uses the anchor to alias all values from the Java settings above to avoid duplication.
+  <<: *javaValues
+  enabled: false
