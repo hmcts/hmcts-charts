@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for fact-cron-trigger App
 name: fact-cron-trigger
 home: https://github.com/hmcts/fact-cron-trigger
-version: 0.0.17
+version: 0.0.18
 maintainers:
   - name: HMCTS fact team
 dependencies:

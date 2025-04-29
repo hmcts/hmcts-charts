@@ -1,8 +1,5 @@
 job:
-  applicationPort: 8050
   image: 'hmctspublic.azurecr.io/fact/cron-trigger:latest'
-  ingressHost: fact-cron-trigger-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  aadIdentityName: fact
   keyVaults:
     fact:
       secrets:
