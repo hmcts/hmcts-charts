@@ -1,5 +1,7 @@
 job:
-  image: 'hmctspublic.azurecr.io/fact/cron-trigger:latest'
+  image: hmctspublic.azurecr.io/fact/cron-trigger:latest
+  schedule: "*/40 * * * *"
+  aadIdentityName: fact
   keyVaults:
     fact:
       secrets:
@@ -12,5 +14,4 @@ job:
   global:
     jobKind: CronJob
     enableKeyVaults: true
-  schedule: "0 1 * * *"
   disableActiveClusterCheck: true
