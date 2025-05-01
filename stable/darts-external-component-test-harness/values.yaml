@@ -5,6 +5,8 @@ java:
   aadIdentityName: darts
   autoscaling:
     enabled: false
+  global:
+    enableKeyVaults: true
   keyVaults:
     darts:
       secrets:
@@ -13,7 +15,7 @@ java:
         - name: ViQExternalPassword
           alias: TEST_HARNESS_PROXY_PASSWORD
         - name: app-insights-connection-string
-          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+          alias: app-insights-connection-string
 
   environment:
     TEST_HARNESS_AUTOMATION_ENABLED: false
