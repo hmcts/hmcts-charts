@@ -41,10 +41,10 @@ java:
           alias: APP_URI
         - name: app-pip-publication-services-scope
           alias: PUBLICATION_SERVICES_AZ_API
+        - name: auto-pip-<ENV>-courtel-api
+          alias: COURTEL_API
         - name: b2c-ad-url
           alias: IDENTITY_ISSUER
-        - name: app-pip-subscription-management-scope
-          alias: SUBSCRIPTION_MANAGEMENT_AZ_API
         - name: app-insights-java-connection-string
           alias: APP_INSIGHTS_CONNECTION_STRING
   autoscaling:
