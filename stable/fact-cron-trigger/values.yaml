@@ -14,4 +14,3 @@ job:
   global:
     jobKind: CronJob
     enableKeyVaults: true
-  disableActiveClusterCheck: true
