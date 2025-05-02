@@ -9,7 +9,3 @@ nodejs:
 
 redis:
   enabled: true
-  image:
-    registry: hmctspublic.azurecr.io
-    repository: imported/bitnami/redis
-    tag: '6.2.7'
