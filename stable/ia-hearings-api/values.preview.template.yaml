@@ -2,6 +2,8 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    DEPLOYMENT_FILTER_ENABLED: true
   keyVaults:
     ia:
       secrets:
