@@ -3,8 +3,8 @@ appVersion: '1.0'
 description: A Helm chart for sptribs-dss-update-case-web App
 name: sptribs-dss-update-case-web
 home: https://github.com/hmcts/sptribs-dss-update-case-web
-version: 0.0.18
+version: 0.0.19
 dependencies:
   - name: nodejs
-    version: 3.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 3.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
