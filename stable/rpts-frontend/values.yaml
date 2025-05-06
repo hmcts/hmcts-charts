@@ -1,11 +1,13 @@
 nodejs:
   applicationPort: 3120
+  cpuRequests: 100m
+  memoryLimits: 1024Mi
   aadIdentityName: rpts
   ingressHost: rpts.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/rpts/frontend:latest'
   keyVaults:
     rpts:
       secrets:
-        - AppInsightsInstrumentationKey
+        - app-insights-connection-string
   environment:
     RPTS_API_URL: "http://rpts-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
