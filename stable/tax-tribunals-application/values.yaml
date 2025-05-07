@@ -228,6 +228,8 @@ sidekiq:
           alias: DYNATRACE_UI_TRACKING_ID
         - name: test-loading-env-v1
           alias: TEST_ENV_ID
+        - name: sentry-dsn-datacapture
+          alias: SENTRY_DSN
 
 job:
   image: "hmctspublic.azurecr.io/tax-tribunals/application"
@@ -343,3 +345,6 @@ job:
           alias: DYNATRACE_UI_TRACKING_ID
         - name: test-loading-env-v1
           alias: TEST_ENV_ID
+        - name: sentry-dsn-datacapture
+          alias: SENTRY_DSN
+
