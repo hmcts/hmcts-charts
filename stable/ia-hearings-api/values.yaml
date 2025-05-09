@@ -27,6 +27,7 @@ java:
     PACT_BROKER_PORT: "443"
     PACT_BROKER_SCHEME: "https"
     ROLE_ASSIGNMENT_API_URL: "http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    DEPLOYMENT_FILTER_ENABLED: false
   keyVaults:
     ia:
       resourceGroup: ia
