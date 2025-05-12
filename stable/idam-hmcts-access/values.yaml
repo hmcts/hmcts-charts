@@ -24,6 +24,7 @@ nodejs:
         - sso-client-secret
         - sso-client-id-moj
         - sso-client-secret-moj
+        - csrf-cookie-secret
   environment:
     APP_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
