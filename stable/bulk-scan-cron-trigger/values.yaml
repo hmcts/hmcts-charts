@@ -1,0 +1,11 @@
+job:
+  image: 'hmctspublic.azurecr.io/bulk-scan/cron-trigger:latest'
+  aadIdentityName: bsp
+  keyVaults:
+    bulk-scan:
+      secrets:
+        - name: app-insights-java-connection-string
+          alias: app-insights-connection-string
+  global:
+    jobKind: CronJob
+    enableKeyVaults: true

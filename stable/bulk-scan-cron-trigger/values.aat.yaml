@@ -1,0 +1,3 @@
+job:
+  image: https://hmcts.azurecr.io/hmcts/bulk-scan-cron-trigger:latest
+  ingressHost: 
