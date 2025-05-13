@@ -3,7 +3,7 @@ appVersion: '1.0'
 description: A Helm chart for hwf-publicapp App
 name: help-with-fees-publicapp
 home: https://github.com/hmcts/hwf-publicapp
-version: 0.0.63
+version: 0.0.64
 dependencies:
   - name: base
     version: 1.4.0
