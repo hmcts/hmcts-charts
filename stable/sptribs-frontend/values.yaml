@@ -28,7 +28,7 @@ nodejs:
         - idam-systemupdate-password
         - redis-access-key
         - s2s-secret-sptribs-frontend
-        - app-insights-instrumentation-key
+        - app-insights-connection-string
         - postcode-lookup-token
         - specialTribunals-cic-pcq-token
         - sptribs-frontend-dynatrace-url
