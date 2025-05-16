@@ -4,7 +4,7 @@ job:
   keyVaults:
     bulk-scan:
       secrets:
-        - name: app-insights-java-connection-string
+        - name: app-insights-connection-string
           alias: app-insights-connection-string
   global:
     jobKind: CronJob
