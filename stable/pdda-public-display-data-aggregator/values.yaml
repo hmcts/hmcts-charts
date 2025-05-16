@@ -19,6 +19,16 @@ java:
           alias: DB_SCHEMA
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: public-display-data-aggregator-authentication-cath-clientID
+          alias: CATH_AZURE_CLIENT_ID
+        - name: public-display-data-aggregator-authentication-cath-clientSecret
+          alias: CATH_AZURE_CLIENT_SECRET
+        - name: public-display-data-aggregator-authentication-clientID
+          alias: AZURE_CLIENT_ID
+        - name: public-display-data-aggregator-authentication-clientSecret
+          alias: AZURE_CLIENT_SECRET
+        - name: public-display-data-aggregator-authentication-tenantID
+          alias: AZURE_TENANT_ID
         - name: public-display-data-aggregator-BAIS-SFTP-HOSTNAME
           alias: PDDA_BAIS_SFTP_HOSTNAME
         - name: public-display-data-aggregator-BAIS-CP-SFTP-USERNAME
