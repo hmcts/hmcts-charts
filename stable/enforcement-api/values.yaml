@@ -19,3 +19,10 @@ java:
     ENFORCEMENT_DB_NAME: enforcement
     DRAFT_STORE_DB_CONN_OPTIONS: ?sslmode=require&gssEncMode=disable
     ENFORCEMENT_DB_HOST: enforcement-{{ .Values.global.environment }}.postgres.database.azure.com
+    FLYWAY_NOOP_STRATEGY: "true"
+    SPRING_FLYWAY_ENABLED: "true"
+
+ccd:
+  enabled: false
+xui-webapp:
+  enabled: false

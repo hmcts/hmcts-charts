@@ -5,6 +5,8 @@ java:
   keyVaults:
     enforcement:
       secrets:
+        - name: enforcement-api-s2s-secret
+          alias: ENFORCEMENT_API_S2S_SECRET
         - name: govnotify-test-key
           alias: ENFORCEMENT_NOTIFY_API_KEY
         - name: app-insights-connection-string
@@ -13,6 +15,8 @@ java:
     ENFORCEMENT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
     ENFORCEMENT_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     ENFORCEMENT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    FLYWAY_NOOP_STRATEGY: "false"
+    SPRING_FLYWAY_LOCATIONS: "classpath:db/migration,classpath:db/testdata"
     ENABLE_TESTING_SUPPORT: true
   postgresql:
     enabled: true
