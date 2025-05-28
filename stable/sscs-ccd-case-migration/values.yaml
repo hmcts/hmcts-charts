@@ -34,6 +34,8 @@ job:
           alias: HMCTS_DWP_STATE_ENCODED_DATA_STRING
         - name: encoded-string-update-listing-reqs-amend-reason
           alias: UPDATE_LISTING_REQS_MISSING_AMEND_REASON_ENCODED_STRING
+        - name: encoded-string-default-panel-composition
+          alias: DEFAULT_PANEL_COMPOSITION_ENCODED_STRING
 
   environment:
     IDAM_CLIENT_ID: sscs
