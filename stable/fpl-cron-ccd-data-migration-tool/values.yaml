@@ -20,6 +20,8 @@ job:
           alias: DATA_STORE_IDAM_KEY
         - name: migration-tool-case-id-list-mapping
           alias: CASE_ID_LIST_MAPPING
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
   environment:
     IDAM_REDIRECT_URL: https://fpl-case-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
     IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
