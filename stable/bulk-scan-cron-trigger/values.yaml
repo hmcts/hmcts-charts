@@ -4,6 +4,10 @@ job:
   keyVaults:
     bulk-scan:
       secrets:
+        - name: slack-token-daily-checks
+          alias: slack-token-daily-checks
+        - name: slack-channel-id-daily-checks
+          alias: slack-channel-id-daily-checks
         - name: app-insights-connection-string
           alias: app-insights-connection-string
   global:
