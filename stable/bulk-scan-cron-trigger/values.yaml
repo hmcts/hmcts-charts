@@ -5,9 +5,9 @@ job:
     bulk-scan:
       secrets:
         - name: slack-token-daily-checks
-          alias: slack-token-daily-checks
+          alias: SLACK_TOKEN_DAILY_CHECKS
         - name: slack-channel-id-daily-checks
-          alias: slack-channel-id-daily-checks
+          alias: SLACK_CHANNEL_TOKEN_DAILY_CHECKS
         - name: app-insights-connection-string
           alias: app-insights-connection-string
   global:
