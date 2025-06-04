@@ -52,5 +52,3 @@ java:
           alias: WA_SYSTEM_PASSWORD
         - name: wa-idam-client-secret
           alias: WA_IDAM_CLIENT_SECRET
-        - name: idam-test-account-pw
-          alias: IDAM_TEST_ACCOUNT_PW
