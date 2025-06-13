@@ -2,3 +2,8 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/em-npa:latest
   ingressHost: 
+  environment:
+    SHOW_SQL: true
+    LOGGING_LEVEL_ORG_HIBERNATE_SQL: DEBUG
+    SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: true
+    LOGGING_LEVEL_ORG_HIBERNATE_TYPE_DESCRIPTOR_SQL_BASICBINDER: TRACE
