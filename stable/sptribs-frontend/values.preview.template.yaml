@@ -3,7 +3,6 @@ nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    PCQ_ENABLED: true
     RATE_LIMITER_DISABLED: true
   keyVaults:
     sptribs:
@@ -14,13 +13,7 @@ nodejs:
         - idam-systemupdate-username
         - idam-systemupdate-password
         - redis-access-key
-        - s2s-secret-sptribs-frontend
+        - s2s-case-api-secret
         - postcode-lookup-token
         - specialTribunals-cic-pcq-token
         - sptribs-frontend-dynatrace-url
-
-idam-pr:
-  enabled: true
-  redirect_uris:
-    sptribs-frontend:
-      - https://${SERVICE_FQDN}/receiver

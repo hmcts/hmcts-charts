@@ -7,18 +7,17 @@ nodejs:
   image: 'hmctspublic.azurecr.io/sptribs/frontend:latest'
 
   environment:
-    NODE_ENV: production
     REFORM_TEAM: sptribs
     REFORM_SERVICE_NAME: sptribs-frontend
-    NODE_TLS_REJECT_UNAUTHORIZED: 0
     SERVICE_AUTH_PROVIDER_URL: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     IDAM_WEB_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login'
     IDAM_API_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
     REDIS_HOST: 'sptribs-{{ .Values.global.environment }}.redis.cache.windows.net'
-    EQUALITY_URL: 'https://pcq.{{ .Values.global.environment }}.platform.hmcts.net'
-    CASE_API_URL: 'http://sptribs-case-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
-    PCQ_ENABLED: true
-    DSS_UPDATE_URL: 'https://sptribs-dss-update-case-web.{{ .Values.global.environment }}.platform.hmcts.net/'
+    EQUALITY_URL: 'http://pcq.{{ .Values.global.environment }}.platform.hmcts.net'
+    SPTRIBS_API_URL: 'http://sptribs-case-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    CCD_API_URL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    CASE_DOCUMENT_API_URL: 'http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    DSS_UPDATE_URL: 'http://sptribs-dss-update-case-web.{{ .Values.global.environment }}.platform.hmcts.net/'
 
   keyVaults:
     sptribs:
@@ -27,11 +26,8 @@ nodejs:
         - idam-systemupdate-username
         - idam-systemupdate-password
         - redis-access-key
-        - s2s-secret-sptribs-frontend
+        - s2s-case-api-secret
         - app-insights-connection-string
         - postcode-lookup-token
         - specialTribunals-cic-pcq-token
         - sptribs-frontend-dynatrace-url
-
-idam-pr:
-  enabled: false
