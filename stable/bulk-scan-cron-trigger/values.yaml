@@ -10,6 +10,8 @@ job:
           alias: SLACK_CHANNEL_TOKEN_DAILY_CHECKS
         - name: app-insights-connection-string
           alias: app-insights-connection-string
+        - name: actions-api-key
+          alias: ACTIONS_API_KEY
   global:
     jobKind: CronJob
     enableKeyVaults: true
