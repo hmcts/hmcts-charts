@@ -3,6 +3,13 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
+    et-hearings-api:
+      secrets:
+        - name: et-hearings-api-s2s-secret
+          alias: ET_HEARINGS_S2S_SECRET
+        - name: hmc-servicebus-shared-access-key
+          alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
     et:
       secrets:
-        - AppInsightsInstrumentationKey
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
