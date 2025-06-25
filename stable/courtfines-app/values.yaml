@@ -1,0 +1,18 @@
+nodejs:
+  applicationPort: 3100
+  aadIdentityName: courtfines
+  ingressHost: courtfines-app.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'sdshmctspublic.azurecr.io/courtfines/app:latest'
+  keyVaults:
+    courtfines:
+      secrets:
+        - app-EPDQ-SHAIN
+        - app-SESSION-SECRET
+        - app-POSTGRES-USER
+        - app-POSTGRES-PASS
+        - app-POSTGRES-HOST
+        - app-POSTGRES-PORT
+        - app-POSTGRES-DATABASE
+  environment:
+    ALLOW_CONFIG_MUTATIONS: true
+    TESTVAR: 'testvalue'
