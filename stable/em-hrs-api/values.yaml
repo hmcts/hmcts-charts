@@ -97,3 +97,5 @@ cvpblobstorage:
   enabled: false
 vhblobstorage:
   enabled: false
+ccd:
+  enabled: false
