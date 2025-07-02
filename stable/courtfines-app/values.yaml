@@ -17,3 +17,4 @@ nodejs:
     ALLOW_CONFIG_MUTATIONS: true
     NODE_ENV: 'production'
     TESTVAR: 'testvalue'
+    LOG_LEVEL: 'DEBUG'
