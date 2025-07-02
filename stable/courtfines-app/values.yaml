@@ -15,4 +15,5 @@ nodejs:
         - app-POSTGRES-DATABASE
   environment:
     ALLOW_CONFIG_MUTATIONS: true
+    NODE_ENV: 'production'
     TESTVAR: 'testvalue'
