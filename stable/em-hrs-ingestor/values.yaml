@@ -27,8 +27,6 @@ job:
       secrets:
         - name: cvp-storage-connection-string
           alias: CVP_STORAGE_CONNECTION_STRING
-        - name: vh-storage-connection-string
-          alias: VH_STORAGE_CONNECTION_STRING
         - name: cvp-storage-container-name
           alias: CVP_STORAGE_CONTAINER_NAME
         - name: idam-system-user-name
@@ -42,9 +40,6 @@ job:
     SHOW_SQL: false
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: DEBUG
     USE_AD_AUTH_FOR_SOURCE_BLOB_CONNECTION: false
-    VH_STORAGE_CONTAINER_NAME: vhsimulator
-    VH_PROCESS_BACK_TO_DAY: 2
-    VH_PROCESS: false
     CVP_PROCESS: true
     IDAM_REDIRECT_URI: http://em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net

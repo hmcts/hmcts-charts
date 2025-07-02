@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for ingesting files in to Em-Hrs-Api
 name: em-hrs-ingestor
 home: https://github.com/hmcts/em-hrs-ingestor
-version: 2.2.0
+version: 2.2.1
 maintainers:
   - name: HMCTS Evidence Management team
 dependencies:
