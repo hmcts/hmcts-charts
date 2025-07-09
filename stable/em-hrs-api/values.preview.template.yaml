@@ -3,6 +3,10 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   readinessDelay: 45
+  devmemoryRequests: 2048Mi
+  devcpuRequests: 2000m
+  devmemoryLimits: 4096Mi
+  devcpuLimits: 4000m
   keyVaults:
     em-hrs-api:
       secrets:
