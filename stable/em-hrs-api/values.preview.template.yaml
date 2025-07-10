@@ -25,12 +25,6 @@ java:
     CVP_BLOB_ACCESS_KEY:
       secretRef: storage-secret-cvp-{{ .Release.Name }}
       key: accessKey
-    VH_BLOB_ACCOUNT_NAME:
-      secretRef: storage-account-vh-{{ .Release.Name }}
-      key: storage_account_name
-    VH_BLOB_ACCESS_KEY:
-      secretRef: storage-secret-vh-{{ .Release.Name }}
-      key: accessKey
     HRS_BLOB_ACCOUNT_NAME:
       secretRef: storage-account-hrs-{{ .Release.Name }}
       key: storage_account_name
@@ -41,7 +35,6 @@ java:
     HRS_CVP_DEST_CONTAINER_NAME: hrs-cvp
     HRS_VH_DEST_CONTAINER_NAME: hrs-vh
     CVP_STORAGE_CONTAINER_NAME: cvp
-    VH_STORAGE_CONTAINER_NAME: vhrecordings
     SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/javadatabase?ssl=disable
     SPRING_DATASOURCE_USERNAME: "{{ .Values.postgresql.auth.username}}"
     SPRING_DATASOURCE_PASSWORD: "{{ .Values.postgresql.auth.password}}"
@@ -50,7 +43,6 @@ java:
     ENABLE_DB_MIGRATE: true
     RUN_DB_MIGRATION_ON_STARTUP: true
     CVP_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(CVP_BLOB_ACCOUNT_NAME);AccountKey=$(CVP_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
-    VH_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(VH_BLOB_ACCOUNT_NAME);AccountKey=$(VH_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
     STORAGEACCOUNT_PRIMARY_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=$(HRS_BLOB_ACCOUNT_NAME);AccountKey=$(HRS_BLOB_ACCESS_KEY);EndpointSuffix=core.windows.net"
 
   postgresql:
@@ -73,16 +65,6 @@ cvpblobstorage:
   setup:
     containers:
       - cvp
-
-vhblobstorage:
-  enabled: true
-  resourceGroup: em-aso-preview-rg
-  releaseNameOverride: vh-{{ .Release.Name }}
-  teamName: "EM"
-  location: uksouth
-  setup:
-    containers:
-      - vhrecordings
 
 hrsblobstorage:
   enabled: true
