@@ -13,8 +13,9 @@ nodejs:
         - app-POSTGRES-HOST
         - app-POSTGRES-PORT
         - app-POSTGRES-DATABASE
+        - app-insights-connection-string
   environment:
     ALLOW_CONFIG_MUTATIONS: true
     NODE_ENV: 'production'
-    TESTVAR: 'Newtestvalue'
+    TESTVAR: 'testvalue'
     LOG_LEVEL: 'DEBUG'
