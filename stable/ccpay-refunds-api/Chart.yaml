@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for spring-boot-template App
 name: ccpay-refunds-api
 home: https://github.com/hmcts/ccpay-refunds-app
-version: 1.0.27
+version: 1.0.28
 maintainers:
   - name: HMCTS Fees and Pay team
 dependencies:
@@ -15,7 +15,7 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: payment-api.enabled
   - name: ccpay-bulkscanning-api
-    version: 1.0.29
+    version: 1.0.30
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccpay-bulkscanning-api.enabled
   - name: ccpay-notifications-service
