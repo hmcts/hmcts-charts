@@ -2,3 +2,4 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/probate-back-office:latest
   ingressHost: 
+  devmemoryLimits: 1.5Gi
