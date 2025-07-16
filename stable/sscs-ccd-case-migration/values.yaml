@@ -38,6 +38,8 @@ job:
           alias: DEFAULT_PANEL_COMPOSITION_ENCODED_STRING
         - name: encoded-string-processing-venue
           alias: VENUE_MIGRATION_ENCODED_STRING
+        - name: encoded-string-adjournment-flag
+          alias: ADJOURNMENT_FLAG_MIGRATION_ENCODED_STRING
 
   environment:
     IDAM_CLIENT_ID: sscs
