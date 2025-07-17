@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for hmc-hmi-outbound-adapter App
 name: hmc-hmi-outbound-adapter
 home: https://github.com/hmcts/hmc-hmi-outbound-adapter
-version: 0.1.18
+version: 0.1.19
 maintainers:
   - name: HMCTS CCD Dev Team
 dependencies:
