@@ -46,6 +46,7 @@ nodejs:
                 - os-places-token
                 - frontend-secret
                 - launchdarkly-key
+                - launchdarkly-user-key
                 - pcq-token-key
 
     # Don't modify below here

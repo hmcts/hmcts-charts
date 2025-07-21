@@ -105,6 +105,7 @@ nodejs:
                 - redis-connection-string
                 - AppInsightsInstrumentationKey
                 - launchdarkly-key
+                - launchdarkly-user-key
                 - pcq-token-key
                 - idam-citizen-username
                 - idam-citizen-password
