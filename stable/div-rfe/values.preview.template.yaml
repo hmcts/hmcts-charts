@@ -30,6 +30,7 @@ nodejs:
             - idam-secret
             - os-places-token
             - launchdarkly-key
+            - launchdarkly-user-key
             - pcq-token-key
 
 redis:

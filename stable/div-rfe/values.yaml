@@ -55,6 +55,7 @@ nodejs:
                 - redis-connection-string
                 - AppInsightsInstrumentationKey
                 - launchdarkly-key
+                - launchdarkly-user-key
                 - pcq-token-key
 
 redis:
