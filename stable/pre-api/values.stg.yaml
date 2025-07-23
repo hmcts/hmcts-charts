@@ -12,5 +12,6 @@ java:
     ENABLE_STREAMING_LOCATOR_ON_START: true
     ENABLE_AUTOMATED_EDITING: true
     ENABLE_ENHANCED_PROCESSING: true
+    ENABLE_NULL_DURATION_UPSERT: false
   image: https://hmcts.azurecr.io/hmcts/pre-api:latest
   ingressHost: 
