@@ -40,6 +40,8 @@ job:
           alias: VENUE_MIGRATION_ENCODED_STRING
         - name: encoded-string-adjournment-flag
           alias: ADJOURNMENT_FLAG_MIGRATION_ENCODED_STRING
+        - name: encoded-string-clear-pcm-migration
+          alias: PANEL_MEMBER_COMPOSITION_MIGRATION_ENCODED_STRING
 
   environment:
     IDAM_CLIENT_ID: sscs
