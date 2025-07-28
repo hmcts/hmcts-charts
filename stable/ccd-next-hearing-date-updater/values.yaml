@@ -2,6 +2,13 @@ elastic:
   enabled: false
 ccd:
   enabled: false
+postgresql:
+  enabled: false
+
+java:
+  enabled: false
+  postgresql:
+    enabled: false
 
 job:
   image: 'https://hmctspublic.azurecr.io/ccd/ccd-next-hearing-date-updater:latest'

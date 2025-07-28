@@ -208,7 +208,7 @@ ccd:
     apiGatewayWeb:
       enabled: false
     postgresql:
-      enabled: true
+      enabled: false
     s2s:
       enabled: false
     elastic:
@@ -235,30 +235,95 @@ ccd:
     s2sUrl: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     enableKeyVaults: true
     devMode: true
+    postgresHostname: ${SERVICE_NAME}-postgresql
+    postgresql:
+      auth:
+        postgresUsername: hmcts
+        postgresPassword: hmcts
 
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
       imagePullPolicy: Always
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 1
       environment:
         ELASTIC_SEARCH_ENABLED: true
         ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
         DEFINITION_STORE_IDAM_KEY: ${DEFINITION_STORE_S2S_KEY}
+        DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
+        DEFINITION_STORE_DB_USERNAME: hmcts
+        DEFINITION_STORE_DB_PASSWORD: hmcts
+        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified&sslmode=disable"
       devmemoryRequests: "1024Mi"
       devmemoryLimits: "2048Mi"
-      keyVaults: []
+      keyVaults: [ ]
+      secrets:
+        DEFINITION_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
 
   ccd-user-profile-api:
     java:
       ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
       imagePullPolicy: Always
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 1
+      environment:
+        USER_PROFILE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_definition,ccd_admin,sscs
+        USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
+        USER_PROFILE_DB_USERNAME: hmcts
+        USER_PROFILE_DB_PASSWORD: hmcts
+        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified&sslmode=disable"
+        DB_HOST: "{{ .Release.Name }}-postgresql"
+        DB_USER_NAME: "hmcts"
+        DB_PASSWORD: "hmcts"
+      postgresql:
+        enabled: true
+        primary:
+          persistence:
+            enabled: false
+          initdb:
+            scripts:
+              init.sql: |
+                CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "user-profile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "draftstore" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "payment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "evidence" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "annotation" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+                CREATE DATABASE "ts_translation_service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+        auth:
+          username: "hmcts"
+          password: "hmcts"
+        postgresHostname: ${SERVICE_NAME}-postgresql
       keyVaults: [ ]
+      secrets:
+        USER_PROFILE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+        USER_PROFILE_DB_USERNAME:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
 
   ccd-data-store-api:
     java:
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       memoryRequests: '1524Mi'
       cpuRequests: '900m'
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 1
       environment:
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,ccd_gateway,ccd_data,xui_webapp,ccd_next_hearing_date_updater
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: ccd_gw,ccd_gateway,ccd_data
@@ -267,9 +332,16 @@ ccd:
         ELASTIC_SEARCH_HOSTS: ${SERVICE_NAME}-es-master:9200
         ELASTIC_SEARCH_DATA_NODES_HOSTS: http://${SERVICE_NAME}-es-master:9200
         DATA_STORE_IDAM_KEY: ${DATA_STORE_S2S_KEY}
+        DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
+        DATA_STORE_DB_USERNAME: hmcts
+        DATA_STORE_DB_PASSWORD: hmcts
+        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified&sslmode=disable"
       keyVaults: []
-      autoscaling:
-        enabled: false
+      secrets:
+        DATA_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
 
   ccd-test-stubs-service:
     java:
