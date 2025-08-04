@@ -1,0 +1,4 @@
+nodejs:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/labs-manohar-hmcts-nodejs:latest
+  ingressHost: 
