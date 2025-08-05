@@ -6,3 +6,5 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   devmemoryRequests: 512Mi
   devmemoryLimits: 1024Mi
+  environment:
+    SSO_CALLBACK_BASE_URL: http://localhost:3100
