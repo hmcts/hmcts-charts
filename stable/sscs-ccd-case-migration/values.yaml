@@ -36,6 +36,8 @@ job:
           alias: UPDATE_LISTING_REQS_MISSING_AMEND_REASON_ENCODED_STRING
         - name: encoded-string-default-panel-composition
           alias: DEFAULT_PANEL_COMPOSITION_ENCODED_STRING
+        - name: encoded-string-default-panel-composition-exclude
+          alias: DEFAULT_PANEL_COMPOSITION_EXCLUDE_ENCODED_STRING
         - name: encoded-string-processing-venue
           alias: VENUE_MIGRATION_ENCODED_STRING
         - name: encoded-string-adjournment-flag
