@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 8080
+  aadIdentityName: labs
+  ingressHost: labs-shabmama53-nodejs.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/labs/shabmama53-nodejs:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    labs:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:
