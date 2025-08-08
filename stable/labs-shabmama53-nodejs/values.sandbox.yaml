@@ -1,4 +1,4 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 nodejs:
-  # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/labs-shabmama53-nodejs:latest
   ingressHost: 
