@@ -1,12 +1,36 @@
 java:
-  applicationPort: 4550
+  applicationPort: 4553
   image: 'hmctspublic.azurecr.io/lau/eud-backend:latest'
   ingressHost: lau-eud-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: lau
-#  Uncomment once the vault containing the app insights key has been set up
-#  keyVaults:
-#    lau:
-#      secrets:
-#        - name: AppInsightsInstrumentationKey
-#          alias: azure.application-insights.instrumentation-key
   environment:
+    LAU_EUD_DB_NAME: lau_eud
+    LAU_EUD_DB_HOST: lau-eud-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com
+    LAU_EUD_DB_PORT: "5432"
+    FLYWAY_URL: jdbc:postgresql://lau-eud-backend-flexible-{{ .Values.global.environment }}.postgres.database.azure.com:5432/lau_eud?sslmode=require
+    FLYWAY_USER: lauadmin
+    FLYWAY_NOOP_STRATEGY: "false"
+    LAU_EUD_DB_CONN_OPTIONS: "?sslmode=require"
+    LAU_EUD_ENCRYPTION_ENABLED: "Yes"
+    LAU_FLYWAY_MIGRATE_DB: "false" # this has to stay false as long as it is enabled in jenkins pipeline
+    DB_ALLOW_DELETE_RECORD: "false"
+  keyVaults:
+    lau:
+      resourceGroup: lau
+      secrets:
+        - name: eud-backend-POSTGRES-USER
+          alias: LAU_EUD_DB_ADMIN_USERNAME
+        - name: eud-backend-POSTGRES-PASS
+          alias: LAU_EUD_DB_ADMIN_PASSWORD
+        - name: eud-backend-app-db-user-flexible
+          alias: LAU_EUD_DB_USERNAME
+        - name: eud-backend-app-db-password
+          alias: LAU_EUD_DB_PASSWORD
+        - name: eud-backend-POSTGRES-PASS
+          alias: flyway.password
+        - name: eud-backend-encryption-key
+          alias: LAU_EUD_ENCRYPTION_KEY
+        - name: idam-client-secret
+          alias: IDAM_CLIENT_SECRET
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
