@@ -6,13 +6,15 @@ nodejs:
   devmemoryRequests: 512Mi
   environment:
     OAUTH_CLIENT_REDIRECT: https://${SERVICE_FQDN}/oauth2/callback
+    # Temporary until the redis cache is changed over in the base chart
+    REDIS_HOST: 'et-sya-session-storage-aat.redis.cache.windows.net'
   keyVaults:
     et:
       resourceGroup: et
       secrets:
         - AppInsightsInstrumentationKey
         - idam-secret
-        - et-syr-redis-access-key
+        - redis-access-key
         - os-places-token
         - pcq-token-key
         - launch-darkly-sdk-key
