@@ -4,9 +4,6 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   devmemoryLimits: 1024Mi
   devmemoryRequests: 512Mi
-  environment:
-    # Temporary until the redis cache is changed over in the base chart
-    REDIS_HOST: 'et-sya-session-storage-aat.redis.cache.windows.net'
   keyVaults:
     et:
       resourceGroup: et
