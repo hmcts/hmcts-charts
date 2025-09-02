@@ -44,6 +44,8 @@ job:
           alias: ADJOURNMENT_FLAG_MIGRATION_ENCODED_STRING
         - name: encoded-string-clear-pcm-migration
           alias: PANEL_MEMBER_COMPOSITION_MIGRATION_ENCODED_STRING
+        - name: encoded-string-final-decision-outcome-migration
+          alias: FINAL_DECISION_OUTCOME_MIGRATION_ENCODED_STRING
 
   environment:
     IDAM_CLIENT_ID: sscs
