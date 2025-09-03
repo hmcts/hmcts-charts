@@ -25,6 +25,8 @@ java:
           alias: CATH_AZURE_CLIENT_SECRET
         - name: public-display-data-aggregator-authentication-cath-authScope
           alias: CATH_AZURE_AUTH_SCOPE
+        - name: public-display-data-aggregator-authentication-cath-health-endpoint
+          alias: CATH_AZURE_HEALTH_ENDPOINT_URL
         - name: public-display-data-aggregator-authentication-clientID
           alias: AZURE_CLIENT_ID
         - name: public-display-data-aggregator-authentication-clientSecret
