@@ -28,11 +28,11 @@ java:
         - name: public-display-data-aggregator-authentication-cath-health-endpoint
           alias: CATH_AZURE_HEALTH_ENDPOINT_URL
         - name: public-display-data-aggregator-authentication-clientID
-          alias: AZURE_CLIENT_ID
+          alias: PDDA_AZURE_CLIENT_ID
         - name: public-display-data-aggregator-authentication-clientSecret
-          alias: AZURE_CLIENT_SECRET
+          alias: PDDA_AZURE_CLIENT_SECRET
         - name: public-display-data-aggregator-authentication-tenantID
-          alias: AZURE_TENANT_ID
+          alias: PDDA_AZURE_TENANT_ID
         - name: public-display-data-aggregator-BAIS-SFTP-HOSTNAME
           alias: PDDA_BAIS_SFTP_HOSTNAME
         - name: public-display-data-aggregator-BAIS-CP-SFTP-USERNAME
