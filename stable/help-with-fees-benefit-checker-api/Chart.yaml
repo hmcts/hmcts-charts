@@ -6,5 +6,5 @@ home: https://github.com/hmcts/hwf-benefit-checker-api
 version: 0.0.8
 dependencies:
   - name: base
-    version: 1.4.0
+    version: 1.4.1
     repository: 'oci://hmctspublic.azurecr.io/helm'
