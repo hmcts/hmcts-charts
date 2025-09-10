@@ -11,6 +11,7 @@ java:
     POSTGRES_HOST: ia-timed-event-service-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com
     POSTGRES_USERNAME: pgadmin
     POSTGRES_CONNECTION_OPTIONS: "?sslmode=require"
+    ROLE_ASSIGNMENT_URL: "http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   postgresql:
     auth:
       username: ia_tes
