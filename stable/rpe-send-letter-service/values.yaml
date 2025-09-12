@@ -40,7 +40,7 @@ java:
           alias: LAUNCH_DARKLY_SDK_KEY
         - name: launch-darkly-offline-mode
           alias: LAUNCH_DARKLY_OFFLINE_MODE
-        - name: app-insights-connection-string
+        - name: app-insights-connection-string-uk
           alias: APP_INSIGHTS_CONNECTION_STRING
 
   environment:
