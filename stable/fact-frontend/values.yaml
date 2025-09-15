@@ -9,7 +9,7 @@ nodejs:
     fact:
       resourceGroup: fact
       secrets:
-        - AppInsightsInstrumentationKey
+        - AppInsightsInstrumentationKey-ai
   ingressHost: fact.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctspublic.azurecr.io/fact/frontend:latest'
   environment:
