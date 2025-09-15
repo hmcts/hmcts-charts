@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for fact-frontend App
 name: fact-frontend
 home: https://github.com/hmcts/fact-frontend
-version: 0.0.33
+version: 0.0.32
 dependencies:
   - name: nodejs
     version: 3.2.0
