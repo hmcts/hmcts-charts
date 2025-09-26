@@ -1,6 +1,10 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/dm-store:latest
   ingressHost: 
+  devmemoryLimits: "3Gi"
+  devmemoryRequests: '3Gi'
+  devcpuRequests: "1000m"
+  devcpuLimits: "2000m"
   environment:
     REFORM_ENVIRONMENT: aat
     PACKAGES_ENVIRONMENT: aat
