@@ -55,4 +55,7 @@ job:
     LOCATION_REF_DATA_URL: "http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     MIGRATE_IS_ARIA_MIGRATED: false
     MIGRATION_PA_APPEALS_IN_PENDING_PAYMENT: false
+    MIGRATION_VIRTUAL_REGION_LOCATION_IN_EXISTING_APPEALS: false
+    MIGRATION_VIRTUAL_REGION_LOCATION_IN_EXISTING_APPEALS_ROLLBACK: false
+    MIGRATION_HU_EA_EU_APPEALS_IN_PENDING_PAYMENT: false
 
