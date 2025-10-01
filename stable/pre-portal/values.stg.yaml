@@ -1,4 +1,5 @@
 nodejs:
+  devmemoryLimits: 576Mi
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/pre-portal:latest
   ingressHost: 
