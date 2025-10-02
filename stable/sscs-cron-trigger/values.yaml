@@ -19,7 +19,7 @@ job:
           - name: s2s-micro
             alias: IDAM_S2S_AUTH_MICROSERVICE
           - name: app-insights-connection-string
-            alias: app_insights_connection_string
+            alias: app-insights-connection-string
   schedule: "0 1 * * *"
   global:
     jobKind: CronJob
