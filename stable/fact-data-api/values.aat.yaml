@@ -1,4 +1,12 @@
-# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
   image: https://hmcts.azurecr.io/hmcts/fact-data-api:latest
   ingressHost: 
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: true
+    DB_HOST: "{{ .Release.Name }}-postgresql"
+    DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    DB_USER: "{{ .Values.postgresql.auth.username}}"
+    DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+    DB_PORT: "5432"
+  postgresql:
+    enabled: true
