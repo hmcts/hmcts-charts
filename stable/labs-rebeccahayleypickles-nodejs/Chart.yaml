@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for labs-rebeccahayleypickles-nodejs App
+name: labs-rebeccahayleypickles-nodejs
+home: https://github.com/hmcts/labs-rebeccahayleypickles-nodejs
+version: 0.0.7
+dependencies:
+  - name: nodejs
+    version: 3.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
