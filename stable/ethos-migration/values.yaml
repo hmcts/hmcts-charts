@@ -1,0 +1,25 @@
+job:
+  image: 'hmctspublic.azurecr.io/ccd/migration:latest'
+  kind: CronJob
+  schedule: "0 22 * * *"
+  ingressHost: ethos-migration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: ethos
+  keyVaults:
+    ethos-shared:
+      resourceGroup: ethos
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: idam-client-secret
+          alias: IDAM_CLIENT_SECRET
+        - name: ecm-consumer-s2s-key
+          alias: ECM_CONSUMER_S2S_KEY
+  environment:
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_CLIENT_REDIRECT_URI: https://ecm-consumer-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
+    CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    MIGRATION_CASETYPE: Leeds
+    MIGRATION_QUERY_SIZE: 5000
+    MIGRATION_ROLLBACK: false
+
