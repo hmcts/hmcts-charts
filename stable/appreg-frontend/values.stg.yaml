@@ -2,3 +2,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/appreg-frontend:latest
   ingressHost: 
+  environment:
+    NODE_OPTIONS: '-r ./pv-preload.cjs'
