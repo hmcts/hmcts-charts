@@ -14,6 +14,9 @@ java:
     LAU_EUD_ENCRYPTION_ENABLED: "Yes"
     LAU_FLYWAY_MIGRATE_DB: "false" # this has to stay false as long as it is enabled in jenkins pipeline
     DB_ALLOW_DELETE_RECORD: "false"
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_CLIENT_NAME: lau
   keyVaults:
     lau:
       resourceGroup: lau

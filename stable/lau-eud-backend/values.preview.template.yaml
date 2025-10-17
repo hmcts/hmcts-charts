@@ -17,7 +17,9 @@ java:
     LAU_EUD_DB_CONN_OPTIONS: "?sslmode=allow"
     DB_ENCRYPTION_ENABLED: "No"
     LAU_FLYWAY_MIGRATE_DB: "true"
-    DB_ALLOW_DELETE_RECORD: "true"
+    S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+    IDAM_CLIENT_NAME: lau
 
   postgresql:
     enabled: true
