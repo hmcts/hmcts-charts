@@ -20,7 +20,9 @@ java:
     S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     IDAM_CLIENT_NAME: lau
-
+    RD_PROFESSIONAL_API_URL: http://rd-professional-api-aat.service.core-compute-aat.internal
+    IDAM_CLIENT_REDIRECT_URL: https://lau-eud-backend-aat.service.core-compute-aat.internal/oauth2/callback
+    S2S_MICROSERVICE: lau_eud_backend
   postgresql:
     enabled: true
     primary:
