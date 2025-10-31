@@ -1,0 +1,11 @@
+java:
+  applicationPort: 4065
+  image: 'hmctspublic.azurecr.io/opal/logging-service:latest'
+  ingressHost: opal-logging-service-{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: opal
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+  environment:
