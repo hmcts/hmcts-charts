@@ -10,8 +10,8 @@ base:
     RACK_ENV: "production"
     WEB_CONCURRENCY: 1
     API_XMLNS: "https://lsc.gov.uk/benefitchecker/service/1.0/API_1.0_Check"
-    API_HOST: "http://hwf-laa-benefit-checker.helpwithfees:8080"
-    API_PATH: "/bc-DS_Dev/lsc-services/benefitChecker"
+    API_HOST: "https://laa-benefit-checker.service.justice.gov.uk"
+    API_PATH: "lsx/lsc-services/benefitChecker"
   keyVaults:
     help-with-fees:
       secrets:
