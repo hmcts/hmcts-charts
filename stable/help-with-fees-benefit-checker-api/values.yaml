@@ -12,6 +12,7 @@ base:
     API_XMLNS: "https://lsc.gov.uk/benefitchecker/service/1.0/API_1.0_Check"
     API_HOST: "https://laa-benefit-checker.service.justice.gov.uk"
     API_PATH: "lsx/lsc-services/benefitChecker"
+    SENTRY_DSN: "https://a8b3d249cbc9ee8d6bd7efe7b515aec4@o345774.ingest.us.sentry.io/4510307659022336"
   keyVaults:
     help-with-fees:
       secrets:
