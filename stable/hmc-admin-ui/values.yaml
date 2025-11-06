@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3000
+  aadIdentityName: hmc
+  ingressHost: hmc-admin-ui.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/hmc/admin-ui:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  keyVaults:
+    hmc:
+      secrets:
+        - AppInsightsInstrumentationKey
+  environment:
