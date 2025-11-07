@@ -19,7 +19,7 @@ base:
     ET_API_URL: "http://et-pet-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/api"
     RAILS_LOG_TO_STDOUT: true
     RAVEN_SSL_VERIFICATION: false
-    CCD_UI_BASE_URL: "https://www.ccd.{{ .Values.global.environment }}.platform.hmcts.net/case/EMPLOYMENT"
+    CCD_UI_BASE_URL: "https://www.ccd.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/EMPLOYMENT"
     AZURE_APP_INSIGHTS_ROLE_NAME: "ET-ADMIN"
     MAINTENANCE_ENABLED: false
     MAINTENANCE_END: "9am (if you're seeing this message after this time it means things are taking a little longer than expected.) Please check back again soon."
