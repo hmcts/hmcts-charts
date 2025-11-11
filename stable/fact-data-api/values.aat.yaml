@@ -8,5 +8,8 @@ java:
     DB_USER: "{{ .Values.postgresql.auth.username}}"
     DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     DB_PORT: "5432"
+    AZURE_MANAGED_IDENTITY_ENABLED: true
+    AZURE_STORAGE_ACCOUNT_NAME: factsaaat
+    TESTING_SUPPORT_ENABLE_API: true
   postgresql:
     enabled: true
