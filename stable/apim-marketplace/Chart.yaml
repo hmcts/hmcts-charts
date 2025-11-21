@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for apim-marketplace App
+name: apim-marketplace
+home: https://github.com/hmcts/cnp-apimarketplace-service
+version: 0.0.17
+maintainers:
+  - name: HMCTS apim team
+dependencies:
+  - name: java
+    version: 5.3.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'

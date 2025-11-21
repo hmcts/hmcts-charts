@@ -1,0 +1,12 @@
+java:
+  applicationPort: 8080
+  image: 'hmctspublic.azurecr.io/apim/marketplace:latest'
+  ingressHost: apim-marketplace-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: apim
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    apim:
+#      secrets:
+#        - name: AppInsightsInstrumentationKey
+#          alias: azure.application-insights.instrumentation-key
+  environment:
