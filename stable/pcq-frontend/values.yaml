@@ -21,6 +21,7 @@ nodejs:
     PCQ_BACKEND_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
     ALLOW_CONFIG_MUTATIONS: true
+    OTEL_SERVICE_NAME: pcq-frontend
   image: hmctspublic.azurecr.io/pcq/frontend:latest
   ingressHost: pcq.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: pcq
