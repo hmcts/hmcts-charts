@@ -9,7 +9,6 @@ nodejs:
         EXCLUDE_E2E: false
         AUTH_RETURN_URL: https:///login/return
         MEDIA_VERIFICATION_RETURN_URL: https:///media-verification/return
-        ADMIN_AUTH_RETURN_URL: https:///login/admin/return
         FRONTEND_URL: https://
         SESSION_COOKIE_SAME_SITE: ''
         CRIME_IDAM_URL: https://login.prp.cjscp.org.uk
