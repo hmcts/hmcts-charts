@@ -22,8 +22,6 @@ job:
           alias: app-insights-connection-string
         - name: am-role-assignment-service-s2s-secret
           alias: AM_ROLE_ASSIGNMENT_SERVICE_SECRET
-        - name: role-assignment-service-LD-SDK-KEY
-          alias: LD_SDK_KEY
         - name: am-sendgrid-api-key
           alias: AM_SENDGRID_API_KEY
 

@@ -21,8 +21,6 @@ job:
           alias: ROLE_ASSIGNMENT_DB_HOST
         - name: am-sendgrid-api-key
           alias: AM_SENDGRID_API_KEY
-        - name: role-assignment-service-LD-SDK-KEY
-          alias: LD_SDK_KEY
         - name: judicial-booking-service-POSTGRES-PASS
           alias: JUDICIAL_BOOKING_SERVICE_POSTGRES_PASS
         - name: judicial-booking-service-POSTGRES-USER
