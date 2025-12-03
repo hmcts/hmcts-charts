@@ -31,8 +31,6 @@ java:
       secrets:
         - name: notifications-service-POSTGRES-PASS
           alias: POSTGRES_PASSWORD
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
         - name: notifications-s2s-secret
           alias: OIDC_S2S_SECRET
         - name: notifications-email-apikey
