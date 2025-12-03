@@ -8,8 +8,6 @@ java:
     "ccpay":
       resourceGroup: ccpay
       secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
         - name: app-insights-connection-string
           alias: app-insights-connection-string
         - name: ccpay-service-request-cpo-update-topic-premium-shared-access-key
