@@ -12,6 +12,11 @@ java:
     CFT_HEARING_SERVICE_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     CFT_HEARING_SERVICE_DB_OPTIONS: "?stringtype=unspecified"
     CFT_HEARING_SERVICE_DB_PORT: 5432
+    FH_BASE_URL: http://ccd-test-stubs-service-aat.service.core-compute-aat.internal
+    FH_GET_TOKEN_URL: /oauth2/token
+    HMI_BASE_URL: http://ccd-test-stubs-service-aat.service.core-compute-aat.internal/hmi
+    HMI_SOURCE_SYSTEM: CFT
+    HMI_DESTINATION_SYSTEM: SNL
 
   postgresql:
     enabled: true
