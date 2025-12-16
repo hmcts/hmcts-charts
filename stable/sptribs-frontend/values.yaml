@@ -14,7 +14,7 @@ nodejs:
     IDAM_API_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
     REDIS_HOST: 'sptribs-{{ .Values.global.environment }}.redis.cache.windows.net'
     EQUALITY_URL: 'http://pcq.{{ .Values.global.environment }}.platform.hmcts.net'
-    CCD_API_URL: 'https://ccd-data-store-api-sptribs-case-api-pr-2380.preview.platform.hmcts.net'
+    CCD_API_URL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     CASE_DOCUMENT_API_URL: 'http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     DSS_UPDATE_URL: 'http://sptribs-dss-update-case-web.{{ .Values.global.environment }}.platform.hmcts.net/'
   keyVaults:
