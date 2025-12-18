@@ -1,0 +1,10 @@
+nodejs:
+  image: 'sdshmctspublic.azurecr.io/juror/er-portal:latest'
+  applicationPort: 3000
+  ingressHost: juror-er-portal.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: juror
+  keyVaults:
+    juror:
+      secrets:
+        - name: app-insights-connection-string
+        - name: er-portal-redisConnection
