@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for lau-eud-backend App
 name: lau-eud-backend
 home: https://github.com/hmcts/lau-eud-backend
-version: 0.0.22
+version: 0.0.23
 maintainers:
   - name: HMCTS lau team
 dependencies:
