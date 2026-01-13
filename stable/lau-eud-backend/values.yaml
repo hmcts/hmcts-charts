@@ -20,6 +20,10 @@ java:
     IDAM_CLIENT_REDIRECT_URL: https://lau-eud-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     S2S_MICROSERVICE: lau_eud_backend
+    LAU_EUD_SERVICEBUS_IDAM_NAMESPACE: idam-servicebus-{{ .Values.global.environment }}
+    LAU_EUD_SERVICEBUS_ADD_SUBSCRIPTION: idam-add-user-lau-subscription-{{ .Values.global.environment }}
+    LAU_EUD_SERVICEBUS_MODIFY_SUBSCRIPTION: idam-modify-user-lau-subscription-{{ .Values.global.environment }}
+    LAU_EUD_SERVICEBUS_REMOVE_SUBSCRIPTION: idam-remove-user-lau-subscription-{{ .Values.global.environment }}
   keyVaults:
     lau:
       resourceGroup: lau
