@@ -1,0 +1,17 @@
+nodejs:
+  ingressHost: ${SERVICE_FQDN}
+  image: ${IMAGE_NAME}
+  environment:
+    REDIS_HOST: "{{ .Release.Name }}-redis-master"
+    REDIS_PORT: 6379
+    REDIS_PASSWORD: fake-password
+    REDIS_SSL_ENABLED: ""
+    CORS_ORIGIN_WHITELIST: "*"
+  keyVaults:
+
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: true
+    password: "fake-password"

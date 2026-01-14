@@ -1,0 +1,3 @@
+nodejs:
+  ingressHost: 
+  image: https://hmcts.azurecr.io/hmcts/xui-case-activity-api:latest

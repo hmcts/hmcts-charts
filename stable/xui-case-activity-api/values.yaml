@@ -1,0 +1,43 @@
+redis:
+  enabled: false
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+  auth:
+    enabled: false
+
+nodejs:
+  image: 'hmctspublic.azurecr.io/xui/case-activity-api:latest'
+  applicationPort: 3460
+  aadIdentityName: rpx
+  ingressHost: rpx-case-activity-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  autoscaling:
+    enabled: false
+    minReplicas: 8
+    maxReplicas: 16
+  environment:
+    CORS_ORIGIN_METHODS: GET,POST,OPTIONS
+    CORS_ORIGIN_WHITELIST: https://www-rpx.{{ .Values.global.environment }}.platform.hmcts.net
+    CACHE_USER_INFO_ENABLED: true
+    CACHE_USER_INFO_TTL: 600
+    CACHE_USER_INFO_CHECK_PERIOD: 120
+    NODE_CONFIG_DIR: ./config
+    AUTH_WHITE_LIST: ^caseworker-.+
+    AUTH_BLACK_LIST: solicitor
+    IDAM_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    REDIS_HOST: xui-activity-service-{{ .Values.global.environment }}.redis.cache.windows.net
+    REDIS_PORT: 6380
+    REDIS_SSL_ENABLED: true
+    REDIS_KEY_PREFIX: 'activity:'
+    REDIS_ACTIVITY_TTL: 5
+    REDIS_USER_DETAILS_TTL: 6000
+    APP_REQUEST_TIMEOUT: 5
+    APP_STORE_CLEANUP_CRONTAB: '* * * * *'
+    UV_THREADPOOL_SIZE: 64
+
+  keyVaults:
+    rpx:
+      secrets:        
+        - name: activity-redis-password
+        - name: app-insights-connection-string-at

@@ -1,0 +1,15 @@
+apiVersion: v2
+description: Helm chart for the HMCTS CCD Case Activity
+name: xui-case-activity-api
+home: https://github.com/hmcts/rpx-case-activity-api
+version: 1.3.19
+maintainers:
+  - name: HMCTS RPX XUI
+dependencies:
+  - name: nodejs
+    version: 3.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
+  - name: redis
+    version: 24.1.0
+    repository: "oci://registry-1.docker.io/bitnamicharts"
+    condition: redis.enabled
