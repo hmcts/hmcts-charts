@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3355
+  image: 'hmctspublic.azurecr.io/fact/admin-frontend:latest'
+  ingressHost: fact-admin-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: fact
+  keyVaults:
+    fact-kv:
+      secrets:
+        - name: app-insights-connection-string
+          alias: APP_INSIGHTS_CONNECTION_STRING
+  environment:
