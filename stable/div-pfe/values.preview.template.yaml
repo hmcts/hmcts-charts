@@ -9,7 +9,6 @@ idam-pr:
 
 nodejs:
     environment:
-        APPINSIGHTS_INSTRUMENTATIONKEY: "dummykey"
         FEATURE_STRATEGIC_PAY: "false"
         REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
         PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.preview.platform.hmcts.net"
@@ -48,6 +47,7 @@ nodejs:
                 - launchdarkly-key
                 - launchdarkly-user-key
                 - pcq-token-key
+                - AppInsightsInstrumentationKey
 
     # Don't modify below here
     image: ${IMAGE_NAME}
