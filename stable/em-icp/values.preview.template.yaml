@@ -9,7 +9,13 @@ nodejs:
 
 redis:
   enabled: true
-  usePassword: false
+  auth:
+    enabled: false
+  image:
+    tag: latest
+  master:
+    podAnnotations:
+      admission.dynatrace.com/inject: "false"
 
 tags:
   pr: true
