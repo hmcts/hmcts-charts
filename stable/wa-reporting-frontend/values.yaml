@@ -1,0 +1,38 @@
+nodejs:
+  applicationPort: 3100
+  aadIdentityName: wa
+  ingressHost: wa-reporting-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctspublic.azurecr.io/wa/reporting-frontend:latest'
+  keyVaults:
+    wa:
+      secrets:
+        - app-insights-connection-string
+        # - redis-hostname
+        # - redis-port
+        # - redis-key
+        # - idam-client-secret
+        # - session-secret
+        - name: cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
+          alias: TM_DB_USER
+        - name: cft-task-POSTGRES-PASS-FLEXIBLE-REPLICA
+          alias: TM_DB_PASSWORD
+        - name: rd-caseworker-ref-api-POSTGRES-USER
+          alias: CRD_DB_USER
+        - name: rd-caseworker-ref-api-POSTGRES-PASS
+          alias: CRD_DB_PASSWORD
+        - name: rd-location-ref-api-POSTGRES-USER
+          alias: LRD_DB_USER
+        - name: rd-location-ref-api-POSTGRES-PASS
+          alias: LRD_DB_PASSWORD
+  environment:
+    ALLOW_CONFIG_MUTATIONS: true
+    TM_DB_HOST: cft-task-postgres-db-flexible-replica-{{ .Values.global.environment }}.postgres.database.azure.com
+    TM_DB_NAME: cft_task_db
+    TM_DB_SCHEMA: analytics
+    CRD_DB_HOST: rd-caseworker-ref-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
+    CRD_DB_NAME: dbrdcaseworker
+    CRD_DB_SCHEMA: rdstaffreport
+    LRD_DB_HOST: rd-location-ref-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
+    LRD_DB_NAME: dbrdlocationref
+    LRD_DB_SCHEMA: locrefdata
+    ANALYTICS_MANAGE_CASE_BASE_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net
