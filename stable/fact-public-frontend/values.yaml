@@ -1,5 +1,9 @@
 nodejs:
   applicationPort: 3344
+  cpuLimits: 500m
+  cpuRequests: 100m
+  memoryRequests: 256Mi
+  memoryLimits: 1024Mi
   image: 'hmctspublic.azurecr.io/fact/public-frontend:latest'
   ingressHost: fact-public-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: fact
