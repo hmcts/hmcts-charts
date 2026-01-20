@@ -13,3 +13,4 @@ nodejs:
         - name: app-insights-connection-string
           alias: APP_INSIGHTS_CONNECTION_STRING
   environment:
+    DYNATRACE_JSTAG_KEY: '{{ .Values.global.environment }}'
