@@ -27,6 +27,7 @@ java:
     PAYMENT_API_URL: "http://${SERVICE_NAME}-payment-api"
     TEST_URL_PAYMENT: "http://${SERVICE_NAME}-payment-api"
     NOTIFICATION_API_URL: "http://${SERVICE_NAME}-ccpay-notifications-service"
+    BULKSCAN_API_URL: "http://${SERVICE_NAME}-ccpay-bulkscanning-api"
 
     # PR Pointing - these should no longer be required unless testing simultanous changes between apps.
     # PAYMENT_API_URL: "http://payment-api-pr-1376-java"

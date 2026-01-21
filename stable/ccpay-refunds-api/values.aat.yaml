@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/ccpay-refunds-api:latest
   ingressHost: 
+  environment:
+    BULKSCAN_API_URL: "http://ccpay-bulkscanning-api-aat.service.core-compute-aat.internal"
