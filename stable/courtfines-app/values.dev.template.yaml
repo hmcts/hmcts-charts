@@ -12,3 +12,7 @@ nodejs:
       secretRef: 'postgres'
       key: PASSWORD
       disabled: false
+    EPDQ_SHAIN:
+      secretRef: 'epdq'
+      key: EPDQ_SHAIN
+      disabled: false
