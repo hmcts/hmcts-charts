@@ -6,5 +6,11 @@ nodejs:
   keyVaults:
     juror:
       secrets:
+        - name: er-portal-sessionSecret
+        - name: er-portal-jwtKey
+        - name: er-portal-jwtNoAuthKey
+        - name: er-portal-jwtTTL
         - name: app-insights-connection-string
         - name: er-portal-redisConnection
+  environment:
+    ALLOW_CONFIG_MUTATIONS: true
