@@ -1,0 +1,5 @@
+nodejs:
+  environment:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/finrem-citizen-ui:latest
+  ingressHost: 
