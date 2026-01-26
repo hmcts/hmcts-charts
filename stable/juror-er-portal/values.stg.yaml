@@ -2,3 +2,5 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/juror-er-portal:latest
   ingressHost: 
+  environment:
+    API_ENDPOINT: https://juror-api.staging.platform.hmcts.net/api/v1
