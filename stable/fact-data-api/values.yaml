@@ -18,8 +18,16 @@ java:
           alias: DB_USER
         - name: data-api-POSTGRES-HOST
           alias: DB_HOST
-        - name: os-key
+        - name: api-app-reg-id
+          alias: APP_REG_ID
+        - name: bstrap-os-key
           alias: OS_KEY
+        - name: bstrap-cath-api-url
+          alias: CATH_API_URL
+        - name: bstrap-slack-token
+          alias: SLACK_TOKEN
+        - name: bstrap-slack-channel-id
+          alias: SLACK_CHANNEL_ID
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
     AZURE_MANAGED_IDENTITY_ENABLED: true
