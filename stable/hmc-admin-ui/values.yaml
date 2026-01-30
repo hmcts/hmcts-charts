@@ -8,4 +8,5 @@ nodejs:
     hmc:
       secrets:
         - AppInsightsInstrumentationKey
+        - hmc-admin-ui-s2s-secret
   environment:
