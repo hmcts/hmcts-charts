@@ -5,3 +5,5 @@ java:
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: true
     POSTGRES_USER: "{{ .Values.postgresql.auth.username }}"
+    APIM_ENABLED: true
+    APIM_URI: https://sds-api-mgmt.staging.platform.hmcts.net/pip/data-management
