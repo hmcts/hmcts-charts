@@ -12,6 +12,7 @@ nodejs:
         - name: er-portal-jwtTTL
         - name: app-insights-connection-string
         - name: er-portal-redisConnection
+        - name: er-portal-storage-connection-string
   environment:
     API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/api/v1
     ALLOW_CONFIG_MUTATIONS: true
