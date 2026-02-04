@@ -28,6 +28,7 @@ java:
     SCHEDULER_ENABLED: true
     CRON_EXPRESSION: "0 00 10 7 10 ?"
     DB_READER_USERNAME: "{{ .Values.postgresql.auth.username}}"
+    APPLICATION_LOGGING_LEVEL: INFO
   postgresql:
     enabled: true
     auth:
@@ -37,8 +38,8 @@ java:
   keyVaults:
     rd:
       secrets:
-        - name: ApplicationInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
         - name: LD-SDK-KEY
           alias: LD_SDK_KEY
         - name: judicial-api-s2s-secret

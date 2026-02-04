@@ -35,6 +35,7 @@ java:
     Del_Joh_Profiles_Years: 7
     Del_Joh_Profiles: true
     DB_READER_USERNAME: "DTS CFT DB Access Reader"
+    APPLICATION_LOGGING_LEVEL: INFO
   spotInstances:
     enabled: false
   image: 'hmctspublic.azurecr.io/rd/judicial-api:latest'
