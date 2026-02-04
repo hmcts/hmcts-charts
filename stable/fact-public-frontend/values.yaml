@@ -17,3 +17,4 @@ nodejs:
   environment:
     DYNATRACE_JSTAG_KEY: '{{ .Values.global.environment }}'
     SESSION_COOKIE_SAME_SITE: 'lax'
+    DATA_API_URL: 'https://fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net'
