@@ -1,7 +1,7 @@
 nodejs:
   image: 'sdshmctspublic.azurecr.io/juror/er-portal:latest'
   applicationPort: 3000
-  ingressHost: juror-er-portal.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: juror-er.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: juror
   keyVaults:
     juror:
@@ -13,6 +13,11 @@ nodejs:
         - name: app-insights-connection-string
         - name: er-portal-redisConnection
         - name: er-portal-storage-connection-string
+        - name: er-portal-azure-tenant-id
+        - name: er-portal-azure-app-id
+        - name: er-portal-azure-client-secret
   environment:
     API_ENDPOINT: https://juror-api.{{ .Values.global.environment }}.platform.hmcts.net/api/v1
     ALLOW_CONFIG_MUTATIONS: true
+    REDIRECT_URI: https://juror-er.{{ .Values.global.environment }}.apps.hmcts.net/auth/redirect
+    POST_LOGOUT_REDIRECT_URI: https://juror-er.{{ .Values.global.environment }}.apps.hmcts.net
