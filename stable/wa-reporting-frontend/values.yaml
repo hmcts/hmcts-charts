@@ -11,9 +11,9 @@ nodejs:
     wa:
       secrets:
         - app-insights-connection-string
-        # - redis-hostname
-        # - redis-port
-        # - redis-key
+        - wa-reporting-redis-host
+        - wa-reporting-redis-port
+        - wa-reporting-redis-access-key
         # - idam-client-secret
         # - session-secret
         - cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
@@ -37,3 +37,11 @@ nodejs:
     LRD_DB_SCHEMA: locrefdata
     LRD_DB_OPTIONS: sslmode=verify-full
     MANAGE_CASE_BASE_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net
+redis:
+  enabled: false
+  image:
+    registry: hmctspublic.azurecr.io
+    repository: imported/bitnami/redis
+global:
+  security:
+    allowInsecureImages: true

@@ -6,5 +6,24 @@ nodejs:
   devcpuLimits: 2000m
   devmemoryRequests: 512Mi
   devmemoryLimits: 2048Mi
+  keyVaults:
+    wa:
+      secrets:
+        - app-insights-connection-string
+        - cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
+        - cft-task-POSTGRES-PASS-FLEXIBLE-REPLICA
+        - rd-caseworker-ref-api-POSTGRES-USER
+        - rd-caseworker-ref-api-POSTGRES-PASS
+        - rd-location-ref-api-POSTGRES-USER
+        - rd-location-ref-api-POSTGRES-PASS
   environment:
     AUTH_ENABLED: false
+    REDIS_HOST: ${SERVICE_NAME}-redis-master
+redis:
+  enabled: true
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+  auth:
+    enabled: false
