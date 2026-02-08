@@ -6,3 +6,5 @@ nodejs:
   devcpuLimits: 2000m
   devmemoryRequests: 512Mi
   devmemoryLimits: 2048Mi
+  environment:
+    AUTH_ENABLED: false
