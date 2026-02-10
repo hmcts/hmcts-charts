@@ -63,3 +63,4 @@ java:
     EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     LAUNCH_DARKLY_ENV: '{{ .Values.global.environment }}'
+    DB_QUEUE_ENABLED: false
