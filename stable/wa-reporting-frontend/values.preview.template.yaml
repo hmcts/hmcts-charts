@@ -10,12 +10,18 @@ nodejs:
     wa:
       secrets:
         - app-insights-connection-string
-        - cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
-        - cft-task-POSTGRES-PASS-FLEXIBLE-REPLICA
-        - rd-caseworker-ref-api-POSTGRES-USER
-        - rd-caseworker-ref-api-POSTGRES-PASS
-        - rd-location-ref-api-POSTGRES-USER
-        - rd-location-ref-api-POSTGRES-PASS
+        - name: cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
+          alias: tm-db-user
+        - name: cft-task-POSTGRES-PASS-FLEXIBLE-REPLICA
+          alias: tm-db-password
+        - name: rd-caseworker-ref-api-POSTGRES-USER
+          alias: crd-db-user
+        - name: rd-caseworker-ref-api-POSTGRES-PASS
+          alias: crd-db-password
+        - name: rd-location-ref-api-POSTGRES-USER
+          alias: lrd-db-user
+        - name: rd-location-ref-api-POSTGRES-PASS
+          alias: lrd-db-password
   environment:
     AUTH_ENABLED: false
     REDIS_HOST: ${SERVICE_NAME}-redis-master
