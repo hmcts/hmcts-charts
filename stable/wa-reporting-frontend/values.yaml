@@ -14,7 +14,7 @@ nodejs:
         - wa-reporting-redis-host
         - wa-reporting-redis-port
         - wa-reporting-redis-access-key
-        # - idam-client-secret
+        - wa-reporting-frontend-client-secret
         # - session-secret
         - name: cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
           alias: tm-db-user
