@@ -13,3 +13,11 @@ java:
     TESTING_SUPPORT_ENABLE_API: true
   postgresql:
     enabled: true
+    primary:
+      initdb:
+        scripts:
+          enable_distance_extensions.sql: |
+            CREATE EXTENSION IF NOT EXISTS cube WITH SCHEMA public;
+            CREATE EXTENSION IF NOT EXISTS earthdistance WITH SCHEMA public;
+        user: postgres
+        password: "{{ .Values.postgresql.auth.password}}"
