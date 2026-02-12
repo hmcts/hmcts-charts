@@ -32,6 +32,7 @@ nodejs:
       secrets:
         - app-insights-connection-string
         - frontend-redis-access-key
+        - frontend-redis-secret
         - jwt-secret
         - launchdarkly-key
         - launchdarkly-user-key
