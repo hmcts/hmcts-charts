@@ -1,6 +1,7 @@
 java:
   environment:
     DB_ALLOW_DELETE_RECORD: "true"
+    DB_ALLOW_GET_ANSWER_RECORD: "true"
   image: https://hmcts.azurecr.io/hmcts/pcq-backend:latest
   ingressHost: 
 
