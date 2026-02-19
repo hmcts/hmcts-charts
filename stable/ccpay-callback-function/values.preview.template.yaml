@@ -14,9 +14,6 @@ function:
     SERVICE_CALLBACK_BUS_CONNECTION:
       secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-servicecallbacktopic
       key: connectionString
-    SERVICE_CALLBACK_SUBSCRIPTION:
-      secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-servicecallbacktopic
-      key: subscriptionName
 servicebus:
   resourceGroup: fees-pay-rg
   sbNamespace: "fees-pay-servicebus-preview"
