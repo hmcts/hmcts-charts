@@ -44,6 +44,7 @@ nodejs:
     LRD_DB_OPTIONS: sslmode=verify-full
     IDAM_PUBLIC_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
     MANAGE_CASE_BASE_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net
+    WA_BASE_URL: https://wa-reporting-frontend.{{ .Values.global.environment }}.platform.hmcts.net
 redis:
   enabled: false
   image:
