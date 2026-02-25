@@ -3,12 +3,12 @@ appVersion: '1.0'
 description: A Helm chart for wa-reporting-frontend App
 name: wa-reporting-frontend
 home: https://github.com/hmcts/wa-reporting-frontend
-version: 0.0.15
+version: 0.0.16
 dependencies:
   - name: nodejs
     version: 3.2.0
     repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: redis
-    version: 25.3.1
+    version: 25.3.2
     repository: 'oci://registry-1.docker.io/bitnamicharts'
     condition: redis.enabled
