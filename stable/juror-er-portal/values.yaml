@@ -1,5 +1,5 @@
 nodejs:
-  image: 'sdshmctspublic.azurecr.io/juror/er-portal:latest'
+  image: 'hmctsprod.azurecr.io/juror/er-portal:latest'
   applicationPort: 3000
   ingressHost: juror-er.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: juror
@@ -21,3 +21,4 @@ nodejs:
     ALLOW_CONFIG_MUTATIONS: true
     REDIRECT_URI: https://juror-er.{{ .Values.global.environment }}.apps.hmcts.net/auth/redirect
     POST_LOGOUT_REDIRECT_URI: https://juror-er.{{ .Values.global.environment }}.apps.hmcts.net
+    AZURE_STORAGE_CONTAINER_NAME: er-portal
