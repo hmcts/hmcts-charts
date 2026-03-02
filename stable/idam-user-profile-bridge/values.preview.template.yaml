@@ -10,6 +10,7 @@ java:
     SCHEDULER_ENABLED: false
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.aat.platform.hmcts.net/o/jwks
+    SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://idam-web-public.aat.platform.hmcts.net/o
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_IDAMUSERPROFILEBRIDGE_TOKENURI: https://idam-web-public.aat.platform.hmcts.net/o/token
     SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_RDUSERPROFILEAPI_TOKENURI: https://idam-web-public.aat.platform.hmcts.net/o/token
     RD_USERPROFILE_API_URL: http://rd-user-profile-api-aat.service.core-compute-aat.internal
