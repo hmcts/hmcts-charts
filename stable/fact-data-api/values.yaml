@@ -33,3 +33,4 @@ java:
     AZURE_MANAGED_IDENTITY_ENABLED: true
     AZURE_STORAGE_ACCOUNT_NAME: factsa{{ .Values.global.environment }}
     TESTING_SUPPORT_ENABLE_API: false
+    FACT_MIGRATION_SOURCE_BASE_URL: http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
