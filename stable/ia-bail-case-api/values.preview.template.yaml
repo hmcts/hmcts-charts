@@ -16,5 +16,5 @@ java:
     CASE_DOCUMENT_AM_URL: "http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     LOCATION_REF_DATA_URL: "http://rd-location-ref-api-aat.service.core-compute-aat.internal"
     IA_TIMED_EVENT_SERVICE_URL: "http://ia-timed-event-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
-    IA_TIMED_EVENT_SERVICE_ENABLED: "true"
+    IA_TIMED_EVENT_SERVICE_ENABLED: "false"
 

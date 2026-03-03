@@ -49,3 +49,5 @@ java:
           alias: app-insights-connection-string
         - name: ia-config-validator-secret
           alias: IA_CONFIG_VALIDATOR_SECRET
+        - name: ia-bail-gov-notify-key
+          alias: IA_BAIL_GOV_NOTIFY_KEY
