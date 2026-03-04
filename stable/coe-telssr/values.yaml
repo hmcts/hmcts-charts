@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 3100
+  #aadIdentityName: rpe
+  ingressHost: coe-telssr.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/coe/telssr:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    rpe:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:

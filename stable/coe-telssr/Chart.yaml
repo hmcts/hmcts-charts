@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: A Helm chart for coe-telssr App
+name: coe-telssr
+home: https://github.com/hmcts/coe-telssr
+version: 0.0.13
+dependencies:
+  - name: nodejs
+    version: 3.2.1
+    repository: 'oci://hmctsprod.azurecr.io/helm'
