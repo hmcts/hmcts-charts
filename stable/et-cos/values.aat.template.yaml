@@ -1,3 +1,47 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  enabled: true
+
+ccd:
+  enabled: false
+xui-webapp:
+  enabled: false
+idam-pr:
+  enabled: false
+et-sya:
+  enabled: false
+et-sya-api:
+  enabled: false
+wa:
+  enabled: false
+servicebus:
+  enabled: false
+ccd-message-publisher:
+  enabled: false
+aac-manage-case-assignment:
+  enabled: false
+am-org-role-mapping-service:
+  enabled: false
+redis:
+  enabled: false
+em-ccdorc:
+  enabled: false
+et-migration:
+  enabled: false
+rd-judicial-data-load:
+  enabled: false
+rd-judicial-api:
+  enabled: false
+rd-professional-api:
+  enabled: false
+rd-user-profile-api:
+  enabled: false
+rd-caseworker-ref-api:
+  enabled: false
+ccd-case-document-am-api:
+  enabled: false
+xui-mo-webapp:
+  enabled: false
+xui-ao-webapp:
+  enabled: false
