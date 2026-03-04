@@ -11,6 +11,8 @@ idam-pr:
   enabled: false
 et-sya:
   enabled: false
+et-syr:
+  enabled: false
 et-sya-api:
   enabled: false
 wa:
