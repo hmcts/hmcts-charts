@@ -14,6 +14,12 @@ nodejs:
           alias: APP_INSIGHTS_CONNECTION_STRING
         - name: session-secret
           alias: SESSION_SECRET
+        - name: public-frontend-app-reg-id
+          alias: FRONTEND_APP_REG_ID
+        - name: bstrap-public-frontend-client-secret
+          alias: FRONTEND_APP_REG_SECRET
+        - name: api-app-reg-id
+          alias: API_APP_REG_ID
   environment:
     DYNATRACE_JSTAG_KEY: '{{ .Values.global.environment }}'
     SESSION_COOKIE_SAME_SITE: 'lax'
