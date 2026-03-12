@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 8080
+  #aadIdentityName: rpe
+  ingressHost: coe-devssr.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/coe/devssr:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    rpe:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:

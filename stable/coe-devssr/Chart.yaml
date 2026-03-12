@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: '1.0'
+description: Helm chart for devextreme-poc-ssr (coe-devssr) app
+name: coe-devssr
+home: https://github.com/HMCTS/devextreme-poc-ssr
+version: 0.0.1
+dependencies:
+  - name: nodejs
+    version: 3.2.1
+    repository: 'oci://hmctsprod.azurecr.io/helm'
