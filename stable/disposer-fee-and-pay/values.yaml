@@ -1,5 +1,5 @@
 job:
-  image: 'hmctspublic.azurecr.io/disposer/fee-and-pay:latest'
+  image: 'hmctsprod.azurecr.io/disposer/fee-and-pay:latest'
   ingressHost: disposer-fee-and-pay-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   kind: CronJob
   schedule: "0 22 * * *"
