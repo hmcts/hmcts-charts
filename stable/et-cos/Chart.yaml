@@ -1,103 +1,103 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.56
+version: 0.0.57
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
 dependencies:
   - name: java
     version: 5.3.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: java.enabled
   # Below charts are used for Preview environments only
   - name: ccd
     version: ~9.2.1
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     tags:
       - et-ccd-stack
     condition: ccd.enabled
   - name: xui-webapp
     version: ~1.0.18
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: idam-pr
     version: ~2.3.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: idam-pr.enabled
   - name: et-sya
     version: ~0.0.34
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: et-sya.enabled
   - name: et-syr
     version: ~1.0.1
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: et-syr.enabled
   - name: et-sya-api
     version: ~0.0.29
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: et-sya-api.enabled
   - name: aac-manage-case-assignment
     version: ~0.2.11
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: xui-mo-webapp
     version: ~1.1.17
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: xui-mo-webapp.enabled
   - name: xui-ao-webapp
     version: ~0.2.27
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: xui-ao-webapp.enabled
   - name: wa
     version: ~1.0.4
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: wa.enabled
   - name: servicebus
     version: ~1.2.1
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: servicebus.enabled
   - name: ccd-message-publisher
     version: ~0.1.11
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: ccd-message-publisher.enabled
   - name: ccd-case-document-am-api
     version: ~1.7.11
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: ccd-case-document-am-api.enabled
   - name: am-org-role-mapping-service
     version: ~0.0.58
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: am-org-role-mapping-service.enabled
   - name: rd-caseworker-ref-api
     version: ~1.0.11
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-caseworker-ref-api.enabled
   - name: postgresql
     version: 1.1.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: postgresql.enabled
   - name: rd-professional-api
     version: ~0.0.25
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-professional-api.enabled
   - name: rd-user-profile-api
     version: ~0.0.28
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-user-profile-api.enabled
   - name: rd-judicial-api
     version: ~1.0.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-judicial-api.enabled
   - name: rd-judicial-data-load
     version: ~0.3.13
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-judicial-data-load.enabled
   - name: et-migration
     version: ~0.0.2
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: et-migration.enabled
   - name: em-ccdorc
     version: 2.1.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: em-ccdorc.enabled
