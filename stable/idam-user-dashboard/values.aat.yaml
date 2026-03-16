@@ -8,6 +8,3 @@ nodejs:
   environment:
     DASHBOARD_URL: https:///
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
-
-idam-pr:
-  enabled: false
