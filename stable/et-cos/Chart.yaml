@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.54
+version: 0.0.55
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
@@ -61,10 +61,6 @@ dependencies:
     version: ~0.1.11
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-message-publisher.enabled
-  - name: redis
-    version: 25.3.2
-    repository: "oci://registry-1.docker.io/bitnamicharts"
-    condition: redis.enabled
   - name: ccd-case-document-am-api
     version: ~1.7.11
     repository: 'oci://hmctspublic.azurecr.io/helm'
