@@ -1,7 +1,7 @@
 prl-cos:
   enabled: true
   java:
-    image: hmctspublic.azurecr.io/prl/cos:latest
+    image: hmctsprod.azurecr.io/prl/cos:latest
     ingressHost: 
     environment:
       PAY_CALLBACK_URL: https:///service-request-update
