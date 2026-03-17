@@ -1,5 +1,5 @@
 java:
-  image: 'hmctspublic.azurecr.io/ia/bail-case-api:latest'
+  image: 'hmctsprod.azurecr.io/ia/bail-case-api:latest'
   applicationPort: 8686
   readinessPath: '/health/readiness'
   aadIdentityName: ia
