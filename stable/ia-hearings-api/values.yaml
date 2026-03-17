@@ -1,5 +1,5 @@
 java:
-  image: 'hmctspublic.azurecr.io/ia/hearings-api:latest'
+  image: 'hmctsprod.azurecr.io/ia/hearings-api:latest'
   applicationPort: 8100
   readinessPath: '/health/readiness'
   aadIdentityName: ia
