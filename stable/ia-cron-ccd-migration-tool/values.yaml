@@ -1,5 +1,5 @@
 job:
-  image: 'hmctspublic.azurecr.io/ia/cron-ccd-migration-tool:latest'
+  image: 'hmctsprod.azurecr.io/ia/cron-ccd-migration-tool:latest'
   kind: CronJob
   schedule: "0/5 12 16 6 *"
   ingressHost: ia-cron-ccd-migration-tool-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
