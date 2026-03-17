@@ -1,6 +1,6 @@
 base:
   applicationPort: 3000
-  image: 'hmctspublic.azurecr.io/help-with-fees/benefit-checker-api:latest'
+  image: 'hmctsprod.azurecr.io/help-with-fees/benefit-checker-api:latest'
   ingressHost: "hwf-benefit-checker-api.{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   aadIdentityName: help-with-fees
   environment:
