@@ -1,6 +1,6 @@
 java:
   applicationPort: 8089
-  image: 'hmctspublic.azurecr.io/ia/ia-case-access-api:latest'
+  image: 'hmctsprod.azurecr.io/ia/ia-case-access-api:latest'
   ingressHost: ia-case-access-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: ia
   environment:
