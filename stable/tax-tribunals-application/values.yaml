@@ -1,6 +1,6 @@
 base:
   applicationPort: 8000
-  image: "hmctspublic.azurecr.io/tax-tribunals/application"
+  image: "hmctsprod.azurecr.io/tax-tribunals/application"
   ingressHost: tax-tribunals-datacapture.{{ .Values.global.environment }}.platform.hmcts.net
   useWorkloadIdentity: true
   memoryRequests: "2Gi"
@@ -123,7 +123,7 @@ sidekiq:
   readinessPath: /health
   livenessPath: /health
   startupPath: /health
-  image: "hmctspublic.azurecr.io/tax-tribunals/application"
+  image: "hmctsprod.azurecr.io/tax-tribunals/application"
   args: ['./sidekiq.sh']
   useWorkloadIdentity: true
   memoryRequests: "2Gi"
@@ -232,7 +232,7 @@ sidekiq:
           alias: SENTRY_DSN
 
 job:
-  image: "hmctspublic.azurecr.io/tax-tribunals/application"
+  image: "hmctsprod.azurecr.io/tax-tribunals/application"
   useWorkloadIdentity: true
   # set for aat and preview, overridden in flux for other environments
   workloadClientID: "0af403db-e3ab-450b-bcde-884101a065cd"
