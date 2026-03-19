@@ -52,6 +52,7 @@ java:
     SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-api-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
     SPRING_DATASOURCE_USERNAME: pgadmin
     RUN_DB_MIGRATION_ON_STARTUP: false
+    TIMEOUT_SERVER_SHUTDOWN_PHASE: 1m
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     IDAM_API_BASE_URI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
     S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
