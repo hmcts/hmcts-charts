@@ -1,5 +1,5 @@
 job:
-  image: 'https://hmctspublic.azurecr.io/pcq/consolidation-service:latest'
+  image: 'https://hmctsprod.azurecr.io/pcq/consolidation-service:latest'
   kind: CronJob
   schedule: "0 18 * * *"
   startingDeadlineSeconds: 600
