@@ -1,5 +1,5 @@
 job:
-  image: 'hmctspublic.azurecr.io/nfdiv/ccd-case-migration:latest'
+  image: 'hmctsprod.azurecr.io/nfdiv/ccd-case-migration:latest'
   kind: CronJob
   schedule: "0 * * * *"
   ingressHost: nfdiv-ccd-case-migration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
