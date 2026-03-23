@@ -13,6 +13,7 @@ et-sya:
   enabled: false
 et-syr:
   enabled: false
+## et-sya-api to be removed once repo merge has been completed
 et-sya-api:
   enabled: false
 wa:

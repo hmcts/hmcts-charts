@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.57
+version: 0.0.58
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
@@ -33,6 +33,7 @@ dependencies:
     version: ~1.0.1
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: et-syr.enabled
+    ## et-sya-api to be removed once repo merge has been completed
   - name: et-sya-api
     version: ~0.0.29
     repository: 'oci://hmctsprod.azurecr.io/helm'

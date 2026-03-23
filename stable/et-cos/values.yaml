@@ -17,6 +17,16 @@ java:
           alias: ET_COS_SYSTEM_USER_PASSWORD
         - name: idam-client-secret
           alias: IDAM_CLIENT_SECRET
+        - name: acas-idam-client-secret
+          alias: ET_SYA_API_IDAM_CLIENT_SECRET
+        - name: et-api-caseworker-user-name
+          alias: CASEWORKER_USER_NAME
+        - name: et-api-caseworker-password
+          alias: CASEWORKER_PASSWORD
+        - name: et1-service-owner-notification-email
+          alias: ET1_SERVICE_OWNER_NOTIFICATION_EMAIL
+        - name: et1-ecm-dts-core-team-slack-notification-email
+          alias: ET1_ECM_DTS_CORE_TEAM_SLACK_NOTIFICATION_EMAIL
         - name: et-cos-postgres-user-v15
           alias: ET_COS_DB_USER_NAME
         - name: et-cos-postgres-password-v15
@@ -48,6 +58,7 @@ java:
     TORNADO_URL: "https://docmosis.{{ .Values.global.environment }}.platform.hmcts.net/rs/render"
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     IDAM_API_JWK_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/jwks"
+    IDAM_JWKS_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/jwks"
     CCD_DATA_STORE_API_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     DOCUMENT_MANAGEMENT_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     SERVICE_AUTH_PROVIDER_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
@@ -59,6 +70,7 @@ java:
     SECURE_DOC_STORE_FEATURE: true
     EXUI_CASE_DETAILS_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/"
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.{{ .Values.global.environment }}.platform.hmcts.net/citizen-hub/"
+    RESPONDENT_PORTAL_LINK: "https://et-syr.{{ .Values.global.environment }}.platform.hmcts.net/"
     EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     LAUNCH_DARKLY_ENV: '{{ .Values.global.environment }}'
@@ -73,6 +85,7 @@ et-sya:
   enabled: false
 et-syr:
   enabled: false
+## et-sya-api to be removed once repo merge has been completed
 et-sya-api:
   enabled: false
 wa:
