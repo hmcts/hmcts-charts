@@ -1,7 +1,7 @@
 java:
   applicationPort: 4011
   aadIdentityName: divorce
-  image: hmctspublic.azurecr.io/div/cfs:latest
+  image: hmctsprod.azurecr.io/div/cfs:latest
   ingressHost: "div-cfs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   autoscaling:
     enabled: true
