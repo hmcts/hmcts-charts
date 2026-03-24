@@ -1,6 +1,6 @@
 java:
   applicationPort: 8080
-  image: 'sdshmctspublic.azurecr.io/darts/proxy:latest'
+  image: 'hmctsprod.azurecr.io/darts/proxy:latest'
   ingressHost: darts-proxy.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: darts
   secrets:
