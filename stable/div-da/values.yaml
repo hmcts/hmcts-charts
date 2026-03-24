@@ -1,7 +1,7 @@
 nodejs:
   applicationPort: 3000
   aadIdentityName: divorce
-  image: "hmctspublic.azurecr.io/div/da:latest"
+  image: "hmctsprod.azurecr.io/div/da:latest"
   ingressHost: "div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   memoryLimits: '512Mi'
   memoryRequests: '512Mi'
