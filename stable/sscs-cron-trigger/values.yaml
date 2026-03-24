@@ -1,5 +1,5 @@
 job:
-  image: 'hmctspublic.azurecr.io/sscs/cron-trigger:latest'
+  image: 'hmctsprod.azurecr.io/sscs/cron-trigger:latest'
   aadIdentityName: sscs
   keyVaults:
       sscs:
