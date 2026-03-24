@@ -5,7 +5,7 @@ version: 2.0.24
 dependencies:
   - name: nodejs
     version: 3.2.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
   - name: redis
     version: 24.1.0
     repository: 'oci://registry-1.docker.io/bitnamicharts'
@@ -13,6 +13,6 @@ dependencies:
       - pr
   - name: idam-pr
     version: 2.3.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
     tags:
       - idam-pr
