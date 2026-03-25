@@ -4,7 +4,7 @@ java:
   memoryLimits: "2048Mi"
   cpuLimits: "1500m"
   applicationPort: 4550
-  image: 'hmctspublic.azurecr.io/lau/case-backend:latest'
+  image: 'hmctsprod.azurecr.io/lau/case-backend:latest'
   ingressHost: lau-case-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: lau
   spotInstances:
