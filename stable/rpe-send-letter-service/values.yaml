@@ -67,7 +67,6 @@ java:
     FTP_TARGET_FOLDER: "TO_XEROX"
     FTP_REPORTS_FOLDER: "FROM_XEROX"
     FTP_SMOKE_TEST_TARGET_FOLDER: "SMOKE_TEST"
-    FTP_REPORTS_CRON: "0 30 * * * *"
     #For prod overwrite these 2 values in flux
     FTP_DOWNTIME_FROM: "23:58"
     FTP_DOWNTIME_TO: "23:59"
