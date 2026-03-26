@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for ccd-migration App
 name: fpl-cron-ccd-data-migration-tool
 home: https://github.com/hmcts/ccd-case-migration-starter
-version: 0.1.2
+version: 0.1.3
 maintainers:
   - name: HMCTS ccd team
 dependencies:
   - name: job
     version: ~2.2.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
