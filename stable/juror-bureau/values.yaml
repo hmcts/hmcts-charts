@@ -1,5 +1,5 @@
 nodejs:
-  image: 'sdshmctspublic.azurecr.io/juror/public:latest'
+  image: 'hmctsprod.azurecr.io/juror/public:latest'
   applicationPort: 3000
   ingressHost: juror.{{ .Values.global.environment }}.apps.hmcts.net
   aadIdentityName: juror
