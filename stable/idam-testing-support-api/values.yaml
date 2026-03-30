@@ -6,7 +6,7 @@ global:
 java:
   releaseNameOverride: idam-testing-support-api
   applicationPort: 5000
-  image: 'hmctspublic.azurecr.io/idam/idam-testing-support-api:latest'
+  image: 'hmctsprod.azurecr.io/idam/idam-testing-support-api:latest'
   ingressHost: idam-testing-support-api.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: idam
   environment:
