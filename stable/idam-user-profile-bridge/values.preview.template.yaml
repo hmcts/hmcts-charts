@@ -7,7 +7,6 @@ java:
   devApplicationInsightsInstrumentKey: '00000001-0001-0001-0001-000000000001'
   environment:
     SPRING_PROFILES_ACTIVE: events-in-memory,disable-db
-    SCHEDULER_ENABLED: false
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWKSETURI: https://idam-web-public.aat.platform.hmcts.net/o/jwks
     SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://idam-web-public.aat.platform.hmcts.net/o

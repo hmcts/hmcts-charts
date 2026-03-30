@@ -4,4 +4,4 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    SPRING_PROFILES_ACTIVE: events-in-memory,disable-db
+    SPRING_PROFILES_ACTIVE: events-in-memory

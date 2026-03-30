@@ -4,4 +4,4 @@ java:
   image: https://hmcts.azurecr.io/hmcts/idam-user-profile-bridge:latest
   ingressHost: 
   environment:
-    SPRING_PROFILES_ACTIVE: events-in-memory,disable-db
+    SPRING_PROFILES_ACTIVE: events-in-memory
