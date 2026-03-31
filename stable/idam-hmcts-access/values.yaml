@@ -10,7 +10,7 @@ nodejs:
   applicationPort: 3100
   aadIdentityName: idam
   ingressHost: hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
-  image: 'hmctspublic.azurecr.io/idam/hmcts-access:latest'
+  image: 'hmctsprod.azurecr.io/idam/hmcts-access:latest'
   keyVaults:
     idam-idam:
       secrets:
