@@ -7,7 +7,7 @@ java:
   postgresql:
     enabled: false
   releaseNameOverride: idam-api
-  image: hmctspublic.azurecr.io/idam/api:preview
+  image: hmctsprod.azurecr.io/idam/api:preview
   ingressHost: "{{ .Release.Name }}.service.core-compute-{{ .Values.global.environment }}.internal"
   applicationPort: 5000
   readinessPath: '/health'
