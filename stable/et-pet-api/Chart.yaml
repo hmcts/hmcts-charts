@@ -3,12 +3,12 @@ appVersion: "1.0"
 description: A Helm chart for et-pet api application
 name: et-pet-api
 home: https://github.com/hmcts/et-pet-api
-version: 0.0.22
+version: 0.0.23
 dependencies:
   - name: base
-    version: 1.4.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    version: 1.4.1
+    repository: "oci://hmctsprod.azurecr.io/helm"
   - name: base
     alias: sidekiq
-    version: 1.4.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    version: 1.4.1
+    repository: "oci://hmctsprod.azurecr.io/helm"

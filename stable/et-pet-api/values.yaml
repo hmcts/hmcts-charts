@@ -1,6 +1,6 @@
 base:
   applicationPort: 8080
-  image: "hmctspublic.azurecr.io/et-pet/api:latest"
+  image: "hmctsprod.azurecr.io/et-pet/api:latest"
   ingressHost: et-pet-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et-pet
   environment:
@@ -80,10 +80,10 @@ sidekiq:
   readinessPath: /health
   livenessPath: /health
   startupPath: /health
-  image: "hmctspublic.azurecr.io/et-pet/api:latest"
+  image: "hmctsprod.azurecr.io/et-pet/api:latest"
   ingressHost: et-pet-api-sidekiq.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: et-pet
-  args: ['./run_sidekiq.sh']
+  args: ["./run_sidekiq.sh"]
   environment:
     SECRETS_PATH: "/mnt/secrets/et-pet"
     CLOUD_PROVIDER: "azure"
