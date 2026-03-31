@@ -552,6 +552,7 @@ xui-webapp:
           - mc-s2s-client-secret
           - mc-idam-client-secret
           - system-user-name
+          - mc-session-secret
           - system-user-password
           - appinsights-connection-string-mc
           - name: webapp-redis6-connection-string
