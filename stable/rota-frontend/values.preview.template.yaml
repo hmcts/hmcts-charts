@@ -1,0 +1,10 @@
+java:
+  releaseNameOverride: '{{ .Release.Name }}'
+  image: ${IMAGE_NAME}
+  devmemoryRequests: "1Gi"
+  devcpuRequests: "250m"
+  devmemoryLimits: "2Gi"
+  devcpuLimits: "1500m"
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    TEST: true
