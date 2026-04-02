@@ -1,5 +1,5 @@
 job:
-  image: hmctspublic.azurecr.io/wa/message-cron-service:latest
+  image: hmctsprod.azurecr.io/wa/message-cron-service:latest
   schedule: "*/5 * * * *"
   aadIdentityName: wa
   keyVaults:
