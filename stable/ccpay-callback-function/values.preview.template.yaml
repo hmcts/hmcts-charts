@@ -3,7 +3,6 @@ function:
   image: ${IMAGE_NAME}
   environment:
     APPINSIGHTS_INSTRUMENTATIONKEY: 124e39c3-6dad-49ef-aede-d2cddac865c2
-    SERVICE_CALLBACK_SUBSCRIPTION: pr-subscription-name
   secrets:
     SB_ACCESS_KEY:
       secretRef: fees-pay-sb-preview
