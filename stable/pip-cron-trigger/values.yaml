@@ -1,5 +1,5 @@
 job:
-  image: 'sdshmctspublic.azurecr.io/pip/pip-cron-trigger:latest'
+  image: 'hmctsprod.azurecr.io/pip/pip-cron-trigger:latest'
   keyVaults:
     pip-ss-kv:
       excludeEnvironmentSuffix: false
