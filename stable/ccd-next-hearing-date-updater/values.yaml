@@ -11,7 +11,7 @@ java:
     enabled: false
 
 job:
-  image: 'https://hmctspublic.azurecr.io/ccd/ccd-next-hearing-date-updater:latest'
+  image: 'https://hmctsprod.azurecr.io/ccd/ccd-next-hearing-date-updater:latest'
   kind: CronJob
   schedule: "01 02 * * *"
   startingDeadlineSeconds: 600
