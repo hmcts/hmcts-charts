@@ -51,3 +51,9 @@ java:
           alias: IA_CONFIG_VALIDATOR_SECRET
         - name: ia-bail-gov-notify-key
           alias: IA_BAIL_GOV_NOTIFY_KEY
+        - name: ia-redis-connection-string
+          alias: IA_REDIS_CONNECTION_STRING
+        - name: ia-redis-access-key
+          alias: IA_REDIS_ACCESS_KEY
+        - name: ia-redis-encryption-key
+          alias: IA_REDIS_ENCRYPTION_KEY
