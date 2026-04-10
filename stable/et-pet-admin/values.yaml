@@ -1,6 +1,6 @@
 base:
   applicationPort: 8080
-  image: "hmctspublic.azurecr.io/et-pet/admin:latest"
+  image: "hmctsprod.azurecr.io/et-pet/admin:latest"
   ingressHost: et-pet-admin.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: et-pet
   environment:
