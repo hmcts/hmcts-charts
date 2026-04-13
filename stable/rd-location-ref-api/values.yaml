@@ -16,7 +16,7 @@ java:
 
   spotInstances:
     enabled: true
-  image: 'hmctspublic.azurecr.io/rd/location-ref-api:latest'
+  image: 'hmctsprod.azurecr.io/rd/location-ref-api:latest'
   keyVaults:
     rd:
       secrets:
