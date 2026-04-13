@@ -38,7 +38,7 @@ java:
     APPLICATION_LOGGING_LEVEL: INFO
   spotInstances:
     enabled: false
-  image: 'hmctspublic.azurecr.io/rd/judicial-api:latest'
+  image: 'hmctsprod.azurecr.io/rd/judicial-api:latest'
   keyVaults:
     rd:
       secrets:
