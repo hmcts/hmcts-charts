@@ -1,6 +1,6 @@
 job:
   applicationPort: 8099
-  image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
+  image: 'hmctsprod.azurecr.io/rd/location-ref-data-load:latest'
   ingressHost: rd-location-ref-data-load-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rd
   kind: CronJob
@@ -17,7 +17,7 @@ job:
     CONTAINER_NAME: lrd-ref-data
     postgresql:
       enabled: false
-    image: 'hmctspublic.azurecr.io/rd/location-ref-data-load:latest'
+    image: 'hmctsprod.azurecr.io/rd/location-ref-data-load:latest'
 
   keyVaults:
     "rd":
