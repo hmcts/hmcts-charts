@@ -2,7 +2,7 @@ nodejs:
   applicationPort: 8080
   aadIdentityName: em
   ingressHost: em-icp.{{ .Values.global.environment }}.platform.hmcts.net
-  image: 'hmctspublic.azurecr.io/em/icp:latest'
+  image: 'hmctsprod.azurecr.io/em/icp:latest'
   readinessDelay: 30
   readinessTimeout: 5
   livenessDelay: 30
