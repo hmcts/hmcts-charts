@@ -1,6 +1,6 @@
 java:
   applicationPort: 8989
-  image: 'hmctspublic.azurecr.io/fact/data-api:latest'
+  image: 'hmctsprod.azurecr.io/fact/data-api:latest'
   ingressHost: fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: fact
   keyVaults:
