@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for pt-api App
+name: pt-api
+home: https://github.com/hmcts/pt-api
+version: 0.0.18
+maintainers:
+  - name: HMCTS pt team
+dependencies:
+  - name: java
+    version: 5.3.0
+    repository: 'oci://hmctsprod.azurecr.io/helm' 
