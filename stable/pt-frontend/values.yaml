@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 4000
+  aadIdentityName: pt
+  ingressHost: pt-frontend.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/pt/frontend:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    pt:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:
