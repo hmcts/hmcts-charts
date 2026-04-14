@@ -1,16 +1,3 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  keyVaults:
-    et-msg-handler:
-      secrets:
-        - name: caseworker-user-name
-          alias: CASEWORKER_USER_NAME
-        - name: caseworker-password
-          alias: CASEWORKER_PASSWORD
-        - name: gov-notify-api-key
-          alias: GOV_NOTIFY_API_KEY
-        - name: et-msg-handler-s2s-secret
-          alias: ET_MSG_HANDLER_S2S_SECRET
-        - name: idam-client-secret
-          alias: IDAM_CLIENT_SECRET
