@@ -4,7 +4,7 @@ nodejs:
   memoryLimits: 1024Mi
   aadIdentityName: rpts
   ingressHost: rpts.{{ .Values.global.environment }}.platform.hmcts.net
-  image: 'hmctspublic.azurecr.io/rpts/frontend:latest'
+  image: 'hmctsprod.azurecr.io/rpts/frontend:latest'
   keyVaults:
     rpts:
       secrets:

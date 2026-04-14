@@ -3,8 +3,8 @@ appVersion: '1.0'
 description: A Helm chart for rpts-frontend App
 name: rpts-frontend
 home: https://github.com/hmcts/rpts-frontend
-version: 1.0.3
+version: 1.0.4
 dependencies:
   - name: nodejs
     version: 3.2.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
+    repository: 'oci://hmctsprod.azurecr.io/helm'
