@@ -4,7 +4,7 @@ nodejs:
   ingressHost: sptribs-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   spotInstances:
     enabled: false
-  image: 'hmctspublic.azurecr.io/sptribs/frontend:latest'
+  image: 'hmctsprod.azurecr.io/sptribs/frontend:latest'
 
   environment:
     REFORM_TEAM: sptribs
