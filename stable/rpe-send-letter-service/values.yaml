@@ -80,4 +80,4 @@ java:
     DUPLICATES_CUT_OFF_TIME: 1
 
   # Don't modify below here
-  image: 'hmctspublic.azurecr.io/rpe/send-letter-service:latest'
+  image: 'hmctsprod.azurecr.io/rpe/send-letter-service:latest'
