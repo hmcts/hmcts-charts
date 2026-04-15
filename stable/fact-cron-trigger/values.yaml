@@ -1,5 +1,5 @@
 job:
-  image: hmctspublic.azurecr.io/fact/cron-trigger:latest
+  image: hmctsprod.azurecr.io/fact/cron-trigger:latest
   schedule: "*/40 * * * *"
   aadIdentityName: fact
   keyVaults:
