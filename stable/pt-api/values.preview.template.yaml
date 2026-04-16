@@ -2,3 +2,14 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    pt:
+      secrets:
+         - name: app-insights-connection-string
+  environment:
+    PT_DB_HOST: "{{ .Release.Name }}-postgresql"
+    PT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
+    PT_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+    PT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+  postgresql:
+    enabled: true
