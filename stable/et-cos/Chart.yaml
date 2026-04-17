@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.59
+version: 0.0.60
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
@@ -75,7 +75,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-caseworker-ref-api.enabled
   - name: postgresql
-    version: 1.1.0
+    version: 1.1.1
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: postgresql.enabled
   - name: rd-professional-api
