@@ -261,8 +261,8 @@ ccd:
       imagePullPolicy: Always
       image: hmctsprod.azurecr.io/am/role-assignment-service:latest
       ingressHost: am-role-assignment-${SERVICE_FQDN}
-      devcpuRequests: 15m
-      devcpuLimits: 1500m
+      devcpuRequests: 20m
+      devcpuLimits: 2000m
       devmemoryRequests: 1536Mi
       devmemoryLimits: 2560Mi
       environment:
