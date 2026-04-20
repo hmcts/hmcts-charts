@@ -2,9 +2,9 @@ java:
   enabled: true
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN} # e.g. et-cos-pr-2674.preview.platform.hmcts.net
-  devcpuRequests: 250m
-  devmemoryRequests: 2Gi
-  devcpuLimits: 1024m
+  devcpuRequests: 20m
+  devcpuLimits: 100m
+  devmemoryRequests: 1536Mi
   devmemoryLimits: 3Gi
   environment:
     EXUI_CASE_DETAILS_URL: "https://xui-${SERVICE_FQDN}/cases/case-details/"
@@ -78,10 +78,10 @@ et-sya:
     image: hmctsprod.azurecr.io/et/sya:latest
     releaseNameOverride: ${SERVICE_NAME}-et-sya
     ingressHost: et-sya-${SERVICE_FQDN}
-    devcpuRequests: 500m
-    devmemoryRequests: 1Gi
-    devcpuLimits: 1
-    devmemoryLimits: 4Gi
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     keyVaults:
       et:
         resourceGroup: et
@@ -104,10 +104,10 @@ et-syr:
     image: hmctsprod.azurecr.io/et/syr:latest
     releaseNameOverride: ${SERVICE_NAME}-et-syr
     ingressHost: et-syr-${SERVICE_FQDN}
-    devcpuRequests: 500m
-    devmemoryRequests: 1Gi
-    devcpuLimits: 1
-    devmemoryLimits: 4Gi
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     keyVaults:
       et:
         resourceGroup: et
@@ -130,10 +130,10 @@ et-sya-api:
     image: hmctsprod.azurecr.io/et/sya-api:latest
     releaseNameOverride: ${SERVICE_NAME}-et-sya-api
     ingressHost: et-sya-api-${SERVICE_FQDN}
-    devcpuRequests: 500m
-    devmemoryRequests: 1Gi
-    devcpuLimits: 1
-    devmemoryLimits: 4Gi
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1536Mi
+    devmemoryLimits: 2048Mi
     keyVaults:
       et-sya-api:
         secrets:
@@ -216,6 +216,10 @@ ccd:
       enviroment:
         USER_PROFILE_HOST: http://${SERVICE_NAME}-ccd-user-profile-api
       keyVaults: []
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 768Mi
+      devmemoryLimits: 1536Mi
       environment:
         USER_PROFILE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_definition,ccd_admin
       ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
@@ -226,6 +230,10 @@ ccd:
         enabled: false
       imagePullPolicy: Always
       image: hmctsprod.azurecr.io/ccd/data-store-api:latest
+      devcpuRequests: 50m
+      devcpuLimits: 200m
+      devmemoryRequests: 1536Mi
+      devmemoryLimits: 2048Mi
       environment:
         DATA_STORE_IDAM_KEY: ${DATA_STORE_S2S_KEY}
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,ccd_gateway,ccd_data,ccd_ps,aac_manage_case_assignment,xui_webapp,ccd_case_document_am_api,et_cos,et_sya_api,wa_workflow_api,wa_task_configuration_api,wa_task_management_api,wa_task_monitor,wa_case_event_handler,am_role_assignment_service
@@ -253,6 +261,10 @@ ccd:
       imagePullPolicy: Always
       image: hmctsprod.azurecr.io/am/role-assignment-service:latest
       ingressHost: am-role-assignment-${SERVICE_FQDN}
+      devcpuRequests: 15m
+      devcpuLimits: 100m
+      devmemoryRequests: 1536Mi
+      devmemoryLimits: 2560Mi
       environment:
         CCD_DATA_STORE_URL: http://{{ .Release.Name }}-ccd-data-store-api
         ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,wa_task_configuration_api,xui_webapp,aac_manage_case_assignment,ccd_data,wa_workflow_api,wa_task_monitor,wa_case_event_handler,iac,hmc_cft_hearing_service,ccd_case_disposer,sscs,fis_hmc_api,et_cos
@@ -278,6 +290,10 @@ ccd:
       imagePullPolicy: Always
       image: hmctsprod.azurecr.io/ccd/definition-store-api:latest
       keyVaults: []
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 1536Mi
+      devmemoryLimits: 2048Mi
       environment:
         DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 180
         DEFINITION_STORE_IDAM_KEY: ${DEFINITION_STORE_S2S_KEY}
@@ -297,6 +313,10 @@ ccd:
       image: hmctsprod.azurecr.io/ccd/admin-web:latest
       ingressHost: admin-web-${SERVICE_FQDN}
       keyVaults: []
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 512Mi
+      devmemoryLimits: 1024Mi
       environment:
         IDAM_ADMIN_WEB_SERVICE_KEY: ${ADMIN_S2S_KEY}
         IDAM_OAUTH2_AW_CLIENT_SECRET: ${ADMIN_WEB_IDAM_SECRET}
@@ -306,6 +326,10 @@ ccd:
       autoscaling:
         enabled: false
       keyVaults: []
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 512Mi
+      devmemoryLimits: 1024Mi
       environment:
         IDAM_SERVICE_KEY: ${API_GATEWAY_S2S_KEY}
         IDAM_OAUTH2_CLIENT_SECRET: ${API_GATEWAY_IDAM_SECRET}
@@ -515,10 +539,10 @@ xui-webapp:
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctsprod.azurecr.io/xui/webapp:latest
     ingressHost: xui-${SERVICE_FQDN}
-    devcpuRequests: 500m
-    devmemoryRequests: 1Gi
-    devcpuLimits: 1
-    devmemoryLimits: 4Gi
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       SERVICES_CCD_CASE_ASSIGNMENT_API: https://aac-${SERVICE_FQDN}
       SERVICES_CCD_COMPONENT_API: https://gateway-${SERVICE_FQDN}
@@ -578,6 +602,10 @@ aac-manage-case-assignment:
     releaseNameOverride: ${SERVICE_NAME}-aac-manage-case-assignment
     image: hmctsprod.azurecr.io/aac/manage-case-assignment:latest
     ingressHost: aac-${SERVICE_FQDN}
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1Gi
+    devmemoryLimits: 1535Mi
     environment:
       MCA_DS_PROXY_URLS_ALLOWED_LIST: /searchCases.*,/internal/searchCases.*,/internal/cases.*
       MCA_DEF_STORE_PROXY_URLS_ALLOWED_LIST: /api/display/challenge-questions.*
@@ -599,6 +627,10 @@ xui-mo-webapp:
     releaseNameOverride: ${SERVICE_NAME}-xui-mo-webapp
     image: hmctsprod.azurecr.io/xui/mo-webapp:latest
     ingressHost: xui-mo-webapp-${SERVICE_FQDN}
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       DEBUG: xuiNode:*,-xuiNode:auth:s2s
       SERVICES_MCA_PROXY_API: https://aac-${SERVICE_FQDN}
@@ -617,6 +649,10 @@ xui-ao-webapp:
     releaseNameOverride: ${SERVICE_NAME}-xui-ao-webapp
     image: hmctsprod.azurecr.io/xui/ao-webapp:latest
     ingressHost: xui-ao-webapp-${SERVICE_FQDN}
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       FEATURE_OIDC_ENABLED: true
       USER_TIMEOUT_IN_SECONDS: 1800
@@ -649,11 +685,19 @@ wa:
 
   camunda-bpm:
     java:
+      devcpuRequests: 20m
+      devcpuLimits: 100m
+      devmemoryRequests: 756Mi
+      devmemoryLimits: 1536Mi
       environment:
         CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 
   wa-task-management-api:
     java:
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 756Mi
+      devmemoryLimits: 1536Mi
       ingressHost: wa-task-management-api-${SERVICE_FQDN}
       environment:
         CAMUNDA_URL: "http://{{ .Release.Name }}-camunda/engine-rest"
@@ -672,6 +716,10 @@ wa:
         AZURE_SERVICE_BUS_CONNECTION_STRING:
           secretRef: et-sb-preview
           key: connectionString
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 756Mi
+      devmemoryLimits: 1536Mi
       environment:
         CAMUNDA_URL: "http://{{ .Release.Name }}-camunda/engine-rest"
         CCD_URL: "http://{{ .Release.Name }}-ccd-data-store-api"
@@ -685,10 +733,18 @@ wa:
   wa-task-monitor:
     java:
       ingressHost: wa-task-monitor-${SERVICE_FQDN}
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 756Mi
+      devmemoryLimits: 1536Mi
       environment:
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
   wa-workflow-api:
     java:
+      devcpuRequests: 10m
+      devcpuLimits: 80m
+      devmemoryRequests: 756Mi
+      devmemoryLimits: 1536Mi
       environment:
         DB_READER_USERNAME: hmcts
   wa:
@@ -722,6 +778,10 @@ ccd-message-publisher:
         secrets:
           - name: AppInsightsInstrumentationKey
             alias: azure.application-insights.instrumentation-key
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 768Mi
+    devmemoryLimits: 1536Mi
     environment:
       DATA_STORE_DB_HOST: et-preview.postgres.database.azure.com
       DATA_STORE_DB_NAME: "pr-${CHANGE_ID}-data-store"
@@ -742,6 +802,10 @@ ccd-case-document-am-api:
   java:
     image: hmctsprod.azurecr.io/ccd/case-document-am-api:latest
     releaseNameOverride: ${SERVICE_NAME}-ccd-case-document-am-api
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1Gi
+    devmemoryLimits: 1535Mi
     environment:
       CCD_DATA_STORE_API_BASE_URL: http://{{ .Release.Name }}-ccd-data-store-api
       ROOT_LOGGING_LEVEL: debug
@@ -752,10 +816,10 @@ am-org-role-mapping-service:
     image: 'hmctsprod.azurecr.io/am/org-role-mapping-service:latest'
     ingressHost: am-org-role-mapping-service-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-am-org-role-mapping-service
-    devmemoryRequests: 1024Mi
-    devcpuRequests: 250m
-    devmemoryLimits: 2048Mi
-    devcpuLimits: 1500m
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1536Mi
+    devmemoryLimits: 2560Mi
     keyVaults:
       am:
         secrets:
@@ -834,6 +898,10 @@ rd-caseworker-ref-api:
         secretRef: postgres
         key: PASSWORD
         disabled: false
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1024Mi
+    devmemoryLimits: 2048Mi
     environment:
       POSTGRES_HOST: et-preview.postgres.database.azure.com
       POSTGRES_DB_NAME: "pr-${CHANGE_ID}-dbrdcaseworker"
@@ -870,6 +938,10 @@ rd-professional-api:
         secretRef: postgres
         key: PASSWORD
         disabled: false
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1024Mi
+    devmemoryLimits: 2048Mi
     environment:
       POSTGRES_HOST: et-preview.postgres.database.azure.com
       POSTGRES_USERNAME: hmcts
@@ -899,6 +971,10 @@ rd-user-profile-api:
         secretRef: postgres
         key: PASSWORD
         disabled: false
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1024Mi
+    devmemoryLimits: 2048Mi
     environment:
       POSTGRES_HOST: et-preview.postgres.database.azure.com
       POSTGRES_USERNAME: hmcts
@@ -939,6 +1015,10 @@ rd-judicial-api:
         secretRef: postgres
         key: PASSWORD
         disabled: false
+    devcpuRequests: 10m
+    devcpuLimits: 80m
+    devmemoryRequests: 1024Mi
+    devmemoryLimits: 2048Mi
     environment:
       #      JRD_MQ_HOST: "et-sb-preview.servicebus.windows.net"
       JRD_MQ_USERNAME: SendAndListenSharedAccessKey
