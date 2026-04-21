@@ -1,5 +1,7 @@
 java:
   applicationPort: 4550
+  memoryRequests: '1.2Gi'
+  memoryLimits: '1.5Gi'
   image: 'hmctsprod.azurecr.io/pt/pt-api:latest'
   ingressHost: pt-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: pt
@@ -7,4 +9,13 @@ java:
     pt:
        secrets:
          - name: app-insights-connection-string
+         - name: api-POSTGRES-PASS
+           alias: PT_DB_PASSWORD
   environment:
+    PT_DB_PORT: "5432"
+    PT_DB_USER_NAME: pgadmin
+    PT_DB_NAME: pt
+    secrets:
+    PT_DB_PASSWORD:
+      secretRef: "{{ .Values.global.postgresSecret }}"
+      key: password
