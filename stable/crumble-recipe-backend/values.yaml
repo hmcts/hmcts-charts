@@ -1,7 +1,7 @@
 java:
   applicationPort: 4550
   # Don't modify below here
-  image: 'hmctssandbox.azurecr.io/hmcts/crumble-recipe-backend:latest'
+  image: 'hmctssbox.azurecr.io/hmcts/crumble-recipe-backend:latest'
   keyVaults:
     "crumblesi":
       secrets:
