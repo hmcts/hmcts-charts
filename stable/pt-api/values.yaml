@@ -15,6 +15,7 @@ java:
     PT_DB_PORT: "5432"
     PT_DB_USER_NAME: pgadmin
     PT_DB_NAME: pt
+    PT_DB_HOST: "pt-{{ .Values.global.environment }}.postgres.database.azure.com"
     secrets:
     PT_DB_PASSWORD:
       secretRef: "{{ .Values.global.postgresSecret }}"
