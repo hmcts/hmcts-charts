@@ -8,6 +8,7 @@ em-stitching:
 civil-service:
   java:
     imagePullPolicy: Always
+    image: hmctsprod.azurecr.io/civil/service:latest
     ingressHost: .aat.platform.hmcts.net
     memoryRequests: 2Gi
     cpuRequests: 2000m
