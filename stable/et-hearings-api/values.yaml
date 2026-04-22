@@ -1,5 +1,5 @@
 java:
-  image: 'hmctspublic.azurecr.io/et/hearings-api:latest'
+  image: 'hmctsprod.azurecr.io/et/hearings-api:latest'
   applicationPort: 4560
   ingressHost: et-hearings-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et
