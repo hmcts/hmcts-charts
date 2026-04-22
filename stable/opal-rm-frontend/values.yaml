@@ -1,0 +1,53 @@
+nodejs:
+  applicationPort: 5000
+  aadIdentityName: opal
+  ingressHost: opal-rm-frontend.{{ .Values.global.environment }}.apps.hmcts.net
+  image: "hmctsprod.azurecr.io/opal/rm-frontend:latest"
+  keyVaults:
+    opal:
+      secrets:
+        - app-insights-connection-string
+        - redis-connection-string
+        - opal-rm-frontend-session-secret
+        - opal-rm-frontend-cookie-secret
+        - opal-rm-frontend-csrf-secret
+        - launch-darkly-client-id
+        - AzureADClientId
+        - AzureADClientSecret
+        - AzureADTenantId
+  environment:
+    ALLOW_CONFIG_MUTATIONS: true
+    FEATURES_REDIS_ENABLED: true
+    OPAL_API_URL: https://opal-fines-service.{{ .Values.global.environment }}.platform.hmcts.net
+    OPAL_FINES_SERVICE_API_URL: https://opal-fines-service.{{ .Values.global.environment }}.platform.hmcts.net
+    OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
+    FRONTEND_HOSTNAME: https://opal-rm-frontend.{{ .Values.global.environment }}.apps.hmcts.net
+    SESSION_SECURE_ENABLED: true
+    CSRF_SECURE_ENABLED: true
+    FEATURES_HELMET_ENABLED: true
+    FEATURES_LAUNCH_DARKLY_ENABLED: true
+    FEATURES_LAUNCH_DARKLY_STREAM: false
+    FEATURES_SSO_ENABLED: true
+    SESSION_SAME_SITE: "none"
+    SESSION_DOMAIN: ".hmcts.net"
+    CSRF_SAME_SITE: "strict"
+    FEATURES_APP_INSIGHTS_ENABLED: true
+redis:
+  enabled: false
+  image:
+    registry: hmctsprod.azurecr.io
+    repository: imported/bitnami/redis
+
+opal-fines-service:
+  enabled: false
+
+postgresql:
+  enabled: false
+  image:
+    registry: hmctsprod.azurecr.io
+    repository: imported/bitnami/postgresql
+    tag: "17.5.0"
+
+global:
+  security:
+    allowInsecureImages: true
