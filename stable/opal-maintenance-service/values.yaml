@@ -1,0 +1,23 @@
+java:
+  applicationPort: 4551
+  image: 'hmctsprod.azurecr.io/opal/maintenance-service:latest'
+  ingressHost: opal-maintenance-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: opal
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: maintenance-service-POSTGRES-HOST
+          alias: OPAL_MAINTENANCE_DB_HOST
+        - name: maintenance-service-POSTGRES-PASS
+          alias: OPAL_MAINTENANCE_DB_PASSWORD
+        - name: maintenance-service-POSTGRES-PORT
+          alias: OPAL_MAINTENANCE_DB_PORT
+        - name: maintenance-service-POSTGRES-USER
+          alias: OPAL_MAINTENANCE_DB_USERNAME
+        - name: maintenance-service-POSTGRES-DATABASE
+          alias: OPAL_MAINTENANCE_DB_NAME
+
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: true
