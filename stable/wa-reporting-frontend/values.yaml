@@ -45,11 +45,17 @@ nodejs:
     IDAM_PUBLIC_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
     MANAGE_CASE_BASE_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net
     WA_BASE_URL: https://wa-reporting-frontend.{{ .Values.global.environment }}.platform.hmcts.net
-redis:
+hmcts-redis:
   enabled: false
+  architecture: standalone
+  auth:
+    enabled: false
+    sentinel: false
   image:
     registry: hmctsprod.azurecr.io
-    repository: imported/bitnami/redis
-global:
-  security:
-    allowInsecureImages: true
+    repository: imported/redis
+    tag: 8.2.1
+  sentinel:
+    enabled: false
+  metrics:
+    enabled: false

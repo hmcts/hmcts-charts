@@ -24,12 +24,21 @@ nodejs:
           alias: lrd-db-password
   environment:
     AUTH_ENABLED: false
-    REDIS_HOST: ${SERVICE_NAME}-redis-master
-redis:
+    REDIS_HOST: ${SERVICE_NAME}-hmcts-redis-master
+hmcts-redis:
   enabled: true
   architecture: standalone
+  auth:
+    enabled: false
+    sentinel: false
+  image:
+    registry: hmctsprod.azurecr.io
+    repository: imported/redis
+    tag: 8.2.1
   master:
     persistence:
       enabled: false
-  auth:
+  sentinel:
+    enabled: false
+  metrics:
     enabled: false
