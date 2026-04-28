@@ -87,7 +87,7 @@ java:
 payment-api:
   enabled: true
   java:
-    image: hmctspublic.azurecr.io/payment/api:latest
+    image: hmctsprod.azurecr.io/payment/api:latest
     releaseNameOverride: ${SERVICE_NAME}-payment-api
     ingressHost: payment-api-${SERVICE_NAME}.preview.platform.hmcts.net
     environment:
@@ -204,7 +204,7 @@ payment-api:
 ccpay-notifications-service:
   enabled: true
   java:
-    image: hmctspublic.azurecr.io/ccpay/notifications-service:latest
+    image: hmctsprod.azurecr.io/ccpay/notifications-service:latest
     releaseNameOverride: ${SERVICE_NAME}-ccpay-notifications-service
     ingressHost: ccpay-notifications-service-${SERVICE_NAME}.preview.platform.hmcts.net
     environment:
@@ -271,7 +271,7 @@ ccpay-notifications-service:
 ccpay-bulkscanning-api:
   enabled: true
   java:
-    image: hmctspublic.azurecr.io/ccpay/bulkscanning-api:latest
+    image: hmctsprod.azurecr.io/ccpay/bulkscanning-api:latest
     releaseNameOverride: ${SERVICE_NAME}-ccpay-bulkscanning-api
     ingressHost: ccpay-bulkscanning-api-${SERVICE_NAME}.preview.platform.hmcts.net
     environment:
