@@ -1,6 +1,6 @@
 java:
   applicationPort: 8080
-  image: 'hmctspublic.azurecr.io/ccpay/cpo-update-service:latest'
+  image: 'hmctsprod.azurecr.io/ccpay/cpo-update-service:latest'
   ingressHost: ccpay-cpo-update-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: ccpay
 #  Uncomment once the vault containing the app insights key has been set up
