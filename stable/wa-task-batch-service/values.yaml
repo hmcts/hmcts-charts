@@ -16,4 +16,3 @@ global:
   jobKind: CronJob
   enableKeyVaults: true
   environment: aat
-  disableActiveClusterCheck: true
