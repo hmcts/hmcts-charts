@@ -12,4 +12,11 @@ nodejs:
       secrets:
         - name: app-insights-connection-string
           alias: APP_INSIGHTS_CONNECTION_STRING
+        - name: admin-frontend-app-reg-id
+          alias: FRONTEND_APP_REG_ID
+        - name: bstrap-admin-frontend-client-secret
+          alias: FRONTEND_APP_REG_SECRET
+        - name: api-app-reg-id
+          alias: API_APP_REG_ID
   environment:
+    DATA_API_URL: 'https://fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net'
