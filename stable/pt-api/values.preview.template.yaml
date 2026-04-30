@@ -3,7 +3,7 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
-    pt:
+    pt-kv:
       secrets:
          - name: app-insights-connection-string
   environment:

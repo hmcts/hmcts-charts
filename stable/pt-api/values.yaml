@@ -6,7 +6,7 @@ java:
   ingressHost: pt-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: pt
   keyVaults:
-    pt:
+    pt-kv:
        secrets:
          - name: app-insights-connection-string
          - name: api-POSTGRES-PASS
