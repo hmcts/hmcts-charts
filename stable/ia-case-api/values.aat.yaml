@@ -1,4 +1,6 @@
 java:
-  # Don't modify below here
+  # Don't modify below here unless you know what you are doing
   image: https://hmcts.azurecr.io/hmcts/ia-case-api:latest
   ingressHost: 
+  environment:
+    HOME_OFFICE_VALIDATION_ENABLED: "false"
