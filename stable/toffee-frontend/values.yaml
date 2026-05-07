@@ -1,6 +1,6 @@
 nodejs:
   applicationPort: 1337
-  image: 'sdshmctspublic.azurecr.io/toffee/frontend:latest'
+  image: 'hmctsprod.azurecr.io/toffee/frontend:latest'
   ingressHost: toffee-recipe-backend.{{ .Values.global.environment }}.platform.hmcts.net
   environment:
     RECIPE_BACKEND_URL: http://toffee-recipe-backend.{{ .Values.global.environment }}.platform.hmcts.net
