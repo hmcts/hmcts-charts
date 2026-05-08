@@ -1,0 +1,8 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for Halo ITSM BPT
+name: halo-itsm-bpt
+home: https://github.com/hmcts/halo-itsm-bpt
+version: 0.0.1
+maintainers:
+  - name: HMCTS Halo team

@@ -1,0 +1,9 @@
+job:
+  image: 'hmctsprod.azurecr.io/halo/itsm-bpt:latest'
+  kind: Job
+  command:
+    - /bin/bash
+    - -lc
+  args:
+    - echo "halo-itsm-bpt placeholder job"
+  environment: {}
