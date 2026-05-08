@@ -2,3 +2,14 @@ nodejs:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-redis-master:6379
+    PT_API_URL: '${PT_API_URL}'
+redis:
+  image:
+    registry: hmctsprod.azurecr.io
+    repository: imported/bitnami/redis
+  enabled: true
+global:
+  security:
+    allowInsecureImages: true

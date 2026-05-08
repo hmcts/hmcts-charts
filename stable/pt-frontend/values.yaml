@@ -3,9 +3,23 @@ nodejs:
   aadIdentityName: pt
   ingressHost: pt-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctsprod.azurecr.io/pt/frontend:latest'
-  #  Uncomment once the vault containing the app insights key has been set up
-  #  keyVaults:
-  #    pt:
-  #      secrets:
-  #        - AppInsightsInstrumentationKey
+  keyVaults:
+    pt-kv:
+      secrets:
+        - app-insights-connection-string
+        - redis-connection-string
+        - pt-frontend-s2s-secret
   environment:
+    REDIS_TTL: 6000
+    REDIS_SESSION_PREFIX: 'pt'
+    PT_API_URL: 'http://pt-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    S2S_URL: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+
+redis:
+  enabled: false
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+  auth:
+    enabled: false
