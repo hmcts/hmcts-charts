@@ -11,6 +11,8 @@ java:
          - name: app-insights-connection-string
          - name: api-POSTGRES-PASS
            alias: PT_DB_PASSWORD
+         - name: pt-api-s2s-secret
+           alias: PT_API_S2S_SECRET
   environment:
     PT_DB_PORT: "5432"
     PT_DB_USER_NAME: pgadmin
@@ -20,3 +22,4 @@ java:
     PT_DB_PASSWORD:
       secretRef: "{{ .Values.global.postgresSecret }}"
       key: password
+    IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal

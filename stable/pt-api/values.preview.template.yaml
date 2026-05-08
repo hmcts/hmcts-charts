@@ -6,6 +6,8 @@ java:
     pt-kv:
       secrets:
          - name: app-insights-connection-string
+         - name: pt-api-s2s-secret
+           alias: PT_API_S2S_SECRET
   environment:
     PT_DB_HOST: "{{ .Release.Name }}-postgresql"
     PT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
