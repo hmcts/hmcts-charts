@@ -17,6 +17,8 @@ nodejs:
         FEATURE_ANTENNA_WEBCHAT_AVAILABILITY_TOGGLE: "false"
         FEATURE_DYNATRACE: "false"
         FEATURE_PING_REDIS: "true"
+        DECREE_NISI_FRONTEND_URL: "https://decree-nisi-aks.aat.platform.hmcts.net"
+        DECREE_ABSOLUTE_FRONTEND_URL: "https://decree-absolute-aks.aat.platform.hmcts.net"
 
     # Don't modify below here
     image: ${IMAGE_NAME}

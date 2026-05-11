@@ -33,10 +33,12 @@ nodejs:
         CASE_MAINTENANCE_BASE_URL: "http://div-cms-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         EVIDENCE_MANAGEMENT_CLIENT_API_URL: "http://div-emca-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         EVIDENCE_MANAGEMENT_CLIENT_API_DOWNLOAD_ENDPOINT: "/emclientapi/version/1/download"
+        IDAM_APP_HEALTHCHECK_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/health"
+        IDAM_AUTHENTICATION_HEALTHCHECK_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/health"
+
         ANTENNA_WEBCHAT_URL: "webchat.ctsc.hmcts.net"
         ANTENNA_WEBCHAT_SERVICE: "Divorce"
         ANTENNA_WEBCHAT_VERSION: "1"
-
         ANTENNA_WEBCHAT_AVAILABILITY_DEBUG: "false"
         FEATURE_WEBCHAT_AVAILABILITY_TOGGLE: "false"
 
