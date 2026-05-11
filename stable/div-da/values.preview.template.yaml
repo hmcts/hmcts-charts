@@ -20,6 +20,9 @@ nodejs:
     ANTENNA_WEBCHAT_AVAILABILITY_DEBUG: "true"
     FEATURE_ANTENNA_WEBCHAT_AVAILABILITY_TOGGLE: "false"
     FEATURE_DYNATRACE: "false"
+    PETITIONER_FRONTEND_URL: "https://petitioner-frontend-aks.aat.platform.hmcts.net"
+    RESPONDENT_FRONTEND_URL: "https://respond-divorce-aks.aat.platform.hmcts.net"
+    DECREE_NISI_FRONTEND_URL: "https://decree-nisi-aks.aat.platform.hmcts.net"
 
   # Don't modify below here
   image: ${IMAGE_NAME}
