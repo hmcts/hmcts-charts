@@ -11,6 +11,8 @@ nodejs:
         FEATURE_WEBCHAT: "false"
         FEATURE_ANTENNA_WEBCHAT: "false"
         PETITIONER_FRONTEND_URL: "https://petitioner-frontend-aks.aat.platform.hmcts.net"
+        RESPONDENT_FRONTEND_URL: "https://respond-divorce-aks.aat.platform.hmcts.net"
+        DECREE_ABSOLUTE_FRONTEND_URL: "https://decree-absolute-aks.aat.platform.hmcts.net"
         FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE: "false"
         ANTENNA_WEBCHAT_URL: "webchat.pp.ctsc.hmcts.net"
         ANTENNA_WEBCHAT_SERVICE: "Divorce"
@@ -19,6 +21,7 @@ nodejs:
         FEATURE_ANTENNA_WEBCHAT_AVAILABILITY_TOGGLE: "false"
         FEATURE_DYNATRACE: "false"
         FEATURE_PING_REDIS: "true"
+
 
     # Don't modify below here
     image: ${IMAGE_NAME}

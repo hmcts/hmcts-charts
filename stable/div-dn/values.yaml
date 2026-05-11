@@ -55,6 +55,8 @@ nodejs:
         PETITIONER_FRONTEND_URL: "https://div-pfe-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         DECREE_ABSOLUTE_FRONTEND_URL: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         RESPONDENT_FRONTEND_URL: "https://div-rfe-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+        IDAM_APP_HEALTHCHECK_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/health"
+        IDAM_AUTHENTICATION_HEALTHCHECK_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/health"
 
         BASE_URL: "https://div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         PUBLIC_HOSTNAME: "https://div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
