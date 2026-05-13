@@ -6,6 +6,7 @@ nodejs:
   environment:
     RECIPE_BACKEND_URL: http://plum-recipe-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   keyVaults:
-    'plumsi':
+    plumsi:
       secrets:
+        - redis-connection-string
         - name: appInsights-InstrumentationKey
