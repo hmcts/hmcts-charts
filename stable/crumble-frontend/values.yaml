@@ -9,3 +9,6 @@ nodejs:
     'crumblesi':
       secrets:
         - name: appInsights-InstrumentationKey
+    'plumsi':
+      secrets:
+        - redis-connection-string
