@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/opal-logging-service:latest
   ingressHost: 
+  environment:
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
