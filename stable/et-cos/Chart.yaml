@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.62
+version: 0.0.63
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
@@ -39,7 +39,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: et-sya-api.enabled
   - name: aac-manage-case-assignment
-    version: 0.2.26
+    version: 0.2.22
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: xui-mo-webapp
