@@ -15,7 +15,6 @@ nodejs:
     idam-idam:
       secrets:
         - AppInsightsConnectionString
-        - launchdarkly-sdk-key
         - hmcts-access-client-secret
         - redis-hostname
         - redis-port
