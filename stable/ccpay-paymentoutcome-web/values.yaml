@@ -7,6 +7,7 @@ nodejs:
     ccpay:
       secrets:
         - paymentoutcome-s2s-web
+        - app-insights-connection-string
   environment:
      S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
      PAYHUB_URL: http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
