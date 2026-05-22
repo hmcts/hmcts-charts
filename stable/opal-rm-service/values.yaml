@@ -1,0 +1,31 @@
+java:
+  applicationPort: 4556
+  image: "hmctsprod.azurecr.io/opal/rm-service:latest"
+  ingressHost: opal-rm-service.{{ .Values.global.environment }}.platform.hmcts.net
+  aadIdentityName: opal
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: rm-service-POSTGRES-HOST
+          alias: OPAL_RM_DB_HOST
+        - name: rm-service-POSTGRES-PASS
+          alias: OPAL_RM_DB_PASSWORD
+        - name: rm-service-POSTGRES-PORT
+          alias: OPAL_RM_DB_PORT
+        - name: rm-service-POSTGRES-USER
+          alias: OPAL_RM_DB_USERNAME
+        - name: rm-service-POSTGRES-DATABASE
+          alias: OPAL_RM_DB_NAME
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: true
+    OPAL_USER_SERVICE_API_URL: https://opal-user-service.{{ .Values.global.environment }}.platform.hmcts.net
+    FLYWAY_LOCATIONS: classpath:db/migration/allEnvs
+
+postgresql:
+  enabled: false
+
+global:
+  security:
+    allowInsecureImages: true
