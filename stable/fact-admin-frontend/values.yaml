@@ -10,6 +10,20 @@ nodejs:
   keyVaults:
     fact-kv:
       secrets:
+        - name: session-secret
+          alias: SESSION_SECRET
+        - name: REDIS-V6-HOST
+          alias: REDIS_HOST
+        - name: REDIS-V6-PASSWORD
+          alias: REDIS_PASSWORD
+        - name: REDIS-V6-PORT
+          alias: REDIS_PORT
+        - name: bstrap-sso-client-id
+          alias: SSO_APP_REG_ID
+        - name: bstrap-sso-client-secret
+          alias: SSO_APP_REG_SECRET
+        - name: bstrap-sso-tenant-id
+          alias: SSO_APP_REG_TENANT_ID
         - name: app-insights-connection-string
           alias: APP_INSIGHTS_CONNECTION_STRING
         - name: admin-frontend-app-reg-id
@@ -21,3 +35,4 @@ nodejs:
   environment:
     DATA_API_URL: 'https://fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net'
     PUBLIC_FRONTEND_URL: 'https://fact-public-frontend.{{ .Values.global.environment }}.platform.hmcts.net' # Override in Flux for Prod
+    FRONTEND_URL: 'https://fact-admin-frontend.{{ .Values.global.environment }}.platform.hmcts.net' # Override in Flux for Prod
