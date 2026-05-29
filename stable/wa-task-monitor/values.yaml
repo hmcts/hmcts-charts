@@ -19,6 +19,9 @@ java:
     OPEN_ID_IDAM_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net"
     IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
     ROLE_ASSIGNMENT_URL: "http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    POSTGRES_HOST: "cft-task-postgres-db-flexible-{{ .Values.global.environment }}.postgres.database.azure.com"
+
+
     INITIATION_CAMUNDA_MAX_RESULTS: 100
     INITIATION_TIME_LIMIT_FLAG: true
     INITIATION_TIME_LIMIT: 120
@@ -52,3 +55,13 @@ java:
           alias: WA_SYSTEM_PASSWORD
         - name: wa-idam-client-secret
           alias: WA_IDAM_CLIENT_SECRET
+        - name: cft-task-POSTGRES-PASS-FLEXIBLE
+          alias: POSTGRES_PASSWORD
+        - name: cft-task-POSTGRES-USER-FLEXIBLE
+          alias: POSTGRES_USERNAME
+        - name: cft-task-POSTGRES-PORT-FLEXIBLE
+          alias: POSTGRES_PORT
+        - name: cft-task-POSTGRES-DATABASE-FLEXIBLE
+          alias: POSTGRES_NAME
+        - name: cft-task-POSTGRES-HOST-FLEXIBLE
+          alias: POSTGRES_HOST
