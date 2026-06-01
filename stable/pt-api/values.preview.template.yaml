@@ -24,8 +24,14 @@ java:
     PT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
 #    PT_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     PT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+  secrets:
+    PT_DB_PASSWORD:
+      secretRef: "{{ .Values.global.postgresSecret }}"
+      key: password
   postgresql:
     enabled: true
+    image:
+      tag: "16.0.0"
 
 
 
