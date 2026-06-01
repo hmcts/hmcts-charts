@@ -81,6 +81,10 @@ java:
           alias: NOTIFICATION_LETTER_REFUND_WHEN_CONTACTED_TEMPLATE_ID
         - name: notifications-email-refund-when-contacted-template-id
           alias: NOTIFICATION_EMAIL_REFUND_WHEN_CONTACTED_TEMPLATE_ID
+        - name: ccpay-liberata-user-id
+          alias: LIBERATA_USERNAME
+        - name: ccpay-liberata-user-password
+          alias: LIBERATA_USER_PASSWORD
 
 payment-api:
   enabled: false
