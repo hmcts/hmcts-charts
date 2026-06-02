@@ -59,7 +59,7 @@ ccd:
     ras:
       enabled: false
     elastic:
-      enabled: false
+      enabled: true
   ccd-definition-store-api:
     java:
       devmemoryRequests: '1024Mi'
@@ -159,10 +159,6 @@ ccd:
     antiAffinity: "soft"
     esJavaOpts: "-Xmx512m -Xms512m"
     extraEnvs:
-      - name: discovery.type
-        value: single-node
-      - name: cluster.initial_master_nodes
-        value: ""
       - name: action.auto_create_index
         value: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*,global_search
     persistence:
