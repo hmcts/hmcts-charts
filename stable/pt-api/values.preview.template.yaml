@@ -19,10 +19,8 @@ java:
          - name: pt-api-s2s-secret
            alias: PT_API_S2S_SECRET
   environment:
-    CHANGE_ID: ${CHANGE_ID}
     PT_DB_HOST: "{{ .Release.Name }}-postgresql"
     PT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
-#    PT_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     PT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
   secrets:
     PT_DB_PASSWORD:
