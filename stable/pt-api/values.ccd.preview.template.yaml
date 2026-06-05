@@ -172,7 +172,7 @@ ccd:
     logstashJavaOpts: "-Xmx1g -Xms512M"
 
 xui-webapp:
-  enabled: false
+  enabled: true
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
@@ -206,6 +206,7 @@ xui-webapp:
       rpx:
         resourceGroup: rpx
         secrets:
+          - mc-session-secret
           - mc-s2s-client-secret
           - mc-idam-client-secret
           - system-user-name
