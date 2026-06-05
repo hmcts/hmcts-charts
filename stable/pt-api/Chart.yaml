@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for pt-api App
 name: pt-api
 home: https://github.com/hmcts/pt-api
-version: 0.0.32
+version: 0.0.33
 maintainers:
   - name: HMCTS pt team
 dependencies:
@@ -18,6 +18,6 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: ccd.enabled
   - name: xui-webapp
-    version: 1.0.44
+    version: 1.0.45
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: xui-webapp.enabled
