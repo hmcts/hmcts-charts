@@ -1,7 +1,7 @@
 java:
   releaseNameOverride: idam-user-profile-bridge
   applicationPort: 8080
-  image: 'hmctspublic.azurecr.io/idam/user-profile-bridge:latest'
+  image: 'hmctsprod.azurecr.io/idam/user-profile-bridge:latest'
   ingressHost: idam-user-profile-bridge.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: idam
   environment:
