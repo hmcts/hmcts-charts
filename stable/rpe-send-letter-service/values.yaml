@@ -78,6 +78,7 @@ java:
     UPLOAD_SUMMARY_REPORT_ENABLED: "false"
     FTP_UPLOADED_LETTERS_SUMMARY_REPORT_ENABLED: "false"
     DUPLICATES_CUT_OFF_TIME: 1
+    TESTING_SUPPORT: "false"
 
   # Don't modify below here
   image: 'hmctsprod.azurecr.io/rpe/send-letter-service:latest'
