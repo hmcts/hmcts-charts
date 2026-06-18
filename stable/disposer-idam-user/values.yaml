@@ -21,6 +21,7 @@ job:
           alias: IDAM_CLIENT_USERNAME
   environment:
     IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_AUTH_URL: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net
     S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     ROLE_ASSIGNMENT_HOST: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   global:

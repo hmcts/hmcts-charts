@@ -5,6 +5,7 @@ job:
   environment:
     S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+    IDAM_AUTH_URL: https://idam-web-public.aat.platform.hmcts.net
     ROLE_ASSIGNMENT_HOST: http://am-role-assignment-service-aat.service.core-compute-aat.internal
   kind: CronJob
   schedule: "*/20 * * * *"
