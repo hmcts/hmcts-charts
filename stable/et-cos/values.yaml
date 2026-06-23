@@ -45,6 +45,8 @@ java:
           alias: GOV_NOTIFY_API_KEY
         - name: launch-darkly-sdk-key
           alias: LAUNCH_DARKLY_SDK_KEY
+        - name: ccd-case-events-sendonly-connection-string
+          alias: AZURE_SERVICE_BUS_CONNECTION_STRING
   environment:
     SERVER_PORT: 8081
     REFORM_TEAM: et
