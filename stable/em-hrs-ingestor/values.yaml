@@ -42,6 +42,6 @@ job:
     USE_AD_AUTH_FOR_SOURCE_BLOB_CONNECTION: false
     CVP_PROCESS: true
     IDAM_REDIRECT_URI: http://em-hrs-ingestor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2redirect
-    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_API_URL: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net
 global:
   jobKind: CronJob
