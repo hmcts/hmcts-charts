@@ -1,0 +1,6 @@
+python:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    RECIPES_SERVICE_URL: http://plum-recipe-backend-aat.service.core-compute-aat.internal

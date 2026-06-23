@@ -1,0 +1,6 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+python:
+  image: https://hmcts.azurecr.io/hmcts/plum-fastapi-backend:latest
+  ingressHost: 
+  environment:
+    RECIPES_SERVICE_URL: http://plum-recipe-backend-aat.service.core-compute-aat.internal
