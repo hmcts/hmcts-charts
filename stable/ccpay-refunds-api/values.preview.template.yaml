@@ -105,7 +105,7 @@ payment-api:
       LAUNCH_DARKLY_USER_NAME_PREFIX: aat
       SPRING_PROFILES_ACTIVE: "liberataMock,callbackMock,ccdMock"
       CALLBACK_PAYMENTS_CUTOFF_TIME_IN_MINUTES: 0
-      IAC_SERVICE_API_URL: http://ia-case-access-api-aat.service.core-compute-aat.internal
+      IAC_SERVICE_API_URL: http://ia-case-api-aat.service.core-compute-aat.internal
       PBA_CONFIG1_SERVICE_NAMES: dummy
       PCI_PAL_API_URL: https://ip3cloud.com/clients/hmcts/payments/index.php
       CCPAY_BULK_SCANNING_API_URL: "http://${SERVICE_NAME}-ccpay-bulkscanning-api"
