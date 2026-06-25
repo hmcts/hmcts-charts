@@ -3,6 +3,7 @@ python:
   image: 'hmctsprod.azurecr.io/labs/connorokane-kainos:latest'
   ingressHost: labs-connorokane-kainos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
+    FAVOURITE_FRUIT: plum
   # keyVaults:
   #   labs:
   #     secrets:
