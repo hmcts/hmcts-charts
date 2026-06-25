@@ -5,6 +5,10 @@ nodejs:
   environment:
     REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-redis-master:6379
     PT_API_URL: '${PT_API_URL}'
+    CDAM_URL: '${CDAM_URL}'
+    CCD_URL: '${DATA_STORE_URL_BASE}'
+    CASE_TYPE_ID: '${CASE_TYPE_ID}'
+    XUI_BASE_URI: '${XUI_BASE_URI}'
 redis:
   image:
     registry: hmctsprod.azurecr.io
