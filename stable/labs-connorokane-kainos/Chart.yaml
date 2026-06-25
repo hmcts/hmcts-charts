@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for labs-connorokane-kainos App
+name: labs-connorokane-kainos
+home: https://github.com/hmcts/labs-connorokane-kainos
+version: 0.0.1
+maintainers:
+  - name: HMCTS labs team
+dependencies:
+  - name: python
+    version: 0.1.0
+    repository: 'oci://hmctsprod.azurecr.io/helm'
