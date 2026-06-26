@@ -13,15 +13,18 @@ java:
            alias: PT_DB_PASSWORD
          - name: pt-api-s2s-secret
            alias: PT_API_S2S_SECRET
+         - name: pt-api-idam-secret
+           alias: IDAM_CLIENT_SECRET
+         - name: idam-system-user-name
+           alias: PT_IDAM_SYSTEM_USERNAME
+         - name: idam-system-user-password
+           alias: PT_IDAM_SYSTEM_PASSWORD
   environment:
     PT_DB_PORT: "5432"
     PT_DB_USER_NAME: pgadmin
     PT_DB_NAME: pt
     PT_DB_HOST: "pt-{{ .Values.global.environment }}.postgres.database.azure.com"
-    secrets:
-    PT_DB_PASSWORD:
-      secretRef: "{{ .Values.global.postgresSecret }}"
-      key: password
+    DRAFT_STORE_DB_CONN_OPTIONS: "?sslmode=require&gssEncMode=disable"
     IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 ccd:
   enabled: false
