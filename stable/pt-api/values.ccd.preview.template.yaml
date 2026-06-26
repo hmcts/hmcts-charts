@@ -10,14 +10,16 @@ global:
   postgresHostname: "pt-preview.postgres.database.azure.com"
   postgresUsername: "hmcts"
   databaseNamePrefix: "pr-${CHANGE_ID}-"
+
 java:
-  CASE_TYPE_SUFFIX: ${CHANGE_ID}
-  PT_DB_NAME: "{{ .Values.global.databaseNamePrefix }}pt"
-  PT_DB_HOST: '{{ tpl .Values.global.postgresHostname $}}'
-  PT_DB_USER_NAME: "{{ .Values.global.postgresUsername}}"
-  ELASTIC_SEARCH_HOSTS: "http://{{ .Release.Name }}-es-master:9200"
-  CCD_DATA_STORE_URL: http://${SERVICE_NAME}-ccd-data-store-api
-  CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
+  environment:
+    CASE_TYPE_SUFFIX: ${CHANGE_ID}
+    PT_DB_NAME: "{{ .Values.global.databaseNamePrefix }}pt"
+    PT_DB_HOST: '{{ tpl .Values.global.postgresHostname $}}'
+    PT_DB_USER_NAME: "{{ .Values.global.postgresUsername}}"
+    ELASTIC_SEARCH_HOSTS: "http://{{ .Release.Name }}-es-master:9200"
+    CCD_DATA_STORE_URL: http://${SERVICE_NAME}-ccd-data-store-api
+    CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
   secrets:
     PT_DB_PASSWORD:
       secretRef: "{{ .Values.global.postgresSecret }}"
