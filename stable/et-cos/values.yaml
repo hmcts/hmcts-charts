@@ -77,6 +77,7 @@ java:
     ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     LAUNCH_DARKLY_ENV: '{{ .Values.global.environment }}'
     CCD_SERVICEBUS_DESTINATION: ccd-case-events-{{ .Values.global.environment }}
+    CCD_SDK_DECENTRALISED_ES_INDEXER_ENABLED: false
 ccd:
   enabled: false
 xui-webapp:
