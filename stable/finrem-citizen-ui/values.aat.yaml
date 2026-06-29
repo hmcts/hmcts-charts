@@ -17,6 +17,8 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/finrem-citizen-ui:latest
   ingressHost: 
+  devmemoryRequests: 1Gi
+  devmemoryLimits: 2Gi
 
   keyVaults:
     finrem:
