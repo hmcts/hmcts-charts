@@ -8,6 +8,10 @@ nodejs:
       secrets:
         - app-insights-connection-string
         - redis-connection-string
+        - pt-session-secret
+        - idam-system-user-name
+        - idam-system-user-password
+        - pt-frontend-idam-secret
         - pt-frontend-s2s-secret
   environment:
     REDIS_TTL: 6000
