@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for pt-api App
 name: pt-api
 home: https://github.com/hmcts/pt-api
-version: 0.0.35
+version: 0.0.36
 maintainers:
   - name: HMCTS pt team
 dependencies:
@@ -21,3 +21,12 @@ dependencies:
     version: 1.0.45
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: xui-webapp.enabled
+  #    Work Allocation
+  - name: wa
+    version: ~1.1.0
+    repository: 'oci://hmctsprod.azurecr.io/helm'
+    condition: wa.enabled
+  - name: am-org-role-mapping-service
+    version: ~0.0.66
+    repository: 'oci://hmctsprod.azurecr.io/helm'
+    condition: am-org-role-mapping-service.enabled

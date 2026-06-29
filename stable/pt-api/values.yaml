@@ -30,3 +30,7 @@ ccd:
   enabled: false
 xui-webapp:
   enabled: false
+wa:
+  enabled: false
+am-org-role-mapping-service:
+  enabled: false
