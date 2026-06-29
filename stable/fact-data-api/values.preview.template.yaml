@@ -11,6 +11,7 @@ java:
     AZURE_MANAGED_IDENTITY_ENABLED: true
     AZURE_STORAGE_ACCOUNT_NAME: factsaaat
     TESTING_SUPPORT_ENABLE_API: true
+    TESTING_SUPPORT_ENABLE_CACHE: true
   postgresql:
     enabled: true
     primary:
