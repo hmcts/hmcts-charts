@@ -1,0 +1,23 @@
+nodejs:
+  applicationPort: 1337
+  aadIdentityName: xui
+  ingressHost: xui-media-viewer-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  image: 'hmctsprod.azurecr.io/xui/media-viewer:latest'
+  keyVaults:
+    rpx:
+      resourceGroup: rpx
+      secrets:
+        - microservicekey-em-gw
+        - show-oauth2-token
+        - password
+  environment:
+    REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
+    DOCASSEMBLY_URL: "http://dg-docassembly-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    DM_STORE_APP_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    HRS_API_URL: "http://em-hrs-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    ANNOTATION_API_URL: "http://em-anno-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    ICP_API_URL: "https://em-icp-{{ .Values.global.environment }}.platform.hmcts.net"
+    IDAM_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    NPA_URL: "http://em-npa-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    REDIRECT_URL: "https://xui-media-viewer-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback"
