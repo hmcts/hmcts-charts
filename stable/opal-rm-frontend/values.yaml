@@ -19,6 +19,7 @@ nodejs:
     ALLOW_CONFIG_MUTATIONS: true
     FEATURES_REDIS_ENABLED: true
     OPAL_FINES_SERVICE_API_URL: https://opal-fines-service.{{ .Values.global.environment }}.platform.hmcts.net
+    OPAL_RM_SERVICE_API_URL: https://opal-rm-service.{{ .Values.global.environment }}.platform.hmcts.net
     OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
     FRONTEND_HOSTNAME: https://opal-rm-frontend.{{ .Values.global.environment }}.apps.hmcts.net
     SESSION_SECURE_ENABLED: true
@@ -39,6 +40,9 @@ redis:
     repository: imported/bitnami/redis
 
 opal-fines-service:
+  enabled: false
+
+opal-rm-service:
   enabled: false
 
 postgresql:

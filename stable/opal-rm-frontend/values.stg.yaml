@@ -5,6 +5,7 @@ nodejs:
   environment:
     FRONTEND_HOSTNAME: https://
     OPAL_FINES_SERVICE_API_URL: http://-opal-fines-service
+    OPAL_RM_SERVICE_API_URL: http://-opal-rm-service
     OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
     FEATURES_LAUNCH_DARKLY_ENABLED: true
     FEATURES_SSO_ENABLED: true
@@ -62,6 +63,11 @@ opal-fines-service:
       LAUNCH_DARKLY_ENABLED: true
       OPAL_REDIS_ENABLED: true
       REDIS_CONNECTION_STRING: redis://-hmcts-redis-master:6379
+opal-rm-service:
+  enabled: true
+  java:
+    ingressHost: opal-rm-service-
+    imagePullPolicy: Always
 postgresql:
   enabled: true
   auth:

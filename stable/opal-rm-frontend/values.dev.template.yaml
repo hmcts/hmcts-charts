@@ -11,6 +11,7 @@ nodejs:
           alias: launch-darkly-client-id
   environment:
     OPAL_FINES_SERVICE_API_URL: ${DEV_OPAL_FINES_SERVICE_URL}
+    OPAL_RM_SERVICE_API_URL: ${DEV_OPAL_RM_SERVICE_URL}
     OPAL_USER_SERVICE_API_URL: "https://opal-user-service.staging.platform.hmcts.net/"
     FRONTEND_HOSTNAME: https://${SERVICE_FQDN}
     FEATURES_LAUNCH_DARKLY_ENABLED: true
@@ -78,6 +79,40 @@ opal-fines-service:
       SERVICEBUS_LOGGING_PDPL_PROTOCOL: amqps
       OPAL_REDIS_ENABLED: true
       REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
+opal-rm-service:
+  enabled: ${DEV_ENABLE_OPAL_RM_SERVICE}
+  global:
+    postgresUsername: "opal-rm"
+    postgresPassword: "opal-rm"
+    postgresOptions: "?stringtype=unspecified"
+  java:
+    image: 'hmctsprod.azurecr.io/opal/rm-service:${DEV_OPAL_RM_SERVICE_IMAGE_SUFFIX}'
+    ingressHost: "opal-rm-frontend-pr-${CHANGE_ID}-rm-service.dev.platform.hmcts.net"
+    imagePullPolicy: Always
+    keyVaults:
+      opal:
+        secrets:
+          - name: app-insights-connection-string
+            alias: app-insights-connection-string
+    environment:
+      OPAL_RM_DB_HOST: "${SERVICE_NAME}-rm-postgresql"
+      OPAL_RM_DB_NAME: "opal-rm-db"
+      OPAL_RM_DB_USERNAME: "{{ .Values.global.postgresUsername }}"
+      OPAL_RM_DB_PASSWORD: "{{ .Values.global.postgresPassword }}"
+      OPAL_RM_DB_PORT: "5432"
+      OPAL_RM_DB_OPTIONS: "{{ .Values.global.postgresOptions }}"
+      APPLICATIONINSIGHTS_ROLE_NAME: "opal-rm-frontend-pr-${CHANGE_ID}-rm-service"
+  postgresql:
+    enabled: true
+    fullnameOverride: ${SERVICE_NAME}-rm-postgresql
+    auth:
+      username: opal-rm
+      password: opal-rm
+      database: opal-rm-db
+    primary:
+      persistence:
+        enabled: false
+      resourcesPreset: small
 postgresql:
   enabled: ${DEV_ENABLE_OPAL_FINES_SERVICE}
   image:
