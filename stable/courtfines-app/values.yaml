@@ -2,7 +2,7 @@ nodejs:
   applicationPort: 3100
   aadIdentityName: courtfines
   ingressHost: courtfines.justice.gov.uk
-  image: 'sdshmctspublic.azurecr.io/courtfines/app:latest'
+  image: 'hmctssbox.azurecr.io/courtfines/app:latest'
   keyVaults:
     courtfines:
       secrets:
