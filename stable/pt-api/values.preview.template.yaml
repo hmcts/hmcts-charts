@@ -22,6 +22,8 @@ java:
     PT_DB_HOST: "{{ .Release.Name }}-postgresql"
     PT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
     PT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
+    IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
+    IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
   secrets:
     PT_DB_PASSWORD:
       secretRef: "{{ .Values.global.postgresSecret }}"
