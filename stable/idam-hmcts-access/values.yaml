@@ -16,9 +16,6 @@ nodejs:
       secrets:
         - AppInsightsConnectionString
         - hmcts-access-client-secret
-        - redis-hostname
-        - redis-port
-        - redis-key
         - sso-client-id
         - sso-client-secret
         - sso-client-id-moj
