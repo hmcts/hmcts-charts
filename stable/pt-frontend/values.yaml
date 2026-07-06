@@ -7,8 +7,7 @@ nodejs:
     pt-kv:
       secrets:
         - app-insights-connection-string
-        - name: redis-connection-string
-          alias: REDIS_CONNECTION_STRING
+        - redis-connection-string
         - pt-session-secret
         - idam-system-user-name
         - idam-system-user-password
