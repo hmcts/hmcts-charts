@@ -16,6 +16,7 @@ nodejs:
         - wa-reporting-redis-access-key
         - wa-reporting-frontend-client-secret
         - wa-reporting-frontend-session-secret
+        - wa-reporting-frontend-s2s-secret
         - name: cft-task-POSTGRES-USER-FLEXIBLE-REPLICA
           alias: tm-db-user
         - name: cft-task-POSTGRES-PASS-FLEXIBLE-REPLICA
@@ -44,6 +45,9 @@ nodejs:
     LRD_DB_OPTIONS: sslmode=verify-full
     IDAM_PUBLIC_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
     MANAGE_CASE_BASE_URL: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net
+    ROLE_ASSIGNMENT_SERVICE_URL: http://am-role-assignment-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    RBAC_ROLE_ASSIGNMENT_ROLE_NAMES: task-supervisor
     WA_BASE_URL: https://wa-reporting-frontend.{{ .Values.global.environment }}.platform.hmcts.net
 hmcts-redis:
   enabled: false
