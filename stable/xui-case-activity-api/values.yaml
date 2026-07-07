@@ -8,7 +8,7 @@ redis:
     enabled: false
 
 nodejs:
-  image: 'hmctspublic.azurecr.io/xui/case-activity-api:latest'
+  image: 'hmctssbox.azurecr.io/xui/case-activity-api:latest'
   applicationPort: 3460
   aadIdentityName: rpx
   ingressHost: rpx-case-activity-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
