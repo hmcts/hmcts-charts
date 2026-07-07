@@ -1,4 +1,5 @@
 global:
+  postgresDatabase: "opal-file-handler-db"
   postgresUsername: "javapostgres"
   postgresOptions: "?stringtype=unspecified"
   postgresPassword: "javapassword"
@@ -21,7 +22,7 @@ java:
   environment:
     REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
     OPAL_FILE_HANDLER_DB_HOST: "{{ .Release.Name }}-postgresql"
-    OPAL_FILE_HANDLER_DB_NAME: "opal-file-handler-db"
+    OPAL_FILE_HANDLER_DB_NAME: "{{ .Values.global.postgresDatabase}}"
     OPAL_FILE_HANDLER_DB_USERNAME: "{{ .Values.global.postgresUsername}}"
     OPAL_FILE_HANDLER_DB_PASSWORD: "{{ .Values.global.postgresPassword}}"
     OPAL_FILE_HANDLER_DB_OPTIONS: "{{ .Values.global.postgresOptions}}"
@@ -44,3 +45,21 @@ java:
       username: javapostgres
       password: javapassword
       database: opal-file-handler-db
+
+bt-eckoh-report:
+  image: ${IMAGE_NAME}
+  environment:
+    REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
+    OPAL_FILE_HANDLER_DB_HOST: "{{ .Release.Name }}-postgresql"
+    OPAL_FILE_HANDLER_DB_NAME: "{{ .Values.global.postgresDatabase}}"
+    OPAL_FILE_HANDLER_DB_USERNAME: "{{ .Values.global.postgresUsername}}"
+    OPAL_FILE_HANDLER_DB_PASSWORD: "{{ .Values.global.postgresPassword}}"
+    OPAL_FILE_HANDLER_DB_OPTIONS: "{{ .Values.global.postgresOptions}}"
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
+    RELEASE_1A_ENABLED: true
