@@ -19,6 +19,8 @@ java:
           alias: PT_IDAM_SYSTEM_USERNAME
         - name: idam-system-user-password
           alias: PT_IDAM_SYSTEM_PASSWORD
+        - name: ccd-elastic-search-hosts
+          alias: ELASTIC_SEARCH_HOSTS
   environment:
     PT_DB_PORT: "5432"
     PT_DB_USER_NAME: pgadmin
