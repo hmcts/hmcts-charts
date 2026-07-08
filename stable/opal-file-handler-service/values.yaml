@@ -51,7 +51,7 @@ global:
 bt-eckoh-report:
   enabled: true
   kind: CronJob
-  image: 'hmcts.azurecr.io/opal/file-handler-service:latest'
+  image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   schedule: '*/15 * * * *'
   command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
   concurrencyPolicy: Forbid
