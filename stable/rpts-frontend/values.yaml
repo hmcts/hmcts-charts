@@ -10,4 +10,4 @@ nodejs:
       secrets:
         - app-insights-connection-string
   environment:
-    RPTS_API_URL: "http://rpts-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    RPTS_API_URL: 'http://rpts-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
