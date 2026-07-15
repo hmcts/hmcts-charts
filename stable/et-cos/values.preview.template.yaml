@@ -35,6 +35,12 @@ java:
     ET_COS_DB_NAME: "pr-${CHANGE_ID}-et_cos"
     ET_COS_DB_USER_NAME: hmcts
     ET_COS_DB_CONN_OPTIONS: "?sslmode=require"
+    ET_COS_DB_CONNECTION_TIMEOUT: 30000
+    ET_COS_DB_IDLE_TIMEOUT: 300000
+    ET_COS_DB_MIN_IDLE: 4
+    ET_COS_DB_MAX_POOL_SIZE: 10
+    ET_COS_DB_MAX_LIFETIME: 300000
+    ET_COS_DB_POOL_NAME: et-cos-db-pool
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-aat.service.core-compute-aat.internal
     SECURE_DOC_STORE_FEATURE: true
