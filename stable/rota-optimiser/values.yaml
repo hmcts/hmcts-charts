@@ -1,0 +1,18 @@
+java:
+  applicationPort: 4550
+  image: 'hmctsprod.azurecr.io/rota/optimiser:latest'
+  ingressHost: rota-optimiser-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: rota
+  keyVaults:
+    rota-shared:
+      resourceGroup: rota-shared-infra
+      secrets:
+        - name: application-insights-connection-string
+          alias: app-insights-connection-string
+        - name: postgresql-fqdn
+          alias: postgresql-fqdn
+        - name: postgresql-admin-username
+          alias: postgresql-admin-username
+        - name: postgresql-admin-password
+          alias: postgresql-admin-password
+  environment:

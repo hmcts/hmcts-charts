@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for the Rota Optimiser service
+name: rota-optimiser
+home: https://github.com/hmcts/rota-optimiser
+version: 0.0.19
+maintainers:
+  - name: HMCTS CPP Rota team
+dependencies:
+  - name: java
+    version: 5.3.0
+    repository: 'oci://hmctsprod.azurecr.io/helm'
