@@ -36,3 +36,4 @@ nodejs:
     DATA_API_URL: 'https://fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net'
     PUBLIC_FRONTEND_URL: 'https://fact-public-frontend.{{ .Values.global.environment }}.platform.hmcts.net' # Override in Flux for Prod
     FRONTEND_URL: 'https://fact-admin-frontend.{{ .Values.global.environment }}.platform.hmcts.net' # Override in Flux for Prod
+
