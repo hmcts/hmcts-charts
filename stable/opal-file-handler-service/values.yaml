@@ -28,6 +28,13 @@ java:
           alias: AAD_CLIENT_SECRET
         - name: redis-connection-string
           alias: REDIS_CONNECTION_STRING
+        - name: opal-file-handler-service-file-store-account-name
+          alias: FILE_STORE_STORAGE_ACCOUNT_NAME
+        - name: opal-file-handler-service-file-store-blob-endpoint
+          alias: FILE_STORE_STORAGE_URL
+        - name: opal-file-handler-service-file-store-access-key
+          alias: FILE_STORE_STORAGE_KEY
+
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: true
     TESTING_SUPPORT_ENDPOINTS_ENABLED: true
@@ -47,7 +54,8 @@ redis:
 global:
   security:
     allowInsecureImages: true
-
+blobstorage:
+  enabled: false
 bt-eckoh-report:
   enabled: true
   kind: CronJob
@@ -93,6 +101,114 @@ caps-report:
   concurrencyPolicy: Forbid
   args:
     - AutomatedTask:CAPSReport
+  aadIdentityName: opal
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+        - name: file-handler-service-POSTGRES-HOST
+          alias: OPAL_FILE_HANDLER_DB_HOST
+        - name: file-handler-service-POSTGRES-PASS
+          alias: OPAL_FILE_HANDLER_DB_PASSWORD
+        - name: file-handler-service-POSTGRES-PORT
+          alias: OPAL_FILE_HANDLER_DB_PORT
+        - name: file-handler-service-POSTGRES-USER
+          alias: OPAL_FILE_HANDLER_DB_USERNAME
+        - name: file-handler-service-POSTGRES-DATABASE
+          alias: OPAL_FILE_HANDLER_DB_NAME
+        - name: redis-connection-string
+          alias: REDIS_CONNECTION_STRING
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl,classpath:db/migration/data/allEnvs
+
+natwest-transfer:
+  enabled: true
+  kind: CronJob
+  image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
+  schedule: '0 5 * * *'
+  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  concurrencyPolicy: Forbid
+  args:
+    - AutomatedTask:NatWestFileTransferJob
+  aadIdentityName: opal
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+        - name: file-handler-service-POSTGRES-HOST
+          alias: OPAL_FILE_HANDLER_DB_HOST
+        - name: file-handler-service-POSTGRES-PASS
+          alias: OPAL_FILE_HANDLER_DB_PASSWORD
+        - name: file-handler-service-POSTGRES-PORT
+          alias: OPAL_FILE_HANDLER_DB_PORT
+        - name: file-handler-service-POSTGRES-USER
+          alias: OPAL_FILE_HANDLER_DB_USERNAME
+        - name: file-handler-service-POSTGRES-DATABASE
+          alias: OPAL_FILE_HANDLER_DB_NAME
+        - name: redis-connection-string
+          alias: REDIS_CONNECTION_STRING
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl,classpath:db/migration/data/allEnvs
+
+allpay-file-transfer:
+  enabled: true
+  kind: CronJob
+  image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
+  schedule: '30 7 * * 1-5'
+  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  concurrencyPolicy: Forbid
+  args:
+    - AutomatedTask:AllpayFileTransferJob
+  aadIdentityName: opal
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+        - name: file-handler-service-POSTGRES-HOST
+          alias: OPAL_FILE_HANDLER_DB_HOST
+        - name: file-handler-service-POSTGRES-PASS
+          alias: OPAL_FILE_HANDLER_DB_PASSWORD
+        - name: file-handler-service-POSTGRES-PORT
+          alias: OPAL_FILE_HANDLER_DB_PORT
+        - name: file-handler-service-POSTGRES-USER
+          alias: OPAL_FILE_HANDLER_DB_USERNAME
+        - name: file-handler-service-POSTGRES-DATABASE
+          alias: OPAL_FILE_HANDLER_DB_NAME
+        - name: redis-connection-string
+          alias: REDIS_CONNECTION_STRING
+  environment:
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl,classpath:db/migration/data/allEnvs
+
+barclaycard-transfer:
+  enabled: true
+  kind: CronJob
+  image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
+  schedule: '45 6 * * *'
+  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  concurrencyPolicy: Forbid
+  args:
+    - AutomatedTask:BarclaycardFileTransferJob
   aadIdentityName: opal
   keyVaults:
     opal:

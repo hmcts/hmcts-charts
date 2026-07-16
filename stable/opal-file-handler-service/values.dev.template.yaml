@@ -6,6 +6,16 @@ global:
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  secrets:
+    FILE_STORE_STORAGE_ACCOUNT_NAME:
+      secretRef: storage-account-{{ .Release.Name }}-blobstorage
+      key: storage_account_name
+    FILE_STORE_STORAGE_URL:
+      secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+      key: blobEndpoint
+    FILE_STORE_STORAGE_KEY:
+      secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+      key: accessKey
   keyVaults:
     opal:
       secrets:
@@ -45,7 +55,15 @@ java:
       username: javapostgres
       password: javapassword
       database: opal-file-handler-db
-
+blobstorage:
+  enabled: true
+  azureName: "opalfilesapr${CHANGE_ID}"
+  releaseNameOverride: ${SERVICE_NAME}-blobstorage
+  resourceGroup: "opal-aso-dev-rg"
+  setup:
+    containers:
+      - bteckoh-report
+      - caps-report
 bt-eckoh-report:
   image: ${IMAGE_NAME}
   environment:
@@ -64,8 +82,61 @@ bt-eckoh-report:
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
 
-
 caps-report:
+  image: ${IMAGE_NAME}
+  environment:
+    REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
+    OPAL_FILE_HANDLER_DB_HOST: "{{ .Release.Name }}-postgresql"
+    OPAL_FILE_HANDLER_DB_NAME: "{{ .Values.global.postgresDatabase}}"
+    OPAL_FILE_HANDLER_DB_USERNAME: "{{ .Values.global.postgresUsername}}"
+    OPAL_FILE_HANDLER_DB_PASSWORD: "{{ .Values.global.postgresPassword}}"
+    OPAL_FILE_HANDLER_DB_OPTIONS: "{{ .Values.global.postgresOptions}}"
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
+    RELEASE_1A_ENABLED: true
+
+natwest-transfer:
+  image: ${IMAGE_NAME}
+  environment:
+    REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
+    OPAL_FILE_HANDLER_DB_HOST: "{{ .Release.Name }}-postgresql"
+    OPAL_FILE_HANDLER_DB_NAME: "{{ .Values.global.postgresDatabase}}"
+    OPAL_FILE_HANDLER_DB_USERNAME: "{{ .Values.global.postgresUsername}}"
+    OPAL_FILE_HANDLER_DB_PASSWORD: "{{ .Values.global.postgresPassword}}"
+    OPAL_FILE_HANDLER_DB_OPTIONS: "{{ .Values.global.postgresOptions}}"
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
+    RELEASE_1A_ENABLED: true
+
+allpay-file-transfer:
+  image: ${IMAGE_NAME}
+  environment:
+    REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
+    OPAL_FILE_HANDLER_DB_HOST: "{{ .Release.Name }}-postgresql"
+    OPAL_FILE_HANDLER_DB_NAME: "{{ .Values.global.postgresDatabase}}"
+    OPAL_FILE_HANDLER_DB_USERNAME: "{{ .Values.global.postgresUsername}}"
+    OPAL_FILE_HANDLER_DB_PASSWORD: "{{ .Values.global.postgresPassword}}"
+    OPAL_FILE_HANDLER_DB_OPTIONS: "{{ .Values.global.postgresOptions}}"
+    RUN_DB_MIGRATION_ON_STARTUP: false
+    OPAL_FRONTEND_URL: https://opal-frontend.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    LAUNCH_DARKLY_ENABLED: false
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
+    RELEASE_1A_ENABLED: true
+
+barclaycard-transfer:
   image: ${IMAGE_NAME}
   environment:
     REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379

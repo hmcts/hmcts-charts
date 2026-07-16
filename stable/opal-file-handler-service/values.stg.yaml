@@ -7,6 +7,7 @@ java:
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 bt-eckoh-report:
+  releaseNameOverride: opal-file-handler-service-stg-bt-eckoh-report
   image: https://hmcts.azurecr.io/hmcts/opal-file-handler-service:latest
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
@@ -16,6 +17,37 @@ bt-eckoh-report:
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 caps-report:
+  releaseNameOverride: opal-file-handler-service-stg-caps-report
+  image: https://hmcts.azurecr.io/hmcts/opal-file-handler-service:latest
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    RELEASE_1A_ENABLED: true
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+natwest-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-natwest-transfer
+  image: https://hmcts.azurecr.io/hmcts/opal-file-handler-service:latest
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    RELEASE_1A_ENABLED: true
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+allpay-file-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-allpay-file-transfer
+  image: https://hmcts.azurecr.io/hmcts/opal-file-handler-service:latest
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    RELEASE_1A_ENABLED: true
+    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+barclaycard-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-barclaycard-transfer
   image: https://hmcts.azurecr.io/hmcts/opal-file-handler-service:latest
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
