@@ -50,6 +50,8 @@ job:
           alias: ADD_HEARING_ENCODED_DATA_STRING
         - name: encoded-string-awaiting-confidentiality-req
           alias: AWAITING_CONFIDENTIALITY_REQ_ENCODED_STRING
+        - name: encoded-string-rpc-migration
+          alias: RPC_MIGRATION_ENCODED_STRING
 
   environment:
     IDAM_CLIENT_ID: sscs
