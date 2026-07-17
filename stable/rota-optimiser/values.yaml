@@ -16,3 +16,7 @@ java:
         - name: postgresql-admin-password
           alias: postgresql-admin-password
   environment:
+    ROTA_OPTIMISER_WORKER_LEASE_DURATION: PT2M
+    ROTA_OPTIMISER_WORKER_RECOVERY_INTERVAL: PT30S
+    ROTA_OPTIMISER_WORKER_MAX_ATTEMPTS: 3
+    ROTA_OPTIMISER_WORKER_REQUIRE_LEASE_TOKEN: false
