@@ -3,4 +3,4 @@ python:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    RECIPES_SERVICE_URL: http://plum-recipe-backend-sandbox.service.core-compute-aat.internal
+    RECIPES_SERVICE_URL: http://plum-recipe-backend-sandbox.service.core-compute-sandbox.internal
