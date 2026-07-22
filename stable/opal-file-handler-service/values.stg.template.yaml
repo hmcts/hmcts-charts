@@ -12,8 +12,6 @@ bt-eckoh-report:
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
     TESTING_SUPPORT_ENDPOINTS_ENABLED: false
-    RELEASE_1A_ENABLED: true
-    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 caps-report:
@@ -22,8 +20,6 @@ caps-report:
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
     TESTING_SUPPORT_ENDPOINTS_ENABLED: false
-    RELEASE_1A_ENABLED: true
-    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 natwest-transfer:
@@ -32,8 +28,6 @@ natwest-transfer:
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
     TESTING_SUPPORT_ENDPOINTS_ENABLED: false
-    RELEASE_1A_ENABLED: true
-    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 allpay-file-transfer:
@@ -42,8 +36,6 @@ allpay-file-transfer:
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
     TESTING_SUPPORT_ENDPOINTS_ENABLED: false
-    RELEASE_1A_ENABLED: true
-    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 barclaycard-transfer:
@@ -52,6 +44,44 @@ barclaycard-transfer:
   environment:
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
     TESTING_SUPPORT_ENDPOINTS_ENABLED: false
-    RELEASE_1A_ENABLED: true
-    OPAL_COMMON_CONTENT_DIGEST_REQUEST_AUTO_GENERATE: true
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+bt-eckoh-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-bt-eckoh-transfer
+  image: ${IMAGE_NAME}
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+dwp-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-dwp-transfer
+  image: ${IMAGE_NAME}
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+jacobs-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-jacobs-transfer
+  image: ${IMAGE_NAME}
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+cder-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-cder-transfer
+  image: ${IMAGE_NAME}
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+
+marston-transfer:
+  releaseNameOverride: opal-file-handler-service-stg-marston-transfer
+  image: ${IMAGE_NAME}
+  environment:
+    OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
+    TESTING_SUPPORT_ENDPOINTS_ENABLED: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
