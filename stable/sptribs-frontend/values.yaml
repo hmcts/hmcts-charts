@@ -17,6 +17,7 @@ nodejs:
     CCD_API_URL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     CASE_DOCUMENT_API_URL: 'http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     DSS_UPDATE_URL: 'http://sptribs-dss-update-case-web.{{ .Values.global.environment }}.platform.hmcts.net/'
+    SPTRIBS_CASE_API_URL: 'http://sptribs-case-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
   keyVaults:
     sptribs:
       secrets:
