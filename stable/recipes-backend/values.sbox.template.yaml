@@ -2,10 +2,8 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  environment:
-    POSTGRES_SSL_MODE: require
   keyVaults:
-    "recipes-cft-kv":
+    "recipes-sds-kv":
       secrets:
         - name: recipes-backend-POSTGRES-DATABASE
           alias: POSTGRES_DATABASE

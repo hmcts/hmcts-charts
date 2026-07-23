@@ -4,3 +4,14 @@ java:
   ingressHost: 
   environment:
     POSTGRES_SSL_MODE: require
+  keyVaults:
+    "recipes-cft-kv":
+      secrets:
+        - name: recipes-backend-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
+        - name: recipes-backend-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: recipes-backend-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: recipes-backend-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
