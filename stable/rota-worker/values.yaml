@@ -16,7 +16,8 @@ java:
     enabled: false
   environment:
     WORKER_ENABLED: false
-    OPTIMISER_URL: http://rota-optimiser:4550
+    # The HMCTS Java chart exposes the optimiser as <release>-java on port 80.
+    OPTIMISER_URL: http://rota-optimiser-java
     # HMAC is introduced separately after the shared Key Vault secret has been
     # applied and is available to both clusters in every environment.
     OPTIMISER_HMAC_ENABLED: false
