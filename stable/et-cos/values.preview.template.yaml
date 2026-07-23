@@ -36,8 +36,9 @@ java:
     ET_COS_DB_USER_NAME: hmcts
     ET_COS_DB_CONN_OPTIONS: "?sslmode=require"
     ET_COS_DB_CONNECTION_TIMEOUT: 30000
-    ET_COS_DB_IDLE_TIMEOUT: 300000
-    ET_COS_DB_MIN_IDLE: 4
+    ET_COS_DB_IDLE_TIMEOUT: 60000
+    # Start small in preview but allow the pool to grow to the service default under load.
+    ET_COS_DB_MIN_IDLE: 1
     ET_COS_DB_MAX_POOL_SIZE: 10
     ET_COS_DB_MAX_LIFETIME: 300000
     ET_COS_DB_POOL_NAME: et-cos-db-pool
@@ -246,6 +247,8 @@ ccd:
       devmemoryLimits: 1536Mi
       environment:
         USER_PROFILE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_definition,ccd_admin
+        # Start small in preview but allow the pool to grow to the service default under load.
+        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
       ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
 
   ccd-data-store-api:
@@ -276,6 +279,9 @@ ccd:
         DEFINITION_STORE_HOST: https://ccd-definition-store-${SERVICE_FQDN}
         USER_PROFILE_HOST: https://ccd-user-profile-api-${SERVICE_FQDN}
         ROLE_ASSIGNMENT_URL: https://am-role-assignment-${SERVICE_FQDN}
+        # Start small in preview but allow the pool to grow to the service default under load.
+        DATA_STORE_DB_MIN_IDLE: 1
+        DATA_STORE_DB_IDLE_TIMEOUT: 60000
         SPRING_APPLICATION_JSON: |
           {
             "ccd": {
@@ -309,6 +315,8 @@ ccd:
         CCD_DATA_STORE_URL: http://{{ .Release.Name }}-ccd-data-store-api
         ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,wa_task_configuration_api,xui_webapp,aac_manage_case_assignment,ccd_data,wa_workflow_api,wa_task_monitor,wa_case_event_handler,iac,hmc_cft_hearing_service,ccd_case_disposer,sscs,fis_hmc_api,et_cos
         RUN_LD_ON_STARTUP: false
+        # Start small in preview but allow the pool to grow to the service default under load.
+        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
       keyVaults:
         am:
           secrets:
@@ -344,6 +352,8 @@ ccd:
         ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
         #TS_TRANSLATION_SERVICE_HOST: http://ts-translation-service-aat.service.core-compute-aat.internal
         WELSH_TRANSLATION_ENABLED: false
+        # Start small in preview but allow the pool to grow to the service default under load.
+        DEFINITION_STORE_DB_MIN_IDLE: 1
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
   ccd-admin-web:
@@ -795,6 +805,8 @@ wa:
       devmemoryLimits: 1536Mi
       environment:
         CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+        # Start small in preview but allow the pool to grow to the service default under load.
+        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
 
   wa-task-management-api:
     java:
@@ -811,6 +823,9 @@ wa:
         ROLE_ASSIGNMENT_URL: https://am-role-assignment-${SERVICE_FQDN}
         ALLOWED_JURISDICTIONS: employment
         ALLOWED_CASE_TYPES: et_englandwales,et_englandwales_listings,et_englandwales_multiple,et_scotland,et_scotland_listings,et_scotland_multiple,et_admin
+        # Start small in preview but allow the pools to grow to the service defaults under load.
+        SPRING_DATASOURCE_MINIMUM_IDLE: 1
+        SPRING_DATASOURCE_REPLICA_MINIMUM_IDLE: 1
 
   wa-case-event-handler:
     java:
@@ -834,6 +849,9 @@ wa:
         AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-ccd-case-events
         AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-ccd-case-events
         AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-ccd-case-events
+        # Start small in preview but allow the pool to grow for concurrent transactional workers.
+        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
+        SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT: 60000
   wa-task-monitor:
     java:
       ingressHost: wa-task-monitor-${SERVICE_FQDN}
@@ -851,6 +869,8 @@ wa:
       devmemoryLimits: 1536Mi
       environment:
         DB_READER_USERNAME: hmcts
+        # Start small in preview but allow the pool to grow to the service default under load.
+        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
   wa:
     postgresql:
       enabled: false
@@ -892,6 +912,8 @@ ccd-message-publisher:
       DATA_STORE_DB_USERNAME: hmcts
       DATA_STORE_DB_OPTIONS: "?currentSchema=ccd&stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-ccd-case-events
+      # Start small in preview but allow the pool to grow to the service default under load.
+      MESSAGE_PUBLISHER_DB_MIN_IDLE: 1
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
         secretRef: et-sb-preview
@@ -976,6 +998,8 @@ am-org-role-mapping-service:
       TESTING_SUPPORT_ENABLED: true
       JUDICIAL_REF_APP_V2_ACTIVE: true
       JUDICIAL_REF_APP_V2_FILTER_AUTHS_BY_APP_ID: true
+      # Start small in preview but allow the pool to grow to the service default under load.
+      SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
 
 rd-caseworker-ref-api:
   enabled: true
@@ -1021,6 +1045,8 @@ rd-caseworker-ref-api:
       LAUNCH_DARKLY_ENV: "preview"
       ENVIRONMENT_NAME: "preview"
       EMAIL_DOMAIN_LIST: "justice.gov.uk,dwp.gov.uk,hmrc.gov.uk,hmcts.net,dfcni.gov.uk"
+      # Start small in preview but allow the pool to grow to the service default under load.
+      SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
 
 rd-professional-api:
   enabled: false
