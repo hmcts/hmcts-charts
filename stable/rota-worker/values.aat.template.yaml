@@ -1,0 +1,4 @@
+# Pipeline substitutions only. Runtime settings are inherited from values.yaml and environment overlays.
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}

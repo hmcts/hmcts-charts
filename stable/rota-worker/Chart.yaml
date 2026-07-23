@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: Stateless optimisation worker for rota
+name: rota-worker
+home: https://github.com/hmcts/rota-worker
+version: 0.1.1
+maintainers:
+  - name: HMCTS rota team
+dependencies:
+  - name: java
+    version: 5.3.0
+    repository: 'oci://hmctsprod.azurecr.io/helm'

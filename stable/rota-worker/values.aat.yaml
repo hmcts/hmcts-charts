@@ -1,0 +1,4 @@
+# Pipeline substitutions only. Runtime settings are inherited from values.yaml and environment overlays.
+java:
+  image: https://hmcts.azurecr.io/hmcts/rota-worker:latest
+  ingressHost: 

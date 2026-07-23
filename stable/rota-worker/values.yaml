@@ -1,0 +1,18 @@
+java:
+  applicationPort: 4550
+  image: 'hmctsprod.azurecr.io/rota/worker:latest'
+  ingressHost: rota-worker-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: rota
+  # Each enabled cluster runs one stateless worker. Non-preview environments deploy
+  # this chart into both active clusters, giving two workers fenced by database leases.
+  replicas: 1
+  autoscaling:
+    enabled: false
+  environment:
+    WORKER_ENABLED: false
+    OPTIMISER_URL: http://rota-optimiser:4550
+    # HMAC is introduced separately after the shared Key Vault secret has been
+    # applied and is available to both clusters in every environment.
+    OPTIMISER_HMAC_ENABLED: false
+  readinessPath: /health/readiness
+  livenessPath: /health/liveness
