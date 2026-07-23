@@ -3,6 +3,12 @@ java:
   image: 'hmctsprod.azurecr.io/rota/worker:latest'
   ingressHost: rota-worker-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rota
+  keyVaults:
+    rota-shared:
+      resourceGroup: rota-shared-infra
+      secrets:
+        - name: application-insights-connection-string
+          alias: app-insights-connection-string
   # Each enabled cluster runs one stateless worker. Non-preview environments deploy
   # this chart into both active clusters, giving two workers fenced by database leases.
   replicas: 1

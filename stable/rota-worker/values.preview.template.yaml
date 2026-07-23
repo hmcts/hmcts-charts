@@ -2,4 +2,6 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   environment:
-    WORKER_ENABLED: true
+    # PR previews deploy the worker in isolation, without a rota-optimiser Service.
+    # Exercise the polling loop only in a paired environment such as AAT.
+    WORKER_ENABLED: false
