@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for Hearing Recording Service
 name: em-hrs-api
 home: https://github.com/hmcts/em-hrs-api
-version: 2.0.2
+version: 2.0.3
 maintainers:
   - name: HMCTS Evidence Management team
 dependencies:
@@ -20,11 +20,11 @@ dependencies:
     condition: ccd.enabled
   - name: blobstorage
     alias: hrsblobstorage
-    version: 2.1.1
+    version: 2.2.3
     repository: oci://hmctsprod.azurecr.io/helm
     condition: hrsblobstorage.enabled
   - name: blobstorage
     alias: cvpblobstorage
-    version: 2.1.1
+    version: 2.2.3
     repository: oci://hmctsprod.azurecr.io/helm
     condition: cvpblobstorage.enabled
