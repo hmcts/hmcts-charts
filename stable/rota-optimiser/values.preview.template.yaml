@@ -2,3 +2,6 @@ java:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    # PR previews are exercised without an operationally seeded shared HMAC key.
+    ROTA_OPTIMISER_HMAC_ENABLED: false
