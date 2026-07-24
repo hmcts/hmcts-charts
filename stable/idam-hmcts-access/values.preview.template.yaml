@@ -7,4 +7,5 @@ nodejs:
   devApplicationInsightsInstrumentKeyName: DUMMY_APPLICATIONINSIGHTS_DUMMYKEY
   devApplicationInsightsInstrumentKey: '00000001-0001-0001-0001-000000000001'
   environment:
+    PASSWORD_RESET_V2_ENABLED: true
     SSO_CALLBACK_BASE_URL: http://localhost:3100
