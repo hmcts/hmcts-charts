@@ -5,3 +5,5 @@ java:
     # PR previews deploy the worker in isolation, without a rota-optimiser Service.
     # Exercise the polling loop only in a paired environment such as AAT.
     WORKER_ENABLED: false
+    # Preview does not have an operationally seeded shared HMAC key.
+    OPTIMISER_HMAC_ENABLED: false

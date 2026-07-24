@@ -9,6 +9,8 @@ java:
       secrets:
         - name: application-insights-connection-string
           alias: app-insights-connection-string
+        - name: optimiser-hmac-key
+          alias: OPTIMISER_HMAC_KEY
   # Each enabled cluster runs one stateless worker. Non-preview environments deploy
   # this chart into both active clusters, giving two workers fenced by database leases.
   replicas: 1
@@ -18,8 +20,7 @@ java:
     WORKER_ENABLED: false
     # The HMCTS Java chart exposes the optimiser as <release>-java on port 80.
     OPTIMISER_URL: http://rota-optimiser-java
-    # HMAC is introduced separately after the shared Key Vault secret has been
-    # applied and is available to both clusters in every environment.
-    OPTIMISER_HMAC_ENABLED: false
+    # The optimiser and worker mount the same shared key and enable HMAC together.
+    OPTIMISER_HMAC_ENABLED: true
   readinessPath: /health/readiness
   livenessPath: /health/liveness
