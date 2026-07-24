@@ -56,12 +56,14 @@ global:
     allowInsecureImages: true
 blobstorage:
   enabled: false
+bais-emulator:
+  enabled: false
 bt-eckoh-report:
   enabled: true
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   schedule: '45 08 * * *'
-  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
     - AutomatedTask:BTEckohReport
@@ -97,7 +99,7 @@ caps-report:
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   schedule: '0 7 * * 4-5'
-  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
     - AutomatedTask:CAPSReport
@@ -133,7 +135,7 @@ natwest-transfer:
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   schedule: '0 5 * * *'
-  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
     - AutomatedTask:NatWestFileTransferJob
@@ -169,7 +171,7 @@ allpay-file-transfer:
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   schedule: '30 7 * * 1-5'
-  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
     - AutomatedTask:AllpayFileTransferJob
@@ -205,7 +207,7 @@ barclaycard-transfer:
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   schedule: '45 6 * * *'
-  command: ["java", "-jar", "/opt/app/opal-file-handler-service.jar"]
+  command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
     - AutomatedTask:BarclaycardFileTransferJob

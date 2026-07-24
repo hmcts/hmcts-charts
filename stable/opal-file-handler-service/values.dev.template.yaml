@@ -64,6 +64,17 @@ blobstorage:
     containers:
       - bteckoh-report
       - caps-report
+bais-emulator:
+  enabled: true
+  azureName: "opalfilebaisapr${CHANGE_ID}"
+  releaseNameOverride: ${SERVICE_NAME}-bais-blobstorage
+  resourceGroup: "opal-aso-dev-rg"
+  setup:
+    isSftpEnabled: true
+    isHnsEnabled: true
+    containers:
+      - bteckoh-report
+      - caps-report
 bt-eckoh-report:
   image: ${IMAGE_NAME}
   environment:
