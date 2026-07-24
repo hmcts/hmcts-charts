@@ -6,3 +6,6 @@ sidekiq:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+solid-queue:
+  # Don't modify below here
+  image: ${IMAGE_NAME}

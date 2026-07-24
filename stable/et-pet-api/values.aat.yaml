@@ -6,3 +6,6 @@ sidekiq:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/et-pet-api:latest
   ingressHost: 
+solid-queue:
+  # Don't modify below here
+  image: https://hmcts.azurecr.io/hmcts/et-pet-api:latest
