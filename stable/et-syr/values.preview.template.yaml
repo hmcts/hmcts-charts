@@ -4,6 +4,8 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   devmemoryLimits: 1024Mi
   devmemoryRequests: 512Mi
+  environment:
+    HMCTS_ACCESS: 'false'
   keyVaults:
     et:
       resourceGroup: et
