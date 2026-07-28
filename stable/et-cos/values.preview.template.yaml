@@ -148,55 +148,6 @@ et-syr:
       PCQ_ENABLED: true
       HMCTS_ACCESS: 'true'
 
-et-sya-api:
-  enabled: true
-  java:
-    imagePullPolicy: Always
-    image: hmctsprod.azurecr.io/et/sya-api:latest
-    releaseNameOverride: ${SERVICE_NAME}-et-sya-api
-    ingressHost: et-sya-api-${SERVICE_FQDN}
-    devcpuRequests: 10m
-    devcpuLimits: 1
-    devmemoryRequests: 1536Mi
-    devmemoryLimits: 2048Mi
-    keyVaults:
-      et-sya-api:
-        secrets:
-          - name: et-sya-api-s2s-secret
-            alias: ET_SYA_S2S_SECRET
-          - name: Ocp-Apim-Subscription-Key
-            alias: ACAS_KEY
-          - name: et-api-caseworker-user-name
-            alias: CASEWORKER_USER_NAME
-          - name: et-api-caseworker-password
-            alias: CASEWORKER_PASSWORD
-          - name: acas-idam-client-secret
-            alias: IDAM_CLIENT_SECRET
-          - name: et1-service-owner-notification-email
-            alias: ET1_SERVICE_OWNER_NOTIFICATION_EMAIL
-          - name: et1-ecm-dts-core-team-slack-notification-email
-            alias: ET1_ECM_DTS_CORE_TEAM_SLACK_NOTIFICATION_EMAIL
-      et:
-        secrets:
-          - app-insights-connection-string
-          - name: tornado-access-key
-            alias: TORNADO_ACCESS_KEY
-          - name: gov-notify-api-key
-            alias: GOV_NOTIFY_API_KEY
-          - name: launch-darkly-sdk-key
-            alias: LAUNCH_DARKLY_SDK_KEY
-    environment:
-      IDAM_API_BASEURL: https://idam-api.aat.platform.hmcts.net
-      IDAM_JWKS_BASEURL: https://idam-api.aat.platform.hmcts.net/o/jwks
-      CASE_DATA_STORE_BASEURL: http://{{ .Release.Name }}-ccd-data-store-api
-      SERVICE_AUTH_PROVIDER_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-      ACAS_URL: https://api-dev-acas-01.azure-api.net/ECCLDev
-      MICRO_SERVICE: et_sya_api
-      TORNADO_URL: https://docmosis.aat.platform.hmcts.net/rs/render
-      CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-ccd-case-document-am-api
-      CITIZEN_PORTAL_LINK: "https://et-sya-${SERVICE_FQDN}/citizen-hub/"
-      EXUI_CASE_DETAILS_URL: "https://xui-${SERVICE_FQDN}/cases/case-details/"
-
 ccd:
   enabled: true
   ccd:
