@@ -7,12 +7,6 @@ base:
       secrets:
         - name: secret-key-base
           alias: SECRET_KEY_BASE
-        - name: tt-username
-          alias: DB_USERNAME
-        - name: tt-password
-          alias: DB_PASSWORD
-        - name: tt-fqdn
-          alias: DB_HOST
         - name: redis-url
           alias: REDIS_URL
         - name: external-url
@@ -79,6 +73,21 @@ base:
           alias: DYNATRACE_UI_TRACKING_ID
         - name: test-loading-env-v1
           alias: TEST_ENV_ID
+  environment:
+    DB_HOST: "tax-tribunals-preview.postgres.database.azure.com"
+    DB_USERNAME: "hmcts"
+    DB_NAME: "pr-${CHANGE_ID}"
+  secrets:
+    DB_PASSWORD:
+      secretRef: "postgres"
+      key: PASSWORD
+      disabled: false
+postgresql:
+  enabled: true
+  flexibleserver: "tax-tribunals-preview"
+  setup:
+    databases:
+      - name: "pr-${CHANGE_ID}"
 sidekiq:
   # Don't modify below here
   image: ${IMAGE_NAME}
@@ -87,12 +96,6 @@ sidekiq:
       secrets:
         - name: secret-key-base
           alias: SECRET_KEY_BASE
-        - name: tt-username
-          alias: DB_USERNAME
-        - name: tt-password
-          alias: DB_PASSWORD
-        - name: tt-fqdn
-          alias: DB_HOST
         - name: redis-url
           alias: REDIS_URL
         - name: external-url
@@ -159,6 +162,15 @@ sidekiq:
           alias: DYNATRACE_UI_TRACKING_ID
         - name: test-loading-env-v1
           alias: TEST_ENV_ID
+  environment:
+    DB_HOST: "tax-tribunals-preview.postgres.database.azure.com"
+    DB_USERNAME: "hmcts"
+    DB_NAME: "pr-${CHANGE_ID}"
+  secrets:
+    DB_PASSWORD:
+      secretRef: "postgres"
+      key: PASSWORD
+      disabled: false
 job:
   # Don't modify below here
   image: ${IMAGE_NAME}
@@ -167,12 +179,6 @@ job:
       secrets:
         - name: secret-key-base
           alias: SECRET_KEY_BASE
-        - name: tt-username
-          alias: DB_USERNAME
-        - name: tt-password
-          alias: DB_PASSWORD
-        - name: tt-fqdn
-          alias: DB_HOST
         - name: redis-url
           alias: REDIS_URL
         - name: external-url
@@ -239,3 +245,12 @@ job:
           alias: DYNATRACE_UI_TRACKING_ID
         - name: test-loading-env-v1
           alias: TEST_ENV_ID
+  environment:
+    DB_HOST: "tax-tribunals-preview.postgres.database.azure.com"
+    DB_USERNAME: "hmcts"
+    DB_NAME: "pr-${CHANGE_ID}"
+  secrets:
+    DB_PASSWORD:
+      secretRef: "postgres"
+      key: PASSWORD
+      disabled: false
