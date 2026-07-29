@@ -30,6 +30,7 @@ java:
     DRAFT_STORE_DB_CONN_OPTIONS: "?sslmode=require&gssEncMode=disable"
     IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     CCD_DATA_STORE_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CASE_DOCUMENT_AM_URL: "http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 ccd:
   enabled: false
 xui-webapp:
@@ -37,4 +38,6 @@ xui-webapp:
 wa:
   enabled: false
 am-org-role-mapping-service:
+  enabled: false
+ccd-case-document-am-api:
   enabled: false
