@@ -5,27 +5,55 @@ java:
   ingressHost: ${SERVICE_FQDN}
   ingressIP: ${INGRESS_IP}
   consulIP: ${CONSUL_LB_IP}
+  keyVaults:
+    idam-idam-aat:
+      resourceGroup: idam-idam
+      excludeEnvironmentSuffix: true
+      disabled: ${IDAM_PR_FORGEROCK_AAT_SECRETS_DISABLED}
+      mountPath: /mnt/secrets/idam-idam-aat
+      secrets:
+        - name: am-password
+          alias: idam.spi.forgerock.am.password
+        - name: pin-user-pass
+          alias: idam.spi.forgerock.idm.pin.defaultPassword
+        - name: notify-api-key
+          alias: notify.key
+        - name: idam-api-POSTGRES-HOST
+          alias: DATASOURCE_HOST
+        - name: idam-api-POSTGRES-PORT
+          alias: DATASOURCE_PORT
+        - name: idam-api-POSTGRES-DATABASE
+          alias: DATASOURCE_DATABASE
+        - name: idam-api-POSTGRES-USER
+          alias: spring.datasource.username
+        - name: idam-api-POSTGRES-PASS
+          alias: spring.datasource.password
   environment:
     SPRING_PROFILES_ACTIVE: events-in-memory
+    SPRING_FLYWAY_ENABLED: ${IDAM_PR_FLYWAY_ENABLED}
     TESTING_SUPPORT_ENABLED: true
     IDAM_SCHEDULED_BATCHPROCESSING_INITIALPROCESSOR: ${IMAGE_NAME}
     IDAM_SCHEDULED_BATCHPROCESSING_INITIALDELAY: 180000
     IDAM_SCHEDULED_BATCHPROCESSING_FIXEDDELAY: 360000
     IDAM_REGISTRATION_APPOINTDOMAINREGEX_0: idam\.sso
     IDAM_REGISTRATION_APPOINTDOMAINREGEX_1: ejudiciary\.net
+    IDAM_SPI_FORGEROCK_AM_ROOT: https://forgerock-am.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal:8443/openam
+    IDAM_SPI_FORGEROCK_AM_TOPLEVELHOST: forgerock-am.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal:8443
+    IDAM_SPI_FORGEROCK_AM_JWKSURIFOROAUTH2CLIENTS: http://forgerock-am.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal:8080/openam/oauth2/hmcts/connect/jwk_uri
+    IDAM_SPI_FORGEROCK_IDM_ROOT: https://forgerock-idm.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal:18443/openidm
     IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+    IDAMHEALTHCHECK_AM_TARGET: http://forgerock-am.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal:9292
+    IDAMHEALTHCHECK_IDM_TARGET: http://forgerock-idm.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal:9292
+    SSL_TRUST_DNS_0: C=UK,ST=London,L=London,O=HMCTS,CN=*.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal,emailAddress=devops@hmcts.net
+    SSL_TRUST_HOSTNAMES_0: forgerock-idm.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal
+    SSL_TRUST_HOSTNAMES_1: forgerock-am.service.core-compute-idam-${IDAM_PR_FORGEROCK_ENVIRONMENT}.internal
     LOG_AND_AUDIT_IDAM_URL: http://lau-idam-backend-aat.service.core-compute-aat.internal
-    SPRING_JMS_SERVICEBUS_CONNECTION_STRING: Endpoint=sb://idam-servicebus-preview.servicebus.windows.net/
-    SPRING_JMS_SERVICEBUS_TOPIC_CLIENT_ID: 1c4f0704-a29e-403d-b719-b90c34ef14c9
-    SPRING_JMS_SERVICEBUS_NAMESPACE: idam-servicebus-preview
     LOG_AND_AUDIT_IDAM_ENABLED: true
     IDAM_RATELIMIT_PASSWORDGRANT_ENABLED: true
     FEATUREFLAGS_NOTIFYONUSEREMAILUPDATED: true
-    FEATUREFLAGS_APISENDSACTIVATIONEMAILS: true
     FEATUREFLAGS_OIDC_VALIDATE_END_SESSION_ENABLED: true
     FEATUREFLAGS_V2_API_PASSWORD_RESET_CONTROLLER_ENABLED: true
     STRATEGIC_SSO_PROVIDERS_EJUDICIARY_ENABLED: false
     STRATEGIC_SSO_PROVIDERS_MOJ_ENABLED: false
-    STRATEGIC_OPERATION_REPORTER: console-and-insight
   devApplicationInsightsInstrumentKeyName: DUMMY_APPLICATIONINSIGHTS_DUMMYKEY
   devApplicationInsightsInstrumentKey: '00000001-0001-0001-0001-000000000001'
