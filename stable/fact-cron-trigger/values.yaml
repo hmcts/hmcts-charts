@@ -1,6 +1,5 @@
 job:
   image: hmctsprod.azurecr.io/fact/cron-trigger:latest
-  schedule: "*/40 * * * *"
   aadIdentityName: fact
   keyVaults:
     fact:
@@ -9,8 +8,23 @@ job:
           alias: azure.application-insights.instrumentation-key
         - name: storage-account-connection-string
           alias: STORAGE_ACCOUNT_CONNECTION_STRING
+    fact-kv:
+      secrets:
+        - name: bstrap-sso-tenant-id
+          alias: AZURE_TENANT_ID
+        - name: fact-cron-trigger-app-reg-id
+          alias: AZURE_CLIENT_ID
+        - name: bstrap-cron-trigger-client-secret
+          alias: AZURE_CLIENT_SECRET
+        - name: api-app-reg-id
+          alias: AZURE_APP_REGISTRATION_ID
+        - name: bstrap-slack-token
+          alias: SLACK_TOKEN
+        - name: bstrap-slack-channel-id
+          alias: SLACK_CHANNEL_ID
   environment:
     FACT_API_URL: "http://fact-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    FACT_DATA_API_URL: "https://fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net"
   global:
     jobKind: CronJob
     enableKeyVaults: true
