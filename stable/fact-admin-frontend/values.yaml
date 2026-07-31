@@ -1,9 +1,19 @@
 nodejs:
   applicationPort: 3355
+  replicas: 2
   cpuLimits: 500m
   cpuRequests: 100m
-  memoryRequests: 256Mi
+  memoryRequests: 512Mi
   memoryLimits: 1024Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 3
+    cpu:
+      enabled: true
+      averageUtilization: 80
+    memory:
+      enabled: false
   image: 'hmctsprod.azurecr.io/fact/admin-frontend:latest'
   ingressHost: fact-admin-frontend.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: fact
