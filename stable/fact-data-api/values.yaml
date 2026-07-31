@@ -3,6 +3,20 @@ java:
   image: 'hmctsprod.azurecr.io/fact/data-api:latest'
   ingressHost: fact-data-api.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: fact
+  replicas: 2
+  cpuRequests: 250m
+  cpuLimits: 1500m
+  memoryRequests: 1024Mi
+  memoryLimits: 2048Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    cpu:
+      enabled: true
+      averageUtilization: 70
+    memory:
+      enabled: false
   keyVaults:
     fact-kv:
       secrets:
