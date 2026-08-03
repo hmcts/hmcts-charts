@@ -1,0 +1,12 @@
+java:
+  applicationPort: 8081
+  image: 'hmctsprod.azurecr.io/snl/snl-backend:latest'
+  ingressHost: snl-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: snl
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    snl:
+#      secrets:
+#        - name: AppInsightsInstrumentationKey
+#          alias: azure.application-insights.instrumentation-key
+  environment:
