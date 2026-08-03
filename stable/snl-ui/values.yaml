@@ -1,0 +1,11 @@
+nodejs:
+  applicationPort: 8080
+  aadIdentityName: snl
+  ingressHost: snl-ui.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/snl/ui:latest'
+  #  Uncomment once the vault containing the app insights key has been set up
+  #  keyVaults:
+  #    snl:
+  #      secrets:
+  #        - AppInsightsInstrumentationKey
+  environment:
