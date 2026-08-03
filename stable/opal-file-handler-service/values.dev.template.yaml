@@ -127,6 +127,7 @@ natwest-transfer:
     RELEASE_1A_ENABLED: true
 
 allpay-file-transfer:
+  releaseNameOverride: opal-file-handler-service-pr-${CHANGE_ID}-allpay-file
   image: ${IMAGE_NAME}
   environment:
     REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
@@ -144,6 +145,7 @@ allpay-file-transfer:
     RELEASE_1A_ENABLED: true
 
 barclaycard-transfer:
+  releaseNameOverride: opal-file-handler-service-pr-${CHANGE_ID}-barclaycard
   image: ${IMAGE_NAME}
   environment:
     REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
