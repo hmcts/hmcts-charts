@@ -34,7 +34,10 @@ java:
           alias: FILE_STORE_STORAGE_URL
         - name: opal-file-handler-service-file-store-access-key
           alias: FILE_STORE_STORAGE_KEY
-
+        - name: bais-emulator-private-key
+          alias: BAIS_SFTP_PRIVATE_KEY
+        - name: bais-emulator-sftp-connection-host
+          alias: BAIS_SFTP_CONNECTION_HOST
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: true
     TESTING_SUPPORT_ENDPOINTS_ENABLED: true
@@ -123,6 +126,14 @@ caps-report:
           alias: OPAL_FILE_HANDLER_DB_NAME
         - name: redis-connection-string
           alias: REDIS_CONNECTION_STRING
+        - name: opal-file-handler-service-file-store-account-name
+          alias: FILE_STORE_STORAGE_ACCOUNT_NAME
+        - name: opal-file-handler-service-file-store-blob-endpoint
+          alias: FILE_STORE_STORAGE_URL
+        - name: opal-file-handler-service-file-store-access-key
+          alias: FILE_STORE_STORAGE_KEY
+        - name: bais-emulator-private-key
+          alias: BAIS_SFTP_PRIVATE_KEY
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
     OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
