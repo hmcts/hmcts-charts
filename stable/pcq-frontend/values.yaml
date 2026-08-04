@@ -49,6 +49,7 @@ nodejs:
         - jurordigital-token-key
         - prl-token-key
         - civil-citizen-ui-token-key
+        - pcs-token-key
 
 redis:
   enabled: false
