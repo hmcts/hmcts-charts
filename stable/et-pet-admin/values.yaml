@@ -49,6 +49,8 @@ base:
           alias: DB_PASSWORD
         - name: et-api-postgres-database
           alias: DB_NAME
+        - name: et-api-queue-postgres-database
+          alias: QUEUE_DB_NAME
         - name: admin-secret-key-base
           alias: SECRET_KEY_BASE
         - name: admin-devise-secret-key
