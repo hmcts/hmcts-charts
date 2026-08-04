@@ -4,8 +4,8 @@ job:
   keyVaults:
     fact:
       secrets:
-        - name: AppInsightsInstrumentationKey
-          alias: azure.application-insights.instrumentation-key
+        - name: app-insights-connection-string-ai
+          alias: app-insights-connection-string
         - name: storage-account-connection-string
           alias: STORAGE_ACCOUNT_CONNECTION_STRING
     fact-kv:
