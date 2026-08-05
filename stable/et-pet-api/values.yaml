@@ -174,7 +174,7 @@ solid-queue:
     SMTP_HOSTNAME: "smtp.sendgrid.net"
     SMTP_PORT: 587
     RAILS_ENV: "production"
-    RAILS_MAX_THREADS: 5
+    RAILS_MAX_THREADS: 10
     RAILS_LOG_LEVEL: "info"
     RACK_ENV: "production"
     WEB_CONCURRENCY: 1
@@ -191,6 +191,15 @@ solid-queue:
     AZURE_STORAGE_CONTAINER: private
     AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: public
     SOLID_QUEUE_IN_PUMA: true
+    ET_CCD_SIMULATION: false
+    CCD_ECM_BASE_URL: "http://ethos-repl-docmosis-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_IDAM_BASE_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+    CCD_AUTH_BASE_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_DATA_STORE_BASE_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_DOCUMENT_STORE_BASE_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    CCD_SSL_VERIFICATION: false
+    CCD_DOCUMENT_STORE_URL_REWRITE: false
+    CCD_GENERATE_ETHOS_CASE_REFERENCE: false
   keyVaults:
     et-pet:
       secrets:
@@ -240,3 +249,11 @@ solid-queue:
           alias: ACAS_SUBSCRIPTION_KEY
         - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
+        - name: ccd-export-microservice-secret
+          alias: CCD_MICROSERVICE_SECRET
+        - name: ccd-export-microservice-id
+          alias: CCD_MICROSERVICE_ID
+        - name: ccd-export-sidam-username
+          alias: CCD_SIDAM_USERNAME
+        - name: ccd-export-sidam-password
+          alias: CCD_SIDAM_PASSWORD
