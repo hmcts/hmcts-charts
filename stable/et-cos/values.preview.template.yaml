@@ -5,7 +5,7 @@ java:
   devcpuRequests: 20m
   devcpuLimits: 1024m
   devmemoryRequests: 1536Mi
-  devmemoryLimits: 3Gi
+  devmemoryLimits: 4Gi
   secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
         secretRef: et-sb-preview
@@ -98,7 +98,7 @@ et-sya:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    image: hmctsprod.azurecr.io/et/sya:latest
+    image: hmctsprod.azurecr.io/et/sya:pr-2465
     releaseNameOverride: ${SERVICE_NAME}-et-sya
     ingressHost: et-sya-${SERVICE_FQDN}
     devcpuRequests: 10m
@@ -125,7 +125,7 @@ et-syr:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    image: hmctsprod.azurecr.io/et/syr:latest
+    image: hmctsprod.azurecr.io/et/syr:pr-922
     releaseNameOverride: ${SERVICE_NAME}-et-syr
     ingressHost: et-syr-${SERVICE_FQDN}
     devcpuRequests: 10m
@@ -191,8 +191,9 @@ ccd:
         enabled: false
       imagePullPolicy: Always
       image: hmctsprod.azurecr.io/ccd/user-profile-api:latest
-      enviroment:
+      environment:
         USER_PROFILE_HOST: http://${SERVICE_NAME}-ccd-user-profile-api
+        USER_PROFILE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_definition,ccd_admin
       keyVaults: []
       devcpuRequests: 10m
       devcpuLimits: 1000m
@@ -389,7 +390,7 @@ ccd:
     extraInitContainers: |
       - name: download-postgres-jdbc
         image: hmctsprod.azurecr.io/curl:7.70.0
-        command: ['curl', '-L', 'https://jdbc.postgresql.org/download/postgresql-42.7.11.jar', '-o', '/logstash-lib/postgresql.jar']
+        command: ['curl', '-L', 'https://jdbc.postgresql.org/download/postgresql-42.7.12.jar', '-o', '/logstash-lib/postgresql.jar']
         volumeMounts:
         - name: logstash-lib
           mountPath: /logstash-lib
