@@ -98,7 +98,7 @@ et-sya:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    image: hmctsprod.azurecr.io/et/sya:pr-2465
+    image: hmctsprod.azurecr.io/et/sya:latest
     releaseNameOverride: ${SERVICE_NAME}-et-sya
     ingressHost: et-sya-${SERVICE_FQDN}
     devcpuRequests: 10m
@@ -125,7 +125,7 @@ et-syr:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    image: hmctsprod.azurecr.io/et/syr:pr-922
+    image: hmctsprod.azurecr.io/et/syr:latest
     releaseNameOverride: ${SERVICE_NAME}-et-syr
     ingressHost: et-syr-${SERVICE_FQDN}
     devcpuRequests: 10m
@@ -349,7 +349,7 @@ ccd:
     nodejs:
       keyVaults: []
       environment:
-        REDIS_HOST: ${SERVICE_NAME}-ccd-case-activity-api-redis-master
+        REDIS_HOST: ${SERVICE_NAME}-redis-master
         REDIS_PORT: 6379
         REDIS_PASSWORD: fake-password
         REDIS_SSL_ENABLED: ""
@@ -364,6 +364,8 @@ ccd:
   ccd-user-profile-importer:
     users:
       - et.api.1@hmcts.net|EMPLOYMENT|ET_Admin|Open
+    waitHosts: ${SERVICE_NAME}-ccd-user-profile-api:80
+    waitHostsTimeout: 600
 
   elasticsearch:
     enabled: false
