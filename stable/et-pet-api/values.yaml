@@ -158,7 +158,7 @@ sidekiq:
           alias: ACAS_SUBSCRIPTION_KEY
         - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
-solid-queue:
+queue-worker:
   applicationPort: 8080
   image: "hmctsprod.azurecr.io/et-pet/api:latest"
   aadIdentityName: et-pet
