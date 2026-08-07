@@ -5,7 +5,7 @@ java:
   environment:
     POSTGRES_SSL_MODE: require
   keyVaults:
-    "recipes-sds-kv":
+    "recipes-cft-kv":
       secrets:
         - name: recipes-backend-POSTGRES-DATABASE
           alias: POSTGRES_DATABASE
