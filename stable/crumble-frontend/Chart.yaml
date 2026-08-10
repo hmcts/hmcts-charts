@@ -8,4 +8,4 @@ maintainers:
 dependencies:
   - name: nodejs
     version: 3.2.1
-    repository: 'oci://hmctsprod.azurecr.io/helm'
+    repository: 'oci://hmctssbox.azurecr.io/helm'
