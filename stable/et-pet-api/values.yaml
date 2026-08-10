@@ -162,10 +162,10 @@ queue-worker:
   applicationPort: 8080
   image: "hmctsprod.azurecr.io/et-pet/api:latest"
   aadIdentityName: et-pet
-  args: ["./run_solid_queue.sh"]
-  readinessPath: /health?solid_queue=true
-  livenessPath: /health?solid_queue=true
-  startupPath: /health?solid_queue=true
+  args: ["./run_good_job.sh"]
+  readinessPath: /status/connected
+  livenessPath: /status/connected
+  startupPath: /status/started
   environment:
     SECRETS_PATH: "/mnt/secrets/et-pet"
     CLOUD_PROVIDER: "azure"
@@ -190,7 +190,6 @@ queue-worker:
     AZURE_STORAGE_DIRECT_UPLOAD_ACCOUNT: etpetsa{{ .Values.global.environment }}
     AZURE_STORAGE_CONTAINER: private
     AZURE_STORAGE_DIRECT_UPLOAD_CONTAINER: public
-    SOLID_QUEUE_IN_PUMA: true
     ET_CCD_SIMULATION: false
     CCD_ECM_BASE_URL: "http://ethos-repl-docmosis-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CCD_IDAM_BASE_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
