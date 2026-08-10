@@ -10,8 +10,6 @@ job:
           alias: STORAGE_ACCOUNT_CONNECTION_STRING
     fact-kv:
       secrets:
-        - name: bstrap-sso-tenant-id
-          alias: AZURE_TENANT_ID
         - name: fact-cron-trigger-app-reg-id
           alias: AZURE_CLIENT_ID
         - name: bstrap-cron-trigger-client-secret
