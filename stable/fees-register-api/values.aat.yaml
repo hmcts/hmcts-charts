@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/fees-register-api:latest
   ingressHost: 
+  environment:
+    RATE_LIMIT_LIMIT_FOR_PERIOD: 10000
