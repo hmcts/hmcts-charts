@@ -49,6 +49,7 @@ java:
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     APPLICATIONINSIGHTS_ROLE_NAME: "opal-file-handler-service-pr-${CHANGE_ID}"
     DEFAULT_APP_MODE: ${APP_MODE}
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
   postgresql:
     enabled: true
     primary:
@@ -106,6 +107,7 @@ bt-eckoh-report:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 caps-report:
   image: ${IMAGE_NAME}
@@ -123,6 +125,7 @@ caps-report:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 natwest-transfer:
   image: ${IMAGE_NAME}
@@ -140,6 +143,7 @@ natwest-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 allpay-file-transfer:
   releaseNameOverride: opal-file-handler-service-pr-${CHANGE_ID}-allpay-file
@@ -158,6 +162,7 @@ allpay-file-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 barclaycard-transfer:
   releaseNameOverride: opal-file-handler-service-pr-${CHANGE_ID}-barclaycard
@@ -176,6 +181,7 @@ barclaycard-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 bt-eckoh-transfer:
   image: ${IMAGE_NAME}
@@ -193,6 +199,7 @@ bt-eckoh-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 dwp-transfer:
   image: ${IMAGE_NAME}
@@ -210,6 +217,7 @@ dwp-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 jacobs-transfer:
   image: ${IMAGE_NAME}
@@ -227,6 +235,7 @@ jacobs-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 cder-transfer:
   image: ${IMAGE_NAME}
@@ -244,6 +253,7 @@ cder-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
 
 marston-transfer:
   image: ${IMAGE_NAME}
@@ -261,3 +271,4 @@ marston-transfer:
     OPAL_COMMON_CONTENT_DIGEST_RESPONSE_ENFORCE: false
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true

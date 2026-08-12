@@ -6,6 +6,10 @@ java:
     TESTING_SUPPORT_ENDPOINTS_ENABLED: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
+functionalTest:
+  blob:
+    containerName: bteckoh-report
+
 bt-eckoh-report:
   releaseNameOverride: opal-file-handler-service-stg-bt-eckoh-report
   image: ${IMAGE_NAME}
