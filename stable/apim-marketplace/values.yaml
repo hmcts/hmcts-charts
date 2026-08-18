@@ -4,3 +4,4 @@ java:
   ingressHost: apim-marketplace-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
     APPLICATIONINSIGHTS_ENABLED: "false"
+    APPLICATIONINSIGHTS_CONNECTION_STRING: "InstrumentationKey=00000000-0000-0000-0000-000000000000"
