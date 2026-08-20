@@ -4,7 +4,7 @@ nodejs:
   ingressHost: pt.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctsprod.azurecr.io/pt/frontend:latest'
   keyVaults:
-    pt-kv:
+    pt-kv1:
       secrets:
         - app-insights-connection-string
         - redis-connection-string
