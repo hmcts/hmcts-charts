@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for opal-file-handler-service App
 name: opal-file-handler-service
 home: https://github.com/hmcts/opal-file-handler-service
-version: 0.0.15
+version: 0.0.16
 maintainers:
   - name: HMCTS opal team
 dependencies:
@@ -24,7 +24,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: servicebus.enabled
   - name: blobstorage
-    version: 2.2.3
+    version: 2.3.0
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: blobstorage.enabled
   - name: job
