@@ -1,0 +1,25 @@
+nodejs:
+  applicationPort: 3344
+  replicas: 2
+  cpuLimits: 500m
+  cpuRequests: 100m
+  memoryRequests: 512Mi
+  memoryLimits: 1024Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    cpu:
+      enabled: true
+      averageUtilization: 70
+    memory:
+      enabled: false
+  image: 'hmctsprod.azurecr.io/apim/marketplace-web:latest'
+  ingressHost: apim-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net
+  # AMP-1031: App Insights is stubbed for initial onboarding — there is no
+  # azurerm_application_insights resource for the apim product yet, and the
+  # apim-{env} vault holds only the marketplace-POSTGRES-* secrets. Add
+  # aadIdentityName + keyVaults here once a connection string exists in the vault
+  # AND the managed identity has Key Vault Secrets User on it.
+  environment:
+    APPLICATIONINSIGHTS_ENABLED: 'false'
