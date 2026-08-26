@@ -6,16 +6,18 @@ java:
   environment:
     APPLICATIONINSIGHTS_ENABLED: "false"
     APPLICATIONINSIGHTS_CONNECTION_STRING: "InstrumentationKey=00000000-0000-0000-0000-000000000000"
-  keyVaults:
-    apim:
-      secrets:
-        - name: marketplace-POSTGRES-USER
-          alias: POSTGRES_USER
-        - name: marketplace-POSTGRES-PASS
-          alias: POSTGRES_PASS
-        - name: marketplace-POSTGRES-HOST
-          alias: POSTGRES_HOST
-        - name: marketplace-POSTGRES-PORT
-          alias: POSTGRES_PORT
-        - name: marketplace-POSTGRES-DATABASE
-          alias: POSTGRES_DATABASE
+  # keyVaults are defined per-environment in cnp-flux-config overlays
+  # so sbox can use apim-sbox without conflicting with the apim-{env} default
+  # keyVaults:
+  #   apim:
+  #     secrets:
+  #       - name: marketplace-POSTGRES-USER
+  #         alias: POSTGRES_USER
+  #       - name: marketplace-POSTGRES-PASS
+  #         alias: POSTGRES_PASS
+  #       - name: marketplace-POSTGRES-HOST
+  #         alias: POSTGRES_HOST
+  #       - name: marketplace-POSTGRES-PORT
+  #         alias: POSTGRES_PORT
+  #       - name: marketplace-POSTGRES-DATABASE
+  #         alias: POSTGRES_DATABASE
