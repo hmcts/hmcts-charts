@@ -19,6 +19,7 @@ bt-eckoh-report:
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 caps-report:
+  enabled: true
   releaseNameOverride: opal-file-handler-service-stg-caps-report
   image: https://hmcts.azurecr.io/hmcts/opal-file-handler-service:latest
   environment:
