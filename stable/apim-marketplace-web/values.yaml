@@ -23,3 +23,5 @@ nodejs:
   # AND the managed identity has Key Vault Secrets User on it.
   environment:
     APPLICATIONINSIGHTS_ENABLED: 'false'
+    # In-cluster address of service-api-marketplace (release apim-marketplace, type java).
+    API_URL: http://apim-marketplace-java
