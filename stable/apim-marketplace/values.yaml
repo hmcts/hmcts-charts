@@ -1,4 +1,5 @@
 java:
+  replicas: 1
   applicationPort: 8080
   image: 'hmctsprod.azurecr.io/apim/marketplace:latest'
   ingressHost: apim-marketplace-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
