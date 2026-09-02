@@ -2,11 +2,17 @@ nodejs:
   applicationPort: 3000
   aadIdentityName: hmc
   ingressHost: hmc-admin-ui.{{ .Values.global.environment }}.platform.hmcts.net
-  image: 'hmctspublic.azurecr.io/hmc/admin-ui:latest'
+  image: 'hmctsprod.azurecr.io/hmc/admin-ui:latest'
   #  Uncomment once the vault containing the app insights key has been set up
   keyVaults:
     hmc:
       secrets:
         - AppInsightsInstrumentationKey
+        - hmc-admin-ui-session-secret
+        - hmc-admin-ui-client-secret
         - hmc-admin-ui-s2s-secret
+        - admin-ui-managed-redis-connection-string
   environment:
+    ALLOW_CONFIG_MUTATIONS: true
+    REDIS_ENABLED: true
+    REDIS_KEY_PREFIX: 'hmc-admin-sess:'

@@ -2,3 +2,12 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/hmc-admin-ui:latest
   ingressHost: 
+  keyVaults:
+    hmc:
+      secrets:
+        - AppInsightsInstrumentationKey
+        - hmc-admin-ui-session-secret
+        - hmc-admin-ui-client-secret
+        - hmc-admin-ui-s2s-secret
+  environment:
+    REDIS_ENABLED: false
