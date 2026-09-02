@@ -3,7 +3,7 @@ appVersion: '1.0'
 description: A Helm chart for apim-marketplace-web App
 name: apim-marketplace-web
 home: https://github.com/hmcts/web-api-marketplace
-version: 0.0.3
+version: 0.0.2
 maintainers:
   - name: DTS API Marketplace
 dependencies:

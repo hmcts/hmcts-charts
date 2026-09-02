@@ -1,15 +1,19 @@
 nodejs:
   applicationPort: 3344
-  replicas: 1
+  replicas: 2
   cpuLimits: 500m
   cpuRequests: 100m
   memoryRequests: 512Mi
   memoryLimits: 1024Mi
-  # Autoscaling must be off for `replicas: 1` to hold: an HPA owns the replica count, so
-  # with minReplicas 2 it would scale straight back up and the setting above would be
-  # silently ignored.
   autoscaling:
-    enabled: false
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    cpu:
+      enabled: true
+      averageUtilization: 70
+    memory:
+      enabled: false
   image: 'hmctsprod.azurecr.io/apim/marketplace-web:latest'
   ingressHost: apim-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net
   # AMP-1031: App Insights is stubbed for initial onboarding — there is no
