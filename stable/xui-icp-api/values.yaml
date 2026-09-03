@@ -1,0 +1,46 @@
+nodejs:
+  applicationPort: 8080
+  aadIdentityName: xui
+  ingressHost: xui-icp.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/xui/icp-api:latest'
+  readinessDelay: 30
+  readinessTimeout: 5
+  livenessDelay: 30
+  livenessTimeout: 5
+  livenessFailureThreshold: 10
+  environment:
+    REFORM_SERVICE_NAME: xui-icp
+    REFORM_TEAM: xui-icp
+    REDIS_HOST: xui-icp-api-redis-cache-{{ .Values.global.environment }}.redis.cache.windows.net
+    REDIS_PORT: 6380
+    USE_REDIS: true
+    REDIS_USE_TLS: true
+    RATE_LIMIT_TIME: 15000
+    RATE_LIMITE_MAX: 10
+    IDAM_API_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    ICP_WS_URL: wss://xui-icp-webpubsub.{{ .Values.global.environment }}.platform.hmcts.net/client/hubs/Hub
+    ICP_ALLOWED_ORIGIN: https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net
+  spotInstances:
+    enabled: true
+  # Use the existing XUI shared vault. The key is the vault base name;
+  # xui-icp would resolve to the nonexistent xui-icp-<environment> vault.
+  keyVaults:
+    rpx:
+      resourceGroup: rpx
+      secrets:
+        - xui-icp-redis-password
+        - microservicekey-xui-icp
+        - xui-icp-appinsights-instrumentation-key
+        - xui-icp-web-pubsub-primary-connection-string
+
+redis:
+  enabled: false
+  architecture: standalone
+  master:
+    persistence:
+      enabled: false
+  auth:
+    enabled: false
+tags:
+  pr: false
