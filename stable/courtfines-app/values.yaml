@@ -3,6 +3,8 @@ nodejs:
   aadIdentityName: courtfines
   ingressHost: courtfines.justice.gov.uk
   image: 'hmctssbox.azurecr.io/courtfines/app:latest'
+  devmemoryRequests: 128Mi
+  devmemoryLimits: 768Mi
   keyVaults:
     courtfines:
       secrets:
