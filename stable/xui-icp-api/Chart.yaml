@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for XUI ICP API
 name: xui-icp-api
 home: https://github.com/hmcts/rpx-xui-icp-api
-version: 0.0.4
+version: 0.0.5
 dependencies:
   - name: nodejs
     version: 3.2.0
