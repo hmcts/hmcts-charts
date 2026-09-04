@@ -9,4 +9,8 @@ java:
 #      secrets:
 #        - name: AppInsightsInstrumentationKey
 #          alias: azure.application-insights.instrumentation-key
+#        - name: app-insights-connection-string
+#          alias: app-insights-connection-string
   environment:
+    APPLICATIONINSIGHTS_CONFIGURATION_FILE: /opt/app/applicationinsights.json
+    APPLICATIONINSIGHTS_ROLE_NAME: snl-backend
