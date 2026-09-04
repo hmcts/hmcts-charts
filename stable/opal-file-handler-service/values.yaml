@@ -137,9 +137,6 @@ caps-report:
           alias: BAIS_SFTP_CONNECTION_PORT
         - name: bais-sftp-caps-report-username
           alias: BAIS_SFTP_CAPS_REPORT_USERNAME
-        - name: bais-sftp-bteckoh-report-username
-          alias: BAIS_SFTP_BTECKOH_REPORT_USERNAME
-
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
     OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
@@ -210,6 +207,20 @@ allpay-file-transfer:
           alias: OPAL_FILE_HANDLER_DB_NAME
         - name: managed-redis-connection-string
           alias: REDIS_CONNECTION_STRING
+        - name: opal-file-handler-service-file-store-account-name
+          alias: FILE_STORE_STORAGE_ACCOUNT_NAME
+        - name: opal-file-handler-service-file-store-blob-endpoint
+          alias: FILE_STORE_STORAGE_URL
+        - name: opal-file-handler-service-file-store-access-key
+          alias: FILE_STORE_STORAGE_KEY
+        - name: bais-private-key
+          alias: BAIS_SFTP_PRIVATE_KEY
+        - name: bais-sftp-connection-host
+          alias: BAIS_SFTP_CONNECTION_HOST
+        - name: bais-sftp-connection-port
+          alias: BAIS_SFTP_CONNECTION_PORT
+        - name: bais-sftp-allpay-report-username
+          alias: BAIS_SFTP_ALLPAY_USERNAME
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
     OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
