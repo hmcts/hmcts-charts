@@ -1,0 +1,36 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  memoryRequests: 1Gi
+  memoryLimits: 2Gi
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+  secrets:
+    POSTGRES_HOST:
+      secretRef: postgres
+      key: HOST
+    POSTGRES_PORT:
+      secretRef: postgres
+      key: PORT
+    POSTGRES_USER:
+      secretRef: postgres
+      key: USER
+    POSTGRES_PASSWORD:
+      secretRef: postgres
+      key: PASSWORD
+  environment:
+    POSTGRES_DATABASE: "{{ .Release.Name }}"
+    METRICS_CONFIG: /app/metrics.example.yaml
+
+job:
+  enabled: false
+
+postgresql:
+  enabled: true
+  flexibleserver: dtsse-preview
+  setup:
+    databases:
+      - name: "{{ .Release.Name }}"

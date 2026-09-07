@@ -1,0 +1,8 @@
+nodejs:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+
+# AAT runs the real collection on the real schedule, against the Postgres the shared infrastructure provisions
+# and the GitHub App credentials the dtsse vault holds. Everything it needs is in charts/values.yaml; this file
+# exists to carry the pipeline's own image and hostname.

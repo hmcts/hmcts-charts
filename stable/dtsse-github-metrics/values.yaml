@@ -1,0 +1,72 @@
+nodejs:
+  applicationPort: 3000
+  aadIdentityName: dtsse
+  image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  ingressHost: dtsse-github-metrics.{{ .Values.global.environment }}.platform.hmcts.net
+  memoryRequests: 2Gi
+  memoryLimits: 4Gi
+  cpuRequests: 500m
+  cpuLimits: "1"
+  replicas: 1
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+        - name: github-metrics-postgres-host
+          alias: POSTGRES_HOST
+        - name: github-metrics-postgres-port
+          alias: POSTGRES_PORT
+        - name: github-metrics-postgres-user
+          alias: POSTGRES_USER
+        - name: github-metrics-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: github-metrics-postgres-database
+          alias: POSTGRES_DATABASE
+  environment:
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    METRICS_CONFIG: /app/metrics.yaml
+    NODE_OPTIONS: --max-old-space-size=3072
+
+job:
+  enabled: true
+  image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  aadIdentityName: dtsse
+  command: ["node"]
+  args: ["dist/cli/run.js", "collect", "--config", "/app/metrics.yaml", "--days", "90"]
+  schedule: "0 3 * * 1"
+  concurrencyPolicy: Forbid
+  backoffLimit: 1
+  activeDeadlineSeconds: 21600
+  ttlSecondsAfterFinished: 86400
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: github-app-id
+          alias: GH_APP_ID
+        - name: github-app-installation-id
+          alias: GH_APP_INSTALLATION_ID
+        - name: github-app-private-key
+          alias: GH_APP_PRIVATE_KEY
+        - name: github-metrics-postgres-host
+          alias: POSTGRES_HOST
+        - name: github-metrics-postgres-port
+          alias: POSTGRES_PORT
+        - name: github-metrics-postgres-user
+          alias: POSTGRES_USER
+        - name: github-metrics-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: github-metrics-postgres-database
+          alias: POSTGRES_DATABASE
+  environment:
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    METRICS_CONFIG: /app/metrics.yaml
+    NODE_OPTIONS: --max-old-space-size=3072
+
+postgresql:
+  enabled: false
+
+global:
+  jobKind: CronJob
+  enableKeyVaults: true
+  tenantId: "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
