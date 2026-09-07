@@ -7,6 +7,7 @@ base:
   ingressHost: et-pet-ccd-export-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et-pet
   environment:
+    SECRET_KEY_BASE: "doesntmatterasitsnotused"
     SECRETS_PATH: "/mnt/secrets/et-pet"
     RAILS_ENV: "production"
     RAILS_MAX_THREADS: 10
@@ -25,6 +26,7 @@ base:
     CCD_DOCUMENT_STORE_URL_REWRITE: false
     CCD_GENERATE_ETHOS_CASE_REFERENCE: false
     AZURE_APP_INSIGHTS_ROLE_NAME: "ET-CCD-EXPORT"
+    TEST_ENV_VAR: "true"
   keyVaults:
     et-pet:
       secrets:
