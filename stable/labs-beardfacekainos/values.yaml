@@ -1,6 +1,6 @@
 java:
   applicationPort: 8080
   image: 'hmctssbox.azurecr.io/labs/beardfacekainos:latest'
-  ingressHost: labs-beardfacekainos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: labs-beardfacekainos-staging.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: labs
   environment:
