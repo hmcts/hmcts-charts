@@ -33,7 +33,7 @@ job:
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
   aadIdentityName: dtsse
   command: ["node"]
-  args: ["dist/cli/run.js", "collect", "--config", "/app/metrics.yaml", "--days", "90"]
+  args: ["dist/cli/run.js", "collect", "--config", "/app/metrics.yaml", "--days", "90", "--tolerate-partial"]
   schedule: "0 3 * * 1"
   concurrencyPolicy: Forbid
   backoffLimit: 1
