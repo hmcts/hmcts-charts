@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for opal-file-handler-service App
 name: opal-file-handler-service
 home: https://github.com/hmcts/opal-file-handler-service
-version: 0.0.20
+version: 0.0.21
 maintainers:
   - name: HMCTS opal team
 dependencies:
@@ -20,7 +20,7 @@ dependencies:
     repository: "oci://hmctsprod.azurecr.io/helm"
     condition: hmcts-redis.enabled
   - name: servicebus
-    version: 1.2.2
+    version: 1.3.0
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: servicebus.enabled
   - name: blobstorage
@@ -29,51 +29,51 @@ dependencies:
     condition: blobstorage.enabled
   - name: job
     alias: bt-eckoh-report
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: bt-eckoh-report.enabled
   - name: job
     alias: caps-report
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: caps-report.enabled
   - name: job
     alias: natwest-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: natwest-transfer.enabled
   - name: job
     alias: allpay-file-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: allpay-file-transfer.enabled
   - name: job
     alias: barclaycard-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: barclaycard-transfer.enabled
   - name: job
     alias: bt-eckoh-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: bt-echko-transfer.enabled
   - name: job
     alias: dwp-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: dwp-transfer.enabled
   - name: job
     alias: jacobs-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: jacobs-transfer.enabled
   - name: job
     alias: cder-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: cder-transfer.enabled
   - name: job
     alias: marston-transfer
-    version: 2.2.1
+    version: 2.2.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: marston-transfer.enabled
