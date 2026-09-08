@@ -2,7 +2,7 @@ nodejs:
   applicationPort: 3000
   aadIdentityName: dtsse
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
-  ingressHost: dtsse-github-metrics.{{ .Values.global.environment }}.platform.hmcts.net
+  ingressHost: github-metrics.{{ .Values.global.environment }}.platform.hmcts.net
   memoryRequests: 2Gi
   memoryLimits: 4Gi
   cpuRequests: 500m
