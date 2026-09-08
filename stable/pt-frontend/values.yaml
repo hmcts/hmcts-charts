@@ -16,6 +16,7 @@ nodejs:
   environment:
     PT_API_URL: 'http://pt-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     S2S_URL: 'http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
+    CDAM_URL: 'http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
 
 redis:
   enabled: false

@@ -7,6 +7,7 @@ nodejs:
     PT_API_URL: '${PT_API_URL}'
     CCD_URL: '${DATA_STORE_URL_BASE}'
     CASE_TYPE_ID: '${CASE_TYPE_ID}'
+    CDAM_URL: '${CDAM_URL}'
 redis:
   image:
     registry: hmctsprod.azurecr.io
