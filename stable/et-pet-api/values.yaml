@@ -162,7 +162,7 @@ queue-worker:
   applicationPort: 8080
   image: "hmctsprod.azurecr.io/et-pet/api:latest"
   aadIdentityName: et-pet
-  args: ["./run_good_job.sh"]
+  args: ["./run_queue_worker.sh"]
   readinessPath: /status/connected
   livenessPath: /status/connected
   startupPath: /status/started
@@ -177,7 +177,7 @@ queue-worker:
     RAILS_MAX_THREADS: 10
     RAILS_LOG_LEVEL: "info"
     RACK_ENV: "production"
-    WEB_CONCURRENCY: 1
+    WEB_CONCURRENCY: 0
     DOCKER_STATE: "migrate"
     RAILS_LOG_TO_STDOUT: true
     FLATTEN_PDF: true
