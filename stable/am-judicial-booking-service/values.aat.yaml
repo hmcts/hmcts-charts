@@ -2,3 +2,5 @@ java:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/am-judicial-booking-service:latest
   ingressHost: 
+  environment:
+    TESTING_SUPPORT_ENABLED: true
