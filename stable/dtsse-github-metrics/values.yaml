@@ -23,10 +23,18 @@ nodejs:
           alias: POSTGRES_PASSWORD
         - name: github-metrics-postgres-database
           alias: POSTGRES_DATABASE
+        - name: entra-client-id
+          alias: ENTRA_CLIENT_ID
+        - name: entra-client-secret
+          alias: ENTRA_CLIENT_SECRET
+        - name: session-secret
+          alias: SESSION_SECRET
   environment:
     NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
     METRICS_CONFIG: /app/metrics.yaml
     NODE_OPTIONS: --max-old-space-size=3072
+    ENTRA_TENANT_ID: "{{ .Values.global.tenantId }}"
+    ENTRA_REDIRECT_URI: https://github-metrics.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
 
 job:
   enabled: true

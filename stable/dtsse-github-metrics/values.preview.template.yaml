@@ -24,6 +24,7 @@ nodejs:
   environment:
     POSTGRES_DATABASE: "{{ .Release.Name }}"
     METRICS_CONFIG: /app/metrics.example.yaml
+    AUTH_DISABLED: "true"
 
 job:
   enabled: false
