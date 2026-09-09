@@ -63,6 +63,51 @@ job:
     METRICS_CONFIG: /app/metrics.yaml
     NODE_OPTIONS: --max-old-space-size=3072
 
+orgJob:
+  enabled: true
+  image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  aadIdentityName: dtsse
+  command: ["node"]
+  args: ["dist/cli/run.js", "collect-org", "--config", "/app/metrics.yaml", "--tolerate-partial"]
+  # 14:00 daily, an hour ahead of `collect` at 15:00. Ordering rather than coincidence: ownership is what the
+  # behaviour figures are attributed to, so each day's figures should be read against the same day's graph.
+  # Daily rather than weekly because it follows `collect`, and because the walk fits inside one hour of the
+  # installation's quota (see the deadline below), so the finer drift resolution costs nothing worth saving.
+  schedule: "0 14 * * *"
+  concurrencyPolicy: Forbid
+  backoffLimit: 1
+  # Two hours, not the six `job` allows. The team, repository and people walks are about 250 GraphQL calls, but
+  # the ownership ladder adds up to three CODEOWNERS requests per unresolved repository and one collaborator
+  # listing per repository still open after that — bounded by `unresolved_repository_limit`, so up to roughly
+  # 2,000 more REST calls on top. Against an installation budget of 15,000 core and 12,500 GraphQL an hour it
+  # still fits inside one hour's quota; the deadline is doubled because fitting the QUOTA is not the same as
+  # fitting the WALL CLOCK, and a run still going after two hours has found something the estimate did not.
+  activeDeadlineSeconds: 7200
+  ttlSecondsAfterFinished: 86400
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: github-app-id
+          alias: GH_APP_ID
+        - name: github-app-installation-id
+          alias: GH_APP_INSTALLATION_ID
+        - name: github-app-private-key
+          alias: GH_APP_PRIVATE_KEY
+        - name: github-metrics-postgres-host
+          alias: POSTGRES_HOST
+        - name: github-metrics-postgres-port
+          alias: POSTGRES_PORT
+        - name: github-metrics-postgres-user
+          alias: POSTGRES_USER
+        - name: github-metrics-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: github-metrics-postgres-database
+          alias: POSTGRES_DATABASE
+  environment:
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    METRICS_CONFIG: /app/metrics.yaml
+    NODE_OPTIONS: --max-old-space-size=3072
+
 postgresql:
   enabled: false
 

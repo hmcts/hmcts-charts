@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: Collects and grades evidence of software delivery practice from GitHub
 name: dtsse-github-metrics
 home: https://github.com/hmcts/dtsse-github-metrics
-version: 0.0.5
+version: 0.0.6
 dependencies:
   - name: nodejs
     version: 3.2.1
@@ -12,6 +12,21 @@ dependencies:
     version: 2.2.1
     repository: "oci://hmctsprod.azurecr.io/helm"
     condition: job.enabled
+  # The organisation graph runs as a SECOND CronJob rather than a step inside the first. Two reasons, and
+  # both are about failure rather than tidiness: `collect`'s unit of failure is one repository — it catches,
+  # counts and carries on — whereas this writes one organisation-wide graph whose partial write must not read
+  # as complete, so the two need different completeness semantics. And a graph that finishes in minutes queued
+  # behind a six-hour repository walk would deliver every ownership answer at the speed of the slowest
+  # repository in the estate. Separate jobs also mean the two failures appear as two CronJob histories.
+  #
+  # An aliased dependency rather than a hand-written template: `hmcts.releasename.v2` builds its name from
+  # `.Chart.Name`, which for an aliased dependency is the alias, so this renders as its own distinctly-named
+  # CronJob with no template to maintain.
+  - name: job
+    alias: orgJob
+    version: 2.2.1
+    repository: "oci://hmctsprod.azurecr.io/helm"
+    condition: orgJob.enabled
   - name: postgresql
     version: 1.1.1
     repository: "oci://hmctsprod.azurecr.io/helm"

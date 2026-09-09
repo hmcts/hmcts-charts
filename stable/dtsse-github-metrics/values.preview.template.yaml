@@ -28,6 +28,12 @@ nodejs:
 job:
   enabled: false
 
+# Off for the same reason as `job`: a preview deploys with an empty database and `@smoke` asserts that pages
+# render and health is UP, never that any figure is non-zero. A preview that walked 336 teams and 3,277
+# repositories would also spend the App's whole hourly quota on a throwaway environment.
+orgJob:
+  enabled: false
+
 postgresql:
   enabled: true
   flexibleserver: dtsse-preview
