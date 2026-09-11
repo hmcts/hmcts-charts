@@ -34,6 +34,12 @@ java:
           alias: FILE_STORE_STORAGE_URL
         - name: opal-file-handler-service-file-store-access-key
           alias: FILE_STORE_STORAGE_KEY
+        - name: servicebus-connection-string
+          alias: SERVICEBUS_CONNECTION_STRING
+        - name: servicebus-banking-interfaces-preprocess-interface-file-maintenance-queue-name
+          alias: SERVICEBUS_INTERFACE_FILE_PREPROCESS_MAINTENANCE_QUEUE_NAME
+        - name: servicebus-banking-interfaces-preprocess-interface-file-fines-queue-name
+          alias: SERVICEBUS_INTERFACE_FILE_PREPROCESS_FINES_QUEUE_NAME
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: true
     TESTING_SUPPORT_ENDPOINTS_ENABLED: true
@@ -361,6 +367,10 @@ jacobs-transfer:
           alias: OPAL_FILE_HANDLER_DB_NAME
         - name: managed-redis-connection-string
           alias: REDIS_CONNECTION_STRING
+        - name: opal-system-user-client-id
+          alias: OPAL_SYSTEM_USER_CLIENT_ID
+        - name: opal-system-user-client-secret
+          alias: OPAL_SYSTEM_USER_CLIENT_SECRET
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
     OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net

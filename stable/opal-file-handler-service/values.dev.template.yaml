@@ -35,6 +35,10 @@ java:
           alias: AAD_CLIENT_ID
         - name: AzureADClientSecret
           alias: AAD_CLIENT_SECRET
+        - name: opal-system-user-client-id
+          alias: OPAL_SYSTEM_USER_CLIENT_ID
+        - name: opal-system-user-client-secret
+          alias: OPAL_SYSTEM_USER_CLIENT_SECRET
   environment:
     REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
     OPAL_FILE_HANDLER_DB_HOST: "{{ .Release.Name }}-postgresql"
@@ -50,6 +54,8 @@ java:
     APPLICATIONINSIGHTS_ROLE_NAME: "opal-file-handler-service-pr-${CHANGE_ID}"
     DEFAULT_APP_MODE: ${APP_MODE}
     RELEASE_1C_BANKING_INTERFACES_ENABLED: true
+    SERVICEBUS_INTERFACE_FILE_PREPROCESS_MAINTENANCE_QUEUE_NAME: "{{ .Release.Name}}-servicebus-banking-interfaces-preprocess-interface-file-maintenance"
+    SERVICEBUS_INTERFACE_FILE_PREPROCESS_FINES_QUEUE_NAME: "{{ .Release.Name}}-servicebus-banking-interfaces-preprocess-interface-file-fines"
   postgresql:
     enabled: true
     primary:
