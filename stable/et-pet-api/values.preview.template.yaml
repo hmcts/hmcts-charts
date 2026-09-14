@@ -2,10 +2,6 @@ base:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-sidekiq:
-  # Don't modify below here
-  image: ${IMAGE_NAME}
-  ingressHost: ${SERVICE_FQDN}
 queue-worker:
   # Don't modify below here
   image: ${IMAGE_NAME}

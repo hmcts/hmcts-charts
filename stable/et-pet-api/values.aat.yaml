@@ -2,10 +2,6 @@ base:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/et-pet-api:latest
   ingressHost: 
-sidekiq:
-  # Don't modify below here
-  image: https://hmcts.azurecr.io/hmcts/et-pet-api:latest
-  ingressHost: 
 queue-worker:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/et-pet-api:latest
