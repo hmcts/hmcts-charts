@@ -3,6 +3,10 @@ nodejs:
   aadIdentityName: dtsse
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
   ingressHost: github-metrics.{{ .Values.global.environment }}.platform.hmcts.net
+  # Coupled to NODE_OPTIONS --max-old-space-size below: the V8 heap ceiling must stay strictly under
+  # memoryLimits, or V8 declines to collect until it is already past the point the kernel OOM-kills the
+  # container. Change one, change the other. 3072 MiB of heap inside a 4Gi limit leaves room for the
+  # non-heap side of the process.
   memoryRequests: 2Gi
   memoryLimits: 4Gi
   cpuRequests: 500m
@@ -40,6 +44,14 @@ job:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
   aadIdentityName: dtsse
+  # Set here rather than left to the `job` chart, whose defaults are 512Mi/1024Mi — below the
+  # --max-old-space-size ceiling in `environment` below, so V8 would still be declining to collect at the
+  # point the kernel OOM-killed the container. The two numbers are coupled: change the heap ceiling and
+  # this limit together. Matched to the web pod rather than trimmed to fit under 1Gi, because the
+  # collector's working set is the larger of the two — it walks the whole estate and deserialises tens of
+  # MB of jsonb.
+  memoryRequests: 2Gi
+  memoryLimits: 4Gi
   command: ["node"]
   args: ["dist/cli/run.js", "collect", "--config", "/app/metrics.yaml", "--days", "90", "--tolerate-partial"]
   schedule: "0 15 * * *"
@@ -75,6 +87,9 @@ orgJob:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
   aadIdentityName: dtsse
+  # Same coupling as `job` above: the heap ceiling in `environment` below has to sit inside this limit.
+  memoryRequests: 2Gi
+  memoryLimits: 4Gi
   command: ["node"]
   args: ["dist/cli/run.js", "collect-org", "--config", "/app/metrics.yaml", "--tolerate-partial"]
   # 14:00 daily, an hour ahead of `collect` at 15:00. Ordering rather than coincidence: ownership is what the

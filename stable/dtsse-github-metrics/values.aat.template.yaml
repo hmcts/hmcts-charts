@@ -5,6 +5,21 @@ nodejs:
   environment:
     AUTH_DISABLED: "true"
 
-# AAT runs the real collection on the real schedule, against the Postgres the shared infrastructure provisions
-# and the GitHub App credentials the dtsse vault holds. Everything it needs is in charts/values.yaml; this file
-# exists to carry the pipeline's own image and hostname.
+# Off for the same reason as in the preview values, and it matters more here. This file is applied to the
+# pipeline's throwaway `-staging` release, which every master build installs into the same `dtsse` namespace
+# as the persistent one — so a CronJob left enabled is a SECOND `collect` and `collect-org` on the same 15:00
+# and 14:00 schedules. Nothing in a build asserts that any figure is non-zero, so the duplicate buys nothing,
+# and it would spend the App's hourly quota on a release that is deleted at the end of the build. Worse than
+# the preview case, because these credentials and this database are the real ones: whether the throwaway or
+# the persistent release ran the collection would be settled by the collector's advisory lock rather than by
+# anything anybody chose.
+job:
+  enabled: false
+
+orgJob:
+  enabled: false
+
+# The real collection belongs to the persistent AAT release flux deploys, on the real schedule, against the
+# Postgres the shared infrastructure provisions and the GitHub App credentials the dtsse vault holds.
+# Everything that release needs is in charts/values.yaml; this file exists to carry the pipeline's own image
+# and hostname, and to keep the pipeline's release out of the collection.
