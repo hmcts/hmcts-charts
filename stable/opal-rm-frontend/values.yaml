@@ -1,4 +1,5 @@
 nodejs:
+  enabled: true
   applicationPort: 5000
   aadIdentityName: opal
   ingressHost: opal-rm-frontend.{{ .Values.global.environment }}.apps.hmcts.net
