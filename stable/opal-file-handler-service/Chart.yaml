@@ -3,13 +3,14 @@ appVersion: "1.0"
 description: A Helm chart for opal-file-handler-service App
 name: opal-file-handler-service
 home: https://github.com/hmcts/opal-file-handler-service
-version: 0.0.23
+version: 0.0.24
 maintainers:
   - name: HMCTS opal team
 dependencies:
   - name: java
     version: 5.3.0
     repository: 'oci://hmctsprod.azurecr.io/helm'
+    condition: java.enabled
   - name: blobstorage
     alias: bais-emulator
     version: 2.2.3-beta

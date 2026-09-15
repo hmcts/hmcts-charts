@@ -1,4 +1,5 @@
 java:
+  enabled: true
   applicationPort: 4075
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
   ingressHost: opal-file-handler-service.{{ .Values.global.environment }}.platform.hmcts.net
