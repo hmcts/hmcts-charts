@@ -68,6 +68,8 @@ java:
       username: javapostgres
       password: javapassword
       database: opal-file-handler-db
+hmcts-redis:
+  enabled: true
 servicebus:
   enabled: ${DEV_ENABLE_OPAL_SERVICE_BUS}
   releaseNameOverride: ${SERVICE_NAME}-servicebus

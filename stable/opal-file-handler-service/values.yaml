@@ -60,6 +60,8 @@ redis:
 global:
   security:
     allowInsecureImages: true
+hmcts-redis:
+  enabled: false
 servicebus:
   enabled: false
 blobstorage:
