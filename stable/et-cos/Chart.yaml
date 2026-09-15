@@ -1,7 +1,7 @@
 apiVersion: v2
 name: et-cos
 home: https://github.com/hmcts/et-ccd-callbacks
-version: 0.0.71
+version: 0.0.72
 description: HMCTS Employment Tribunals CCD Callbacks service
 maintainers:
   - name: HMCTS Employment Tribunals Team
@@ -89,10 +89,6 @@ dependencies:
     version: ~0.3.13
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: rd-judicial-data-load.enabled
-  - name: et-migration
-    version: ~0.0.2
-    repository: 'oci://hmctsprod.azurecr.io/helm'
-    condition: et-migration.enabled
   - name: em-ccdorc
     version: 2.1.4
     repository: 'oci://hmctsprod.azurecr.io/helm'
