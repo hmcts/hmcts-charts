@@ -1,8 +1,13 @@
 nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  # Smaller than charts/values.yaml because a preview warms an empty database, and repeated under the `dev*`
+  # keys for the reason given there — a preview is installed with `devMode: true`, so these are the pair that
+  # actually reaches the container and the two above would otherwise be decoration.
   memoryRequests: 1Gi
   memoryLimits: 2Gi
+  devmemoryRequests: 1Gi
+  devmemoryLimits: 2Gi
   keyVaults:
     dtsse:
       secrets:

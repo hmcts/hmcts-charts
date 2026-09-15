@@ -11,6 +11,24 @@ nodejs:
   memoryLimits: 4Gi
   cpuRequests: 500m
   cpuLimits: "1"
+  # THE SAME FIGURES AGAIN UNDER `dev*` KEYS, because the chart reads one pair or the other and never both.
+  # `library/templates/v2/_container.tpl` branches on `global.devMode`: when it is set the container takes
+  # `devmemoryLimits`/`devcpuLimits` and the four values above are ignored outright. The CNP pipeline sets
+  # `devMode: true` on the `-staging` release it installs for `functionalTest:aat`, so staging silently ran at
+  # the chart defaults — a 512Mi limit holding a process told to grow its heap to 3072Mi.
+  #
+  # That is not a smaller pod, it is a dead one. The warmer reads the whole estate on the main thread, went
+  # past 512Mi, and the kernel killed it (exit 137, OOMKilled); Kubernetes restarted it, it warmed, and it died
+  # again. Every `@regression` failure blamed on a flaky ingress was Traefik correctly reporting that it had no
+  # backend, because the pod was in that loop. AAT never showed it: Flux installs that release without devMode,
+  # so it always had the 4Gi.
+  #
+  # Staging is the only place these apply and it reads the same 1,890-repository database as AAT, so it needs
+  # the same room. Keep all eight in step.
+  devmemoryRequests: 2Gi
+  devmemoryLimits: 4Gi
+  devcpuRequests: 500m
+  devcpuLimits: "1"
   replicas: 1
   keyVaults:
     dtsse:
