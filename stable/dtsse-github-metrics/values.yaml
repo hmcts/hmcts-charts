@@ -72,7 +72,7 @@ job:
   memoryLimits: 4Gi
   command: ["node"]
   args: ["dist/cli/run.js", "collect", "--config", "/app/metrics.yaml", "--days", "90", "--tolerate-partial"]
-  schedule: "0 15 * * *"
+  schedule: "0 14 * * *"
   concurrencyPolicy: Forbid
   backoffLimit: 1
   activeDeadlineSeconds: 21600
@@ -110,11 +110,12 @@ orgJob:
   memoryLimits: 4Gi
   command: ["node"]
   args: ["dist/cli/run.js", "collect-org", "--config", "/app/metrics.yaml", "--tolerate-partial"]
-  # 14:00 daily, an hour ahead of `collect` at 15:00. Ordering rather than coincidence: ownership is what the
-  # behaviour figures are attributed to, so each day's figures should be read against the same day's graph.
-  # Daily rather than weekly because it follows `collect`, and because the walk fits inside one hour of the
+  # 13:30 UTC daily, half an hour ahead of `collect` at 14:00. Ordering rather than coincidence: ownership is
+  # what the behaviour figures are attributed to, so each day's figures should be read against the same day's
+  # graph. Half an hour is ample on measurement rather than assumption: this walk took 9 minutes on 2026-09-15.
+  # Daily rather than weekly because it precedes `collect`, and because the walk fits inside one hour of the
   # installation's quota (see the deadline below), so the finer drift resolution costs nothing worth saving.
-  schedule: "0 14 * * *"
+  schedule: "30 13 * * *"
   concurrencyPolicy: Forbid
   backoffLimit: 1
   # Two hours, not the six `job` allows. The team, repository and people walks are about 250 GraphQL calls, but
