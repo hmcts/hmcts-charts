@@ -46,4 +46,5 @@ java:
     RUN_DB_MIGRATION_ON_STARTUP: false
     AZURE_MANAGED_IDENTITY_ENABLED: true
     AZURE_STORAGE_ACCOUNT_NAME: factsa{{ .Values.global.environment }}
+    OS_CACHE_ENABLED: false
     TESTING_SUPPORT_ENABLE_API: false
