@@ -1,0 +1,32 @@
+# AAT overrides, applied on top of `values.yaml`.
+# The Key Vault, Redis and App Insights this chart reads are managed by Terraform in
+# `hmcts/deed-poll-infra`, not by Helm, and that root must apply before this chart can deploy.
+#
+# The name is load-bearing, and `values.template.yaml` is the wrong one. `helmInstall` in
+# `hmcts/cnp-jenkins-library` does `envsubst < values.template.yaml > values.yaml` — it renders that file
+# *over* `values.yaml` rather than layering on top of it, so a `values.template.yaml` holding only the two
+# pipeline-owned values would delete the vault list, both workload-identity switches, `applicationPort`,
+# both probe paths and `redis.enabled: false` from every non-preview deploy. A
+# `values.${environment}.template.yaml` renders to its own `values.${environment}.yaml` and is *appended*.
+# `apps/pcs/pcs-frontend` is named the same way. `src/deployment-chart.test.ts` asserts no
+# `values.template.yaml` comes back.
+#
+# `global.environment` is deliberately not set here. `helmInstall` passes it with `--set`, which beats any
+# `-f` file, and the templates are only run through `envsubst` — which expands `$VAR` and `${VAR}` and
+# nothing else, so a `${VAR:-default}` would reach Helm as that literal string and the vault name would
+# become `deed-poll-${ENVIRONMENT:-aat}`. No chart in the estate sets it in a values file.
+nodejs:
+  # Don't modify below here
+  #
+  # `IMAGE_NAME` and `SERVICE_FQDN` are exported by `helmInstall` in `hmcts/cnp-jenkins-library`, so both
+  # are the pipeline's to decide rather than ours. The hand-rolled host this replaced interpolated the
+  # team name, the release name and a `-web` suffix naming a subchart that no longer exists.
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    # The absolute URL the card page sends the applicant back to. Unset, `paymentReturnUrl` derives the
+    # origin from `X-Forwarded-Host` (`trust proxy` is on), so a caller-supplied header would decide where
+    # a paying applicant returns to — see `src/payment/return-url.ts`, which documents setting this in a
+    # deployed environment as the reason the override exists. `SERVICE_FQDN` is the same value
+    # `ingressHost` above uses, so the two cannot drift.
+    WEB_PUBLIC_URL: https://${SERVICE_FQDN}

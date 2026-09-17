@@ -1,0 +1,30 @@
+apiVersion: v2
+appVersion: '1.0'
+name: deed-poll-web
+description: A Helm chart for deed-poll-web
+type: application
+version: 0.0.1
+annotations:
+  team: deed-poll
+home: https://github.com/hmcts/deed-poll-web
+# One component, not four. This was an umbrella chart with `file://` dependencies on
+# `deed-poll-web-{web,api,crons,postgres}` and a `postgresql` subchart; the three template apps were
+# deleted in this plan's task 1 and the `web` subchart is inlined here, because `az acr build … .` builds
+# a single root Dockerfile into a single image. See `docs/plans/jenkins-pipeline-cutover.md`.
+#
+# `postgresql` is removed rather than left `enabled: false`: this service has no database (`CLAUDE.md`
+# decision 1), so a per-PR database has nothing to put in it.
+dependencies:
+  # 3.3.1 carries chart-library 2.3.1, which provides the workload-identity pod label and service-account
+  # selection used below. Both are required by the federated credential in cnp-flux-config.
+  - name: nodejs
+    version: 3.3.1
+    repository: 'oci://hmctsprod.azurecr.io/helm'
+  # Kept deliberately, and it is the only subchart that survives. Sessions live in Redis, so a preview
+  # environment needs one of its own — AAT and prod read the Terraform-managed cache in
+  # `hmcts/deed-poll-infra` instead, which is why this is `enabled: false` in values.yaml and switched on
+  # only by values.preview.template.yaml.
+  - name: redis
+    version: 27.0.18
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled

@@ -1,0 +1,47 @@
+# The defaults every environment shares, and the one values file `helmInstall` requires to exist.
+# Per-environment overrides are appended on top: values.aat.template.yaml and
+# values.preview.template.yaml.
+#
+# Everything here also has to survive the deploy, which is why neither override is named
+# `values.template.yaml`: `helmInstall` renders that name *over* this file (`envsubst < values.template.yaml
+# > values.yaml`) instead of appending it. `src/app.ts` reads this same file out of the image for its secret
+# alias map, so the vault list below has to be the one Helm mounts from.
+# Off everywhere except preview, which turns it on and sets the standalone / no-auth / no-persistence
+# shape in one place — `values.preview.template.yaml`. Repeating that shape here would configure a subchart
+# that is not installed.
+redis:
+  enabled: false
+
+nodejs:
+  applicationPort: 3000
+  # The Flux federated credential binds `system:serviceaccount:deed-poll:deed-poll` to the
+  # `deed-poll-{env}-mi` identity created by `hmcts/deed-poll-infra`.
+  useWorkloadIdentity: true
+  saEnabled: true
+  ingressHost: deed-poll-web.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/deed-poll/web:latest'
+  # `src/app.ts` mounts `healthcheck()`, which answers on these two paths.
+  readinessPath: /health/readiness
+  livenessPath: /health/liveness
+  # Exactly three secrets, and the names are fixed by `hmcts/deed-poll-infra`'s `key-vault.tf`,
+  # `redis.tf` and `app-insights.tf` — do not rename them here. The vault is `{product}-{env}`, so the
+  # key below is the product and not a component.
+  #
+  # The database connection secret the expressjs template read is deliberately absent: this service has
+  # no database (`CLAUDE.md` decision 1), and the chart fails on a missing secret, so naming one would
+  # make deployment depend on a resource this service must not open.
+  keyVaults:
+    deed-poll:
+      secrets:
+        - name: app-insights-connection-string
+          # The application reads this spelling, so the alias stays even though the secret itself was
+          # renamed from the expressjs template's CamelCase name to the neutral one all three deed-poll
+          # services now share.
+          alias: APPLICATION_INSIGHTS_CONNECTION_STRING
+        - name: redis-url
+          alias: REDIS_URL
+        # A different secret from the sister repo's `admin-session-secret`, on purpose: two frontends
+        # sharing one signing key would make a cookie forged against the caseworker service portable to
+        # the public one.
+        - name: web-session-secret
+          alias: SESSION_SECRET

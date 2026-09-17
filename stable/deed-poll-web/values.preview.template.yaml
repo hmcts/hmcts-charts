@@ -1,0 +1,66 @@
+# `global.environment` is deliberately not set here, for the same reason `values.aat.template.yaml` gives:
+# `helmInstall` passes it with `--set`, which beats any `-f`. Setting it would be dead configuration in a
+# load-bearing place — the vault name is `{product}-{env}` and `hmcts/deed-poll-infra` never creates a
+# `deed-poll-preview`, so a value that did win would leave pods in ContainerCreating.
+global:
+  # The redis subchart below pulls a mirrored image from `hmctsprod.azurecr.io`, which bitnami's chart
+  # treats as an unrecognised registry and refuses without this.
+  security:
+    allowInsecureImages: true
+
+nodejs:
+  # Don't modify below here — `IMAGE_NAME` and `SERVICE_FQDN` come from `helmInstall`.
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    # Replaces the `redis-url` secret from the shared vault, which points at AAT's Terraform-managed
+    # cache. A preview environment gets the ephemeral subchart below instead, so that sessions in a PR
+    # cannot be read from or written to a shared cache. `{{ .Release.Name }}` is `deed-poll-web-pr-<n>`,
+    # which is what bitnami names its master service after.
+    REDIS_URL: "redis://{{ .Release.Name }}-redis-master:6379"
+    # Set here for the same reason as in `values.aat.template.yaml`: without it the payment return origin comes
+    # from a caller-supplied `X-Forwarded-Host`. A PR hostname is known at deploy time after all —
+    # `SERVICE_FQDN` is what `ingressHost` above already uses.
+    WEB_PUBLIC_URL: https://${SERVICE_FQDN}
+  # The vault list is re-declared here, without `redis-url`, and that is what makes the override above
+  # take effect: `getPropertiesVolumeSecrets` writes every mounted secret to `process.env` under its
+  # chart alias unconditionally on the mount-point path — its `omit` list is only consulted on the local
+  # Azure-vault path (`libs/cloud-native-platform/src/properties-volume/properties.ts`). So a mounted
+  # `redis-url` would overwrite the environment variable set above and point a PR at AAT's cache. Helm
+  # replaces a list rather than merging it, so this is the whole list minus one entry — keep the other
+  # two in step with `values.yaml`, which `src/deployment-chart.test.ts` asserts.
+  keyVaults:
+    deed-poll:
+      secrets:
+        - name: app-insights-connection-string
+          alias: APPLICATION_INSIGHTS_CONNECTION_STRING
+        - name: web-session-secret
+          alias: SESSION_SECRET
+
+# An ephemeral cache per preview environment: no persistence, no replica, no auth, and nothing in it
+# outlives the PR. This is also the answer to blocker 4 in `../deed-poll-admin/docs/PIPELINES.md` —
+# point whoever picks that up at this block rather than letting them re-derive it.
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+    # HDPI-8155, measured on preview by `apps/pcs/pcs-frontend`: Dynatrace node instrumentation adds ~1s
+    # per spawned process, so the chart-default 2s exec-probe budget leaves redis permanently
+    # Running-but-not-Ready (measured probe wall time under instrumentation: 3.4-4.1s). A never-Ready
+    # master is excluded from its Service endpoints, so `REDIS_URL` above refuses connections — and
+    # `getRedisClient` in `src/app.ts` is awaited by `createApp()` under a top-level `await` in
+    # `server.ts`, so the web pod CrashLoopBackOffs rather than degrading.
+    readinessProbe:
+      timeoutSeconds: 10
+      periodSeconds: 10
+    livenessProbe:
+      timeoutSeconds: 10
+  replica:
+    replicaCount: 0
+  image:
+    registry: hmctsprod.azurecr.io
+    repository: imported/bitnami/redis
