@@ -1,9 +1,60 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    opal:
+      secrets:
+        - name: bais-private-key
+          alias: BAIS_SFTP_PRIVATE_KEY
+        - name: bais-sftp-connection-host
+          alias: BAIS_SFTP_CONNECTION_HOST
+        - name: bais-sftp-connection-port
+          alias: BAIS_SFTP_CONNECTION_PORT
+        - name: bais-sftp-caps-report-username
+          alias: BAIS_SFTP_CAPS_REPORT_USERNAME
+        - name: bais-sftp-bteckoh-report-username
+          alias: BAIS_SFTP_BTECKOH_REPORT_USERNAME
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+        - name: file-handler-service-POSTGRES-HOST
+          alias: OPAL_FILE_HANDLER_DB_HOST
+        - name: file-handler-service-POSTGRES-PASS
+          alias: OPAL_FILE_HANDLER_DB_PASSWORD
+        - name: file-handler-service-POSTGRES-PORT
+          alias: OPAL_FILE_HANDLER_DB_PORT
+        - name: file-handler-service-POSTGRES-USER
+          alias: OPAL_FILE_HANDLER_DB_USERNAME
+        - name: file-handler-service-POSTGRES-DATABASE
+          alias: OPAL_FILE_HANDLER_DB_NAME
+        - name: AzureADTenantId
+          alias: AAD_TENANT_ID
+        - name: AzureADClientId
+          alias: AAD_CLIENT_ID
+        - name: AzureADClientSecret
+          alias: AAD_CLIENT_SECRET
+        - name: managed-redis-connection-string
+          alias: REDIS_CONNECTION_STRING
+        - name: opal-file-handler-service-file-store-account-name
+          alias: FILE_STORE_STORAGE_ACCOUNT_NAME
+        - name: opal-file-handler-service-file-store-blob-endpoint
+          alias: FILE_STORE_STORAGE_URL
+        - name: opal-file-handler-service-file-store-access-key
+          alias: FILE_STORE_STORAGE_KEY
+        - name: servicebus-connection-string
+          alias: SERVICEBUS_CONNECTION_STRING
+        - name: servicebus-banking-interfaces-preprocess-interface-file-maintenance-queue-name
+          alias: SERVICEBUS_INTERFACE_FILE_PREPROCESS_MAINTENANCE_QUEUE_NAME
+        - name: servicebus-banking-interfaces-preprocess-interface-file-fines-queue-name
+          alias: SERVICEBUS_INTERFACE_FILE_PREPROCESS_FINES_QUEUE_NAME
   environment:
     OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
     TESTING_SUPPORT_ENDPOINTS_ENABLED: true
+    LAUNCH_DARKLY_ENABLED: false
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
+    CAPS_REPORT_FILE_TRANSFER_JOB_ENABLED: true
+    BTECKOH_REPORT_FILE_TRANSFER_JOB_ENABLED: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
 
 functionalTest:
