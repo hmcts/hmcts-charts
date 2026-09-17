@@ -379,6 +379,10 @@ ccd:
       resources:
         requests:
           storage: 5Gi
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenDeleted: Delete
+      whenScaled: Delete
 
   logstash:
     enabled: false
