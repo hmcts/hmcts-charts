@@ -51,6 +51,26 @@ base:
           alias: DB_NAME
         - name: et-api-queue-postgres-database
           alias: QUEUE_DB_NAME
+        - name: et1-postgres-host
+          alias: ET1_DB_HOST
+        - name: et1-postgres-port
+          alias: ET1_DB_PORT
+        - name: et1-postgres-user
+          alias: ET1_DB_USERNAME
+        - name: et1-postgres-password
+          alias: ET1_DB_PASSWORD
+        - name: et1-postgres-database
+          alias: ET1_DB_NAME
+        - name: et3-postgres-host
+          alias: ET3_DB_HOST
+        - name: et3-postgres-port
+          alias: ET3_DB_PORT
+        - name: et3-postgres-user
+          alias: ET3_DB_USERNAME
+        - name: et3-postgres-password
+          alias: ET3_DB_PASSWORD
+        - name: et3-postgres-database
+          alias: ET3_DB_NAME
         - name: admin-secret-key-base
           alias: SECRET_KEY_BASE
         - name: admin-devise-secret-key
