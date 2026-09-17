@@ -1,0 +1,48 @@
+java:
+  applicationPort: 4550
+  image: 'hmctsprod.azurecr.io/deed-poll/api:latest'
+  # The host `deed-poll-admin` already expects to reach this service on — its web chart's
+  # `DEED_POLL_API_URL` spells out the same name. Cluster-internal, not a public ingress.
+  ingressHost: deed-poll-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  # Use the namespace service account federated to `deed-poll-{env}-mi`. The matching identity,
+  # federated credential and service-account annotation are owned by cnp-flux-config.
+  useWorkloadIdentity: true
+  saEnabled: true
+  # The `deed-poll-{env}` vault, created by the shared root in `hmcts/deed-poll-infra` and shared with
+  # `deed-poll-admin` and `deed-poll-web`. It must have applied before this chart can deploy: nothing
+  # enforces that ordering mechanically, so a missing secret here is a missing apply there, not a chart
+  # bug. Mounted at `/mnt/secrets/deed-poll/`, which is what `spring.config.import`'s configtree and
+  # `lib/applicationinsights.json` both read.
+  #
+  # Nothing here names an IDAM or S2S secret. Neither exists in the vault — IDAM has not replied, and
+  # S2S is out of the first apply — and a chart naming a secret the vault does not hold fails to
+  # deploy. That is the right way round, but not yet.
+  keyVaults:
+    deed-poll:
+      secrets:
+        # No alias, so it stays a file under the mount rather than becoming an environment variable:
+        # the Application Insights agent reads it through `lib/applicationinsights.json`, and the
+        # configtree import turns the same file into the `app-insights-connection-string` property.
+        - name: app-insights-connection-string
+        # Four separate variables, not `postgres-url`. That secret exists for the Node services, which
+        # want a composed URL; `application.yaml` composes its own JDBC URL from the parts. The shared
+        # root provisions both forms precisely because the two runtimes want different shapes.
+        - name: postgres-host
+          alias: DB_HOST
+        - name: postgres-port
+          alias: DB_PORT
+        - name: postgres-user
+          alias: DB_USER_NAME
+        - name: postgres-password
+          alias: DB_PASSWORD
+  environment:
+    # The one shared database for the product — `deed-poll-api` owns the `public` and `ccd` schemas,
+    # `deed-poll-admin` owns `session` in the same database. Not a secret: it is a name, and the shared
+    # root does not write one. Stated explicitly because `application.yaml` defaults it to `deedpoll`
+    # for the docker-compose database, which is a *different* name: inheriting that default would have
+    # Hibernate validate against a database that does not exist.
+    DB_NAME: deed-poll
+    # Azure Postgres flexible server refuses a cleartext connection, and the JDBC driver does not
+    # negotiate TLS by default, so without this every connection fails at startup. `gssEncMode=disable`
+    # stops the driver attempting GSS first, which Azure answers slowly rather than refusing.
+    DB_OPTIONS: "?sslmode=require&gssEncMode=disable"
