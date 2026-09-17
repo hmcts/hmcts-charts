@@ -41,3 +41,4 @@ nodejs:
       secrets:        
         - name: activity-redis-password
         - name: app-insights-connection-string-at
+        - name: rpx-case-activity-api-web-pubsub-primary-connection-string
