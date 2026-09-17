@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/pt-api:latest
   ingressHost: 
+  environment:
+    CASE_TYPE_SUFFIX: "staging"
