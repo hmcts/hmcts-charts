@@ -3,7 +3,10 @@ appVersion: "1.0"
 description: Collects and grades evidence of software delivery practice from GitHub
 name: dtsse-github-metrics
 home: https://github.com/hmcts/dtsse-github-metrics
-version: 0.0.10
+# BUMP THIS IN ANY COMMIT THAT TOUCHES `values.yaml`. Flux resolves this release's chart by version string, so
+# a values change published under a version AAT already has is silently discarded. See the note at the top of
+# `values.yaml` for the whole path from this directory to a running CronJob.
+version: 0.0.11
 dependencies:
   - name: nodejs
     version: 3.2.1

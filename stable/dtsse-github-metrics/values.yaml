@@ -1,3 +1,18 @@
+# THIS FILE IS WHAT AAT RUNS, AND A CHANGE HERE ONLY ARRIVES IF `Chart.yaml`'s `version` IS BUMPED WITH IT.
+#
+# `hmcts-charts/stable/dtsse-github-metrics` is a machine-published mirror of this directory: the CNP pipeline's
+# `Publish Helm chart` stage rsyncs `charts/dtsse-github-metrics/` over it with `--delete-after` on every master
+# build. So editing this file IS how the deployed values change — there is no second copy to keep in step, and
+# nothing here is limited to previews.
+#
+# The trap is the version, not the file. Flux's `HelmChart` for this release uses `reconcileStrategy:
+# ChartVersion`, so source-controller repackages only when the version STRING changes. A new revision carrying
+# the version already released is ignored: the edit lands in `hmcts-charts`, the pipeline goes green, and AAT
+# keeps serving the old values with nothing anywhere reporting a problem. Nothing bumps the version for you —
+# the publishing step reads it out of `Chart.yaml` and passes it through, and the inherited Renovate preset's
+# helm handling fires on chart DEPENDENCY updates, not on a values edit.
+#
+# So: every values change is a two-line change. Bump `version:` in `Chart.yaml` in the same commit.
 nodejs:
   applicationPort: 3000
   aadIdentityName: dtsse

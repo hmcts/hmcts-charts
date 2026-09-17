@@ -7,8 +7,8 @@ nodejs:
 
 # Off for the same reason as in the preview values, and it matters more here. This file is applied to the
 # pipeline's throwaway `-staging` release, which every master build installs into the same `dtsse` namespace
-# as the persistent one — so a CronJob left enabled is a SECOND `collect` and `collect-org` on the same 15:00
-# and 14:00 schedules. Nothing in a build asserts that any figure is non-zero, so the duplicate buys nothing,
+# as the persistent one — so a CronJob left enabled is a SECOND `collect` and `collect-org` on the same 14:00
+# and 13:30 schedules. Nothing in a build asserts that any figure is non-zero, so the duplicate buys nothing,
 # and it would spend the App's hourly quota on a release that is deleted at the end of the build. Worse than
 # the preview case, because these credentials and this database are the real ones: whether the throwaway or
 # the persistent release ran the collection would be settled by the collector's advisory lock rather than by
