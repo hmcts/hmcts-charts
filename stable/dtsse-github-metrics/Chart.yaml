@@ -6,7 +6,7 @@ home: https://github.com/hmcts/dtsse-github-metrics
 # BUMP THIS IN ANY COMMIT THAT TOUCHES `values.yaml`. Flux resolves this release's chart by version string, so
 # a values change published under a version AAT already has is silently discarded. See the note at the top of
 # `values.yaml` for the whole path from this directory to a running CronJob.
-version: 0.0.11
+version: 0.0.13
 dependencies:
   - name: nodejs
     version: 3.2.1
@@ -30,6 +30,25 @@ dependencies:
     version: 2.2.1
     repository: "oci://hmctsprod.azurecr.io/helm"
     condition: orgJob.enabled
+  # A THIRD CronJob for the SonarCloud map, on a WEEKLY schedule the other two have no reason to share. It is
+  # separated on cost rather than on completeness: it spends one commit search per project against a quota of 30 a
+  # minute, which is 10 to 30 minutes, and it only has an answer to change when SonarCloud's project list does. As
+  # a step inside `collect` it would lengthen the daily walk by a third for a map that had not moved.
+  - name: job
+    alias: sonarJob
+    version: 2.2.1
+    repository: "oci://hmctsprod.azurecr.io/helm"
+    condition: sonarJob.enabled
+  # The CVE collection is a THIRD CronJob for the same two reasons the organisation graph is a second one, and
+  # for a third of its own. Its unit of failure is a Cosmos DATABASE rather than a repository — one refusing
+  # leaves every repository routed to it unmeasured, which must not read as a complete run — it finishes in
+  # minutes and has no business queueing behind a six-hour repository walk, and it is the only job that holds
+  # the Cosmos key. Keeping it separate is what keeps that credential off the two jobs that do not need it.
+  - name: job
+    alias: cveJob
+    version: 2.2.1
+    repository: "oci://hmctsprod.azurecr.io/helm"
+    condition: cveJob.enabled
   - name: postgresql
     version: 1.1.1
     repository: "oci://hmctsprod.azurecr.io/helm"

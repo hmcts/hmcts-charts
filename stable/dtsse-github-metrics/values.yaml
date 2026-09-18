@@ -165,6 +165,115 @@ orgJob:
     METRICS_CONFIG: /app/metrics.yaml
     NODE_OPTIONS: --max-old-space-size=3072
 
+sonarJob:
+  enabled: true
+  image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  aadIdentityName: dtsse
+  # Smaller than the two collectors, and deliberately: this run holds 315 SonarCloud projects and one small table,
+  # where `collect` deserialises tens of MB of jsonb. The heap ceiling in `environment` below still has to sit
+  # inside this limit — change one, change the other.
+  memoryRequests: 1Gi
+  memoryLimits: 2Gi
+  command: ["node"]
+  args: ["dist/cli/run.js", "map-sonar", "--config", "/app/metrics.yaml", "--tolerate-partial"]
+  # WEEKLY, AND ON A MONDAY MORNING. Three decisions, and each is about what this run costs rather than about
+  # tidiness.
+  #
+  # WEEKLY because the answer only changes when SonarCloud's project list does. A resolved project is skipped
+  # until something is analysed after the row was written, so a daily run would re-read the listing, skip almost
+  # everything and buy nothing — while a project created this week is one week late at worst, and `collect` reads
+  # the map every day either way.
+  #
+  # NOT INSIDE `collect` OR `collect-org` for the reason `map-sonar` is a command of its own: one commit search
+  # per unanswered project against a quota of 30 a minute documented and 10 observed is 10 to 30 minutes for this
+  # organisation. Adding that to the daily walk would lengthen it by a third for a map that had not changed, and
+  # it would couple two failures — a spent search quota would land inside the run that collects the estate.
+  #
+  # 09:00 UTC, four and a half hours ahead of `collect-org` at 13:30, because all three take the same collector
+  # lock: a run still going when the next one starts makes the next one stand down. Four and a half hours is an
+  # order of magnitude more than the longest resolve, and it keeps this inside the same in-hours window the other
+  # two jobs run in rather than trusting an out-of-hours cluster to be up.
+  schedule: "0 9 * * 1"
+  concurrencyPolicy: Forbid
+  backoffLimit: 1
+  # One hour: twice the longest measured resolve. A run still going after that has found something the estimate
+  # did not, and the rows it already wrote are kept — every answer is stored as it is arrived at.
+cveJob:
+  enabled: true
+  image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  aadIdentityName: dtsse
+  # Smaller than the two GitHub jobs, and MEASURED rather than copied. The report body cannot be projected away
+  # — it is what the findings are parsed out of — so what bounds this job is one page plus the fold: 362 scans
+  # and 29,897 findings across the whole estate. A first run against both databases peaked at 540 MiB of RSS.
+  #
+  # 2Gi AND NOT 1Gi, on that measurement rather than on the number looking tidy. 540 MiB observed leaves under
+  # two times' headroom inside 1Gi, on a job whose working set grows with the estate's findings — and the failure
+  # mode is the one this chart has been bitten by twice: V8 declining to collect until the kernel has already
+  # killed the container. The heap ceiling in `environment` below sits inside this limit; change one, change the
+  # other.
+  memoryRequests: 1Gi
+  memoryLimits: 2Gi
+  # THE SAME FIGURES AGAIN UNDER `dev*` KEYS, for the reason `nodejs` records at length: a release installed
+  # with `global.devMode` reads these and ignores the pair above outright, so a chart default of 512Mi would
+  # hold a process told to grow its heap past it and the kernel would kill it. Keep all four in step.
+  devmemoryRequests: 1Gi
+  devmemoryLimits: 2Gi
+  command: ["node"]
+  args: ["dist/cli/run.js", "collect-cve", "--config", "/app/metrics.yaml", "--tolerate-partial"]
+  # 13:00 UTC, an hour ahead of `collect` and half an hour ahead of `collect-org`. Ordering rather than
+  # coincidence, on `orgJob`'s precedent: a day's rows should be read against the same day's figures, and each
+  # of the three stamps the collection, so the last one to finish is what a reader's cache is invalidated by.
+  schedule: "0 13 * * *"
+  concurrencyPolicy: Forbid
+  backoffLimit: 1
+  # An hour, sized for the FIRST run and not the steady state. The first run has no watermark, so it reads all
+  # 171,407 `master` documents in both databases — measured at roughly 14 minutes end to end, and the report
+  # bodies are the whole of that time rather than the query. Every run after it reads one day's reports and
+  # finishes in seconds. An hour is four times the measured first run because measuring it from a developer's
+  # machine is not the same as measuring it from a pod, and because the cost is a deadline nobody hits.
+  activeDeadlineSeconds: 3600
+  ttlSecondsAfterFinished: 86400
+  keyVaults:
+    dtsse:
+      secrets:
+        # The GitHub App credentials, because the commit search that resolves a project is a GitHub call. There is
+        # NO SonarCloud secret here: the reads this makes — the project listing, a project's analyses and its
+        # measures — all answer anonymously, and the `dtsse` vault holds no SonarCloud token. `sonarToken` in
+        # `sonar/client.ts` picks one up from `SONAR_TOKEN` if a deployment ever adds one, which would widen the
+        # answers to the organisation's private projects and change nothing else.
+        - name: github-app-id
+          alias: GH_APP_ID
+        - name: github-app-installation-id
+          alias: GH_APP_INSTALLATION_ID
+        - name: github-app-private-key
+          alias: GH_APP_PRIVATE_KEY
+        # THE ONLY PLACE IN THIS CHART THESE TWO APPEAR, and deliberately not under `nodejs.keyVaults`. The web
+        # pod contacts no external service, which is a property worth keeping: it reads Postgres and nothing
+        # else, so a key that grants read access to a production Cosmos account has no business in it. The two
+        # GitHub jobs do not need it either.
+        #
+        # The key is READ-ONLY. It is also account-wide, which is wider than this needs — a Cosmos data-plane
+        # RBAC role on the `dtsse` workload identity would be tighter and remove the stored secret, but it needs
+        # a role assignment on a production account and so is a platform ask rather than a change here.
+        - name: cve-cosmos-account
+          alias: CVE_COSMOS_ACCOUNT
+        - name: cve-cosmos-readonly-key
+          alias: CVE_COSMOS_KEY
+        - name: github-metrics-postgres-host
+          alias: POSTGRES_HOST
+        - name: github-metrics-postgres-port
+          alias: POSTGRES_PORT
+        - name: github-metrics-postgres-user
+          alias: POSTGRES_USER
+        - name: github-metrics-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: github-metrics-postgres-database
+          alias: POSTGRES_DATABASE
+  environment:
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    METRICS_CONFIG: /app/metrics.yaml
+    NODE_OPTIONS: --max-old-space-size=1536
+
 postgresql:
   enabled: false
 

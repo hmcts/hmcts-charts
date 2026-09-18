@@ -19,6 +19,13 @@ job:
 orgJob:
   enabled: false
 
+# Off for the same reason, and it matters as much: a second `map-sonar` on the same weekly schedule would spend the
+# App's commit-search quota — 10 a minute, the scarcest thing this deployment consumes — resolving the same 315
+# projects the persistent release is resolving, and the collector's advisory lock would decide which of the two
+# actually did it.
+sonarJob:
+  enabled: false
+
 # The real collection belongs to the persistent AAT release flux deploys, on the real schedule, against the
 # Postgres the shared infrastructure provisions and the GitHub App credentials the dtsse vault holds.
 # Everything that release needs is in charts/values.yaml; this file exists to carry the pipeline's own image

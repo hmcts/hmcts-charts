@@ -40,6 +40,12 @@ job:
 orgJob:
   enabled: false
 
+# Off for the same reason, and this one spends the scarcest quota of all: resolving 315 SonarCloud projects is one
+# commit search each against 10 a minute, and a preview that did it would leave the weekly run for the real
+# deployment with nothing to spend.
+sonarJob:
+  enabled: false
+
 postgresql:
   enabled: true
   flexibleserver: dtsse-preview
