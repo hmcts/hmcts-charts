@@ -3,11 +3,11 @@ appVersion: "1.0"
 description: A Helm chart for opal-external-api App
 name: opal-external-api
 home: https://github.com/hmcts/opal-external-api
-version: 0.0.23
+version: 0.0.24
 maintainers:
   - name: HMCTS opal team
 dependencies:
   - name: java
-    version: 5.3.2
+    version: 6.1.1
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: java.enabled
