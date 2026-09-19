@@ -1,12 +1,12 @@
 name: recipes-backend
 apiVersion: v2
 home: https://github.com/hmcts/recipes-backend
-version: 0.1.5
+version: 0.1.6
 description: HMCTS recipes backend service (test application)
 maintainers:
   - name: HMCTS CNP Team
     email: cnpteam@hmcts.net
 dependencies:
   - name: java
-    version: 5.3.0
+    version: 5.3.2
     repository: oci://hmctsprod.azurecr.io/helm
