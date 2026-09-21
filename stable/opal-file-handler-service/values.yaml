@@ -355,8 +355,8 @@ bt-eckoh-transfer:
           alias: BAIS_SFTP_CONNECTION_HOST
         - name: bais-sftp-connection-port
           alias: BAIS_SFTP_CONNECTION_PORT
-        - name: bais-sftp-dwp-username
-          alias: BAIS_SFTP_DWP_USERNAME
+        - name: bais-sftp-bteckoh-username
+          alias: BAIS_SFTP_BTECKOH_USERNAME
   environment:
     RUN_DB_MIGRATION_ON_STARTUP: false
     OPAL_FRONTEND_URL: https://opal-frontend.{{ .Values.global.environment }}.apps.hmcts.net
