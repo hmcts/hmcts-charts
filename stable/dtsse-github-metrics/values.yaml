@@ -198,6 +198,37 @@ sonarJob:
   backoffLimit: 1
   # One hour: twice the longest measured resolve. A run still going after that has found something the estimate
   # did not, and the rows it already wrote are kept — every answer is stored as it is arrived at.
+  activeDeadlineSeconds: 3600
+  ttlSecondsAfterFinished: 86400
+  keyVaults:
+    dtsse:
+      secrets:
+        # The GitHub App credentials, because the commit search that resolves a project is a GitHub call. There is
+        # NO SonarCloud secret here: the reads this makes — the project listing, a project's analyses and its
+        # measures — all answer anonymously, and the `dtsse` vault holds no SonarCloud token. `sonarToken` in
+        # `sonar/client.ts` picks one up from `SONAR_TOKEN` if a deployment ever adds one, which would widen the
+        # answers to the organisation's private projects and change nothing else.
+        - name: github-app-id
+          alias: GH_APP_ID
+        - name: github-app-installation-id
+          alias: GH_APP_INSTALLATION_ID
+        - name: github-app-private-key
+          alias: GH_APP_PRIVATE_KEY
+        - name: github-metrics-postgres-host
+          alias: POSTGRES_HOST
+        - name: github-metrics-postgres-port
+          alias: POSTGRES_PORT
+        - name: github-metrics-postgres-user
+          alias: POSTGRES_USER
+        - name: github-metrics-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: github-metrics-postgres-database
+          alias: POSTGRES_DATABASE
+  environment:
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    METRICS_CONFIG: /app/metrics.yaml
+    NODE_OPTIONS: --max-old-space-size=1536
+
 cveJob:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
