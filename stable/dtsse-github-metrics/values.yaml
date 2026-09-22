@@ -305,6 +305,77 @@ cveJob:
     METRICS_CONFIG: /app/metrics.yaml
     NODE_OPTIONS: --max-old-space-size=1536
 
+alertJob:
+  enabled: true
+  image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  aadIdentityName: dtsse
+  # MEASURED, on `cveJob`'s precedent rather than copied from it. What bounds this run is the largest family's walk
+  # held in memory at once: 29,514 open Dependabot alerts, each projected to a dozen fields as the page arrives
+  # rather than kept whole, plus the 5,600-odd scan rows the cohort produces. The records are folded on arrival for
+  # the reason `cve/collect.ts` records — a raw Dependabot record carries a 60-field repository block, so buffering
+  # the responses instead of the projections is two orders of magnitude more.
+  #
+  # The heap ceiling in `environment` below sits inside this limit; change one, change the other.
+  memoryRequests: 1Gi
+  memoryLimits: 2Gi
+  # THE SAME FIGURES AGAIN UNDER `dev*` KEYS, for the reason `nodejs` and `cveJob` both record at length: a release
+  # installed with `global.devMode` — which the CNP pipeline sets on the `-staging` release — reads these and ignores
+  # the pair above outright. A chart default of 512Mi would hold a process told to grow its heap past it, and the
+  # kernel would kill it. Keep all four in step.
+  devmemoryRequests: 1Gi
+  devmemoryLimits: 2Gi
+  command: ["node"]
+  args: ["dist/cli/run.js", "collect-alerts", "--config", "/app/metrics.yaml", "--tolerate-partial"]
+  # 11:00 UTC DAILY, AND AHEAD OF THE OTHER THREE RATHER THAN AFTER THEM. Three decisions:
+  #
+  # DAILY because an alert opening or being resolved is exactly what a reader wants to see, and the walk is 317
+  # requests — a fiftieth of one hour's installation quota. There is nothing to save by running it weekly.
+  #
+  # AHEAD OF `collect`, WHICH IT READS THE OUTPUT OF, and that is deliberate rather than the wrong way round. It
+  # reads the stored alert COUNTS to tell a family that is switched off from one nobody could read, so it consumes
+  # the previous day's `collect` — and whether a family is enabled is a far slower-moving fact than how many alerts
+  # it has. Running after `collect` instead would mean either an out-of-hours schedule, on a cluster the note in
+  # `sonarJob` warns against trusting to be up, or a start time inside `collect`'s six-hour deadline, where the
+  # collector lock would make this stand down on exactly the days the walk ran long.
+  #
+  # 11:00 specifically: two hours after `sonarJob`'s Monday 09:00, which takes the same lock and finishes in 10 to
+  # 30 minutes, and two hours ahead of `cveJob` at 13:00, `collect-org` at 13:30 and `collect` at 14:00. This run
+  # was measured at about five minutes, so every gap is an order of magnitude more than it needs.
+  schedule: "0 11 * * *"
+  concurrencyPolicy: Forbid
+  backoffLimit: 1
+  # Half an hour, six times the measured five minutes. Sized on the wall clock rather than the quota, as `orgJob`
+  # records: fitting the budget is not the same as fitting the clock, and a run still going after thirty minutes has
+  # found something the measurement did not. The rows already written are kept — each scan commits on its own.
+  activeDeadlineSeconds: 1800
+  ttlSecondsAfterFinished: 86400
+  keyVaults:
+    dtsse:
+      secrets:
+        # The GitHub App credentials, because all three alert families are refused outright to a personal access
+        # token — `github/credentials.ts` measured that across the estate. There is NO Cosmos key here: this job
+        # contacts GitHub and Postgres and nothing else, and `cveJob` is the only place that credential belongs.
+        - name: github-app-id
+          alias: GH_APP_ID
+        - name: github-app-installation-id
+          alias: GH_APP_INSTALLATION_ID
+        - name: github-app-private-key
+          alias: GH_APP_PRIVATE_KEY
+        - name: github-metrics-postgres-host
+          alias: POSTGRES_HOST
+        - name: github-metrics-postgres-port
+          alias: POSTGRES_PORT
+        - name: github-metrics-postgres-user
+          alias: POSTGRES_USER
+        - name: github-metrics-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: github-metrics-postgres-database
+          alias: POSTGRES_DATABASE
+  environment:
+    NODE_CONFIG_ENV: "{{ .Values.global.environment }}"
+    METRICS_CONFIG: /app/metrics.yaml
+    NODE_OPTIONS: --max-old-space-size=1536
+
 postgresql:
   enabled: false
 

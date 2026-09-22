@@ -6,7 +6,7 @@ home: https://github.com/hmcts/dtsse-github-metrics
 # BUMP THIS IN ANY COMMIT THAT TOUCHES `values.yaml`. Flux resolves this release's chart by version string, so
 # a values change published under a version AAT already has is silently discarded. See the note at the top of
 # `values.yaml` for the whole path from this directory to a running CronJob.
-version: 0.0.14
+version: 0.0.15
 dependencies:
   - name: nodejs
     version: 3.2.1
@@ -49,6 +49,17 @@ dependencies:
     version: 2.2.1
     repository: "oci://hmctsprod.azurecr.io/helm"
     condition: cveJob.enabled
+  # The individual security alerts are a CronJob of their own on the same two reasons, plus the one that decides it:
+  # `collect` walks the secret-scanning alerts with `state=open`, and that response grades the committed-secrets
+  # assurance criterion. This walk needs the RESOLVED alerts too — `resolution` exists nowhere else — and widening
+  # `collect`'s walk to get them would take `secretScanning.open` from 18 to 146 across the estate, moving a figure a
+  # criterion is graded on. Two jobs with two state filters cannot do that to each other. Its unit of failure is the
+  # organisation rather than a repository, and five minutes of work has no business queueing behind a six-hour walk.
+  - name: job
+    alias: alertJob
+    version: 2.2.1
+    repository: "oci://hmctsprod.azurecr.io/helm"
+    condition: alertJob.enabled
   - name: postgresql
     version: 1.1.1
     repository: "oci://hmctsprod.azurecr.io/helm"
