@@ -1,0 +1,56 @@
+# AAT overrides, applied on top of `values.yaml`.
+# The Key Vault, Redis and App Insights this chart reads are managed by Terraform in
+# `hmcts/deed-poll-infra`, not by Helm, and that root must apply before this chart can deploy.
+#
+# The name is load-bearing, and `values.template.yaml` — which this file replaced — is the wrong one.
+# `helmInstall` in `hmcts/cnp-jenkins-library` does `envsubst < values.template.yaml > values.yaml`: it
+# renders that file *over* `values.yaml` rather than layering on top of it, so a `values.template.yaml`
+# holding only the pipeline-owned values would delete the vault list, the two identity switches
+# (`useWorkloadIdentity` and `saEnabled` — a pod that silently loses those reverts to no identity), `applicationPort`,
+# both probe paths, every `IDAM_*` variable and `redis.enabled: false` from every non-preview deploy. A
+# `values..template.yaml` renders to its own `values..yaml` and is *appended* to
+# helm's `-f` list, which is what an override file has to do. `pcs-frontend` and `deed-poll-web` both have
+# only this form. `src/deployment-chart.test.ts` asserts no `values.template.yaml` comes back.
+#
+# `global.environment` is deliberately not set here. `helmInstall` passes it with `--set`, which beats any
+# `-f` file, and these templates are only run through `envsubst` — which expands `` and `` and
+# nothing else, so a `${VAR:-default}` would reach Helm as that literal string and the vault name would
+# become `deed-poll-${ENVIRONMENT:-aat}`. No chart in the estate sets it in a values file.
+nodejs:
+  # Don't modify below here
+  #
+  # `IMAGE_NAME` and `SERVICE_FQDN` are exported by `helmInstall`, so both are the pipeline's to decide
+  # rather than ours. `SERVICE_FQDN` comes from `azPrivateDns.getHostName(aksServiceName)` where
+  # `aksServiceName` is `--`, so in AAT it resolves to
+  # **`deed-poll-admin-staging.aat.platform.hmcts.net`** — no doubled segment and no `-web` suffix. The
+  # hand-rolled host this replaced interpolated `Deed Poll` and ``, neither of which
+  # `helmInstall` exports to a template; see `values.yaml` for the full account.
+  image: https://hmcts.azurecr.io/hmcts/deed-poll-admin:latest
+  ingressHost: 
+  environment:
+    # The same variable `ingressHost` above uses, so the two cannot drift — which is the whole point, since
+    # IDAM refuses a `redirect_uri` it does not hold exactly and refuses it on its own page after a
+    # successful login, where no request reaches this app.
+    #
+    # **This host must be registered in `hmcts/idam-access-config`.** `hmcts/idam-access-config#993` states
+    # it — `deed-poll-admin-staging.aat.platform.hmcts.net`, in `apps/deed-poll/aat/services.yaml` — as of
+    # 2026-09-10, when the old hand-rolled `deed-poll-deed-poll-admin-staging-web.aat…` it previously carried
+    # was corrected on the PR branch. **#993 is still open and unmerged**, so nothing is registered yet and a
+    # deploy that reaches sign-in still fails; and once it merges, changing this host needs a second PR
+    # there. If this line changes, change that file in the same breath. See
+    # `.business_context/IDAM_REGISTRATION_REQUEST.md`.
+    IDAM_REDIRECT_URI: https:///oauth2/callback
+    # The dev persona switcher, on in AAT and off in `values.yaml`. This is the deliberate opt-in the gate is
+    # built around: nothing enables it by not being production, so a demo or prod deploy inheriting the base
+    # gets no switcher even by accident. `ENVIRONMENT_NAME` is not restated here — `values.yaml` resolves it
+    # from `global.environment`, which `helmInstall` passes with `--set`, and `aat` is in
+    # `PERSONA_SWITCHER_ENVIRONMENTS` (`src/auth/persona-switcher.ts`), which is the second half of the gate.
+    #
+    # It is a privilege-escalation mechanism in a shared environment, and that is Steve's call
+    # (2026-09-19) for a test environment with no live data — see `docs/plans/completed/dev-persona-switcher.md`,
+    # "Security posture".
+    PERSONA_SWITCHER_ENABLED: "true"
+    # `DEED_POLL_API_URL` is deliberately not restated here, unlike the redirect URI above. `values.yaml`
+    # already resolves it per environment from `global.environment`, and api's host is api's to decide — a
+    # second spelling of it in this file is the drift the comment above describes, without the constraint
+    # that forces it.

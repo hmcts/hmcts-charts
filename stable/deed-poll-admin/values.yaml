@@ -1,0 +1,133 @@
+# The defaults every environment shares, and the one values file `helmInstall` requires to exist — its
+# absence was blocker 1 in `docs/PIPELINES.md`. Per-environment overrides are appended on top:
+# `values.aat.template.yaml` and `values.preview.template.yaml`.
+#
+# Everything here also has to survive the deploy, which is why neither override is named
+# `values.template.yaml`: `helmInstall` renders that name *over* this file
+# (`envsubst < values.template.yaml > values.yaml`) rather than appending it, so anything here the template
+# did not restate would be silently lost. `src/secrets.ts` reads this same file out of the image to build
+# its secret alias map, so the vault list below has to be the one Helm mounts from.
+
+# Off everywhere except preview, which turns it on and sets the standalone / no-auth / no-persistence shape
+# in one place — `values.preview.template.yaml`. Repeating that shape here would configure a subchart that
+# is not installed. See `Chart.yaml` for why preview gets its own cache rather than sharing AAT's.
+redis:
+  enabled: false
+
+nodejs:
+  applicationPort: 3000
+  # Workload identity, not aad-pod-identity. This replaces `aadIdentityName: deed-poll`, which put an
+  # `aadpodidbinding` label on the pod and sent the CSI driver to NMI — where it got a 404, because nothing
+  # creates an `AzureIdentityBinding` for this namespace. That is what left the first AAT deploy stuck in
+  # `Init:0/1` until helm timed out.
+  #
+  # `useWorkloadIdentity` adds `azure.workload.identity/use: "true"` to the pod (chart-library
+  # `templates/v2/_podtemplate.tpl`) and suppresses the legacy label, which `_labels.tpl` guards with
+  # `and aadIdentityName (not useWorkloadIdentity)`. So `aadIdentityName` is removed rather than left
+  # alongside: with this set it would be inert, and keeping it would imply the old path still applies.
+  useWorkloadIdentity: true
+  # Required alongside the above, and the easiest half to miss. Without it the pod gets **no**
+  # `serviceAccountName` and runs as `default`. The federated credential in `cnp-flux-config` binds the
+  # subject `system:serviceaccount:deed-poll:deed-poll`, and `saEnabled` is what makes the pod use the
+  # namespace-named account that subject refers to — `_podtemplate.tpl` renders
+  # `serviceAccountName: {{ .Release.Namespace }}`. Annotating the service account without this would
+  # federate an identity no pod ever presents.
+  saEnabled: true
+  # The stable per-environment service host, matching `deed-poll-web`'s shape. AAT and preview override it
+  # with `${SERVICE_FQDN}`, which is the host the pipeline actually registers in DNS; this value is what
+  # demo, ithc, perftest and prod get.
+  #
+  # It is deliberately not the host this chart carried before plan 03 task 4, which was
+  # `${TEAM_NAME}-{{ .Release.Name }}-web.${ENVIRONMENT}.platform.hmcts.net`. Neither variable in that means
+  # what it looks like: `helmInstall` exports exactly `NAMESPACE`, `SERVICE_NAME`, `IMAGE_NAME`,
+  # `SERVICE_FQDN` and `INGRESS_IP`, so `ENVIRONMENT` expanded to the empty string and left a doubled dot,
+  # and `TEAM_NAME` is `TeamConfig.getName(product)` — a team *display* name looked up in
+  # `cnp-jenkins-config/team-config.yml` (pcs's is `"Possession Claim Service"`, spaces included), which
+  # returns the constant `pleaseTagMe` for a product that file does not list. `deed-poll` is not listed. The
+  # trailing `-web` named a subchart this chart no longer has.
+  ingressHost: deed-poll-admin.{{ .Values.global.environment }}.platform.hmcts.net
+  image: 'hmctsprod.azurecr.io/deed-poll/admin:latest'
+  # `src/app.ts` mounts `healthcheck()`, which answers on these two paths.
+  readinessPath: /health/readiness
+  livenessPath: /health/liveness
+  environment:
+    # Where `deed-poll-api` is. Every case, note, witness and document this app renders comes from it —
+    # `libs/deed-poll/src/api/deed-poll-api.ts` reads this variable and falls back to
+    # `http://localhost:3200`, which is the in-repo mock. That default is right for `yarn dev` and wrong for
+    # every deployed environment, so this must be set wherever the app is deployed rather than left to the
+    # adapter.
+    #
+    # The CNP internal hostname, not an ingress: api is `charts/deed-poll-api` in `hmcts/deed-poll-api` on
+    # the standard `java` base chart, so it answers on
+    # `deed-poll-api-{env}.service.core-compute-{env}.internal`, cluster-internal and cleartext. **api is
+    # not deployed yet** — its own `docs/plans/jenkins-pipeline-cutover.md` is what makes this host exist —
+    # so until it is, a deployed pod's readiness probe reports DOWN. That is the intended failure: see
+    # `docs/DEPLOYMENT.md`, "deed-poll-api".
+    DEED_POLL_API_URL: http://deed-poll-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    IDAM_ISSUER_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_CLIENT_ID: deed-poll-admin
+    IDAM_SCOPE: openid profile roles offline_access
+    # MUST be `ingressHost` above with `/oauth2/callback` appended, and MUST be registered with IDAM
+    # verbatim — IDAM refuses a `redirect_uri` that does not match a registered one exactly, and the refusal
+    # renders on IDAM's own page *after* a successful login, so no request reaches this app and nothing here
+    # fails. A mismatch therefore breaks login in one environment and is invisible everywhere else.
+    # `assertIdamSettings` refuses to start if it is missing or still points at localhost, which catches the
+    # unset case but not a wrong host.
+    #
+    # It is set here rather than left to the subchart default it used to have, because the value and the
+    # `ingressHost` it has to equal are now in the same file: the old arrangement put the host in the root
+    # template and the redirect URI in the subchart, so the two drifted and the subchart's value applied
+    # nowhere it was deployed. Both overrides below restate the pair together for the same reason.
+    IDAM_REDIRECT_URI: https://deed-poll-admin.{{ .Values.global.environment }}.platform.hmcts.net/oauth2/callback
+    # Which environment this pod is, for the app rather than for Helm. **`NODE_ENV` cannot answer this**:
+    # `package.json`'s `start` is `NODE_ENV=production node dist/server.js`, so every deployed pod — aat and
+    # preview included — runs as `NODE_ENV=production`. Anything that has to differ between aat and prod has
+    # to read this instead. `src/auth/persona-switcher.ts` is the first such thing.
+    #
+    # Named `ENVIRONMENT_NAME` and not `ENVIRONMENT` deliberately: the per-environment templates are run
+    # through `envsubst`, which would expand a bare `${ENVIRONMENT}` to the empty string — see the
+    # `ingressHost` comment above for what that cost last time. This is a Helm value, resolved here and
+    # nowhere else.
+    ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
+    # The dev persona switcher, which signs a tester in as another persona's real IDAM user so the three
+    # personas can be exercised without logging out. **Off here, and this file is what a future production
+    # deploy inherits** — the aat and preview templates turn it on explicitly, and nothing turns it on by
+    # being merely "not production". It is a privilege-escalation mechanism by design, so its gate is an
+    # allowlist at both ends: this flag and `PERSONA_SWITCHER_ENVIRONMENTS` in
+    # `src/auth/persona-switcher.ts`, which refuses an environment name it does not recognise even with this
+    # set. `src/deployment-chart.test.ts` fails if this file ever enables it.
+    PERSONA_SWITCHER_ENABLED: "false"
+  # Exactly four secrets, and the names are fixed by `hmcts/deed-poll-infra`'s `key-vault.tf`, `redis.tf`
+  # and `app-insights.tf` — do not rename them here. The vault is `{product}-{env}`, so the key below is the
+  # product and not a component.
+  #
+  # **No `postgres-url` and no database credential of any kind.** The data access layer went to
+  # `deed-poll-api` (`docs/plans/completed/02-dal-cutover-to-api.md`), so there is no database for this app to hold a
+  # connection string to — and the chart fails on a missing secret, so naming one would make deployment
+  # depend on a resource this app must not open. There is no S2S credential either: api authenticates a
+  # forwarded IDAM access token and nothing else, so the caseworker's own token in the session is the whole
+  # credential. `docs/DEPLOYMENT.md` records why.
+  keyVaults:
+    deed-poll:
+      secrets:
+        - name: app-insights-connection-string
+          alias: APPLICATION_INSIGHTS_CONNECTION_STRING
+        # Where the session store lives. Written by the shared root in `hmcts/deed-poll-infra`, which
+        # provisions one Redis for the product. Preview drops this entry and sets `REDIS_URL` from its own
+        # ephemeral subchart instead — see `values.preview.template.yaml`.
+        - name: redis-url
+          alias: REDIS_URL
+        # The confidential client's secret, from IDAM's reply to
+        # `.business_context/IDAM_REGISTRATION_REQUEST.md`. Until that arrives there is no value to put in
+        # the vault, so this cannot deploy yet — deliberately, since the alternative is a client that
+        # silently cannot complete a code exchange.
+        - name: admin-idam-client-secret
+          alias: IDAM_CLIENT_SECRET
+        # Signs the session cookie, and the session is what asserts a user is signed in and which roles
+        # they hold. `config/default.json` carries a placeholder for local use and `assertSessionSecret`
+        # refuses to start on it outside development and test — a known signing key means anyone can mint a
+        # cookie claiming `caseworker-deedpoll-admin` and never touch IDAM at all. Generate a random value;
+        # it is ours, not IDAM's. Per component rather than shared with `deed-poll-web`: one signing key
+        # across a caseworker service and a public one makes a forged cookie portable between them.
+        - name: admin-session-secret
+          alias: SESSION_SECRET

@@ -1,0 +1,46 @@
+apiVersion: v2
+appVersion: '1.0'
+name: deed-poll-admin
+description: A Helm chart for deed-poll-admin
+type: application
+version: 0.0.1
+annotations:
+  team: deed-poll
+home: https://github.com/hmcts/deed-poll-admin
+# One component, not four, and the directory name is not a preference: `Helm.HELM_RESOURCES_DIR` in
+# `hmcts/cnp-jenkins-library` is the literal `charts`, and `helmInstall` throws
+# `No Helm charts directory found at charts` before it does anything else. It then requires
+# `charts/${product}-${component}/values.yaml` — this file's sibling.
+#
+# This replaced `helm/deed-poll-admin/`, an umbrella chart with `file://` dependencies on
+# `deed-poll-admin-{web,api,crons,postgres}` plus a `postgresql` subchart. `api` and `postgres` went with
+# the data access layer (`docs/plans/completed/02-dal-cutover-to-api.md`), `crons` in plan 03 task 2 as a component
+# that held one `console.log` and was never written, and `web` is inlined here — because `az acr build … .`
+# builds a single root `Dockerfile` into a single `deed-poll/admin` image and `helmInstall` exposes exactly
+# that one image to the values templates as `${IMAGE_NAME}`. An umbrella chart needs one `${*_IMAGE}` per
+# subchart, and nothing sets those.
+#
+# `postgresql` is removed rather than left `enabled: false`: this app has no database, so a per-PR one has
+# nothing to put in it. Restoring any of them starts in `hmcts/deed-poll-api`, not here.
+dependencies:
+  # 3.3.1 rather than 3.2.1 for two reasons that happen to coincide. It is the version the pipeline's own
+  # deprecation check demands — `check-deprecated-charts.sh` prints "chart 3.2.1 is deprecated, please
+  # upgrade to at least 3.3.1" and exits 1, tolerated today and fatal at the 2026-10-08 deadline in
+  # `cnp-deprecation-map`. And it carries chart-library **2.3.1** where 3.2.1 carried 2.2.2, which is what
+  # provides the `useWorkloadIdentity` and `saEnabled` values `values.yaml` now sets.
+  - name: nodejs
+    version: 3.3.1
+    repository: 'oci://hmctsprod.azurecr.io/helm'
+  # The one subchart that survives, and it is the answer to blocker 4 in `docs/PIPELINES.md` rather than a
+  # leftover. Sessions live in Redis and `assertRedisUrl` refuses `config/default.json`'s loopback default
+  # outside development, so a preview pod with no cache fails fast instead of coming up sessionless. AAT
+  # and prod read the Terraform-managed cache in `hmcts/deed-poll-infra`, which applies on the `aat`,
+  # `demo`, `ithc`, `perftest` and `prod` branches and never in `preview` — hence `enabled: false` in
+  # `values.yaml`, switched on only by `values.preview.template.yaml`. The alternative considered was
+  # pointing preview at AAT's `redis-url`: rejected because every open PR would then share one cache, so a
+  # session key collision or a flush in one PR is felt in all of them, and preview sessions would outlive
+  # the PR inside a store nothing here can clear. `deed-poll-web` settled the same question the same way.
+  - name: redis
+    version: 27.0.18
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled

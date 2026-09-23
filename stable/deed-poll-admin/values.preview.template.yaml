@@ -1,0 +1,97 @@
+# Preview overrides, applied on top of `values.yaml`, one per pull request.
+#
+# `global.environment` is deliberately not set here, for the same reason `values.aat.template.yaml` gives:
+# `helmInstall` passes it with `--set`, which beats any `-f`. Setting it would be dead configuration in a
+# load-bearing place — the vault name is `{product}-{env}` and `hmcts/deed-poll-infra` never creates a
+# `deed-poll-preview`, so a value that did win would leave pods in ContainerCreating.
+global:
+  # The redis subchart below pulls a mirrored image from `hmctsprod.azurecr.io`, which bitnami's chart treats
+  # as an unrecognised registry and refuses without this.
+  security:
+    allowInsecureImages: true
+
+nodejs:
+  # Don't modify below here — `IMAGE_NAME` and `SERVICE_FQDN` come from `helmInstall`.
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    # Replaces the `redis-url` secret from the shared vault, which points at AAT's Terraform-managed cache.
+    # A preview environment gets the ephemeral subchart below instead, so sessions in a PR cannot be read
+    # from or written to a shared cache. `{{ .Release.Name }}` is `deed-poll-admin-pr-<n>`, which is what
+    # bitnami names its master service after.
+    REDIS_URL: "redis://{{ .Release.Name }}-redis-master:6379"
+    # Must match the `ingressHost` above and be registered with IDAM. `SERVICE_FQDN` differs per pull
+    # request, so **every PR has a different hostname** — and `idam-access-config` registers nothing for
+    # `pcs-frontend`'s preview environments either, so either IDAM permits a pattern that repo does not
+    # show or preview sign-in does not work there. That is an open question for the IDAM team — now asked
+    # of them directly in the description of `hmcts/idam-access-config#993`, and recorded in
+    # `.business_context/IDAM_REGISTRATION_REQUEST.md`; the earlier claim that AAT auto-adds an
+    # `allow-pr-redirects` wildcard covering `pr-[0-9]+` hostnames is unverified. Do not invent a wildcard
+    # here — a values file cannot register anything.
+    IDAM_REDIRECT_URI: https://${SERVICE_FQDN}/oauth2/callback
+    # AAT's api, not a preview one, and overridden here rather than inherited: `values.yaml` resolves it
+    # from `global.environment`, which is `preview`, and there is no
+    # `deed-poll-api-preview.service.core-compute-preview.internal` — api's preview deploys are per-PR hosts
+    # under `preview.platform.hmcts.net`, one per api PR, so no stable name exists for this app to point at.
+    # Pointing a preview at AAT's api is the usual CFT arrangement and has the usual consequence: **preview
+    # writes land in AAT's data.** Fine for a caseworker service with no live data yet; revisit before this
+    # app carries any.
+    DEED_POLL_API_URL: "http://deed-poll-api-aat.service.core-compute-aat.internal"
+    # The dev persona switcher, on per pull request. `preview` is in `PERSONA_SWITCHER_ENVIRONMENTS`
+    # (`src/auth/persona-switcher.ts`) and `ENVIRONMENT_NAME` comes from `values.yaml`, resolved from the
+    # `global.environment` `helmInstall` passes with `--set`.
+    #
+    # Note what the line above means for this one: a preview switcher writes to **AAT's** data as a judge,
+    # because preview has no api of its own to point at. Accepted for an environment with no live data —
+    # and recorded as open question 3 in `docs/plans/completed/dev-persona-switcher.md`, since excluding preview from
+    # the allowlist is a one-line change if that stops being acceptable.
+    PERSONA_SWITCHER_ENABLED: "true"
+  # The vault list is re-declared here, without `redis-url`, and that is what makes the `REDIS_URL` override
+  # above take effect: `getPropertiesVolumeSecrets` writes every mounted secret to `process.env` under its
+  # chart alias unconditionally on the mount-point path — its `omit` list is consulted only on the local
+  # Azure-vault path (`libs/cloud-native-platform/src/properties-volume/properties.ts`). So a mounted
+  # `redis-url` would overwrite the variable set above and point a PR at AAT's cache. Helm replaces a list
+  # rather than merging it, so this is the whole list minus one entry — keep the other three in step with
+  # `values.yaml`, which `src/deployment-chart.test.ts` asserts.
+  keyVaults:
+    deed-poll:
+      secrets:
+        - name: app-insights-connection-string
+          alias: APPLICATION_INSIGHTS_CONNECTION_STRING
+        - name: admin-idam-client-secret
+          alias: IDAM_CLIENT_SECRET
+        - name: admin-session-secret
+          alias: SESSION_SECRET
+
+# An ephemeral cache per preview environment: no persistence, no replica, no auth, and nothing in it
+# outlives the PR. **This is the resolution of blocker 4 in `docs/PIPELINES.md`** — sessions live in Redis
+# and `assertRedisUrl` refuses `config/default.json`'s loopback default outside development, so a preview
+# pod without a cache fails fast rather than coming up sessionless. The alternative was pointing preview at
+# AAT's `redis-url`; rejected because every open PR would share one cache. `deed-poll-web` settled it the
+# same way and this block is copied from it, including the probe budget below.
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+    # HDPI-8155, measured on preview by `apps/pcs/pcs-frontend`: Dynatrace node instrumentation adds ~1s per
+    # spawned process, so the chart-default 2s exec-probe budget leaves redis permanently
+    # Running-but-not-Ready (measured probe wall time under instrumentation: 3.4-4.1s). A never-Ready master
+    # is excluded from its Service endpoints, so `REDIS_URL` above refuses connections. This app does not
+    # crashloop on that — `getRedisClient` in `src/app.ts` races `connect()` against a bound and serves
+    # anyway — but `redisStatus` then reports `redis: DOWN` for ever, so the web pod is never added to its
+    # own Service either and the PR environment answers nothing. `deed-poll-web` crashloops instead; same
+    # cause, and the same fix.
+    readinessProbe:
+      timeoutSeconds: 10
+      periodSeconds: 10
+    livenessProbe:
+      timeoutSeconds: 10
+  replica:
+    replicaCount: 0
+  image:
+    registry: hmctsprod.azurecr.io
+    repository: imported/bitnami/redis
