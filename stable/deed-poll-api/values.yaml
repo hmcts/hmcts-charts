@@ -46,3 +46,17 @@ java:
     # negotiate TLS by default, so without this every connection fails at startup. `gssEncMode=disable`
     # stops the driver attempting GSS first, which Azure answers slowly rather than refusing.
     DB_OPTIONS: "?sslmode=require&gssEncMode=disable"
+    # The ③ Application Rejected Notify template, authored 2026-09-23 on the **non-prod** Notify service.
+    # Not a secret: it identifies a template, not a credential, so it is configuration rather than a vault
+    # entry — `application.yaml` defaults it to `DEED_POLL_PLACEHOLDER` so one grep still lists every external
+    # identifier the service is waiting on, and this is the override that makes a real send possible.
+    #
+    # **This is the non-prod id and prod must not inherit it.** There is no prod Notify service yet, so there
+    # is no second value to set here; a structural Helm conditional is not the answer because
+    # `DeploymentChartConformanceTest` parses this file as YAML. When prod exists, override it in prod's Flux
+    # HelmRelease rather than branching here. Inheriting it would fail safe rather than misdeliver — a prod
+    # Live key cannot use another service's template, so Notify answers 403 — but it would still be wrong.
+    #
+    # Nothing sends until `NOTIFY_API_KEY` exists: `NotifyProperties.isProvisioned` gates the drain, so a real
+    # template id with no key sends nothing rather than half-sending.
+    NOTIFY_TEMPLATE_APPLICATION_REJECTED: b2cb5754-591d-40c0-b961-b2823a5792eb
