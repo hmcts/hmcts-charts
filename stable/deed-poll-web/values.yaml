@@ -45,3 +45,26 @@ nodejs:
         # the public one.
         - name: web-session-secret
           alias: SESSION_SECRET
+        # The shared secret `src/api/service-auth-token.ts` derives its one-time password from. Copied
+        # into this vault from the platform's `s2s-{env}` by `s2s.tf` in `hmcts/deed-poll-infra` — the
+        # pods cannot read that vault, and should not be granted access to it.
+        - name: web-s2s-secret
+          alias: S2S_SECRET
+
+  environment:
+    # The API's cluster-internal address, which is also what `deed-poll-admin`'s chart points at. Not a
+    # public ingress and deliberately cleartext: it never leaves the cluster.
+    #
+    # **This name does not resolve yet** — it needs the AppGW entry in
+    # `azure-platform-terraform#3161`. That does not block *this* service's deploy the way it blocks
+    # admin's: web's only readiness check is Redis, so its pods go Ready regardless, and an unreachable
+    # API is an ordinary journey state the pages render as copy. Payment and submission simply fail until
+    # the address exists.
+    DEED_POLL_API_URL: http://deed-poll-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # `service-auth-provider-api`, on the same internal zone. http on purpose: that is the only scheme it
+    # is served on in every CFT environment, which is why `readServiceAuthConfig` does not require https.
+    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # Lower snake_case, as S2S requires and `readServiceAuthConfig` asserts. Registered by
+    # `service-auth-provider-app#1140`; until that merges, leasing fails and every API call answers
+    # `auth` rather than this service pretending it is unauthenticated.
+    S2S_MICROSERVICE: deed_poll_web

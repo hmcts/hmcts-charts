@@ -22,13 +22,25 @@ nodejs:
     # from a caller-supplied `X-Forwarded-Host`. A PR hostname is known at deploy time after all —
     # `SERVICE_FQDN` is what `ingressHost` above already uses.
     WEB_PUBLIC_URL: https://${SERVICE_FQDN}
+    # AAT's api and AAT's S2S, not preview ones, and overridden here rather than inherited: `values.yaml`
+    # resolves both from `global.environment`, which is `preview`, and neither
+    # `deed-poll-api-preview.service.core-compute-preview.internal` nor
+    # `rpe-service-auth-provider-preview...` exists. api's preview deploys are per-PR hosts under
+    # `preview.platform.hmcts.net` so there is no stable name to point at, and S2S is a shared platform
+    # service that has no preview instance at all — which is also why the S2S secret for a preview pod is
+    # AAT's. `deed-poll-admin` overrides the api URL here for the same reason.
+    #
+    # The usual CFT consequence applies: **preview writes land in AAT's data.** Acceptable while there is
+    # none that matters; revisit before this service carries any.
+    DEED_POLL_API_URL: "http://deed-poll-api-aat.service.core-compute-aat.internal"
+    S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
   # The vault list is re-declared here, without `redis-url`, and that is what makes the override above
   # take effect: `getPropertiesVolumeSecrets` writes every mounted secret to `process.env` under its
   # chart alias unconditionally on the mount-point path — its `omit` list is only consulted on the local
   # Azure-vault path (`libs/cloud-native-platform/src/properties-volume/properties.ts`). So a mounted
   # `redis-url` would overwrite the environment variable set above and point a PR at AAT's cache. Helm
   # replaces a list rather than merging it, so this is the whole list minus one entry — keep the other
-  # two in step with `values.yaml`, which `src/deployment-chart.test.ts` asserts.
+  # three in step with `values.yaml`, which `src/deployment-chart.test.ts` asserts.
   keyVaults:
     deed-poll:
       secrets:
@@ -36,6 +48,10 @@ nodejs:
           alias: APPLICATION_INSIGHTS_CONNECTION_STRING
         - name: web-session-secret
           alias: SESSION_SECRET
+        # Present here as well as in `values.yaml`, because this list replaces rather than extends it:
+        # without it a preview pod has no `S2S_SECRET`, and `assertDeployedConfiguration` refuses to boot.
+        - name: web-s2s-secret
+          alias: S2S_SECRET
 
 # An ephemeral cache per preview environment: no persistence, no replica, no auth, and nothing in it
 # outlives the PR. This is also the answer to blocker 4 in `../deed-poll-admin/docs/PIPELINES.md` —
