@@ -1,0 +1,48 @@
+{{- if .Values.queueMetrics.enabled }}
+{{- if ne (toString .Values.java.environment.MANAGEMENT_SERVER_PORT) "4551" }}
+{{- fail "Queue metrics require java.environment.MANAGEMENT_SERVER_PORT=4551" }}
+{{- end }}
+{{- if not (has "queuedjobs" (splitList "," .Values.java.environment.MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE)) }}
+{{- fail "Queue metrics require queuedjobs in management endpoint exposure" }}
+{{- end }}
+{{- if or (ne .Values.java.startupPath "/livez") (ne .Values.java.livenessPath "/livez") (ne .Values.java.readinessPath "/readyz") (ne (toString .Values.java.environment.MANAGEMENT_ENDPOINT_HEALTH_PROBES_ADD_ADDITIONAL_PATHS) "true") }}
+{{- fail "Queue metrics require additional main-port health paths and java startup/liveness=/livez, readiness=/readyz" }}
+{{- end }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-queue
+spec:
+  type: ClusterIP
+  ports:
+    - name: metrics
+      port: 4551
+      targetPort: 4551
+  selector:
+    app.kubernetes.io/name: {{ include "hmcts.releasename.v2" .Subcharts.java }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Release.Name }}-management
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "hmcts.releasename.v2" .Subcharts.java }}
+  policyTypes:
+    - Ingress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: {{ .Values.java.applicationPort }}
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: keda
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: keda-operator
+      ports:
+        - protocol: TCP
+          port: 4551
+{{- end }}
