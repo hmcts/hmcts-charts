@@ -1,0 +1,58 @@
+{{- if .Values.keda.enabled }}
+{{- if or (ne (int .Values.java.replicas) 0) .Values.java.autoscaling.enabled .Values.java.pdb.enabled }}
+{{- fail "KEDA requires java.replicas=0, java.autoscaling.enabled=false and java.pdb.enabled=false" }}
+{{- end }}
+{{- $java := deepCopy .Subcharts.java }}
+{{- $_ := set $java.Values "restartPolicy" "Never" }}
+{{- $_ := set $java.Values "terminationGracePeriodSeconds" 330 }}
+{{- $_ := set $java.Values.environment "WORKER_ENABLED" "true" }}
+{{- $_ := set $java.Values.environment "WORKER_MODE" "SINGLE" }}
+{{- $_ := set $java.Values.environment "WORKER_TYPE" "OPTAPLANNER" }}
+{{- $_ := set $java.Values.environment "WORKER_SHUTDOWN_GRACE_PERIOD" "PT5M" }}
+{{- $_ := set $java.Values.environment "SPRING_LIFECYCLE_TIMEOUT_PER_SHUTDOWN_PHASE" "PT5M10S" }}
+{{- $_ := unset $java.Values.environment "WORKER_ID" }}
+{{- $pod := (include "hmcts.podtemplate.v6.tpl" $java | fromYaml).template }}
+{{- if not $pod.metadata.annotations }}
+{{- $_ := unset $pod.metadata "annotations" }}
+{{- end }}
+{{- if not $pod.spec.volumes }}
+{{- $_ := unset $pod.spec "volumes" }}
+{{- end }}
+{{- $container := index $pod.spec.containers 0 }}
+{{- if not $container.volumeMounts }}
+{{- $_ := unset $container "volumeMounts" }}
+{{- end }}
+{{- $_ := set $container "env" (append $container.env (dict "name" "WORKER_ID" "valueFrom" (dict "fieldRef" (dict "fieldPath" "metadata.uid")))) }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: {{ .Release.Name }}
+  {{- if .Values.keda.paused }}
+  annotations:
+    autoscaling.keda.sh/paused: "true"
+  {{- end }}
+spec:
+  pollingInterval: 15
+  minReplicaCount: 0
+  maxReplicaCount: {{ .Values.keda.maxReplicaCount }}
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 5
+  rollout:
+    strategy: gradual
+  scalingStrategy:
+    strategy: accurate
+  jobTargetRef:
+    parallelism: 1
+    completions: 1
+    backoffLimit: 0
+    activeDeadlineSeconds: {{ required "Set keda.activeDeadlineSeconds above the longest supported solve plus startup and persistence time" .Values.keda.activeDeadlineSeconds }}
+    template:
+      {{- toYaml $pod | nindent 6 }}
+  triggers:
+    - type: metrics-api
+      metadata:
+        url: {{ tpl .Values.keda.queueUrl . | quote }}
+        valueLocation: queued
+        targetValue: "1"
+        activationTargetValue: "0"
+{{- end }}

@@ -24,3 +24,10 @@ java:
     OPTIMISER_HMAC_ENABLED: true
   readinessPath: /health/readiness
   livenessPath: /health/liveness
+
+keda:
+  enabled: false
+  paused: false
+  maxReplicaCount: 1
+  activeDeadlineSeconds: null
+  queueUrl: http://rota-optimiser-queue.{{ .Release.Namespace }}.svc.cluster.local:4551/queuedjobs
