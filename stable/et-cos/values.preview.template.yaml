@@ -323,6 +323,8 @@ ccd:
       environment:
         IDAM_ADMIN_WEB_SERVICE_KEY: ${ADMIN_S2S_KEY}
         IDAM_OAUTH2_AW_CLIENT_SECRET: ${ADMIN_WEB_IDAM_SECRET}
+        # A JSON array of cookie signing keys, required by admin-web since CME-908.
+        SESSION_KEYS: '${ADMIN_WEB_SESSION_KEYS}'
 
   ccd-api-gateway-web:
     nodejs:
