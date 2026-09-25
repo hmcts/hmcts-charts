@@ -6,6 +6,8 @@ nodejs:
   devmemoryRequests: 512Mi
   environment:
     OAUTH_CLIENT_REDIRECT: https:///oauth2/callback
+    REDIS_SECONDARY_HOST: 'et-managed-redis-aat.uksouth.redis.azure.net'
+    REDIS_SECONDARY_PORT: '10000'
   keyVaults:
     et:
       resourceGroup: et
@@ -13,6 +15,8 @@ nodejs:
         - AppInsightsInstrumentationKey
         - idam-secret
         - et-redis-access-key
+        - et-managed-redis-access-key
+        - et-session-secret
         - os-places-token
         - pcq-token-key
         - launch-darkly-sdk-key
