@@ -215,6 +215,7 @@ xui-webapp:
           - mc-idam-client-secret
           - system-user-name
           - system-user-password
+          - appinsights-connection-string-mc
 ccd-case-document-am-api:
   enabled: true
   java:
