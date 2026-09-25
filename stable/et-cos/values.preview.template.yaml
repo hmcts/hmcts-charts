@@ -104,18 +104,7 @@ et-sya:
     devcpuLimits: 200m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
-    keyVaults:
-      et:
-        resourceGroup: et
-        secrets:
-          - AppInsightsInstrumentationKey
-          - idam-secret
-          - et-redis-access-key
-          - os-places-token
-          - pcq-token-key
-          - launch-darkly-sdk-key
     environment:
-      REDIS_HOST: et-session-storage-aat.redis.cache.windows.net
       ET_SYA_API_HOST: https://${SERVICE_FQDN}
       PCQ_ENABLED: true
       HMCTS_ACCESS: 'true'
@@ -131,18 +120,7 @@ et-syr:
     devcpuLimits: 200m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
-    keyVaults:
-      et:
-        resourceGroup: et
-        secrets:
-          - AppInsightsInstrumentationKey
-          - idam-secret
-          - et-redis-access-key
-          - os-places-token
-          - pcq-token-key
-          - launch-darkly-sdk-key
     environment:
-      REDIS_HOST: et-session-storage-aat.redis.cache.windows.net
       ET_SYA_API_HOST: https://${SERVICE_FQDN}
       PCQ_ENABLED: true
       HMCTS_ACCESS: 'true'
