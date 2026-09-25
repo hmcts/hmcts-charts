@@ -23,3 +23,6 @@ java:
           alias: POSTGRES_USER
         - name: recipe-backend-POSTGRES-PASS-v14
           alias: POSTGRES_PASSWORD
+
+postgresql:
+  enabled: false
