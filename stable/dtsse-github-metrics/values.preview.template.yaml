@@ -1,13 +1,9 @@
 nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-  # Smaller than charts/values.yaml because a preview warms an empty database, and repeated under the `dev*`
-  # keys for the reason given there — a preview is installed with `devMode: true`, so these are the pair that
-  # actually reaches the container and the two above would otherwise be decoration.
-  memoryRequests: 1Gi
-  memoryLimits: 2Gi
-  devmemoryRequests: 1Gi
-  devmemoryLimits: 2Gi
+  # No memory figures of its own: a preview warms a copy of AAT's database (`src/preview/load-aat.ts`), so it
+  # needs what AAT has, and inherits all eight from charts/values.yaml. A 2Gi limit here held a process told to
+  # grow its heap to 3072Mi, which is the staging OOM loop described there.
   keyVaults:
     dtsse:
       secrets:
@@ -28,16 +24,25 @@ nodejs:
       key: PASSWORD
   environment:
     POSTGRES_DATABASE: "{{ .Release.Name }}"
-    METRICS_CONFIG: /app/metrics.example.yaml
     AUTH_DISABLED: "true"
 
+# A preview's data is a copy of AAT's, loaded by the pipeline before the smoke tests, and never collected by the
+# preview itself: `@smoke` asserts that health is UP, never that any figure is non-zero, and a collector here would
+# spend the App's quota on a throwaway environment.
 job:
   enabled: false
 
-# Off for the same reason as `job`: a preview deploys with an empty database and `@smoke` asserts that pages
-# render and health is UP, never that any figure is non-zero. A preview that walked 336 teams and 3,277
-# repositories would also spend the App's whole hourly quota on a throwaway environment.
 orgJob:
+  enabled: false
+
+# Off, and for a reason beyond quota. These two mount `dtsse-aat` like every other block, which holds the AAT
+# database's own `github-metrics-postgres-*` — so a preview's CronJob would run the PR's code against the production
+# database rather than the preview's, and `collect-alerts` would write back the secret-scanning locations the copy
+# scrubs. Only the job chart's suspension stood between a preview and that.
+cveJob:
+  enabled: false
+
+alertJob:
   enabled: false
 
 # Off for the same reason, and this one spends the scarcest quota of all: resolving 315 SonarCloud projects is one

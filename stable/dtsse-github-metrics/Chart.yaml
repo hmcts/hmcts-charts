@@ -6,7 +6,7 @@ home: https://github.com/hmcts/dtsse-github-metrics
 # BUMP THIS IN ANY COMMIT THAT TOUCHES `values.yaml`. Flux resolves this release's chart by version string, so
 # a values change published under a version AAT already has is silently discarded. See the note at the top of
 # `values.yaml` for the whole path from this directory to a running CronJob.
-version: 0.0.15
+version: 0.0.16
 dependencies:
   - name: nodejs
     version: 3.2.1
