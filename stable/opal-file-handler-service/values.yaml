@@ -72,8 +72,7 @@ bt-eckoh-report:
   enabled: false
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
-#  schedule: '45 08 * * *'
-  schedule: '*/1 * * * *'
+  schedule: '45 08 * * *'
   command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
@@ -122,8 +121,7 @@ caps-report:
   enabled: false
   kind: CronJob
   image: 'hmctsprod.azurecr.io/opal/file-handler-service:latest'
-#  schedule: '0 7 * * 4-5'
-  schedule: '*/1 * * * *'
+  schedule: '0 7 * * 4-5'
   command: [ "java", "-jar", "/opt/app/opal-file-handler-service.jar" ]
   concurrencyPolicy: Forbid
   args:
