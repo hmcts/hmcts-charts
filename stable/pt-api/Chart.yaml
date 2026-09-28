@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for pt-api App
 name: pt-api
 home: https://github.com/hmcts/pt-api
-version: 0.0.53
+version: 0.0.54
 maintainers:
   - name: HMCTS pt team
 dependencies:
@@ -34,3 +34,7 @@ dependencies:
     version: 1.7.19
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: ccd-case-document-am-api.enabled
+  - name: ccd-case-disposer
+    version: 0.2.38
+    repository: 'oci://hmctsprod.azurecr.io/helm'
+    condition: ccd-case-disposer.enabled
