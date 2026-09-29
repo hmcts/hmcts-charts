@@ -10,6 +10,8 @@ java:
           alias: BAIS_SFTP_CONNECTION_HOST
         - name: bais-sftp-connection-port
           alias: BAIS_SFTP_CONNECTION_PORT
+        - name: bais-sftp-dwp-username
+          alias: BAIS_SFTP_DWP_USERNAME
         - name: bais-sftp-caps-report-username
           alias: BAIS_SFTP_CAPS_REPORT_USERNAME
         - name: bais-sftp-bteckoh-report-username
@@ -55,7 +57,9 @@ java:
     RELEASE_1C_BANKING_INTERFACES_ENABLED: true
     CAPS_REPORT_FILE_TRANSFER_JOB_ENABLED: true
     BTECKOH_REPORT_FILE_TRANSFER_JOB_ENABLED: true
+    DWP_FILE_TRANSFER_JOB_ENABLED: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
+    SERVICEBUS_PROTOCOL: amqps
 
 functionalTest:
   blob:
