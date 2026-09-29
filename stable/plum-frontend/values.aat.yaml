@@ -1,3 +1,5 @@
 nodejs:
   image: https://hmcts.azurecr.io/hmcts/plum-frontend:latest
   ingressHost: 
+  ingressAnnotations:
+    external-dns.alpha.kubernetes.io/exclude: 'true'
