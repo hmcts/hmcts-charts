@@ -3,7 +3,7 @@ appVersion: '1.0'
 name: deed-poll-admin
 description: A Helm chart for deed-poll-admin
 type: application
-version: 0.0.2
+version: 0.0.3
 annotations:
   team: deed-poll
 home: https://github.com/hmcts/deed-poll-admin
