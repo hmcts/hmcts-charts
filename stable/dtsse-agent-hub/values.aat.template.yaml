@@ -1,0 +1,7 @@
+# The pipeline's temporary `-staging` release. The persistent AAT release is Flux's, from values.yaml.
+nodejs:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    AUTH_DISABLED: "true"

@@ -1,0 +1,37 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  replicas: 1
+  # A list replaces rather than merges, so this is the whole secret list for a preview. The client id is here so
+  # agent tokens can be validated: agent auth stays on in preview, only the web sign-in is off.
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+        - name: agent-hub-entra-client-id
+          alias: ENTRA_CLIENT_ID
+  secrets:
+    POSTGRES_HOST:
+      secretRef: postgres
+      key: HOST
+    POSTGRES_PORT:
+      secretRef: postgres
+      key: PORT
+    POSTGRES_USER:
+      secretRef: postgres
+      key: USER
+    POSTGRES_PASSWORD:
+      secretRef: postgres
+      key: PASSWORD
+  environment:
+    POSTGRES_DATABASE: "{{ .Release.Name }}"
+    # Entra matches redirect URIs by whole string, and a preview hostname carries the PR number.
+    AUTH_DISABLED: "true"
+
+postgresql:
+  enabled: true
+  flexibleserver: dtsse-preview
+  setup:
+    databases:
+      - name: "{{ .Release.Name }}"

@@ -1,0 +1,58 @@
+# What AAT runs. The CNP pipeline mirrors this directory into hmcts-charts on every master build, and Flux only
+# picks a change up when `Chart.yaml`'s `version` changes with it.
+nodejs:
+  applicationPort: 3000
+  aadIdentityName: dtsse
+  image: hmctsprod.azurecr.io/dtsse/agent-hub:latest
+  ingressHost: agent-hub.{{ .Values.global.environment }}.platform.hmcts.net
+  # The heap ceiling in NODE_OPTIONS stays strictly under memoryLimits, or V8 declines to collect until the kernel
+  # has already OOM-killed the container.
+  memoryRequests: 512Mi
+  memoryLimits: 1Gi
+  cpuRequests: 250m
+  cpuLimits: "1"
+  # The same figures under `dev*` keys. With `global.devMode`, which the pipeline sets on preview and on the
+  # `-staging` release, the chart reads these and ignores the four above; left unset they default to 512Mi.
+  devmemoryRequests: 512Mi
+  devmemoryLimits: 1Gi
+  devcpuRequests: 250m
+  devcpuLimits: "1"
+  # Two, so a rolling deploy never drops every agent stream at once. Streams on different pods meet through
+  # Postgres LISTEN/NOTIFY.
+  replicas: 2
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+        - name: agent-hub-postgres-host
+          alias: POSTGRES_HOST
+        - name: agent-hub-postgres-port
+          alias: POSTGRES_PORT
+        - name: agent-hub-postgres-user
+          alias: POSTGRES_USER
+        - name: agent-hub-postgres-password
+          alias: POSTGRES_PASSWORD
+        - name: agent-hub-postgres-database
+          alias: POSTGRES_DATABASE
+        # Prefixed, because the `dtsse` vault is shared with dtsse-github-metrics, whose `entra-client-id`,
+        # `entra-client-secret` and `session-secret` belong to its own registration.
+        - name: agent-hub-entra-client-id
+          alias: ENTRA_CLIENT_ID
+        - name: agent-hub-entra-client-secret
+          alias: ENTRA_CLIENT_SECRET
+        - name: agent-hub-session-secret
+          alias: SESSION_SECRET
+  environment:
+    NODE_OPTIONS: --max-old-space-size=768
+    ENTRA_TENANT_ID: "{{ .Values.global.tenantId }}"
+    ENTRA_REDIRECT_URI: https://agent-hub.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
+    # The client id from ENTRA_CLIENT_ID is accepted as an audience as well; v2 access tokens carry that.
+    AGENT_API_AUDIENCE: api://dtsse-agent-hub
+
+postgresql:
+  enabled: false
+
+global:
+  enableKeyVaults: true
+  tenantId: "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
