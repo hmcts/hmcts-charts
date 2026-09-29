@@ -3,7 +3,7 @@ appVersion: '1.0'
 name: deed-poll-admin
 description: A Helm chart for deed-poll-admin
 type: application
-version: 0.0.1
+version: 0.0.2
 annotations:
   team: deed-poll
 home: https://github.com/hmcts/deed-poll-admin
@@ -42,5 +42,5 @@ dependencies:
   # the PR inside a store nothing here can clear. `deed-poll-web` settled the same question the same way.
   - name: redis
     version: 27.0.18
-    repository: https://charts.bitnami.com/bitnami
+    repository: 'oci://registry-1.docker.io/bitnamicharts'
     condition: redis.enabled
