@@ -1,4 +1,5 @@
 java:
+  imagePullPolicy: Always
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/camunda-bpm:latest
   ingressHost: 
