@@ -64,7 +64,7 @@ nodejs:
     # so until it is, a deployed pod's readiness probe reports DOWN. That is the intended failure: see
     # `docs/DEPLOYMENT.md`, "deed-poll-api".
     DEED_POLL_API_URL: http://deed-poll-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    IDAM_ISSUER_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_ISSUER_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o
     IDAM_CLIENT_ID: deed-poll-admin
     IDAM_SCOPE: openid profile roles offline_access
     # MUST be `ingressHost` above with `/oauth2/callback` appended, and MUST be registered with IDAM
