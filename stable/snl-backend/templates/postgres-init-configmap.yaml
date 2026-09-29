@@ -1,0 +1,9 @@
+{{- if and .Values.java.postgresql .Values.java.postgresql.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-postgres-init" .Release.Name | trunc 63 | trimSuffix "-" }}
+data:
+  init.sql: |
+{{ .Files.Get "files/postgres/init.sql" | indent 4 }}
+{{- end }}

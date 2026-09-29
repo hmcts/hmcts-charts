@@ -1,4 +1,37 @@
 java:
-  # Don't modify below here
+  # Populated by the deployment pipeline.
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    snl:
+      disabled: true
+      secrets: []
+  environment:
+    DB_HOST: "{{ .Release.Name }}-postgresql"
+    DB_PORT: "5432"
+    DB_NAME: snl-db
+    DB_USER_NAME: snl_app
+    DB_PASSWORD: snl_preview_password
+    DB_OPTIONS: ""
+  postgresql:
+    enabled: true
+    image:
+      registry: hmctsprod.azurecr.io
+      repository: imported/bitnami/postgresql
+      tag: "16.6.0"
+    auth:
+      # Bootstrap as administrator; the app must not own the database.
+      username: ""
+      password: ""
+      postgresPassword: snl_preview_admin_password
+      database: snl-db
+    primary:
+      extraEnvVars:
+        - name: DB_PASSWORD
+          value: snl_preview_password
+      persistence:
+        enabled: false
+      initdb:
+        user: postgres
+        password: snl_preview_admin_password
+        scriptsConfigMap: '{{ printf "%s-postgres-init" .Release.Name | trunc 63 | trimSuffix "-" }}'
