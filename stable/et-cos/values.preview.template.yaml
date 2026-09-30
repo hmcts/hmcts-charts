@@ -46,7 +46,6 @@ java:
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-aat.service.core-compute-aat.internal
     SECURE_DOC_STORE_FEATURE: true
     EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    ACAS_BASE_URL: "https://api-dev-acas-01.azure-api.net/ECCLUAT"
     CCD_SERVICEBUS_DESTINATION: ${SERVICE_NAME}-ccd-case-events
     ELASTIC_SEARCH_HOSTS: http://${SERVICE_NAME}-es-master:9200
     SPRING_JMS_SERVICEBUS_ENABLED: true
