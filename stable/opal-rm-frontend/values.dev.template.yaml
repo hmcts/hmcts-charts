@@ -49,6 +49,8 @@ opal-maintenance-service:
             alias: AAD_CLIENT_ID
           - name: AzureADClientSecret
             alias: AAD_CLIENT_SECRET
+          - name: launch-darkly-sdk-key-dev
+            alias: LAUNCH_DARKLY_SDK_KEY
     environment:
       OPAL_MAINTENANCE_DB_HOST: "{{ .Release.Name }}-postgresql"
       OPAL_MAINTENANCE_DB_NAME: opal
@@ -61,8 +63,8 @@ opal-maintenance-service:
       FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
       APPLICATIONINSIGHTS_ROLE_NAME: "opal-rm-frontend-pr-${CHANGE_ID}-maintenance-service"
       SERVICEBUS_LOGGING_PDPL_QUEUE_NAME: "{{ .Release.Name}}-servicebus-logging-pdpl"
-      TESTING_SUPPORT_ENDPOINTS_ENABLED: false
-      OPAL_REDIS_ENABLED: true
+      LAUNCH_DARKLY_ENABLED: false
+      OPAL_REDIS_ENABLED: false
       OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
       SERVICEBUS_LOGGING_PDPL_PROTOCOL: amqps
 postgresql:
@@ -86,7 +88,7 @@ servicebus:
     queues:
       - name: "logging-pdpl"
 redis:
-  enabled: true
+  enabled: false
   architecture: standalone
   master:
     persistence:
