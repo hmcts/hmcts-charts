@@ -1,0 +1,23 @@
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  disableKeyVaults: true
+  saEnabled: true
+  environment:
+    DB_HOST: "{{ .Release.Name }}-postgresql"
+    DB_PORT: "5432"
+    DB_NAME: services
+    DB_USER_NAME: services
+    DB_OPTIONS: ""
+  secrets:
+    DB_PASSWORD:
+      secretRef: "{{ .Release.Name }}-postgresql"
+      key: password
+
+
+devPostgresql:
+  enabled: true
+  image: hmctsprod.azurecr.io/imported/postgres:18-alpine
+  database: services
+  username: services
+  password: services

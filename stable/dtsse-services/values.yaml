@@ -1,0 +1,33 @@
+java:
+  applicationPort: 4550
+  memoryRequests: 2Gi
+  memoryLimits: 3Gi
+  devmemoryRequests: 2Gi
+  devmemoryLimits: 3Gi
+  image: hmctsprod.azurecr.io/dtsse/services:latest
+  ingressHost: dtsse-services-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  environment:
+    DB_HOST: dtsse-services-{{ .Values.global.environment }}.postgres.database.azure.com
+    DB_PORT: "5432"
+    DB_NAME: services
+    DB_USER_NAME: pgadmin
+    DB_OPTIONS: "?sslmode=require"
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: services-POSTGRES-PASS
+          alias: DB_PASSWORD
+        - AppInsightsConnectionString
+        - name: listassist-blob-endpoint
+          alias: listassist.blob.endpoint
+        - name: listassist-container-hearings
+          alias: listassist.blob.containers.hearings
+        - name: listassist-container-sessions
+          alias: listassist.blob.containers.sessions
+        - name: listassist-container-session-officers
+          alias: listassist.blob.containers.session-officers
+        - name: listassist-container-users
+          alias: listassist.blob.containers.users
+
+devPostgresql:
+  enabled: false
