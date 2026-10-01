@@ -12,6 +12,7 @@ java:
     DB_NAME: services
     DB_USER_NAME: pgadmin
     DB_OPTIONS: "?sslmode=require"
+    LISTASSIST_INGEST_ENABLED: "true"
   keyVaults:
     dtsse:
       secrets:
