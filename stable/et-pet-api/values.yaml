@@ -1,5 +1,12 @@
 base:
+  disableTraefikTls: true
+  replicas: 2
+  useInterpodAntiAffinity: true
   applicationPort: 8080
+  memoryLimits: "2048Mi"
+  memoryRequests: "512Mi"
+  cpuLimits: "500m"
+  cpuRequests: "250m"
   image: "hmctsprod.azurecr.io/et-pet/api:latest"
   ingressHost: et-pet-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et-pet
@@ -76,6 +83,10 @@ base:
         - name: app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_KEY
 queue-worker:
+  memoryLimits: "2048Mi"
+  memoryRequests: "512Mi"
+  cpuLimits: "1500m"
+  cpuRequests: "600m"
   applicationPort: 8080
   image: "hmctsprod.azurecr.io/et-pet/api:latest"
   aadIdentityName: et-pet
