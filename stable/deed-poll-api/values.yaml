@@ -14,8 +14,8 @@ java:
   # bug. Mounted at `/mnt/secrets/deed-poll/`, which is what `spring.config.import`'s configtree and
   # `lib/applicationinsights.json` both read.
   #
-  # IDAM issuer and audience are runtime configuration, not secrets, so they are provided through
-  # `environment` below rather than Key Vault. No S2S secret is mounted: this service does not
+  # IDAM issuer and audience are runtime configuration, not secrets. Environment-specific values are
+  # supplied by cnp-flux-config rather than Key Vault. No S2S secret is mounted: this service does not
   # currently call another CFT service.
   keyVaults:
     deed-poll:
@@ -50,10 +50,6 @@ java:
     # negotiate TLS by default, so without this every connection fails at startup. `gssEncMode=disable`
     # stops the driver attempting GSS first, which Azure answers slowly rather than refusing.
     DB_OPTIONS: "?sslmode=require&gssEncMode=disable"
-    # Resource-server validation starts from the issuer; IDAM discovery supplies the token and JWKS
-    # endpoints. The API accepts tokens intended for the registered `deed-poll-admin` OAuth client.
-    IDAM_API_ISSUER_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o"
-    IDAM_API_AUDIENCES: "deed-poll-admin"
     # The ③ Application Rejected Notify template, authored 2026-09-23 on the **non-prod** Notify service.
     # Not a secret: it identifies a template, not a credential, so it is configuration rather than a vault
     # entry — `application.yaml` defaults it to `DEED_POLL_PLACEHOLDER` so one grep still lists every external
