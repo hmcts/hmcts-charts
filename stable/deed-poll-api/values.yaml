@@ -14,9 +14,9 @@ java:
   # bug. Mounted at `/mnt/secrets/deed-poll/`, which is what `spring.config.import`'s configtree and
   # `lib/applicationinsights.json` both read.
   #
-  # Nothing here names an IDAM or S2S secret. Neither exists in the vault — IDAM has not replied, and
-  # S2S is out of the first apply — and a chart naming a secret the vault does not hold fails to
-  # deploy. That is the right way round, but not yet.
+  # IDAM issuer and audience are runtime configuration, not secrets, so they are provided through
+  # `environment` below rather than Key Vault. No S2S secret is mounted: this service does not
+  # currently call another CFT service.
   keyVaults:
     deed-poll:
       secrets:
@@ -36,6 +36,10 @@ java:
         - name: postgres-password
           alias: DB_PASSWORD
   environment:
+    # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete.
+    # Enabling cdam while this URL or the CCD identifiers are placeholders refuses startup.
+    DOCUMENT_STORE: filesystem
+    CASE_DOCUMENT_AM_URL: DEED_POLL_PLACEHOLDER
     # The one shared database for the product — `deed-poll-api` owns the `public` and `ccd` schemas,
     # `deed-poll-admin` owns `session` in the same database. Not a secret: it is a name, and the shared
     # root does not write one. Stated explicitly because `application.yaml` defaults it to `deedpoll`
@@ -46,6 +50,10 @@ java:
     # negotiate TLS by default, so without this every connection fails at startup. `gssEncMode=disable`
     # stops the driver attempting GSS first, which Azure answers slowly rather than refusing.
     DB_OPTIONS: "?sslmode=require&gssEncMode=disable"
+    # Resource-server validation starts from the issuer; IDAM discovery supplies the token and JWKS
+    # endpoints. The API accepts tokens intended for the registered `deed-poll-admin` OAuth client.
+    IDAM_API_ISSUER_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o"
+    IDAM_API_AUDIENCES: "deed-poll-admin"
     # The ③ Application Rejected Notify template, authored 2026-09-23 on the **non-prod** Notify service.
     # Not a secret: it identifies a template, not a credential, so it is configuration rather than a vault
     # entry — `application.yaml` defaults it to `DEED_POLL_PLACEHOLDER` so one grep still lists every external
@@ -57,6 +65,50 @@ java:
     # HelmRelease rather than branching here. Inheriting it would fail safe rather than misdeliver — a prod
     # Live key cannot use another service's template, so Notify answers 403 — but it would still be wrong.
     #
-    # Nothing sends until `NOTIFY_API_KEY` exists: `NotifyProperties.isProvisioned` gates the drain, so a real
-    # template id with no key sends nothing rather than half-sending.
+    # **CORRECTED 2026-09-25, because the claim this comment used to make is false and it is the reason these
+    # ids are safe to set — so getting it wrong matters.** It said "nothing sends until `NOTIFY_API_KEY` exists:
+    # `NotifyProperties.isProvisioned` gates the drain". It does not. `isProvisioned` reads the template id and,
+    # for a reply-inviting template, `emailReplyToId` — **it never looks at the API key**. So a real template id
+    # with no key does not "send nothing": availability reports the template as sendable, the Email tab offers
+    # it, the send enqueues, and the **drain fails terminally** with
+    # `TECHNICAL: IllegalArgumentException: Empty key`. Measured locally on 2026-09-24 against a real api.
+    #
+    # The consequence is **visible rather than silent**, which is the one mercy: the transition into `Failed`
+    # writes a case note ("… could not be sent. See the Emails tab for the reason") beside the sent note, and
+    # the Emails tab shows the row `Failed` with that reason. A caseworker is told. The applicant still is not.
+    #
+    # **So every id below is live in AAT the moment it is set, and AAT has no Notify key** — the vault holds
+    # none, and this chart deliberately names no Notify *secret* because a chart naming a secret the vault does
+    # not hold fails to deploy. Adding the key is blocked on `azure-access#8111`, which puts Steve in the
+    # `DTS Deed Poll` group so the secret can be written at all. **Until that lands, these templates are offered
+    # and every send fails.** That was already true of ③ before this file listed ⑤ and ④; it is now true of all three.
+    #
+    # **These are the non-prod ids and prod must not inherit them.** There is no prod Notify service yet, so
+    # there is no second value to set here; a structural Helm conditional is not the answer because
+    # `DeploymentChartConformanceTest` parses this file as YAML. When prod exists, override them in prod's Flux
+    # HelmRelease rather than branching here. Inheriting would fail safe rather than misdeliver — a prod Live key
+    # cannot use another service's template, so Notify answers 403 — but it would still be wrong.
+    #
+    # None of these is a secret: each identifies a template or a reply-to address the recipient reads on the
+    # email anyway, so they are configuration rather than vault entries. `application.yaml` defaults every one to
+    # `DEED_POLL_PLACEHOLDER` (or empty) so one grep still lists every external identifier the service awaits.
+    #
+    # ③ Application Rejected, authored 2026-09-23 on the non-prod service.
     NOTIFY_TEMPLATE_APPLICATION_REJECTED: b2cb5754-591d-40c0-b961-b2823a5792eb
+    # ⑤ Chase missing documents, authored 2026-09-24 and verified by reading it back through
+    # `GET /v2/template/{id}`: the five placeholders matched character-for-character. notify-6 builds against it.
+    NOTIFY_TEMPLATE_CHASE_MISSING_DOCUMENTS: a67e7dd1-0f8c-4366-a1de-ca5fbc24ec98
+    # The registered reply-to for `KBDEEDSPOLL@justice.gov.uk`, verified in Notify 2026-09-24. **Not a template
+    # id** — it is the id of the address, and it is what `isProvisioned` additionally requires of any template
+    # with `invitesReply = true`. **One value for the whole service**, so it serves ⑤ and ④ alike.
+    #
+    # A blank one is the dangerous case rather than a wrong one: Notify **silently drops** it and sends from
+    # no-reply, so ⑤'s "reply to this email" sentence would point nowhere while the email still went out. An
+    # unrecognised id is a loud 400 instead. That asymmetry is why `isProvisioned` gates on it.
+    NOTIFY_EMAIL_REPLY_TO_ID: aabceef1-63e4-4414-9554-a24b0be967d7
+    # ④ Request confirmation to proceed, authored 2026-09-26 (version 1) and verified by reading it back through
+    # `GET /v2/template/{id}`: all ten placeholders match `RequestConfirmationToProceedPersonalisation`. Two
+    # previews confirmed that `is_minor` works as a JSON boolean ("your details" for an adult, "your child's
+    # details" for a minor) and that each case gets only its own refund paragraph. It invites a reply, so it
+    # needs the reply-to above, which is already set.
+    NOTIFY_TEMPLATE_REQUEST_CONFIRMATION_TO_PROCEED: a58c5a8c-7727-4d1f-af08-4953d9f3d33e
