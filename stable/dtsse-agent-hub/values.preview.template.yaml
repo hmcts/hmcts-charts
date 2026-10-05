@@ -29,6 +29,7 @@ nodejs:
     POSTGRES_DATABASE: "{{ .Release.Name }}"
     # Entra matches redirect URIs by whole string, and a preview hostname carries the PR number.
     AUTH_DISABLED: "true"
+    VIRTUAL_AGENTS_ENABLED: "false"
 
 postgresql:
   enabled: true

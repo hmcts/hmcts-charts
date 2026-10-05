@@ -6,3 +6,4 @@ nodejs:
   ingressHost: ${SERVICE_FQDN}
   environment:
     AUTH_DISABLED: "true"
+    VIRTUAL_AGENTS_ENABLED: "false"

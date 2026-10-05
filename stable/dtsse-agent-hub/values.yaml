@@ -52,6 +52,8 @@ nodejs:
     ENTRA_REDIRECT_URI: https://agent-hub.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
     # The client id from ENTRA_CLIENT_ID is accepted as an audience as well; v2 access tokens carry that.
     AGENT_API_AUDIENCE: api://dtsse-agent-hub
+    VIRTUAL_AGENTS_ENABLED: "true"
+    ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
 
 postgresql:
   enabled: false
