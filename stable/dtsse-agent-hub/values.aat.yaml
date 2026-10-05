@@ -1,5 +1,6 @@
 # The pipeline's temporary `-staging` release. The persistent AAT release is Flux's, from values.yaml.
 nodejs:
+  saEnabled: true
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/dtsse-agent-hub:latest
   ingressHost: 

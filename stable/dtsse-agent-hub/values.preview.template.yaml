@@ -2,6 +2,7 @@ nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
   replicas: 1
+  saEnabled: true
   # A list replaces rather than merges, so this is the whole secret list for a preview. The client id is here so
   # agent tokens can be validated: agent auth stays on in preview, only the web sign-in is off.
   keyVaults:

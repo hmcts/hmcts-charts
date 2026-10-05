@@ -5,7 +5,7 @@ name: dtsse-agent-hub
 home: https://github.com/hmcts/dtsse-agent-hub
 # Bump this in any commit that touches `values.yaml`: Flux resolves the chart by version string, so a values change
 # published under a version AAT already has is silently ignored.
-version: 0.0.1
+version: 0.0.2
 dependencies:
   - name: nodejs
     version: 3.2.1
