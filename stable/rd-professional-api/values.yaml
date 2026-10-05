@@ -17,6 +17,7 @@ java:
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     SCHEDULER_ENABLED: false
     CRON_EXPRESSION: "* */10 * * * *"
+    JWT_ISSUER_VALIDATION_ENABLED: false
   spotInstances:
     enabled: true
   image: 'hmctsprod.azurecr.io/rd/professional-api:latest'
