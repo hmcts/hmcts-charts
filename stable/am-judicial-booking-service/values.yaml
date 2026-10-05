@@ -28,9 +28,9 @@ java:
     AM_JUDICIAL_BOOKING_S2S_AUTHORISED_SERVICES: am_judicial_booking_service,am_org_role_mapping_service,xui_webapp
     JUDICIAL_BOOKING_SERVICE_POSTGRES_PORT: 5432
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: judicial_booking
-    OIDC_ISSUER_URL: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
     OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
     JBS_ENV: "{{ .Values.global.environment }}"
     MICROSERVICE_NAME: am_judicial_booking_service
     JUDICIAL_BOOKING_IDAM_ADMIN_USERID: ras-validation-system@hmcts.net
     TESTING_SUPPORT_ENABLED: false
+    JWT_ISSUER_VALIDATION_ENABLED: false
