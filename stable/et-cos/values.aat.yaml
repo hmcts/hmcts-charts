@@ -17,8 +17,6 @@ wa:
   enabled: false
 servicebus:
   enabled: false
-ccd-message-publisher:
-  enabled: false
 aac-manage-case-assignment:
   enabled: false
 am-org-role-mapping-service:
