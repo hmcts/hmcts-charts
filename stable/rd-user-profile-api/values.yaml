@@ -19,6 +19,7 @@ java:
     LAUNCH_DARKLY_ENV: "{{ .Values.global.environment }}"
     ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
     APPLICATION_LOGGING_LEVEL: INFO
+    JWT_ISSUER_VALIDATION_ENABLED: false
 
   keyVaults:
     rd:
