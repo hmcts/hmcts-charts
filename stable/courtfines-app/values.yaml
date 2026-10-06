@@ -11,7 +11,6 @@ nodejs:
     courtfines:
       secrets:
         - app-SESSION-SECRET
-        - app-SESSION-ENCRYPTION-SECRET
         - app-POSTGRES-USER
         - app-POSTGRES-PASS
         - app-POSTGRES-HOST
