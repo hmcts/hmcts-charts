@@ -23,6 +23,7 @@ nodejs:
         - csrf-cookie-secret
         - dynatrace-tracking-url
   environment:
+    HEALTH_IDAM_API_URL: 'http://idam-api'
     IDAM_API_BASE_URL: 'https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net'
     IDAM_TESTIING_SUPPORT_API_BASE_URL: 'https://idam-testing-support-api.{{ .Values.global.environment }}.platform.hmcts.net'
     NODE_ENV: '{{ .Values.global.environment }}'
@@ -30,5 +31,5 @@ nodejs:
   autoscaling:
     enabled: true
     minReplicas: 2
-    maxReplicas: 4
+    maxReplicas: 8
     targetCPUUtilizationPercentage: 80
