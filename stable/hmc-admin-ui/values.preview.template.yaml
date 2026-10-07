@@ -14,3 +14,8 @@ nodejs:
   environment:
     HMC_ADMIN_UI_BASE_URL: https://${SERVICE_FQDN}
     REDIS_ENABLED: false
+idam-pr:
+  enabled: true
+  redirect_uris:
+    hmc-admin-ui:
+      - https://${SERVICE_FQDN}/oauth2/callback

@@ -20,3 +20,5 @@ nodejs:
     HMC_ADMIN_UI_BASE_URL: https://hmc-admin-ui.{{ .Values.global.environment }}.platform.hmcts.net
     HMC_CFT_HEARING_SERVICE_URL: http://hmc-cft-hearing-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SERVICES_S2S: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+idam-pr:
+  enabled: false
