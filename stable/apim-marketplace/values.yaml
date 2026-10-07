@@ -22,3 +22,23 @@ java:
   #         alias: POSTGRES_PORT
   #       - name: marketplace-POSTGRES-DATABASE
   #         alias: POSTGRES_DATABASE
+  #       # Added for application registration (see PR #84) - not yet created
+  #       # in the apim-sbox vault, so left commented until CloudOps provisions
+  #       # them (see the "two credentials" ticket raised alongside that PR).
+  #       - name: marketplace-ENTRA-ONBOARDING-CLIENT-ID
+  #         alias: ENTRA_ONBOARDING_CLIENT_ID
+  #       - name: marketplace-ENTRA-ONBOARDING-CLIENT-SECRET
+  #         alias: ENTRA_ONBOARDING_CLIENT_SECRET
+  #       - name: marketplace-APIM-CLIENT-ID
+  #         alias: APIM_CLIENT_ID
+  #       - name: marketplace-APIM-CLIENT-SECRET
+  #         alias: APIM_CLIENT_SECRET
+  #       # Account sign-in (JWT signing key for /api/login and /api/register). Create it by hand,
+  #       # once per environment, rather than in Terraform (the same reason the password pepper
+  #       # was reverted in AMP-1103):
+  #       #   az keyvault secret set --vault-name apim-sbox --name marketplace-JWT-SECRET \
+  #       #     --value "$(openssl rand -hex 32)"
+  #       # Until it exists, register and sign-in answer 503. Not enabled in the AAT/preview
+  #       # templates for the same reason the PR #84 entries are only safe once the vault holds them.
+  #       - name: marketplace-JWT-SECRET
+  #         alias: JWT_SECRET
