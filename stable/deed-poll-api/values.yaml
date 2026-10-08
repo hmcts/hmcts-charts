@@ -111,3 +111,12 @@ java:
     # details" for a minor) and that each case gets only its own refund paragraph. It invites a reply, so it
     # needs the reply-to above, which is already set.
     NOTIFY_TEMPLATE_REQUEST_CONFIRMATION_TO_PROCEED: a58c5a8c-7727-4d1f-af08-4953d9f3d33e
+    # ① and ② Forms for completion, adult and minor, authored 2026-09-25 and 2026-09-26; ② carries LOC024 (v9).
+    # Both invite a reply and both carry the generated deed, so `isProvisioned` also needs the reply-to above
+    # and the retention below — without either they read unprovisioned rather than failing at the drain.
+    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_ADULT: 91a89945-bfa6-4423-86f5-be6f1c782aa5
+    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_MINOR: a2500c11-b282-48c3-a196-9f5700d13c91
+    # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
+    # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
+    # must be revisited before prod inherits it. 26 weeks leaves a tester ample time to follow a link.
+    NOTIFY_DOCUMENT_RETENTION_WEEKS: "26"
