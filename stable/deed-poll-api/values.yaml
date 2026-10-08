@@ -35,6 +35,12 @@ java:
           alias: DB_USER_NAME
         - name: postgres-password
           alias: DB_PASSWORD
+        # The non-prod Notify service's team-and-guest-list key, written by hand to `deed-poll-aat` and
+        # `deed-poll-demo` on 2026-10-08 — no Terraform owns it, because Notify issues it and never shows it twice.
+        # It delivers to guest-listed inboxes only. Not the Test key: that answers a realistic success and sends
+        # nothing, so a send through it looks like a working feature. A vault without it fails this deploy.
+        - name: notify-api-key
+          alias: NOTIFY_API_KEY
   environment:
     # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete.
     # Enabling cdam while this URL or the CCD identifiers are placeholders refuses startup.
@@ -73,11 +79,8 @@ java:
     # writes a case note ("… could not be sent. See the Emails tab for the reason") beside the sent note, and
     # the Emails tab shows the row `Failed` with that reason. A caseworker is told. The applicant still is not.
     #
-    # **So every id below is live in AAT the moment it is set, and AAT has no Notify key** — the vault holds
-    # none, and this chart deliberately names no Notify *secret* because a chart naming a secret the vault does
-    # not hold fails to deploy. Adding the key is blocked on `azure-access#8111`, which puts Steve in the
-    # `DTS Deed Poll` group so the secret can be written at all. **Until that lands, these templates are offered
-    # and every send fails.** That was already true of ③ before this file listed ⑤ and ④; it is now true of all three.
+    # **So every id below is live in AAT the moment it is set.** Until 2026-10-08 AAT had no Notify key, and
+    # every send of these templates failed that way. The key is now `notify-api-key` under `keyVaults` above.
     #
     # **These are the non-prod ids and prod must not inherit them.** There is no prod Notify service yet, so
     # there is no second value to set here; a structural Helm conditional is not the answer because
