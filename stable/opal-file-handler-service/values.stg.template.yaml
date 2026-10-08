@@ -16,6 +16,20 @@ java:
           alias: BAIS_SFTP_CAPS_REPORT_USERNAME
         - name: bais-sftp-bteckoh-report-username
           alias: BAIS_SFTP_BTECKOH_REPORT_USERNAME
+        - name: bais-sftp-allpay-report-username
+          alias: BAIS_SFTP_ALLPAY_USERNAME
+        - name: bais-sftp-natwest-username
+          alias: BAIS_SFTP_NATWEST_USERNAME
+        - name: bais-sftp-marston-username
+          alias: BAIS_SFTP_MARSTON_USERNAME
+        - name: bais-sftp-bteckoh-username
+          alias: BAIS_SFTP_BTECKOH_USERNAME
+        - name: bais-sftp-barclaycard-username
+          alias: BAIS_SFTP_BARCLAYCARD_USERNAME
+        - name: bais-sftp-jacobs-username
+          alias: BAIS_SFTP_JACOBS_USERNAME
+        - name: bais-sftp-cder-username
+          alias: BAIS_SFTP_CDER_USERNAME
         - name: app-insights-connection-string
           alias: app-insights-connection-string
         - name: launch-darkly-sdk-key
@@ -58,6 +72,13 @@ java:
     CAPS_REPORT_FILE_TRANSFER_JOB_ENABLED: true
     BTECKOH_REPORT_FILE_TRANSFER_JOB_ENABLED: true
     DWP_FILE_TRANSFER_JOB_ENABLED: true
+    ALLPAY_FILE_TRANSFER_JOB_ENABLED: true
+    NATWEST_FILE_TRANSFER_JOB_ENABLED: true
+    MARSTON_FILE_TRANSFER_JOB_ENABLED: true
+    BTECKOH_FILE_TRANSFER_JOB_ENABLED: true
+    BARCLAYCARD_FILE_TRANSFER_JOB_ENABLED: true
+    JACOBS_FILE_TRANSFER_JOB_ENABLED: true
+    CDER_FILE_TRANSFER_JOB_ENABLED: true
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/stg
     SERVICEBUS_PROTOCOL: amqps
 
