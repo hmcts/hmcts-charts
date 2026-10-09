@@ -53,6 +53,9 @@ nodejs:
     # The client id from ENTRA_CLIENT_ID is accepted as an audience as well; v2 access tokens carry that.
     AGENT_API_AUDIENCE: api://dtsse-agent-hub
     VIRTUAL_AGENTS_ENABLED: "true"
+    # The workspace marketplace plugins an owner can tick for a virtual agent, as `name=description`, comma-separated.
+    # Each name must be in the workspace's .claude-plugin/marketplace.json for the pod to load it.
+    VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs"
     ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
 
 postgresql:
