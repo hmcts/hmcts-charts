@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: The Spring Boot backend for deed poll case management
 name: deed-poll-api
 home: https://github.com/hmcts/deed-poll-api
-version: 0.0.21
+version: 0.0.22
 # The CNP tooling reads `annotations.team` as the product, which is what resolves the `deed-poll-{env}`
 # vault this chart's secrets come from. `deed-poll-admin`'s and `deed-poll-web`'s charts both carry it.
 annotations:

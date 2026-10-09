@@ -79,7 +79,8 @@ java:
     # writes a case note ("… could not be sent. See the Emails tab for the reason") beside the sent note, and
     # the Emails tab shows the row `Failed` with that reason. A caseworker is told. The applicant still is not.
     #
-    # **So every id below is live in AAT the moment it is set.** Until 2026-10-08 AAT had no Notify key, and
+    # **The case email ids below are live in AAT the moment they are set.** Gazette additionally requires
+    # GAZETTE_ENABLED=true and its saved recipient. Until 2026-10-08 AAT had no Notify key, and
     # every send of these templates failed that way. The key is now `notify-api-key` under `keyVaults` above.
     #
     # **These are the non-prod ids and prod must not inherit them.** There is no prod Notify service yet, so
@@ -116,6 +117,14 @@ java:
     # and the retention below — without either they read unprovisioned rather than failing at the drain.
     NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_ADULT: 91a89945-bfa6-4423-86f5-be6f1c782aa5
     NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_MINOR: a2500c11-b282-48c3-a196-9f5700d13c91
+    # Non-prod Gazette templates supplied by Steve and read back from Notify on 2026-10-09 (all version 1).
+    # Names, subject, body and exact placeholders match the agreed wording; download delivery still needs
+    # controlled acceptance testing. Prod must override these with its own service's template ids.
+    # Keep new previews/sends disabled until the rollout checks in docs/GAZETTE-RECOVERY.md are complete.
+    GAZETTE_ENABLED: "false"
+    NOTIFY_TEMPLATE_GAZETTE_ADULT: 1ab4503a-1c1b-4db1-b805-b188b1923e0b
+    NOTIFY_TEMPLATE_GAZETTE_MINOR: 823518db-0064-4df8-8ddd-2f52bd52e997
+    NOTIFY_TEMPLATE_GAZETTE_MIXED: d956464f-8fe1-4eb2-9f02-4a309a14636e
     # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
     # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
     # must be revisited before prod inherits it. 26 weeks leaves a tester ample time to follow a link.
