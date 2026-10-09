@@ -76,6 +76,11 @@ nodejs:
 job:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  # `Always` because the tag is `:latest`. Kubernetes pulls a `:latest` image on every run when the policy is left
+  # blank, which is what these jobs relied on until chart-library 2.3.1 (job 2.2.2) started defaulting a blank
+  # policy to `IfNotPresent` — under which a node keeps running whatever `:latest` it pulled first. Set on every
+  # job block below for the same reason.
+  imagePullPolicy: Always
   aadIdentityName: dtsse
   # Set here rather than left to the `job` chart, whose defaults are 512Mi/1024Mi — below the
   # --max-old-space-size ceiling in `environment` below, so V8 would still be declining to collect at the
@@ -119,6 +124,7 @@ job:
 orgJob:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  imagePullPolicy: Always
   aadIdentityName: dtsse
   # Same coupling as `job` above: the heap ceiling in `environment` below has to sit inside this limit.
   memoryRequests: 2Gi
@@ -168,6 +174,7 @@ orgJob:
 sonarJob:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  imagePullPolicy: Always
   aadIdentityName: dtsse
   # Smaller than the two collectors, and deliberately: this run holds 315 SonarCloud projects and one small table,
   # where `collect` deserialises tens of MB of jsonb. The heap ceiling in `environment` below still has to sit
@@ -232,6 +239,7 @@ sonarJob:
 cveJob:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  imagePullPolicy: Always
   aadIdentityName: dtsse
   # Smaller than the two GitHub jobs, and MEASURED rather than copied. The report body cannot be projected away
   # — it is what the findings are parsed out of — so what bounds this job is one page plus the fold: 362 scans
@@ -308,6 +316,7 @@ cveJob:
 alertJob:
   enabled: true
   image: hmctsprod.azurecr.io/dtsse/github-metrics:latest
+  imagePullPolicy: Always
   aadIdentityName: dtsse
   # MEASURED, on `cveJob`'s precedent rather than copied from it. What bounds this run is the largest family's walk
   # held in memory at once: 29,514 open Dependabot alerts, each projected to a dozen fields as the page arrives
