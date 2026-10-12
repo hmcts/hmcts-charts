@@ -3,4 +3,4 @@ python:
   image: https://hmcts.azurecr.io/hmcts/plum-fastapi-backend:latest
   ingressHost: 
   environment:
-    RECIPES_SERVICE_URL: http://plum-recipe-backend-aat.service.core-compute-aat.internal
+    RECIPES_SERVICE_URL: http://plum-recipe-backend-sandbox.service.core-compute-sandbox.internal
