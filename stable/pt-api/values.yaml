@@ -21,6 +21,8 @@ java:
           alias: PT_IDAM_SYSTEM_PASSWORD
         - name: ccd-elastic-search-hosts
           alias: ELASTIC_SEARCH_HOSTS
+        - name: gov-notify-key
+          alias: PT_NOTIFY_API_KEY
   environment:
     PT_DB_PORT: "5432"
     PT_DB_USER_NAME: pgadmin
@@ -32,6 +34,7 @@ java:
     CCD_DATA_STORE_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CASE_DOCUMENT_AM_URL: "http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     SEND_LETTER_URL: "http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    NOTIFY_URL: "https://api.notifications.service.gov.uk"
 ccd:
   enabled: false
 xui-webapp:

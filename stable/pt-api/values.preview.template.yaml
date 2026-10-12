@@ -24,6 +24,8 @@ java:
            alias: PT_IDAM_SYSTEM_PASSWORD
          - name: pt-api-idam-secret
            alias: IDAM_CLIENT_SECRET
+         - name: gov-notify-key
+           alias: PT_NOTIFY_API_KEY
   environment:
     PT_DB_HOST: "{{ .Release.Name }}-postgresql"
     PT_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
@@ -32,6 +34,10 @@ java:
     IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
     SEND_LETTER_URL: http://rpe-send-letter-service-aat.service.core-compute-aat.internal
     RETAIN_AND_DISPOSE_MODE: "live"
+    NOTIFY_URL: "https://api.notifications.service.gov.uk"
+    DB_SCHEDULER_EXECUTOR_ENABLED: true
+    DB_SCHEDULER_THREADS: "2"
+    ENABLE_TESTING_SUPPORT: true
   secrets:
     PT_DB_PASSWORD:
       secretRef: "{{ .Values.global.postgresSecret }}"
