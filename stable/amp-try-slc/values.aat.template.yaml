@@ -1,0 +1,19 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: amp-try-slc-staging.aat.platform.hmcts.net
+  keyVaults:
+    amp-try-slc:
+      secrets:
+        - name: try-slc-DEMO-SIGNING-KEY-JWK
+          alias: DEMO_SIGNING_KEY_JWK
+        - name: try-slc-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: try-slc-POSTGRES-PASS
+          alias: POSTGRES_PASS
+        - name: try-slc-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: try-slc-POSTGRES-PORT
+          alias: POSTGRES_PORT
+        - name: try-slc-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
