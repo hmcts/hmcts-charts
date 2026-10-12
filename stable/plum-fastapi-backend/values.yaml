@@ -3,6 +3,9 @@ python:
   image: 'hmctsprod.azurecr.io/plum/fastapi-backend:latest'
   ingressHost: plum-fastapi-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   environment:
+    # Configure these in the environment-specific Helm values to enable audio storage.
+    # SPEECH_AUDIO_STORAGE_ACCOUNT_URL: https://<account>.blob.core.windows.net
+    # SPEECH_AUDIO_STORAGE_CONTAINER: speech-audio
   # keyVaults:
   #   plum:
   #     secrets:
