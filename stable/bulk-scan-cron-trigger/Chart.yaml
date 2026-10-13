@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: BSP Cron Trigger App
 name: bulk-scan-cron-trigger
 home: https://github.com/hmcts/bsp-cron-trigger
-version: 0.0.26
+version: 0.0.27
 maintainers:
   - name: HMCTS bsp team
 dependencies:
   - name: job
-    version: 2.2.1
+    version: 2.2.2
     repository: oci://hmctsprod.azurecr.io/helm
