@@ -50,6 +50,10 @@ java:
           alias: AAD_CLIENT_ID
         - name: AzureADClientSecret
           alias: AAD_CLIENT_SECRET
+        - name: opal-system-user-client-id
+          alias: OPAL_SYSTEM_USER_CLIENT_ID
+        - name: opal-system-user-client-secret
+          alias: OPAL_SYSTEM_USER_CLIENT_SECRET
         - name: managed-redis-connection-string
           alias: REDIS_CONNECTION_STRING
         - name: opal-file-handler-service-file-store-account-name
