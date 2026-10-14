@@ -5,14 +5,14 @@ job:
     POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
     POSTGRES_NAME: locrefdata
     POSTGRES_USERNAME: locrefdata
-    POSTGRES_PASSWORD: locrefdata
     FLYWAY_ENABLED: true
     CONTAINER_NAME: lrd-ref-data
   keyVaults:
     "rd":
       resourceGroup: rd
       secrets:
-        - location-ref-api-POSTGRES-PASS
+        - name: location-ref-api-POSTGRES-PASS
+          alias: POSTGRES_PASSWORD
         - ApplicationInsightsInstrumentationKey
         - name: rd-location-storage-account-name
           alias: ACCOUNT_NAME
@@ -39,7 +39,6 @@ postgresql:
     tag: '11.16.0'
   auth:
     username: locrefdata
-    password: locrefdata
     database: locrefdata
   ## Disable Postgres Persistence
   primary:
