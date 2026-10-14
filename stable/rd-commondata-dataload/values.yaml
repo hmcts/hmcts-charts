@@ -12,7 +12,7 @@ job:
         - name: app-insights-connection-string
           alias: app-insights-connection-string
         - name: commondata-api-POSTGRES-PASS
-          alias: spring.datasource.password
+          alias: POSTGRES_PASSWORD
         - name: rd-commondata-storage-account-name
           alias: ACCOUNT_NAME
         - name: rd-commondata-storage-account-primary-key
@@ -20,7 +20,7 @@ job:
 
   environment:
     POSTGRES_HOST: rd-commondata-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: pgadmin
+    POSTGRES_USERNAME: dbcommondata@rd-commondata-api-postgres-db-{{ .Values.global.environment }}
     POSTGRES_NAME: dbcommondata
     POSTGRES_PORT: 5432
     FLYWAY_ENABLED: false
