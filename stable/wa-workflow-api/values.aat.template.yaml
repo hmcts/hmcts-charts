@@ -28,10 +28,6 @@ java:
     releaseNameOverride: "{{ .Release.Name }}-postgresql"
     enabled: true
     ingressHost: "postgres-{{ .Release.Name }}.staging.platform.hmcts.net"
-    image:
-      registry: hmctsprod.azurecr.io
-      repository: imported/bitnami/postgresql
-      tag: '11.6.0'
     auth:
       username: hmcts
       password: ${GENERIC_HMCTS_YAML_PASS}
