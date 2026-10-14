@@ -21,6 +21,10 @@ nodejs:
     # Login redirect URI is ${APP_URL}/auth/callback.
     APP_URL: https://benchnotes.{{ .Values.global.environment }}.platform.hmcts.net
     AUTH_ENABLED: 'true'
+    # Entra app role a user must hold to sign in, e.g. BenchNotes.AAT. The
+    # registration is shared with other apps. Empty: not checked. Switched on
+    # per environment in cnp-flux-config once the role exists.
+    AUTH_ACCESS_ROLE: ''
     # MoJ tenant; the client ID is per environment (values.<env>.template.yaml).
     AZURE_AD_TENANT_ID: c6874728-71e6-41fe-a9e1-2e8c36776ad8
 
