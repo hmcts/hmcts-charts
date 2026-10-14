@@ -42,15 +42,11 @@ nodejs:
     # writes land in AAT's data.** Fine for a caseworker service with no live data yet; revisit before this
     # app carries any.
     DEED_POLL_API_URL: "http://deed-poll-api-aat.service.core-compute-aat.internal"
-    # The dev persona switcher, on per pull request. `preview` is in `PERSONA_SWITCHER_ENVIRONMENTS`
-    # (`src/auth/persona-switcher.ts`) and `ENVIRONMENT_NAME` comes from `values.yaml`, resolved from the
-    # `global.environment` `helmInstall` passes with `--set`.
-    #
-    # Note what the line above means for this one: a preview switcher writes to **AAT's** data as a judge,
-    # because preview has no api of its own to point at. Accepted for an environment with no live data —
-    # and recorded as open question 3 in `docs/plans/completed/dev-persona-switcher.md`, since excluding preview from
-    # the allowlist is a one-line change if that stops being acceptable.
-    PERSONA_SWITCHER_ENABLED: "true"
+    # No `PERSONA_SWITCHER_ENABLED` here, deliberately, so preview inherits `values.yaml`'s off. Every PR's
+    # unreviewed code would otherwise run a privilege switcher that writes to AAT's data as admin or judge,
+    # through the api above (OWASP M1, 2026-10-13). This flag is the control that counts, not the allowlist in
+    # `src/auth/persona-switcher.ts`: Jenkins deploys preview with `global.environment=aat`, so
+    # `ENVIRONMENT_NAME` reads `aat` here too.
   # The vault list is re-declared here, without `redis-url`, and that is what makes the `REDIS_URL` override
   # above take effect: `getPropertiesVolumeSecrets` writes every mounted secret to `process.env` under its
   # chart alias unconditionally on the mount-point path — its `omit` list is consulted only on the local
