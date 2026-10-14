@@ -1,4 +1,9 @@
 nodejs:
+  # No Entra tenant is set up for previews: each has its own address, and Entra will not
+  # take a wildcard redirect URI. Sign in is switched off, so the app starts and says sign
+  # in is unavailable, rather than refusing to start for want of ENTRA_* settings.
+  environment:
+    ENTRA_ENABLED: 'false'
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
