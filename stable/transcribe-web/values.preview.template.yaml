@@ -1,0 +1,15 @@
+nodejs:
+  image: ${IMAGE_NAME}
+  ingressHost: transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
+  environment:
+    BACKEND_INTERNAL_URL: https://transcribe-api-pr-${CHANGE_ID}.preview.platform.hmcts.net
+    NEXT_PUBLIC_API_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
+    APPLICATIONINSIGHTS_CONNECTION_STRING: ${APP_INSIGHTS_CONNECTION_STRING}
+    # Preview environments have no Speech account of their own; they use aat's,
+    # as they use aat's Key Vault.
+    AZURE_SPEECH_ENDPOINT: https://transcribe-speech-aat.cognitiveservices.azure.com
+    APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
+    # A per-PR hostname cannot be registered as an Entra redirect URI, so
+    # preview runs without login. The API still requires a token, so preview
+    # shows the UI but its API calls are refused.
+    AUTH_ENABLED: 'false'

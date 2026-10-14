@@ -1,0 +1,80 @@
+nodejs:
+  # Caddy fronts the container on 3000 and reverse-proxies to the Next.js
+  # standalone server on 3001 (see Caddyfile / supervisord.conf).
+  applicationPort: 3000
+  image: 'hmctsprod.azurecr.io/transcribe/web:latest'
+  # The public hostname. Front Door (hmcts/azure-platform-terraform) sends it
+  # through the CFT Palo Alto to the cluster ingress with the Host header
+  # intact, so the ingress must answer to this name; the public and private
+  # CNAMEs live in hmcts/azure-public-dns and hmcts/azure-private-dns.
+  ingressHost: benchnotes.{{ .Values.global.environment }}.platform.hmcts.net
+
+  # The base chart defaults to /health/liveness and /health/readiness, which
+  # this app does not serve. app/health/route.ts does, and it sits outside the
+  # /api/* prefix so Caddy passes it through to Next.js rather than proxying it
+  # to the backend. It is also outside the areas proxy.ts gates, so the probe
+  # is not answered with an Easy Auth redirect.
+  readinessPath: /health
+  livenessPath: /health
+  startupPath: /health
+
+  environment:
+    # Server-side only: where Caddy sends everything under /api/*.
+    BACKEND_INTERNAL_URL: http://transcribe-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+
+    # Browser-side. start.js writes every NEXT_PUBLIC_* var into
+    # public/env-config.js at container start and lib/env.ts reads
+    # window.__ENV first, so this is genuinely runtime configuration despite
+    # the NEXT_PUBLIC_ prefix — one image serves every environment.
+    #
+    # It deliberately points at this app's own origin, not the backend's:
+    # lib/api-client.ts builds `${NEXT_PUBLIC_API_URL}/api`, so browser calls
+    # land back on Caddy and are proxied onward server-side. That keeps every
+    # request same-origin and sidesteps both CORS and the CSP connect-src rule
+    # in proxy.ts, which is fixed at build time and so cannot know the
+    # per-environment backend host.
+    NEXT_PUBLIC_API_URL: https://benchnotes.{{ .Values.global.environment }}.platform.hmcts.net
+
+    # Live dictation. The Speech account is private (Azure Policy), so the
+    # browser never connects to it: the API hands the Speech SDK this app's
+    # own URL (DIRECT_SDK_ACCESS=false, the default), and the Caddyfile proxies
+    # /cognitiveservices/*, /speech/* and /stt/* — including the websocket —
+    # to this endpoint over the private endpoint. Without it Caddy falls
+    # through to Next.js and live dictation 404s. This is the same arrangement
+    # courtstranscribe runs in production.
+    #
+    # The custom subdomain is the account name, set in
+    # transcribe-shared-infrastructure/ai-services.tf. Caddy rejects an
+    # upstream with a path, so no trailing slash.
+    AZURE_SPEECH_ENDPOINT: https://transcribe-speech-{{ .Values.global.environment }}.cognitiveservices.azure.com
+
+    # This app's own public origin: the login redirect URI is
+    # ${APP_URL}/auth/callback, and users return here after signing out. That
+    # redirect URI must be registered on the app registration below. The API's
+    # APP_URL and NEXT_PUBLIC_API_URL above move with it.
+    APP_URL: https://benchnotes.{{ .Values.global.environment }}.platform.hmcts.net
+
+    # This app runs the Entra ID login itself — there is no App Service Easy
+    # Auth on CNP (lib/auth, app/auth, proxy.ts, Caddyfile).
+    AUTH_ENABLED: 'true'
+
+    # Users sign in with the same MoJ-tenant (JusticeUK) app registrations as
+    # courtstranscribe and batch-audio-transcription. The IDs are not secret,
+    # so they live here rather than in the vault; the client ID differs per
+    # environment (values.<env>.template.yaml), only its secret is in the vault.
+    AZURE_AD_TENANT_ID: c6874728-71e6-41fe-a9e1-2e8c36776ad8
+
+  keyVaults:
+    # Resolves to Key Vault "transcribe-{env}". The CSI driver mounts each
+    # secret as a FILE at /mnt/secrets/transcribe/<alias>; start.js loads them
+    # into the environment before the server starts. Every secret listed must
+    # exist in the vault, or none are mounted and the pod does not start.
+    transcribe:
+      secrets:
+        # Client secret of the app registration above. Hand-seeded: it is
+        # courtstranscribe's microsoft-provider-authentication-secret.
+        - name: entra-client-secret
+          alias: AZURE_AD_CLIENT_SECRET
+        # Session store, from infrastructure/redis.tf.
+        - name: web-redis-connection-string
+          alias: REDIS_URL

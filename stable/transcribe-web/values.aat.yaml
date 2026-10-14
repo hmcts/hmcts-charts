@@ -1,0 +1,14 @@
+nodejs:
+  # The image this build pushed; the pipeline substitutes IMAGE_NAME. Without
+  # it the chart's default ':latest' tag is pulled, which is never published.
+  image: https://hmcts.azurecr.io/hmcts/transcribe-web:latest
+  # The hostname the pipeline tests this release on: it registers
+  # <release>.aat.platform.hmcts.net in private DNS and polls /health there
+  # (SERVICE_FQDN). The long-running AAT release is Flux's, from values.yaml.
+  ingressHost: 
+  environment:
+    APPLICATIONINSIGHTS_CONNECTION_STRING: 
+    # courtstranscribe's dev app registration (its environments/dev/dev.tfvars
+    # auth_client_id). https://benchnotes.aat.platform.hmcts.net/auth/callback
+    # must be one of its redirect URIs.
+    AZURE_AD_CLIENT_ID: a6407440-40bc-48da-94d6-170febce9384
