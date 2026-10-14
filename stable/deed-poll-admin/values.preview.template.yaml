@@ -20,6 +20,11 @@ nodejs:
     # from or written to a shared cache. `{{ .Release.Name }}` is `deed-poll-admin-pr-<n>`, which is what
     # bitnami names its master service after.
     REDIS_URL: "redis://{{ .Release.Name }}-redis-master:6379"
+    # That subchart speaks only plain `redis://`, and `assertRedisUrl` refuses that under `NODE_ENV=production`,
+    # which every deployed pod runs, so without this preview crash-looped on every PR. It admits `redis://`
+    # only to a host shaped like `deed-poll-admin-pr-<n>-redis-master`. Set here and nowhere else:
+    # `src/deployment-chart.test.ts` fails if `values.yaml` or the AAT template sets it (OWASP blocker B3).
+    REDIS_PLAINTEXT_PERMITTED: "true"
     # Must match the `ingressHost` above and be registered with IDAM. `SERVICE_FQDN` differs per pull
     # request, so **every PR has a different hostname** — and `idam-access-config` registers nothing for
     # `pcs-frontend`'s preview environments either, so either IDAM permits a pattern that repo does not
