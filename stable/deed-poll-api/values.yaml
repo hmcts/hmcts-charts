@@ -125,6 +125,10 @@ java:
     NOTIFY_TEMPLATE_GAZETTE_ADULT: 1ab4503a-1c1b-4db1-b805-b188b1923e0b
     NOTIFY_TEMPLATE_GAZETTE_MINOR: 823518db-0064-4df8-8ddd-2f52bd52e997
     NOTIFY_TEMPLATE_GAZETTE_MIXED: d956464f-8fe1-4eb2-9f02-4a309a14636e
+    # AM as a second source of staff and judicial roles, off until CRD/JRD profiles exist. Enabling it also needs
+    # flux to set ROLE_ASSIGNMENT_URL, RAS to admit deed_poll_api's S2S name, and the S2S secret mounted here,
+    # which this chart does not yet do. A RAS failure falls back to the IDAM roles, never to more.
+    ROLE_ASSIGNMENT_ENABLED: "false"
     # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
     # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
     # must be revisited before prod inherits it. 26 weeks leaves a tester ample time to follow a link.
