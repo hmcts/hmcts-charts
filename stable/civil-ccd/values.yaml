@@ -115,12 +115,6 @@ civil-service:
         username: 
         password: 
         postgresPassword: 
-idam-pr:
-  releaseNameOverride: -xui-idam-pr
-  enabled: true
-  redirect_uris:
-    XUI:
-      - https://civil-ccd-xui-staging.aat.platform.hmcts.net/oauth2/callback
 
 aac-manage-case-assignment:
   enabled: true
