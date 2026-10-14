@@ -35,7 +35,11 @@ python:
           alias: AZURE_SPEECH_ENDPOINT
         - name: webhook-secret-encryption-key
           alias: WEBHOOK_SECRET_ENCRYPTION_KEY
-        # azure-openai-* and gov-notify-api-key are added once they exist.
+        # No key: Azure OpenAI is reached with the workload identity.
+        - name: azure-openai-endpoint
+          alias: AZURE_OPENAI_ENDPOINT
+        # google-application-credentials-json and gov-notify-api-key are added
+        # once they are seeded.
 
   # AAT uses the Azure Postgres server from infrastructure/; preview turns this on.
   postgresql:
