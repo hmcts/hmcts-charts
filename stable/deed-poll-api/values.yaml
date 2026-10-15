@@ -15,8 +15,11 @@ java:
   # `lib/applicationinsights.json` both read.
   #
   # IDAM issuer and audience are runtime configuration, not secrets. Environment-specific values are
-  # supplied by cnp-flux-config rather than Key Vault. No S2S secret is mounted: this service does not
-  # currently call another CFT service.
+  # supplied by cnp-flux-config rather than Key Vault. No S2S secret is mounted here, because the outbound key
+  # (used for CCD data-store, CDAM and RAS) exists only in AAT: deed-poll-infra copies `microservicekey-deed-poll-api`
+  # from `s2s-aat` into `deed-poll-aat` as `api-s2s-secret`, and cnp-flux-config's
+  # `apps/deed-poll/deed-poll-api/aat.yaml` (#48052) mounts it as DEED_POLL_API_S2S_SECRET, replacing this list.
+  # Mounting it here would fail every other environment's deploy on a missing secret.
   keyVaults:
     deed-poll:
       secrets:
@@ -125,9 +128,10 @@ java:
     NOTIFY_TEMPLATE_GAZETTE_ADULT: 1ab4503a-1c1b-4db1-b805-b188b1923e0b
     NOTIFY_TEMPLATE_GAZETTE_MINOR: 823518db-0064-4df8-8ddd-2f52bd52e997
     NOTIFY_TEMPLATE_GAZETTE_MIXED: d956464f-8fe1-4eb2-9f02-4a309a14636e
-    # AM as a second source of staff and judicial roles, off until CRD/JRD profiles exist. Enabling it also needs
-    # flux to set ROLE_ASSIGNMENT_URL, RAS to admit deed_poll_api's S2S name, and the S2S secret mounted here,
-    # which this chart does not yet do. A RAS failure falls back to the IDAM roles, never to more.
+    # AM as a second source of staff and judicial roles, off until CRD/JRD profiles exist. Enabling it in AAT also
+    # needs RAS to admit deed_poll_api's S2S name, and flux's aat.yaml (which already mounts the S2S secret) to set
+    # ROLE_ASSIGNMENT_URL, ROLE_ASSIGNMENT_GAZETTE_SKILL and this. A RAS failure falls back to the IDAM roles,
+    # never to more.
     ROLE_ASSIGNMENT_ENABLED: "false"
     # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
     # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
