@@ -97,6 +97,17 @@ nodejs:
     # `src/auth/persona-switcher.ts`, which refuses an environment name it does not recognise even with this
     # set. `src/deployment-chart.test.ts` fails if this file ever enables it.
     PERSONA_SWITCHER_ENABLED: "false"
+    # Session lifetime limits, in seconds: 30 minutes idle and 10 hours absolute (OWASP plan 03). Both are the plan's
+    # recommended defaults pending the service owner's decision (its open decision 1), so a decision changes only
+    # these values. Stated here, rather than left to `config/default.json`, so the policy is visible where the app is
+    # deployed. Raising the idle limit is the quickest rollback. `assertSessionTimeouts` refuses to start unless
+    # 300 <= idle < absolute <= 86400. See `docs/DEPLOYMENT.md`, "Session lifetime".
+    SESSION_IDLE_TIMEOUT_SECONDS: "1800"
+    SESSION_ABSOLUTE_TIMEOUT_SECONDS: "36000"
+    # Whether IDAM has `/session-timed-out` registered as a post-logout address for this client. IDAM refuses an
+    # unregistered one, so a timed-out session returns to `/` until idam-access-config registers it (plan 03,
+    # Task 10). Then set "true" here.
+    SESSION_TIMEOUT_LOGOUT_PATH_REGISTERED: "false"
   # Exactly four secrets, and the names are fixed by `hmcts/deed-poll-infra`'s `key-vault.tf`, `redis.tf`
   # and `app-insights.tf` — do not rename them here. The vault is `{product}-{env}`, so the key below is the
   # product and not a component.
