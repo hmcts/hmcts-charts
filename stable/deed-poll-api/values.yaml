@@ -49,6 +49,9 @@ java:
     # Enabling cdam while this URL or the CCD identifiers are placeholders refuses startup.
     DOCUMENT_STORE: filesystem
     CASE_DOCUMENT_AM_URL: DEED_POLL_PLACEHOLDER
+    # The IDAM role the system user holds, which the definition maps onto DEED_POLL_SYSTEM. Registered for AAT by
+    # hmcts/idam-access-config#1023.
+    CCD_SYSTEM_ROLE: deed-poll-system-update
     # The one shared database for the product — `deed-poll-api` owns the `public` and `ccd` schemas,
     # `deed-poll-admin` owns `session` in the same database. Not a secret: it is a name, and the shared
     # root does not write one. Stated explicitly because `application.yaml` defaults it to `deedpoll`
