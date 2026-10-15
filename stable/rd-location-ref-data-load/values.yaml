@@ -8,7 +8,7 @@ job:
     jobKind: CronJob
   environment:
     POSTGRES_HOST: rd-location-ref-api-postgres-db-v16-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: locrefdata@rd-location-ref-api-postgres-db-{{ .Values.global.environment }}
+    POSTGRES_USERNAME: pgadmin
     POSTGRES_NAME: dbrdlocationref
     POSTGRES_PORT: 5432
     LOGBACK_REQUIRE_ALERT_LEVEL: 'false'
@@ -24,7 +24,7 @@ job:
       resourceGroup: rd
       secrets:
         - name: location-ref-api-POSTGRES-PASS
-          alias: POSTGRES_PASSWORD
+          alias: spring.datasource.password
         - name: app-insights-connection-string
           alias: app-insights-connection-string
         - name: rd-location-storage-account-name
