@@ -137,6 +137,9 @@ java:
     # ROLE_ASSIGNMENT_URL, ROLE_ASSIGNMENT_GAZETTE_SKILL and this. A RAS failure falls back to the IDAM roles,
     # never to more.
     ROLE_ASSIGNMENT_ENABLED: "false"
+    # Per-identity budgets on search, email and upload (RateLimitFilter). `observe` logs what `enforce` would refuse
+    # and refuses nothing; switch to `enforce` per environment, AAT first, once the limits are tuned.
+    RATE_LIMIT_MODE: observe
     # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
     # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
     # must be revisited before prod inherits it. 26 weeks leaves a tester ample time to follow a link.
