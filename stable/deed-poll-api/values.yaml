@@ -45,6 +45,7 @@ java:
         - name: notify-api-key
           alias: NOTIFY_API_KEY
   environment:
+    ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
     # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete.
     # Enabling cdam while this URL or the CCD identifiers are placeholders refuses startup.
     DOCUMENT_STORE: filesystem

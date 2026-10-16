@@ -1,4 +1,7 @@
 java:
+  environment:
+    # Jenkins previews may use global.environment=aat for shared services; name this deployment explicitly.
+    ENVIRONMENT_NAME: preview
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
