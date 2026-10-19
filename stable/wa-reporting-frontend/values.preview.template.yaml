@@ -24,6 +24,7 @@ nodejs:
           alias: lrd-db-password
   environment:
     AUTH_ENABLED: false
+    REDIS_CLUSTER: false
     REDIS_HOST: ${SERVICE_NAME}-hmcts-redis-master
 hmcts-redis:
   enabled: true

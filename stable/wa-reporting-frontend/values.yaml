@@ -31,6 +31,7 @@ nodejs:
           alias: lrd-db-password
   environment:
     ALLOW_CONFIG_MUTATIONS: true
+    REDIS_CLUSTER: false
     TM_DB_HOST: cft-task-postgres-db-flexible-replica-{{ .Values.global.environment }}.postgres.database.azure.com
     TM_DB_NAME: cft_task_db
     TM_DB_SCHEMA: analytics
