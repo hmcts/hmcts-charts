@@ -18,10 +18,10 @@ python:
     JWT_VERIFICATION_STRICT: 'true'
     # MoJ tenant; the client ID is per environment (values.<env>.template.yaml).
     AZURE_AD_TENANT_ID: c6874728-71e6-41fe-a9e1-2e8c36776ad8
-    # Entra app role a caller must hold, e.g. BenchNotes.AAT. The registration
-    # is shared with other apps. Empty: not checked. Switched on per
-    # environment in cnp-flux-config once the role exists.
-    AUTH_ACCESS_ROLE: ''
+    # Comma-separated app roles; a caller must hold at least one. Backs up
+    # "Assignment required" on the app registration. Empty: not checked.
+    # Switched on per environment in cnp-flux-config.
+    AUTH_ACCESS_ROLES: ''
 
   keyVaults:
     # Mounted as files under /mnt/secrets/transcribe and loaded into the
