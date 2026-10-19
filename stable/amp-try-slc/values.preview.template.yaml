@@ -1,4 +1,8 @@
 java:
+  # Self-issued, so the functional stage can mint a token and exercise the 200 path. CI holds no
+  # Entra client secret, and an ENTRA preview could only ever prove the 401.
+  environment:
+    AUTH_KEY_SOURCE: "SELF_ISSUED"
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}

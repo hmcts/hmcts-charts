@@ -1,5 +1,13 @@
 # Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
 java:
+  # The ephemeral amp-try-slc-staging slot, not amp-try-slc.aat.platform.hmcts.net - that one is
+  # Flux-managed from hmcts-charts plus cnp-flux-config/apps/amp/amp-try-slc/aat.yaml, and this
+  # file never reaches it.
+  #
+  # Self-issued, so the functional stage can mint a token and exercise the 200 path. CI holds no
+  # Entra client secret, and an ENTRA staging slot could only ever prove the 401.
+  environment:
+    AUTH_KEY_SOURCE: "SELF_ISSUED"
   image: https://hmcts.azurecr.io/hmcts/amp-try-slc:latest
   ingressHost: amp-try-slc-staging.aat.platform.hmcts.net
   keyVaults:
