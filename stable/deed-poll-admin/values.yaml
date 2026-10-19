@@ -108,6 +108,11 @@ nodejs:
     # unregistered one, so a timed-out session returns to `/` until idam-access-config registers it (plan 03,
     # Task 10). Then set "true" here.
     SESSION_TIMEOUT_LOGOUT_PATH_REGISTERED: "false"
+    # The per-user limiter on search, email preview, email send and upload (OWASP plan 06, `src/rate-limit/`).
+    # `observe` counts and logs `rate_limit … mode=observe` for what `enforce` would refuse, and refuses nothing, so
+    # the numbers can be checked against api's own log before either side enforces. api is the control either way.
+    # `off` is the rollback. The per-bucket limits default to api's in `config/default.json`.
+    RATE_LIMIT_MODE: observe
   # Exactly four secrets, and the names are fixed by `hmcts/deed-poll-infra`'s `key-vault.tf`, `redis.tf`
   # and `app-insights.tf` — do not rename them here. The vault is `{product}-{env}`, so the key below is the
   # product and not a component.
