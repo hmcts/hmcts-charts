@@ -8,10 +8,6 @@ java:
           alias: AM_JUDICIAL_BOOKING_SERVICE_SECRET
         - name: app-insights-connection-string
           alias: app-insights-connection-string
-        - name: judicial-booking-service-IDAM-CLIENT-SECRET
-          alias: JUDICIAL_BOOKING_IDAM_CLIENT_SECRET
-        - name: judicial-booking-service-IDAM-ADMIN-SECRET
-          alias: JUDICIAL_BOOKING_IDAM_ADMIN_PASSWORD
   environment:
     JUDICIAL_BOOKING_SERVICE_POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
     JUDICIAL_BOOKING_SERVICE_POSTGRES_DATABASE: "{{ .Values.postgresql.auth.database}}"
