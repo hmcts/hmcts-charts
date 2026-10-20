@@ -3,6 +3,6 @@ python:
   ingressHost: 
   environment:
     APP_URL: https://benchnotes.aat.platform.hmcts.net
-    AZURE_AD_CLIENT_ID: a6407440-40bc-48da-94d6-170febce9384
+    AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314
     # Read from the environment by the base image's OpenTelemetry distro.
     APPLICATIONINSIGHTS_CONNECTION_STRING: 
