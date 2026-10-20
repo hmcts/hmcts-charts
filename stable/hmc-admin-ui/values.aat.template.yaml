@@ -10,4 +10,5 @@ nodejs:
         - hmc-admin-ui-client-secret
         - hmc-admin-ui-s2s-secret
   environment:
+    HMC_ADMIN_UI_BASE_URL: https://${SERVICE_FQDN}
     REDIS_ENABLED: false
