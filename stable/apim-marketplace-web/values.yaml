@@ -32,3 +32,6 @@ nodejs:
     # external-entra-id) exactly as written, or Entra refuses them.
     ENTRA_REDIRECT_URI: https://apim-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
     ENTRA_POST_LOGOUT_REDIRECT_URI: https://apim-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/
+    # Picks this environment's API addresses (apiEndpoints in config/default.json) for the
+    # instructions on an application's page. One with no address there leaves them out.
+    PLATFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
