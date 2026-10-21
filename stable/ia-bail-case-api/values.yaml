@@ -57,3 +57,15 @@ java:
           alias: IA_REDIS_ACCESS_KEY
         - name: ia-redis-encryption-key
           alias: IA_REDIS_ENCRYPTION_KEY
+
+# The CCD stack is preview-only — see values.preview.template.yaml.
+ccd:
+  enabled: false
+xui-webapp:
+  enabled: false
+ccd-case-document-am-api:
+  enabled: false
+aac-manage-case-assignment:
+  enabled: false
+postgresql:
+  enabled: false
