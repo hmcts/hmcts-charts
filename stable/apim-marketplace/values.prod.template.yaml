@@ -1,0 +1,32 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: apim-marketplace.platform.hmcts.net
+  environment:
+    # Notify has no CC, so each address gets its own copy.
+    NOTIFY_REVIEW_INBOXES: DataAccessPanel@justice.gov.uk,Craig.Robb@justice.gov.uk,APIMarketplace@hmcts.net
+  keyVaults:
+    apim:
+      secrets:
+        - name: marketplace-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: marketplace-POSTGRES-PASS
+          alias: POSTGRES_PASS
+        - name: marketplace-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: marketplace-POSTGRES-PORT
+          alias: POSTGRES_PORT
+        - name: marketplace-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
+        # A secret listed here that the vault does not hold stops the pod in Init rather than
+        # disabling the feature, so each is uncommented once it exists in the vault.
+        # - name: marketplace-NOTIFY-API-KEY
+        #   alias: NOTIFY_API_KEY
+        # - name: marketplace-ENTRA-ONBOARDING-CLIENT-ID
+        #   alias: ENTRA_ONBOARDING_CLIENT_ID
+        # - name: marketplace-ENTRA-ONBOARDING-CLIENT-SECRET
+        #   alias: ENTRA_ONBOARDING_CLIENT_SECRET
+        # - name: marketplace-APIM-CLIENT-ID
+        #   alias: APIM_CLIENT_ID
+        # - name: marketplace-APIM-CLIENT-SECRET
+        #   alias: APIM_CLIENT_SECRET
