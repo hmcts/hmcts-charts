@@ -1,3 +1,6 @@
+postgresql:
+  enabled: false
+
 nodejs:
   applicationPort: 3100
   aadIdentityName: courtfines
