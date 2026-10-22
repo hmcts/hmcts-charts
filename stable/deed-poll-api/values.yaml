@@ -14,12 +14,11 @@ java:
   # bug. Mounted at `/mnt/secrets/deed-poll/`, which is what `spring.config.import`'s configtree and
   # `lib/applicationinsights.json` both read.
   #
-  # IDAM issuer and audience are runtime configuration, not secrets. Environment-specific values are
-  # supplied by cnp-flux-config rather than Key Vault. No S2S secret is mounted here, because the outbound key
-  # (used for CCD data-store, CDAM and RAS) exists only in AAT: deed-poll-infra copies `microservicekey-deed-poll-api`
-  # from `s2s-aat` into `deed-poll-aat` as `api-s2s-secret`, and cnp-flux-config's
-  # `apps/deed-poll/deed-poll-api/aat.yaml` (#48052) mounts it as DEED_POLL_API_S2S_SECRET, replacing this list.
-  # Mounting it here would fail every other environment's deploy on a missing secret.
+  # Every environment this chart deploys to has every secret below. deed-poll-infra creates the IDAM client,
+  # system user and S2S secrets in aat, demo, ithc and prod (api-identity.tf); the S2S one is copied from
+  # `microservicekey-deed-poll-api` in `s2s-{env}`. Configuration that differs per environment lives in
+  # cnp-flux-config, which overrides only what it must. Prod replaces this whole list, because it has no Notify key
+  # yet. A Flux `keyVaults` override replaces the list, so it has to restate every secret it keeps.
   keyVaults:
     deed-poll:
       secrets:
@@ -44,15 +43,40 @@ java:
         # nothing, so a send through it looks like a working feature. A vault without it fails this deploy.
         - name: notify-api-key
           alias: NOTIFY_API_KEY
+        # The api's own IDAM client and the CCD system user it signs in as (CCD linking and CDAM), and its outbound
+        # S2S key for data-store, CDAM and RAS.
+        - name: api-idam-client-secret
+          alias: IDAM_CLIENT_SECRET
+        - name: api-idam-system-username
+          alias: DEED_POLL_SYSTEM_USERNAME
+        - name: api-idam-system-password
+          alias: DEED_POLL_SYSTEM_PASSWORD
+        - name: api-s2s-secret
+          alias: DEED_POLL_API_S2S_SECRET
   environment:
     ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
-    # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete.
-    # Enabling cdam while this URL or the CCD identifiers are placeholders refuses startup.
+    # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete in an
+    # environment. The CCD identifiers and CDAM URL below being real is not that onboarding.
     DOCUMENT_STORE: filesystem
-    CASE_DOCUMENT_AM_URL: DEED_POLL_PLACEHOLDER
-    # The IDAM role the system user holds, which the definition maps onto DEED_POLL_SYSTEM. Registered for AAT by
-    # hmcts/idam-access-config#1023.
+    # Every non-prod environment follows these patterns, and the `.internal` hosts follow them in prod too. Prod
+    # overrides the issuer and IDAM's API, which carry no environment segment there. The ForgeRock issuer that
+    # password-grant tokens carry is named differently in each environment (`idam-aat2`, `idam-ithc`, `idam-prod2`),
+    # so `IDAM_API_ADDITIONAL_ISSUERS` is set in each one's Flux patch instead.
+    IDAM_API_ISSUER_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+    IDAM_API_AUDIENCES: deed-poll-admin,deed-poll-api
+    IDAM_CLIENT_ID: deed-poll-api
+    IDAM_CLIENT_REDIRECT_URI: http://deed-poll-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/receiver
+    IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # The confirmed CCD identifiers. The sweep that uses them stays off (application.yaml) unless an environment's
+    # Flux switches it on after its CCD smoke checks.
+    CCD_JURISDICTION_ID: DEEDPOLL
+    CCD_CASE_TYPE_ID: DEEDPOLL
+    # The IDAM role the system user holds, which the definition maps onto DEED_POLL_SYSTEM.
     CCD_SYSTEM_ROLE: deed-poll-system-update
+    CCD_DATA_STORE_URL: http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    DOCUMENT_URL_BASE: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     # The one shared database for the product — `deed-poll-api` owns the `public` and `ccd` schemas,
     # `deed-poll-admin` owns `session` in the same database. Not a secret: it is a name, and the shared
     # root does not write one. Stated explicitly because `application.yaml` defaults it to `deedpoll`
