@@ -11,8 +11,10 @@ nodejs:
   startupPath: /health
 
   environment:
-    # Where Caddy proxies /api/*.
-    BACKEND_INTERNAL_URL: http://transcribe-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # Where Caddy and the recording route handlers send /api/* calls: the API's
+    # Kubernetes service in this namespace. (The API's internal ingress host has
+    # no private DNS record, so it does not resolve.)
+    BACKEND_INTERNAL_URL: http://transcribe-api-python
     # This app's own origin, so browser API calls stay same-origin. Written to
     # public/env-config.js at start by start.js.
     NEXT_PUBLIC_API_URL: https://benchnotes.{{ .Values.global.environment }}.platform.hmcts.net
