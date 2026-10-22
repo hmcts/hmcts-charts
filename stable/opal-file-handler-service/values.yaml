@@ -41,6 +41,8 @@ java:
           alias: FILE_STORE_STORAGE_KEY
         - name: servicebus-connection-string
           alias: SERVICEBUS_CONNECTION_STRING
+        - name: servicebus-logging-pdpl-queue-name
+          alias: SERVICEBUS_LOGGING_PDPL_QUEUE_NAME
         - name: servicebus-banking-interfaces-preprocess-interface-file-maintenance-queue-name
           alias: SERVICEBUS_INTERFACE_FILE_PREPROCESS_MAINTENANCE_QUEUE_NAME
         - name: servicebus-banking-interfaces-preprocess-interface-file-fines-queue-name
@@ -52,6 +54,7 @@ java:
     OPAL_REDIS_ENABLED: true
     OPAL_USER_SERVICE_API_URL: https://opal-user-service.{{ .Values.global.environment }}.platform.hmcts.net
     FLYWAY_LOCATIONS: classpath:db/migration/ddl,classpath:db/migration/data/allEnvs
+    SERVICEBUS_LOGGING_PDPL_PROTOCOL: amqps
   postgresql:
     enabled: false
     image:
