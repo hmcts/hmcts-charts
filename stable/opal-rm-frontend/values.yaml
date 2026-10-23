@@ -41,6 +41,9 @@ redis:
 
 opal-maintenance-service:
   enabled: false
+  java:
+    environment:
+      TESTING_SUPPORT_ENDPOINTS_ENABLED: false
 
 postgresql:
   enabled: false
