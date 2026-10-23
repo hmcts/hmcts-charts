@@ -38,6 +38,7 @@ java:
     DB_SCHEDULER_EXECUTOR_ENABLED: true
     DB_SCHEDULER_THREADS: "2"
     ENABLE_TESTING_SUPPORT: true
+    PT_FRONTEND_URL: ${PT_FRONTEND_URL}
   secrets:
     PT_DB_PASSWORD:
       secretRef: "{{ .Values.global.postgresSecret }}"

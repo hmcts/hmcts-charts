@@ -35,6 +35,7 @@ java:
     CASE_DOCUMENT_AM_URL: "http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     SEND_LETTER_URL: "http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     NOTIFY_URL: "https://api.notifications.service.gov.uk"
+    PT_FRONTEND_URL: "https://pt-{{ .Values.global.environment }}.platform.hmcts.net"
 ccd:
   enabled: false
 xui-webapp:

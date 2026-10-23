@@ -4,3 +4,4 @@ java:
   ingressHost: 
   environment:
     CASE_TYPE_SUFFIX: "staging"
+    ENABLE_TESTING_SUPPORT: "true"

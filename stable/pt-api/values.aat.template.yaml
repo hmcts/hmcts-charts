@@ -4,3 +4,4 @@ java:
   ingressHost: ${SERVICE_FQDN}
   environment:
     CASE_TYPE_SUFFIX: "staging"
+    ENABLE_TESTING_SUPPORT: "${ENABLE_TESTING_SUPPORT}"
