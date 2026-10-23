@@ -14,6 +14,8 @@ python:
     AZURE_STORAGE_TRANSCRIPTION_CONTAINER: transcriptions
     # Background pollers run as a separate workload.
     RUN_WORKERS: 'false'
+    # Bring the database schema up to date at startup (runtime/migrations.py).
+    RUN_MIGRATIONS: 'true'
     JWT_ENABLE_VERIFICATION: 'true'
     JWT_VERIFICATION_STRICT: 'true'
     # HMCTS tenant (CJS Common Platform); the client ID is per environment
