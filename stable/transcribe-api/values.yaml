@@ -1,6 +1,6 @@
 python:
   applicationPort: 8000
-  image: 'hmctsprod.azurecr.io/transcribe/api:latest'
+  image: &image 'hmctsprod.azurecr.io/transcribe/api:latest'
   ingressHost: transcribe-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
   # The base chart's /health/liveness and /health/readiness are not served.
@@ -8,7 +8,7 @@ python:
   livenessPath: /api/health
   startupPath: /api/health
 
-  environment:
+  environment: &environment
     ENVIRONMENT: '{{ .Values.global.environment }}'
     AZURE_STORAGE_CONTAINER_NAME: audio
     AZURE_STORAGE_TRANSCRIPTION_CONTAINER: transcriptions
@@ -26,7 +26,7 @@ python:
     # Switched on per environment in cnp-flux-config.
     AUTH_ACCESS_ROLES: ''
 
-  keyVaults:
+  keyVaults: &keyVaults
     # Mounted as files under /mnt/secrets/transcribe and loaded into the
     # environment by runtime/secret_files.py. Every secret listed must exist,
     # or the pod does not start.
@@ -49,5 +49,51 @@ python:
         # once they are seeded.
 
   # AAT uses the Azure Postgres server from infrastructure/; preview turns this on.
+  postgresql:
+    enabled: false
+
+# Off unless Flux says otherwise: it sets true on one cluster per environment
+# (aat-00 in AAT). It decides whether the worker below exists (Chart.yaml).
+global:
+  activeCronCluster: false
+
+# The background pollers (transcribe_api/worker.py): the dictation blob poller
+# that starts transcription of uploads under user-uploads/, and the recording
+# batch-job poller. Same image, Key Vault secrets, environment and workload
+# identity as the API (the anchors above).
+worker:
+  image: *image
+  # The base image's entrypoint is the interpreter (see Dockerfile).
+  args: ['-m', 'transcribe_api.worker']
+  environment:
+    <<: *environment
+    # worker.py starts the pollers itself and never runs the API lifespan, so
+    # neither flag is read; set to what this workload does, for the reader.
+    RUN_WORKERS: 'true'
+    RUN_MIGRATIONS: 'false'
+    # Required by the settings model. Set per environment in cnp-flux-config
+    # (worker.environment), as python.environment is for the API; empty here
+    # so the worker still starts before that is in place.
+    APP_URL: ''
+    AZURE_AD_CLIENT_ID: ''
+  keyVaults: *keyVaults
+  # Exactly one. The blob poller claims uploads with an unconditional metadata
+  # write and, at startup, resets every in-progress upload, so a second copy
+  # would transcribe the same audio twice.
+  replicas: 1
+  autoscaling:
+    enabled: false
+  pdb:
+    enabled: false
+  # Up to 20 transcriptions in flight, each downloading and converting audio.
+  memoryRequests: '512Mi'
+  memoryLimits: '2048Mi'
+  cpuRequests: '250m'
+  cpuLimits: '2000m'
+  # No HTTP server, so no ingress and no HTTP probes. A crashed worker exits
+  # and the kubelet restarts it.
+  readinessPath: ''
+  livenessPath: ''
+  startupPath: ''
   postgresql:
     enabled: false

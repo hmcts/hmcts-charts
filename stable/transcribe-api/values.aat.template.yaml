@@ -6,3 +6,8 @@ python:
     AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314
     # Read from the environment by the base image's OpenTelemetry distro.
     APPLICATIONINSIGHTS_CONNECTION_STRING: ${APP_INSIGHTS_CONNECTION_STRING}
+
+# Flux runs the single worker on the active cron cluster. A Jenkins release
+# (staging, preview) must not start a second copy against the same storage.
+worker:
+  enabled: false

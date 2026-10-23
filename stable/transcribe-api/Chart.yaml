@@ -3,15 +3,26 @@ appVersion: "1.0"
 description: A Helm chart for the HMCTS Transcribe backend
 name: transcribe-api
 home: https://github.com/hmcts/transcribe-api
-version: 0.0.3
+version: 0.0.4
 maintainers:
   - name: HMCTS Transcribe team
-# Only the python base chart. It bundles its own Postgres sub-chart
+# The python base chart, twice. It bundles its own Postgres sub-chart
 # (hmcts-postgresql, aliased `postgresql`), which is what python.postgresql in
 # values.yaml and values.preview.template.yaml switches on. A separate
 # top-level postgresql dependency used to sit here too: nothing enabled it, and
 # at 1.1.1 it failed the pipeline's deprecated-chart check (< 1.1.3).
 dependencies:
+  # The API (uvicorn).
   - name: python
     version: 0.1.1
     repository: "oci://hmctsprod.azurecr.io/helm"
+  # The background pollers (python -m transcribe_api.worker), same image.
+  # The blob poller is not safe to run twice, so the worker exists only on the
+  # cluster CNP marks as the active cron cluster (aat-00 in AAT; Flux sets
+  # global.activeCronCluster there and nowhere else). worker.enabled, when
+  # set, wins: the Jenkins staging and preview releases set it to false.
+  - name: python
+    alias: worker
+    version: 0.1.1
+    repository: "oci://hmctsprod.azurecr.io/helm"
+    condition: worker.enabled,global.activeCronCluster
