@@ -58,7 +58,13 @@ java:
     ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
     # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete in an
     # environment. The CCD identifiers and CDAM URL below being real is not that onboarding.
-    DOCUMENT_STORE: filesystem
+    #
+    # Prod is the exception, because DocumentStoreEnvironmentGuard refuses the filesystem store there and the api
+    # would not start. CdamOnboarding checks only this configuration, so prod starts on cdam. But its uploads and
+    # generated deeds fail until prod's CCD is onboarded and its records linked. That is acceptable only while
+    # prod is dark, with no sign-in and no records. The tpl literals are in backticks for the reason given above
+    # the Notify ids below.
+    DOCUMENT_STORE: '{{ if eq .Values.global.environment `prod` }}cdam{{ else }}filesystem{{ end }}'
     # Every non-prod environment follows these patterns, and the `.internal` hosts follow them in prod too. Prod
     # overrides the issuer and IDAM's API, which carry no environment segment there. The ForgeRock issuer that
     # password-grant tokens carry is named differently in each environment (`idam-aat2`, `idam-ithc`, `idam-prod2`),
