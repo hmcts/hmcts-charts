@@ -17,8 +17,9 @@ java:
   # Every environment this chart deploys to has every secret below. deed-poll-infra creates the IDAM client,
   # system user and S2S secrets in aat, demo, ithc and prod (api-identity.tf); the S2S one is copied from
   # `microservicekey-deed-poll-api` in `s2s-{env}`. Configuration that differs per environment lives in
-  # cnp-flux-config, which overrides only what it must. Prod replaces this whole list, because it has no Notify key
-  # yet. A Flux `keyVaults` override replaces the list, so it has to restate every secret it keeps.
+  # cnp-flux-config, which overrides only what it must. Prod's `notify-api-key` is a placeholder until a prod Notify
+  # service exists (deed-poll-infra#40). A Flux `keyVaults` override replaces the list, so it has to restate every
+  # secret it keeps.
   keyVaults:
     deed-poll:
       secrets:
@@ -92,12 +93,6 @@ java:
     # entry — `application.yaml` defaults it to `DEED_POLL_PLACEHOLDER` so one grep still lists every external
     # identifier the service is waiting on, and this is the override that makes a real send possible.
     #
-    # **This is the non-prod id and prod must not inherit it.** There is no prod Notify service yet, so there
-    # is no second value to set here; a structural Helm conditional is not the answer because
-    # `DeploymentChartConformanceTest` parses this file as YAML. When prod exists, override it in prod's Flux
-    # HelmRelease rather than branching here. Inheriting it would fail safe rather than misdeliver — a prod
-    # Live key cannot use another service's template, so Notify answers 403 — but it would still be wrong.
-    #
     # **CORRECTED 2026-09-25, because the claim this comment used to make is false and it is the reason these
     # ids are safe to set — so getting it wrong matters.** It said "nothing sends until `NOTIFY_API_KEY` exists:
     # `NotifyProperties.isProvisioned` gates the drain". It does not. `isProvisioned` reads the template id and,
@@ -114,21 +109,24 @@ java:
     # GAZETTE_ENABLED=true and its saved recipient. Until 2026-10-08 AAT had no Notify key, and
     # every send of these templates failed that way. The key is now `notify-api-key` under `keyVaults` above.
     #
-    # **These are the non-prod ids and prod must not inherit them.** There is no prod Notify service yet, so
-    # there is no second value to set here; a structural Helm conditional is not the answer because
-    # `DeploymentChartConformanceTest` parses this file as YAML. When prod exists, override them in prod's Flux
-    # HelmRelease rather than branching here. Inheriting would fail safe rather than misdeliver — a prod Live key
-    # cannot use another service's template, so Notify answers 403 — but it would still be wrong.
+    # **These are the non-prod ids, and prod gets none of them.** There is no prod Notify service yet, so each
+    # value below renders `DEED_POLL_PLACEHOLDER` (or empty) when `global.environment` is `prod`: every template
+    # then reads unprovisioned, nothing is offered and nothing enqueues. Inheriting them would fail safe rather
+    # than misdeliver — a prod Live key cannot use another service's template, so Notify answers 403 — but it
+    # would still be wrong. The conditional is a string the java chart renders through `tpl`, so this file stays
+    # plain YAML for `DeploymentChartConformanceTest`; its literals are in backticks because the chart quotes the
+    # value before rendering it, and a double quote would be escaped out of the template. When prod Notify
+    # exists, put prod's ids in the `prod` branch here rather than in Flux.
     #
     # None of these is a secret: each identifies a template or a reply-to address the recipient reads on the
     # email anyway, so they are configuration rather than vault entries. `application.yaml` defaults every one to
     # `DEED_POLL_PLACEHOLDER` (or empty) so one grep still lists every external identifier the service awaits.
     #
     # ③ Application Rejected, authored 2026-09-23 on the non-prod service.
-    NOTIFY_TEMPLATE_APPLICATION_REJECTED: b2cb5754-591d-40c0-b961-b2823a5792eb
+    NOTIFY_TEMPLATE_APPLICATION_REJECTED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}b2cb5754-591d-40c0-b961-b2823a5792eb{{ end }}'
     # ⑤ Chase missing documents, authored 2026-09-24 and verified by reading it back through
     # `GET /v2/template/{id}`: the five placeholders matched character-for-character. notify-6 builds against it.
-    NOTIFY_TEMPLATE_CHASE_MISSING_DOCUMENTS: a67e7dd1-0f8c-4366-a1de-ca5fbc24ec98
+    NOTIFY_TEMPLATE_CHASE_MISSING_DOCUMENTS: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}a67e7dd1-0f8c-4366-a1de-ca5fbc24ec98{{ end }}'
     # The registered reply-to for `KBDEEDSPOLL@justice.gov.uk`, verified in Notify 2026-09-24. **Not a template
     # id** — it is the id of the address, and it is what `isProvisioned` additionally requires of any template
     # with `invitesReply = true`. **One value for the whole service**, so it serves ⑤ and ④ alike.
@@ -136,26 +134,26 @@ java:
     # A blank one is the dangerous case rather than a wrong one: Notify **silently drops** it and sends from
     # no-reply, so ⑤'s "reply to this email" sentence would point nowhere while the email still went out. An
     # unrecognised id is a loud 400 instead. That asymmetry is why `isProvisioned` gates on it.
-    NOTIFY_EMAIL_REPLY_TO_ID: aabceef1-63e4-4414-9554-a24b0be967d7
+    NOTIFY_EMAIL_REPLY_TO_ID: '{{ if ne .Values.global.environment `prod` }}aabceef1-63e4-4414-9554-a24b0be967d7{{ end }}'
     # ④ Request confirmation to proceed, authored 2026-09-26 (version 1) and verified by reading it back through
     # `GET /v2/template/{id}`: all ten placeholders match `RequestConfirmationToProceedPersonalisation`. Two
     # previews confirmed that `is_minor` works as a JSON boolean ("your details" for an adult, "your child's
     # details" for a minor) and that each case gets only its own refund paragraph. It invites a reply, so it
     # needs the reply-to above, which is already set.
-    NOTIFY_TEMPLATE_REQUEST_CONFIRMATION_TO_PROCEED: a58c5a8c-7727-4d1f-af08-4953d9f3d33e
+    NOTIFY_TEMPLATE_REQUEST_CONFIRMATION_TO_PROCEED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}a58c5a8c-7727-4d1f-af08-4953d9f3d33e{{ end }}'
     # ① and ② Forms for completion, adult and minor, authored 2026-09-25 and 2026-09-26; ② carries LOC024 (v9).
     # Both invite a reply and both carry the generated deed, so `isProvisioned` also needs the reply-to above
     # and the retention below — without either they read unprovisioned rather than failing at the drain.
-    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_ADULT: 91a89945-bfa6-4423-86f5-be6f1c782aa5
-    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_MINOR: a2500c11-b282-48c3-a196-9f5700d13c91
+    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_ADULT: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}91a89945-bfa6-4423-86f5-be6f1c782aa5{{ end }}'
+    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_MINOR: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}a2500c11-b282-48c3-a196-9f5700d13c91{{ end }}'
     # Non-prod Gazette templates supplied by Steve and read back from Notify on 2026-10-09 (all version 1).
     # Names, subject, body and exact placeholders match the agreed wording; download delivery still needs
-    # controlled acceptance testing. Prod must override these with its own service's template ids.
+    # controlled acceptance testing. Prod renders placeholders until its own service's ids exist (see above).
     # Keep new previews/sends disabled until the rollout checks in docs/GAZETTE-RECOVERY.md are complete.
     GAZETTE_ENABLED: "false"
-    NOTIFY_TEMPLATE_GAZETTE_ADULT: 1ab4503a-1c1b-4db1-b805-b188b1923e0b
-    NOTIFY_TEMPLATE_GAZETTE_MINOR: 823518db-0064-4df8-8ddd-2f52bd52e997
-    NOTIFY_TEMPLATE_GAZETTE_MIXED: d956464f-8fe1-4eb2-9f02-4a309a14636e
+    NOTIFY_TEMPLATE_GAZETTE_ADULT: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}1ab4503a-1c1b-4db1-b805-b188b1923e0b{{ end }}'
+    NOTIFY_TEMPLATE_GAZETTE_MINOR: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}823518db-0064-4df8-8ddd-2f52bd52e997{{ end }}'
+    NOTIFY_TEMPLATE_GAZETTE_MIXED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}d956464f-8fe1-4eb2-9f02-4a309a14636e{{ end }}'
     # AM as a second source of staff and judicial roles, off until CRD/JRD profiles exist. Enabling it in AAT also
     # needs RAS to admit deed_poll_api's S2S name, and flux's aat.yaml (which already mounts the S2S secret) to set
     # ROLE_ASSIGNMENT_URL, ROLE_ASSIGNMENT_GAZETTE_SKILL and this. A RAS failure falls back to the IDAM roles,
@@ -166,5 +164,6 @@ java:
     RATE_LIMIT_MODE: observe
     # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
     # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
-    # must be revisited before prod inherits it. 26 weeks leaves a tester ample time to follow a link.
-    NOTIFY_DOCUMENT_RETENTION_WEEKS: "26"
+    # must be decided before prod sets one; until then prod renders it empty, which `isProvisioned` reads as
+    # unconfigured for the document-carrying templates. 26 weeks leaves a tester ample time to follow a link.
+    NOTIFY_DOCUMENT_RETENTION_WEEKS: '{{ if ne .Values.global.environment `prod` }}26{{ end }}'
