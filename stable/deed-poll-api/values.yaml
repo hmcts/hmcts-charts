@@ -54,8 +54,17 @@ java:
           alias: DEED_POLL_SYSTEM_PASSWORD
         - name: api-s2s-secret
           alias: DEED_POLL_API_S2S_SECRET
+        # The Docmosis Tornado access key DOCX previews convert with: copied from em-stitching-{env} in aat and demo
+        # (deed-poll-infra docmosis.tf), by hand in ithc, and a placeholder in prod, where DOCMOSIS_URL below is empty.
+        - name: docmosis-access-key
+          alias: DOCMOSIS_ACCESS_KEY
   environment:
     ENVIRONMENT_NAME: "{{ .Values.global.environment }}"
+    # The shared Docmosis Tornado service DOCX previews convert through (the base: /rs/convert is appended), the
+    # in-cluster address em-stitching-api uses. **Empty in prod**, so prod's converter is unconfigured whatever the
+    # vault's placeholder key holds, and a DOCX preview there answers 503 while its download works. Prod's would be
+    # https://docmosis.platform.hmcts.net, with its real key written over the placeholder, when prod previews go on.
+    DOCMOSIS_URL: '{{ if ne .Values.global.environment `prod` }}https://docmosis.{{ .Values.global.environment }}.platform.hmcts.net{{ end }}'
     # Off until CCD/CDAM onboarding, staff read permissions and the 03b/03c rollout prerequisites are complete in an
     # environment. The CCD identifiers and CDAM URL below being real is not that onboarding.
     #
