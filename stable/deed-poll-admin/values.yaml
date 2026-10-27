@@ -64,6 +64,13 @@ nodejs:
     # so until it is, a deployed pod's readiness probe reports DOWN. That is the intended failure: see
     # `docs/DEPLOYMENT.md`, "deed-poll-api".
     DEED_POLL_API_URL: http://deed-poll-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    # XUI's staff administration, linked from the settings page's "Staff and access" section. Production XUI drops
+    # the environment segment from its host, hence the conditional; every other environment names its own, so no
+    # non-production pod links to production XUI. XUI checks the staff-admin role itself, so this is only a link.
+    # `src/deployment-chart.test.ts` renders it for every environment.
+    # The literal is in backticks, not double quotes: the nodejs chart renders each value as `tpl ($val | quote)`,
+    # so a double quote inside the template is escaped to `\"` before tpl parses it and helm fails ("unexpected \").
+    XUI_STAFF_ADMIN_URL: '{{ if eq .Values.global.environment `prod` }}https://manage-case.platform.hmcts.net/staff{{ else }}https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/staff{{ end }}'
     IDAM_ISSUER_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o
     IDAM_CLIENT_ID: deed-poll-admin
     IDAM_SCOPE: openid profile roles offline_access

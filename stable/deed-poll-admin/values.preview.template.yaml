@@ -42,6 +42,9 @@ nodejs:
     # writes land in AAT's data.** Fine for a caseworker service with no live data yet; revisit before this
     # app carries any.
     DEED_POLL_API_URL: "http://deed-poll-api-aat.service.core-compute-aat.internal"
+    # AAT's XUI, for the same reason as the api above: there is no preview XUI, and production's must never be linked
+    # from a non-production environment.
+    XUI_STAFF_ADMIN_URL: "https://manage-case.aat.platform.hmcts.net/staff"
     # No `PERSONA_SWITCHER_ENABLED` here, deliberately, so preview inherits `values.yaml`'s off. Every PR's
     # unreviewed code would otherwise run a privilege switcher that writes to AAT's data as admin or judge,
     # through the api above (OWASP M1, 2026-10-13). This flag is the control that counts, not the allowlist in
