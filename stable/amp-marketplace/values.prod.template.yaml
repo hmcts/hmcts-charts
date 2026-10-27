@@ -6,7 +6,7 @@ java:
     # Notify has no CC, so each address gets its own copy.
     NOTIFY_REVIEW_INBOXES: DataAccessPanel@justice.gov.uk,Craig.Robb@justice.gov.uk,APIMarketplace@hmcts.net
   keyVaults:
-    amp:
+    amp-marketplace:
       secrets:
         - name: marketplace-POSTGRES-USER
           alias: POSTGRES_USER

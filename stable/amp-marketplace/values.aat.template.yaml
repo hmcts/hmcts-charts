@@ -3,7 +3,7 @@ java:
   image: ${IMAGE_NAME}
   ingressHost: amp-marketplace-staging.aat.platform.hmcts.net
   keyVaults:
-    amp:
+    amp-marketplace:
       secrets:
         - name: marketplace-POSTGRES-USER
           alias: POSTGRES_USER
