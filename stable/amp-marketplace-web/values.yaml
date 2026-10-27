@@ -1,0 +1,37 @@
+nodejs:
+  applicationPort: 3344
+  replicas: 1
+  cpuLimits: 500m
+  cpuRequests: 100m
+  memoryRequests: 512Mi
+  memoryLimits: 1024Mi
+  # Autoscaling must be off for `replicas: 1` to hold: an HPA owns the replica count, so
+  # with minReplicas 2 it would scale straight back up and the setting above would be
+  # silently ignored.
+  autoscaling:
+    enabled: false
+  image: 'hmctsprod.azurecr.io/amp/marketplace-web:latest'
+  ingressHost: amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net
+  # AMP-1031: App Insights is stubbed for initial onboarding — there is no
+  # azurerm_application_insights resource for the amp product yet, and the
+  # amp-{env} vault holds only the marketplace-POSTGRES-* secrets. Add
+  # aadIdentityName + keyVaults here once a connection string exists in the vault
+  # AND the managed identity has Key Vault Secrets User on it.
+  environment:
+    APPLICATIONINSIGHTS_ENABLED: 'false'
+    # In-cluster address of service-api-marketplace (release amp-marketplace, type java).
+    API_URL: http://amp-marketplace-java
+    # Sign in is Microsoft Entra External ID. Deployed environments have no Entra defaults:
+    # ENTRA_CLIENT_ID, ENTRA_CLIENT_SECRET and ENTRA_TENANT_ID are mounted from the tenant's
+    # own key vault (kvspsextidsbox in sbox), where hmcts/external-entra-id writes them. The
+    # keyVaults block and workloadClientID are per environment in cnp-flux-config; without
+    # them the app refuses to start. An environment with no tenant yet sets ENTRA_ENABLED
+    # to 'false' instead (previews, AAT, demo), and sign in then says it is unavailable.
+    # The endpoints follow from ENTRA_TENANT_ID. Both URIs
+    # below must be registered on the app registration (web-api-marketplace in
+    # external-entra-id) exactly as written, or Entra refuses them.
+    ENTRA_REDIRECT_URI: https://amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
+    ENTRA_POST_LOGOUT_REDIRECT_URI: https://amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/
+    # Picks this environment's API addresses (apiEndpoints in config/default.json) for the
+    # instructions on an application's page. One with no address there leaves them out.
+    PLATFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
