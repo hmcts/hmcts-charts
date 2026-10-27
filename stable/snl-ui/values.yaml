@@ -3,9 +3,14 @@ nodejs:
   aadIdentityName: snl
   ingressHost: snl-ui.{{ .Values.global.environment }}.platform.hmcts.net
   image: 'hmctsprod.azurecr.io/snl/ui:latest'
-  #  Uncomment once the vault containing the app insights key has been set up
-  #  keyVaults:
-  #    snl:
-  #      secrets:
-  #        - AppInsightsInstrumentationKey
+  keyVaults:
+    snl:
+      secrets:
+        - AppInsightsInstrumentationKey
+        - session-secret
+        - cft-idam-client-secret
   environment:
+    IDAM_CLIENT_ID: snl-ui
+    IDAM_SCOPE: openid profile roles
+    IDAM_CLIENT_AUTH_METHOD: client_secret_post
+    SESSION_SECURE_FLAG: true

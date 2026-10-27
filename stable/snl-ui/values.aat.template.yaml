@@ -2,3 +2,6 @@ nodejs:
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  environment:
+    IDAM_ISSUER_URL: https://hmcts-access.aat.platform.hmcts.net/o
+    IDAM_BASE_URL: https://${SERVICE_FQDN}

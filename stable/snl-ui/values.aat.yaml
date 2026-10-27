@@ -2,3 +2,6 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/snl-ui:latest
   ingressHost: 
+  environment:
+    IDAM_ISSUER_URL: https://hmcts-access.aat.platform.hmcts.net/o
+    IDAM_BASE_URL: https://
