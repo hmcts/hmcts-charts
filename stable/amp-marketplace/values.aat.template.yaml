@@ -1,0 +1,30 @@
+# Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+java:
+  image: ${IMAGE_NAME}
+  ingressHost: amp-marketplace-staging.aat.platform.hmcts.net
+  keyVaults:
+    amp:
+      secrets:
+        - name: marketplace-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: marketplace-POSTGRES-PASS
+          alias: POSTGRES_PASS
+        - name: marketplace-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: marketplace-POSTGRES-PORT
+          alias: POSTGRES_PORT
+        - name: marketplace-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
+        # Application registration (PR #84) needs these four, but they do not exist in this
+        # environment's vault yet. Listing a secret that is missing does not just disable the
+        # feature: the pod cannot mount its secrets volume and never leaves Init, so the AAT
+        # deploy hangs and the Jenkins build is aborted. Uncomment them once CloudOps have
+        # created all four in the vault (see the credentials ticket raised alongside #84).
+        # - name: marketplace-ENTRA-ONBOARDING-CLIENT-ID
+        #   alias: ENTRA_ONBOARDING_CLIENT_ID
+        # - name: marketplace-ENTRA-ONBOARDING-CLIENT-SECRET
+        #   alias: ENTRA_ONBOARDING_CLIENT_SECRET
+        # - name: marketplace-APIM-CLIENT-ID
+        #   alias: APIM_CLIENT_ID
+        # - name: marketplace-APIM-CLIENT-SECRET
+        #   alias: APIM_CLIENT_SECRET
