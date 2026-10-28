@@ -48,3 +48,4 @@ nodejs:
     PUBLIC_FRONTEND_URL: 'https://fact-public-frontend.{{ .Values.global.environment }}.platform.hmcts.net' # Override in Flux for Prod
     FRONTEND_URL: 'https://fact-admin-frontend.{{ .Values.global.environment }}.platform.hmcts.net' # Override in Flux for Prod
     PHOTO_IMG_SRC: 'https://factsa{{ .Values.global.environment }}.blob.core.windows.net/'
+    DISPLAY_OS_OUTAGE_WARNING: 'false'
