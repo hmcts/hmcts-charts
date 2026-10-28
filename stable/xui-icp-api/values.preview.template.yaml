@@ -3,6 +3,11 @@ nodejs:
     REDIS_HOST: ${SERVICE_NAME}-redis-master
     REDIS_PORT: 6379
     REDIS_USE_TLS: false
+  keyVaults:
+    rpx:
+      secrets:
+        - xui-icp-appinsights-instrumentation-key
+        - xui-icp-web-pubsub-primary-connection-string
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}

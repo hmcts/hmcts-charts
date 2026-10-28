@@ -11,10 +11,7 @@ nodejs:
   environment:
     REFORM_SERVICE_NAME: xui-icp
     REFORM_TEAM: xui-icp
-    REDIS_HOST: xui-icp-api-redis-cache-{{ .Values.global.environment }}.redis.cache.windows.net
-    REDIS_PORT: 6380
     USE_REDIS: true
-    REDIS_USE_TLS: true
     RATE_LIMIT_TIME: 15000
     RATE_LIMITE_MAX: 10
     IDAM_API_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
@@ -28,7 +25,7 @@ nodejs:
     rpx:
       resourceGroup: rpx
       secrets:
-        - xui-icp-redis-password
+        - xui-icp-managed-redis-connection-string
         - xui-icp-appinsights-instrumentation-key
         - xui-icp-web-pubsub-primary-connection-string
 
