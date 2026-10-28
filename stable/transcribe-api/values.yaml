@@ -10,6 +10,8 @@ python:
 
   environment: &environment
     ENVIRONMENT: '{{ .Values.global.environment }}'
+    # cloud_RoleName in Application Insights.
+    OTEL_SERVICE_NAME: transcribe-api
     AZURE_STORAGE_CONTAINER_NAME: audio
     AZURE_STORAGE_TRANSCRIPTION_CONTAINER: transcriptions
     # Background pollers run as a separate workload.
@@ -45,6 +47,10 @@ python:
         # No key: Azure OpenAI is reached with the workload identity.
         - name: azure-openai-endpoint
           alias: AZURE_OPENAI_ENDPOINT
+        # The worker's only source: Flux runs it outside the Jenkins template, so it
+        # gets no APPLICATIONINSIGHTS_CONNECTION_STRING from values.aat.template.yaml.
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
         # google-application-credentials-json and gov-notify-api-key are added
         # once they are seeded.
 
@@ -71,6 +77,7 @@ worker:
     # neither flag is read; set to what this workload does, for the reader.
     RUN_WORKERS: 'true'
     RUN_MIGRATIONS: 'false'
+    OTEL_SERVICE_NAME: transcribe-api-worker
     # Required by the settings model. Set per environment in cnp-flux-config
     # (worker.environment), as python.environment is for the API; empty here
     # so the worker still starts before that is in place.

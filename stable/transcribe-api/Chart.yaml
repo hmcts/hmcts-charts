@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for the HMCTS Transcribe backend
 name: transcribe-api
 home: https://github.com/hmcts/transcribe-api
-version: 0.0.4
+version: 0.0.5
 maintainers:
   - name: HMCTS Transcribe team
 # The python base chart, twice. It bundles its own Postgres sub-chart
