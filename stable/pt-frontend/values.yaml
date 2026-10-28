@@ -13,6 +13,7 @@ nodejs:
         - idam-system-user-password
         - pt-frontend-idam-secret
         - pt-frontend-s2s-secret
+        - pcq-token-key
   environment:
     PT_API_URL: 'http://pt-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     CCD_URL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
@@ -22,6 +23,7 @@ nodejs:
     IDAM_WEB_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o/authorize'
     IDAM_API_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
     IDAM_END_SESSION_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o/endSession'
+    EQUALITY_URL: 'https://pcq.{{ .Values.global.environment }}.platform.hmcts.net'
 
 redis:
   enabled: false
