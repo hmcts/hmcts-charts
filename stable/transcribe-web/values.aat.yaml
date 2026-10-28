@@ -2,5 +2,6 @@ nodejs:
   image: https://hmcts.azurecr.io/hmcts/transcribe-web:latest
   ingressHost: 
   environment:
+    # Same value as the Key Vault mount in values.yaml; the env var wins (start.js).
     APPLICATIONINSIGHTS_CONNECTION_STRING: 
     AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314

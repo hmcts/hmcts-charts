@@ -30,6 +30,8 @@ nodejs:
     # HMCTS tenant (CJS Common Platform); the client ID is per environment
     # (values.<env>.template.yaml): app registrations from hmcts/central-app-registration.
     AZURE_AD_TENANT_ID: 531ff96d-0ae9-462a-8d2d-bec7c0b42082
+    # cloud_RoleName in App Insights; unset, it is "unknown_service:node".
+    OTEL_SERVICE_NAME: transcribe-web
 
   keyVaults:
     # Mounted as files and loaded into the environment by start.js. Every
@@ -40,3 +42,7 @@ nodejs:
           alias: AZURE_AD_CLIENT_SECRET
         - name: web-redis-connection-string
           alias: REDIS_URL
+        # instrumentation.ts starts Azure Monitor only when this is set.
+        # Created by transcribe-shared-infrastructure (application-insights.tf).
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING

@@ -4,6 +4,7 @@ nodejs:
   environment:
     BACKEND_INTERNAL_URL: https://transcribe-api-pr-${CHANGE_ID}.preview.platform.hmcts.net
     NEXT_PUBLIC_API_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
+    # Same value as the Key Vault mount in values.yaml; the env var wins (start.js).
     APPLICATIONINSIGHTS_CONNECTION_STRING: ${APP_INSIGHTS_CONNECTION_STRING}
     # Preview has no Speech account of its own.
     AZURE_SPEECH_ENDPOINT: https://transcribe-speech-aat.cognitiveservices.azure.com
