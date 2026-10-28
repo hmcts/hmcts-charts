@@ -1,8 +1,4 @@
 nodejs:
-  # The pipeline's AAT deploy has no Entra tenant set up for it yet (see values.yaml), so
-  # sign in is switched off until one is. Flux's AAT release says the same in cnp-flux-config.
-  environment:
-    ENTRA_ENABLED: 'false'
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
