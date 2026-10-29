@@ -6,6 +6,10 @@ nodejs:
   customServiceAccountName: dtsse-agent-hub
   image: hmctsprod.azurecr.io/dtsse/agent-hub:latest
   ingressHost: agent-hub.{{ .Values.global.environment }}.platform.hmcts.net
+  # The viewer serves virtual agents' web servers off the VPN on a host of its own, so their pages never share the
+  # hub's origin. Front Door forwards the original Host, so it needs a rule here as well as its own DNS record.
+  additionalIngressHosts:
+    - agent-hub-viewer.{{ .Values.global.environment }}.platform.hmcts.net
   # The heap ceiling in NODE_OPTIONS stays strictly under memoryLimits, or V8 declines to collect until the kernel
   # has already OOM-killed the container.
   memoryRequests: 512Mi
@@ -67,6 +71,7 @@ nodejs:
     # The client id from ENTRA_CLIENT_ID is accepted as an audience as well; v2 access tokens carry that.
     AGENT_API_AUDIENCE: api://dtsse-agent-hub
     VIRTUAL_AGENTS_ENABLED: "true"
+    AGENT_HUB_VIEWER_HOST: agent-hub-viewer.{{ .Values.global.environment }}.platform.hmcts.net
     # The workspace marketplace plugins an owner can tick for a virtual agent, as `name=description`, comma-separated.
     # Each name must be in the workspace's .claude-plugin/marketplace.json for the pod to load it.
     VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs"

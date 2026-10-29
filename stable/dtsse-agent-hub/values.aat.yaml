@@ -4,6 +4,9 @@ nodejs:
   # Don't modify below here
   image: https://hmcts.azurecr.io/hmcts/dtsse-agent-hub:latest
   ingressHost: 
+  # The viewer's host belongs to the persistent AAT release alone.
+  additionalIngressHosts: []
   environment:
     AUTH_DISABLED: "true"
     VIRTUAL_AGENTS_ENABLED: "false"
+    AGENT_HUB_VIEWER_HOST: ""

@@ -1,6 +1,8 @@
 nodejs:
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
+  # The viewer's host belongs to the persistent AAT release alone.
+  additionalIngressHosts: []
   replicas: 1
   saEnabled: true
   # A list replaces rather than merges, so this is the whole secret list for a preview. The client id is here so
@@ -30,6 +32,7 @@ nodejs:
     # Entra matches redirect URIs by whole string, and a preview hostname carries the PR number.
     AUTH_DISABLED: "true"
     VIRTUAL_AGENTS_ENABLED: "false"
+    AGENT_HUB_VIEWER_HOST: ""
 
 postgresql:
   enabled: true
