@@ -26,9 +26,6 @@ nodejs:
     AUTH_WHITE_LIST: ^caseworker-.+
     AUTH_BLACK_LIST: solicitor
     IDAM_BASE_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-    REDIS_HOST: xui-activity-service-{{ .Values.global.environment }}.redis.cache.windows.net
-    REDIS_PORT: 6380
-    REDIS_SSL_ENABLED: true
     REDIS_KEY_PREFIX: 'activity:'
     REDIS_ACTIVITY_TTL: 5
     REDIS_USER_DETAILS_TTL: 6000
@@ -39,6 +36,6 @@ nodejs:
   keyVaults:
     rpx:
       secrets:        
-        - name: activity-redis-password
+        - name: activity-managed-redis-connection-string
         - name: app-insights-connection-string-at
         - name: rpx-case-activity-api-web-pubsub-primary-connection-string
