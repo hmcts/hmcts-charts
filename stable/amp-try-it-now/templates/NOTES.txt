@@ -1,0 +1,9 @@
+{{ .Chart.Name }} {{ .Chart.Version }} deployed.
+
+One engine, every registered API. Confirm what it is serving:
+
+  GET https://{{ .Values.java.ingressHost }}/slc/scenarios
+  GET https://{{ .Values.java.ingressHost }}/rcc/scenarios
+
+Both answer without a token - they are how a consumer discovers what to call.
+Everything else needs one, and the realm is whatever AUTH_KEY_SOURCE says.

@@ -1,0 +1,21 @@
+java:
+  replicas: 1
+  applicationPort: 8080
+  image: 'hmctsprod.azurecr.io/amp/try-it-now:latest'
+  # Internal-only host. Consumers reach this engine through APIM, never directly, and the admin
+  # surface is deliberately not published through APIM at all.
+  ingressHost: amp-try-it-now-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: amp
+  environment:
+    APPLICATIONINSIGHTS_ENABLED: "false"
+    APPLICATIONINSIGHTS_CONNECTION_STRING: "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+    # Restated rather than inherited. SELF_ISSUED is also application.yaml's default, so this line
+    # changes nothing today - it is here so preview and the AAT staging slot say out loud which
+    # realm they rehearse, and a future change to the default cannot move them silently.
+    #
+    # It does NOT reach sandbox, AAT or demo. Flux deploys a separately published copy of this
+    # chart from hmcts-charts, overlaid with the HelmRelease patches in cnp-flux-config. Anything
+    # those three must have belongs in those patches.
+    AUTH_KEY_SOURCE: "SELF_ISSUED"
+  # keyVaults are defined per-environment in the values.*.template.yaml overlays and in the flux
+  # HelmRelease patches, so sbox can use amp-sbox without conflicting with the amp-{env} default.

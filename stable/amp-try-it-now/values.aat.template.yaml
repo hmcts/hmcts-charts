@@ -1,0 +1,19 @@
+java:
+  # Don't modify this file, it is only needed for the pipeline to set the image and ingressHost
+  image: ${IMAGE_NAME}
+  ingressHost: amp-try-it-now-staging.aat.platform.hmcts.net
+  environment:
+    AUTH_KEY_SOURCE: "SELF_ISSUED"
+  keyVaults:
+    amp-try-it-now:
+      secrets:
+        - name: try-it-now-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: try-it-now-POSTGRES-PASS
+          alias: POSTGRES_PASS
+        - name: try-it-now-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: try-it-now-POSTGRES-PORT
+          alias: POSTGRES_PORT
+        - name: try-it-now-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE

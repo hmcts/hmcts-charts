@@ -1,0 +1,19 @@
+java:
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  environment:
+    AUTH_KEY_SOURCE: "SELF_ISSUED"
+  keyVaults:
+    amp-try-it-now:
+      secrets:
+        - name: try-it-now-POSTGRES-USER
+          alias: POSTGRES_USER
+        - name: try-it-now-POSTGRES-PASS
+          alias: POSTGRES_PASS
+        - name: try-it-now-POSTGRES-HOST
+          alias: POSTGRES_HOST
+        - name: try-it-now-POSTGRES-PORT
+          alias: POSTGRES_PORT
+        - name: try-it-now-POSTGRES-DATABASE
+          alias: POSTGRES_DATABASE
