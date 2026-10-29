@@ -47,12 +47,14 @@ nodejs:
         - name: agent-hub-credentials-vault-url
           alias: CREDENTIALS_VAULT_URL
         # The APIM subscription key for the `dtsse-ai-gateway-bedrock` application's `swe` service, which every
-        # virtual agent on the `gateway` route calls the HMCTS AI Gateway with. The hub reads it and hands it to the
+        # virtual agent on the `gateway` route calls the HMCTS AI Gateway with. It is the whole of what this hub
+        # holds about the gateway: `hai` resolves the host, the Entra scope, the `apiKeyHelper` and the model ids in
+        # the pod, and this key is the one value it cannot fetch there. The hub reads it and hands it to the
         # orchestrator in each claim for an agent on that route, which is why it is the hub that is configured with
         # it: the orchestrator's own Deployment is in cnp-flux-config, and nothing there has to change for the route
         # to work.
         #
-        # It lives in `sps-ai-kv-sbox` as `apim-subscription-dtsse-ai-gateway-bedrock-swe`, a vault with no public
+        # It lives in `sps-ai-kv-stg` as `apim-subscription-dtsse-ai-gateway-bedrock-swe`, a vault with no public
         # endpoint, so it is copied into the `dtsse` vault under this name by hand — the one step outside this
         # repository, and it has to exist before this chart ships or the hub's pods cannot mount their secrets.
         # Prefixed because that vault is shared with dtsse-github-metrics.
@@ -69,16 +71,6 @@ nodejs:
     # Each name must be in the workspace's .claude-plugin/marketplace.json for the pod to load it.
     VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs"
     ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
-    # The HMCTS AI Gateway a `gateway` pod reaches Claude through. The sandbox pair, because the APIM subscription
-    # key above is the sandbox gateway's: all three move together, and staging is
-    # https://ai-gateway.staging.platform.hmcts.net with api://97f4f377-1eda-417b-8367-17c2c64cecd8/.default.
-    # A wrong audience is a bare `401 invalid_token` at the gateway and nothing more specific.
-    #
-    # The three are read here, by the hub, and handed to the orchestrator in each claim for an agent on that route,
-    # which puts them in the pod template. All three or none: `gatewaySettings` refuses a claim on a deployment that
-    # sets some and not others, rather than handing out a pod that boots and then fails every turn.
-    AI_GATEWAY_BASE_URL: https://ai-gateway.sandbox.platform.hmcts.net
-    AI_GATEWAY_AUDIENCE: api://b3bfa0f5-faa5-4d10-bba0-e284144aea89/.default
 
 postgresql:
   enabled: false
