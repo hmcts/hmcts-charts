@@ -58,6 +58,11 @@ python:
   postgresql:
     enabled: false
 
+# In-cluster blob storage for PR previews (templates/azurite.yaml).
+azurite:
+  enabled: false
+  image: hmctsprod.azurecr.io/imported/azure-storage/azurite:3.33.0
+
 # Off unless Flux says otherwise: it sets true on one cluster per environment
 # (aat-00 in AAT). It decides whether the worker below exists (Chart.yaml).
 global:

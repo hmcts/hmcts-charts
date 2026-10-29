@@ -1,0 +1,123 @@
+{{- if .Values.azurite.enabled }}
+{{- $name := printf "%s-azurite" .Release.Name }}
+{{- $env := .Values.python.environment }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $name }}
+  labels:
+    app.kubernetes.io/name: {{ $name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ $name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ $name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: azurite
+          image: {{ .Values.azurite.image }}
+          imagePullPolicy: IfNotPresent
+          args: ['azurite-blob', '--blobHost', '0.0.0.0', '--location', '/data', '--loose', '--skipApiVersionCheck']
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - name: blob
+              containerPort: 10000
+          readinessProbe:
+            tcpSocket:
+              port: blob
+          livenessProbe:
+            tcpSocket:
+              port: blob
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+        # Azurite starts empty and the API does not create its containers. Done
+        # in this pod, not a Helm hook, so a replacement pod gets them too.
+        - name: create-containers
+          image: {{ .Values.python.image }}
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+          args:
+            - -c
+            - |
+              import os, signal, time
+              from azure.core.exceptions import ResourceExistsError
+              from azure.storage.blob import BlobServiceClient
+              client = BlobServiceClient.from_connection_string(os.environ["AZURE_STORAGE_CONNECTION_STRING"])
+              pending = os.environ["CONTAINERS"].split()
+              while pending:
+                  try:
+                      client.create_container(pending[0])
+                  except ResourceExistsError:
+                      pass
+                  except Exception as exc:
+                      print(f"waiting for Azurite: {type(exc).__name__}", flush=True)
+                      time.sleep(2)
+                      continue
+                  print(f"container ready: {pending.pop(0)}", flush=True)
+              open("/tmp/ready", "w").close()
+              signal.signal(signal.SIGTERM, lambda *_: os._exit(0))
+              signal.pause()
+          env:
+            # Azurite in this pod, over localhost: the Service has no endpoints
+            # until this container is Ready.
+            - name: AZURE_STORAGE_CONNECTION_STRING
+              value: UseDevelopmentStorage=true
+            - name: CONTAINERS
+              value: {{ printf "%s %s" $env.AZURE_STORAGE_CONTAINER_NAME $env.AZURE_STORAGE_TRANSCRIPTION_CONTAINER | quote }}
+          readinessProbe:
+            exec:
+              command: ['/usr/bin/python3.13', '-c', 'import os, sys; sys.exit(not os.path.exists("/tmp/ready"))']
+          livenessProbe:
+            exec:
+              command: ['/usr/bin/python3.13', '-c', 'import os, sys; sys.exit(not os.path.exists("/tmp/ready"))']
+            initialDelaySeconds: 120
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+      volumes:
+        - name: data
+          emptyDir:
+            sizeLimit: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $name }}
+  labels:
+    app.kubernetes.io/name: {{ $name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  selector:
+    app.kubernetes.io/name: {{ $name }}
+  ports:
+    - name: blob
+      port: 10000
+      targetPort: blob
+{{- end }}

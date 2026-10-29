@@ -1,27 +1,24 @@
+# The pollers run in the API process instead (RUN_WORKERS below).
+worker:
+  enabled: false
 python:
   image: ${IMAGE_NAME}
   ingressHost: transcribe-api-pr-${CHANGE_ID}.preview.platform.hmcts.net
+  # The namespace's workload identity and Key Vault are AAT's. A preview uses
+  # neither: every dependency below is its own or a mock.
+  useWorkloadIdentity: false
+  disableKeyVaults: true
   environment:
     APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
     AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314
-    APPLICATIONINSIGHTS_CONNECTION_STRING: ${APP_INSIGHTS_CONNECTION_STRING}
-    # Env wins over the Key Vault file, so previews never use the AAT database.
     DATABASE_CONNECTION_STRING: postgresql://transcribe:transcribe@{{ .Release.Name }}-postgresql:5432/transcribe
-  keyVaults:
-    transcribe:
-      secrets:
-        - name: azure-storage-account-name
-          alias: AZURE_STORAGE_ACCOUNT_NAME
-        - name: azure-speech-resource-id
-          alias: AZURE_SPEECH_RESOURCE_ID
-        - name: azure-speech-endpoint
-          alias: AZURE_SPEECH_ENDPOINT
-        - name: webhook-secret-encryption-key
-          alias: WEBHOOK_SECRET_ENCRYPTION_KEY
-        - name: azure-openai-endpoint
-          alias: AZURE_OPENAI_ENDPOINT
-        - name: AppInsightsConnectionString
-          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+    # Azurite's published development account key, not a secret.
+    AZURE_STORAGE_CONNECTION_STRING: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://{{ .Release.Name }}-azurite:10000/devstoreaccount1;
+    # Not a valid account name, so the dictation code, which ignores the
+    # connection string, cannot reach any real account.
+    AZURE_STORAGE_ACCOUNT_NAME: preview-azurite
+    SPEECH_BACKEND: mock
+    RUN_WORKERS: 'true'
   # Throwaway in-cluster Postgres per PR.
   postgresql:
     enabled: true
@@ -30,7 +27,5 @@ python:
       password: transcribe
       database: transcribe
 
-# Flux runs the single worker on the active cron cluster. A Jenkins release
-# (staging, preview) must not start a second copy against the same storage.
-worker:
-  enabled: false
+azurite:
+  enabled: true
