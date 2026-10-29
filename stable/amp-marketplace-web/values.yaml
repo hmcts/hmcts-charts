@@ -26,6 +26,7 @@ nodejs:
     # Both must be registered on the web-api-marketplace app registration exactly as written.
     ENTRA_REDIRECT_URI: https://amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
     ENTRA_POST_LOGOUT_REDIRECT_URI: https://amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/
-    # Picks this environment's API addresses (apiEndpoints in config/default.json) for the
-    # instructions on an application's page. One with no address there leaves them out.
+    # Picks this environment's API Management gateway (apiEndpoints.apimBaseUrls in
+    # config/default.json) for the example calls on an application's page. The app adds each
+    # API's path. An environment with no gateway there leaves the calls out.
     PLATFORM_ENVIRONMENT: '{{ .Values.global.environment }}'

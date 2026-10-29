@@ -3,7 +3,7 @@ appVersion: '1.0'
 description: A Helm chart for amp-marketplace-web App
 name: amp-marketplace-web
 home: https://github.com/hmcts/web-api-marketplace
-version: 0.0.8
+version: 0.0.9
 maintainers:
   - name: DTS API Marketplace
 dependencies:
