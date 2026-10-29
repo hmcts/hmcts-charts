@@ -269,6 +269,10 @@ ccd:
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,ccd_gateway,ccd_data,ccd_ps,aac_manage_case_assignment,xui_webapp,ccd_case_document_am_api,iac,am_role_assignment_service,ccd_next_hearing_date_updater
         IDAM_API_BASE_URL: https://idam-api.aat.platform.hmcts.net
         IDAM_OIDC_URL: https://idam-web-public.aat.platform.hmcts.net
+        # AAT IDAM issues tokens with iss=https://idam-web-public.aat.platform.hmcts.net/o. Without
+        # this the data store keeps its defaults, which name neither that nor the AAT forgerock
+        # issuer, and rejects every user token with INVALID_ISSUER.
+        OIDC_ALLOWED_ISSUERS: https://idam-web-public.aat.platform.hmcts.net/o,https://forgerock-am.service.core-compute-idam-aat.internal:8443/openam/oauth2/hmcts,https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
