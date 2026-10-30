@@ -1,0 +1,22 @@
+base:
+  language: java
+  # Pre-existing secret managed by Flux in the docmosis namespace; read only
+  envFromSecret: docmosis-secret
+  applicationPort: 8080
+  image: 'hmctsprod.azurecr.io/docmosis/docmosis-unified:latest'
+  ingressHost: docmosis-unified-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  readinessPath: /api/ping
+  livenessPath: /api/ping
+  startupPath: /api/ping
+  ingressSessionAffinity:
+    enabled: true
+  java:
+    memoryRequests: 3Gi
+    memoryLimits: 4Gi
+    cpuRequests: 2000m
+    cpuLimits: 3000m
+    devmemoryRequests: 3Gi
+    devmemoryLimits: 4Gi
+    devcpuRequests: 1000m
+    devcpuLimits: 3000m
+    startupDelay: 30

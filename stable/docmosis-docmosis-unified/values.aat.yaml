@@ -1,0 +1,7 @@
+# Don't modify below here, it is only needed for the pipeline to set the image and ingressHost
+base:
+  image: https://hmcts.azurecr.io/hmcts/docmosis-docmosis-unified:latest
+  ingressHost: 
+  replicas: 1
+  autoscaling:
+    enabled: false

@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for docmosis-docmosis-unified App
+name: docmosis-docmosis-unified
+home: https://github.com/hmcts/docmosis
+version: 0.0.1
+maintainers:
+  - name: HMCTS docmosis team
+dependencies:
+  - name: base
+    version: 1.4.2
+    repository: oci://hmctsprod.azurecr.io/helm
