@@ -21,8 +21,8 @@ nodejs:
     APPLICATIONINSIGHTS_ENABLED: 'false'
     # In-cluster address of service-api-marketplace (release amp-marketplace, type java).
     API_URL: http://amp-marketplace-java
-    # aat and demo have no Entra tenant, and the app refuses to start without one.
-    ENTRA_ENABLED: '{{ if has .Values.global.environment (list `aat` `demo`) }}false{{ else }}true{{ end }}'
+    # aat has no Entra credentials mounted, and the app refuses to start without them.
+    ENTRA_ENABLED: '{{ if has .Values.global.environment (list `aat`) }}false{{ else }}true{{ end }}'
     # Both must be registered on the web-api-marketplace app registration exactly as written.
     ENTRA_REDIRECT_URI: https://amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
     ENTRA_POST_LOGOUT_REDIRECT_URI: https://amp-marketplace-web.{{ .Values.global.environment }}.platform.hmcts.net/
