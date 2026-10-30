@@ -43,11 +43,11 @@ java:
           alias: IDAM_API_S2S_CLIENT_SECRET
         - name: AppInsightsInstrumentationKey
           alias: azure.application-insights.instrumentation-key
-        - name: managed-redis-hostname
+        - name: redis-hostname
           alias: spring.data.redis.host
-        - name: managed-redis-key
+        - name: redis-key
           alias: spring.data.redis.password
-        - name: managed-redis-port
+        - name: redis-port
           alias: spring.data.redis.port
   environment:
     STRATEGIC_ADMIN_URL: https://idam-user-dashboard.platform.hmcts.net
