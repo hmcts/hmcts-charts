@@ -4,7 +4,7 @@ java:
     ENVIRONMENT_NAME: preview
     # A preview runs against AAT's database (plan D2/D3), so its own timers must not act on AAT's data before
     # merge: the processing-window sweep would unassign AAT's referrals and write case notes, and the Master email
-    # jobs would record digest runs and email rows. AAT's own deployment runs them.
+    # timers would claim reminders and send email rows. AAT's own deployment runs them.
     REFERRAL_UNASSIGN_ENABLED: "false"
     MASTER_EMAILS_ENABLED: "false"
   # Don't modify below here

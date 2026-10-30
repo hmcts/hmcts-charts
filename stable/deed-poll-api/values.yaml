@@ -169,14 +169,14 @@ java:
     NOTIFY_TEMPLATE_GAZETTE_ADULT: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}1ab4503a-1c1b-4db1-b805-b188b1923e0b{{ end }}'
     NOTIFY_TEMPLATE_GAZETTE_MINOR: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}823518db-0064-4df8-8ddd-2f52bd52e997{{ end }}'
     NOTIFY_TEMPLATE_GAZETTE_MIXED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}d956464f-8fe1-4eb2-9f02-4a309a14636e{{ end }}'
-    # The Master emails (plan D3): the referral window digest and the reminder, sent to a Master rather than an
-    # applicant. **Nobody has created either template yet**, so every environment is unprovisioned, which the jobs
-    # read as a visible skip: they record each window and reminder and write its email row `Skipped`, sending
+    # The Master emails (plans D3 and F1): one for each send from the referral queue, and the reminder, sent to a
+    # Master rather than an applicant. **Nobody has created either template yet**, so every environment is
+    # unprovisioned, which reads as a visible skip: each send and reminder writes its email row `Skipped`, sending
     # nothing and building no backlog. When a template exists, put its id here per environment (prod in a `prod`
     # branch, as above) and bump the chart. Suggested template text: docs/MASTER-EMAILS.md.
-    NOTIFY_TEMPLATE_MASTER_REFERRAL_DIGEST: DEED_POLL_PLACEHOLDER
+    NOTIFY_TEMPLATE_MASTER_REFERRAL_SENT: DEED_POLL_PLACEHOLDER
     NOTIFY_TEMPLATE_MASTER_REFERRAL_REMINDER: DEED_POLL_PLACEHOLDER
-    # The admin app's public host, which the Master emails link a referral under (`/judicial/referrals/{id}`). The
+    # The admin app's public host, which the Master emails link My referrals under (`/judicial/referrals/mine`). The
     # same shape as deed-poll-admin's `ingressHost` (`deed-poll-admin.{env}.platform.hmcts.net`, and
     # `deed-poll-admin.platform.hmcts.net` in prod through cnp-flux-config). Start-up refuses a provisioned Master
     # template without it.
