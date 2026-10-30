@@ -38,6 +38,10 @@ java:
           alias: OS_KEY
         - name: bstrap-cath-api-url
           alias: CATH_API_URL
+        - name: bstrap-onspd-cat-url
+          alias: ONSPD_CATALOGUE_URL
+        - name: bstrap-onspd-allowed-serv-host
+          alias: ONSPD_ALLOWED_SERVICE_HOST
         - name: bstrap-slack-token
           alias: SLACK_TOKEN
         - name: bstrap-slack-channel-id
