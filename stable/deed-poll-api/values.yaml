@@ -74,6 +74,10 @@ java:
     # prod is dark, with no sign-in and no records. The tpl literals are in backticks for the reason given above
     # the Notify ids below.
     DOCUMENT_STORE: '{{ if eq .Values.global.environment `prod` }}cdam{{ else }}filesystem{{ end }}'
+    # The /caseworker/** membership gate (application.yaml `staff-gate`). Prod enforces from go-live: its staff are
+    # granted their roles directly from the start, so there's nobody for report mode to carry across (OWASP plan 01,
+    # Task 4). Every other environment stays on `report` until Task 5 switches it.
+    STAFF_GATE_MODE: '{{ if eq .Values.global.environment `prod` }}enforce{{ else }}report{{ end }}'
     # Every non-prod environment follows these patterns, and the `.internal` hosts follow them in prod too. Prod
     # overrides the issuer and IDAM's API, which carry no environment segment there. The ForgeRock issuer that
     # password-grant tokens carry is named differently in each environment (`idam-aat2`, `idam-ithc`, `idam-prod2`),
