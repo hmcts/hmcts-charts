@@ -72,9 +72,9 @@ nodejs:
     AGENT_API_AUDIENCE: api://dtsse-agent-hub
     VIRTUAL_AGENTS_ENABLED: "true"
     AGENT_HUB_VIEWER_HOST: agent-hub-viewer.{{ .Values.global.environment }}.platform.hmcts.net
-    # The workspace marketplace plugins an owner can tick for a virtual agent, as `name=description`, comma-separated.
-    # Each name must be in the workspace's .claude-plugin/marketplace.json for the pod to load it.
-    VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs"
+    # The plugins an owner can tick for a virtual agent, as `name=description`, comma-separated. Each name must be in
+    # the workspace's .claude-plugin/marketplace.json, or one the pod client carries (welsh), for the pod to load it.
+    VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs,welsh=Welsh translations"
     ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
 
 postgresql:
