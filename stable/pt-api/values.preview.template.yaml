@@ -32,7 +32,6 @@ java:
     PT_DB_NAME: "{{ .Values.postgresql.auth.database}}"
     IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
     IDAM_S2S_AUTH_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-    SEND_LETTER_URL: http://rpe-send-letter-service-aat.service.core-compute-aat.internal
     RETAIN_AND_DISPOSE_MODE: "live"
     NOTIFY_URL: "https://api.notifications.service.gov.uk"
     DB_SCHEDULER_EXECUTOR_ENABLED: true
