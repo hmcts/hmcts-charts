@@ -55,3 +55,7 @@ postgresql:
 global:
   security:
     allowInsecureImages: true
+
+# Only the pipeline staging overlay enables this queue.
+stagingPublicationQueue:
+  enabled: false

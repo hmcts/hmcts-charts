@@ -64,6 +64,7 @@ opal-maintenance-service:
       FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
       APPLICATIONINSIGHTS_ROLE_NAME: "opal-rm-frontend-pr-${CHANGE_ID}-maintenance-service"
       SERVICEBUS_LOGGING_PDPL_QUEUE_NAME: "{{ .Release.Name}}-servicebus-logging-pdpl"
+      SERVICEBUS_RM_PUBLISH_DRAFT_CASEFILE_QUEUE_NAME: "{{ .Release.Name}}-servicebus-rm-publish-draft-casefile-queue"
       LAUNCH_DARKLY_ENABLED: false
       OPAL_REDIS_ENABLED: false
       OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
@@ -88,6 +89,7 @@ servicebus:
   setup:
     queues:
       - name: "logging-pdpl"
+      - name: "rm-publish-draft-casefile-queue"
 redis:
   enabled: false
   architecture: standalone

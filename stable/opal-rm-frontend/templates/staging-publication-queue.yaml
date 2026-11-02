@@ -1,0 +1,19 @@
+{{- if .Values.stagingPublicationQueue.enabled }}
+{{- $buildNumber := required "stagingPublicationQueue.buildNumber is required" .Values.stagingPublicationQueue.buildNumber | toString }}
+{{- /* Infrastructure validates raw values templates before Jenkins substitutes BUILD_NUMBER. */}}
+{{- if and (ne $buildNumber "${BUILD_NUMBER}") (not (regexMatch "^[0-9]+$" $buildNumber)) }}
+{{- fail "stagingPublicationQueue.buildNumber must be a Jenkins build number" }}
+{{- end }}
+{{- $queueName := printf "%s-rm-publish-%s" .Release.Name $buildNumber }}
+apiVersion: servicebus.azure.com/v1api20211101
+kind: NamespacesQueue
+metadata:
+  name: {{ $queueName }}
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: rm-publication
+spec:
+  owner:
+    armId: {{ required "stagingPublicationQueue.namespaceArmId is required" .Values.stagingPublicationQueue.namespaceArmId | quote }}
+  azureName: {{ $queueName }}
+{{- end }}
