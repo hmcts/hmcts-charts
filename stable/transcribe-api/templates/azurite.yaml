@@ -29,7 +29,7 @@ spec:
         - name: azurite
           image: {{ .Values.azurite.image }}
           imagePullPolicy: IfNotPresent
-          args: ['azurite-blob', '--blobHost', '0.0.0.0', '--location', '/data', '--loose', '--skipApiVersionCheck']
+          args: ['azurite-blob', '--blobHost', '0.0.0.0', '--location', '/data', '--loose', '--skipApiVersionCheck', '--disableProductStyleUrl']
           securityContext:
             allowPrivilegeEscalation: false
           ports:
@@ -81,9 +81,11 @@ spec:
               signal.pause()
           env:
             # Azurite in this pod, over localhost: the Service has no endpoints
-            # until this container is Ready.
+            # until this container is Ready. The full connection string, rather than
+            # UseDevelopmentStorage=true, so it does not depend on the sidecar image's
+            # SDK expanding the shorthand.
             - name: AZURE_STORAGE_CONNECTION_STRING
-              value: UseDevelopmentStorage=true
+              value: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
             - name: CONTAINERS
               value: {{ printf "%s %s" $env.AZURE_STORAGE_CONTAINER_NAME $env.AZURE_STORAGE_TRANSCRIPTION_CONTAINER | quote }}
           readinessProbe:
