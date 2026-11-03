@@ -55,12 +55,12 @@ opal-maintenance-service:
       OPAL_REDIS_ENABLED: false
       OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
       SERVICEBUS_LOGGING_PDPL_PROTOCOL: amqps
-      SERVICEBUS_RM_PUBLISH_DRAFT_CASEFILE_QUEUE_NAME: "{{ .Release.Name }}-rm-publish-410"
+      SERVICEBUS_RM_PUBLISH_DRAFT_CASEFILE_QUEUE_NAME: "{{ .Release.Name }}-rm-publish-411"
 
 # Reference the Terraform-owned namespace without adopting it into this Helm release.
 stagingPublicationQueue:
   enabled: true
-  buildNumber: "410"
+  buildNumber: "411"
   namespaceArmId: /subscriptions/74dacd4f-a248-45bb-a2f0-af700dc4cf68/resourceGroups/opal-stg/providers/Microsoft.ServiceBus/namespaces/opal-servicebus-stg
 
 postgresql:
