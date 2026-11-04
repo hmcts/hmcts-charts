@@ -73,8 +73,9 @@ nodejs:
     VIRTUAL_AGENTS_ENABLED: "true"
     AGENT_HUB_VIEWER_HOST: agent-hub-viewer.{{ .Values.global.environment }}.platform.hmcts.net
     # The plugins an owner can tick for a virtual agent, as `name=description`, comma-separated. Each name must be in
-    # the workspace's .claude-plugin/marketplace.json, or one the pod client carries (welsh, slides), for the pod to load it.
-    VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs,welsh=Welsh translations,cath=CaTH team workflows,slides=HMCTS slide decks"
+    # the workspace's .claude-plugin/marketplace.json, or one the pod client carries (welsh), for the pod to load it. Slides
+    # is always loaded on every pod and is not offered here.
+    VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs,welsh=Welsh translations,cath=CaTH team workflows"
     ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
 
 postgresql:
