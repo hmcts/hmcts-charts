@@ -77,6 +77,10 @@ java:
     # granted their roles directly from the start, so there's nobody for report mode to carry across (OWASP plan 01,
     # Task 4). Every other environment stays on `report` until Task 5 switches it.
     STAFF_GATE_MODE: '{{ if eq .Values.global.environment `prod` }}enforce{{ else }}report{{ end }}'
+    # No new cases in prod until the later migration phases (DeedPollService, Steve 2026-11-05): a reference this
+    # service allocated would very likely duplicate a Power App case still being created there. Every other
+    # environment keeps creation, for testing and seeding.
+    CASE_CREATION_ENABLED: '{{ if eq .Values.global.environment `prod` }}false{{ else }}true{{ end }}'
     # Every non-prod environment follows these patterns, and the `.internal` hosts follow them in prod too. Prod
     # overrides the issuer and IDAM's API, which carry no environment segment there. The ForgeRock issuer that
     # password-grant tokens carry is named differently in each environment (`idam-aat2`, `idam-ithc`, `idam-prod2`),
