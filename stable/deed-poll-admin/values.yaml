@@ -70,6 +70,9 @@ nodejs:
     # `src/deployment-chart.test.ts` renders it for every environment.
     # The literal is in backticks, not double quotes: the nodejs chart renders each value as `tpl ($val | quote)`,
     # so a double quote inside the template is escaped to `\"` before tpl parses it and helm fails ("unexpected \").
+    # No new cases in prod until the later migration phases (Steve, 2026-11-05): api refuses them there with a 409
+    # (deed-poll-api#167), and this hides the case list's New case button and turns /deed-polls/new into a sentence.
+    CASE_CREATION_ENABLED: '{{ if eq .Values.global.environment `prod` }}false{{ else }}true{{ end }}'
     XUI_STAFF_ADMIN_URL: '{{ if eq .Values.global.environment `prod` }}https://manage-case.platform.hmcts.net/staff{{ else }}https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/staff{{ end }}'
     IDAM_ISSUER_URL: https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net/o
     IDAM_CLIENT_ID: deed-poll-admin
