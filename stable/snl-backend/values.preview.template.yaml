@@ -7,6 +7,7 @@ java:
       disabled: true
       secrets: []
   environment:
+    SNL_TEST_ENDPOINTS_ENABLED: "true"
     DB_HOST: "{{ .Release.Name }}-postgresql"
     DB_PORT: "5432"
     DB_NAME: snl-db

@@ -19,6 +19,7 @@ java:
         - name: snl-infrastructure-POSTGRES-PASS
           alias: DB_PASSWORD
   environment:
+    SNL_TEST_ENDPOINTS_ENABLED: "false"
     DB_OPTIONS: "?sslmode=require"
     APPLICATIONINSIGHTS_CONFIGURATION_FILE: /opt/app/applicationinsights.json
     APPLICATIONINSIGHTS_ROLE_NAME: snl-backend

@@ -2,3 +2,5 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/snl-backend:latest
   ingressHost: 
+  environment:
+    SNL_TEST_ENDPOINTS_ENABLED: "true"
