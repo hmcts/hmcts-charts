@@ -29,8 +29,6 @@ base:
         - name: hwf-redis-url
           alias: REDIS_URL
         - name: hwf-public-secret-token
-          alias: SECRET_TOKEN
-        - name: hwf-public-secret-token
           alias: SECRET_KEY_BASE
         - name: hwf-app-insights-instrumentation-key
           alias: AZURE_APP_INSIGHTS_INSTRUMENTATION_KEY
