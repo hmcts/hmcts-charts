@@ -2,6 +2,7 @@
 java:
   image: https://hmcts.azurecr.io/hmcts/opal-fines-service:latest
   ingressHost: 
+  devmemoryLimits: "2Gi"
   environment:
     OPAL_REDIS_ENABLED: true
     OPAL_FRONTEND_URL: https://opal-frontend-staging.staging.apps.hmcts.net
