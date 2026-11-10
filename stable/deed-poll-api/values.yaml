@@ -73,10 +73,6 @@ java:
     # prod is dark, with no sign-in and no records. The tpl literals are in backticks for the reason given above
     # the Notify ids below.
     DOCUMENT_STORE: '{{ if eq .Values.global.environment `prod` }}cdam{{ else }}filesystem{{ end }}'
-    # The /caseworker/** membership gate (application.yaml `staff-gate`). Prod enforces from go-live: its staff are
-    # granted their roles directly from the start, so there's nobody for report mode to carry across (OWASP plan 01,
-    # Task 4). Every other environment stays on `report` until Task 5 switches it.
-    STAFF_GATE_MODE: '{{ if eq .Values.global.environment `prod` }}enforce{{ else }}report{{ end }}'
     # No new cases in prod until the later migration phases (DeedPollService, Steve 2026-11-05): a reference this
     # service allocated would very likely duplicate a Power App case still being created there. Every other
     # environment keeps creation, for testing and seeding.
