@@ -3,10 +3,16 @@ appVersion: "1.0"
 description: A Helm chart for the HMCTS Transcribe frontend
 name: transcribe-web
 home: https://github.com/hmcts/transcribe-web
-version: 0.0.6
+version: 0.0.7
 maintainers:
   - name: HMCTS Transcribe team
 dependencies:
   - name: nodejs
     version: 3.3.1
     repository: "oci://hmctsprod.azurecr.io/helm"
+  # PR previews only (values.preview.template.yaml): the api, with its own
+  # Postgres and Azurite, in the web release.
+  - name: transcribe-api
+    version: 0.0.8
+    repository: "oci://hmctsprod.azurecr.io/helm"
+    condition: transcribe-api.enabled

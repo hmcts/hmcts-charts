@@ -6,11 +6,54 @@ nodejs:
   useWorkloadIdentity: false
   disableKeyVaults: true
   environment:
-    BACKEND_INTERNAL_URL: https://transcribe-api-pr-${CHANGE_ID}.preview.platform.hmcts.net
+    # The transcribe-api below, in this release.
+    BACKEND_INTERNAL_URL: http://{{ .Release.Name }}-python
     NEXT_PUBLIC_API_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
     # Caddy's Speech proxy target: Next.js, which answers 404. A preview has no
     # Speech account.
     AZURE_SPEECH_ENDPOINT: http://localhost:3001
     APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
-    # Per-PR hostnames cannot be Entra redirect URIs.
+    # Per-PR hostnames cannot be Entra redirect URIs. The api treats token-less
+    # calls as its preview user instead (AUTH_PREVIEW_USER_ENABLED below).
     AUTH_ENABLED: 'false'
+
+# The api's own values.preview.template.yaml is not applied to a subchart, so
+# its preview settings are repeated here.
+transcribe-api:
+  enabled: true
+  worker:
+    enabled: false
+  python:
+    # TRANSCRIBE_API_IMAGE_TAG is latest or pr-<n> (Jenkinsfile_CNP). The tag
+    # moves, so pull it on every pod start, and roll the pod on every build.
+    image: hmctsprod.azurecr.io/transcribe/api:${TRANSCRIBE_API_IMAGE_TAG}
+    imagePullPolicy: Always
+    buildID: build-${BUILD_NUMBER}
+    # Reached only by the web pod, through its Service. With sign-in bypassed,
+    # an ingress would expose the api unauthenticated.
+    ingressHost: ''
+    useWorkloadIdentity: false
+    disableKeyVaults: true
+    environment:
+      ENVIRONMENT: preview
+      AUTH_PREVIEW_USER_ENABLED: 'true'
+      AUTH_PREVIEW_USER_ROLES: Judge,LegalTextManager,SystemAdministrator,Normal
+      AUTH_ACCESS_ROLES: Judge,LegalTextManager,SystemAdministrator,Normal
+      APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
+      AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314
+      DATABASE_CONNECTION_STRING: postgresql://transcribe:transcribe@{{ .Release.Name }}-postgresql:5432/transcribe
+      # Azurite's published development account key, not a secret.
+      AZURE_STORAGE_CONNECTION_STRING: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://{{ .Release.Name }}-azurite:10000/devstoreaccount1;
+      # Not a valid account name, so the dictation code, which ignores the
+      # connection string, cannot reach any real account.
+      AZURE_STORAGE_ACCOUNT_NAME: preview-azurite
+      SPEECH_BACKEND: mock
+      RUN_WORKERS: 'true'
+    postgresql:
+      enabled: true
+      auth:
+        username: transcribe
+        password: transcribe
+        database: transcribe
+  azurite:
+    enabled: true

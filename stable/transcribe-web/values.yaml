@@ -49,3 +49,8 @@ nodejs:
         # Created by transcribe-shared-infrastructure (application-insights.tf).
         - name: AppInsightsConnectionString
           alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+
+# PR previews switch this on (values.preview.template.yaml). Flux environments
+# call their own transcribe-api release instead.
+transcribe-api:
+  enabled: false
