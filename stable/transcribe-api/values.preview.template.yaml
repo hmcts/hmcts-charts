@@ -22,8 +22,8 @@ python:
     DATABASE_CONNECTION_STRING: postgresql://transcribe:transcribe@{{ .Release.Name }}-postgresql:5432/transcribe
     # Azurite's published development account key, not a secret.
     AZURE_STORAGE_CONNECTION_STRING: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://{{ .Release.Name }}-azurite:10000/devstoreaccount1;
-    # Not a valid account name, so the dictation code, which ignores the
-    # connection string, cannot reach any real account.
+    # Unused while the connection string is set; not a valid account name, so
+    # nothing can reach a real account through it.
     AZURE_STORAGE_ACCOUNT_NAME: preview-azurite
     SPEECH_BACKEND: mock
     RUN_WORKERS: 'true'
