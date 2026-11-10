@@ -9,6 +9,14 @@ python:
   useWorkloadIdentity: false
   disableKeyVaults: true
   environment:
+    # CNP sets global.environment=aat on PR builds; a preview must say it is one.
+    ENVIRONMENT: preview
+    # The web preview runs with sign-in off and sends no token, so token-less
+    # requests authenticate as a fixed preview user. Refused at startup unless
+    # ENVIRONMENT=preview (domain/auth/token_auth.py).
+    AUTH_PREVIEW_USER_ENABLED: 'true'
+    AUTH_PREVIEW_USER_ROLES: Judge,LegalTextManager,SystemAdministrator,Normal
+    AUTH_ACCESS_ROLES: Judge,LegalTextManager,SystemAdministrator,Normal
     APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
     AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314
     DATABASE_CONNECTION_STRING: postgresql://transcribe:transcribe@{{ .Release.Name }}-postgresql:5432/transcribe
