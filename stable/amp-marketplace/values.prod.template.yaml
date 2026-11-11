@@ -2,9 +2,6 @@
 java:
   image: ${IMAGE_NAME}
   ingressHost: amp-marketplace.platform.hmcts.net
-  environment:
-    # Notify has no CC, so each address gets its own copy.
-    NOTIFY_REVIEW_INBOXES: DataAccessPanel@justice.gov.uk,Craig.Robb@justice.gov.uk,APIMarketplace@hmcts.net
   keyVaults:
     amp-marketplace:
       secrets:
