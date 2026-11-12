@@ -13,9 +13,12 @@ nodejs:
     # Speech account.
     AZURE_SPEECH_ENDPOINT: http://localhost:3001
     APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
-    # Per-PR hostnames cannot be Entra redirect URIs. The api treats token-less
-    # calls as its preview user instead (AUTH_PREVIEW_USER_ENABLED below).
+    # Per-PR hostnames cannot be Entra redirect URIs, so login is off ...
     AUTH_ENABLED: 'false'
+    # ... and a browser with no session is signed in as the api's preview user, with
+    # no Entra token (AUTH_PREVIEW_USER_ENABLED below): /auth/preview-login. Refused
+    # when AUTH_ENABLED is 'true'; set nowhere but here (lib/auth/preview-mode.ts).
+    PREVIEW_USER_SIGN_IN: 'true'
 
 # The api's own values.preview.template.yaml is not applied to a subchart, so
 # its preview settings are repeated here.
@@ -36,9 +39,16 @@ transcribe-api:
     disableKeyVaults: true
     environment:
       ENVIRONMENT: preview
+      # A sign-in with no Entra token is the fixed preview user, given every role (and
+      # every app role, so SystemAdministrator too: AUTH_PREVIEW_USER_ROLES is left at its
+      # default). Refused at startup unless ENVIRONMENT=preview.
       AUTH_PREVIEW_USER_ENABLED: 'true'
-      AUTH_PREVIEW_USER_ROLES: Judge,LegalTextManager,SystemAdministrator,Normal
-      AUTH_ACCESS_ROLES: Judge,LegalTextManager,SystemAdministrator,Normal
+      # No APP_JWT_SIGNING_KEY: in a preview the api signs the BenchNotes access token
+      # (DIAAT-373) with a key it makes for itself at startup, so there is none to commit or
+      # guess (a published key would let anyone forge a token for any user of the preview).
+      # One pod, so one key; its tokens end with the pod and the web signs the preview user in again.
+      # Dictation on (the api's default), so a reviewer can try it; prod switches it off.
+      DICTATION_ENABLED: 'true'
       APP_URL: https://transcribe-web-pr-${CHANGE_ID}.preview.platform.hmcts.net
       AZURE_AD_CLIENT_ID: 18996d70-494e-4ddb-9ebd-17b4a1077314
       DATABASE_CONNECTION_STRING: postgresql://transcribe:transcribe@{{ .Release.Name }}-postgresql:5432/transcribe
