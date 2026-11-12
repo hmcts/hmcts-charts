@@ -44,6 +44,9 @@ python:
           alias: AZURE_SPEECH_ENDPOINT
         - name: webhook-secret-encryption-key
           alias: WEBHOOK_SECRET_ENCRYPTION_KEY
+        # infrastructure/secrets.tf
+        - name: app-jwt-signing-key
+          alias: APP_JWT_SIGNING_KEY
         # No key: Azure OpenAI is reached with the workload identity.
         - name: azure-openai-endpoint
           alias: AZURE_OPENAI_ENDPOINT
