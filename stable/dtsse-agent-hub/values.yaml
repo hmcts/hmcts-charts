@@ -51,6 +51,7 @@ nodejs:
     ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
     FEEDBACK_ENABLED: "true"
     FEEDBACK_STORAGE_ACCOUNT_URL: https://dtsseagenthub{{ .Values.global.environment }}.blob.core.windows.net
+    FEEDBACK_SIGN_IN_ORIGINS: https://idam-web-public.aat.platform.hmcts.net,https://hmcts-access.aat.platform.hmcts.net
 
 postgresql:
   enabled: false

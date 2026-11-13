@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: Relay and topic boards for Claude Code sessions across HMCTS
 name: dtsse-agent-hub
 home: https://github.com/hmcts/dtsse-agent-hub
-version: 0.0.17
+version: 0.0.18
 dependencies:
   - name: nodejs
     version: 3.3.1
