@@ -1,29 +1,19 @@
-# What AAT runs. The CNP pipeline mirrors this directory into hmcts-charts on every master build, and Flux only
-# picks a change up when `Chart.yaml`'s `version` changes with it.
 nodejs:
   applicationPort: 3000
   saEnabled: false
   customServiceAccountName: dtsse-agent-hub
   image: hmctsprod.azurecr.io/dtsse/agent-hub:latest
   ingressHost: agent-hub.{{ .Values.global.environment }}.platform.hmcts.net
-  # The viewer serves virtual agents' web servers off the VPN on a host of its own, so their pages never share the
-  # hub's origin. Front Door forwards the original Host, so it needs a rule here as well as its own DNS record.
   additionalIngressHosts:
     - agent-hub-viewer.{{ .Values.global.environment }}.platform.hmcts.net
-  # The heap ceiling in NODE_OPTIONS stays strictly under memoryLimits, or V8 declines to collect until the kernel
-  # has already OOM-killed the container.
   memoryRequests: 512Mi
   memoryLimits: 1Gi
   cpuRequests: 250m
   cpuLimits: "1"
-  # The same figures under `dev*` keys. With `global.devMode`, which the pipeline sets on preview and on the
-  # `-staging` release, the chart reads these and ignores the four above; left unset they default to 512Mi.
   devmemoryRequests: 512Mi
   devmemoryLimits: 1Gi
   devcpuRequests: 250m
   devcpuLimits: "1"
-  # Two, so a rolling deploy never drops every agent stream at once. Streams on different pods meet through
-  # Postgres LISTEN/NOTIFY.
   replicas: 2
   keyVaults:
     dtsse:
@@ -40,8 +30,6 @@ nodejs:
           alias: POSTGRES_PASSWORD
         - name: agent-hub-postgres-database
           alias: POSTGRES_DATABASE
-        # Prefixed, because the `dtsse` vault is shared with dtsse-github-metrics, whose `entra-client-id`,
-        # `entra-client-secret` and `session-secret` belong to its own registration.
         - name: agent-hub-entra-client-id
           alias: ENTRA_CLIENT_ID
         - name: agent-hub-entra-client-secret
@@ -50,33 +38,19 @@ nodejs:
           alias: SESSION_SECRET
         - name: agent-hub-credentials-vault-url
           alias: CREDENTIALS_VAULT_URL
-        # The APIM subscription key for the `dtsse-ai-gateway-bedrock` application's `swe` service, which every
-        # virtual agent on the `gateway` route calls the HMCTS AI Gateway with. It is the whole of what this hub
-        # holds about the gateway: `hai` resolves the host, the Entra scope, the `apiKeyHelper` and the model ids in
-        # the pod, and this key is the one value it cannot fetch there. The hub reads it and hands it to the
-        # orchestrator in each claim for an agent on that route, which is why it is the hub that is configured with
-        # it: the orchestrator's own Deployment is in cnp-flux-config, and nothing there has to change for the route
-        # to work.
-        #
-        # It lives in `sps-ai-kv-stg` as `apim-subscription-dtsse-ai-gateway-bedrock-swe`, a vault with no public
-        # endpoint, so it is copied into the `dtsse` vault under this name by hand — the one step outside this
-        # repository, and it has to exist before this chart ships or the hub's pods cannot mount their secrets.
-        # Prefixed because that vault is shared with dtsse-github-metrics.
         - name: agent-hub-ai-gateway-apim-key
           alias: AI_GATEWAY_APIM_KEY
   environment:
     NODE_OPTIONS: --max-old-space-size=768
     ENTRA_TENANT_ID: "{{ .Values.global.tenantId }}"
     ENTRA_REDIRECT_URI: https://agent-hub.{{ .Values.global.environment }}.platform.hmcts.net/auth/callback
-    # The client id from ENTRA_CLIENT_ID is accepted as an audience as well; v2 access tokens carry that.
     AGENT_API_AUDIENCE: api://dtsse-agent-hub
     VIRTUAL_AGENTS_ENABLED: "true"
     AGENT_HUB_VIEWER_HOST: agent-hub-viewer.{{ .Values.global.environment }}.platform.hmcts.net
-    # The plugins an owner can tick for a virtual agent, as `name=description`, comma-separated. Each name must be in
-    # the workspace's .claude-plugin/marketplace.json, or one the pod client carries (welsh), for the pod to load it. Slides
-    # is always loaded on every pod and is not offered here.
     VIRTUAL_AGENT_PLUGINS: "pcs=PCS team workflows,dtsse=DTSSE docs,welsh=Welsh translations,cath=CaTH team workflows"
     ORCHESTRATOR_OIDS: ebed2d6c-e5b5-4fe8-970b-f8f501e33721
+    FEEDBACK_ENABLED: "true"
+    FEEDBACK_STORAGE_ACCOUNT_URL: https://dtsseagenthub{{ .Values.global.environment }}.blob.core.windows.net
 
 postgresql:
   enabled: false
