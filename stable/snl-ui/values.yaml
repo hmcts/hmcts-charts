@@ -6,10 +6,14 @@ nodejs:
   keyVaults:
     snl:
       secrets:
-        - AppInsightsInstrumentationKey
+        - nodejs-app-insights-connection-string
         - session-secret
         - cft-idam-client-secret
   environment:
+    APPINSIGHTS_ENABLED: 'true'
+    JSON_PRINT: 'true'
+    LOG_LEVEL: info
+    OTEL_SERVICE_NAME: snl-ui
     IDAM_CLIENT_ID: snl-ui
     IDAM_SCOPE: openid profile roles
     IDAM_CLIENT_AUTH_METHOD: client_secret_post

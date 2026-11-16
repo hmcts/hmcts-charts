@@ -1,4 +1,14 @@
 nodejs:
+  keyVaults:
+    snl:
+      disabled: true
+    snl-aat:
+      excludeEnvironmentSuffix: true
+      mountPath: /mnt/secrets/snl
+      secrets:
+        - nodejs-app-insights-connection-string
+        - session-secret
+        - cft-idam-client-secret
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
