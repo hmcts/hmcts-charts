@@ -199,6 +199,9 @@ ccd:
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
+        # IDAM access migration: required by data-store images built after hmcts/ccd-data-store-api#2911
+        IDAM_API_BASE_URL: https://idam-api.aat.platform.hmcts.net
+        IDAM_OIDC_URL: https://idam-web-public.aat.platform.hmcts.net
         CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-ccd-case-document-am-api
         ELASTIC_SEARCH_ENABLED: true
         ELASTIC_SEARCH_HOSTS: http://${SERVICE_NAME}-es-master:9200
@@ -306,6 +309,7 @@ ccd:
         # Required by admin-web images after the IDAM access migration (hmcts/ccd-admin-web#921)
         IDAM_WEB_PUBLIC_URL: https://idam-web-public.aat.platform.hmcts.net
         IDAM_HMCTS_ACCESS_URL: https://hmcts-access.aat.platform.hmcts.net
+        IDAM_S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
 
   ccd-api-gateway-web:
     nodejs:
