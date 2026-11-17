@@ -1,0 +1,20 @@
+# What AAT runs. The CNP pipeline mirrors this directory into hmcts-charts on every master build, and Flux only
+# picks a change up when `Chart.yaml`'s `version` changes with it.
+nodejs:
+  applicationPort: 8080
+  image: hmctsprod.azurecr.io/dtsse/doc-render:latest
+  # The internal App Gateway entry has `host_name_prefix: doc-render` with SSL enabled, so it forwards this Host to
+  # Traefik rather than the chart's default `.internal` name.
+  ingressHost: doc-render.{{ .Values.global.environment }}.platform.hmcts.net
+  # Each conversion starts a soffice process that holds several hundred MiB.
+  memoryRequests: 1Gi
+  memoryLimits: 2Gi
+  cpuRequests: 250m
+  cpuLimits: "1"
+  # The same figures under `dev*` keys. With `global.devMode`, which the pipeline sets on preview and on the
+  # `-staging` release, the chart reads these and ignores the four above.
+  devmemoryRequests: 1Gi
+  devmemoryLimits: 2Gi
+  devcpuRequests: 250m
+  devcpuLimits: "1"
+  replicas: 2
