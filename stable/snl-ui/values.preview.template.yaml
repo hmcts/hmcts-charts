@@ -15,3 +15,4 @@ nodejs:
   environment:
     IDAM_ISSUER_URL: https://hmcts-access.aat.platform.hmcts.net/o
     IDAM_BASE_URL: https://${SERVICE_FQDN}
+    IDAM_MFA_ENABLED: 'false'
