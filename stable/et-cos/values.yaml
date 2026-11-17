@@ -76,6 +76,7 @@ java:
     ET_COS_DB_POOL_NAME: et-cos-db-pool
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     SECURE_DOC_STORE_FEATURE: true
     EXUI_CASE_DETAILS_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net/cases/case-details/"
     CITIZEN_CASE_DETAILS_URL: "https://et-sya.{{ .Values.global.environment }}.platform.hmcts.net/citizen-hub/"
@@ -110,6 +111,8 @@ rd-judicial-data-load:
 rd-judicial-api:
   enabled: false
 rd-professional-api:
+  enabled: false
+rd-commondata-api:
   enabled: false
 rd-user-profile-api:
   enabled: false

@@ -44,6 +44,7 @@ java:
     ET_COS_DB_POOL_NAME: et-cos-db-pool
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-aat.service.core-compute-aat.internal
+    RD_COMMONDATA_API_URL: http://rd-commondata-api-aat.service.core-compute-aat.internal
     SECURE_DOC_STORE_FEATURE: true
     EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     CCD_SERVICEBUS_DESTINATION: ${SERVICE_NAME}-ccd-case-events
@@ -170,15 +171,13 @@ ccd:
       environment:
         USER_PROFILE_HOST: http://${SERVICE_NAME}-ccd-user-profile-api
         USER_PROFILE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_definition,ccd_admin
+        # Start small in preview but allow the pool to grow to the service default under load.
+        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
       keyVaults: []
       devcpuRequests: 10m
       devcpuLimits: 1000m
       devmemoryRequests: 768Mi
       devmemoryLimits: 1536Mi
-      environment:
-        USER_PROFILE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_definition,ccd_admin
-        # Start small in preview but allow the pool to grow to the service default under load.
-        SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: 1
       ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
 
   ccd-data-store-api:

@@ -29,6 +29,8 @@ rd-judicial-api:
   enabled: false
 rd-professional-api:
   enabled: false
+rd-commondata-api:
+  enabled: false
 rd-user-profile-api:
   enabled: false
 rd-caseworker-ref-api:
