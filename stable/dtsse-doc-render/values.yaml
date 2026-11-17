@@ -18,3 +18,15 @@ nodejs:
   devcpuRequests: 250m
   devcpuLimits: "1"
   replicas: 2
+  # The cloud role in Application Insights. The release name tells AAT, staging and each preview apart.
+  environment:
+    OTEL_SERVICE_NAME: "{{ .Release.Name }}"
+  keyVaults:
+    dtsse:
+      secrets:
+        - name: AppInsightsConnectionString
+          alias: APPLICATIONINSIGHTS_CONNECTION_STRING
+
+global:
+  enableKeyVaults: true
+  tenantId: "531ff96d-0ae9-462a-8d2d-bec7c0b42082"
