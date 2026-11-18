@@ -73,10 +73,8 @@ java:
     # prod is dark, with no sign-in and no records. The tpl literals are in backticks for the reason given above
     # the Notify ids below.
     DOCUMENT_STORE: '{{ if eq .Values.global.environment `prod` }}cdam{{ else }}filesystem{{ end }}'
-    # No new cases in prod until the later migration phases (DeedPollService, Steve 2026-11-05): a reference this
-    # service allocated would very likely duplicate a Power App case still being created there. Every other
-    # environment keeps creation, for testing and seeding.
-    CASE_CREATION_ENABLED: '{{ if eq .Values.global.environment `prod` }}false{{ else }}true{{ end }}'
+    # Creation is enabled in every environment. Admin's matching setting controls the button and form.
+    CASE_CREATION_ENABLED: "true"
     # Every non-prod environment follows these patterns, and the `.internal` hosts follow them in prod too. Prod
     # overrides the issuer and IDAM's API, which carry no environment segment there. The ForgeRock issuer that
     # password-grant tokens carry is named differently in each environment (`idam-aat2`, `idam-ithc`, `idam-prod2`),
