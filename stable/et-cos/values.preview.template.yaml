@@ -318,7 +318,7 @@ ccd:
       devmemoryRequests: 512Mi
       devmemoryLimits: 1024Mi
       environment:
-        IDAM_SERVICE_KEY: ${API_GATEWAY_S2S_KEY}
+        IDAM_SERVICE_KEY: ${MICROSERVICE_CCD_GW}
         IDAM_OAUTH2_CLIENT_SECRET: ${API_GATEWAY_IDAM_SECRET}
         # Required by api-gateway images after the IDAM access migration (hmcts/ccd-api-gateway#759)
         IDAM_WEB_PUBLIC_URL: https://idam-web-public.aat.platform.hmcts.net
