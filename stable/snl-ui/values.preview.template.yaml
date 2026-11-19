@@ -15,3 +15,4 @@ nodejs:
   environment:
     IDAM_ISSUER_URL: https://hmcts-access.aat.platform.hmcts.net/o
     IDAM_BASE_URL: https://${SERVICE_FQDN}
+    SNL_BACKEND_URL: https://snl-backend.aat.platform.hmcts.net/
