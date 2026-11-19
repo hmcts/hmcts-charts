@@ -5,7 +5,7 @@ nodejs:
   environment:
     NODE_ENV: aat
     OAUTH_CALLBACK_URL: 'https:///oauth2/callback'
-    ENABLE_TEST_SUPPORT_ROUTES: 'true'
+    ENABLE_TEST_SUPPORT_ROUTES: 'false'
   image: https://hmcts.azurecr.io/hmcts/finrem-citizen-ui:latest
   ingressHost: 
   devmemoryRequests: 1Gi
