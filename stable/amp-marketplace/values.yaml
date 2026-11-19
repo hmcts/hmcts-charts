@@ -6,7 +6,6 @@ java:
   aadIdentityName: amp
   environment:
     APPLICATIONINSIGHTS_ENABLED: "false"
-    APPLICATIONINSIGHTS_CONNECTION_STRING: "InstrumentationKey=00000000-0000-0000-0000-000000000000"
   # keyVaults are defined per-environment in cnp-flux-config overlays
   # so sbox can use amp-sbox without conflicting with the amp-{env} default
   # keyVaults:
