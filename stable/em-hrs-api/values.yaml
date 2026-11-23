@@ -83,6 +83,7 @@ java:
     DELETE_CASE_S2S_WHITELIST: ccd_case_disposer,em_gw
     INGESTION_ENABLED: true
     CCDUPLOAD_ENABLED: true
+    REFRESH_VAR: dummy
 
 job:
   enabled: false
