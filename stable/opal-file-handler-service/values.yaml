@@ -673,6 +673,10 @@ marston-transfer:
           alias: REDIS_CONNECTION_STRING
         - name: opal-file-handler-service-file-store-account-name
           alias: FILE_STORE_STORAGE_ACCOUNT_NAME
+        - name: opal-file-handler-service-file-store-blob-endpoint
+          alias: FILE_STORE_STORAGE_URL
+        - name: opal-file-handler-service-file-store-access-key
+          alias: FILE_STORE_STORAGE_KEY
         - name: bais-private-key
           alias: BAIS_SFTP_PRIVATE_KEY
         - name: bais-sftp-connection-host
