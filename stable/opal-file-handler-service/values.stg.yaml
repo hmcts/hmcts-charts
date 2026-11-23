@@ -87,6 +87,7 @@ java:
     SERVICEBUS_PROTOCOL: amqps
 
 functionalTest:
+  finesDatabaseOptions: "?sslmode=require"
   blob:
     containerName: bteckoh-report
 

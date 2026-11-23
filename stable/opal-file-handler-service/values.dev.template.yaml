@@ -90,6 +90,7 @@ java:
       initdb:
         scripts:
           init.sql: |-
+            CREATE DATABASE "opal-fines-db" OWNER javapostgres ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             CREATE DATABASE "opal-logging-db" OWNER javapostgres ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             CREATE DATABASE "opal-user-db" OWNER javapostgres ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
     auth:
@@ -99,13 +100,14 @@ java:
 hmcts-redis:
   enabled: true
 servicebus:
-  enabled: ${DEV_ENABLE_OPAL_SERVICE_BUS}
+  enabled: true
   releaseNameOverride: ${SERVICE_NAME}-servicebus
   resourceGroup: "opal-aso-dev-rg"
   sbNamespace: "opal-servicebus-dev"
   setup:
     queues:
       - name: "logging-pdpl"
+      - name: "report"
       - name: "banking-interfaces-preprocess-interface-file-fines"
       - name: "banking-interfaces-preprocess-interface-file-maintenance"
       - name: "create-draft-account-queue"
@@ -328,3 +330,87 @@ marston-transfer:
     FLYWAY_LOCATIONS: classpath:db/migration/ddl, classpath:db/migration/data/allEnvs, classpath:db/migration/data/nle, classpath:db/migration/data/dev
     RELEASE_1A_ENABLED: true
     RELEASE_1C_BANKING_INTERFACES_ENABLED: true
+
+# This consumer, database and preprocessing queue belong to the file-handler PR.
+fines-preprocessing:
+  enabled: true
+  releaseNameOverride: opal-file-handler-service-pr-${CHANGE_ID}-fines
+  image: 'hmctsprod.azurecr.io/opal/fines-service:latest'
+  imagePullPolicy: Always
+  applicationPort: 4550
+  aadIdentityName: opal
+  ingressHost: opal-file-handler-service-pr-${CHANGE_ID}-fines.dev.platform.hmcts.net
+  devmemoryRequests: "1Gi"
+  devcpuRequests: "250m"
+  devmemoryLimits: "2Gi"
+  devcpuLimits: "2500m"
+  autoscaling:
+    enabled: false
+  replicas: 1
+  secrets:
+    SERVICEBUS_SHARED_ACCESS_KEY:
+      secretRef: opal-sb-dev
+      key: primaryKey
+    SERVICEBUS_CONNECTION_STRING:
+      secretRef: opal-sb-dev
+      key: connectionString
+  keyVaults:
+    opal:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+        - name: AzureADTenantId
+          alias: AAD_TENANT_ID
+        - name: AzureADClientId
+          alias: AAD_CLIENT_ID
+        - name: AzureADClientSecret
+          alias: AAD_CLIENT_SECRET
+        - name: OpalTestUserPassword
+          alias: OPAL_TEST_USER_PASSWORD
+        - name: OpalLegacyGatewayUsername
+          alias: OPAL_LEGACY_GATEWAY_USERNAME
+        - name: OpalLegacyGatewayPassword
+          alias: OPAL_LEGACY_GATEWAY_PASSWORD
+        - name: storage-connection-string
+          alias: AZURE_STORAGE_CONNECTION_STRING
+        - name: reports-storage-container-name
+          alias: REPORTS_AZURE_STORAGE_CONTAINER
+        - name: docmosis-api-key
+          alias: DOCMOSIS_API_KEY
+        - name: docmosis-endpoint
+          alias: DOCMOSIS_ENDPOINT
+        - name: opal-system-user-client-id
+          alias: OPAL_SYSTEM_USER_CLIENT_ID
+        - name: opal-system-user-client-secret
+          alias: OPAL_SYSTEM_USER_CLIENT_SECRET
+  environment:
+    OPAL_FINES_DB_HOST: "{{ .Release.Name }}-postgresql"
+    OPAL_FINES_DB_NAME: "opal-fines-db"
+    OPAL_FINES_DB_USERNAME: "{{ .Values.global.postgresUsername }}"
+    OPAL_FINES_DB_PASSWORD: "{{ .Values.global.postgresPassword }}"
+    OPAL_FINES_DB_OPTIONS: "{{ .Values.global.postgresOptions }}"
+    RUN_DB_MIGRATION_ON_STARTUP: true
+    FLYWAY_LOCATIONS: classpath:db/migration/ddl,classpath:db/migration/data/allEnvs,classpath:db/migration/data/nle,classpath:db/migration/data/dev
+    OPAL_REDIS_ENABLED: true
+    REDIS_CONNECTION_STRING: redis://${SERVICE_NAME}-hmcts-redis-master:6379
+    OPAL_FRONTEND_URL: https://opal-frontend.staging.apps.hmcts.net
+    OPAL_LEGACY_GATEWAY_URL: https://opal-legacy-db-stub-staging.platform.hmcts.net/opal
+    OPAL_USER_SERVICE_API_URL: https://opal-user-service.staging.platform.hmcts.net
+    OPAL_FILE_HANDLER_SERVICE_API_URL: https://opal-file-handler-service-pr-${CHANGE_ID}.dev.platform.hmcts.net
+    LAUNCH_DARKLY_ENABLED: false
+    IS_LEGACY_MODE: false
+    RELEASE_1C_BANKING_INTERFACES_ENABLED: true
+    INTERFACE_FILE_CONSUMER_ENABLED: true
+    # Required by the JMS connection factory shared with interface-file consumption.
+    REPORT_CONSUMER_ENABLED: true
+    # This suite stops after preprocessing; do not consume payment-allocation jobs.
+    INTERFACE_JOBS_CONSUMER_ENABLED: false
+    RELEASE_1C_PAYMENT_ENABLED: false
+    SERVICEBUS_PROTOCOL: amqps
+    SERVICEBUS_LOGGING_PDPL_PROTOCOL: amqps
+    SERVICEBUS_INTERFACE_FILE_QUEUE_NAME: "{{ .Release.Name }}-servicebus-banking-interfaces-preprocess-interface-file-fines"
+    SERVICEBUS_REPORT_QUEUE_NAME: "{{ .Release.Name }}-servicebus-report"
+    SERVICEBUS_LOGGING_PDPL_QUEUE_NAME: "{{ .Release.Name }}-servicebus-logging-pdpl"
+    APPLICATIONINSIGHTS_ROLE_NAME: opal-file-handler-service-pr-${CHANGE_ID}-fines

@@ -1,0 +1,20 @@
+{{- if (index .Values "fines-preprocessing").enabled -}}
+{{/*
+Use the HMCTS templates supplied by the existing Java dependency. A second alias
+of the pinned Java chart renders an unwanted bundled PostgreSQL workload.
+Share Java health/resource defaults, but keep the consumer's settings isolated.
+*/}}
+{{- $defaults := omit (deepCopy .Values.java) "environment" "secrets" "keyVaults" "postgresql" -}}
+{{- $values := mergeOverwrite $defaults (deepCopy (index .Values "fines-preprocessing")) -}}
+{{- $_ := set $values "global" (deepCopy .Values.global) -}}
+{{- $context := dict "Values" $values "Chart" .Chart "Release" .Release "Capabilities" .Capabilities "Template" .Template "Files" .Files -}}
+{{ include "hmcts.deployment.v7.tpl" $context }}
+---
+{{ include "hmcts.service.v3.tpl" $context }}
+---
+{{ include "hmcts.secretproviderclass.v6.tpl" $context }}
+---
+{{ include "hmcts.ingress.v4.tpl" $context }}
+---
+{{ include "hmcts.pdb.v3.tpl" $context }}
+{{- end }}
