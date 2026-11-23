@@ -5,7 +5,6 @@ nodejs:
   environment:
     RATE_LIMITER_DISABLED: true
     REDIS_HOST: 'sptribs-frontend-aat.uksouth.redis.azure.net'
-    REDIS_PORT: '10000'
   keyVaults:
     sptribs:
       secrets:

@@ -14,7 +14,8 @@ nodejs:
     IDAM_END_SESSION_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/endSession'
     IDAM_API_URL: 'https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/token'
     IDAM_HMCTS_URL: 'https://hmcts-access.{{ .Values.global.environment }}.platform.hmcts.net'
-    REDIS_HOST: 'sptribs-{{ .Values.global.environment }}.redis.cache.windows.net'
+    REDIS_HOST: 'sptribs-frontend-{{ .Values.global.environment }}.uksouth.redis.azure.net'
+    REDIS_PORT: '10000'
     EQUALITY_URL: 'http://pcq.{{ .Values.global.environment }}.platform.hmcts.net'
     CCD_API_URL: 'http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
     CASE_DOCUMENT_API_URL: 'http://ccd-case-document-am-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal'
@@ -26,7 +27,8 @@ nodejs:
         - idam-ui-secret
         - idam-systemupdate-username
         - idam-systemupdate-password
-        - redis-access-key
+        - name: redis-new
+          alias: redis-access-key
         - s2s-case-api-secret
         - app-insights-connection-string
         - postcode-lookup-token
