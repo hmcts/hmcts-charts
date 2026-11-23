@@ -35,7 +35,7 @@ java:
     HRS_CVP_DEST_CONTAINER_NAME: hrs-cvp
     HRS_VH_DEST_CONTAINER_NAME: hrs-vh
     CVP_STORAGE_CONTAINER_NAME: cvp
-    SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/javadatabase?ssl=disable
+    SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/javadatabase?sslmode=disable
     SPRING_DATASOURCE_USERNAME: "{{ .Values.postgresql.auth.username}}"
     SPRING_DATASOURCE_PASSWORD: "{{ .Values.postgresql.auth.password}}"
     CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api

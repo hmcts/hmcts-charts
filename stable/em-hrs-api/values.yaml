@@ -50,7 +50,7 @@ java:
         - name: em-app-insights-connection-string
           alias: app-insights-connection-string
   environment: &shared_env
-    SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-api-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?ssl=disable
+    SPRING_DATASOURCE_URL: jdbc:postgresql://em-hrs-api-postgres-db-v15-{{ .Values.global.environment }}.postgres.database.azure.com:5432/emhrs?sslmode=require
     SPRING_DATASOURCE_USERNAME: pgadmin
     RUN_DB_MIGRATION_ON_STARTUP: false
     TIMEOUT_SERVER_SHUTDOWN_PHASE: 1m
