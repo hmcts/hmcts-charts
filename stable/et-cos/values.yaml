@@ -36,6 +36,8 @@ java:
           alias: ET_COS_DB_HOST
         - name: et-cos-postgres-port-v15
           alias: ET_COS_DB_PORT
+        - name: et-draft-and-sign-find-case-law-email
+          alias: DRAFT_AND_SIGN_FIND_CASE_LAW_EMAIL
     et:
       secrets:
         - name: app-insights-connection-string

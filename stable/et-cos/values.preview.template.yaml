@@ -71,6 +71,8 @@ java:
           alias: ET1_SERVICE_OWNER_NOTIFICATION_EMAIL
         - name: et1-ecm-dts-core-team-slack-notification-email
           alias: ET1_ECM_DTS_CORE_TEAM_SLACK_NOTIFICATION_EMAIL
+        - name: et-draft-and-sign-find-case-law-email
+          alias: DRAFT_AND_SIGN_FIND_CASE_LAW_EMAIL
     et:
       secrets:
         - name: tornado-access-key
