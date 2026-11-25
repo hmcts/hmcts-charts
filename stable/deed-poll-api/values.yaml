@@ -125,11 +125,12 @@ java:
     # GAZETTE_ENABLED=true and its saved recipient. Until 2026-10-08 AAT had no Notify key, and
     # every send of these templates failed that way. The key is now `notify-api-key` under `keyVaults` above.
     #
-    # **These are the non-prod ids, and prod gets none of them.** There is no prod Notify service yet, so each
-    # value below renders `DEED_POLL_PLACEHOLDER` (or empty) when `global.environment` is `prod`: every template
-    # then reads unprovisioned, nothing is offered and nothing enqueues. Inheriting them would fail safe rather
-    # than misdeliver — a prod Live key cannot use another service's template, so Notify answers 403 — but it
-    # would still be wrong. The conditional is a string the java chart renders through `tpl`, so this file stays
+    # **Prod has its own ids, never the non-prod ones.** Each template's `prod` branch holds the id from prod's own
+    # Notify service (supplied by Steve, 2026-11-11), and the `else` branch the non-prod one. A prod Live key cannot
+    # use another service's template, so inheriting a non-prod id would fail every send with a 403
+    # (`DeploymentChartConformanceTest` refuses it). The reply-to id and the document retention still render empty
+    # in prod until they are supplied, so a template that invites a reply or carries a document stays unprovisioned
+    # there: not offered, nothing enqueued. The conditional is a string the java chart renders through `tpl`, so this file stays
     # plain YAML for `DeploymentChartConformanceTest`; its literals are in backticks because the chart quotes the
     # value before rendering it, and a double quote would be escaped out of the template. When prod Notify
     # exists, put prod's ids in the `prod` branch here rather than in Flux.
@@ -139,45 +140,46 @@ java:
     # `DEED_POLL_PLACEHOLDER` (or empty) so one grep still lists every external identifier the service awaits.
     #
     # ③ Application Rejected, authored 2026-09-23 on the non-prod service.
-    NOTIFY_TEMPLATE_APPLICATION_REJECTED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}b2cb5754-591d-40c0-b961-b2823a5792eb{{ end }}'
+    NOTIFY_TEMPLATE_APPLICATION_REJECTED: '{{ if eq .Values.global.environment `prod` }}639c1cc6-97de-46e9-b46a-0684186f67e7{{ else }}b2cb5754-591d-40c0-b961-b2823a5792eb{{ end }}'
     # ⑤ Chase missing documents, authored 2026-09-24 and verified by reading it back through
     # `GET /v2/template/{id}`: the five placeholders matched character-for-character. notify-6 builds against it.
-    NOTIFY_TEMPLATE_CHASE_MISSING_DOCUMENTS: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}a67e7dd1-0f8c-4366-a1de-ca5fbc24ec98{{ end }}'
-    # The registered reply-to for `KBDEEDSPOLL@justice.gov.uk`, verified in Notify 2026-09-24. **Not a template
+    NOTIFY_TEMPLATE_CHASE_MISSING_DOCUMENTS: '{{ if eq .Values.global.environment `prod` }}4f850c71-5f81-46b5-a462-3f1b4b6e70aa{{ else }}a67e7dd1-0f8c-4366-a1de-ca5fbc24ec98{{ end }}'
+    # The registered reply-to for `KBDEEDSPOLL@justice.gov.uk`: non-prod verified in Notify 2026-09-24, prod's
+    # (service f7eecbc0-…) confirmed by Steve 2026-11-11. **Not a template
     # id** — it is the id of the address, and it is what `isProvisioned` additionally requires of any template
     # with `invitesReply = true`. **One value for the whole service**, so it serves ⑤ and ④ alike.
     #
     # A blank one is the dangerous case rather than a wrong one: Notify **silently drops** it and sends from
     # no-reply, so ⑤'s "reply to this email" sentence would point nowhere while the email still went out. An
     # unrecognised id is a loud 400 instead. That asymmetry is why `isProvisioned` gates on it.
-    NOTIFY_EMAIL_REPLY_TO_ID: '{{ if ne .Values.global.environment `prod` }}aabceef1-63e4-4414-9554-a24b0be967d7{{ end }}'
+    NOTIFY_EMAIL_REPLY_TO_ID: '{{ if eq .Values.global.environment `prod` }}374d5986-bd40-4c95-bc17-81ec6b323509{{ else }}aabceef1-63e4-4414-9554-a24b0be967d7{{ end }}'
     # ④ Request confirmation to proceed, authored 2026-09-26 (version 1) and verified by reading it back through
     # `GET /v2/template/{id}`: all ten placeholders match `RequestConfirmationToProceedPersonalisation`. Two
     # previews confirmed that `is_minor` works as a JSON boolean ("your details" for an adult, "your child's
     # details" for a minor) and that each case gets only its own refund paragraph. It invites a reply, so it
     # needs the reply-to above, which is already set.
-    NOTIFY_TEMPLATE_REQUEST_CONFIRMATION_TO_PROCEED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}a58c5a8c-7727-4d1f-af08-4953d9f3d33e{{ end }}'
+    NOTIFY_TEMPLATE_REQUEST_CONFIRMATION_TO_PROCEED: '{{ if eq .Values.global.environment `prod` }}bb47a09f-d735-4010-a732-68f83162a2eb{{ else }}a58c5a8c-7727-4d1f-af08-4953d9f3d33e{{ end }}'
     # ① and ② Forms for completion, adult and minor, authored 2026-09-25 and 2026-09-26; ② carries LOC024 (v9).
     # Both invite a reply and both carry the generated deed, so `isProvisioned` also needs the reply-to above
     # and the retention below — without either they read unprovisioned rather than failing at the drain.
-    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_ADULT: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}91a89945-bfa6-4423-86f5-be6f1c782aa5{{ end }}'
-    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_MINOR: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}a2500c11-b282-48c3-a196-9f5700d13c91{{ end }}'
+    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_ADULT: '{{ if eq .Values.global.environment `prod` }}7080be45-b529-4af6-ae2a-8fc031cd6b13{{ else }}91a89945-bfa6-4423-86f5-be6f1c782aa5{{ end }}'
+    NOTIFY_TEMPLATE_FORMS_FOR_COMPLETION_MINOR: '{{ if eq .Values.global.environment `prod` }}fc04e32e-792d-4077-951e-262a42bab68d{{ else }}a2500c11-b282-48c3-a196-9f5700d13c91{{ end }}'
     # Non-prod Gazette templates supplied by Steve and read back from Notify on 2026-10-09 (all version 1).
     # Names, subject, body and exact placeholders match the agreed wording; download delivery still needs
     # controlled acceptance testing. Prod renders placeholders until its own service's ids exist (see above).
     # Keep new previews/sends disabled until the rollout checks in docs/GAZETTE-RECOVERY.md are complete.
     GAZETTE_ENABLED: "false"
-    NOTIFY_TEMPLATE_GAZETTE_ADULT: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}1ab4503a-1c1b-4db1-b805-b188b1923e0b{{ end }}'
-    NOTIFY_TEMPLATE_GAZETTE_MINOR: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}823518db-0064-4df8-8ddd-2f52bd52e997{{ end }}'
-    NOTIFY_TEMPLATE_GAZETTE_MIXED: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}d956464f-8fe1-4eb2-9f02-4a309a14636e{{ end }}'
+    NOTIFY_TEMPLATE_GAZETTE_ADULT: '{{ if eq .Values.global.environment `prod` }}88e35725-fee6-4d5b-a7ca-6c52044b97c6{{ else }}1ab4503a-1c1b-4db1-b805-b188b1923e0b{{ end }}'
+    NOTIFY_TEMPLATE_GAZETTE_MINOR: '{{ if eq .Values.global.environment `prod` }}3987e7a7-21a4-43bc-9fc0-af3ea7406e04{{ else }}823518db-0064-4df8-8ddd-2f52bd52e997{{ end }}'
+    NOTIFY_TEMPLATE_GAZETTE_MIXED: '{{ if eq .Values.global.environment `prod` }}f2190a8a-88dc-4ce9-85be-02a992a15a90{{ else }}d956464f-8fe1-4eb2-9f02-4a309a14636e{{ end }}'
     # The Master emails (plans D3 and F1): one for each send from the referral queue, and the reminder, sent to a
     # Master rather than an applicant. Authored on the non-prod Notify service on 2026-11-02 and read back (wording:
     # docs/MASTER-EMAILS.md; drafts in admin's .business_context/notify-templates/). The sent template uses
     # ((processing_window)) and ((reminder_interval)), which api#163 sends. Prod has no Notify service yet, so it
     # stays on the placeholder, which reads as a visible skip: rows are written `Skipped`, nothing is sent and no
     # backlog builds.
-    NOTIFY_TEMPLATE_MASTER_REFERRAL_SENT: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}65aefcb8-a6e1-463b-a520-87e686cb423f{{ end }}'
-    NOTIFY_TEMPLATE_MASTER_REFERRAL_REMINDER: '{{ if eq .Values.global.environment `prod` }}DEED_POLL_PLACEHOLDER{{ else }}784396ee-1184-49d5-9910-b135ef289bda{{ end }}'
+    NOTIFY_TEMPLATE_MASTER_REFERRAL_SENT: '{{ if eq .Values.global.environment `prod` }}2aa10ade-b082-48a4-946b-96a6039c563d{{ else }}65aefcb8-a6e1-463b-a520-87e686cb423f{{ end }}'
+    NOTIFY_TEMPLATE_MASTER_REFERRAL_REMINDER: '{{ if eq .Values.global.environment `prod` }}af3c43a4-70b6-448a-87e9-6a98edf1afe1{{ else }}784396ee-1184-49d5-9910-b135ef289bda{{ end }}'
     # The admin app's public host, which the Master emails link My referrals under (`/judicial/referrals/mine`). The
     # same shape as deed-poll-admin's `ingressHost` (`deed-poll-admin.{env}.platform.hmcts.net`, and
     # `deed-poll-admin.platform.hmcts.net` in prod through cnp-flux-config). Start-up refuses a provisioned Master
@@ -191,8 +193,9 @@ java:
     # Per-identity budgets on search, email and upload (RateLimitFilter). `observe` logs what `enforce` would refuse
     # and refuses nothing; switch to `enforce` per environment, AAT first, once the limits are tuned.
     RATE_LIMIT_MODE: observe
-    # **A test value, chosen 2026-10-08 for AAT, NOT the business's decision.** How long an applicant's deed stays
-    # downloadable is theirs to set (`application.yaml` deliberately has no default for that reason), and this
-    # must be decided before prod sets one; until then prod renders it empty, which `isProvisioned` reads as
-    # unconfigured for the document-carrying templates. 26 weeks leaves a tester ample time to follow a link.
-    NOTIFY_DOCUMENT_RETENTION_WEEKS: '{{ if ne .Values.global.environment `prod` }}26{{ end }}'
+    # How long an applicant's deed stays downloadable from the forms-for-completion emails' Notify link, in weeks
+    # (Notify accepts 1 to 78; `NotifyProperties` refuses anything else). 26 everywhere, prod included: chosen by Steve
+    # 2026-11-11 for go-live (AAT had used 26 as a test value since 2026-10-08). `application.yaml` still has no
+    # default, so a run outside the chart leaves the two forms emails unprovisioned. A later plan moves the number to
+    # the Delivery Manager's process settings; until then a change is a chart release.
+    NOTIFY_DOCUMENT_RETENTION_WEEKS: "26"
