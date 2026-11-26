@@ -1,4 +1,33 @@
 nodejs:
+  # The AAT stage of the Jenkins pipeline deploys here and runs the functional tests against it,
+  # signed in through real Entra. The chart turns sign in off in aat; these settings turn it on.
+  environment:
+    ENTRA_ENABLED: 'true'
+    # This deployment's own address, not the aat one the chart derives. Both are registered on the
+    # web-api-marketplace app registration (hmcts/external-entra-id, tenants/stg).
+    ENTRA_REDIRECT_URI: https://${SERVICE_FQDN}/auth/callback
+    ENTRA_POST_LOGOUT_REDIRECT_URI: https://${SERVICE_FQDN}/
+  keyVaults:
+    amp-marketplace:
+      secrets:
+        - name: marketplace-web-redis-host
+          alias: REDIS_HOST
+        - name: marketplace-web-redis-port
+          alias: REDIS_PORT
+        - name: marketplace-web-redis-access-key
+          alias: REDIS_KEY
+        - name: marketplace-web-session-secret
+          alias: SESSION_SECRET
+    # Entra sign-in credentials, managed and rotated by hmcts/external-entra-id
+    kvspsextidaat:
+      excludeEnvironmentSuffix: true
+      secrets:
+        - name: entra-app-web-api-marketplace-client-id
+          alias: ENTRA_CLIENT_ID
+        - name: entra-app-web-api-marketplace-secret
+          alias: ENTRA_CLIENT_SECRET
+        - name: entra-tenant-id
+          alias: ENTRA_TENANT_ID
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
