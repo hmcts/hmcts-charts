@@ -28,3 +28,12 @@ java:
         #   alias: APIM_CLIENT_ID
         # - name: marketplace-APIM-CLIENT-SECRET
         #   alias: APIM_CLIENT_SECRET
+    # Admin sign-in (/admin/**) for the functional tests: the tenant and the web app whose tokens
+    # carry amp_admin, managed by hmcts/external-entra-id
+    kvspsextidaat:
+      excludeEnvironmentSuffix: true
+      secrets:
+        - name: entra-tenant-id
+          alias: ENTRA_TENANT_ID
+        - name: entra-app-web-api-marketplace-client-id
+          alias: ADMIN_AUTH_AUDIENCE
