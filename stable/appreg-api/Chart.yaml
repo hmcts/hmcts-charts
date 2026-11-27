@@ -3,12 +3,12 @@ appVersion: "1.1"
 description: A Helm chart for AppReg API
 name: appreg-api
 home: https://github.com/hmcts/appreg-api
-version: 0.0.16
+version: 0.0.17
 maintainers:
   - name: HMCTS AppReg Team
 dependencies:
   - name: java
-    version: 6.1.1
+    version: 6.1.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
   - name: postgresql
     version: 1.1.3
