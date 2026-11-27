@@ -389,13 +389,13 @@ civil-service:
       logstashJavaOpts: "-Xmx1g -Xms512M"
       extraEnvs:
         - name: DATA_STORE_URL
-          value: jdbc:postgresql://-postgresql:5432/data-store?ssl=disable&stringtype=unspecified
+          value: jdbc:postgresql://-postgresql:5432/data-store?sslmode=disable&stringtype=unspecified
         - name: DATA_STORE_USER
           value: 
         - name: DATA_STORE_PASS
           value: 
         - name: DB_URL
-          value: jdbc:postgresql://-postgresql:5432/data-store?ssl=disable&stringtype=unspecified
+          value: jdbc:postgresql://-postgresql:5432/data-store?sslmode=disable&stringtype=unspecified
         - name: DB_USER
           value: 
         - name: DB_PWD
@@ -437,7 +437,7 @@ civil-service:
         01_input.conf: |
           input  {
             jdbc {
-              jdbc_connection_string => "jdbc:postgresql://-postgresql:5432/data-store?ssl=disable&stringtype=unspecified"
+              jdbc_connection_string => "jdbc:postgresql://-postgresql:5432/data-store?sslmode=disable&stringtype=unspecified"
               jdbc_user => ""
               jdbc_password => ""
               jdbc_validate_connection => true
@@ -566,7 +566,7 @@ civil-service:
           cpu: "2500m"
           memory: "1024Mi"
       configTpl:
-        db.url: jdbc:postgresql://-postgresql:5432/data-store?ssl=disable&stringtype=unspecified
+        db.url: jdbc:postgresql://-postgresql:5432/data-store?sslmode=disable&stringtype=unspecified
         db.user: 
         db.pwd: 
         es.data.nodes.url: http://-es-master:9200
